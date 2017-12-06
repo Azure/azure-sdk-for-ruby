@@ -36,6 +36,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Azure.Management.Insights.Models.RuleWebhookAction',
           type: {
@@ -43,6 +44,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'RuleWebhookAction',
             model_properties: {
               odatatype: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {
@@ -50,6 +52,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               service_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceUri',
                 type: {
@@ -57,11 +60,13 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

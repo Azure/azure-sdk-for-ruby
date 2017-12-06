@@ -27,6 +27,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MigrateWorkspaceCollectionRequest',
           type: {
@@ -34,6 +35,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'MigrateWorkspaceCollectionRequest',
             model_properties: {
               target_resource_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetResourceGroup',
                 type: {
@@ -41,11 +43,13 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               resources: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resources',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

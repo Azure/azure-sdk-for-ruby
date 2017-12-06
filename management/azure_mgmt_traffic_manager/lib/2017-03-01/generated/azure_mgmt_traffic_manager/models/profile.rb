@@ -40,6 +40,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Profile',
           type: {
@@ -47,6 +48,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'Profile',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +57,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +66,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,6 +75,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -78,11 +83,13 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -92,6 +99,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               profile_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.profileStatus',
                 type: {
@@ -99,6 +107,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               traffic_routing_method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.trafficRoutingMethod',
                 type: {
@@ -106,6 +115,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               dns_config: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsConfig',
                 type: {
@@ -114,6 +124,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               monitor_config: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.monitorConfig',
                 type: {
@@ -122,11 +133,13 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpoints',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EndpointElementType',
                       type: {

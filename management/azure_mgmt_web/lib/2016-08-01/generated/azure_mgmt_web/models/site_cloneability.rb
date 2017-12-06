@@ -37,6 +37,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SiteCloneability',
           type: {
@@ -44,6 +45,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SiteCloneability',
             model_properties: {
               result: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'result',
                 type: {
@@ -52,11 +54,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               blocking_features: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blockingFeatures',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SiteCloneabilityCriterionElementType',
                       type: {
@@ -67,11 +71,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               unsupported_features: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unsupportedFeatures',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SiteCloneabilityCriterionElementType',
                       type: {
@@ -82,11 +88,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               blocking_characteristics: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blockingCharacteristics',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SiteCloneabilityCriterionElementType',
                       type: {

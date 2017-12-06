@@ -31,6 +31,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12SchemaReference',
           type: {
@@ -38,6 +39,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12SchemaReference',
             model_properties: {
               message_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageId',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_application_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderApplicationId',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               schema_version: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'schemaVersion',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               schema_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'schemaName',
                 type: {

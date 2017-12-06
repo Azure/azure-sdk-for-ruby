@@ -23,6 +23,7 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SkuEnumerationForExistingResourceResult',
           type: {
@@ -30,11 +31,13 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
             class_name: 'SkuEnumerationForExistingResourceResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SkuDetailsForExistingResourceElementType',
                       type: {

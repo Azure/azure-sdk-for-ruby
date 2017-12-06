@@ -24,6 +24,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'importTask',
           type: {
@@ -31,6 +32,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ImportTask',
             model_properties: {
               storage_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUrl',
                 type: {

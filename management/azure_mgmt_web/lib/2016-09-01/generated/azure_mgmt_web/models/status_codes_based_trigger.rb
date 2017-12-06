@@ -34,6 +34,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StatusCodesBasedTrigger',
           type: {
@@ -41,6 +42,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'StatusCodesBasedTrigger',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -48,6 +50,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               sub_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subStatus',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               win32status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'win32Status',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -69,6 +74,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               time_interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInterval',
                 type: {

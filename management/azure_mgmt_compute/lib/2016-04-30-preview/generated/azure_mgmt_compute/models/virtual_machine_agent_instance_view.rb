@@ -29,6 +29,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineAgentInstanceView',
           type: {
@@ -36,6 +37,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineAgentInstanceView',
             model_properties: {
               vm_agent_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmAgentVersion',
                 type: {
@@ -43,11 +45,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               extension_handlers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensionHandlers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineExtensionHandlerInstanceViewElementType',
                       type: {
@@ -58,11 +62,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               statuses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {

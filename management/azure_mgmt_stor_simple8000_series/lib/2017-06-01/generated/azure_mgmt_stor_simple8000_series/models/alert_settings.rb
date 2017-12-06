@@ -35,6 +35,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AlertSettings',
           type: {
@@ -42,6 +43,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'AlertSettings',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -50,6 +52,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -58,6 +61,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,6 +70,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -74,6 +79,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               email_notification: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.emailNotification',
                 type: {
@@ -82,6 +88,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               alert_notification_culture: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.alertNotificationCulture',
                 type: {
@@ -89,6 +96,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               notification_to_service_owners: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notificationToServiceOwners',
                 type: {
@@ -97,11 +105,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               additional_recipient_email_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.additionalRecipientEmailList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

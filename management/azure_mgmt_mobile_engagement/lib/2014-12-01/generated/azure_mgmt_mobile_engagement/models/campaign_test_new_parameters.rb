@@ -23,6 +23,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignTestNewParameters',
           type: {
@@ -30,6 +31,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignTestNewParameters',
             model_properties: {
               device_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'deviceId',
                 type: {
@@ -37,6 +39,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               lang: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lang',
                 type: {
@@ -44,6 +47,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               data: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'data',
                 type: {

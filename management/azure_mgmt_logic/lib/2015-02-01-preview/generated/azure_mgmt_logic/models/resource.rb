@@ -35,6 +35,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -42,6 +43,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'Resource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -63,6 +67,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -70,11 +75,13 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

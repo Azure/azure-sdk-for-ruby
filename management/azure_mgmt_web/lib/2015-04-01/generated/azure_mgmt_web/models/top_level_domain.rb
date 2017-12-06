@@ -26,6 +26,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopLevelDomain',
           type: {
@@ -33,6 +34,7 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'TopLevelDomain',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -41,6 +43,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +52,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +69,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               domain_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -72,6 +78,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               privacy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privacy',
                 type: {

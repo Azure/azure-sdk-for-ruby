@@ -25,6 +25,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UserSecretStore',
           type: {
@@ -32,6 +33,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'UserSecretStore',
             model_properties: {
               key_vault_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultUri',
                 type: {
@@ -39,6 +41,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               key_vault_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultId',
                 type: {

@@ -62,6 +62,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ASRTask',
           type: {
@@ -69,6 +70,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ASRTask',
             model_properties: {
               task_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'taskId',
                 type: {
@@ -76,6 +78,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -83,6 +86,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -90,6 +94,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -97,11 +102,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               allowed_actions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedActions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -111,6 +118,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -118,6 +126,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -125,6 +134,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               state_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'stateDescription',
                 type: {
@@ -132,6 +142,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               task_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'taskType',
                 type: {
@@ -139,6 +150,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               custom_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customDetails',
                 type: {
@@ -149,6 +161,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               group_task_custom_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupTaskCustomDetails',
                 type: {
@@ -159,11 +172,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               errors: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errors',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobErrorDetailsElementType',
                       type: {

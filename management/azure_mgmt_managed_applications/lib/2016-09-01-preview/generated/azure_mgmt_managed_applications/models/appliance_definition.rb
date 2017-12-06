@@ -42,6 +42,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplianceDefinition',
           type: {
@@ -49,6 +50,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'ApplianceDefinition',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,6 +59,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -65,6 +68,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -73,6 +77,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -80,11 +85,13 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -94,6 +101,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               managed_by: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedBy',
                 type: {
@@ -101,6 +109,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -109,6 +118,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {
@@ -117,6 +127,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               lock_level: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.lockLevel',
                 type: {
@@ -125,6 +136,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -132,11 +144,13 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               authorizations: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.authorizations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplianceProviderAuthorizationElementType',
                       type: {
@@ -147,11 +161,13 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               artifacts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.artifacts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplianceArtifactElementType',
                       type: {
@@ -162,6 +178,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -169,6 +186,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               package_file_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.packageFileUri',
                 type: {

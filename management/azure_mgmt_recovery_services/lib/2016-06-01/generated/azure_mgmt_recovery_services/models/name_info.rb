@@ -25,6 +25,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NameInfo',
           type: {
@@ -32,6 +33,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'NameInfo',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -39,6 +41,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               localized_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {

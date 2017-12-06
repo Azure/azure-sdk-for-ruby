@@ -42,6 +42,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineSize',
           type: {
@@ -49,6 +50,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineSize',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -56,6 +58,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               number_of_cores: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'numberOfCores',
                 type: {
@@ -63,6 +66,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               os_disk_size_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDiskSizeInMB',
                 type: {
@@ -70,6 +74,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               resource_disk_size_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceDiskSizeInMB',
                 type: {
@@ -77,6 +82,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               memory_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'memoryInMB',
                 type: {
@@ -84,6 +90,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               max_data_disk_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDataDiskCount',
                 type: {

@@ -35,6 +35,7 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceProviderOperationDisplayProperties',
           type: {
@@ -42,6 +43,7 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'ResourceProviderOperationDisplayProperties',
             model_properties: {
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publisher',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -63,6 +67,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

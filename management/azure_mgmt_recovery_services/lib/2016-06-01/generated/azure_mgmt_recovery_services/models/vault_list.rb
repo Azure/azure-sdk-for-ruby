@@ -25,6 +25,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultList',
           type: {
@@ -32,11 +33,13 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'VaultList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultElementType',
                       type: {
@@ -47,6 +50,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

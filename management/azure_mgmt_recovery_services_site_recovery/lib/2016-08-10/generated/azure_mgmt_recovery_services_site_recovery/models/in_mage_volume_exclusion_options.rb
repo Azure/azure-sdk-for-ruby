@@ -30,6 +30,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMageVolumeExclusionOptions',
           type: {
@@ -37,6 +38,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageVolumeExclusionOptions',
             model_properties: {
               volume_label: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeLabel',
                 type: {
@@ -44,6 +46,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               only_exclude_if_single_volume: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'OnlyExcludeIfSingleVolume',
                 type: {

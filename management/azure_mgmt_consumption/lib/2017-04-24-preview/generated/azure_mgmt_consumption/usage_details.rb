@@ -119,6 +119,8 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
     #
     def list_async(scope, expand = nil, filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 

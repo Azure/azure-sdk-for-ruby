@@ -33,6 +33,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResult',
           type: {
@@ -40,6 +41,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'CheckNameAvailabilityResult',
             model_properties: {
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -48,6 +50,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -55,6 +58,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {

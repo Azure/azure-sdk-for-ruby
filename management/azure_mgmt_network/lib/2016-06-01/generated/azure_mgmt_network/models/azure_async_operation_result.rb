@@ -33,6 +33,7 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureAsyncOperationResult',
           type: {
@@ -40,6 +41,7 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'AzureAsyncOperationResult',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -47,6 +49,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

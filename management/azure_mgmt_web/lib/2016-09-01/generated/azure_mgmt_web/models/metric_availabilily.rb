@@ -25,6 +25,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricAvailabilily',
           type: {
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'MetricAvailabilily',
             model_properties: {
               time_grain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -39,6 +41,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               retention: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retention',
                 type: {

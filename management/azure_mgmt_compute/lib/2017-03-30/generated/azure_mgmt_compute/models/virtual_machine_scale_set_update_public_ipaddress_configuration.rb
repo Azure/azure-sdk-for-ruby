@@ -31,6 +31,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdatePublicIPAddressConfiguration',
           type: {
@@ -38,6 +39,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetUpdatePublicIPAddressConfiguration',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               idle_timeout_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               dns_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {

@@ -58,6 +58,7 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HybridConnectionListResult',
           type: {
@@ -65,11 +66,13 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'HybridConnectionListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HybridConnectionElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

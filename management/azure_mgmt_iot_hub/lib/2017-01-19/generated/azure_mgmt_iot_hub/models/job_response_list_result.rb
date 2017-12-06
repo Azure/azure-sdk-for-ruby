@@ -57,6 +57,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobResponseListResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'JobResponseListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobResponseElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

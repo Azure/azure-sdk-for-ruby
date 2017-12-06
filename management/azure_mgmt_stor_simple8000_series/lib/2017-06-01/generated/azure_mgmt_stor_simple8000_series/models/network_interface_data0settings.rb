@@ -25,6 +25,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceData0Settings',
           type: {
@@ -32,6 +33,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'NetworkInterfaceData0Settings',
             model_properties: {
               controller_zero_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'controllerZeroIp',
                 type: {
@@ -39,6 +41,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               controller_one_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'controllerOneIp',
                 type: {

@@ -29,6 +29,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImageRegistryCredential',
           type: {
@@ -36,6 +37,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'ImageRegistryCredential',
             model_properties: {
               server: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'server',
                 type: {
@@ -43,6 +45,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               username: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'username',
                 type: {
@@ -50,6 +53,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {

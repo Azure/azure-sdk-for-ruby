@@ -23,6 +23,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PurgeParameters',
           type: {
@@ -30,11 +31,13 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'PurgeParameters',
             model_properties: {
               content_paths: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'contentPaths',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

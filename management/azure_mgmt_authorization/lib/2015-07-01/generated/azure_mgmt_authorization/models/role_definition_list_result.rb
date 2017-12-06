@@ -57,6 +57,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RoleDefinitionListResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleDefinitionListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoleDefinitionElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

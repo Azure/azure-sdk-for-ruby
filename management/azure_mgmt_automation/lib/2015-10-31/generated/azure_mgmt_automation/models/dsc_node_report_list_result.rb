@@ -57,6 +57,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscNodeReportListResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscNodeReportListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DscNodeReportElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

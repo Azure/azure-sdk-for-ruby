@@ -30,6 +30,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Status',
           type: {
@@ -37,6 +38,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Status',
             model_properties: {
               display_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayStatus',
@@ -45,6 +47,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -53,6 +56,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               timestamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',

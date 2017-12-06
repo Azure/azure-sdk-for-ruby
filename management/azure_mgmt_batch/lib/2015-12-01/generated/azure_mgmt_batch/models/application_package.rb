@@ -45,6 +45,7 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationPackage',
           type: {
@@ -52,6 +53,7 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'ApplicationPackage',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -59,6 +61,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {
@@ -66,6 +69,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -74,6 +78,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'format',
                 type: {
@@ -81,6 +86,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               storage_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUrl',
                 type: {
@@ -88,6 +94,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               storage_url_expiry: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUrlExpiry',
                 type: {
@@ -95,6 +102,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               last_activation_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastActivationTime',
                 type: {

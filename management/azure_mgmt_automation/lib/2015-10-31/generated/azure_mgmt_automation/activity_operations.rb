@@ -71,6 +71,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def get_async(resource_group_name, automation_account_name, module_name, activity_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'module_name is nil' if module_name.nil?
       fail ArgumentError, 'activity_name is nil' if activity_name.nil?
@@ -167,6 +168,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def list_by_module_async(resource_group_name, automation_account_name, module_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'module_name is nil' if module_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

@@ -26,6 +26,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MigrateMySqlRequest',
           type: {
@@ -33,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'MigrateMySqlRequest',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -41,6 +43,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +52,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +69,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               connection_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionString',
                 type: {
@@ -71,6 +77,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               migration_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.migrationType',
                 type: {

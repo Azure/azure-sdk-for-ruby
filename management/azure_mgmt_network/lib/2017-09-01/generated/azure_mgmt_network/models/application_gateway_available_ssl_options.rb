@@ -36,6 +36,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayAvailableSslOptions',
           type: {
@@ -43,6 +44,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ApplicationGatewayAvailableSslOptions',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -50,6 +52,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -58,6 +61,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,6 +70,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -73,11 +78,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,11 +94,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               predefined_policies: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.predefinedPolicies',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -102,6 +111,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               default_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultPolicy',
                 type: {
@@ -109,11 +119,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               available_cipher_suites: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availableCipherSuites',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslCipherSuiteElementType',
                       type: {
@@ -123,11 +135,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               available_protocols: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availableProtocols',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslProtocolElementType',
                       type: {

@@ -52,6 +52,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HealthError',
           type: {
@@ -59,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HealthError',
             model_properties: {
               error_source: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorSource',
                 type: {
@@ -66,6 +68,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorType',
                 type: {
@@ -73,6 +76,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorLevel',
                 type: {
@@ -80,6 +84,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorCode',
                 type: {
@@ -87,6 +92,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorMessage',
                 type: {
@@ -94,6 +100,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               possible_causes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'possibleCauses',
                 type: {
@@ -101,6 +108,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recommended_action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendedAction',
                 type: {
@@ -108,6 +116,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               creation_time_utc: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'creationTimeUtc',
                 type: {
@@ -115,6 +124,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_provider_error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryProviderErrorMessage',
                 type: {
@@ -122,6 +132,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               entity_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'entityId',
                 type: {
@@ -129,11 +140,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               child_errors: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'childErrors',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {

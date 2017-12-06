@@ -31,7 +31,7 @@ describe 'Template Deployments' do
     expect{@client.create_or_update(nil, 'bar', @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
     expect{@client.create_or_update('foo', nil, @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
     expect{@client.create_or_update('foo', 'bar', nil)}.to raise_error(ArgumentError)
-    expect{@client.create_or_update('~`123', 'bar', @resource_helper.build_deployment_params).value!}.to raise_error(MsRestAzure::AzureOperationError)
+    expect{@client.create_or_update('~`123', 'bar', @resource_helper.build_deployment_params).value!}.to raise_error(ArgumentError)
   end
 
   it 'should cancel running template deployment' do
@@ -58,7 +58,7 @@ describe 'Template Deployments' do
   it 'should raise error when attempting to get deployment with using invalid parameters' do
     expect{@client.get(nil, 'bar')}.to raise_error(ArgumentError)
     expect{@client.get('foo', nil)}.to raise_error(ArgumentError)
-    expect{@client.get('~`123', 'bar').value!}.to raise_error(MsRestAzure::AzureOperationError)
+    expect{@client.get('~`123', 'bar').value!}.to raise_error(ArgumentError)
   end
 
   it 'should validate a deployment' do
@@ -72,7 +72,7 @@ describe 'Template Deployments' do
   it 'should raise error when attempting validate with invalid parameters' do
     expect{@client.validate(nil, 'bar', @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
     expect{@client.validate('foo', 'bar', nil)}.to raise_error(ArgumentError)
-    expect(@client.validate_async('~`123', 'bar', @resource_helper.build_deployment_params).value!.response.status).to eq(400)
+    expect{@client.validate_async('~`123', 'bar', @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
   end
 
   it 'should get a list of deployments' do

@@ -68,12 +68,12 @@ describe 'Resource Groups' do
     params = Models::ResourceGroup.new
     expect{@client.update(nil, params)}.to raise_error(ArgumentError)
     expect{@client.update('foo', nil)}.to raise_error(ArgumentError)
-    expect{@client.update('~`123', params).value!}.to raise_error(MsRestAzure::AzureOperationError)
+    expect{@client.update('~`123', params).value!}.to raise_error(ArgumentError)
   end
 
   it 'should raise errors when attempting get resource group' do
     expect{@client.get_async(nil)}.to raise_error(ArgumentError)
-    expect{@client.get_async('~`123').value!}.to raise_error(MsRestAzure::AzureOperationError)
+    expect{@client.get_async('~`123').value!}.to raise_error(ArgumentError)
   end
 
   it 'should return false when resource group does not not exists' do
@@ -84,7 +84,7 @@ describe 'Resource Groups' do
 
   it 'should raise errors when attempting delete resource group' do
     expect{@client.delete(nil)}.to raise_error(ArgumentError)
-    expect{@client.delete('~`123').value!}.to raise_error(MsRestAzure::AzureOperationError)
+    expect{@client.delete('~`123').value!}.to raise_error(ArgumentError)
   end
 
   it 'should return false when check existence for not existing resource group' do

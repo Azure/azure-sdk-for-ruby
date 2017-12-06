@@ -22,6 +22,7 @@ module Azure::Links::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceLinkFilter',
           type: {
@@ -29,6 +30,7 @@ module Azure::Links::Mgmt::V2016_09_01
             class_name: 'ResourceLinkFilter',
             model_properties: {
               target_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetId',
                 type: {

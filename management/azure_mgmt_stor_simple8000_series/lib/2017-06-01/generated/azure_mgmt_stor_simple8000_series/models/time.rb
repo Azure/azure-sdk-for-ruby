@@ -28,6 +28,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Time',
           type: {
@@ -35,6 +36,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Time',
             model_properties: {
               hours: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'hours',
                 constraints: {
@@ -46,6 +48,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               minutes: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'minutes',
                 constraints: {
@@ -57,6 +60,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               seconds: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'seconds',
                 constraints: {

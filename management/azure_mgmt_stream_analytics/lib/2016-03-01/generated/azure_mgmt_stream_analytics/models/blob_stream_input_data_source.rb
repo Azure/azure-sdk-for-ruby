@@ -59,6 +59,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Storage/Blob',
           type: {
@@ -66,6 +67,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'BlobStreamInputDataSource',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -73,11 +75,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               storage_accounts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StorageAccountElementType',
                       type: {
@@ -88,6 +92,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               container: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.container',
                 type: {
@@ -95,6 +100,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               path_pattern: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.pathPattern',
                 type: {
@@ -102,6 +108,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               date_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dateFormat',
                 type: {
@@ -109,6 +116,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               time_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeFormat',
                 type: {
@@ -116,6 +124,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               source_partition_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourcePartitionCount',
                 type: {

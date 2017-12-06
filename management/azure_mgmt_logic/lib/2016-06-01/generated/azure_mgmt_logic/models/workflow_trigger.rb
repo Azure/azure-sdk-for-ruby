@@ -62,6 +62,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTrigger',
           type: {
@@ -69,6 +70,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowTrigger',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -77,6 +79,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -86,6 +89,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               created_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdTime',
@@ -94,6 +98,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.changedTime',
@@ -102,6 +107,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -111,6 +117,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -120,6 +127,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               last_execution_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastExecutionTime',
@@ -128,6 +136,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               next_execution_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nextExecutionTime',
@@ -136,6 +145,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               recurrence: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.recurrence',
@@ -145,6 +155,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               workflow: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.workflow',
@@ -154,6 +165,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -162,6 +174,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

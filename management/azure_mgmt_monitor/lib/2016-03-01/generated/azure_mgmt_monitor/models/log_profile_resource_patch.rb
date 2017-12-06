@@ -46,6 +46,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LogProfileResourcePatch',
           type: {
@@ -53,11 +54,13 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'LogProfileResourcePatch',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -67,6 +70,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountId',
                 type: {
@@ -74,6 +78,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               service_bus_rule_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceBusRuleId',
                 type: {
@@ -81,11 +86,13 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               locations: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.locations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -95,11 +102,13 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               categories: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.categories',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -109,6 +118,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               retention_policy: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.retentionPolicy',
                 type: {

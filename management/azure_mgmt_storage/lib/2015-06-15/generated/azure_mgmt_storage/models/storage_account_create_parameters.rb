@@ -40,6 +40,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountCreateParameters',
           type: {
@@ -47,6 +48,7 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'StorageAccountCreateParameters',
             model_properties: {
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -54,11 +56,13 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -68,6 +72,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               account_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.accountType',
                 type: {

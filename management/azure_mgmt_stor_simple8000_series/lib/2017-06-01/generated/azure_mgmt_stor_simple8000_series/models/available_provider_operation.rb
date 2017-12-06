@@ -38,6 +38,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AvailableProviderOperation',
           type: {
@@ -45,6 +46,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'AvailableProviderOperation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -52,6 +54,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -60,6 +63,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -67,6 +71,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

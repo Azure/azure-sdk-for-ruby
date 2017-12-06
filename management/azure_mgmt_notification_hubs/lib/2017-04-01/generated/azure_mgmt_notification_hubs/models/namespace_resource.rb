@@ -60,6 +60,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NamespaceResource',
           type: {
@@ -67,6 +68,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'NamespaceResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -75,6 +77,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -83,6 +86,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,6 +95,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -98,11 +103,13 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -112,6 +119,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -120,6 +128,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               namespace_resource_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -127,6 +136,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -134,6 +144,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               region: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.region',
                 type: {
@@ -141,6 +152,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -148,6 +160,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               created_at: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdAt',
                 type: {
@@ -155,6 +168,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               service_bus_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceBusEndpoint',
                 type: {
@@ -162,6 +176,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               subscription_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subscriptionId',
                 type: {
@@ -169,6 +184,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               scale_unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scaleUnit',
                 type: {
@@ -176,6 +192,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enabled',
                 type: {
@@ -183,6 +200,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               critical: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.critical',
                 type: {
@@ -190,6 +208,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               namespace_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.namespaceType',
                 type: {

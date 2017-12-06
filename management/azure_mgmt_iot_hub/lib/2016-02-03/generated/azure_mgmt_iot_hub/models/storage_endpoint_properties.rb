@@ -33,6 +33,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageEndpointProperties',
           type: {
@@ -40,6 +41,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'StorageEndpointProperties',
             model_properties: {
               sas_ttl_as_iso8601: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sasTtlAsIso8601',
                 type: {
@@ -47,6 +49,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               connection_string: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'connectionString',
                 type: {
@@ -54,6 +57,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               container_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'containerName',
                 type: {

@@ -68,6 +68,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -209,6 +211,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -350,6 +354,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -533,6 +539,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -678,6 +686,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -786,6 +796,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -897,6 +909,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1000,6 +1014,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1089,6 +1105,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MaxLength': '50'" if !manager_name.nil? && manager_name.length > 50
+      fail ArgumentError, "'manager_name' should satisfy the constraint - 'MinLength': '2'" if !manager_name.nil? && manager_name.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 

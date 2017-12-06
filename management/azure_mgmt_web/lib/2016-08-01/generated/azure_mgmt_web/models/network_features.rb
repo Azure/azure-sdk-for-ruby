@@ -34,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkFeatures',
           type: {
@@ -41,6 +42,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'NetworkFeatures',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,6 +51,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,6 +60,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -64,6 +68,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,6 +77,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               virtual_network_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.virtualNetworkName',
@@ -80,6 +86,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               virtual_network_connection: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.virtualNetworkConnection',
@@ -89,12 +96,14 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               hybrid_connections: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hybridConnections',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RelayServiceConnectionEntityElementType',
                       type: {
@@ -105,12 +114,14 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               hybrid_connections_v2: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hybridConnectionsV2',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HybridConnectionElementType',
                       type: {

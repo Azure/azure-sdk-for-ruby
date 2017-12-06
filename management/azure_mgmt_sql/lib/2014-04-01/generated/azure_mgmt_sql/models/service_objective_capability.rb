@@ -44,6 +44,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceObjectiveCapability',
           type: {
@@ -51,6 +52,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServiceObjectiveCapability',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -59,6 +61,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -68,6 +71,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'performanceLevel.unit',
@@ -77,6 +81,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'performanceLevel.value',
@@ -85,6 +90,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -93,12 +99,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               supported_max_sizes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportedMaxSizes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MaxSizeCapabilityElementType',
                       type: {
@@ -109,6 +117,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               included_max_size: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'includedMaxSize',

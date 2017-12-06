@@ -22,6 +22,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Key',
           type: {
@@ -29,6 +30,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Key',
             model_properties: {
               activation_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'activationKey',
                 type: {

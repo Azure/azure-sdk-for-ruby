@@ -36,6 +36,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkerPool',
           type: {
@@ -43,6 +44,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'WorkerPool',
             model_properties: {
               worker_size_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workerSizeId',
                 type: {
@@ -50,6 +52,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               compute_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'computeMode',
                 type: {
@@ -58,6 +61,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workerSize',
                 type: {
@@ -65,6 +69,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workerCount',
                 type: {
@@ -72,12 +77,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               instance_names: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'instanceNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

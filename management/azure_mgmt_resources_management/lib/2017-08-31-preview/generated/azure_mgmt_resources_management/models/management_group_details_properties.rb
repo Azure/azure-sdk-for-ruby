@@ -36,6 +36,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementGroupDetailsProperties',
           type: {
@@ -43,6 +44,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ManagementGroupDetailsProperties',
             model_properties: {
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {
@@ -50,6 +52,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               updated_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'updatedTime',
                 type: {
@@ -57,6 +60,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               updated_by: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'updatedBy',
                 type: {
@@ -64,6 +68,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               parent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parent',
                 type: {
@@ -72,6 +77,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               management_group_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managementGroupType',
                 type: {

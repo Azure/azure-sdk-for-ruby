@@ -28,6 +28,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CustomImagePropertiesFromVm',
           type: {
@@ -35,6 +36,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'CustomImagePropertiesFromVm',
             model_properties: {
               source_vm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceVmId',
                 type: {
@@ -42,6 +44,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               windows_os_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'windowsOsInfo',
                 type: {
@@ -50,6 +53,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               linux_os_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'linuxOsInfo',
                 type: {

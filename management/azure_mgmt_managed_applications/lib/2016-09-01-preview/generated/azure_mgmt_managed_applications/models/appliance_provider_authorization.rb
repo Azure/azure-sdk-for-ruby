@@ -30,6 +30,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplianceProviderAuthorization',
           type: {
@@ -37,6 +38,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'ApplianceProviderAuthorization',
             model_properties: {
               principal_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'principalId',
                 type: {
@@ -44,6 +46,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               role_definition_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'roleDefinitionId',
                 type: {

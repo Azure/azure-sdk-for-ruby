@@ -37,6 +37,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OSDetails',
           type: {
@@ -44,6 +45,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'OSDetails',
             model_properties: {
               os_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -51,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               product_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'productType',
                 type: {
@@ -58,6 +61,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_edition: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osEdition',
                 type: {
@@ -65,6 +69,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               o_sversion: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'oSVersion',
                 type: {
@@ -72,6 +77,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               o_smajor_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'oSMajorVersion',
                 type: {
@@ -79,6 +85,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               o_sminor_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'oSMinorVersion',
                 type: {

@@ -37,6 +37,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Request',
           type: {
@@ -44,6 +45,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Request',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -51,6 +53,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               addr: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'addr',
                 type: {
@@ -58,6 +61,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               host: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'host',
                 type: {
@@ -65,6 +69,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'method',
                 type: {
@@ -72,6 +77,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               useragent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'useragent',
                 type: {

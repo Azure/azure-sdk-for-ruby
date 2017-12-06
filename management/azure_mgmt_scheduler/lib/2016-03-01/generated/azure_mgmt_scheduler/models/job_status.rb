@@ -38,6 +38,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobStatus',
           type: {
@@ -45,6 +46,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobStatus',
             model_properties: {
               execution_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'executionCount',
@@ -53,6 +55,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               failure_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'failureCount',
@@ -61,6 +64,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               faulted_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'faultedCount',
@@ -69,6 +73,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               last_execution_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastExecutionTime',
@@ -77,6 +82,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               next_execution_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextExecutionTime',

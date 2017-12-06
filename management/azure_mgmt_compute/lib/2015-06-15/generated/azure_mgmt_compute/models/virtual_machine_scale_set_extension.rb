@@ -45,6 +45,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetExtension',
           type: {
@@ -52,6 +53,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineScaleSetExtension',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -59,6 +61,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -66,6 +69,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publisher',
                 type: {
@@ -73,6 +77,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.type',
                 type: {
@@ -80,6 +85,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               type_handler_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.typeHandlerVersion',
                 type: {
@@ -87,6 +93,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               auto_upgrade_minor_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoUpgradeMinorVersion',
                 type: {
@@ -94,6 +101,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.settings',
                 type: {
@@ -101,6 +109,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               protected_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protectedSettings',
                 type: {
@@ -108,6 +117,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

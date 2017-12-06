@@ -32,6 +32,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySku',
           type: {
@@ -39,6 +40,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'ApplicationGatewaySku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

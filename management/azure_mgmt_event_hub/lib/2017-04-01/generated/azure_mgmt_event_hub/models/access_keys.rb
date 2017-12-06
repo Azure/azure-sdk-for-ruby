@@ -46,6 +46,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AccessKeys',
           type: {
@@ -53,6 +54,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'AccessKeys',
             model_properties: {
               primary_connection_string: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primaryConnectionString',
@@ -61,6 +63,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               secondary_connection_string: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryConnectionString',
@@ -69,6 +72,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               alias_primary_connection_string: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'aliasPrimaryConnectionString',
@@ -77,6 +81,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               alias_secondary_connection_string: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'aliasSecondaryConnectionString',
@@ -85,6 +90,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               primary_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primaryKey',
@@ -93,6 +99,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               secondary_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryKey',
@@ -101,6 +108,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               key_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'keyName',

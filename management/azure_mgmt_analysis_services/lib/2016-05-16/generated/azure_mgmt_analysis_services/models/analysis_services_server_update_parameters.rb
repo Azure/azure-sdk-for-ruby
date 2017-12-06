@@ -32,6 +32,7 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AnalysisServicesServerUpdateParameters',
           type: {
@@ -39,6 +40,7 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
             class_name: 'AnalysisServicesServerUpdateParameters',
             model_properties: {
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -47,11 +49,13 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -61,6 +65,7 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
                 }
               },
               as_administrators: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.asAdministrators',
                 type: {
@@ -69,6 +74,7 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
                 }
               },
               backup_blob_container_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backupBlobContainerUri',
                 type: {

@@ -38,6 +38,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendAddressPool',
           type: {
@@ -45,6 +46,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ApplicationGatewayBackendAddressPool',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -52,11 +54,13 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               backend_ipconfigurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendIPConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkInterfaceIPConfigurationElementType',
                       type: {
@@ -67,11 +71,13 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               backend_addresses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendAddresses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayBackendAddressElementType',
                       type: {
@@ -82,6 +88,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -89,6 +96,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -96,6 +104,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

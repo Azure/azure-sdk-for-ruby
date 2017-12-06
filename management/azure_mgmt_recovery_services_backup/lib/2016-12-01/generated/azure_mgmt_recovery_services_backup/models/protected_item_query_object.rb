@@ -47,6 +47,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectedItemQueryObject',
           type: {
@@ -54,6 +55,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'ProtectedItemQueryObject',
             model_properties: {
               health_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthState',
                 type: {
@@ -61,6 +63,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -68,6 +71,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               item_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'itemType',
                 type: {
@@ -75,6 +79,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               policy_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyName',
                 type: {
@@ -82,6 +87,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               container_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerName',
                 type: {
@@ -89,6 +95,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_engine_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupEngineName',
                 type: {
@@ -96,6 +103,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {

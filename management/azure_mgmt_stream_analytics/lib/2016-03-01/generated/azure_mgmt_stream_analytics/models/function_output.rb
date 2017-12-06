@@ -25,6 +25,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FunctionOutput',
           type: {
@@ -32,6 +33,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'FunctionOutput',
             model_properties: {
               data_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataType',
                 type: {

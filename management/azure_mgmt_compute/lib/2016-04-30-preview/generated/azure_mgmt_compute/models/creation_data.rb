@@ -42,6 +42,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CreationData',
           type: {
@@ -49,6 +50,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'CreationData',
             model_properties: {
               create_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -57,6 +59,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -64,6 +67,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               image_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -72,6 +76,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               source_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceUri',
                 type: {
@@ -79,6 +84,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               source_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {

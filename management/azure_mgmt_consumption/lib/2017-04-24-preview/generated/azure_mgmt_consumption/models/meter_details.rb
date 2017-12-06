@@ -43,6 +43,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MeterDetails',
           type: {
@@ -50,6 +51,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
             class_name: 'MeterDetails',
             model_properties: {
               meter_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterName',
@@ -58,6 +60,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               meter_category: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterCategory',
@@ -66,6 +69,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               meter_sub_category: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterSubCategory',
@@ -74,6 +78,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -82,6 +87,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               meter_location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterLocation',
@@ -90,6 +96,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               total_included_quantity: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'totalIncludedQuantity',
@@ -98,6 +105,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               pretax_standard_rate: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'pretaxStandardRate',

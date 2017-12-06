@@ -26,6 +26,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteServiceProviderBandwidthsOffered',
           type: {
@@ -33,6 +34,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ExpressRouteServiceProviderBandwidthsOffered',
             model_properties: {
               offer_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'offerName',
                 type: {
@@ -40,6 +42,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               value_in_mbps: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'valueInMbps',
                 type: {

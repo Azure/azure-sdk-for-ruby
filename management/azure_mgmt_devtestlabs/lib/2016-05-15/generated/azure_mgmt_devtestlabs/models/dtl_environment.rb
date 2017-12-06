@@ -40,6 +40,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DtlEnvironment',
           type: {
@@ -47,6 +48,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'DtlEnvironment',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +57,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +66,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,6 +75,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -78,11 +83,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -92,6 +99,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               deployment_properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deploymentProperties',
                 type: {
@@ -100,6 +108,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               arm_template_display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.armTemplateDisplayName',
                 type: {
@@ -107,6 +116,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_group_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceGroupId',
@@ -115,6 +125,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_by_user: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdByUser',
@@ -123,6 +134,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -130,6 +142,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

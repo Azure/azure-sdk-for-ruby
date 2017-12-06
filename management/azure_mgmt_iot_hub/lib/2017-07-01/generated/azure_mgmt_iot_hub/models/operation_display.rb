@@ -28,6 +28,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -35,6 +36,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -43,6 +45,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -51,6 +54,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',

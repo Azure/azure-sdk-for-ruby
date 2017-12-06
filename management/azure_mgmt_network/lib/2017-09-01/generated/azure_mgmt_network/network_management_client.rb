@@ -361,9 +361,7 @@ module Azure::Network::Mgmt::V2017_09_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        if defined? Azure::Network::Mgmt::V2017_09_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::Network::Mgmt::V2017_09_01::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.1"
         add_user_agent_information(sdk_information)
     end
   end

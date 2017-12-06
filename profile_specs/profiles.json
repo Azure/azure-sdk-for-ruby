@@ -352,7 +352,7 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Consumption" : {
-                    "2017-04-24-preview": ["*"]
+                    "2017-11-30": ["*"]
                 }
             },
             "output_dir": "management/azure_mgmt_consumption/lib/profiles",

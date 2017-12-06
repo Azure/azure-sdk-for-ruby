@@ -38,6 +38,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscReportError',
           type: {
@@ -45,6 +46,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscReportError',
             model_properties: {
               error_source: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorSource',
                 type: {
@@ -52,6 +54,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -59,6 +62,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               error_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorCode',
                 type: {
@@ -66,6 +70,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorMessage',
                 type: {
@@ -73,6 +78,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               locale: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locale',
                 type: {
@@ -80,6 +86,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               error_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorDetails',
                 type: {

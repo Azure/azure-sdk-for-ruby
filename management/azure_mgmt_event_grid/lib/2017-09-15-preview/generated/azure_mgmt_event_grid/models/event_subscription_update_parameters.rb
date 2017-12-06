@@ -31,6 +31,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionUpdateParameters',
           type: {
@@ -38,6 +39,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
             class_name: 'EventSubscriptionUpdateParameters',
             model_properties: {
               destination: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'destination',
                 type: {
@@ -48,6 +50,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               filter: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'filter',
                 type: {
@@ -56,11 +59,13 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               labels: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'labels',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
