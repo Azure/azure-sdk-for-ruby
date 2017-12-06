@@ -41,7 +41,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiskUpdate',
           type: {
@@ -49,13 +48,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'DiskUpdate',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -65,7 +62,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               account_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountType',
                 type: {
@@ -74,7 +70,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osType',
                 type: {
@@ -83,7 +78,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               creation_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationData',
                 type: {
@@ -92,7 +86,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskSizeGB',
                 type: {
@@ -100,7 +93,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               encryption_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionSettings',
                 type: {

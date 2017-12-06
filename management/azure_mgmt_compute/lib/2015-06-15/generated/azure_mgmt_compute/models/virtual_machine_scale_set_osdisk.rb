@@ -43,7 +43,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetOSDisk',
           type: {
@@ -51,7 +50,6 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineScaleSetOSDisk',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -68,7 +65,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               create_option: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -77,7 +73,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -86,7 +81,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'image',
                 type: {
@@ -95,13 +89,11 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               vhd_containers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdContainers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
