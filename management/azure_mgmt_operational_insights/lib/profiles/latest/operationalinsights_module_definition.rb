@@ -6,4 +6,3 @@ module Azure end
 module Azure::OperationalInsights end
 module Azure::OperationalInsights::Profiles end
 module Azure::OperationalInsights::Profiles::Latest end
-module Azure::OperationalInsights::Profiles::Latest::Mgmt end

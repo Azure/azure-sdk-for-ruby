@@ -5,17 +5,18 @@
 require 'profiles/latest/recoveryservicesbackup_module_definition'
 require 'profiles/latest/modules/recoveryservicesbackup_profile_module'
 
-module Azure::RecoveryServicesBackup::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < RecoveryServicesBackupClass
-    include MsRestAzure::Common::Configurable
+module Azure::RecoveryServicesBackup::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < RecoveryServicesBackupManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

@@ -5,17 +5,18 @@
 require 'profiles/latest/web_module_definition'
 require 'profiles/latest/modules/web_profile_module'
 
-module Azure::Web::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < WebClass
-    include MsRestAzure::Common::Configurable
+module Azure::Web::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < WebManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

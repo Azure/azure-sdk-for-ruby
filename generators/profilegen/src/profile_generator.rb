@@ -6,28 +6,27 @@ require 'erb'
 require 'json'
 require 'fileutils'
 require_relative 'profile_templates'
+require_relative 'defs/module_def'
+require_relative 'defs/client_def'
+require_relative 'defs/module_definition_def'
 
 #
 # Class to generate the profile
 #
-
 class ProfileGenerator
-  attr_accessor :file_names, :profile_name, :class_names, :individual_gem_profile
-  attr_accessor :module_require, :class_name, :operation_types
-  attr_accessor :management_client, :model_types, :versions_clients_mapper
-  attr_accessor :profile_version, :spec_includes, :module_definition_file_name, :clients_ops_mapper
-
+  #
+  # Constructor for the profile generator.
+  #
+  # profile: File that consists of profile details.
+  # dir_metadata: File that consists of metadata about the gem directories.
+  # sdk_path: Path of the Azure Ruby SDK.
+  #
   def initialize(profile, dir_metadata, sdk_path)
-    @profile_name = profile['name']
-    @resource_provider_types = profile['resourceTypes']
+    @profile = profile
     @sdk_path = sdk_path
     @output_dir = "#{@sdk_path}/#{profile['output_dir']}"
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
-    @module_definition_file_name = ''
-    @file_names, @model_types, @operation_types = [], [], []
-    @spec_includes, @class_names = [], []
-    @versions_clients_mapper, @clients_ops_mapper= {}, {}
   end
 
   #
@@ -41,12 +40,29 @@ class ProfileGenerator
   #
   # Generates the profiles SDK.
   #
-  # This has 3 steps:
-  #    1. Generates the Modules
-  #    2. Generates the Module definition file
-  #    3. Generates the profile client file
+  # A profile consists of 3 items:
+  #    1. One Module definition file
+  #    2. One Client file
+  #    3. One or more Module files. (Individual Profiles will have one Module file.
+  #       Rollup Profiles will have multiple module files.)
+  #
+  # Logic:
+  #    For every profile:
+  #       1. Create a Profile Client Definition Object.
+  #       2. Create a Profile Module Definition Object.
+  #       3. Generate one/more modules.
+  #          i. For each service, generate a Module Object.
+  #          ii. Populate data into the Client Definition Object, Module Definition Object and Module Object.
+  #          iii. Write the module file.
+  #       4. Write the Module Definition file.
+  #       5. Write the Client file.
   #
   def generate_profile_sdk
+    @client_def_obj = ClientDef.new
+    @client_def_obj.profile_name = @profile['name']
+    @module_definition_def_obj = ModuleDefinitionDef.new
+    @module_definition_def_obj.profile_name = @profile['name']
+
     generate_modules
     generate_module_definition
     generate_client
@@ -63,54 +79,75 @@ class ProfileGenerator
   #    4. Write the module file using the module_template.template file
   #
   def generate_modules
-    @resource_provider_types.each do |resource_provider, resource_types_obj|
-      @module_require = @dir_metadata[resource_provider]['module_require']
-      @spec_includes << @module_require
-      @class_name     = get_ruby_specific_resource_type_name(resource_provider)
-      @class_names   << @class_name
+    # A resource provider type will look like:
+    #        "Microsoft.Storage": { 
+    #           "management": {
+    #             "2016-01-01": ["*"]
+    #           }
+    #         }
+    #
+    # Here "Microsoft.Storage" is the resource_provider_name, which contains the mode_obj
+    # "management" is the mode_name. mode_obj may have another mode 'data'.
+    # mode_obj contains the resource_types_obj
+    #
+    @profile['resourceTypes'].each do |resource_provider_name, mode_obj|
+      # For each resource provider (such as 'Microsoft.Storage'), create a
+      # new ModuleDef Object.
+      module_def_obj              = ModuleDef.new
+      module_def_obj.profile_name = @profile['name']
 
-      resource_types_obj.each do |resource_type_version, resource_types|
-        base_file_path =  "#{@sdk_path}/#{@dir_metadata[resource_provider]['path']}/lib/#{resource_type_version}/generated/#{@module_require}.rb"
-        require base_file_path
+      mode_obj.each do |mode_name, resource_types_obj|
+        module_def_obj.module_requires << @dir_metadata[resource_provider_name][mode_name]['module_require']
+        @class_name = get_ruby_specific_resource_type_name(resource_provider_name)
+        module_def_obj.module_name = @module_definition_def_obj.module_name = "#{@class_name}"
 
-        resource_types.each do |resource_type|
-          generate_operation_types(resource_provider, resource_type, resource_type_version)
+        @client_def_obj.mode = mode_name
+        if(mode_name == 'management')
+          module_def_obj.management_class_name  = "#{get_ruby_specific_resource_type_name(resource_provider_name)}ManagementClass"
+          module_def_obj.management_mode        = true
+        else
+          module_def_obj.data_class_name        = "#{get_ruby_specific_resource_type_name(resource_provider_name)}DataClass"
+          module_def_obj.data_mode              = true
         end
 
-        generate_model_types(resource_provider, resource_type_version)
-        @clients_ops_mapper[@management_client] = @operation_types.clone
-        @operation_types = []
-        @management_client = ''
-      end
+        resource_types_obj.each do |resource_type_version, resource_types|
+          base_file_path =  "#{@sdk_path}/#{@dir_metadata[resource_provider_name][mode_name]['path']}/lib/#{resource_type_version}/generated/#{@dir_metadata[resource_provider_name][mode_name]['module_require']}.rb"
+          require base_file_path
 
-      @clients_ops_mapper.each_with_index do |(key, operation_types), index|
-          operation_types.each do |operation_type|
-            if(check_available_after_index(operation_type, index))
+          resource_types.each do |resource_type|
+            generate_operation_types(resource_provider_name, resource_type, resource_type_version, mode_name, module_def_obj)
+          end
+
+          generate_model_types(resource_provider_name, resource_type_version, mode_name, module_def_obj)
+          if(mode_name == 'management')
+            operation_types = module_def_obj.management_operation_types
+          else
+            operation_types = module_def_obj.data_operation_types
+          end
+
+          operation_types.each_with_index do |operation_type, index|
+            if(check_available_after_index(operation_type, index, operation_types))
               operation_type[:operation_name_ruby] = 'DO_NOT_ADD'
             end
           end
+        end
       end
 
-      file = get_module_file resource_provider
-      file.write(get_renderer(ProfileTemplates.module_template(@sdk_path, @individual_gem_profile)))
-      @model_types, @operation_types, @versions_clients_mapper = [], [], {}
-      @clients_ops_mapper = {}
-      @management_client = ''
+      file = get_module_file resource_provider_name, module_def_obj
+      file.write(module_def_obj.get_renderer(ProfileTemplates.module_template(@sdk_path, @individual_gem_profile)))
+      @client_def_obj.module_objs << module_def_obj
     end
   end
 
-  def check_available_after_index(operation_type_to_check, index_after_to_compare)
-    @clients_ops_mapper.each_with_index do |(key, operation_types), index|
+  def check_available_after_index(operation_type_to_check, index_after_to_compare, operation_types)
+    operation_types.each_with_index do |operation_type, index|
       if(index <= index_after_to_compare)
         next
       end
 
-      operation_types.each do |operation_type|
-        if(operation_type[:operation_name_ruby] == operation_type_to_check[:operation_name_ruby] )
-          return true
-        end
+      if(operation_type[:operation_name_ruby] == operation_type_to_check[:operation_name_ruby] )
+        return true
       end
-
     end
 
     false
@@ -121,7 +158,7 @@ class ProfileGenerator
   #
   def generate_client
     file = get_client_file
-    file.write(get_renderer(ProfileTemplates.client_template(@sdk_path, @individual_gem_profile)))
+    file.write(@client_def_obj.get_renderer(ProfileTemplates.client_template(@sdk_path, @individual_gem_profile)))
   end
 
   #
@@ -130,19 +167,52 @@ class ProfileGenerator
   def generate_module_definition
     get_module_definition_file_name
     file = get_module_definition_file
-    file.write(get_renderer(ProfileTemplates.module_definition_template(@sdk_path, @individual_gem_profile)))
+    file.write(@module_definition_def_obj.get_renderer(ProfileTemplates.module_definition_template(@sdk_path, @individual_gem_profile)))
+  end 
+
+  def check_and_add_operation(module_obj, operation, resource_provider, mode_name, module_def_obj, management_operation_types, data_operation_types)
+    operation_body =  "#{module_obj.name}::#{operation}"
+    operation_name_ruby = get_model_name(operation)
+
+    if(mode_name == 'management')
+      if(check_and_delete_if_available(module_def_obj.management_operation_types, operation_name_ruby))
+        puts "WARNING: #{operation_name_ruby} operation is appearing twice for the RP: #{resource_provider}."
+      end
+      management_operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
+    else
+      if(check_and_delete_if_available(module_def_obj.data_operation_types, operation_name_ruby))
+        puts "WARNING: #{operation_name_ruby} operation is appearing twice for the RP: #{resource_provider}."
+      end
+      data_operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
+    end
   end
 
-  def generate_operation_types(resource_provider, resource_type, resource_type_version)
-    namespace = get_namespace(resource_provider, resource_type_version, false)
-    obj = Module.const_get(namespace)
-    operations = []
+  def get_namespace(resource_provider, resource_type_version, is_models, mode_name)
+    if is_models
+      namespace = "#{@dir_metadata[resource_provider][mode_name]['namespace']}::#{get_version(resource_type_version)}::Models"
+    else
+      namespace = "#{@dir_metadata[resource_provider][mode_name]['namespace']}::#{get_version(resource_type_version)}"
+    end
+    # The following substitution is required for only one scenario of handling the
+    # graph API 1.6 -> 1_6
+    namespace.gsub(/\./, '_' )
+  end
+
+  def generate_operation_types(resource_provider, resource_type, resource_type_version, mode_name, module_def_obj)
+    namespace   = get_namespace(resource_provider, resource_type_version, false, mode_name)
+    obj         = Module.const_get(namespace)
+    management_client = data_client = ''
+
+    operations  = []
     obj.constants.select do |const_name|
       if((obj.const_get(const_name).instance_of?Class))
         super_class = Object.const_get("#{namespace}::#{const_name.to_s}").superclass.to_s
         if(super_class == 'MsRestAzure::AzureServiceClient')
-          @management_client = obj.name + '::' + const_name.to_s
-          @versions_clients_mapper[resource_type_version] = @management_client
+          if(mode_name == 'management')
+            management_client = obj.name + '::' + const_name.to_s
+          elsif (mode_name == 'data')
+            data_client = obj.name + '::' + const_name.to_s
+          end
         elsif (const_name.to_s == resource_type || '*' == resource_type)
           operations << const_name.to_s
         end
@@ -153,60 +223,40 @@ class ProfileGenerator
       raise "#{resource_type} operation could not be found for RP: #{resource_provider}:Version: #{resource_type_version}"
     end
 
+    management_operation_types = data_operation_types = []
     operations.each do |operation|
-      check_and_add_operation(obj, operation, resource_provider)
+      check_and_add_operation(obj, operation, resource_provider, mode_name, module_def_obj, management_operation_types, data_operation_types)
+    end
+
+    if(mode_name == 'management')
+      (module_def_obj.management_operation_types << management_operation_types).flatten!
+      module_def_obj.management_clients_ops_mapper[management_client] = management_operation_types
+    elsif (mode_name == 'data')
+      (module_def_obj.data_operation_types << data_operation_types).flatten!
+      module_def_obj.data_clients_ops_mapper[data_client] = data_operation_types
     end
   end
 
-  def check_and_add_operation(module_obj, operation, resource_provider)
-    operation_body =  "#{module_obj.name}::#{operation}"
-    operation_name_ruby = get_model_name(operation)
-
-    if(check_and_delete_if_available(@operation_types, operation_name_ruby))
-      puts "WARNING: #{operation_name} operation is appearing twice for the RP: #{resource_provider}."
-    end
-
-    @operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
-  end
-
-  def get_namespace(resource_provider, resource_type_version, is_models)
-    if is_models
-      namespace = "#{@dir_metadata[resource_provider]['namespace']}::#{get_version(resource_type_version)}::Models"
-    else
-      namespace = "#{@dir_metadata[resource_provider]['namespace']}::#{get_version(resource_type_version)}"
-    end
-    # The following substitution is required for only one scenario of handling the
-    # graph API 1.6 -> 1_6
-    namespace.gsub(/\./, '_' )
-  end
-
-  def generate_model_types(resource_provider, resource_type_version)
-    namespace = get_namespace(resource_provider, resource_type_version, true)
+  def generate_model_types(resource_provider, resource_type_version, mode_name, module_def_obj)
+    namespace = get_namespace(resource_provider, resource_type_version, true, mode_name)
     obj = Module.const_get(namespace)
     obj.constants.select do |const_name|
         model_name = const_name.to_s
         model_body = "#{obj.name}::#{const_name.to_s}"
         method_name = get_model_name(const_name.to_s)
 
-        if(check_and_delete_if_available(@model_types, model_name))
-          puts "WARNING: #{model_name} Model is appearing twice for the RP: #{resource_provider}."
+        if(mode_name == 'management')
+          if(check_and_delete_if_available(module_def_obj.management_model_types, model_name))
+            puts "WARNING: #{model_name} Model is appearing twice for the RP: #{resource_provider}."
+          end
+          module_def_obj.management_model_types << {'model_name': model_name, 'model_body': model_body, 'method_name': method_name}
+        else
+          if(check_and_delete_if_available(module_def_obj.data_model_types, model_name))
+            puts "WARNING: #{model_name} Model is appearing twice for the RP: #{resource_provider}."
+          end
+          module_def_obj.data_model_types << {'model_name': model_name, 'model_body': model_body, 'method_name': method_name}
         end
-
-        @model_types << {'model_name': model_name, 'model_body': model_body, 'method_name': method_name}
     end
-  end
-
-  def get_client_file
-    check_and_create_directory
-    client_file_name = ''
-    if @individual_gem_profile == true
-      client_file_name = "#{@class_name.downcase}_#{@profile_name.downcase}_profile_client.rb"
-    else
-      client_file_name = "#{@profile_name.downcase}_profile_client.rb"
-    end
-
-    file_name =  "#{@output_dir}/#{@profile_name.downcase}/#{client_file_name}"
-    File.new(file_name, 'w')
   end
 
   def check_and_delete_if_available(array_of_hash, key)
@@ -226,6 +276,19 @@ class ProfileGenerator
     false
   end
 
+  def get_client_file
+    check_and_create_directory
+    client_file_name = ''
+    if @individual_gem_profile == true
+      client_file_name = "#{@class_name.downcase}_#{@profile['name'].downcase}_profile_client.rb"
+    else
+      client_file_name = "#{@profile['name'].downcase}_profile_client.rb"
+    end
+
+    file_name =  "#{@output_dir}/#{@profile['name'].downcase}/#{client_file_name}"
+    File.new(file_name, 'w')
+  end
+
   #
   # Gets the model name. Logic is same as the one
   # followed in autorest.
@@ -238,11 +301,10 @@ class ProfileGenerator
   # Gets the complete path of the module definition file
   #
   def get_module_definition_file_name
-    @module_definition_file_name = ''
     if @individual_gem_profile == true
-      @module_definition_file_name = "#{@class_name.downcase}_module_definition.rb"
+      @client_def_obj.module_definition_file_name = "#{@class_name.downcase}_module_definition.rb"
     else
-      @module_definition_file_name = 'module_definition.rb'
+      @client_def_obj.module_definition_file_name = 'module_definition.rb'
     end
   end
 
@@ -251,18 +313,18 @@ class ProfileGenerator
   #
   def get_module_definition_file
     check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name.downcase}/#{@module_definition_file_name}"
+    file_name =  "#{@output_dir}/#{@profile['name'].downcase}/#{@client_def_obj.module_definition_file_name}"
     File.new(file_name, 'w')
   end
 
   #
   # Creates the Module file
   #
-  def get_module_file(resource_type_name)
+  def get_module_file(resource_type_name, module_def_obj)
     check_and_create_directory
     file_name = get_module_file_name(resource_type_name)
-    @file_names << file_name.sub('.rb', '')
-    complete_file_name = "#{@output_dir}/#{@profile_name.downcase}/modules/#{file_name}"
+    module_def_obj.file_name = file_name.sub('.rb', '')
+    complete_file_name = "#{@output_dir}/#{@profile['name'].downcase}/modules/#{file_name}"
     File.new(complete_file_name, 'w')
   end
 
@@ -285,8 +347,8 @@ class ProfileGenerator
   #
   def check_and_create_directory
     Dir.mkdir("#{@output_dir}") unless File.directory?("#{@output_dir}")
-    Dir.mkdir("#{@output_dir}/#{@profile_name.downcase}") unless File.directory?("#{@output_dir}/#{@profile_name.downcase}")
-    Dir.mkdir("#{@output_dir}/#{@profile_name.downcase}/modules") unless File.directory?("#{@output_dir}/#{@profile_name.downcase}/modules")
+    Dir.mkdir("#{@output_dir}/#{@profile['name'].downcase}") unless File.directory?("#{@output_dir}/#{@profile['name'].downcase}")
+    Dir.mkdir("#{@output_dir}/#{@profile['name'].downcase}/modules") unless File.directory?("#{@output_dir}/#{@profile['name'].downcase}/modules")
   end
 
   #
@@ -305,22 +367,5 @@ class ProfileGenerator
   #
   def get_version(version)
     "V#{version.gsub('-','_')}"
-  end
-
-  #
-  # Method to get renderer
-  #
-  # @param template for which the renderer will be created
-  #
-  def get_renderer(template)
-    renderer = ERB.new(template, 0, '-%>')
-    renderer.result(get_binding)
-  end
-
-  #
-  # get_binding method used for rendering the erb template
-  #
-  def get_binding
-    binding
   end
 end

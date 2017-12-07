@@ -6,4 +6,3 @@ module Azure end
 module Azure::Relay end
 module Azure::Relay::Profiles end
 module Azure::Relay::Profiles::Latest end
-module Azure::Relay::Profiles::Latest::Mgmt end

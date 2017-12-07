@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_media_services'
 
-module Azure::MediaServices::Profiles::Latest::Mgmt
+module Azure::MediaServices::Profiles::Latest
+  module Mgmt
     Operations = Azure::MediaServices::Mgmt::V2015_10_01::Operations
     MediaServiceOperations = Azure::MediaServices::Mgmt::V2015_10_01::MediaServiceOperations
 
@@ -30,9 +31,9 @@ module Azure::MediaServices::Profiles::Latest::Mgmt
     end
 
     #
-    # MediaServices
+    # MediaServicesManagementClass
     #
-    class MediaServicesClass
+    class MediaServicesManagementClass
       attr_reader :operations, :media_service_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -55,62 +56,63 @@ module Azure::MediaServices::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def regenerate_key_input
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::RegenerateKeyInput
-        end
-        def regenerate_key_output
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::RegenerateKeyOutput
-        end
-        def api_error
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::ApiError
-        end
-        def resource
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::Resource
-        end
-        def check_name_availability_output
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::CheckNameAvailabilityOutput
-        end
-        def service_keys
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::ServiceKeys
-        end
-        def media_service_collection
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaServiceCollection
-        end
-        def sync_storage_keys_input
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::SyncStorageKeysInput
-        end
-        def check_name_availability_input
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::CheckNameAvailabilityInput
-        end
-        def operation_display
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::OperationDisplay
-        end
-        def api_endpoint
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::ApiEndpoint
-        end
-        def operation
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::Operation
-        end
-        def storage_account
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::StorageAccount
-        end
-        def operation_list_result
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::OperationListResult
-        end
-        def media_service
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService
-        end
-        def resource_type
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::ResourceType
-        end
-        def entity_name_unavailability_reason
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::EntityNameUnavailabilityReason
-        end
-        def key_type
-          Azure::MediaServices::Mgmt::V2015_10_01::Models::KeyType
-        end
+    class ModelClasses
+      def regenerate_key_input
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::RegenerateKeyInput
+      end
+      def regenerate_key_output
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::RegenerateKeyOutput
+      end
+      def api_error
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::ApiError
+      end
+      def resource
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::Resource
+      end
+      def check_name_availability_output
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::CheckNameAvailabilityOutput
+      end
+      def service_keys
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::ServiceKeys
+      end
+      def media_service_collection
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaServiceCollection
+      end
+      def sync_storage_keys_input
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::SyncStorageKeysInput
+      end
+      def check_name_availability_input
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::CheckNameAvailabilityInput
+      end
+      def operation_display
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::OperationDisplay
+      end
+      def api_endpoint
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::ApiEndpoint
+      end
+      def operation
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::Operation
+      end
+      def storage_account
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::StorageAccount
+      end
+      def operation_list_result
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::OperationListResult
+      end
+      def media_service
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService
+      end
+      def resource_type
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::ResourceType
+      end
+      def entity_name_unavailability_reason
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::EntityNameUnavailabilityReason
+      end
+      def key_type
+        Azure::MediaServices::Mgmt::V2015_10_01::Models::KeyType
       end
     end
+  end
 end

@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_analysis_services'
 
-module Azure::AnalysisServices::Profiles::Latest::Mgmt
+module Azure::AnalysisServices::Profiles::Latest
+  module Mgmt
     Servers = Azure::AnalysisServices::Mgmt::V2017_07_14::Servers
 
     module Models
@@ -28,9 +29,9 @@ module Azure::AnalysisServices::Profiles::Latest::Mgmt
     end
 
     #
-    # AnalysisServices
+    # AnalysisServicesManagementClass
     #
-    class AnalysisServicesClass
+    class AnalysisServicesManagementClass
       attr_reader :servers, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -52,59 +53,60 @@ module Azure::AnalysisServices::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def analysis_services_server_update_parameters
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServerUpdateParameters
-        end
-        def gateway_list_status_live
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayListStatusLive
-        end
-        def resource
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::Resource
-        end
-        def gateway_error
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayError
-        end
-        def analysis_services_servers
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers
-        end
-        def gateway_list_status_error
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayListStatusError
-        end
-        def gateway_details
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayDetails
-        end
-        def sku_enumeration_for_new_resource_result
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForNewResourceResult
-        end
-        def server_administrators
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::ServerAdministrators
-        end
-        def sku_details_for_existing_resource
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuDetailsForExistingResource
-        end
-        def resource_sku
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::ResourceSku
-        end
-        def sku_enumeration_for_existing_resource_result
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForExistingResourceResult
-        end
-        def analysis_services_server
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer
-        end
-        def sku_tier
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuTier
-        end
-        def state
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::State
-        end
-        def provisioning_state
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::ProvisioningState
-        end
-        def status
-          Azure::AnalysisServices::Mgmt::V2017_07_14::Models::Status
-        end
+    class ModelClasses
+      def analysis_services_server_update_parameters
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServerUpdateParameters
+      end
+      def gateway_list_status_live
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayListStatusLive
+      end
+      def resource
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::Resource
+      end
+      def gateway_error
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayError
+      end
+      def analysis_services_servers
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers
+      end
+      def gateway_list_status_error
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayListStatusError
+      end
+      def gateway_details
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayDetails
+      end
+      def sku_enumeration_for_new_resource_result
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForNewResourceResult
+      end
+      def server_administrators
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::ServerAdministrators
+      end
+      def sku_details_for_existing_resource
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuDetailsForExistingResource
+      end
+      def resource_sku
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::ResourceSku
+      end
+      def sku_enumeration_for_existing_resource_result
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForExistingResourceResult
+      end
+      def analysis_services_server
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer
+      end
+      def sku_tier
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuTier
+      end
+      def state
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::State
+      end
+      def provisioning_state
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::ProvisioningState
+      end
+      def status
+        Azure::AnalysisServices::Mgmt::V2017_07_14::Models::Status
       end
     end
+  end
 end

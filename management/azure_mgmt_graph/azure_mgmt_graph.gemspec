@@ -39,4 +39,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'dotenv', '~> 2'
 
   spec.add_runtime_dependency 'ms_rest_azure', '~> 0.10.0'
+
+  spec.post_install_message = <<-MESSAGE
+!    The 'azure_mgmt_graph' gem has been deprecated and has been replaced by 'azure_graph'.
+!    See: https://rubygems.org/gems/azure_graph
+!    And: https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_graph
+  MESSAGE
 end

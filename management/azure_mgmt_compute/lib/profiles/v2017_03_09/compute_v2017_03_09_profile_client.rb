@@ -5,17 +5,18 @@
 require 'profiles/v2017_03_09/compute_module_definition'
 require 'profiles/v2017_03_09/modules/compute_profile_module'
 
-module Azure::Compute::Profiles::V2017_03_09::Mgmt
-  #
-  # Client class for the V2017_03_09 profile SDK.
-  #
-  class Client < ComputeClass
-    include MsRestAzure::Common::Configurable
+module Azure::Compute::Profiles::V2017_03_09
+  module Mgmt
+    #
+    # Client class for the V2017_03_09 profile SDK.
+    #
+    class Client < ComputeManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

@@ -6,4 +6,3 @@ module Azure end
 module Azure::CognitiveServices end
 module Azure::CognitiveServices::Profiles end
 module Azure::CognitiveServices::Profiles::Latest end
-module Azure::CognitiveServices::Profiles::Latest::Mgmt end

@@ -6,4 +6,3 @@ module Azure end
 module Azure::Links end
 module Azure::Links::Profiles end
 module Azure::Links::Profiles::Latest end
-module Azure::Links::Profiles::Latest::Mgmt end

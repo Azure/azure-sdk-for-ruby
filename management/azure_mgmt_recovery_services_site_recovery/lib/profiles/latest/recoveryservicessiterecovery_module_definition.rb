@@ -6,4 +6,3 @@ module Azure end
 module Azure::RecoveryServicesSiteRecovery end
 module Azure::RecoveryServicesSiteRecovery::Profiles end
 module Azure::RecoveryServicesSiteRecovery::Profiles::Latest end
-module Azure::RecoveryServicesSiteRecovery::Profiles::Latest::Mgmt end
