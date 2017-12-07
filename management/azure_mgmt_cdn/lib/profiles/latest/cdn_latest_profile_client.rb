@@ -5,17 +5,18 @@
 require 'profiles/latest/cdn_module_definition'
 require 'profiles/latest/modules/cdn_profile_module'
 
-module Azure::CDN::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < CDNClass
-    include MsRestAzure::Common::Configurable
+module Azure::CDN::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < CDNManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

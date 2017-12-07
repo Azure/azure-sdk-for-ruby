@@ -5,17 +5,18 @@
 require 'profiles/latest/search_module_definition'
 require 'profiles/latest/modules/search_profile_module'
 
-module Azure::Search::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < SearchClass
-    include MsRestAzure::Common::Configurable
+module Azure::Search::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < SearchManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

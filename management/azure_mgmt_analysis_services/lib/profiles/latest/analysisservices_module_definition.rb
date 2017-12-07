@@ -6,4 +6,3 @@ module Azure end
 module Azure::AnalysisServices end
 module Azure::AnalysisServices::Profiles end
 module Azure::AnalysisServices::Profiles::Latest end
-module Azure::AnalysisServices::Profiles::Latest::Mgmt end

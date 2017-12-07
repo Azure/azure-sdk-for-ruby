@@ -5,17 +5,18 @@
 require 'profiles/latest/commerce_module_definition'
 require 'profiles/latest/modules/commerce_profile_module'
 
-module Azure::Commerce::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < CommerceClass
-    include MsRestAzure::Common::Configurable
+module Azure::Commerce::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < CommerceManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

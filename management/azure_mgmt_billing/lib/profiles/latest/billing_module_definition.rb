@@ -6,4 +6,3 @@ module Azure end
 module Azure::Billing end
 module Azure::Billing::Profiles end
 module Azure::Billing::Profiles::Latest end
-module Azure::Billing::Profiles::Latest::Mgmt end

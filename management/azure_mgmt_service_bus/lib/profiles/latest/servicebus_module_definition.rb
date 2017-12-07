@@ -6,4 +6,3 @@ module Azure end
 module Azure::ServiceBus end
 module Azure::ServiceBus::Profiles end
 module Azure::ServiceBus::Profiles::Latest end
-module Azure::ServiceBus::Profiles::Latest::Mgmt end

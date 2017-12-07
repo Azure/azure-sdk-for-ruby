@@ -5,52 +5,52 @@
 require 'azure_mgmt_policy'
 
 module Azure::Profiles::V2017_03_09
-  module Policy::Mgmt
-    PolicyAssignments = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyAssignments
-    PolicyDefinitions = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyDefinitions
+  module Policy
+    module Mgmt
+      PolicyAssignments = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyAssignments
+      PolicyDefinitions = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyDefinitions
 
-    module Models
-      PolicyAssignment = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
-      PolicyDefinition = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
-      PolicyAssignmentListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
-      PolicyDefinitionListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
-      PolicyType = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
-    end
-
-    #
-    # Policy
-    #
-    class PolicyClass
-      attr_reader :policy_assignments, :policy_definitions, :configurable, :base_url, :options, :model_classes
-
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
-
-        client_0 = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
-        end
-        @policy_assignments = client_0.policy_assignments
-        @policy_definitions = client_0.policy_definitions
-
-        @model_classes = ModelClasses.new
+      module Models
+        PolicyAssignment = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
+        PolicyDefinition = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
+        PolicyAssignmentListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
+        PolicyDefinitionListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
+        PolicyType = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
       end
 
-      class ModelClasses
-        def policy_assignment
-          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
+      class PolicyManagementClass
+        attr_reader :policy_assignments, :policy_definitions, :configurable, :base_url, :options, :model_classes
+
+        def initialize(configurable, base_url=nil, options=nil)
+          @configurable, @base_url, @options = configurable, base_url, options
+
+          client_0 = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
+          if(client_0.respond_to?(:subscription_id))
+            client_0.subscription_id = configurable.subscription_id
+          end
+
+          @policy_assignments = client_0.policy_assignments
+          @policy_definitions = client_0.policy_definitions
+
+          @model_classes = ModelClasses.new
         end
-        def policy_definition
-          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
-        end
-        def policy_assignment_list_result
-          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
-        end
-        def policy_definition_list_result
-          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
-        end
-        def policy_type
-          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
+
+        class ModelClasses
+          def policy_assignment
+            Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
+          end
+          def policy_definition
+            Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
+          end
+          def policy_assignment_list_result
+            Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
+          end
+          def policy_definition_list_result
+            Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
+          end
+          def policy_type
+            Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
+          end
         end
       end
     end

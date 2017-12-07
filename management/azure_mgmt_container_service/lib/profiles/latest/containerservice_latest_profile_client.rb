@@ -5,17 +5,18 @@
 require 'profiles/latest/containerservice_module_definition'
 require 'profiles/latest/modules/containerservice_profile_module'
 
-module Azure::ContainerService::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < ContainerServiceClass
-    include MsRestAzure::Common::Configurable
+module Azure::ContainerService::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < ContainerServiceManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

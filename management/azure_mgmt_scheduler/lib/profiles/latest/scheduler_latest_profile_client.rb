@@ -5,17 +5,18 @@
 require 'profiles/latest/scheduler_module_definition'
 require 'profiles/latest/modules/scheduler_profile_module'
 
-module Azure::Scheduler::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < SchedulerClass
-    include MsRestAzure::Common::Configurable
+module Azure::Scheduler::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < SchedulerManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

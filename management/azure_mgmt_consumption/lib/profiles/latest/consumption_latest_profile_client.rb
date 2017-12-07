@@ -5,17 +5,18 @@
 require 'profiles/latest/consumption_module_definition'
 require 'profiles/latest/modules/consumption_profile_module'
 
-module Azure::Consumption::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < ConsumptionClass
-    include MsRestAzure::Common::Configurable
+module Azure::Consumption::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < ConsumptionManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

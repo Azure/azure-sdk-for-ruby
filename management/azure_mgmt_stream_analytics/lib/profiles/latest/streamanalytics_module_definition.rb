@@ -6,4 +6,3 @@ module Azure end
 module Azure::StreamAnalytics end
 module Azure::StreamAnalytics::Profiles end
 module Azure::StreamAnalytics::Profiles::Latest end
-module Azure::StreamAnalytics::Profiles::Latest::Mgmt end

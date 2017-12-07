@@ -5,17 +5,18 @@
 require 'profiles/latest/containerregistry_module_definition'
 require 'profiles/latest/modules/containerregistry_profile_module'
 
-module Azure::ContainerRegistry::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < ContainerRegistryClass
-    include MsRestAzure::Common::Configurable
+module Azure::ContainerRegistry::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < ContainerRegistryManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

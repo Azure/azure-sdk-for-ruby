@@ -5,17 +5,18 @@
 require 'profiles/latest/servicefabric_module_definition'
 require 'profiles/latest/modules/servicefabric_profile_module'
 
-module Azure::ServiceFabric::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < ServiceFabricClass
-    include MsRestAzure::Common::Configurable
+module Azure::ServiceFabric::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < ServiceFabricManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

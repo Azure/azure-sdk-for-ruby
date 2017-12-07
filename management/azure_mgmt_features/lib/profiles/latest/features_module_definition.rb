@@ -6,4 +6,3 @@ module Azure end
 module Azure::Features end
 module Azure::Features::Profiles end
 module Azure::Features::Profiles::Latest end
-module Azure::Features::Profiles::Latest::Mgmt end

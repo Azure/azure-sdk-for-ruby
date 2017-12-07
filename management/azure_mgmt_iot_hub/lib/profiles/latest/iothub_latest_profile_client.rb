@@ -5,17 +5,18 @@
 require 'profiles/latest/iothub_module_definition'
 require 'profiles/latest/modules/iothub_profile_module'
 
-module Azure::IotHub::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < IotHubClass
-    include MsRestAzure::Common::Configurable
+module Azure::IotHub::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < IotHubManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

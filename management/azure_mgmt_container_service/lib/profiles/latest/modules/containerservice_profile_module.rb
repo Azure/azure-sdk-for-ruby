@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_container_service'
 
-module Azure::ContainerService::Profiles::Latest::Mgmt
+module Azure::ContainerService::Profiles::Latest
+  module Mgmt
     ContainerServices = Azure::ContainerService::Mgmt::V2017_01_31::ContainerServices
 
     module Models
@@ -27,9 +28,9 @@ module Azure::ContainerService::Profiles::Latest::Mgmt
     end
 
     #
-    # ContainerService
+    # ContainerServiceManagementClass
     #
-    class ContainerServiceClass
+    class ContainerServiceManagementClass
       attr_reader :container_services, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -51,56 +52,57 @@ module Azure::ContainerService::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def container_service_ssh_public_key
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshPublicKey
-        end
-        def resource
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
-        end
-        def container_service_ssh_configuration
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshConfiguration
-        end
-        def container_service_service_principal_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceServicePrincipalProfile
-        end
-        def container_service_linux_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceLinuxProfile
-        end
-        def container_service_master_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceMasterProfile
-        end
-        def container_service_vmdiagnostics
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMDiagnostics
-        end
-        def container_service_windows_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceWindowsProfile
-        end
-        def container_service_diagnostics_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
-        end
-        def container_service_orchestrator_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorProfile
-        end
-        def container_service_agent_pool_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
-        end
-        def container_service_custom_profile
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
-        end
-        def container_service_list_result
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
-        end
-        def container_service
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerService
-        end
-        def container_service_orchestrator_types
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
-        end
-        def container_service_vmsize_types
-          Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
-        end
+    class ModelClasses
+      def container_service_ssh_public_key
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshPublicKey
+      end
+      def resource
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
+      end
+      def container_service_ssh_configuration
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshConfiguration
+      end
+      def container_service_service_principal_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceServicePrincipalProfile
+      end
+      def container_service_linux_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceLinuxProfile
+      end
+      def container_service_master_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceMasterProfile
+      end
+      def container_service_vmdiagnostics
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMDiagnostics
+      end
+      def container_service_windows_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceWindowsProfile
+      end
+      def container_service_diagnostics_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
+      end
+      def container_service_orchestrator_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorProfile
+      end
+      def container_service_agent_pool_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
+      end
+      def container_service_custom_profile
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
+      end
+      def container_service_list_result
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
+      end
+      def container_service
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerService
+      end
+      def container_service_orchestrator_types
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
+      end
+      def container_service_vmsize_types
+        Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
       end
     end
+  end
 end
