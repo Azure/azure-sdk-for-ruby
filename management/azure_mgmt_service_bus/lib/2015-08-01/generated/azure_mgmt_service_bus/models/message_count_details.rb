@@ -36,7 +36,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MessageCountDetails',
           type: {
@@ -44,7 +43,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
             class_name: 'MessageCountDetails',
             model_properties: {
               active_message_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'activeMessageCount',
@@ -53,7 +51,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               dead_letter_message_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deadLetterMessageCount',
@@ -62,7 +59,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               scheduled_message_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'scheduledMessageCount',
@@ -71,7 +67,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               transfer_dead_letter_message_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'transferDeadLetterMessageCount',
@@ -80,7 +75,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               transfer_message_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'transferMessageCount',
