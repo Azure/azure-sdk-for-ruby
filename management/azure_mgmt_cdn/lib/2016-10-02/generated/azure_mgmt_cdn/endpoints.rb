@@ -70,9 +70,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def list_by_profile_async(resource_group_name, profile_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -179,9 +176,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def get_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -659,9 +653,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'custom_domain_properties is nil' if custom_domain_properties.nil?
@@ -779,9 +770,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -892,9 +880,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
@@ -1047,9 +1032,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'endpoint_update_properties is nil' if endpoint_update_properties.nil?
@@ -1176,9 +1158,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1273,9 +1252,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1380,9 +1356,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1498,9 +1471,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'content_file_paths is nil' if content_file_paths.nil?
@@ -1613,9 +1583,6 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'content_file_paths is nil' if content_file_paths.nil?

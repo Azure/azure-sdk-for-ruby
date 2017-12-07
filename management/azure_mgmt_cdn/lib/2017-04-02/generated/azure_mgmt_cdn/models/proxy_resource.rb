@@ -6,56 +6,46 @@
 module Azure::CDN::Mgmt::V2017_04_02
   module Models
     #
-    # Output of the validate probe API.
+    # The resource model definition for a ARM proxy resource. It will have
+    # everything other than required location and tags
     #
-    class ValidateProbeOutput
+    class ProxyResource < Resource
 
       include MsRestAzure
 
-      # @return [Boolean] Indicates whether the probe URL is accepted or not.
-      attr_accessor :is_valid
-
-      # @return [String] Specifies the error code when the probe url is not
-      # accepted.
-      attr_accessor :error_code
-
-      # @return [String] The detailed error message describing why the probe
-      # URL is not accepted.
-      attr_accessor :message
-
 
       #
-      # Mapper for ValidateProbeOutput class as Ruby Hash.
+      # Mapper for ProxyResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ValidateProbeOutput',
+          serialized_name: 'ProxyResource',
           type: {
             name: 'Composite',
-            class_name: 'ValidateProbeOutput',
+            class_name: 'ProxyResource',
             model_properties: {
-              is_valid: {
+              id: {
                 required: false,
                 read_only: true,
-                serialized_name: 'isValid',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              error_code: {
-                required: false,
-                read_only: true,
-                serialized_name: 'errorCode',
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              message: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'message',
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

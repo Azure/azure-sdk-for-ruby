@@ -6,36 +6,30 @@
 module Azure::CDN::Mgmt::V2017_04_02
   module Models
     #
-    # CDN profile is a logical grouping of endpoints that share the same
-    # settings, such as CDN provider and pricing tier.
+    # The resource model definition for a ARM tracked top level resource.
     #
-    class Profile < TrackedResource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      # @return [Sku] The pricing tier (defines a CDN provider, feature list
-      # and rate) of the CDN profile.
-      attr_accessor :sku
+      # @return [String] Resource location.
+      attr_accessor :location
 
-      # @return [ProfileResourceState] Resource status of the profile. Possible
-      # values include: 'Creating', 'Active', 'Deleting', 'Disabled'
-      attr_accessor :resource_state
-
-      # @return [String] Provisioning status of the profile.
-      attr_accessor :provisioning_state
+      # @return [Hash{String => String}] Resource tags.
+      attr_accessor :tags
 
 
       #
-      # Mapper for Profile class as Ruby Hash.
+      # Mapper for TrackedResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Profile',
+          serialized_name: 'TrackedResource',
           type: {
             name: 'Composite',
-            class_name: 'Profile',
+            class_name: 'TrackedResource',
             model_properties: {
               id: {
                 required: false,
@@ -80,30 +74,6 @@ module Azure::CDN::Mgmt::V2017_04_02
                         name: 'String'
                       }
                   }
-                }
-              },
-              sku: {
-                required: true,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Sku'
-                }
-              },
-              resource_state: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.resourceState',
-                type: {
-                  name: 'String'
-                }
-              },
-              provisioning_state: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.provisioningState',
-                type: {
-                  name: 'String'
                 }
               }
             }
