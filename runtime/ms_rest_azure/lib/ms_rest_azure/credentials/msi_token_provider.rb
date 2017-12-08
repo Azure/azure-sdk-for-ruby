@@ -12,6 +12,7 @@ module MsRestAzure
 
     TOKEN_ACQUIRE_URL = 'http://localhost:{port}/oauth2/token'
     REQUEST_BODY_PATTERN = 'resource={resource_uri}'
+    EXPLICIT_IDENTITY_CLIENT_ID = 'client_id={explicit_identity_client_id}'
     DEFAULT_SCHEME = 'Bearer'
 
     # @return [MSIActiveDirectoryServiceSettings] settings.
@@ -19,6 +20,9 @@ module MsRestAzure
 
     # @return [Integer] port number where MSI service is running.
     attr_accessor :port
+
+    # @return [String] client id for explicit managed identity
+    attr_accessor :client_id
 
     # @return [String] auth token.
     attr_accessor :token
@@ -38,13 +42,15 @@ module MsRestAzure
     # Creates and initialize new instance of the MSITokenProvider class.
     # @param port [Integer] port number where MSI service is running.
     # @param settings [ActiveDirectoryServiceSettings] active directory setting.
-    def initialize(port = 50342, settings = ActiveDirectoryServiceSettings.get_azure_settings)
+    # @param client_id [String] client id for explicit managed identity.
+    def initialize(port = 50342, settings = ActiveDirectoryServiceSettings.get_azure_settings, client_id = nil)
       fail ArgumentError, 'Port cannot be nil' if port.nil?
       fail ArgumentError, 'Port must be an Integer' unless port.is_a? Integer
       fail ArgumentError, 'Azure AD settings cannot be nil' if settings.nil?
 
       @port = port
       @settings = settings
+      @client_id = client_id
 
       @expiration_threshold = 5 * 60
     end
@@ -85,6 +91,11 @@ module MsRestAzure
 
       request_body = REQUEST_BODY_PATTERN.dup
       request_body['{resource_uri}'] = ERB::Util.url_encode(@settings.token_audience)
+      if (!@client_id.nil?)
+        explicit_identity = EXPLICIT_IDENTITY_CLIENT_ID.dup
+        request_body = [request_body, explicit_identity].join(', ')
+        request_body['{explicit_identity_client_id}'] = ERB::Util.url_encode(@client_id)
+      end
 
       response = connection.post do |request|
         request.headers['content-type'] = 'application/x-www-form-urlencoded'
