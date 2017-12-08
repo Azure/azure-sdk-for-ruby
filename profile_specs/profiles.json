@@ -340,7 +340,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Compute" : {
-                    "2017-03-30": ["*"]
+                    "2017-03-30": ["*"],
+                    "2017-09-01": ["*"],
+                    "2017-12-01": ["*"]
                 }
             },
             "output_dir": "management/azure_mgmt_compute/lib/profiles",

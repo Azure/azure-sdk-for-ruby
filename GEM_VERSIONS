@@ -11,7 +11,7 @@
         "azure_mgmt_cdn": "0.15.1",
         "azure_mgmt_cognitive_services": "0.15.1",
         "azure_mgmt_commerce": "0.15.1",
-        "azure_mgmt_compute": "0.15.1",
+        "azure_mgmt_compute": "0.15.2",
         "azure_mgmt_consumption": "0.15.2",
         "azure_mgmt_container_instance": "0.15.1",
         "azure_mgmt_container_registry": "0.15.1",
