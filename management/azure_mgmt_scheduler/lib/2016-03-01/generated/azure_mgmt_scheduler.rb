@@ -61,7 +61,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     autoload :JobCollectionState,                                 '2016-03-01/generated/azure_mgmt_scheduler/models/job_collection_state.rb'
     autoload :RecurrenceFrequency,                                '2016-03-01/generated/azure_mgmt_scheduler/models/recurrence_frequency.rb'
     autoload :JobActionType,                                      '2016-03-01/generated/azure_mgmt_scheduler/models/job_action_type.rb'
-    autoload :HttpAuthenticationType,                             '2016-03-01/generated/azure_mgmt_scheduler/models/http_authentication_type.rb'
     autoload :RetryType,                                          '2016-03-01/generated/azure_mgmt_scheduler/models/retry_type.rb'
     autoload :DayOfWeek,                                          '2016-03-01/generated/azure_mgmt_scheduler/models/day_of_week.rb'
     autoload :JobScheduleDay,                                     '2016-03-01/generated/azure_mgmt_scheduler/models/job_schedule_day.rb'

@@ -58,7 +58,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobDefinitionElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
