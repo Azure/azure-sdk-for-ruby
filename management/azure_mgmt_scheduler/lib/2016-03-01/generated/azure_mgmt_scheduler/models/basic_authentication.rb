@@ -13,6 +13,13 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "Basic"
+      end
+
+      attr_accessor :type
+
       # @return [String] Gets or sets the username.
       attr_accessor :username
 
@@ -27,24 +34,20 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
-          serialized_name: 'BasicAuthentication',
+          serialized_name: 'Basic',
           type: {
             name: 'Composite',
             class_name: 'BasicAuthentication',
             model_properties: {
               type: {
-                client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'type',
                 type: {
-                  name: 'Enum',
-                  module: 'HttpAuthenticationType'
+                  name: 'String'
                 }
               },
               username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -52,7 +55,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {
