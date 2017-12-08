@@ -28,7 +28,6 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentOperation',
           type: {
@@ -36,7 +35,6 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'DeploymentOperation',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -45,7 +43,6 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operationId',
@@ -54,7 +51,6 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

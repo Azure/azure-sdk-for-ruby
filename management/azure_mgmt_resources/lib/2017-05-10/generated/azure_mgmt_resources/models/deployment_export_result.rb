@@ -22,7 +22,6 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentExportResult',
           type: {
@@ -30,7 +29,6 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'DeploymentExportResult',
             model_properties: {
               template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'template',
                 type: {

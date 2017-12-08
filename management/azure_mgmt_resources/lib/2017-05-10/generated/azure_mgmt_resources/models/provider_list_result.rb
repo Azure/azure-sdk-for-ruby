@@ -57,7 +57,6 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProviderListResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ProviderListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

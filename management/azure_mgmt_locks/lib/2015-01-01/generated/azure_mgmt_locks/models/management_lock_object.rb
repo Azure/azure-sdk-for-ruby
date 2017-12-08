@@ -35,7 +35,6 @@ module Azure::Locks::Mgmt::V2015_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementLockObject',
           type: {
@@ -43,7 +42,6 @@ module Azure::Locks::Mgmt::V2015_01_01
             class_name: 'ManagementLockObject',
             model_properties: {
               level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.level',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Locks::Mgmt::V2015_01_01
                 }
               },
               notes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notes',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Locks::Mgmt::V2015_01_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -67,7 +63,6 @@ module Azure::Locks::Mgmt::V2015_01_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -75,7 +70,6 @@ module Azure::Locks::Mgmt::V2015_01_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

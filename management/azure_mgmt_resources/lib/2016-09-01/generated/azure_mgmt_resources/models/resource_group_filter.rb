@@ -25,7 +25,6 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceGroupFilter',
           type: {
@@ -33,7 +32,6 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'ResourceGroupFilter',
             model_properties: {
               tag_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagName',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               tag_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagValue',
                 type: {

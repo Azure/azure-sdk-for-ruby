@@ -57,7 +57,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TenantListResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
             class_name: 'TenantListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TenantIdDescriptionElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'nextLink',
                 type: {

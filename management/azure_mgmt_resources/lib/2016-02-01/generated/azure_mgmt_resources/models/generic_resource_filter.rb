@@ -28,7 +28,6 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GenericResourceFilter',
           type: {
@@ -36,7 +35,6 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'GenericResourceFilter',
             model_properties: {
               resource_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               tagname: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagname',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               tagvalue: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagvalue',
                 type: {
