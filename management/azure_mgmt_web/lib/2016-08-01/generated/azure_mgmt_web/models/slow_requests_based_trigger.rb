@@ -15,7 +15,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [String] Time taken.
       attr_accessor :time_taken
 
-      # @return [Integer] Count.
+      # @return [Integer] Request Count.
       attr_accessor :count
 
       # @return [String] Time interval.
@@ -28,7 +28,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SlowRequestsBasedTrigger',
           type: {
@@ -36,7 +35,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SlowRequestsBasedTrigger',
             model_properties: {
               time_taken: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeTaken',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               time_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInterval',
                 type: {
