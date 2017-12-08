@@ -43,7 +43,6 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentOperationProperties',
           type: {
@@ -51,7 +50,6 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'DeploymentOperationProperties',
             model_properties: {
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisioningState',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timestamp',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               service_request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceRequestId',
                 type: {
@@ -75,7 +71,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               status_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -83,7 +78,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               status_message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusMessage',
                 type: {
@@ -91,7 +85,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               target_resource: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetResource',
                 type: {
@@ -100,7 +93,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               request: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'request',
                 type: {
@@ -109,7 +101,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               response: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'response',
                 type: {
