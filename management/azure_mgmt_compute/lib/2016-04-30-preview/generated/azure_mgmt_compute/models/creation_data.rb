@@ -24,14 +24,14 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [ImageDiskReference] Disk source information.
       attr_accessor :image_reference
 
-      # @return [String] If creationOption is Import, this is a SAS URI to a
-      # blob to be imported into a managed disk. If creationOption is Copy,
-      # this is a relative Uri containing the id of the source snapshot to be
-      # copied into a managed disk.
+      # @return [String] If createOption is Import, this is a SAS URI to a blob
+      # to be imported into a managed disk. If createOption is Copy, this is a
+      # relative Uri containing the id of the source snapshot to be copied into
+      # a managed disk.
       attr_accessor :source_uri
 
       # @return [String] If createOption is Copy, this is the ARM id of the
-      # source snapshot or disk. If creationOption is Restore, this is the
+      # source snapshot or disk. If createOption is Restore, this is the
       # ARM-like id of the source disk restore point.
       attr_accessor :source_resource_id
 

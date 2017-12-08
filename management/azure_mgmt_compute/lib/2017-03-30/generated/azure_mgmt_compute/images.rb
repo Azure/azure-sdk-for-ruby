@@ -290,7 +290,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
+    # response to get the next page of Images. Do this till nextLink is null to
     # fetch all the Images.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -305,7 +305,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
+    # response to get the next page of Images. Do this till nextLink is null to
     # fetch all the Images.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -319,7 +319,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
+    # response to get the next page of Images. Do this till nextLink is null to
     # fetch all the Images.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -671,7 +671,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
+    # response to get the next page of Images. Do this till nextLink is null to
     # fetch all the Images.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -688,7 +688,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
+    # response to get the next page of Images. Do this till nextLink is null to
     # fetch all the Images.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -704,7 +704,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
+    # response to get the next page of Images. Do this till nextLink is null to
     # fetch all the Images.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -784,7 +784,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
+    # response to get the next page of Images. Do this till nextLink is null to
     # fetch all the Images.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
