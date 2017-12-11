@@ -32,7 +32,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MAB',
           type: {
@@ -40,7 +39,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'MabProtectionPolicy',
             model_properties: {
               protected_items_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemsCount',
                 type: {
@@ -48,7 +46,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backupManagementType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -56,7 +53,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               schedule_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'schedulePolicy',
                 type: {
@@ -67,7 +63,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               retention_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionPolicy',
                 type: {

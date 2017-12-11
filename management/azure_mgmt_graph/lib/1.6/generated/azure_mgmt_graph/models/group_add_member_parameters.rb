@@ -26,7 +26,6 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupAddMemberParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'GroupAddMemberParameters',
             model_properties: {
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {

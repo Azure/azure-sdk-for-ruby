@@ -22,7 +22,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryForProperties',
           type: {
@@ -30,7 +29,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
             class_name: 'ClientDiscoveryForProperties',
             model_properties: {
               service_specification: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceSpecification',
                 type: {

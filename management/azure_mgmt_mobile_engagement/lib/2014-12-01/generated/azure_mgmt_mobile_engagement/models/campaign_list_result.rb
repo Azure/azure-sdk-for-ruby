@@ -56,7 +56,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignListResult',
           type: {
@@ -64,7 +63,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignListResult',
             model_properties: {
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -72,7 +70,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -80,7 +77,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -88,7 +84,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               activated_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'activatedDate',
                 type: {
@@ -96,7 +91,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               finished_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'finishedDate',
                 type: {
@@ -104,7 +98,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -112,7 +105,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -120,7 +112,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               timezone: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timezone',
                 type: {

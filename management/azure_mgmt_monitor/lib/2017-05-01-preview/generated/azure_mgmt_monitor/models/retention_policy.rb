@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Monitor::Mgmt::V2017_05_01_preview
+module Azure::MobileEngagement::Mgmt::V2014_12_01
   module Models
     #
     # Specifies the retention policy for the log.
@@ -27,7 +27,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RetentionPolicy',
           type: {
@@ -35,7 +34,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'RetentionPolicy',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -43,7 +41,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               days: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'days',
                 constraints: {

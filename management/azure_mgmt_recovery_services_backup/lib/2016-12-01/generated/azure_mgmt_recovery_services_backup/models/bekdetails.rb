@@ -28,7 +28,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BEKDetails',
           type: {
@@ -36,7 +35,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'BEKDetails',
             model_properties: {
               secret_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secretUrl',
                 type: {
@@ -44,7 +42,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               secret_vault_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secretVaultId',
                 type: {
@@ -52,7 +49,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               secret_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secretData',
                 type: {

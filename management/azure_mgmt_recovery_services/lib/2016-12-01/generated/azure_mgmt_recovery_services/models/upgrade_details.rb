@@ -50,7 +50,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradeDetails',
           type: {
@@ -58,7 +57,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
             class_name: 'UpgradeDetails',
             model_properties: {
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operationId',
@@ -67,7 +65,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               start_time_utc: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTimeUtc',
@@ -76,7 +73,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               last_updated_time_utc: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastUpdatedTimeUtc',
@@ -85,7 +81,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               end_time_utc: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTimeUtc',
@@ -94,7 +89,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -103,7 +97,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -112,7 +105,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               trigger_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'triggerType',
@@ -121,7 +113,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               upgraded_resource_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'upgradedResourceId',
@@ -130,7 +121,6 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               previous_resource_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'previousResourceId',

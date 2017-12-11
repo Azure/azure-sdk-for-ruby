@@ -8,7 +8,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # Certificate order action.
     #
-    class CertificateOrderAction < Resource
+    class CertificateOrderAction < ProxyOnlyResource
 
       include MsRestAzure
 
@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateOrderAction',
           type: {
@@ -39,7 +38,6 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'CertificateOrderAction',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,23 +54,13 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -81,24 +68,7 @@ module Azure::Web::Mgmt::V2015_08_01
                   name: 'String'
                 }
               },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               certificate_order_action_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.type',
                 type: {
@@ -107,7 +77,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               created_at: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdAt',
                 type: {

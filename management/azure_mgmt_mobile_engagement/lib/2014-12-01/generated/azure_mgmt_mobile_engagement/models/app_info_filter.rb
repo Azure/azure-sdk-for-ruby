@@ -33,7 +33,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'app-info',
           type: {
@@ -41,7 +40,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'AppInfoFilter',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -49,13 +47,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               app_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appInfo',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

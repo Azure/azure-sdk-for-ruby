@@ -31,7 +31,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionTypeCreateOrUpdateParameters',
           type: {
@@ -39,7 +38,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ConnectionTypeCreateOrUpdateParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_global: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isGlobal',
                 type: {
@@ -55,13 +52,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               field_definitions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.fieldDefinitions',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FieldDefinitionElementType',
                       type: {

@@ -28,7 +28,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -36,7 +35,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -44,7 +42,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -52,7 +49,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {

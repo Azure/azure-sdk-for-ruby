@@ -31,7 +31,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceLocation',
           type: {
@@ -39,7 +38,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'DeviceLocation',
             model_properties: {
               countrycode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'countrycode',
                 type: {
@@ -47,7 +45,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               region: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'region',
                 type: {
@@ -55,7 +52,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               locality: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'locality',
                 type: {

@@ -29,7 +29,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'carrier-name',
           type: {
@@ -37,7 +36,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CarrierNameCriterion',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -45,7 +43,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

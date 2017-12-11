@@ -58,7 +58,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NodeTypeDescription',
           type: {
@@ -66,7 +65,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'NodeTypeDescription',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -74,13 +72,11 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               placement_properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'placementProperties',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -90,13 +86,11 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               capacities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacities',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -106,7 +100,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               client_connection_endpoint_port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'clientConnectionEndpointPort',
                 type: {
@@ -114,7 +107,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               http_gateway_endpoint_port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'httpGatewayEndpointPort',
                 type: {
@@ -122,7 +114,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               durability_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'durabilityLevel',
                 type: {
@@ -130,7 +121,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               application_ports: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationPorts',
                 type: {
@@ -139,7 +129,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               ephemeral_ports: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ephemeralPorts',
                 type: {
@@ -148,7 +137,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               is_primary: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'isPrimary',
                 type: {
@@ -156,7 +144,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               vm_instance_count: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'vmInstanceCount',
                 constraints: {
@@ -168,7 +155,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               reverse_proxy_endpoint_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reverseProxyEndpointPort',
                 type: {

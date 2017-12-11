@@ -417,9 +417,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
       fail ArgumentError, 'interaction_name is nil' if interaction_name.nil?
-      fail ArgumentError, "'interaction_name' should satisfy the constraint - 'MaxLength': '128'" if !interaction_name.nil? && interaction_name.length > 128
-      fail ArgumentError, "'interaction_name' should satisfy the constraint - 'MinLength': '1'" if !interaction_name.nil? && interaction_name.length < 1
-      fail ArgumentError, "'interaction_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z][a-zA-Z0-9_]+$'" if !interaction_name.nil? && interaction_name.match(Regexp.new('^^[a-zA-Z][a-zA-Z0-9_]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

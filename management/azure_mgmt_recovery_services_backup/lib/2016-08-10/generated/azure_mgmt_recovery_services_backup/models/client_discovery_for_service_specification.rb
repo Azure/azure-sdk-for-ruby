@@ -24,7 +24,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryForServiceSpecification',
           type: {
@@ -32,13 +31,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
             class_name: 'ClientDiscoveryForServiceSpecification',
             model_properties: {
               log_specifications: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClientDiscoveryForLogSpecificationElementType',
                       type: {

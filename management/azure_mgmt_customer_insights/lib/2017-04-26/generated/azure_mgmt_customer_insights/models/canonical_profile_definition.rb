@@ -26,7 +26,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CanonicalProfileDefinition',
           type: {
@@ -34,7 +33,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'CanonicalProfileDefinition',
             model_properties: {
               canonical_profile_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'canonicalProfileId',
                 type: {
@@ -42,13 +40,11 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CanonicalProfileDefinitionPropertiesItemElementType',
                       type: {

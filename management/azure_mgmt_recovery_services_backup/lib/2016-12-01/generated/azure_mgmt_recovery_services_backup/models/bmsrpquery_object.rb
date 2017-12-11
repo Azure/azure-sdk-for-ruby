@@ -25,7 +25,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BMSRPQueryObject',
           type: {
@@ -33,7 +32,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'BMSRPQueryObject',
             model_properties: {
               start_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startDate',
                 type: {
@@ -41,7 +39,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               end_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endDate',
                 type: {

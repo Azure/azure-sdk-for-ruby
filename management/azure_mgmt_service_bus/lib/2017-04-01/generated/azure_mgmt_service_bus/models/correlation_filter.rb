@@ -47,7 +47,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CorrelationFilter',
           type: {
@@ -55,7 +54,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'CorrelationFilter',
             model_properties: {
               correlation_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'correlationId',
                 type: {
@@ -63,7 +61,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               message_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageId',
                 type: {
@@ -71,7 +68,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               to: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'to',
                 type: {
@@ -79,7 +75,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               reply_to: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyTo',
                 type: {
@@ -87,7 +82,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -95,7 +89,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               session_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sessionId',
                 type: {
@@ -103,7 +96,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               reply_to_session_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyToSessionId',
                 type: {
@@ -111,7 +103,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               content_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentType',
                 type: {
@@ -119,7 +110,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               requires_preprocessing: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requiresPreprocessing',
                 default_value: true,

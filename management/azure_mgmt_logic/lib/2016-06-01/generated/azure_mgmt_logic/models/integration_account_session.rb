@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountSession',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountSession',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -45,7 +43,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,7 +51,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,7 +59,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -71,13 +66,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,7 +80,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               created_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdTime',
@@ -96,7 +88,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.changedTime',
@@ -105,7 +96,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.content',
                 type: {

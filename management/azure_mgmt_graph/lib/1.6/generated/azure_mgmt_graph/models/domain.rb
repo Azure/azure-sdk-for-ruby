@@ -31,7 +31,6 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Domain',
           type: {
@@ -39,7 +38,6 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'Domain',
             model_properties: {
               authentication_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'authenticationType',
@@ -48,7 +46,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               is_default: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isDefault',
@@ -57,7 +54,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               is_verified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isVerified',
@@ -66,7 +62,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

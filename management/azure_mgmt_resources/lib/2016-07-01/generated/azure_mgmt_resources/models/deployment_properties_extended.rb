@@ -60,7 +60,6 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentPropertiesExtended',
           type: {
@@ -68,7 +67,6 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'DeploymentPropertiesExtended',
             model_properties: {
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisioningState',
                 type: {
@@ -76,7 +74,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               correlation_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'correlationId',
                 type: {
@@ -84,7 +81,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timestamp',
                 type: {
@@ -92,7 +88,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputs',
                 type: {
@@ -100,13 +95,11 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               providers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'providers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderElementType',
                       type: {
@@ -117,13 +110,11 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               dependencies: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dependencies',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DependencyElementType',
                       type: {
@@ -134,7 +125,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'template',
                 type: {
@@ -142,7 +132,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               template_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'templateLink',
                 type: {
@@ -151,7 +140,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
@@ -159,7 +147,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               parameters_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parametersLink',
                 type: {
@@ -168,7 +155,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {
@@ -177,7 +163,6 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               debug_setting: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'debugSetting',
                 type: {

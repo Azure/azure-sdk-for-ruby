@@ -39,7 +39,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GenericRecoveryPoint',
           type: {
@@ -47,7 +46,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'GenericRecoveryPoint',
             model_properties: {
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -55,7 +53,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -63,7 +60,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recovery_point_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointType',
                 type: {
@@ -71,7 +67,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recovery_point_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointTime',
                 type: {
@@ -79,7 +74,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recovery_point_additional_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointAdditionalInfo',
                 type: {

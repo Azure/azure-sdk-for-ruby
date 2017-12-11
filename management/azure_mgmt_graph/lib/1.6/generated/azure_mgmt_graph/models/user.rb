@@ -8,9 +8,39 @@ module Azure::Graph::Mgmt::V1_6
     #
     # Active Directory user information.
     #
-    class User < UserBase
+    class User < DirectoryObject
 
       include MsRestAzure
+
+
+      def initialize
+        @objectType = "User"
+      end
+
+      attr_accessor :objectType
+
+      # @return [String] This must be specified if you are using a federated
+      # domain for the user's userPrincipalName (UPN) property when creating a
+      # new user account. It is used to associate an on-premises Active
+      # Directory user account with their Azure AD user object.
+      attr_accessor :immutable_id
+
+      # @return [String] A two letter country code (ISO standard 3166).
+      # Required for users that will be assigned licenses due to legal
+      # requirement to check for availability of services in countries.
+      # Examples include: "US", "JP", and "GB".
+      attr_accessor :usage_location
+
+      # @return [String] The given name for the user.
+      attr_accessor :given_name
+
+      # @return [String] The user's surname (family name or last name).
+      attr_accessor :surname
+
+      # @return [UserType] A string value that can be used to classify user
+      # types in your directory, such as 'Member' and 'Guest'. Possible values
+      # include: 'Member', 'Guest'
+      attr_accessor :user_type
 
       # @return [Boolean] Whether the account is enabled.
       attr_accessor :account_enabled
@@ -27,12 +57,6 @@ module Azure::Graph::Mgmt::V1_6
       # @return [String] The primary email address of the user.
       attr_accessor :mail
 
-      # @return [String] The object ID.
-      attr_accessor :object_id
-
-      # @return [String] The object type.
-      attr_accessor :object_type
-
       # @return [Array<SignInName>] The sign-in names of the user.
       attr_accessor :sign_in_names
 
@@ -43,15 +67,36 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'User',
           type: {
             name: 'Composite',
             class_name: 'User',
             model_properties: {
+              object_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'objectId',
+                type: {
+                  name: 'String'
+                }
+              },
+              deletion_timestamp: {
+                required: false,
+                read_only: true,
+                serialized_name: 'deletionTimestamp',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              objectType: {
+                required: true,
+                serialized_name: 'objectType',
+                type: {
+                  name: 'String'
+                }
+              },
               immutable_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'immutableId',
                 type: {
@@ -59,7 +104,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               usage_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'usageLocation',
                 type: {
@@ -67,7 +111,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               given_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'givenName',
                 type: {
@@ -75,7 +118,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               surname: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'surname',
                 type: {
@@ -83,7 +125,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userType',
                 type: {
@@ -91,7 +132,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               account_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountEnabled',
                 type: {
@@ -99,7 +139,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -107,7 +146,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_principal_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userPrincipalName',
                 type: {
@@ -115,7 +153,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail_nickname: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mailNickname',
                 type: {
@@ -123,37 +160,18 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mail',
                 type: {
                   name: 'String'
                 }
               },
-              object_id: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'objectId',
-                type: {
-                  name: 'String'
-                }
-              },
-              object_type: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'objectType',
-                type: {
-                  name: 'String'
-                }
-              },
               sign_in_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'signInNames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SignInNameElementType',
                       type: {

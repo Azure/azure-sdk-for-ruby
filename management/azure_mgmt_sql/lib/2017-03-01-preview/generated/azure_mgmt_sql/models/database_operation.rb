@@ -55,7 +55,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DatabaseOperation',
           type: {
@@ -63,7 +62,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'DatabaseOperation',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -72,7 +70,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -81,7 +78,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -90,7 +86,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseName',
@@ -99,7 +94,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operation',
@@ -108,7 +102,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               operation_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operationFriendlyName',
@@ -117,7 +110,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               percent_complete: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.percentComplete',
@@ -126,7 +118,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverName',
@@ -135,7 +126,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -144,7 +134,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -153,7 +142,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               error_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorCode',
@@ -162,7 +150,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               error_description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorDescription',
@@ -171,7 +158,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               error_severity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorSeverity',
@@ -180,7 +166,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               is_user_error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isUserError',

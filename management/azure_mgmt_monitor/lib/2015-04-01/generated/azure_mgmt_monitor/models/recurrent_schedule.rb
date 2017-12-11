@@ -74,7 +74,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecurrentSchedule',
           type: {
@@ -82,7 +81,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'RecurrentSchedule',
             model_properties: {
               time_zone: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeZone',
                 type: {
@@ -90,13 +88,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               days: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'days',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -106,13 +102,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               hours: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'hours',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NumberElementType',
                       type: {
@@ -122,13 +116,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               minutes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'minutes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NumberElementType',
                       type: {

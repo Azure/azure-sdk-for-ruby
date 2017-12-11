@@ -45,7 +45,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AzureIaaSVMJob',
           type: {
@@ -53,7 +52,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
             class_name: 'AzureIaaSVMJob',
             model_properties: {
               entity_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'entityFriendlyName',
                 type: {
@@ -61,7 +59,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               backup_management_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -69,7 +66,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -77,7 +73,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -85,7 +80,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -93,7 +87,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -101,7 +94,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               activity_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'activityId',
                 type: {
@@ -109,7 +101,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               jobType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'jobType',
                 type: {
@@ -117,7 +108,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'duration',
                 type: {
@@ -125,13 +115,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               actions_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionsInfo',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobSupportedActionElementType',
                       type: {
@@ -142,13 +130,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               error_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorDetails',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AzureIaaSVMErrorInfoElementType',
                       type: {
@@ -159,7 +145,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               virtual_machine_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineVersion',
                 type: {
@@ -167,7 +152,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               extended_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extendedInfo',
                 type: {

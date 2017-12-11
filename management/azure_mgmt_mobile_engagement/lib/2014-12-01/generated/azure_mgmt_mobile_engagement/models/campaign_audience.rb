@@ -38,7 +38,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Campaign_audience',
           type: {
@@ -46,7 +45,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignAudience',
             model_properties: {
               expression: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expression',
                 type: {
@@ -54,13 +52,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               criteria: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'criteria',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CriterionElementType',
                       type: {
@@ -73,13 +69,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               filters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FilterElementType',
                       type: {

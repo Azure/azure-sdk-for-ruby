@@ -44,7 +44,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'importTaskResult',
           type: {
@@ -52,7 +51,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ImportTaskResult',
             model_properties: {
               storage_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUrl',
                 type: {
@@ -60,7 +58,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -68,7 +65,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -76,7 +72,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               date_created: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dateCreated',
                 type: {
@@ -84,7 +79,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               date_completed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dateCompleted',
                 type: {
@@ -92,7 +86,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               error_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorDetails',
                 type: {

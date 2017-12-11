@@ -22,7 +22,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateRequest',
           type: {
@@ -30,7 +29,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'CertificateRequest',
             model_properties: {
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

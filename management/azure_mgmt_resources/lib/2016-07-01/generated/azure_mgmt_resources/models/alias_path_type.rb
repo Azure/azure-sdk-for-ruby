@@ -25,7 +25,6 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AliasPathType',
           type: {
@@ -33,7 +32,6 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'AliasPathType',
             model_properties: {
               path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -41,13 +39,11 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               api_versions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiVersions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

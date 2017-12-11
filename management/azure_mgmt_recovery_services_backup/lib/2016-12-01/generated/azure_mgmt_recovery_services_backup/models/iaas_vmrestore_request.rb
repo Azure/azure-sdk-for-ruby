@@ -88,7 +88,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IaasVMRestoreRequest',
           type: {
@@ -96,7 +95,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'IaasVMRestoreRequest',
             model_properties: {
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -104,7 +102,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recovery_point_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointId',
                 type: {
@@ -112,7 +109,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recovery_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryType',
                 type: {
@@ -120,7 +116,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               source_resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {
@@ -128,7 +123,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               target_virtual_machine_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetVirtualMachineId',
                 type: {
@@ -136,7 +130,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               target_resource_group_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetResourceGroupId',
                 type: {
@@ -144,7 +137,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               storage_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -152,7 +144,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               virtual_network_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualNetworkId',
                 type: {
@@ -160,7 +151,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               subnet_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnetId',
                 type: {
@@ -168,7 +158,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               target_domain_name_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetDomainNameId',
                 type: {
@@ -176,7 +165,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               region: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'region',
                 type: {
@@ -184,7 +172,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               affinity_group: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'affinityGroup',
                 type: {
@@ -192,7 +179,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               create_new_cloud_service: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'createNewCloudService',
                 type: {
@@ -200,7 +186,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               original_storage_account_option: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'originalStorageAccountOption',
                 type: {
@@ -208,7 +193,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               encryption_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionDetails',
                 type: {

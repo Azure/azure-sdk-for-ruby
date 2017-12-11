@@ -31,7 +31,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DNSSettings',
           type: {
@@ -39,7 +38,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DNSSettings',
             model_properties: {
               primary_dns_server: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryDnsServer',
                 type: {
@@ -47,7 +45,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               primary_ipv6dns_server: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryIpv6DnsServer',
                 type: {
@@ -55,13 +52,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               secondary_dns_servers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryDnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -71,13 +66,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               secondary_ipv6dns_servers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryIpv6DnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

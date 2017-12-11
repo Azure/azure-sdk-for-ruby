@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PerfMonSample',
           type: {
@@ -39,7 +38,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'PerfMonSample',
             model_properties: {
               time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'time',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               instance_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'instanceName',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               core_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'coreCount',
                 type: {

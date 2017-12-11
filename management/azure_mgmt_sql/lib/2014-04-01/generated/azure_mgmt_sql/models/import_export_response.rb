@@ -46,7 +46,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportExportResponse',
           type: {
@@ -54,7 +53,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ImportExportResponse',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -63,7 +61,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -72,7 +69,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -81,7 +77,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               request_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestType',
@@ -90,7 +85,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestId',
@@ -99,7 +93,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverName',
@@ -108,7 +101,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseName',
@@ -117,7 +109,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -126,7 +117,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModifiedTime',
@@ -135,7 +125,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               queued_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.queuedTime',
@@ -144,7 +133,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               blob_uri: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.blobUri',
@@ -153,7 +141,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               error_message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorMessage',

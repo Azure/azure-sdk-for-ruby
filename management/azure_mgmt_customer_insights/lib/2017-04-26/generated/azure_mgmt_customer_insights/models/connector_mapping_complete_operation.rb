@@ -27,7 +27,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingCompleteOperation',
           type: {
@@ -35,7 +34,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ConnectorMappingCompleteOperation',
             model_properties: {
               completion_operation_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'completionOperationType',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               destination_folder: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'destinationFolder',
                 type: {

@@ -54,7 +54,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Job',
           type: {
@@ -64,7 +63,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
             class_name: 'Job',
             model_properties: {
               entity_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'entityFriendlyName',
                 type: {
@@ -72,7 +70,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               backup_management_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -80,7 +77,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -88,7 +84,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -96,7 +91,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -104,7 +98,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -112,7 +105,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               activity_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'activityId',
                 type: {

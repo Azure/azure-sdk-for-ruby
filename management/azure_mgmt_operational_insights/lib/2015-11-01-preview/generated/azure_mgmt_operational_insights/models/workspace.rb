@@ -51,7 +51,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Workspace',
           type: {
@@ -59,7 +58,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'Workspace',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,7 +66,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -77,7 +74,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -86,7 +82,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -94,13 +89,11 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -110,7 +103,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -118,7 +110,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.source',
                 type: {
@@ -126,7 +117,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               customer_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customerId',
                 type: {
@@ -134,7 +124,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               portal_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.portalUrl',
                 type: {
@@ -142,7 +131,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -151,7 +139,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               retention_in_days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionInDays',
                 constraints: {
@@ -163,7 +150,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               e_tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {

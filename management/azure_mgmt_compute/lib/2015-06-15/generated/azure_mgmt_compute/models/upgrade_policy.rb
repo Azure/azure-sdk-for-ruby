@@ -23,7 +23,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradePolicy',
           type: {
@@ -31,7 +30,6 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'UpgradePolicy',
             model_properties: {
               mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {

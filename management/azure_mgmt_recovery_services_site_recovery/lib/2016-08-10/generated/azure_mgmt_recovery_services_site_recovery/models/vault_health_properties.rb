@@ -30,7 +30,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultHealthProperties',
           type: {
@@ -38,13 +37,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VaultHealthProperties',
             model_properties: {
               vault_errors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vaultErrors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {
@@ -55,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protected_items_health: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemsHealth',
                 type: {
@@ -64,7 +60,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabrics_health: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricsHealth',
                 type: {

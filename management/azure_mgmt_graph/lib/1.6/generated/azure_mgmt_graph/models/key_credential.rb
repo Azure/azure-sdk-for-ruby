@@ -38,7 +38,6 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KeyCredential',
           type: {
@@ -46,7 +45,6 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'KeyCredential',
             model_properties: {
               start_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startDate',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               end_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endDate',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               key_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyId',
                 type: {
@@ -78,7 +73,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               usage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'usage',
                 type: {
@@ -86,7 +80,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

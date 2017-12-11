@@ -36,7 +36,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceObjective',
           type: {
@@ -44,7 +43,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServiceObjective',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,7 +51,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,7 +59,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,7 +67,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_objective_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceObjectiveName',
@@ -80,7 +75,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               is_default: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isDefault',
@@ -89,7 +83,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               is_system: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isSystem',
@@ -98,7 +91,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.description',
@@ -107,7 +99,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.enabled',

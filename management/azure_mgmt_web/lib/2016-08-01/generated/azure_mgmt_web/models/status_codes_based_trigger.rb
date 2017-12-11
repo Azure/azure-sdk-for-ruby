@@ -15,13 +15,13 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [Integer] HTTP status code.
       attr_accessor :status
 
-      # @return [Integer] SubStatus.
+      # @return [Integer] Request Sub Status.
       attr_accessor :sub_status
 
       # @return [Integer] Win32 error code.
       attr_accessor :win32status
 
-      # @return [Integer] Count.
+      # @return [Integer] Request Count.
       attr_accessor :count
 
       # @return [String] Time interval.
@@ -34,7 +34,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StatusCodesBasedTrigger',
           type: {
@@ -42,7 +41,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'StatusCodesBasedTrigger',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               sub_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subStatus',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               win32status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'win32Status',
                 type: {
@@ -66,7 +62,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -74,7 +69,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               time_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInterval',
                 type: {

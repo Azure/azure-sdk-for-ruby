@@ -27,7 +27,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SecuritySettings',
           type: {
@@ -35,7 +34,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'SecuritySettings',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,7 +42,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -53,7 +50,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,7 +58,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -71,7 +66,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               remote_management_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.remoteManagementSettings',
                 type: {
@@ -80,7 +74,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               chap_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.chapSettings',
                 type: {

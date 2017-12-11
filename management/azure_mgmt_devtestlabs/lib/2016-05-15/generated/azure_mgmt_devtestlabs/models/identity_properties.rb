@@ -31,7 +31,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IdentityProperties',
           type: {
@@ -39,7 +38,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'IdentityProperties',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -47,7 +45,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'principalId',
                 type: {
@@ -55,7 +52,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
                 type: {
@@ -63,7 +59,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               client_secret_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientSecretUrl',
                 type: {

@@ -57,7 +57,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Display',
           type: {
@@ -65,7 +64,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'Display',
             model_properties: {
               provider: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -73,7 +71,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resource: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -81,7 +78,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -89,7 +85,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

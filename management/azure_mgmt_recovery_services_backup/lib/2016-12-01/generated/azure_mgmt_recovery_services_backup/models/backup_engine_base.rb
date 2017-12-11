@@ -71,7 +71,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackupEngineBase',
           type: {
@@ -81,7 +80,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'BackupEngineBase',
             model_properties: {
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -89,7 +87,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_management_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -97,7 +94,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               registration_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationStatus',
                 type: {
@@ -105,7 +101,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_engine_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupEngineState',
                 type: {
@@ -113,7 +108,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               health_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthStatus',
                 type: {
@@ -121,7 +115,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               can_re_register: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'canReRegister',
                 type: {
@@ -129,7 +122,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_engine_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupEngineId',
                 type: {
@@ -137,7 +129,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               dpm_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dpmVersion',
                 type: {
@@ -145,7 +136,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               azure_backup_agent_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureBackupAgentVersion',
                 type: {
@@ -153,7 +143,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               is_azure_backup_agent_upgrade_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isAzureBackupAgentUpgradeAvailable',
                 type: {
@@ -161,7 +150,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               is_dpmupgrade_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isDPMUpgradeAvailable',
                 type: {
@@ -169,7 +157,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               extended_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extendedInfo',
                 type: {

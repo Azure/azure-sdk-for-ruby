@@ -80,10 +80,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       heat_map_type = 'default'
-      fail ArgumentError, "'top_left' should satisfy the constraint - 'MaxItems': '2'" if !top_left.nil? && top_left.length > 2
-      fail ArgumentError, "'top_left' should satisfy the constraint - 'MinItems': '2'" if !top_left.nil? && top_left.length < 2
-      fail ArgumentError, "'bot_right' should satisfy the constraint - 'MaxItems': '2'" if !bot_right.nil? && bot_right.length > 2
-      fail ArgumentError, "'bot_right' should satisfy the constraint - 'MinItems': '2'" if !bot_right.nil? && bot_right.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 

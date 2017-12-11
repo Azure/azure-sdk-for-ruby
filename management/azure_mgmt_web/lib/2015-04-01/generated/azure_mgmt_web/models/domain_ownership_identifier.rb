@@ -8,7 +8,7 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     # Domain ownership Identifier.
     #
-    class DomainOwnershipIdentifier < Resource
+    class DomainOwnershipIdentifier < ProxyOnlyResource
 
       include MsRestAzure
 
@@ -22,7 +22,6 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DomainOwnershipIdentifier',
           type: {
@@ -30,7 +29,6 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'DomainOwnershipIdentifier',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -39,7 +37,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,23 +45,13 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,24 +59,7 @@ module Azure::Web::Mgmt::V2015_04_01
                   name: 'String'
                 }
               },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               ownership_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ownershipId',
                 type: {
