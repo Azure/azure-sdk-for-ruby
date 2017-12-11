@@ -29,7 +29,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClusterUpgradeDeltaHealthPolicy',
           type: {
@@ -37,7 +36,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'ClusterUpgradeDeltaHealthPolicy',
             model_properties: {
               max_percent_delta_unhealthy_nodes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'maxPercentDeltaUnhealthyNodes',
                 constraints: {
@@ -49,7 +47,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               max_percent_upgrade_domain_delta_unhealthy_nodes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'maxPercentUpgradeDomainDeltaUnhealthyNodes',
                 constraints: {
@@ -61,7 +58,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               max_percent_delta_unhealthy_applications: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'maxPercentDeltaUnhealthyApplications',
                 constraints: {

@@ -60,7 +60,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppCollectionListResult',
           type: {
@@ -68,13 +67,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'AppCollectionListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AppCollectionElementType',
                       type: {
@@ -85,7 +82,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

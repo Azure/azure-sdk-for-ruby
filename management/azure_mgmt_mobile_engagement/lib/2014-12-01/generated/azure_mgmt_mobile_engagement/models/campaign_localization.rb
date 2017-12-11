@@ -61,7 +61,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignLocalization',
           type: {
@@ -69,7 +68,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignLocalization',
             model_properties: {
               notification_title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationTitle',
                 constraints: {
@@ -80,7 +78,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationMessage',
                 constraints: {
@@ -91,7 +88,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationImage',
                 constraints: {
@@ -102,7 +98,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationOptions',
                 type: {
@@ -111,7 +106,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 constraints: {
@@ -122,7 +116,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               body: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'body',
                 constraints: {
@@ -133,7 +126,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               action_button_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionButtonText',
                 constraints: {
@@ -144,7 +136,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               exit_button_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exitButtonText',
                 constraints: {
@@ -155,7 +146,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               action_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionUrl',
                 constraints: {
@@ -166,7 +156,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               payload: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'payload',
                 type: {

@@ -55,7 +55,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowRun',
           type: {
@@ -63,7 +62,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowRun',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -71,7 +69,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -80,7 +77,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endTime',
@@ -89,7 +85,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -99,7 +94,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.code',
@@ -108,7 +102,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.error',
@@ -117,7 +110,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               correlation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.correlationId',
@@ -126,7 +118,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               workflow: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.workflow',
@@ -136,7 +127,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               trigger: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.trigger',
@@ -146,14 +136,12 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.outputs',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WorkflowOutputParameterElementType',
                       type: {
@@ -164,7 +152,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -173,7 +160,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

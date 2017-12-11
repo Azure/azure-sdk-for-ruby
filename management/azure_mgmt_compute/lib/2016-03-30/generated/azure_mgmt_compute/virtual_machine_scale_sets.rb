@@ -473,8 +473,8 @@ module Azure::Compute::Mgmt::V2016_03_30
     #
     # Gets a list of all VM Scale Sets in the subscription, regardless of the
     # associated resource group. Use nextLink property in the response to get the
-    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
-    # the VM Scale Sets.
+    # next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM
+    # Scale Sets.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -489,8 +489,8 @@ module Azure::Compute::Mgmt::V2016_03_30
     #
     # Gets a list of all VM Scale Sets in the subscription, regardless of the
     # associated resource group. Use nextLink property in the response to get the
-    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
-    # the VM Scale Sets.
+    # next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM
+    # Scale Sets.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -504,8 +504,8 @@ module Azure::Compute::Mgmt::V2016_03_30
     #
     # Gets a list of all VM Scale Sets in the subscription, regardless of the
     # associated resource group. Use nextLink property in the response to get the
-    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
-    # the VM Scale Sets.
+    # next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM
+    # Scale Sets.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1928,8 +1928,8 @@ module Azure::Compute::Mgmt::V2016_03_30
     #
     # Gets a list of all VM Scale Sets in the subscription, regardless of the
     # associated resource group. Use nextLink property in the response to get the
-    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
-    # the VM Scale Sets.
+    # next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM
+    # Scale Sets.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1946,8 +1946,8 @@ module Azure::Compute::Mgmt::V2016_03_30
     #
     # Gets a list of all VM Scale Sets in the subscription, regardless of the
     # associated resource group. Use nextLink property in the response to get the
-    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
-    # the VM Scale Sets.
+    # next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM
+    # Scale Sets.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1963,8 +1963,8 @@ module Azure::Compute::Mgmt::V2016_03_30
     #
     # Gets a list of all VM Scale Sets in the subscription, regardless of the
     # associated resource group. Use nextLink property in the response to get the
-    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
-    # the VM Scale Sets.
+    # next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM
+    # Scale Sets.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2135,8 +2135,8 @@ module Azure::Compute::Mgmt::V2016_03_30
     #
     # Gets a list of all VM Scale Sets in the subscription, regardless of the
     # associated resource group. Use nextLink property in the response to get the
-    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
-    # the VM Scale Sets.
+    # next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM
+    # Scale Sets.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

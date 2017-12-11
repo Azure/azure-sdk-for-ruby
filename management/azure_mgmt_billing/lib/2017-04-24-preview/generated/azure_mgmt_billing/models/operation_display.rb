@@ -29,7 +29,6 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -37,7 +36,6 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -46,7 +44,6 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               resource: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -55,7 +52,6 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',

@@ -26,7 +26,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IntelligencePack',
           type: {
@@ -34,7 +33,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'IntelligencePack',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {

@@ -37,7 +37,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoutingEndpoints',
           type: {
@@ -45,13 +44,11 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'RoutingEndpoints',
             model_properties: {
               service_bus_queues: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusQueues',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutingServiceBusQueueEndpointPropertiesElementType',
                       type: {
@@ -62,13 +59,11 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               service_bus_topics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusTopics',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutingServiceBusTopicEndpointPropertiesElementType',
                       type: {
@@ -79,13 +74,11 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               event_hubs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventHubs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutingEventHubPropertiesElementType',
                       type: {

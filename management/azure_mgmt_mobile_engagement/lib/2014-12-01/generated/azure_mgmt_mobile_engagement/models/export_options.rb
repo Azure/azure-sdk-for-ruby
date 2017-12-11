@@ -22,7 +22,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'exportOptions',
           type: {
@@ -30,7 +29,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ExportOptions',
             model_properties: {
               export_user_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exportUserId',
                 type: {

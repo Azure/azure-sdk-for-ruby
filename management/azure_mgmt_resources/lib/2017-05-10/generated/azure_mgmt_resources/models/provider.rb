@@ -32,7 +32,6 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Provider',
           type: {
@@ -40,7 +39,6 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'Provider',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,7 +47,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               namespace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'namespace',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               registration_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'registrationState',
@@ -66,14 +62,12 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               resource_types: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderResourceTypeElementType',
                       type: {

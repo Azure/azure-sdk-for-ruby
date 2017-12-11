@@ -32,7 +32,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackupResourceVaultConfig',
           type: {
@@ -40,7 +39,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'BackupResourceVaultConfig',
             model_properties: {
               storage_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageType',
                 type: {
@@ -48,7 +46,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               storage_type_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageTypeState',
                 type: {
@@ -56,7 +53,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               enhanced_security_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enhancedSecurityState',
                 type: {

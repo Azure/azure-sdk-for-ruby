@@ -26,7 +26,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ParentGroupInfo',
           type: {
@@ -34,7 +33,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ParentGroupInfo',
             model_properties: {
               parent_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parentId',
                 type: {
@@ -42,7 +40,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {

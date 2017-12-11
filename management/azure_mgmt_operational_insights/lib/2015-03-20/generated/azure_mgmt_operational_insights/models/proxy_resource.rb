@@ -31,7 +31,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProxyResource',
           type: {
@@ -39,7 +38,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'ProxyResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +54,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,13 +62,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -27,7 +27,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateStorageAccountParameters',
           type: {
@@ -35,7 +34,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'UpdateStorageAccountParameters',
             model_properties: {
               access_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accessKey',
                 type: {
@@ -43,7 +41,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               suffix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.suffix',
                 type: {

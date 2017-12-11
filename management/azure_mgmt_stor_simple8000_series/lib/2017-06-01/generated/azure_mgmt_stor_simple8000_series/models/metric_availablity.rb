@@ -26,7 +26,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricAvailablity',
           type: {
@@ -34,7 +33,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'MetricAvailablity',
             model_properties: {
               time_grain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -42,7 +40,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               retention: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retention',
                 type: {

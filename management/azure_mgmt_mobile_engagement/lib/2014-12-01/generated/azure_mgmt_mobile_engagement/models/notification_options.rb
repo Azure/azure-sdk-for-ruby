@@ -62,7 +62,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NotificationOptions',
           type: {
@@ -70,7 +69,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'NotificationOptions',
             model_properties: {
               big_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bigText',
                 constraints: {
@@ -81,7 +79,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               big_picture: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bigPicture',
                 constraints: {
@@ -92,7 +89,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               sound: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sound',
                 type: {
@@ -100,7 +96,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               action_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionText',
                 type: {

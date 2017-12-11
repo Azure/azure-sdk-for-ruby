@@ -42,7 +42,6 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BatchAccount',
           type: {
@@ -50,7 +49,6 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'BatchAccount',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,7 +57,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,7 +65,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,7 +73,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -85,13 +80,11 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -101,7 +94,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               account_endpoint: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.accountEndpoint',
@@ -110,7 +102,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -119,7 +110,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               auto_storage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoStorage',
                 type: {
@@ -128,7 +118,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               core_quota: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.coreQuota',
                 type: {
@@ -136,7 +125,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               pool_quota: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.poolQuota',
                 type: {
@@ -144,7 +132,6 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               active_job_and_job_schedule_quota: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.activeJobAndJobScheduleQuota',
                 type: {

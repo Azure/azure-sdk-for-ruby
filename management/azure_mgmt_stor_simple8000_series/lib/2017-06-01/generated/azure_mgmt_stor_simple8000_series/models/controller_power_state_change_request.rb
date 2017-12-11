@@ -39,7 +39,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ControllerPowerStateChangeRequest',
           type: {
@@ -47,7 +46,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ControllerPowerStateChangeRequest',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -56,7 +54,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -65,7 +62,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -74,7 +70,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -83,7 +78,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               action: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.action',
                 type: {
@@ -92,7 +86,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               active_controller: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.activeController',
                 type: {
@@ -101,7 +94,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               controller0state: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.controller0State',
                 type: {
@@ -110,7 +102,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               controller1state: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.controller1State',
                 type: {

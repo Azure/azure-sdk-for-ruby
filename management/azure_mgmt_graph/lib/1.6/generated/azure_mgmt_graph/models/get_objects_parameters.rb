@@ -29,7 +29,6 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GetObjectsParameters',
           type: {
@@ -37,13 +36,11 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'GetObjectsParameters',
             model_properties: {
               object_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -53,13 +50,11 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'types',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -69,7 +64,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               include_directory_object_references: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'includeDirectoryObjectReferences',
                 type: {

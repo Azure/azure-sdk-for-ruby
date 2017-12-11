@@ -25,7 +25,6 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceAssociation',
           type: {
@@ -33,7 +32,6 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'NetworkInterfaceAssociation',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,13 +40,11 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               security_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'securityRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SecurityRuleElementType',
                       type: {

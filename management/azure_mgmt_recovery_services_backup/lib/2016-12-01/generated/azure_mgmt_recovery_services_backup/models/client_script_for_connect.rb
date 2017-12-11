@@ -40,7 +40,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClientScriptForConnect',
           type: {
@@ -48,7 +47,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'ClientScriptForConnect',
             model_properties: {
               script_content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scriptContent',
                 type: {
@@ -56,7 +54,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               script_extension: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scriptExtension',
                 type: {
@@ -64,7 +61,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -72,7 +68,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {
@@ -80,7 +75,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               script_name_suffix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scriptNameSuffix',
                 type: {

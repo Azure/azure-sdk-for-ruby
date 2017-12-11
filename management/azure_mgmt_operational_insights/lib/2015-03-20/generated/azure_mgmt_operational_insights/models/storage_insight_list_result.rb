@@ -58,7 +58,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageInsightListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'StorageInsightListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StorageInsightElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               odata_next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: '@odata\\.nextLink',
                 type: {

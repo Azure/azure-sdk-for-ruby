@@ -23,7 +23,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationResultInfoBaseResource',
           type: {
@@ -31,7 +30,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'OperationResultInfoBaseResource',
             model_properties: {
               status_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -40,19 +38,16 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               headers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Headers',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -64,7 +59,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {

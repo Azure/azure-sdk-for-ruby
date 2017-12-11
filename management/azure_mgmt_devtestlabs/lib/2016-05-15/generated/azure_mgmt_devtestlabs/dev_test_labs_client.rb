@@ -37,6 +37,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [Labs] labs
     attr_reader :labs
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [GlobalSchedules] global_schedules
     attr_reader :global_schedules
 
@@ -111,6 +114,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       @credentials = credentials
 
       @labs = Labs.new(self)
+      @operations = Operations.new(self)
       @global_schedules = GlobalSchedules.new(self)
       @artifact_sources = ArtifactSources.new(self)
       @arm_templates = ArmTemplates.new(self)
@@ -200,7 +204,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_devtestlabs'
-        sdk_information = "#{sdk_information}/0.15.1"
+        if defined? Azure::DevTestLabs::Mgmt::V2016_05_15::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::DevTestLabs::Mgmt::V2016_05_15::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

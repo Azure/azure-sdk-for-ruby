@@ -24,7 +24,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DhcpOptions',
           type: {
@@ -32,13 +31,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'DhcpOptions',
             model_properties: {
               dns_servers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

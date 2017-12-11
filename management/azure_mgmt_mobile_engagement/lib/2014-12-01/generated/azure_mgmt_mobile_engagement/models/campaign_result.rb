@@ -40,7 +40,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignResult',
           type: {
@@ -48,7 +47,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignResult',
             model_properties: {
               notification_title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationTitle',
                 constraints: {
@@ -59,7 +57,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationMessage',
                 constraints: {
@@ -70,7 +67,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationImage',
                 constraints: {
@@ -81,7 +77,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationOptions',
                 type: {
@@ -90,7 +85,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 constraints: {
@@ -101,7 +95,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               body: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'body',
                 constraints: {
@@ -112,7 +105,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               action_button_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionButtonText',
                 constraints: {
@@ -123,7 +115,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               exit_button_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exitButtonText',
                 constraints: {
@@ -134,7 +125,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               action_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionUrl',
                 constraints: {
@@ -145,7 +135,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               payload: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'payload',
                 type: {
@@ -153,7 +142,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -164,7 +152,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               audience: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audience',
                 type: {
@@ -173,7 +160,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 constraints: {
@@ -184,7 +170,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               push_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pushMode',
                 default_value: 'real-time',
@@ -193,7 +178,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -201,7 +185,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               delivery_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deliveryTime',
                 type: {
@@ -209,13 +192,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               delivery_activities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deliveryActivities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -225,7 +206,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -233,7 +213,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -241,7 +220,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               timezone: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timezone',
                 type: {
@@ -249,7 +227,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationType',
                 default_value: 'popup',
@@ -258,7 +235,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_icon: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationIcon',
                 default_value: true,
@@ -267,7 +243,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_closeable: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationCloseable',
                 default_value: true,
@@ -276,7 +251,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_vibrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationVibrate',
                 default_value: false,
@@ -285,7 +259,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_sound: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationSound',
                 default_value: false,
@@ -294,7 +267,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               notification_badge: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationBadge',
                 default_value: false,
@@ -303,13 +275,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               localization: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'localization',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CampaignLocalizationElementType',
                       type: {
@@ -320,13 +290,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               questions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'questions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PollQuestionElementType',
                       type: {
@@ -337,7 +305,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -345,7 +312,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -353,7 +319,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               activated_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'activatedDate',
                 type: {
@@ -361,7 +326,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               finished_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'finishedDate',
                 type: {

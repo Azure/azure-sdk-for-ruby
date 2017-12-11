@@ -30,7 +30,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       # @return [ProvisioningState] Gets the status of the cognitive services
       # account at the time the operation was called. Possible values include:
-      # 'Creating', 'ResolvingDNS', 'Succeeded', 'Failed'
+      # 'Creating', 'ResolvingDNS', 'Moving', 'Deleting', 'Succeeded', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [String] Endpoint of the created account.
@@ -59,7 +59,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccount',
           type: {
@@ -67,7 +66,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesAccount',
             model_properties: {
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -75,7 +73,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -84,7 +81,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -92,7 +88,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -100,7 +95,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -109,17 +103,14 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Enum',
-                  module: 'ProvisioningState'
+                  name: 'String'
                 }
               },
               endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpoint',
                 type: {
@@ -127,7 +118,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               internal_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.internalId',
                 type: {
@@ -135,7 +125,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -144,13 +133,11 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -160,7 +147,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

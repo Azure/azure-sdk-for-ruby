@@ -117,7 +117,6 @@ module Azure::Network::Mgmt::V2017_03_01
     def get_async(resource_group_name, local_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'local_network_gateway_name is nil' if local_network_gateway_name.nil?
-      fail ArgumentError, "'local_network_gateway_name' should satisfy the constraint - 'MinLength': '1'" if !local_network_gateway_name.nil? && local_network_gateway_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -345,7 +344,6 @@ module Azure::Network::Mgmt::V2017_03_01
     def begin_create_or_update_async(resource_group_name, local_network_gateway_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'local_network_gateway_name is nil' if local_network_gateway_name.nil?
-      fail ArgumentError, "'local_network_gateway_name' should satisfy the constraint - 'MinLength': '1'" if !local_network_gateway_name.nil? && local_network_gateway_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -459,7 +457,6 @@ module Azure::Network::Mgmt::V2017_03_01
     def begin_delete_async(resource_group_name, local_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'local_network_gateway_name is nil' if local_network_gateway_name.nil?
-      fail ArgumentError, "'local_network_gateway_name' should satisfy the constraint - 'MinLength': '1'" if !local_network_gateway_name.nil? && local_network_gateway_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

@@ -28,7 +28,6 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TagValue',
           type: {
@@ -36,7 +35,6 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'TagValue',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               tag_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagValue',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {

@@ -29,7 +29,6 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceAccess',
           type: {
@@ -37,7 +36,6 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'ResourceAccess',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

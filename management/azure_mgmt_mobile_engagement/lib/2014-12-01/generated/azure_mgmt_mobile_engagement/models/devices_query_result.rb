@@ -58,7 +58,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DevicesQueryResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'DevicesQueryResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DeviceQueryResultElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -121,7 +121,9 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_analysis_services'
-        sdk_information = "#{sdk_information}/0.15.1"
+        if defined? Azure::AnalysisServices::Mgmt::V2016_05_16::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::AnalysisServices::Mgmt::V2016_05_16::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

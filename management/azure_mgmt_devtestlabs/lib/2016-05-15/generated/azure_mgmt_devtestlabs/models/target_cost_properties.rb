@@ -39,7 +39,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TargetCostProperties',
           type: {
@@ -47,7 +46,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'TargetCostProperties',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -55,7 +53,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -63,13 +60,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               cost_thresholds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'costThresholds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CostThresholdPropertiesElementType',
                       type: {
@@ -80,7 +75,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               cycle_start_date_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cycleStartDateTime',
                 type: {
@@ -88,7 +82,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               cycle_end_date_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cycleEndDateTime',
                 type: {
@@ -96,7 +89,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               cycle_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cycleType',
                 type: {

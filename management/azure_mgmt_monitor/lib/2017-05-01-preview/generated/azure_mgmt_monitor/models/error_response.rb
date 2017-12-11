@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Monitor::Mgmt::V2017_05_01_preview
+module Azure::MobileEngagement::Mgmt::V2014_12_01
   module Models
     #
     # Describes the format of Error response.
@@ -25,7 +25,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -33,7 +32,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

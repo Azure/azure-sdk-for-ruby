@@ -35,7 +35,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PollQuestion',
           type: {
@@ -43,7 +42,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'PollQuestion',
             model_properties: {
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 constraints: {
@@ -54,7 +52,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -62,13 +59,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               localization: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'localization',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PollQuestionLocalizationElementType',
                       type: {
@@ -79,13 +74,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               choices: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'choices',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PollQuestionChoiceElementType',
                       type: {

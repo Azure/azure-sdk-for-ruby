@@ -29,7 +29,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IaaSVMProtectableItem',
           type: {
@@ -37,7 +36,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'IaaSVMProtectableItem',
             model_properties: {
               backup_management_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -45,7 +43,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -53,7 +50,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protection_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionState',
                 type: {
@@ -61,7 +57,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protectableItemType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'protectableItemType',
                 type: {
@@ -69,7 +64,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               virtual_machine_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineId',
                 type: {

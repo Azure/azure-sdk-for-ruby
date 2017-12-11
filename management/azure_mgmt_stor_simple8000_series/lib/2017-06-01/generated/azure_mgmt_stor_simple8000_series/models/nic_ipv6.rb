@@ -34,7 +34,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NicIPv6',
           type: {
@@ -42,7 +41,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'NicIPv6',
             model_properties: {
               ipv6address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv6Address',
                 type: {
@@ -50,7 +48,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               ipv6prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv6Prefix',
                 type: {
@@ -58,7 +55,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               ipv6gateway: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv6Gateway',
                 type: {
@@ -66,7 +62,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               controller0ipv6address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'controller0Ipv6Address',
                 type: {
@@ -74,7 +69,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               controller1ipv6address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'controller1Ipv6Address',
                 type: {

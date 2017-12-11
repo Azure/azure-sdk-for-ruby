@@ -34,7 +34,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountCredential',
           type: {
@@ -42,7 +41,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'StorageAccountCredential',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,7 +49,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,7 +57,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,7 +65,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -78,7 +73,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               end_point: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.endPoint',
                 type: {
@@ -86,7 +80,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               ssl_status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.sslStatus',
                 type: {
@@ -95,7 +88,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               access_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accessKey',
                 type: {
@@ -104,7 +96,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volumes_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.volumesCount',

@@ -29,7 +29,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AttachNewDataDiskOptions',
           type: {
@@ -37,7 +36,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'AttachNewDataDiskOptions',
             model_properties: {
               disk_size_gi_b: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGiB',
                 type: {
@@ -45,7 +43,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskName',
                 type: {
@@ -53,7 +50,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskType',
                 type: {

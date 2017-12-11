@@ -44,7 +44,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AsyncOperationStatus',
           type: {
@@ -52,7 +51,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'AsyncOperationStatus',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,7 +58,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -68,7 +65,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -77,7 +73,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -86,7 +81,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -95,7 +89,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               percent_complete: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'percentComplete',
                 type: {
@@ -103,7 +96,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               error_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorInfo',
                 type: {

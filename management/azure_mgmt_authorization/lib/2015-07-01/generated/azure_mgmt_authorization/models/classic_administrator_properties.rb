@@ -25,7 +25,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClassicAdministratorProperties',
           type: {
@@ -33,7 +32,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'ClassicAdministratorProperties',
             model_properties: {
               email_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'emailAddress',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               role: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'role',
                 type: {

@@ -37,6 +37,10 @@ module Azure::Network::Mgmt::V2017_09_01
       # (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
       attr_accessor :remote_virtual_network
 
+      # @return [AddressSpace] The reference of the remote virtual network
+      # address space.
+      attr_accessor :remote_address_space
+
       # @return [VirtualNetworkPeeringState] The status of the virtual network
       # peering. Possible values are 'Initiated', 'Connected', and
       # 'Disconnected'. Possible values include: 'Initiated', 'Connected',
@@ -61,7 +65,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkPeering',
           type: {
@@ -69,7 +72,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'VirtualNetworkPeering',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -77,7 +79,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               allow_virtual_network_access: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowVirtualNetworkAccess',
                 type: {
@@ -85,7 +86,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               allow_forwarded_traffic: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowForwardedTraffic',
                 type: {
@@ -93,7 +93,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               allow_gateway_transit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowGatewayTransit',
                 type: {
@@ -101,7 +100,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               use_remote_gateways: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.useRemoteGateways',
                 type: {
@@ -109,7 +107,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               remote_virtual_network: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.remoteVirtualNetwork',
                 type: {
@@ -117,8 +114,15 @@ module Azure::Network::Mgmt::V2017_09_01
                   class_name: 'SubResource'
                 }
               },
+              remote_address_space: {
+                required: false,
+                serialized_name: 'properties.remoteAddressSpace',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AddressSpace'
+                }
+              },
               peering_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peeringState',
                 type: {
@@ -126,7 +130,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -134,7 +137,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -142,7 +144,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

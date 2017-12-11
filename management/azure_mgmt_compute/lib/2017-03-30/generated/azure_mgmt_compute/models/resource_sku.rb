@@ -60,7 +60,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSku',
           type: {
@@ -68,7 +67,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ResourceSku',
             model_properties: {
               resource_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -77,7 +75,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -86,7 +83,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',
@@ -95,7 +91,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               size: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'size',
@@ -104,7 +99,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               family: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'family',
@@ -113,7 +107,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -122,7 +115,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               capacity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'capacity',
@@ -132,14 +124,12 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               locations: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -149,14 +139,12 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               api_versions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'apiVersions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -166,14 +154,12 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               costs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'costs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceSkuCostsElementType',
                       type: {
@@ -184,14 +170,12 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               capabilities: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'capabilities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceSkuCapabilitiesElementType',
                       type: {
@@ -202,14 +186,12 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               restrictions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'restrictions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceSkuRestrictionsElementType',
                       type: {

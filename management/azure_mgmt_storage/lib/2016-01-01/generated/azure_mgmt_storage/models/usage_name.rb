@@ -25,7 +25,6 @@ module Azure::Storage::Mgmt::V2016_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UsageName',
           type: {
@@ -33,7 +32,6 @@ module Azure::Storage::Mgmt::V2016_01_01
             class_name: 'UsageName',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
@@ -42,7 +40,6 @@ module Azure::Storage::Mgmt::V2016_01_01
                 }
               },
               localized_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'localizedValue',

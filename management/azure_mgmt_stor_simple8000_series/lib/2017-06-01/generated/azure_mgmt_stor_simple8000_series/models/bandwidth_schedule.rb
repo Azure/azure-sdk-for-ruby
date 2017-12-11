@@ -32,7 +32,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BandwidthSchedule',
           type: {
@@ -40,7 +39,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BandwidthSchedule',
             model_properties: {
               start: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'start',
                 type: {
@@ -49,7 +47,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               stop: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'stop',
                 type: {
@@ -58,7 +55,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               rate_in_mbps: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'rateInMbps',
                 type: {
@@ -66,13 +62,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               days: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'days',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DayOfWeekElementType',
                       type: {

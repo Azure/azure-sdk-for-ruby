@@ -178,7 +178,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
-      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
 
 
       request_headers = {}
@@ -295,7 +294,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
-      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'certificate_description is nil' if certificate_description.nil?
 
 
@@ -423,7 +421,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
-      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
@@ -526,7 +523,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
-      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
@@ -645,7 +641,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
-      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'certificate_verification_body is nil' if certificate_verification_body.nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 

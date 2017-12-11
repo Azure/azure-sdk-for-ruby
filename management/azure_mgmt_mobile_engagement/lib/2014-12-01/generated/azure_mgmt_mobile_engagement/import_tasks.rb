@@ -120,9 +120,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
       fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '40'" if !top.nil? && top > 40
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}

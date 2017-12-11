@@ -38,7 +38,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AvailabilitySet',
           type: {
@@ -46,7 +45,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'AvailabilitySet',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,7 +53,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -64,7 +61,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -73,7 +69,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -81,13 +76,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -97,7 +90,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               platform_update_domain_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.platformUpdateDomainCount',
                 type: {
@@ -105,7 +97,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               platform_fault_domain_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.platformFaultDomainCount',
                 type: {
@@ -113,13 +104,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               virtual_machines: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachines',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -130,14 +119,12 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               statuses: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
@@ -148,7 +135,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               managed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.managed',
                 type: {
@@ -156,7 +142,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

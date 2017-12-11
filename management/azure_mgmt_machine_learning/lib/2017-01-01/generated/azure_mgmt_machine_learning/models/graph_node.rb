@@ -35,7 +35,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GraphNode',
           type: {
@@ -43,7 +42,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'GraphNode',
             model_properties: {
               asset_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'assetId',
                 type: {
@@ -51,7 +49,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               input_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputId',
                 type: {
@@ -59,7 +56,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               output_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputId',
                 type: {
@@ -67,13 +63,11 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WebServiceParameterElementType',
                       type: {

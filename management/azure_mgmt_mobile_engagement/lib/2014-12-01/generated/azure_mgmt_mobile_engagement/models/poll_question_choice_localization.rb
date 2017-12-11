@@ -23,7 +23,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PollQuestionChoiceLocalization',
           type: {
@@ -31,7 +30,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'PollQuestionChoiceLocalization',
             model_properties: {
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 constraints: {

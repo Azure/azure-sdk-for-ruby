@@ -47,7 +47,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackupPolicy',
           type: {
@@ -55,7 +54,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BackupPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -64,7 +62,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,7 +70,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,7 +78,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -91,13 +86,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_ids: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.volumeIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -107,7 +100,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               next_backup_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nextBackupTime',
@@ -116,7 +108,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               last_backup_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastBackupTime',
@@ -125,7 +116,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               schedules_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.schedulesCount',
@@ -134,7 +124,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               scheduled_backup_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.scheduledBackupStatus',
@@ -144,7 +133,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_policy_creation_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.backupPolicyCreationType',
@@ -154,7 +142,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               ssm_host_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.ssmHostName',

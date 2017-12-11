@@ -11,6 +11,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     module ProvisioningState
       Creating = "Creating"
       ResolvingDNS = "ResolvingDNS"
+      Moving = "Moving"
+      Deleting = "Deleting"
       Succeeded = "Succeeded"
       Failed = "Failed"
     end

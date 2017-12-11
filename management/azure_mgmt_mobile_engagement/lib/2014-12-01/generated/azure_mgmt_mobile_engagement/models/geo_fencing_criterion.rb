@@ -44,7 +44,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'geo-fencing',
           type: {
@@ -52,7 +51,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'GeoFencingCriterion',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -60,7 +58,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               lat: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lat',
                 type: {
@@ -68,7 +65,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               lon: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lon',
                 type: {
@@ -76,7 +72,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               radius: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'radius',
                 type: {
@@ -84,7 +79,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               expiration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expiration',
                 type: {

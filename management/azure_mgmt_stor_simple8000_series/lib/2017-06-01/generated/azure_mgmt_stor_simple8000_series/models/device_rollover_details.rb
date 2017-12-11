@@ -36,7 +36,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceRolloverDetails',
           type: {
@@ -44,7 +43,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DeviceRolloverDetails',
             model_properties: {
               authorization_eligibility: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationEligibility',
                 type: {
@@ -53,7 +51,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               authorization_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationStatus',
                 type: {
@@ -62,7 +59,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               in_eligibility_reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inEligibilityReason',
                 type: {

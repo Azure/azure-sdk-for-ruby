@@ -30,7 +30,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignPushResult',
           type: {
@@ -38,13 +37,11 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignPushResult',
             model_properties: {
               invalid_device_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'invalidDeviceIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

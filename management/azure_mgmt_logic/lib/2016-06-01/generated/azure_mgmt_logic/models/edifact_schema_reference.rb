@@ -40,7 +40,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactSchemaReference',
           type: {
@@ -48,7 +47,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactSchemaReference',
             model_properties: {
               message_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageId',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageVersion',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_release: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageRelease',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_application_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderApplicationId',
                 type: {
@@ -80,7 +75,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_application_qualifier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderApplicationQualifier',
                 type: {
@@ -88,7 +82,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               association_assigned_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'associationAssignedCode',
                 type: {
@@ -96,7 +89,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               schema_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'schemaName',
                 type: {

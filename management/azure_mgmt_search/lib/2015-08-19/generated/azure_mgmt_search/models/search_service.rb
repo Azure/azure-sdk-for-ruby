@@ -78,7 +78,6 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SearchService',
           type: {
@@ -86,7 +85,6 @@ module Azure::Search::Mgmt::V2015_08_19
             class_name: 'SearchService',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -95,7 +93,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -104,7 +101,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -113,7 +109,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -121,13 +116,11 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -137,7 +130,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               replica_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.replicaCount',
                 default_value: 1,
@@ -150,7 +142,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               partition_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partitionCount',
                 default_value: 1,
@@ -163,7 +154,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               hosting_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostingMode',
                 default_value: 'default',
@@ -173,7 +163,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -183,7 +172,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               status_details: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.statusDetails',
@@ -192,7 +180,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -202,7 +189,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
