@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Storage::Mgmt::V2015_06_15
+module Azure::Storage::Mgmt::V2017_10_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,9 +17,9 @@ module Azure::Storage::Mgmt::V2015_06_15
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Subscription credentials which uniquely identify the
-    # Microsoft Azure subscription. The subscription ID forms part of the URI
-    # for every service call.
+    # @return [String] Gets subscription credentials which uniquely identify
+    # the Microsoft Azure subscription. The subscription ID forms part of the
+    # URI for every service call.
     attr_accessor :subscription_id
 
     # @return [String] Client Api Version.
@@ -35,6 +35,12 @@ module Azure::Storage::Mgmt::V2015_06_15
     # @return [Boolean] When set to true a unique x-ms-client-request-id value
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
+
+    # @return [Operations] operations
+    attr_reader :operations
+
+    # @return [Skus] skus
+    attr_reader :skus
 
     # @return [StorageAccounts] storage_accounts
     attr_reader :storage_accounts
@@ -55,9 +61,11 @@ module Azure::Storage::Mgmt::V2015_06_15
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
+      @skus = Skus.new(self)
       @storage_accounts = StorageAccounts.new(self)
       @usage_operations = UsageOperations.new(self)
-      @api_version = '2015-06-15'
+      @api_version = '2017-10-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
