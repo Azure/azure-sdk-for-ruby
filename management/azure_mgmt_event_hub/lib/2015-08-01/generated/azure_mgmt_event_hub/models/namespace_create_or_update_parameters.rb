@@ -53,7 +53,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NamespaceCreateOrUpdateParameters',
           type: {
@@ -61,7 +60,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'NamespaceCreateOrUpdateParameters',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -69,7 +67,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -78,13 +75,11 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -94,7 +89,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -103,7 +97,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -111,7 +104,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               created_at: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdAt',
                 type: {
@@ -119,7 +111,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               updated_at: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.updatedAt',
                 type: {
@@ -127,7 +118,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               service_bus_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceBusEndpoint',
                 type: {
@@ -135,7 +125,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               metric_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.metricId',
@@ -144,7 +133,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enabled',
                 type: {
