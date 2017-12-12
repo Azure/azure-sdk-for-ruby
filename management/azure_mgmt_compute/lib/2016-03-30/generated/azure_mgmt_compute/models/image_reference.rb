@@ -33,7 +33,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageReference',
           type: {
@@ -41,7 +40,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'ImageReference',
             model_properties: {
               publisher: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'publisher',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               offer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'offer',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -65,7 +61,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {
