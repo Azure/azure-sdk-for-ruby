@@ -1,3 +1,7 @@
+## 2017.12.12 - Azure ARM Storage release version 0.15.2
+
+* Updated azure_mgmt_storage to include latest API version 2017-10-01, sdk using [Autorest.2.0.4215](https://www.npmjs.com/package/autorest) (core) and Autorest Ruby 3.1.26.
+
 ## 2017.12.06
 
 * Regened azure_mgmt_consumption, version 0.15.2, sdk using [Autorest.2.0.4215](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.3.0.20](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby). The azure_mgmt_consumption sdk includes the new version of 2017-11-30.

@@ -1,5 +1,5 @@
 {
     "management": [
-        "azure_mgmt_consumption"
+        "azure_mgmt_storage"
     ]
 }

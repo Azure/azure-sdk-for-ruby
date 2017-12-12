@@ -685,6 +685,11 @@
     }
   },
   "azure_mgmt_storage": {
+    "azure_mgmt_storage_2017_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cd7dcd35d27b4dd6b5a7344bd0a6a2124ac36f5/specification/storage/resource-manager/readme.md",
+      "namespace": "Azure::Storage::Mgmt::V2017_10_01",
+      "tag": "package-2017-10"
+    },
     "azure_mgmt_storage_2017_06_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2017_06_01",
