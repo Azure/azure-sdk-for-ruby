@@ -1303,6 +1303,18 @@
       "generated_relative_base_directory": "2017-06-01",
       "build_dir": "management/azure_mgmt_stor_simple8000_series/lib/2017-06-01"
     },
+    "azure_mgmt_storage_2017_10_01": {
+      "markdown": "specification/storage/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::Storage::Mgmt::V2017_10_01",
+        "package-version": "0.15.2",
+        "package-name": "azure_mgmt_storage",
+        "tag": "package-2017-10"
+      },
+      "output_dir": "management/azure_mgmt_storage/lib/2017-10-01",
+      "generated_relative_base_directory": "2017-10-01",
+      "build_dir": "management/azure_mgmt_storage/lib/2017-10-01"
+    },
     "azure_mgmt_storage_2017_06_01": {
       "markdown": "specification/storage/resource-manager/readme.md",
       "autorest_options": {

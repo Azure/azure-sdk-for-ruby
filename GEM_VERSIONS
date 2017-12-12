@@ -55,7 +55,7 @@
         "azure_mgmt_service_fabric": "0.15.1",
         "azure_mgmt_sql": "0.15.1",
         "azure_mgmt_stor_simple8000_series": "0.15.1",
-        "azure_mgmt_storage": "0.15.1",
+        "azure_mgmt_storage": "0.15.2",
         "azure_mgmt_stream_analytics": "0.15.1",
         "azure_mgmt_subscriptions": "0.15.1",
         "azure_mgmt_traffic_manager": "0.15.1",

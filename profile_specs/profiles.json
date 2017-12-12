@@ -204,7 +204,7 @@
                     "2017-06-01": ["*"]
                 },
                 "Microsoft.Storage": {
-                    "2017-06-01": ["*"]
+                    "2017-10-01": ["*"]
                 },
                 "Microsoft.StreamAnalytics": {
                     "2016-03-01": ["*"]
@@ -948,7 +948,7 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Storage" : {
-                    "2017-06-01": ["*"]
+                    "2017-10-01": ["*"]
                 }
             },
             "output_dir": "management/azure_mgmt_storage/lib/profiles",
