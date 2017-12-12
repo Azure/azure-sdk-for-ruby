@@ -22,7 +22,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UsageListResult',
           type: {
@@ -30,13 +29,11 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
             class_name: 'UsageListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UsageElementType',
                       type: {
