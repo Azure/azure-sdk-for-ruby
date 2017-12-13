@@ -46,7 +46,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataDisk',
           type: {
@@ -54,7 +53,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'DataDisk',
             model_properties: {
               lun: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lun',
                 type: {
@@ -62,7 +60,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -70,7 +67,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               vhd: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'vhd',
                 type: {
@@ -79,7 +75,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'image',
                 type: {
@@ -88,7 +83,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -97,7 +91,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               create_option: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -106,7 +99,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {

@@ -45,7 +45,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OSProfile',
           type: {
@@ -53,7 +52,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'OSProfile',
             model_properties: {
               computer_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'computerName',
                 type: {
@@ -61,7 +59,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               admin_username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adminUsername',
                 type: {
@@ -69,7 +66,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               admin_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adminPassword',
                 type: {
@@ -77,7 +73,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               custom_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customData',
                 type: {
@@ -85,7 +80,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               windows_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'windowsConfiguration',
                 type: {
@@ -94,7 +88,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               linux_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'linuxConfiguration',
                 type: {
@@ -103,13 +96,11 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               secrets: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secrets',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultSecretGroupElementType',
                       type: {

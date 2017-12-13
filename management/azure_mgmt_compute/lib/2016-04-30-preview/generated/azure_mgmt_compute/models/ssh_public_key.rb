@@ -30,7 +30,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SshPublicKey',
           type: {
@@ -38,7 +37,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'SshPublicKey',
             model_properties: {
               path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               key_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyData',
                 type: {

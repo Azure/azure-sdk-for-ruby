@@ -32,7 +32,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AvailabilitySet',
           type: {
@@ -40,7 +39,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'AvailabilitySet',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,7 +47,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -58,7 +55,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,7 +63,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -75,13 +70,11 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,7 +84,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               platform_update_domain_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.platformUpdateDomainCount',
                 type: {
@@ -99,7 +91,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               platform_fault_domain_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.platformFaultDomainCount',
                 type: {
@@ -107,13 +98,11 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               virtual_machines: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachines',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -124,14 +113,12 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               statuses: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
