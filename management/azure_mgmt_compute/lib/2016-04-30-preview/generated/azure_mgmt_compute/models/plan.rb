@@ -31,7 +31,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Plan',
           type: {
@@ -39,7 +38,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'Plan',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               publisher: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'publisher',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               product: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'product',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               promotion_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'promotionCode',
                 type: {

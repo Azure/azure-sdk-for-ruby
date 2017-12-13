@@ -22,7 +22,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AvailabilitySetListResult',
           type: {
@@ -30,13 +29,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'AvailabilitySetListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AvailabilitySetElementType',
                       type: {
