@@ -169,6 +169,11 @@
     "namespace": "Azure::Monitor::Mgmt",
     "module_require": "azure_mgmt_monitor"
   },
+  "Microsoft.ManagedServiceIdentity": {
+    "path": "management/azure_mgmt_msi",
+    "namespace": "Azure::ManagedServiceIdentity::Mgmt",
+    "module_require": "azure_mgmt_msi"
+  },
   "Microsoft.Network": {
     "path": "management/azure_mgmt_network",
     "namespace": "Azure::Network::Mgmt",

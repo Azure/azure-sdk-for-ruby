@@ -36,6 +36,7 @@
         "azure_mgmt_media_services": "0.15.1",
         "azure_mgmt_mobile_engagement": "0.15.1",
         "azure_mgmt_monitor": "0.15.1",
+        "azure_mgmt_msi": "0.15.2",
         "azure_mgmt_network": "0.15.1",
         "azure_mgmt_notification_hubs": "0.15.1",
         "azure_mgmt_operational_insights": "0.15.1",

@@ -388,6 +388,13 @@
       "namespace": "Azure::Monitor::Mgmt::V2015_04_01"
     }
   },
+  "azure_mgmt_msi": {
+    "azure_mgmt_msi_2015_08_31_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/13291dd9244584a66de3c53cc1a85998efd288b3/specification/msi/resource-manager/readme.md",
+      "namespace": "Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview",
+      "tag": "package-2015-08-31-preview"
+    }
+  },
   "azure_mgmt_network": {
     "azure_mgmt_network_2017_09_01": {
       "input-file": [

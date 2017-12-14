@@ -728,6 +728,18 @@
       "generated_relative_base_directory": "2015-04-01",
       "build_dir": "management/azure_mgmt_monitor/lib/2015-04-01"
     },
+    "azure_mgmt_msi_2015_08_31_preview": {
+      "markdown": "specification/msi/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview",
+        "package-version": "0.15.2",
+        "package-name": "azure_mgmt_msi",
+        "tag": "package-2015-08-31-preview"
+      },
+      "output_dir": "management/azure_mgmt_msi/lib/2015-08-31-preview",
+      "generated_relative_base_directory": "2015-08-31-preview",
+      "build_dir": "management/azure_mgmt_msi/lib/2015-08-31-preview"
+    },
     "azure_mgmt_network_2017_09_01": {
       "autorest_options": {
         "namespace": "Azure::Network::Mgmt::V2017_09_01",

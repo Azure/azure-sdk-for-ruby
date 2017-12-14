@@ -1,3 +1,7 @@
+## 2017.12.14 - Azure ARM MSI gem release version 0.15.2
+
+* Adding new gem for azure_mgmt_msi, generated SDK using [Autorest.2.0.4215](https://www.npmjs.com/package/autorest) (core) and Autorest Ruby 3.1.26.
+
 ## 2017.12.12 - Azure ARM Storage release version 0.15.2
 
 * Updated azure_mgmt_storage to include latest API version 2017-10-01, sdk using [Autorest.2.0.4215](https://www.npmjs.com/package/autorest) (core) and Autorest Ruby 3.1.26.
