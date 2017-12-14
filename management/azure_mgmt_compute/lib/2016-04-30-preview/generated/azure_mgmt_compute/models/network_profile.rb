@@ -6,14 +6,14 @@
 module Azure::Compute::Mgmt::V2016_04_30_preview
   module Models
     #
-    # Describes a network profile.
+    # Specifies the network interfaces of the virtual machine.
     #
     class NetworkProfile
 
       include MsRestAzure
 
       # @return [Array<NetworkInterfaceReference>] Specifies the list of
-      # resource IDs for the network interfaces associated with the virtual
+      # resource Ids for the network interfaces associated with the virtual
       # machine.
       attr_accessor :network_interfaces
 
@@ -24,7 +24,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkProfile',
           type: {
@@ -32,13 +31,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'NetworkProfile',
             model_properties: {
               network_interfaces: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaces',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkInterfaceReferenceElementType',
                       type: {

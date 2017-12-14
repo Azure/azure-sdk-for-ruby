@@ -12,8 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
-      # @return [String] The virtual hard disk's URI. Must be a valid URI to a
-      # virtual hard disk.
+      # @return [String] Specifies the virtual hard disk's uri.
       attr_accessor :uri
 
 
@@ -23,7 +22,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualHardDisk',
           type: {
@@ -31,7 +29,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualHardDisk',
             model_properties: {
               uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {
