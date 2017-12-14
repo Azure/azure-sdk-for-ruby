@@ -139,6 +139,9 @@
                     "2017-04-01": ["*"],
                     "2017-05-01-preview": ["*"]
                 },
+                "Microsoft.ManagedServiceIdentity": {
+                    "2015-08-31-preview": ["*"]
+                },
                 "Microsoft.Network": {
                     "2017-09-01": ["*"]
                 },
@@ -667,6 +670,18 @@
             "output_dir": "management/azure_mgmt_monitor/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_msi": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.ManagedServiceIdentity" : {
+                        "2015-08-31-preview": ["*"]
+                    }
+                },
+                "output_dir": "management/azure_mgmt_msi/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_network": [
         {

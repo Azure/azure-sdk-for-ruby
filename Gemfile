@@ -45,6 +45,7 @@ gem 'azure_mgmt_marketplace_ordering',      path: 'management/azure_mgmt_marketp
 gem 'azure_mgmt_media_services',            path: 'management/azure_mgmt_media_services'
 gem 'azure_mgmt_mobile_engagement',         path: 'management/azure_mgmt_mobile_engagement'
 gem 'azure_mgmt_monitor',                   path: 'management/azure_mgmt_monitor'
+gem 'azure_mgmt_msi',                       path: 'management/azure_mgmt_msi'
 gem 'azure_mgmt_network',                   path: 'management/azure_mgmt_network'
 gem 'azure_mgmt_notification_hubs',         path: 'management/azure_mgmt_notification_hubs'
 gem 'azure_mgmt_operational_insights',      path: 'management/azure_mgmt_operational_insights'
