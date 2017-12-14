@@ -36,6 +36,7 @@ require 'latest/modules/marketplaceordering_profile_module'
 require 'latest/modules/mediaservices_profile_module'
 require 'latest/modules/mobileengagement_profile_module'
 require 'latest/modules/monitor_profile_module'
+require 'latest/modules/managedserviceidentity_profile_module'
 require 'latest/modules/network_profile_module'
 require 'latest/modules/notificationhubs_profile_module'
 require 'latest/modules/operationalinsights_profile_module'
@@ -68,7 +69,7 @@ module Azure::Profiles::Latest::Mgmt
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :analysis_services, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :mobile_engagement, :monitor, :network, :notification_hubs, :operational_insights, :policy, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :server_management, :service_bus, :service_fabric, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web
+    attr_reader  :analysis_services, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :mobile_engagement, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :server_management, :service_bus, :service_fabric, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -112,6 +113,7 @@ module Azure::Profiles::Latest::Mgmt
       @media_services = Azure::Profiles::Latest::MediaServices::Mgmt::MediaServicesClass.new(self)
       @mobile_engagement = Azure::Profiles::Latest::MobileEngagement::Mgmt::MobileEngagementClass.new(self)
       @monitor = Azure::Profiles::Latest::Monitor::Mgmt::MonitorClass.new(self)
+      @managed_service_identity = Azure::Profiles::Latest::ManagedServiceIdentity::Mgmt::ManagedServiceIdentityClass.new(self)
       @network = Azure::Profiles::Latest::Network::Mgmt::NetworkClass.new(self)
       @notification_hubs = Azure::Profiles::Latest::NotificationHubs::Mgmt::NotificationHubsClass.new(self)
       @operational_insights = Azure::Profiles::Latest::OperationalInsights::Mgmt::OperationalInsightsClass.new(self)

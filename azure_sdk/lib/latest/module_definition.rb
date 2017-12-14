@@ -72,6 +72,8 @@ module Azure::Profiles::Latest::MobileEngagement end
 module Azure::Profiles::Latest::MobileEngagement::Mgmt end
 module Azure::Profiles::Latest::Monitor end
 module Azure::Profiles::Latest::Monitor::Mgmt end
+module Azure::Profiles::Latest::ManagedServiceIdentity end
+module Azure::Profiles::Latest::ManagedServiceIdentity::Mgmt end
 module Azure::Profiles::Latest::Network end
 module Azure::Profiles::Latest::Network::Mgmt end
 module Azure::Profiles::Latest::NotificationHubs end
