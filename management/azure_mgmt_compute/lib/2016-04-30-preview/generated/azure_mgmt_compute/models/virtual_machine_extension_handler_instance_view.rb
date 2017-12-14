@@ -12,11 +12,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
-      # @return [String] Full type of the extension handler which includes both
-      # publisher and type.
+      # @return [String] Specifies the type of the extension; an example is
+      # "CustomScriptExtension".
       attr_accessor :type
 
-      # @return [String] The type version of the extension handler.
+      # @return [String] Specifies the version of the script handler.
       attr_accessor :type_handler_version
 
       # @return [InstanceViewStatus] The extension handler status.
@@ -30,7 +30,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtensionHandlerInstanceView',
           type: {
@@ -38,7 +37,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineExtensionHandlerInstanceView',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               type_handler_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'typeHandlerVersion',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

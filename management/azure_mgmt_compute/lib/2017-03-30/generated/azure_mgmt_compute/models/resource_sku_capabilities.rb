@@ -25,7 +25,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuCapabilities',
           type: {
@@ -33,7 +32,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ResourceSkuCapabilities',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -42,7 +40,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',

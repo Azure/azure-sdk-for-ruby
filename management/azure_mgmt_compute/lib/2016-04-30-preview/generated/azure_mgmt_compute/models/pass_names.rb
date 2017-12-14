@@ -9,7 +9,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Defines values for PassNames
     #
     module PassNames
-      OobeSystem = "oobeSystem"
+      OobeSystem = "OobeSystem"
     end
   end
 end

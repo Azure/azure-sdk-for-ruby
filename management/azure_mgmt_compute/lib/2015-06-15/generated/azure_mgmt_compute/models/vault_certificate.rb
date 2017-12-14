@@ -13,12 +13,24 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
-      # @return [String] The URL referencing a secret in a Key Vault which
-      # contains a properly formatted certificate.
+      # @return [String] This is the URL of a certificate that has been
+      # uploaded to Key Vault as a secret. For adding a secret to the Key
+      # Vault, see [Add a key or secret to the key
+      # vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+      # In this case, your certificate needs to be It is the Base64 encoding of
+      # the following JSON Object which is encoded in UTF-8: <br><br> {<br>
+      # "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+      # "password":"<pfx-file-password>"<br>}
       attr_accessor :certificate_url
 
-      # @return [String] The Certificate store in LocalMachine to add the
-      # certificate to on Windows, leave empty on Linux.
+      # @return [String] For Windows VMs, specifies the certificate store on
+      # the Virtual Machine to which the certificate should be added. The
+      # specified certificate store is implicitly in the LocalMachine account.
+      # <br><br>For Linux VMs, the certificate file is placed under the
+      # /var/lib/waagent directory, with the file name
+      # <UppercaseThumbprint>.crt for the X509 certificate file and
+      # <UppercaseThumbpring>.prv for private key. Both of these files are .pem
+      # formatted.
       attr_accessor :certificate_store
 
 
@@ -28,7 +40,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultCertificate',
           type: {
@@ -36,7 +47,6 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VaultCertificate',
             model_properties: {
               certificate_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateUrl',
                 type: {
@@ -44,7 +54,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               certificate_store: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateStore',
                 type: {
