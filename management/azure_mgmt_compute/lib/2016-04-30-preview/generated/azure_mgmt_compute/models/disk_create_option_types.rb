@@ -9,9 +9,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Defines values for DiskCreateOptionTypes
     #
     module DiskCreateOptionTypes
-      FromImage = "fromImage"
-      Empty = "empty"
-      Attach = "attach"
+      FromImage = "FromImage"
+      Empty = "Empty"
+      Attach = "Attach"
     end
   end
 end

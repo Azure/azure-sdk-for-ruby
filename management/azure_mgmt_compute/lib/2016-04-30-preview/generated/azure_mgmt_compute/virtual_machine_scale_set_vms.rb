@@ -67,9 +67,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     end
 
     #
-    # Allows you to re-image all the disks ( including data disks ) in the a
-    # virtual machine scale set instance. This operation is only supported for
-    # managed disks.
+    # Allows you to re-image all the disks ( including data disks ) in the a VM
+    # scale set instance. This operation is only supported for managed disks.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -726,9 +725,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     end
 
     #
-    # Allows you to re-image all the disks ( including data disks ) in the a
-    # virtual machine scale set instance. This operation is only supported for
-    # managed disks.
+    # Allows you to re-image all the disks ( including data disks ) in the a VM
+    # scale set instance. This operation is only supported for managed disks.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -744,9 +742,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     end
 
     #
-    # Allows you to re-image all the disks ( including data disks ) in the a
-    # virtual machine scale set instance. This operation is only supported for
-    # managed disks.
+    # Allows you to re-image all the disks ( including data disks ) in the a VM
+    # scale set instance. This operation is only supported for managed disks.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -761,9 +758,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     end
 
     #
-    # Allows you to re-image all the disks ( including data disks ) in the a
-    # virtual machine scale set instance. This operation is only supported for
-    # managed disks.
+    # Allows you to re-image all the disks ( including data disks ) in the a VM
+    # scale set instance. This operation is only supported for managed disks.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.

@@ -15,10 +15,13 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [String] The sku name.
       attr_accessor :name
 
-      # @return [String] The sku tier.
+      # @return [String] Specifies the tier of virtual machines in a scale
+      # set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+      # **Basic**
       attr_accessor :tier
 
-      # @return [Integer] The sku capacity.
+      # @return [Integer] Specifies the number of virtual machines in the scale
+      # set.
       attr_accessor :capacity
 
 
@@ -28,7 +31,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -36,7 +38,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'Sku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +45,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -52,7 +52,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               capacity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {
