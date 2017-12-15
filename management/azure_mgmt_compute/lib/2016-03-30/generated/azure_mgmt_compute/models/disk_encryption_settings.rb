@@ -12,12 +12,12 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
-      # @return [KeyVaultSecretReference] The disk encryption key which is a
-      # Key Vault Secret.
+      # @return [KeyVaultSecretReference] Specifies the location of the disk
+      # encryption key, which is a Key Vault Secret.
       attr_accessor :disk_encryption_key
 
-      # @return [KeyVaultKeyReference] The key encryption key which is Key
-      # Vault Key.
+      # @return [KeyVaultKeyReference] Specifies the location of the key
+      # encryption key in Key Vault.
       attr_accessor :key_encryption_key
 
       # @return [Boolean] Specifies whether disk encryption should be enabled
@@ -31,7 +31,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiskEncryptionSettings',
           type: {
@@ -39,7 +38,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'DiskEncryptionSettings',
             model_properties: {
               disk_encryption_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskEncryptionKey',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               key_encryption_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyEncryptionKey',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
