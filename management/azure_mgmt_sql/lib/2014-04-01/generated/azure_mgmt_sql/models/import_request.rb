@@ -17,13 +17,21 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       # @return [DatabaseEdition] The edition for the database being created.
       # Possible values include: 'Web', 'Business', 'Basic', 'Standard',
-      # 'Premium', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
+      # 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
+      # 'System2'
       attr_accessor :edition
 
       # @return [ServiceObjectiveName] The name of the service objective to
-      # assign to the database. Possible values include: 'Basic', 'S0', 'S1',
-      # 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System',
-      # 'System2', 'ElasticPool'
+      # assign to the database. Possible values include: 'System', 'System0',
+      # 'System1', 'System2', 'System3', 'System4', 'System2L', 'System3L',
+      # 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7',
+      # 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
+      # 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
+      # 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+      # 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c',
+      # 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100',
+      # 'DS200', 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200',
+      # 'DS1500', 'DS2000', 'ElasticPool'
       attr_accessor :service_objective_name
 
       # @return [String] The maximum size for the newly imported database.
@@ -36,7 +44,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportRequest',
           type: {
@@ -44,7 +51,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ImportRequest',
             model_properties: {
               storage_key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageKeyType',
                 type: {
@@ -53,7 +59,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_key: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageKey',
                 type: {
@@ -61,7 +66,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageUri',
                 type: {
@@ -69,7 +73,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'administratorLogin',
                 type: {
@@ -77,7 +80,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login_password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'administratorLoginPassword',
                 type: {
@@ -85,7 +87,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               authentication_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authenticationType',
                 default_value: 'SQL',
@@ -95,7 +96,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'databaseName',
                 type: {
@@ -103,7 +103,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               edition: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'edition',
                 type: {
@@ -111,7 +110,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_objective_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'serviceObjectiveName',
                 type: {
@@ -119,7 +117,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_size_bytes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'maxSizeBytes',
                 type: {
