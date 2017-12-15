@@ -48,7 +48,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverGroup',
           type: {
@@ -56,7 +55,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'FailoverGroup',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,7 +63,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -74,7 +71,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -83,7 +79,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -92,13 +87,11 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,7 +101,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               read_write_endpoint: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.readWriteEndpoint',
                 type: {
@@ -117,7 +109,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               read_only_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.readOnlyEndpoint',
                 type: {
@@ -126,7 +117,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               replication_role: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.replicationRole',
@@ -135,7 +125,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               replication_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.replicationState',
@@ -144,13 +133,11 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               partner_servers: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.partnerServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PartnerInfoElementType',
                       type: {
@@ -161,13 +148,11 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               databases: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databases',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
