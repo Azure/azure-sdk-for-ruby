@@ -10,48 +10,45 @@
 module Azure::Consumption::Mgmt::V2017_11_30
   module Models
     #
-    # A Consumption REST API operation.
+    # Result of listing reservation details.
     #
-    class Operation
+    class ReservationDetailsListResult
 
       include MsRestAzure
 
-      # @return [String] Operation name: {provider}/{resource}/{operation}.
-      attr_accessor :name
-
-      # @return [OperationDisplay] The object that represents the operation.
-      attr_accessor :display
+      # @return [Array<ReservationDetails>] The list of reservation details.
+      attr_accessor :value
 
 
       #
-      # Mapper for Operation class as Ruby Hash.
+      # Mapper for ReservationDetailsListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Operation',
+          serialized_name: 'ReservationDetailsListResult',
           type: {
             name: 'Composite',
-            class_name: 'Operation',
+            class_name: 'ReservationDetailsListResult',
             model_properties: {
-              name: {
+              value: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'value',
                 type: {
-                  name: 'String'
-                }
-              },
-              display: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'display',
-                type: {
-                  name: 'Composite',
-                  class_name: 'OperationDisplay'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ReservationDetailsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ReservationDetails'
+                      }
+                  }
                 }
               }
             }

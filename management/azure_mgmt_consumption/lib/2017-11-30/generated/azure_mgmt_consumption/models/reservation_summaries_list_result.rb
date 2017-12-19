@@ -10,48 +10,46 @@
 module Azure::Consumption::Mgmt::V2017_11_30
   module Models
     #
-    # A Consumption REST API operation.
+    # Result of listing reservation summaries.
     #
-    class Operation
+    class ReservationSummariesListResult
 
       include MsRestAzure
 
-      # @return [String] Operation name: {provider}/{resource}/{operation}.
-      attr_accessor :name
-
-      # @return [OperationDisplay] The object that represents the operation.
-      attr_accessor :display
+      # @return [Array<ReservationSummaries>] The list of reservation
+      # summaries.
+      attr_accessor :value
 
 
       #
-      # Mapper for Operation class as Ruby Hash.
+      # Mapper for ReservationSummariesListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Operation',
+          serialized_name: 'ReservationSummariesListResult',
           type: {
             name: 'Composite',
-            class_name: 'Operation',
+            class_name: 'ReservationSummariesListResult',
             model_properties: {
-              name: {
+              value: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'value',
                 type: {
-                  name: 'String'
-                }
-              },
-              display: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'display',
-                type: {
-                  name: 'Composite',
-                  class_name: 'OperationDisplay'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ReservationSummariesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ReservationSummaries'
+                      }
+                  }
                 }
               }
             }
