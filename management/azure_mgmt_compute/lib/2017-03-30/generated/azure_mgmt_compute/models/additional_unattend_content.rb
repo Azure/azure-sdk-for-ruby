@@ -16,7 +16,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       include MsRestAzure
 
       # @return [PassNames] The pass name. Currently, the only allowable value
-      # is oobeSystem. Possible values include: 'OobeSystem'
+      # is OobeSystem. Possible values include: 'OobeSystem'
       attr_accessor :pass_name
 
       # @return [ComponentNames] The component name. Currently, the only

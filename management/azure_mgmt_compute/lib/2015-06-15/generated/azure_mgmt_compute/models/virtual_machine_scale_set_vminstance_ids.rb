@@ -13,6 +13,9 @@ module Azure::Compute::Mgmt::V2015_06_15
       include MsRestAzure
 
       # @return [Array<String>] The virtual machine scale set instance ids.
+      # Omitting the virtual machine scale set instance ids will result in the
+      # operation being performed on all virtual machines in the virtual
+      # machine scale set.
       attr_accessor :instance_ids
 
 

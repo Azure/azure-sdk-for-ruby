@@ -12,7 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
-      # @return [String] The URL referencing a key in a Key Vault.
+      # @return [String] The URL referencing a key encryption key in Key Vault.
       attr_accessor :key_url
 
       # @return [SubResource] The relative URL of the Key Vault containing the

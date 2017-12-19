@@ -154,6 +154,28 @@
       "generated_relative_base_directory": "2015-06-01-preview",
       "build_dir": "management/azure_mgmt_commerce/lib/2015-06-01-preview"
     },
+    "azure_mgmt_compute_2017_12_01": {
+      "autorest_options": {
+        "namespace": "Azure::Compute::Mgmt::V2017_12_01",
+        "package-version": "0.15.1",
+        "package-name": "azure_mgmt_compute",
+        "tag": "package-compute-only-2017-12"
+      },
+      "output_dir": "management/azure_mgmt_compute/lib/2017-12-01",
+      "generated_relative_base_directory": "2017-12-01",
+      "build_dir": "management/azure_mgmt_compute/lib/2017-12-01"
+    },
+    "azure_mgmt_compute_2017_09_01": {
+      "autorest_options": {
+        "namespace": "Azure::Compute::Mgmt::V2017_09_01",
+        "package-version": "0.15.1",
+        "package-name": "azure_mgmt_compute",
+        "tag": "package-skus-2017-09"
+      },
+      "output_dir": "management/azure_mgmt_compute/lib/2017-09-01",
+      "generated_relative_base_directory": "2017-09-01",
+      "build_dir": "management/azure_mgmt_compute/lib/2017-09-01"
+    },
     "azure_mgmt_compute_2017_03_30": {
       "autorest_options": {
         "namespace": "Azure::Compute::Mgmt::V2017_03_30",

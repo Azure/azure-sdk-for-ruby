@@ -12,8 +12,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
-      # @return [StorageAccountTypes] The Storage Account type. Possible values
-      # include: 'Standard_LRS', 'Premium_LRS'
+      # @return [StorageAccountTypes] Specifies the storage account type for
+      # the managed disk. Possible values are: Standard_LRS or Premium_LRS.
+      # Possible values include: 'Standard_LRS', 'Premium_LRS'
       attr_accessor :storage_account_type
 
 

@@ -12,7 +12,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
-      # @return [Integer] The logical unit number.
+      # @return [Integer] Specifies the logical unit number of the data disk.
+      # This value is used to identify data disks within the VM and therefore
+      # must be unique for each data disk attached to a VM.
       attr_accessor :lun
 
       # @return [SubResource] The snapshot.
@@ -24,12 +26,16 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [String] The Virtual Hard Disk.
       attr_accessor :blob_uri
 
-      # @return [CachingTypes] The caching type. Possible values include:
-      # 'None', 'ReadOnly', 'ReadWrite'
+      # @return [CachingTypes] Specifies the caching requirements. <br><br>
+      # Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+      # **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly
+      # for Premium storage**. Possible values include: 'None', 'ReadOnly',
+      # 'ReadWrite'
       attr_accessor :caching
 
-      # @return [Integer] The initial disk size in GB for blank data disks, and
-      # the new desired size for existing OS and Data disks.
+      # @return [Integer] Specifies the size of empty data disks in gigabytes.
+      # This element can be used to overwrite the name of the disk in a virtual
+      # machine image. <br><br> This value cannot be larger than 1023 GB
       attr_accessor :disk_size_gb
 
 

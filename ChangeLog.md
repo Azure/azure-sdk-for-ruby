@@ -1,3 +1,8 @@
+## 2017.12.19 - Azure ARM release version 0.15.2
+
+* Update azure_mgmt_compute gem to include latest api-versions supporting user assigned identity and ms_rest_azure dependency to 0.10.1
+* Releasing all gems non updated to depend on ms_rest_azure ~>0.10.0 to include this dependency.
+
 ## 2017.12.14 - Azure ARM MSI gem release version 0.15.2
 
 * Adding new gem for azure_mgmt_msi, generated SDK using [Autorest.2.0.4215](https://www.npmjs.com/package/autorest) (core) and Autorest Ruby 3.1.26.

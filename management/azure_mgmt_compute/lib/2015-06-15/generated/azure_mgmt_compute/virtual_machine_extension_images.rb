@@ -24,7 +24,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a virtual machine extension image.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param version [String]
@@ -41,7 +41,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a virtual machine extension image.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param version [String]
@@ -57,7 +57,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a virtual machine extension image.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param version [String]
@@ -123,7 +123,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a list of virtual machine extension image types.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -138,7 +138,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a list of virtual machine extension image types.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -152,7 +152,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a list of virtual machine extension image types.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -230,7 +230,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a list of virtual machine extension image versions.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param filter [String] The filter to apply on the operation.
@@ -249,7 +249,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a list of virtual machine extension image versions.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param filter [String] The filter to apply on the operation.
@@ -267,7 +267,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # Gets a list of virtual machine extension image versions.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param filter [String] The filter to apply on the operation.

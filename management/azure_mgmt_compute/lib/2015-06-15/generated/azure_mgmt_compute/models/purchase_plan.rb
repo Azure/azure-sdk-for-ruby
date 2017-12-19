@@ -19,7 +19,9 @@ module Azure::Compute::Mgmt::V2015_06_15
       # @return [String] The plan ID.
       attr_accessor :name
 
-      # @return [String] The product ID.
+      # @return [String] Specifies the product of the image from the
+      # marketplace. This is the same value as Offer under the imageReference
+      # element.
       attr_accessor :product
 
 

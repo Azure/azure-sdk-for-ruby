@@ -73,6 +73,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_media_services', "~>#{gem_versions['management']['azure_mgmt_media_services']}"
   spec.add_runtime_dependency 'azure_mgmt_mobile_engagement', "~>#{gem_versions['management']['azure_mgmt_mobile_engagement']}"
   spec.add_runtime_dependency 'azure_mgmt_monitor', "~>#{gem_versions['management']['azure_mgmt_monitor']}"
+  spec.add_runtime_dependency 'azure_mgmt_msi', "~>#{gem_versions['management']['azure_mgmt_msi']}"
   spec.add_runtime_dependency 'azure_mgmt_network', "~>#{gem_versions['management']['azure_mgmt_network']}"
   spec.add_runtime_dependency 'azure_mgmt_notification_hubs', "~>#{gem_versions['management']['azure_mgmt_notification_hubs']}"
   spec.add_runtime_dependency 'azure_mgmt_operational_insights', "~>#{gem_versions['management']['azure_mgmt_operational_insights']}"

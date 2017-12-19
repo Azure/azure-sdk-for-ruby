@@ -6,7 +6,8 @@
 module Azure::Compute::Mgmt::V2015_06_15
   module Models
     #
-    # A subresource
+    # Model object.
+    #
     #
     class SubResource
 
