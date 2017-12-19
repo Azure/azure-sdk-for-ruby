@@ -35,6 +35,29 @@ module MsRestAzure
       expect(settings.authentication_endpoint).to eq(settings.authentication_endpoint)
       expect(settings.token_audience).to eq(settings.token_audience)
     end
+
+    it 'should throw error if more than one value is passed to msi_id' do
+      expect { MSITokenProvider.new(50342, ActiveDirectoryServiceSettings.get_azure_settings, {:client_id => '1234', :object_id => '5678'}) }.to raise_error(ArgumentError)
+    end
+
+    it 'should set msi_id for user assigned identity - using client_id' do
+      id = '1234'
+      token_provider = MSITokenProvider.new(50342, ActiveDirectoryServiceSettings.get_azure_settings, {:client_id =>  id})
+      expect(token_provider.send('client_id')).to eq(id)
+    end
+
+    it 'should set msi_id for user assigned identity - using object_id' do
+      id = '1234'
+      token_provider = MSITokenProvider.new(50342, ActiveDirectoryServiceSettings.get_azure_settings, {:object_id => id})
+      expect(token_provider.send('object_id')).to eq(id)
+    end
+
+    it 'should set msi_id for user assigned identity - using msi_res_id' do
+      id = '1234'
+      token_provider = MSITokenProvider.new(50342, ActiveDirectoryServiceSettings.get_azure_settings, {:msi_res_id => id})
+      expect(token_provider.send('msi_res_id')).to eq(id)
+    end
+
   end
 
 end
