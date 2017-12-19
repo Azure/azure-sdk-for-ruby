@@ -7,7 +7,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module azure.mgmt.consumption
+module Azure::Consumption::Mgmt::V2017_11_30
   #
   # A service client - single point of access to the REST API.
   #
@@ -137,7 +137,7 @@ module azure.mgmt.consumption
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_consumption'
-        sdk_information = "#{sdk_information}/1.1.0"
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end

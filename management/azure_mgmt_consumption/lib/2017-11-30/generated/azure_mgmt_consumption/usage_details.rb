@@ -7,7 +7,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module azure.mgmt.consumption
+module Azure::Consumption::Mgmt::V2017_11_30
   #
   # Consumption management client provides access to consumption resources for
   # Azure Enterprise Subscriptions.
@@ -158,7 +158,7 @@ module azure.mgmt.consumption
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = azure.mgmt.consumption::Models::UsageDetailsListResult.mapper()
+            result_mapper = Azure::Consumption::Mgmt::V2017_11_30::Models::UsageDetailsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -248,7 +248,7 @@ module azure.mgmt.consumption
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = azure.mgmt.consumption::Models::UsageDetailsListResult.mapper()
+            result_mapper = Azure::Consumption::Mgmt::V2017_11_30::Models::UsageDetailsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

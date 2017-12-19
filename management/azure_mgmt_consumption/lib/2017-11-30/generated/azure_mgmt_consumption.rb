@@ -23,7 +23,7 @@ require 'ms_rest'
 require '2017-11-30/generated/azure_mgmt_consumption/module_definition'
 require 'ms_rest_azure'
 
-module azure.mgmt.consumption
+module Azure::Consumption::Mgmt::V2017_11_30
   autoload :UsageDetails,                                       '2017-11-30/generated/azure_mgmt_consumption/usage_details.rb'
   autoload :ReservationsSummaries,                              '2017-11-30/generated/azure_mgmt_consumption/reservations_summaries.rb'
   autoload :ReservationsDetails,                                '2017-11-30/generated/azure_mgmt_consumption/reservations_details.rb'

@@ -7,7 +7,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module azure.mgmt.consumption
+module Azure::Consumption::Mgmt::V2017_11_30
   module Models
     #
     # The properties of the meter detail.
