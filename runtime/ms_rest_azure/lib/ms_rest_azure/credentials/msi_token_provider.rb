@@ -136,7 +136,7 @@ module MsRestAzure
     # @return [String] new request body with the addition of <id_type>=<id_value>.
     def set_msi_id(request_body, id_type, id_value)
       user_assigned_identity = USER_ASSIGNED_IDENTITY.dup
-      request_body = [request_body, user_assigned_identity].join(', ')
+      request_body = [request_body, user_assigned_identity].join(',')
       request_body['{id_type}'] = id_type
       request_body['{user_assigned_identity}'] = ERB::Util.url_encode(id_value)
 
