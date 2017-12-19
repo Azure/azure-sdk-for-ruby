@@ -133,8 +133,8 @@ module MsRestAzure
     # @param id_type [String] type of id to send 'client_id', 'object_id' or 'msi_res_id'
     # @param id_value [String] id of the user assigned identity
     #
-    # @return [String] new authentication token.
-    def set_msi_id(request_body, id_type, id_value )
+    # @return [String] new request body with the addition of <id_type>=<id_value>.
+    def set_msi_id(request_body, id_type, id_value)
       user_assigned_identity = USER_ASSIGNED_IDENTITY.dup
       request_body = [request_body, user_assigned_identity].join(', ')
       request_body['{id_type}'] = id_type
