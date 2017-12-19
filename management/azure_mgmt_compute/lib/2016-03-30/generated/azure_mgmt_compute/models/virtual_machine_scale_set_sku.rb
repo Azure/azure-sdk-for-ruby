@@ -18,8 +18,8 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [Sku] The Sku.
       attr_accessor :sku
 
-      # @return [VirtualMachineScaleSetSkuCapacity] Available scaling
-      # information.
+      # @return [VirtualMachineScaleSetSkuCapacity] Specifies the number of
+      # virtual machines in the scale set.
       attr_accessor :capacity
 
 

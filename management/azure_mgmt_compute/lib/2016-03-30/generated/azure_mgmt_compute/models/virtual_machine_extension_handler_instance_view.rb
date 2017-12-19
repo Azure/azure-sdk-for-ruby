@@ -12,11 +12,11 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
-      # @return [String] Full type of the extension handler which includes both
-      # publisher and type.
+      # @return [String] Specifies the type of the extension; an example is
+      # "CustomScriptExtension".
       attr_accessor :type
 
-      # @return [String] The type version of the extension handler.
+      # @return [String] Specifies the version of the script handler.
       attr_accessor :type_handler_version
 
       # @return [InstanceViewStatus] The extension handler status.

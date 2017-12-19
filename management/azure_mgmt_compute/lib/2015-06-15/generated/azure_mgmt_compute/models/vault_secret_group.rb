@@ -12,7 +12,7 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
-      # @return [SubResource] The Relative URL of the Key Vault containing all
+      # @return [SubResource] The relative URL of the Key Vault containing all
       # of the certificates in VaultCertificates.
       attr_accessor :source_vault
 

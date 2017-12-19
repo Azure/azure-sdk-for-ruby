@@ -15,10 +15,13 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [String] The sku name.
       attr_accessor :name
 
-      # @return [String] The sku tier.
+      # @return [String] Specifies the tier of virtual machines in a scale
+      # set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+      # **Basic**
       attr_accessor :tier
 
-      # @return [Integer] The sku capacity.
+      # @return [Integer] Specifies the number of virtual machines in the scale
+      # set.
       attr_accessor :capacity
 
 

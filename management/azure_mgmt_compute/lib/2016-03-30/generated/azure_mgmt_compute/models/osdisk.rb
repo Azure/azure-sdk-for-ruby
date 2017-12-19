@@ -6,17 +6,24 @@
 module Azure::Compute::Mgmt::V2016_03_30
   module Models
     #
-    # Describes an Operating System disk.
+    # Specifies information about the operating system disk used by the virtual
+    # machine. <br><br> For more information about disks, see [About disks and
+    # VHDs for Azure virtual
+    # machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
     #
     class OSDisk
 
       include MsRestAzure
 
-      # @return [OperatingSystemTypes] The Operating System type. Possible
-      # values include: 'Windows', 'Linux'
+      # @return [OperatingSystemTypes] This property allows you to specify the
+      # type of the OS that is included in the disk if creating a VM from
+      # user-image or a specialized VHD. <br><br> Possible values are: <br><br>
+      # **Windows** <br><br> **Linux**. Possible values include: 'Windows',
+      # 'Linux'
       attr_accessor :os_type
 
-      # @return [DiskEncryptionSettings] The disk encryption settings.
+      # @return [DiskEncryptionSettings] Specifies the encryption settings for
+      # the OS Disk. <br><br> Minimum api-version: 2015-06-15
       attr_accessor :encryption_settings
 
       # @return [String] The disk name.
@@ -26,21 +33,33 @@ module Azure::Compute::Mgmt::V2016_03_30
       attr_accessor :vhd
 
       # @return [VirtualHardDisk] The source user image virtual hard disk. The
-      # virtual hard disk will be copied before using it to attach to the
-      # virtual machine. If SourceImage is provided, the destination virtual
-      # hard disk must not exist.
+      # virtual hard disk will be copied before being attached to the virtual
+      # machine. If SourceImage is provided, the destination virtual hard drive
+      # must not exist.
       attr_accessor :image
 
-      # @return [CachingTypes] The caching type. Possible values include:
-      # 'None', 'ReadOnly', 'ReadWrite'
+      # @return [CachingTypes] Specifies the caching requirements. <br><br>
+      # Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+      # **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly
+      # for Premium storage**. Possible values include: 'None', 'ReadOnly',
+      # 'ReadWrite'
       attr_accessor :caching
 
-      # @return [DiskCreateOptionTypes] The create option. Possible values
-      # include: 'fromImage', 'empty', 'attach'
+      # @return [DiskCreateOptionTypes] Specifies how the virtual machine
+      # should be created.<br><br> Possible values are:<br><br> **Attach**
+      # \u2013 This value is used when you are using a specialized disk to
+      # create the virtual machine.<br><br> **FromImage** \u2013 This value is
+      # used when you are using an image to create the virtual machine. If you
+      # are using a platform image, you also use the imageReference element
+      # described above. If you are using a marketplace image, you  also use
+      # the plan element previously described. Possible values include:
+      # 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
-      # @return [Integer] The initial disk size, in GB, for blank data disks,
-      # and the new desired size for resizing existing OS and data disks.
+      # @return [Integer] Specifies the size of an empty data disk in
+      # gigabytes. This element can be used to overwrite the name of the disk
+      # in a virtual machine image. <br><br> This value cannot be larger than
+      # 1023 GB
       attr_accessor :disk_size_gb
 
 

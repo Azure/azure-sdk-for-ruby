@@ -15,16 +15,27 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [String] The disk name.
       attr_accessor :name
 
-      # @return [CachingTypes] The caching type. Possible values include:
-      # 'None', 'ReadOnly', 'ReadWrite'
+      # @return [CachingTypes] Specifies the caching requirements. <br><br>
+      # Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+      # **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly
+      # for Premium storage**. Possible values include: 'None', 'ReadOnly',
+      # 'ReadWrite'
       attr_accessor :caching
 
-      # @return [DiskCreateOptionTypes] The create option. Possible values
-      # include: 'fromImage', 'empty', 'attach'
+      # @return [DiskCreateOptionTypes] Specifies how the virtual machines in
+      # the scale set should be created.<br><br> The only allowed value is:
+      # **FromImage** \u2013 This value is used when you are using an image to
+      # create the virtual machine. If you are using a platform image, you also
+      # use the imageReference element described above. If you are using a
+      # marketplace image, you  also use the plan element previously described.
+      # Possible values include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
-      # @return [OperatingSystemTypes] The Operating System type. Possible
-      # values include: 'Windows', 'Linux'
+      # @return [OperatingSystemTypes] This property allows you to specify the
+      # type of the OS that is included in the disk if creating a VM from
+      # user-image or a specialized VHD. <br><br> Possible values are: <br><br>
+      # **Windows** <br><br> **Linux**. Possible values include: 'Windows',
+      # 'Linux'
       attr_accessor :os_type
 
       # @return [VirtualHardDisk] The Source User Image VirtualHardDisk. This

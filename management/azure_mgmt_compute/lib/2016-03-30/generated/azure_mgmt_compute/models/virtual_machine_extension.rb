@@ -19,20 +19,24 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [String] The name of the extension handler publisher.
       attr_accessor :publisher
 
-      # @return [String] The type of the extension handler.
+      # @return [String] Specifies the type of the extension; an example is
+      # "CustomScriptExtension".
       attr_accessor :virtual_machine_extension_type
 
-      # @return [String] The type version of the extension handler.
+      # @return [String] Specifies the version of the script handler.
       attr_accessor :type_handler_version
 
-      # @return [Boolean] Whether the extension handler should be automatically
-      # upgraded across minor versions.
+      # @return [Boolean] Indicates whether the extension should use a newer
+      # minor version if one is available at deployment time. Once deployed,
+      # however, the extension will not upgrade minor versions unless
+      # redeployed, even with this property set to true.
       attr_accessor :auto_upgrade_minor_version
 
       # @return Json formatted public settings for the extension.
       attr_accessor :settings
 
-      # @return Json formatted protected settings for the extension.
+      # @return The extension can contain either protectedSettings or
+      # protectedSettingsFromKeyVault or no protected settings at all.
       attr_accessor :protected_settings
 
       # @return [String] The provisioning state, which only appears in the

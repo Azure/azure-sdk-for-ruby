@@ -18,7 +18,10 @@ module Azure::Compute::Mgmt::V2015_06_15
       # @return [String] The supported Azure location of the resource.
       attr_accessor :location
 
-      # @return [Hash{String => String}] The tags attached to the resource.
+      # @return [Hash{String => String}] Specifies the tags that are assigned
+      # to the virtual machine. For more information about using tags, see
+      # [Using tags to organize your Azure
+      # resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).
       attr_accessor :tags
 
 

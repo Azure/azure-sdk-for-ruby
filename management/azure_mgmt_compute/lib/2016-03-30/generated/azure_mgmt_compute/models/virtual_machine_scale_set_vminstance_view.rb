@@ -32,7 +32,12 @@ module Azure::Compute::Mgmt::V2016_03_30
       # information.
       attr_accessor :extensions
 
-      # @return [BootDiagnosticsInstanceView] The boot diagnostics.
+      # @return [BootDiagnosticsInstanceView] Boot Diagnostics is a debugging
+      # feature which allows you to view Console Output and Screenshot to
+      # diagnose VM status. <br><br> For Linux Virtual Machines, you can easily
+      # view the output of your console log. <br><br> For both Windows and
+      # Linux virtual machines, Azure also enables you to see a screenshot of
+      # the VM from the hypervisor.
       attr_accessor :boot_diagnostics
 
       # @return [Array<InstanceViewStatus>] The resource status information.

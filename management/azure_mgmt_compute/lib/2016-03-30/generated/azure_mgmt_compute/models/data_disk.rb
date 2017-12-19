@@ -12,7 +12,9 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
-      # @return [Integer] The logical unit number.
+      # @return [Integer] Specifies the logical unit number of the data disk.
+      # This value is used to identify data disks within the VM and therefore
+      # must be unique for each data disk attached to a VM.
       attr_accessor :lun
 
       # @return [String] The disk name.
@@ -21,22 +23,34 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [VirtualHardDisk] The virtual hard disk.
       attr_accessor :vhd
 
-      # @return [VirtualHardDisk] The source user image virtual hard disk. This
-      # virtual hard disk will be copied before using it to attach to the
-      # virtual machine. If SourceImage is provided, the destination virtual
-      # hard disk must not exist.
+      # @return [VirtualHardDisk] The source user image virtual hard disk. The
+      # virtual hard disk will be copied before being attached to the virtual
+      # machine. If SourceImage is provided, the destination virtual hard drive
+      # must not exist.
       attr_accessor :image
 
-      # @return [CachingTypes] The caching type. Possible values include:
-      # 'None', 'ReadOnly', 'ReadWrite'
+      # @return [CachingTypes] Specifies the caching requirements. <br><br>
+      # Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+      # **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly
+      # for Premium storage**. Possible values include: 'None', 'ReadOnly',
+      # 'ReadWrite'
       attr_accessor :caching
 
-      # @return [DiskCreateOptionTypes] The create option. Possible values
-      # include: 'fromImage', 'empty', 'attach'
+      # @return [DiskCreateOptionTypes] Specifies how the virtual machine
+      # should be created.<br><br> Possible values are:<br><br> **Attach**
+      # \u2013 This value is used when you are using a specialized disk to
+      # create the virtual machine.<br><br> **FromImage** \u2013 This value is
+      # used when you are using an image to create the virtual machine. If you
+      # are using a platform image, you also use the imageReference element
+      # described above. If you are using a marketplace image, you  also use
+      # the plan element previously described. Possible values include:
+      # 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
-      # @return [Integer] The initial disk size in GB for blank data disks, and
-      # the new desired size for resizing existing OS and data disks.
+      # @return [Integer] Specifies the size of an empty data disk in
+      # gigabytes. This element can be used to overwrite the name of the disk
+      # in a virtual machine image. <br><br> This value cannot be larger than
+      # 1023 GB
       attr_accessor :disk_size_gb
 
 

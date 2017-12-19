@@ -6,14 +6,14 @@
 module Azure::Compute::Mgmt::V2016_03_30
   module Models
     #
-    # Describes a network profile.
+    # Specifies the network interfaces of the virtual machine.
     #
     class NetworkProfile
 
       include MsRestAzure
 
       # @return [Array<NetworkInterfaceReference>] Specifies the list of
-      # resource IDs for the network interfaces associated with the virtual
+      # resource Ids for the network interfaces associated with the virtual
       # machine.
       attr_accessor :network_interfaces
 

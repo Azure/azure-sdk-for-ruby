@@ -27,7 +27,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       # @return [Boolean] Specifies whether the Virtual Machine Scale Set
       # should be overprovisioned.
-      attr_accessor :overprovision
+      attr_accessor :over_provision
 
       # @return [VirtualMachineScaleSetIdentity] The identity of the virtual
       # machine scale set, if configured.
@@ -134,10 +134,10 @@ module Azure::Compute::Mgmt::V2016_03_30
                   name: 'String'
                 }
               },
-              overprovision: {
+              over_provision: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.overprovision',
+                serialized_name: 'properties.overProvision',
                 type: {
                   name: 'Boolean'
                 }

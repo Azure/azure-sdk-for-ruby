@@ -6,17 +6,17 @@
 module Azure::Compute::Mgmt::V2016_03_30
   module Models
     #
-    # Additional XML formatted information that can be included in the
-    # Unattend.xml file, which is used by Windows Setup. Contents are defined
-    # by setting name, component name, and the pass in which the content is a
-    # applied.
+    # Specifies additional XML formatted information that can be included in
+    # the Unattend.xml file, which is used by Windows Setup. Contents are
+    # defined by setting name, component name, and the pass in which the
+    # content is applied.
     #
     class AdditionalUnattendContent
 
       include MsRestAzure
 
       # @return [PassNames] The pass name. Currently, the only allowable value
-      # is oobeSystem. Possible values include: 'oobeSystem'
+      # is OobeSystem. Possible values include: 'OobeSystem'
       attr_accessor :pass_name
 
       # @return [ComponentNames] The component name. Currently, the only
@@ -24,14 +24,15 @@ module Azure::Compute::Mgmt::V2016_03_30
       # include: 'Microsoft-Windows-Shell-Setup'
       attr_accessor :component_name
 
-      # @return [SettingNames] Setting name (e.g. FirstLogonCommands, AutoLogon
-      # ). Possible values include: 'AutoLogon', 'FirstLogonCommands'
+      # @return [SettingNames] Specifies the name of the setting to which the
+      # content applies. Possible values are: FirstLogonCommands and AutoLogon.
+      # Possible values include: 'AutoLogon', 'FirstLogonCommands'
       attr_accessor :setting_name
 
-      # @return [String] XML formatted content that is added to the
-      # unattend.xml file in the specified pass and component. The XML must be
-      # less than 4 KB and must include the root element for the setting or
-      # feature that is being inserted.
+      # @return [String] Specifies the XML formatted content that is added to
+      # the unattend.xml file for the specified path and component. The XML
+      # must be less than 4KB and must include the root element for the setting
+      # or feature that is being inserted.
       attr_accessor :content
 
 
