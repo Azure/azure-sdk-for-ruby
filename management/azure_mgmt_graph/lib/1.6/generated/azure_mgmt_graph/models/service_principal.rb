@@ -8,15 +8,20 @@ module Azure::Graph::Mgmt::V1_6
     #
     # Active Directory service principal information.
     #
-    class ServicePrincipal
+    class ServicePrincipal < DirectoryObject
 
       include MsRestAzure
 
-      # @return [String] The object ID.
-      attr_accessor :object_id
 
-      # @return [String] The object type.
-      attr_accessor :object_type
+      def initialize
+        @objectType = "ServicePrincipal"
+      end
+
+      attr_accessor :objectType
+
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
 
       # @return [String] The display name of the service principal.
       attr_accessor :display_name
@@ -34,7 +39,6 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServicePrincipal',
           type: {
@@ -42,23 +46,42 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'ServicePrincipal',
             model_properties: {
               object_id: {
-                client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'objectId',
                 type: {
                   name: 'String'
                 }
               },
-              object_type: {
-                client_side_validation: true,
+              deletion_timestamp: {
                 required: false,
+                read_only: true,
+                serialized_name: 'deletionTimestamp',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              objectType: {
+                required: true,
                 serialized_name: 'objectType',
                 type: {
                   name: 'String'
                 }
               },
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -66,7 +89,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               app_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appId',
                 type: {
@@ -74,13 +96,11 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               service_principal_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'servicePrincipalNames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
