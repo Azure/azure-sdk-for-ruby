@@ -53,7 +53,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscConfiguration',
           type: {
@@ -61,7 +60,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscConfiguration',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -70,7 +68,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -79,7 +76,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -88,7 +84,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -96,13 +91,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -112,7 +105,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -121,7 +113,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               job_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.jobCount',
                 type: {
@@ -129,13 +120,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DscConfigurationParameterElementType',
                       type: {
@@ -146,7 +135,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.source',
                 type: {
@@ -155,7 +143,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.state',
                 type: {
@@ -163,7 +150,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               log_verbose: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.logVerbose',
                 type: {
@@ -171,7 +157,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -179,7 +164,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -187,7 +171,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -195,7 +178,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

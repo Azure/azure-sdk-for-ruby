@@ -58,7 +58,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionTypeListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ConnectionTypeListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectionTypeElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
