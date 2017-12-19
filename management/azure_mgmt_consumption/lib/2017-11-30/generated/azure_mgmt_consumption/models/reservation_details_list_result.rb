@@ -10,37 +10,45 @@
 module azure.mgmt.consumption
   module Models
     #
-    # Error response indicates that the service is not able to process the
-    # incoming request. The reason is provided in the error message.
+    # Result of listing reservation details.
     #
-    class ErrorResponse
+    class ReservationDetailsListResult
 
       include MsRestAzure
 
-      # @return [ErrorDetails] The details of the error.
-      attr_accessor :error
+      # @return [Array<ReservationDetails>] The list of reservation details.
+      attr_accessor :value
 
 
       #
-      # Mapper for ErrorResponse class as Ruby Hash.
+      # Mapper for ReservationDetailsListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ErrorResponse',
+          serialized_name: 'ReservationDetailsListResult',
           type: {
             name: 'Composite',
-            class_name: 'ErrorResponse',
+            class_name: 'ReservationDetailsListResult',
             model_properties: {
-              error: {
+              value: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'error',
+                read_only: true,
+                serialized_name: 'value',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ErrorDetails'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ReservationDetailsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ReservationDetails'
+                      }
+                  }
                 }
               }
             }

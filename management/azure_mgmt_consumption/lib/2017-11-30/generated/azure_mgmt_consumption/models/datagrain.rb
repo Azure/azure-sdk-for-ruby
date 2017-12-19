@@ -7,4 +7,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module azure.mgmt.consumption end
+module azure.mgmt.consumption
+  module Models
+    #
+    # Defines values for Datagrain
+    #
+    module Datagrain
+      DailyGrain = "daily"
+      MonthlyGrain = "monthly"
+    end
+  end
+end
