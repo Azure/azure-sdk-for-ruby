@@ -8,15 +8,20 @@ module Azure::Graph::Mgmt::V1_6
     #
     # Active Directory application information.
     #
-    class Application
+    class Application < DirectoryObject
 
       include MsRestAzure
 
-      # @return [String] The object ID.
-      attr_accessor :object_id
 
-      # @return [String] The object type.
-      attr_accessor :object_type
+      def initialize
+        @objectType = "Application"
+      end
+
+      attr_accessor :objectType
+
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
 
       # @return [String] The application ID.
       attr_accessor :app_id
@@ -50,7 +55,6 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Application',
           type: {
@@ -58,23 +62,42 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'Application',
             model_properties: {
               object_id: {
-                client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'objectId',
                 type: {
                   name: 'String'
                 }
               },
-              object_type: {
-                client_side_validation: true,
+              deletion_timestamp: {
                 required: false,
+                read_only: true,
+                serialized_name: 'deletionTimestamp',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              objectType: {
+                required: true,
                 serialized_name: 'objectType',
                 type: {
                   name: 'String'
                 }
               },
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               app_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appId',
                 type: {
@@ -82,13 +105,11 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               app_permissions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appPermissions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -98,7 +119,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               available_to_other_tenants: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableToOtherTenants',
                 type: {
@@ -106,7 +126,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -114,13 +133,11 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               identifier_uris: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identifierUris',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -130,13 +147,11 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               reply_urls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyUrls',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -146,7 +161,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               homepage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'homepage',
                 type: {
@@ -154,7 +168,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               oauth2allow_implicit_flow: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'oauth2AllowImplicitFlow',
                 type: {
