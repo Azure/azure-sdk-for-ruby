@@ -77,7 +77,7 @@
     }
   },
   "azure_mgmt_compute": {
-    "azure_mgmt_compute_2017_12_010": {
+    "azure_mgmt_compute_2017_12_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2017_12_01",
       "tag": "package-compute-only-2017-12"
