@@ -6,4 +6,3 @@ module Azure end
 module Azure::DevTestLabs end
 module Azure::DevTestLabs::Profiles end
 module Azure::DevTestLabs::Profiles::Latest end
-module Azure::DevTestLabs::Profiles::Latest::Mgmt end

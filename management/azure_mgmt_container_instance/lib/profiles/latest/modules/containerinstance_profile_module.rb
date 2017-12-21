@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_container_instance'
 
-module Azure::ContainerInstance::Profiles::Latest::Mgmt
+module Azure::ContainerInstance::Profiles::Latest
+  module Mgmt
     ContainerGroups = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerGroups
     ContainerLogs = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerLogs
 
@@ -34,9 +35,9 @@ module Azure::ContainerInstance::Profiles::Latest::Mgmt
     end
 
     #
-    # ContainerInstance
+    # ContainerInstanceManagementClass
     #
-    class ContainerInstanceClass
+    class ContainerInstanceManagementClass
       attr_reader :container_groups, :container_logs, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -59,74 +60,75 @@ module Azure::ContainerInstance::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def container
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Container
-        end
-        def azure_file_volume
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::AzureFileVolume
-        end
-        def environment_variable
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::EnvironmentVariable
-        end
-        def volume
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Volume
-        end
-        def container_event
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerEvent
-        end
-        def image_registry_credential
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ImageRegistryCredential
-        end
-        def resource_requests
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequests
-        end
-        def port
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Port
-        end
-        def resource_requirements
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequirements
-        end
-        def ip_address
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::IpAddress
-        end
-        def container_port
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPort
-        end
-        def container_state
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerState
-        end
-        def resource_limits
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceLimits
-        end
-        def container_group_list_result
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult
-        end
-        def container_properties_instance_view
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPropertiesInstanceView
-        end
-        def logs
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Logs
-        end
-        def volume_mount
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::VolumeMount
-        end
-        def resource
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Resource
-        end
-        def container_group
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup
-        end
-        def container_restart_policy
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerRestartPolicy
-        end
-        def container_group_network_protocol
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupNetworkProtocol
-        end
-        def operating_system_types
-          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::OperatingSystemTypes
-        end
+    class ModelClasses
+      def container
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Container
+      end
+      def azure_file_volume
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::AzureFileVolume
+      end
+      def environment_variable
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::EnvironmentVariable
+      end
+      def volume
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Volume
+      end
+      def container_event
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerEvent
+      end
+      def image_registry_credential
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ImageRegistryCredential
+      end
+      def resource_requests
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequests
+      end
+      def port
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Port
+      end
+      def resource_requirements
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequirements
+      end
+      def ip_address
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::IpAddress
+      end
+      def container_port
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPort
+      end
+      def container_state
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerState
+      end
+      def resource_limits
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceLimits
+      end
+      def container_group_list_result
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult
+      end
+      def container_properties_instance_view
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPropertiesInstanceView
+      end
+      def logs
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Logs
+      end
+      def volume_mount
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::VolumeMount
+      end
+      def resource
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Resource
+      end
+      def container_group
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup
+      end
+      def container_restart_policy
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerRestartPolicy
+      end
+      def container_group_network_protocol
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupNetworkProtocol
+      end
+      def operating_system_types
+        Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::OperatingSystemTypes
       end
     end
+  end
 end

@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_billing'
 
-module Azure::Billing::Profiles::Latest::Mgmt
+module Azure::Billing::Profiles::Latest
+  module Mgmt
     BillingPeriods = Azure::Billing::Mgmt::V2017_04_24_preview::BillingPeriods
     Invoices = Azure::Billing::Mgmt::V2017_04_24_preview::Invoices
     Operations = Azure::Billing::Mgmt::V2017_04_24_preview::Operations
@@ -24,9 +25,9 @@ module Azure::Billing::Profiles::Latest::Mgmt
     end
 
     #
-    # Billing
+    # BillingManagementClass
     #
-    class BillingClass
+    class BillingManagementClass
       attr_reader :billing_periods, :invoices, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -50,41 +51,42 @@ module Azure::Billing::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def resource
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::Resource
-        end
-        def billing_periods_list_result
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult
-        end
-        def invoices_list_result
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::InvoicesListResult
-        end
-        def error_details
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorDetails
-        end
-        def operation_display
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationDisplay
-        end
-        def download_url
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::DownloadUrl
-        end
-        def operation
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::Operation
-        end
-        def error_response
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
-        end
-        def operation_list_result
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
-        end
-        def billing_period
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
-        end
-        def invoice
-          Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
-        end
+    class ModelClasses
+      def resource
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::Resource
+      end
+      def billing_periods_list_result
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult
+      end
+      def invoices_list_result
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::InvoicesListResult
+      end
+      def error_details
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorDetails
+      end
+      def operation_display
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationDisplay
+      end
+      def download_url
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::DownloadUrl
+      end
+      def operation
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::Operation
+      end
+      def error_response
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
+      end
+      def operation_list_result
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
+      end
+      def billing_period
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
+      end
+      def invoice
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
       end
     end
+  end
 end

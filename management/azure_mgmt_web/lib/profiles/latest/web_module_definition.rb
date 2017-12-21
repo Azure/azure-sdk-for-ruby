@@ -6,4 +6,3 @@ module Azure end
 module Azure::Web end
 module Azure::Web::Profiles end
 module Azure::Web::Profiles::Latest end
-module Azure::Web::Profiles::Latest::Mgmt end

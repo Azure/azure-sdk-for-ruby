@@ -6,4 +6,3 @@ module Azure end
 module Azure::Monitor end
 module Azure::Monitor::Profiles end
 module Azure::Monitor::Profiles::Latest end
-module Azure::Monitor::Profiles::Latest::Mgmt end

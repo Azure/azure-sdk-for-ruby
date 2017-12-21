@@ -6,4 +6,3 @@ module Azure end
 module Azure::KeyVault end
 module Azure::KeyVault::Profiles end
 module Azure::KeyVault::Profiles::Latest end
-module Azure::KeyVault::Profiles::Latest::Mgmt end

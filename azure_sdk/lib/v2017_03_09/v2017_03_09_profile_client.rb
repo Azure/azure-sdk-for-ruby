@@ -13,7 +13,7 @@ require 'v2017_03_09/modules/policy_profile_module'
 require 'v2017_03_09/modules/resources_profile_module'
 require 'v2017_03_09/modules/subscriptions_profile_module'
 
-module Azure::Profiles::V2017_03_09::Mgmt
+module Azure::Profiles::V2017_03_09
   #
   # Client class for the V2017_03_09 profile SDK.
   #
@@ -31,15 +31,87 @@ module Azure::Profiles::V2017_03_09::Mgmt
 
       reset!(options)
 
-      @storage = Azure::Profiles::V2017_03_09::Storage::Mgmt::StorageClass.new(self)
-      @network = Azure::Profiles::V2017_03_09::Network::Mgmt::NetworkClass.new(self)
-      @compute = Azure::Profiles::V2017_03_09::Compute::Mgmt::ComputeClass.new(self)
-      @features = Azure::Profiles::V2017_03_09::Features::Mgmt::FeaturesClass.new(self)
-      @links = Azure::Profiles::V2017_03_09::Links::Mgmt::LinksClass.new(self)
-      @locks = Azure::Profiles::V2017_03_09::Locks::Mgmt::LocksClass.new(self)
-      @policy = Azure::Profiles::V2017_03_09::Policy::Mgmt::PolicyClass.new(self)
-      @resources = Azure::Profiles::V2017_03_09::Resources::Mgmt::ResourcesClass.new(self)
-      @subscriptions = Azure::Profiles::V2017_03_09::Subscriptions::Mgmt::SubscriptionsClass.new(self)
+      @storage = StorageAdapter.new(self)
+      @network = NetworkAdapter.new(self)
+      @compute = ComputeAdapter.new(self)
+      @features = FeaturesAdapter.new(self)
+      @links = LinksAdapter.new(self)
+      @locks = LocksAdapter.new(self)
+      @policy = PolicyAdapter.new(self)
+      @resources = ResourcesAdapter.new(self)
+      @subscriptions = SubscriptionsAdapter.new(self)
+    end
+
+    class StorageAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Storage::Mgmt::StorageManagementClass.new(context)
+      end
+    end
+
+    class NetworkAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Network::Mgmt::NetworkManagementClass.new(context)
+      end
+    end
+
+    class ComputeAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Compute::Mgmt::ComputeManagementClass.new(context)
+      end
+    end
+
+    class FeaturesAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Features::Mgmt::FeaturesManagementClass.new(context)
+      end
+    end
+
+    class LinksAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Links::Mgmt::LinksManagementClass.new(context)
+      end
+    end
+
+    class LocksAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Locks::Mgmt::LocksManagementClass.new(context)
+      end
+    end
+
+    class PolicyAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Policy::Mgmt::PolicyManagementClass.new(context)
+      end
+    end
+
+    class ResourcesAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Resources::Mgmt::ResourcesManagementClass.new(context)
+      end
+    end
+
+    class SubscriptionsAdapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = Azure::Profiles::V2017_03_09::Subscriptions::Mgmt::SubscriptionsManagementClass.new(context)
+      end
     end
 
   end

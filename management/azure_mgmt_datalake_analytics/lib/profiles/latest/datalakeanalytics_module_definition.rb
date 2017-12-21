@@ -6,4 +6,3 @@ module Azure end
 module Azure::DataLakeAnalytics end
 module Azure::DataLakeAnalytics::Profiles end
 module Azure::DataLakeAnalytics::Profiles::Latest end
-module Azure::DataLakeAnalytics::Profiles::Latest::Mgmt end

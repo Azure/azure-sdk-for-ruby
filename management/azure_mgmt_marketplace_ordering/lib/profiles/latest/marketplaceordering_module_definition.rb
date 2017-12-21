@@ -6,4 +6,3 @@ module Azure end
 module Azure::MarketplaceOrdering end
 module Azure::MarketplaceOrdering::Profiles end
 module Azure::MarketplaceOrdering::Profiles::Latest end
-module Azure::MarketplaceOrdering::Profiles::Latest::Mgmt end

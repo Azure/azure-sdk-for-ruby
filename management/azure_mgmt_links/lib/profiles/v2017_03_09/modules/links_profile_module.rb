@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_links'
 
-module Azure::Links::Profiles::V2017_03_09::Mgmt
+module Azure::Links::Profiles::V2017_03_09
+  module Mgmt
     ResourceLinks = Azure::Links::Mgmt::V2016_09_01::ResourceLinks
 
     module Models
@@ -16,9 +17,9 @@ module Azure::Links::Profiles::V2017_03_09::Mgmt
     end
 
     #
-    # Links
+    # LinksManagementClass
     #
-    class LinksClass
+    class LinksManagementClass
       attr_reader :resource_links, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -40,23 +41,24 @@ module Azure::Links::Profiles::V2017_03_09::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def resource_link
-          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
-        end
-        def resource_link_filter
-          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
-        end
-        def resource_link_result
-          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
-        end
-        def resource_link_properties
-          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
-        end
-        def filter
-          Azure::Links::Mgmt::V2016_09_01::Models::Filter
-        end
+    class ModelClasses
+      def resource_link
+        Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
+      end
+      def resource_link_filter
+        Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
+      end
+      def resource_link_result
+        Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
+      end
+      def resource_link_properties
+        Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
+      end
+      def filter
+        Azure::Links::Mgmt::V2016_09_01::Models::Filter
       end
     end
+  end
 end

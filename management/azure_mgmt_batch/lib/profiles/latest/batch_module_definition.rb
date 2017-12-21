@@ -6,4 +6,3 @@ module Azure end
 module Azure::Batch end
 module Azure::Batch::Profiles end
 module Azure::Batch::Profiles::Latest end
-module Azure::Batch::Profiles::Latest::Mgmt end

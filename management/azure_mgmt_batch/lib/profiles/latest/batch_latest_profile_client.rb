@@ -5,17 +5,18 @@
 require 'profiles/latest/batch_module_definition'
 require 'profiles/latest/modules/batch_profile_module'
 
-module Azure::Batch::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < BatchClass
-    include MsRestAzure::Common::Configurable
+module Azure::Batch::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < BatchManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

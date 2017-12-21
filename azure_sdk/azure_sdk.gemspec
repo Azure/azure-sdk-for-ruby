@@ -61,7 +61,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_event_grid', "~>#{gem_versions['management']['azure_mgmt_event_grid']}"
   spec.add_runtime_dependency 'azure_mgmt_event_hub', "~>#{gem_versions['management']['azure_mgmt_event_hub']}"
   spec.add_runtime_dependency 'azure_mgmt_features', "~>#{gem_versions['management']['azure_mgmt_features']}"
-  spec.add_runtime_dependency 'azure_mgmt_graph', "~>#{gem_versions['management']['azure_mgmt_graph']}"
   spec.add_runtime_dependency 'azure_mgmt_iot_hub', "~>#{gem_versions['management']['azure_mgmt_iot_hub']}"
   spec.add_runtime_dependency 'azure_mgmt_key_vault', "~>#{gem_versions['management']['azure_mgmt_key_vault']}"
   spec.add_runtime_dependency 'azure_mgmt_links', "~>#{gem_versions['management']['azure_mgmt_links']}"
@@ -98,5 +97,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{gem_versions['management']['azure_mgmt_subscriptions']}"
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{gem_versions['management']['azure_mgmt_traffic_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_web', "~>#{gem_versions['management']['azure_mgmt_web']}"
+  spec.add_runtime_dependency 'azure_graph_rbac', "~>#{gem_versions['data']['azure_graph_rbac']}"
   spec.add_runtime_dependency 'azure-storage', '~>0.14.0.preview'
 end

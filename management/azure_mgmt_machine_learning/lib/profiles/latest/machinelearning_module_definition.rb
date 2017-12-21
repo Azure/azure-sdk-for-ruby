@@ -6,4 +6,3 @@ module Azure end
 module Azure::MachineLearning end
 module Azure::MachineLearning::Profiles end
 module Azure::MachineLearning::Profiles::Latest end
-module Azure::MachineLearning::Profiles::Latest::Mgmt end

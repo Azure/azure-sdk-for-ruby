@@ -5,8 +5,3 @@
 module Azure end
 module Azure::Profiles end
 module Azure::Profiles::<%= @profile_name %> end
-module Azure::Profiles::<%= @profile_name %>::Mgmt end
-<%- @class_names.each do |class_name| -%>
-module Azure::Profiles::<%= @profile_name %>::<%= class_name %> end
-module Azure::Profiles::<%= @profile_name %>::<%= class_name %>::Mgmt end
-<%- end -%>

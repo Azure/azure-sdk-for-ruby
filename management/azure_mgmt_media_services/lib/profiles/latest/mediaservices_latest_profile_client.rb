@@ -5,17 +5,18 @@
 require 'profiles/latest/mediaservices_module_definition'
 require 'profiles/latest/modules/mediaservices_profile_module'
 
-module Azure::MediaServices::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < MediaServicesClass
-    include MsRestAzure::Common::Configurable
+module Azure::MediaServices::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < MediaServicesManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end
