@@ -5,17 +5,18 @@
 require 'profiles/v2017_03_09/storage_module_definition'
 require 'profiles/v2017_03_09/modules/storage_profile_module'
 
-module Azure::Storage::Profiles::V2017_03_09::Mgmt
-  #
-  # Client class for the V2017_03_09 profile SDK.
-  #
-  class Client < StorageClass
-    include MsRestAzure::Common::Configurable
+module Azure::Storage::Profiles::V2017_03_09
+  module Mgmt
+    #
+    # Client class for the V2017_03_09 profile SDK.
+    #
+    class Client < StorageManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

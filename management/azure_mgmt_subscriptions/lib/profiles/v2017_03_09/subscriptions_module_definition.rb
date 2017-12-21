@@ -6,4 +6,3 @@ module Azure end
 module Azure::Subscriptions end
 module Azure::Subscriptions::Profiles end
 module Azure::Subscriptions::Profiles::V2017_03_09 end
-module Azure::Subscriptions::Profiles::V2017_03_09::Mgmt end

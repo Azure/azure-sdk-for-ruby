@@ -6,4 +6,3 @@ module Azure end
 module Azure::ManagedServiceIdentity end
 module Azure::ManagedServiceIdentity::Profiles end
 module Azure::ManagedServiceIdentity::Profiles::Latest end
-module Azure::ManagedServiceIdentity::Profiles::Latest::Mgmt end

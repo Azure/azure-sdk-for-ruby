@@ -5,17 +5,18 @@
 require 'profiles/latest/dns_module_definition'
 require 'profiles/latest/modules/dns_profile_module'
 
-module Azure::Dns::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < DnsClass
-    include MsRestAzure::Common::Configurable
+module Azure::Dns::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < DnsManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

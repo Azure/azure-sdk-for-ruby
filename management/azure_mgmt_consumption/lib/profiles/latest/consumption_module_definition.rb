@@ -6,4 +6,3 @@ module Azure end
 module Azure::Consumption end
 module Azure::Consumption::Profiles end
 module Azure::Consumption::Profiles::Latest end
-module Azure::Consumption::Profiles::Latest::Mgmt end

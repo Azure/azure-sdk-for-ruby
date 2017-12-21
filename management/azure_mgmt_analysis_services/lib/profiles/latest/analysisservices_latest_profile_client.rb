@@ -5,17 +5,18 @@
 require 'profiles/latest/analysisservices_module_definition'
 require 'profiles/latest/modules/analysisservices_profile_module'
 
-module Azure::AnalysisServices::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < AnalysisServicesClass
-    include MsRestAzure::Common::Configurable
+module Azure::AnalysisServices::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < AnalysisServicesManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

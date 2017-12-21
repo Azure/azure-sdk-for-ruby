@@ -5,17 +5,18 @@
 require 'profiles/latest/notificationhubs_module_definition'
 require 'profiles/latest/modules/notificationhubs_profile_module'
 
-module Azure::NotificationHubs::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < NotificationHubsClass
-    include MsRestAzure::Common::Configurable
+module Azure::NotificationHubs::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < NotificationHubsManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

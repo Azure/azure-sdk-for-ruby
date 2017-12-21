@@ -6,4 +6,3 @@ module Azure end
 module Azure::MediaServices end
 module Azure::MediaServices::Profiles end
 module Azure::MediaServices::Profiles::Latest end
-module Azure::MediaServices::Profiles::Latest::Mgmt end

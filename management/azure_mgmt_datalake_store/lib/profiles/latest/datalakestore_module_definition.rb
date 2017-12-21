@@ -6,4 +6,3 @@ module Azure end
 module Azure::DataLakeStore end
 module Azure::DataLakeStore::Profiles end
 module Azure::DataLakeStore::Profiles::Latest end
-module Azure::DataLakeStore::Profiles::Latest::Mgmt end

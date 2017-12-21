@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_features'
 
-module Azure::Features::Profiles::Latest::Mgmt
+module Azure::Features::Profiles::Latest
+  module Mgmt
     Features = Azure::Features::Mgmt::V2015_12_01::Features
 
     module Models
@@ -14,9 +15,9 @@ module Azure::Features::Profiles::Latest::Mgmt
     end
 
     #
-    # Features
+    # FeaturesManagementClass
     #
-    class FeaturesClass
+    class FeaturesManagementClass
       attr_reader :features, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -38,17 +39,18 @@ module Azure::Features::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def feature_result
-          Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
-        end
-        def feature_operations_list_result
-          Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
-        end
-        def feature_properties
-          Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
-        end
+    class ModelClasses
+      def feature_result
+        Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
+      end
+      def feature_operations_list_result
+        Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
+      end
+      def feature_properties
+        Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
       end
     end
+  end
 end

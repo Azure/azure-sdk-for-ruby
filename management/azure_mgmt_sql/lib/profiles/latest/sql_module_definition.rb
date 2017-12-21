@@ -6,4 +6,3 @@ module Azure end
 module Azure::SQL end
 module Azure::SQL::Profiles end
 module Azure::SQL::Profiles::Latest end
-module Azure::SQL::Profiles::Latest::Mgmt end

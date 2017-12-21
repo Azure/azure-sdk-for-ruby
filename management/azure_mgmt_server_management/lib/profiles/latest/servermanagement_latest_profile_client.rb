@@ -5,17 +5,18 @@
 require 'profiles/latest/servermanagement_module_definition'
 require 'profiles/latest/modules/servermanagement_profile_module'
 
-module Azure::ServerManagement::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < ServerManagementClass
-    include MsRestAzure::Common::Configurable
+module Azure::ServerManagement::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < ServerManagementManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

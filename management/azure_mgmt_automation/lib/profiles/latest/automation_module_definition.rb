@@ -6,4 +6,3 @@ module Azure end
 module Azure::Automation end
 module Azure::Automation::Profiles end
 module Azure::Automation::Profiles::Latest end
-module Azure::Automation::Profiles::Latest::Mgmt end

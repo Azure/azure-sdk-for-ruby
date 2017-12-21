@@ -6,4 +6,3 @@ module Azure end
 module Azure::TrafficManager end
 module Azure::TrafficManager::Profiles end
 module Azure::TrafficManager::Profiles::Latest end
-module Azure::TrafficManager::Profiles::Latest::Mgmt end

@@ -5,17 +5,18 @@
 require 'profiles/latest/network_module_definition'
 require 'profiles/latest/modules/network_profile_module'
 
-module Azure::Network::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < NetworkClass
-    include MsRestAzure::Common::Configurable
+module Azure::Network::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < NetworkManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

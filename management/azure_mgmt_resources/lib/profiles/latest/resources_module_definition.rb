@@ -6,4 +6,3 @@ module Azure end
 module Azure::Resources end
 module Azure::Resources::Profiles end
 module Azure::Resources::Profiles::Latest end
-module Azure::Resources::Profiles::Latest::Mgmt end

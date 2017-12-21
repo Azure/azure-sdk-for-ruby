@@ -5,42 +5,42 @@
 require 'azure_mgmt_features'
 
 module Azure::Profiles::Latest
-  module Features::Mgmt
-    Features = Azure::Features::Mgmt::V2015_12_01::Features
+  module Features
+    module Mgmt
+      Features = Azure::Features::Mgmt::V2015_12_01::Features
 
-    module Models
-      FeatureResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
-      FeatureOperationsListResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
-      FeatureProperties = Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
-    end
-
-    #
-    # Features
-    #
-    class FeaturesClass
-      attr_reader :features, :configurable, :base_url, :options, :model_classes
-
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
-
-        client_0 = Azure::Features::Mgmt::V2015_12_01::FeatureClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
-        end
-        @features = client_0.features
-
-        @model_classes = ModelClasses.new
+      module Models
+        FeatureResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
+        FeatureOperationsListResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
+        FeatureProperties = Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
       end
 
-      class ModelClasses
-        def feature_result
-          Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
+      class FeaturesManagementClass
+        attr_reader :features, :configurable, :base_url, :options, :model_classes
+
+        def initialize(configurable, base_url=nil, options=nil)
+          @configurable, @base_url, @options = configurable, base_url, options
+
+          client_0 = Azure::Features::Mgmt::V2015_12_01::FeatureClient.new(configurable.credentials, base_url, options)
+          if(client_0.respond_to?(:subscription_id))
+            client_0.subscription_id = configurable.subscription_id
+          end
+
+          @features = client_0.features
+
+          @model_classes = ModelClasses.new
         end
-        def feature_operations_list_result
-          Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
-        end
-        def feature_properties
-          Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
+
+        class ModelClasses
+          def feature_result
+            Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
+          end
+          def feature_operations_list_result
+            Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
+          end
+          def feature_properties
+            Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
+          end
         end
       end
     end

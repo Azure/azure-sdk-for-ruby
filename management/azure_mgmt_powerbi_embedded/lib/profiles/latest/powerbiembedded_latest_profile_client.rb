@@ -5,17 +5,18 @@
 require 'profiles/latest/powerbiembedded_module_definition'
 require 'profiles/latest/modules/powerbiembedded_profile_module'
 
-module Azure::PowerBiEmbedded::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < PowerBiEmbeddedClass
-    include MsRestAzure::Common::Configurable
+module Azure::PowerBiEmbedded::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < PowerBiEmbeddedManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end
