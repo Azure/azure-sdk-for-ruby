@@ -2,6 +2,9 @@
     "rollup": {
         "azure_sdk": "0.15.2"
     },
+    "data": {
+        "azure_graph_rbac": "0.15.2"
+    },
     "management" : {
         "azure_mgmt_analysis_services": "0.15.2",
         "azure_mgmt_authorization": "0.15.2",
@@ -24,7 +27,6 @@
         "azure_mgmt_event_grid": "0.15.2",
         "azure_mgmt_event_hub": "0.15.2",
         "azure_mgmt_features": "0.15.2",
-        "azure_mgmt_graph": "0.15.2",
         "azure_mgmt_iot_hub": "0.15.2",
         "azure_mgmt_key_vault": "0.15.2",
         "azure_mgmt_links": "0.15.2",

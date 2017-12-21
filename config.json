@@ -248,12 +248,13 @@
       "tag": "package-features-2015-12"
     }
   },
-  "azure_mgmt_graph": {
-    "azure_mgmt_graph_1.6": {
+  "azure_graph_rbac": {
+    "azure_graph_rbac_1.6": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/graphrbac/data-plane/1.6/graphrbac.json"
       ],
-      "namespace": "Azure::Graph::Mgmt::V1_6"
+      "namespace": "Azure::GraphRbac::V1_6",
+      "title": "GraphRbacClient"
     }
   },
   "azure_mgmt_iot_hub": {

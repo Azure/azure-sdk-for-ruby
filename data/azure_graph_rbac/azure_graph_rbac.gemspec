@@ -5,16 +5,16 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require '../azure_mgmt_graph/lib/module_definition'
-require '../azure_mgmt_graph/lib/version'
+require '../azure_graph_rbac/lib/module_definition'
+require '../azure_graph_rbac/lib/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'azure_mgmt_graph'
-  spec.version       = Azure::Graph::Mgmt::VERSION
+  spec.name          = 'azure_graph_rbac'
+  spec.version       = Azure::GraphRbac::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
-  spec.description   = 'Microsoft Azure Active Directory Graph Management Client Library for Ruby'
-  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Active Directory Graph Management services.'
+  spec.description   = 'Microsoft Azure Active Directory Graph Rbac Client Library for Ruby'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Active Directory Graph Rbac services.'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
   spec.metadata      = {
@@ -39,10 +39,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'dotenv', '~> 2'
 
   spec.add_runtime_dependency 'ms_rest_azure', '~> 0.10.0'
-
-  spec.post_install_message = <<-MESSAGE
-  !    The 'azure_mgmt_graph' gem has been deprecated and has been replaced by 'azure_graph_rbac'.
-  !    See: https://rubygems.org/gems/azure_graph_rbac
-  !    And: https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_graph_rbac
-  MESSAGE
 end

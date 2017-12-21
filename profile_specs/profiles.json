@@ -5,31 +5,49 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Storage": {
-                    "2016-01-01": ["*"]
+                    "management": {
+                        "2016-01-01": ["*"]
+                    }
                 },
                 "Microsoft.Network" : {
-                    "2015-06-15": ["*"]
+                    "management": {
+                        "2015-06-15": ["*"]
+                    }
                 },
                 "Microsoft.Compute" : {
-                    "2016-03-30": ["*"]
+                    "management": {
+                        "2016-03-30": ["*"]
+                    }
                 },
                 "Microsoft.Features" : {
-                    "2015-12-01": ["*"]
+                    "management": {
+                        "2015-12-01": ["*"]
+                    }
                 },
                 "Microsoft.Links" : {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 },
                 "Microsoft.Locks" : {
-                    "2015-01-01": ["*"]
+                    "management": {
+                        "2015-01-01": ["*"]
+                    }
                 },
                 "Microsoft.Policy" : {
-                    "2015-10-01-preview": ["*"]
+                    "management": {
+                        "2015-10-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.Resources" : {
-                    "2016-02-01": ["*"]
+                    "management": {
+                        "2016-02-01": ["*"]
+                    }
                 },
                 "Microsoft.Subscriptions" : {
-                    "2016-06-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
                 }
             },
             "output_dir": "azure_sdk/lib"
@@ -38,195 +56,311 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.AnalysisServices": {
-                    "2017-07-14": ["*"]
+                    "management": {
+                        "2017-07-14": ["*"]
+                    }
                 },
                 "Microsoft.Authorization": {
-                    "2015-07-01": ["*"]
+                    "management": {
+                        "2015-07-01": ["*"]
+                    }
                 },
                 "Microsoft.Automation": {
-                    "2015-10-31": ["*"]
+                    "management": {
+                        "2015-10-31": ["*"]
+                    }
                 },
                 "Microsoft.Batch": {
-                    "2017-05-01": ["*"]
+                    "management": {
+                        "2017-05-01": ["*"]
+                    }
                 },
                 "Microsoft.Billing": {
-                    "2017-04-24-preview": ["*"]
+                    "management": {
+                        "2017-04-24-preview": ["*"]
+                    }
                 },
                 "Microsoft.CDN": {
-                    "2017-04-02": ["*"]
+                    "management": {
+                        "2017-04-02": ["*"]
+                    }
                 },
                 "Microsoft.CognitiveServices": {
-                    "2017-04-18": ["*"]
+                    "management": {
+                        "2017-04-18": ["*"]
+                    }
                 },
                 "Microsoft.Commerce": {
-                    "2015-06-01-preview": ["*"]
+                    "management": {
+                        "2015-06-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.Compute": {
-                    "2017-03-30": ["*"],
-                    "2017-09-01": ["*"],
-                    "2017-12-01": ["*"]
+                    "management": {
+                        "2017-03-30": ["*"],
+                        "2017-09-01": ["*"],
+                        "2017-12-01": ["*"]
+                    }
                 },
                 "Microsoft.Consumption": {
-                    "2017-04-24-preview": ["*"]
+                    "management": {
+                        "2017-04-24-preview": ["*"]
+                    }
                 },
                 "Microsoft.ContainerInstance": {
-                    "2017-08-01-preview": ["*"]
+                    "management": {
+                        "2017-08-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.ContainerRegistry": {
-                    "2017-10-01": ["*"]
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
                 },
                 "Microsoft.ContainerService": {
-                    "2017-01-31": ["*"]
+                    "management": {
+                        "2017-01-31": ["*"]
+                    }
                 },
                 "Microsoft.CustomerInsights": {
-                    "2017-04-26": ["*"]
+                    "management": {
+                        "2017-04-26": ["*"]
+                    }
                 },
                 "Microsoft.DataLakeAnalytics": {
-                    "2016-11-01": ["*"]
+                    "management": {
+                        "2016-11-01": ["*"]
+                    }
                 },
                 "Microsoft.DataLakeStore": {
-                    "2016-11-01": ["*"]
+                    "management": {
+                        "2016-11-01": ["*"]
+                    }
                 },
                 "Microsoft.DevTestLabs": {
-                    "2016-05-15": ["*"]
+                    "management": {
+                        "2016-05-15": ["*"]
+                    }
                 },
                 "Microsoft.Dns": {
-                    "2016-04-01": ["*"]
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
                 },
                 "Microsoft.EventGrid": {
-                    "2017-09-15-preview": ["*"]
+                    "management": {
+                        "2017-09-15-preview": ["*"]
+                    }
                 },
                 "Microsoft.EventHub": {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 },
                 "Microsoft.Features": {
-                    "2015-12-01": ["*"]
+                    "management": {
+                        "2015-12-01": ["*"]
+                    }
                 },
-                "Microsoft.Graph": {
-                    "1.6": ["*"]
+                "Microsoft.GraphRbac": {
+                    "data": {
+                        "1.6": ["*"]
+                    }
                 },
                 "Microsoft.IotHub": {
-                    "2017-07-01": ["*"]
+                    "management": {
+                        "2017-07-01": ["*"]
+                    }
                 },
                 "Microsoft.KeyVault": {
-                    "2016-10-01": ["*"]
+                    "management": {
+                        "2016-10-01": ["*"]
+                    }
                 },
                 "Microsoft.Links": {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 },
                 "Microsoft.Locks": {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 },
                 "Microsoft.Logic": {
-                    "2016-06-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
                 },
                 "Microsoft.MachineLearning": {
-                    "2017-01-01": ["*"]
+                    "management": {
+                        "2017-01-01": ["*"]
+                    }
                 },
                 "Microsoft.ManagedApplications": {
-                    "2016-09-01-preview": ["*"]
+                    "management": {
+                        "2016-09-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.MarketplaceOrdering": {
-                    "2015-06-01": ["*"]
+                    "management": {
+                        "2015-06-01": ["*"]
+                    }
                 },
                 "Microsoft.MediaServices": {
-                    "2015-10-01": ["*"]
+                    "management": {
+                        "2015-10-01": ["*"]
+                    }
                 },
                 "Microsoft.MobileEngagement": {
-                    "2014-12-01": ["*"]
+                    "management": {
+                        "2014-12-01": ["*"]
+                    }
                 },
                 "Microsoft.Monitor": {
-                    "2015-04-01": ["*"],
-                    "2016-03-01": ["*"],
-                    "2017-04-01": ["*"],
-                    "2017-05-01-preview": ["*"]
+                    "management": {
+                        "2015-04-01": ["*"],
+                        "2016-03-01": ["*"],
+                        "2017-04-01": ["*"],
+                        "2017-05-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.ManagedServiceIdentity": {
-                    "2015-08-31-preview": ["*"]
+                    "management": {
+                        "2015-08-31-preview": ["*"]
+                    }
                 },
                 "Microsoft.Network": {
-                    "2017-09-01": ["*"]
+                    "management": {
+                        "2017-09-01": ["*"]
+                    }
                 },
                 "Microsoft.NotificationHubs": {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 },
                 "Microsoft.OperationalInsights": {
-                    "2015-03-20": ["*"],
-                    "2015-11-01-preview": ["*"]
+                    "management": {
+                        "2015-03-20": ["*"],
+                        "2015-11-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.Policy": {
-                    "2016-12-01": ["*"],
-                    "2017-06-01-preview": ["*"]
+                    "management": {
+                        "2016-12-01": ["*"],
+                        "2017-06-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.PowerBiEmbedded": {
-                    "2016-01-29": ["*"]
+                    "management": {
+                        "2016-01-29": ["*"]
+                    }
                 },
                 "Microsoft.RecoveryServices": {
-                    "2016-06-01": ["*"],
-                    "2016-12-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"],
+                        "2016-12-01": ["*"]
+                    }
                 },
                 "Microsoft.RecoveryServicesBackup": {
-                    "2016-08-10": ["*"],
-                    "2016-12-01": ["*"],
-                    "2017-07-01": ["*"]
+                    "management": {
+                        "2016-08-10": ["*"],
+                        "2016-12-01": ["*"],
+                        "2017-07-01": ["*"]
+                    }
                 },
                 "Microsoft.RecoveryServicesSiteRecovery": {
-                    "2016-08-10": ["*"]
+                    "management": {
+                        "2016-08-10": ["*"]
+                    }
                 },
                 "Microsoft.Redis": {
-                    "2017-02-01": ["*"]
+                    "management": {
+                        "2017-02-01": ["*"]
+                    }
                 },
                 "Microsoft.Relay": {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 },
                 "Microsoft.Resources": {
-                    "2017-05-10": ["*"]
+                    "management": {
+                        "2017-05-10": ["*"]
+                    }
                 },
                 "Microsoft.ResourcesManagement": {
-                    "2017-08-31-preview": ["*"]
+                    "management": {
+                        "2017-08-31-preview": ["*"]
+                    }
                 },
                 "Microsoft.Scheduler": {
-                    "2016-03-01": ["*"]
+                    "management": {
+                        "2016-03-01": ["*"]
+                    }
                 },
                 "Microsoft.Search": {
-                    "2015-08-19": ["*"]
+                    "management": {
+                        "2015-08-19": ["*"]
+                    }
                 },
                 "Microsoft.ServerManagement": {
-                    "2016-07-01-preview": ["*"]
+                    "management": {
+                        "2016-07-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.ServiceBus": {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 },
                 "Microsoft.ServiceFabric": {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 },
                 "Microsoft.SQL": {
-                    "2014-04-01": ["*"],
-                    "2015-05-01-preview": ["*"],
-                    "2017-03-01-preview": ["*"]
+                    "management": {
+                        "2014-04-01": ["*"],
+                        "2015-05-01-preview": ["*"],
+                        "2017-03-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.StorSimple8000Series": {
-                    "2017-06-01": ["*"]
+                    "management": {
+                        "2017-06-01": ["*"]
+                    }
                 },
                 "Microsoft.Storage": {
-                    "2017-10-01": ["*"]
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
                 },
                 "Microsoft.StreamAnalytics": {
-                    "2016-03-01": ["*"]
+                    "management": {
+                        "2016-03-01": ["*"]
+                    }
                 },
                 "Microsoft.Subscriptions": {
-                    "2016-06-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
                 },
                 "Microsoft.TrafficManager": {
-                    "2017-05-01": ["*"],
-                    "2017-09-01-preview": ["*"]
+                    "management": {
+                        "2017-05-01": ["*"],
+                        "2017-09-01-preview": ["*"]
+                    }
                 },
                 "Microsoft.Web": {
-                    "2015-04-01": ["*"],
-                    "2015-08-01": ["*"],
-                    "2016-03-01": ["*"],
-                    "2016-08-01": ["*"],
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2015-04-01": ["*"],
+                        "2015-08-01": ["*"],
+                        "2016-03-01": ["*"],
+                        "2016-08-01": ["*"],
+                        "2016-09-01": ["*"]
+                    }
                 }
             },
             "output_dir": "azure_sdk/lib"
@@ -239,7 +373,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.AnalysisServices": {
-                    "2017-07-14": ["*"]
+                    "management": {
+                        "2017-07-14": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_analysis_services/lib/profiles",
@@ -251,7 +387,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Authorization" : {
-                    "2015-07-01": ["*"]
+                    "management": {
+                        "2015-07-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_authorization/lib/profiles",
@@ -263,7 +401,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Automation" : {
-                    "2015-10-31": ["*"]
+                    "management": {
+                        "2015-10-31": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_automation/lib/profiles",
@@ -275,7 +415,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Batch" : {
-                    "2017-05-01": ["*"]
+                    "management": {
+                        "2017-05-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_batch/lib/profiles",
@@ -287,7 +429,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Billing" : {
-                    "2017-04-24-preview": ["*"]
+                    "management": {
+                        "2017-04-24-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_billing/lib/profiles",
@@ -299,7 +443,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.CDN" : {
-                    "2017-04-02": ["*"]
+                    "management": {
+                        "2017-04-02": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_cdn/lib/profiles",
@@ -311,7 +457,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.CognitiveServices" : {
-                    "2017-04-18": ["*"]
+                    "management": {
+                        "2017-04-18": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_cognitive_services/lib/profiles",
@@ -323,7 +471,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Commerce" : {
-                    "2015-06-01-preview": ["*"]
+                    "management": {
+                        "2015-06-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_commerce/lib/profiles",
@@ -335,7 +485,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Compute" : {
-                    "2016-03-30": ["*"]
+                    "management": {
+                        "2016-03-30": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_compute/lib/profiles",
@@ -345,9 +497,11 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Compute" : {
-                    "2017-03-30": ["*"],
-                    "2017-09-01": ["*"],
-                    "2017-12-01": ["*"]
+                    "management": {
+                        "2017-03-30": ["*"],
+                        "2017-09-01": ["*"],
+                        "2017-12-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_compute/lib/profiles",
@@ -359,7 +513,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Consumption" : {
-                    "2017-11-30": ["*"]
+                    "management": {
+                        "2017-11-30": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_consumption/lib/profiles",
@@ -371,7 +527,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ContainerInstance" : {
-                    "2017-08-01-preview": ["*"]
+                    "management": {
+                        "2017-08-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_container_instance/lib/profiles",
@@ -383,7 +541,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ContainerRegistry" : {
-                    "2017-10-01": ["*"]
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_container_registry/lib/profiles",
@@ -395,7 +555,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ContainerService" : {
-                    "2017-01-31": ["*"]
+                    "management": {
+                        "2017-01-31": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_container_service/lib/profiles",
@@ -407,7 +569,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.CustomerInsights" : {
-                    "2017-04-26": ["*"]
+                    "management": {
+                        "2017-04-26": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_customer_insights/lib/profiles",
@@ -419,7 +583,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.DataLakeAnalytics" : {
-                    "2016-11-01": ["*"]
+                    "management": {
+                        "2016-11-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_datalake_analytics/lib/profiles",
@@ -431,7 +597,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.DataLakeStore" : {
-                    "2016-11-01": ["*"]
+                    "management": {
+                        "2016-11-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_datalake_store/lib/profiles",
@@ -443,7 +611,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.DevTestLabs" : {
-                    "2016-05-15": ["*"]
+                    "management": {
+                        "2016-05-15": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_devtestlabs/lib/profiles",
@@ -455,7 +625,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Dns" : {
-                    "2016-04-01": ["*"]
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_dns/lib/profiles",
@@ -467,7 +639,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
-                    "2017-09-15-preview": ["*"]
+                    "management": {
+                        "2017-09-15-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_event_grid/lib/profiles",
@@ -479,7 +653,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.EventHub" : {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_event_hub/lib/profiles",
@@ -491,7 +667,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Features" : {
-                    "2015-12-01": ["*"]
+                    "management": {
+                        "2015-12-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_features/lib/profiles",
@@ -501,22 +679,12 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Features" : {
-                    "2015-12-01": ["*"]
+                    "management": {
+                        "2015-12-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_features/lib/profiles",
-            "individual_gem_profile": true
-        }
-        ],
-        "azure_mgmt_graph": [
-        {
-            "name": "Latest",
-            "resourceTypes": {
-                "Microsoft.Graph" : {
-                    "1.6": ["*"]
-                }
-            },
-            "output_dir": "management/azure_mgmt_graph/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -525,7 +693,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.IotHub" : {
-                    "2017-07-01": ["*"]
+                    "management": {
+                        "2017-07-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_iot_hub/lib/profiles",
@@ -537,7 +707,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.KeyVault" : {
-                    "2016-10-01": ["*"]
+                    "management": {
+                        "2016-10-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_key_vault/lib/profiles",
@@ -549,7 +721,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Links" : {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_links/lib/profiles",
@@ -559,7 +733,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Links" : {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_links/lib/profiles",
@@ -571,7 +747,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Locks" : {
-                    "2015-01-01": ["*"]
+                    "management": {
+                        "2015-01-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_locks/lib/profiles",
@@ -581,7 +759,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Locks" : {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_locks/lib/profiles",
@@ -593,7 +773,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Logic" : {
-                    "2016-06-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_logic/lib/profiles",
@@ -605,7 +787,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.MachineLearning" : {
-                    "2017-01-01": ["*"]
+                    "management": {
+                        "2017-01-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_machine_learning/lib/profiles",
@@ -617,7 +801,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ManagedApplications" : {
-                    "2016-09-01-preview": ["*"]
+                    "management": {
+                        "2016-09-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_managed_applications/lib/profiles",
@@ -629,7 +815,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.MarketplaceOrdering" : {
-                    "2015-06-01": ["*"]
+                    "management": {
+                        "2015-06-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_marketplace_ordering/lib/profiles",
@@ -641,7 +829,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.MediaServices" : {
-                    "2015-10-01": ["*"]
+                    "management": {
+                        "2015-10-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_media_services/lib/profiles",
@@ -653,7 +843,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.MobileEngagement" : {
-                    "2014-12-01": ["*"]
+                    "management": {
+                        "2014-12-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_mobile_engagement/lib/profiles",
@@ -665,10 +857,12 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Monitor" : {
-                    "2015-04-01": ["*"],
-                    "2016-03-01": ["*"],
-                    "2017-04-01": ["*"],
-                    "2017-05-01-preview": ["*"]
+                    "management": {
+                        "2015-04-01": ["*"],
+                        "2016-03-01": ["*"],
+                        "2017-04-01": ["*"],
+                        "2017-05-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_monitor/lib/profiles",
@@ -676,23 +870,27 @@
         }
         ],
         "azure_mgmt_msi": [
-            {
-                "name": "Latest",
-                "resourceTypes": {
-                    "Microsoft.ManagedServiceIdentity" : {
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ManagedServiceIdentity" : {
+                    "management": {
                         "2015-08-31-preview": ["*"]
                     }
-                },
-                "output_dir": "management/azure_mgmt_msi/lib/profiles",
-                "individual_gem_profile": true
-            }
-        ],
+                }
+            },
+            "output_dir": "management/azure_mgmt_msi/lib/profiles",
+            "individual_gem_profile": true
+        }
+         ],
         "azure_mgmt_network": [
         {
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Network" : {
-                    "2015-06-15": ["*"]
+                    "management": {
+                        "2015-06-15": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_network/lib/profiles",
@@ -702,7 +900,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Network" : {
-                    "2017-09-01": ["*"]
+                    "management": {
+                        "2017-09-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_network/lib/profiles",
@@ -714,7 +914,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.NotificationHubs" : {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_notification_hubs/lib/profiles",
@@ -726,8 +928,10 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.OperationalInsights" : {
-                    "2015-03-20": ["*"],
-                    "2015-11-01-preview": ["*"]
+                    "management": {
+                        "2015-03-20": ["*"],
+                        "2015-11-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_operational_insights/lib/profiles",
@@ -739,7 +943,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Policy" : {
-                    "2015-10-01-preview": ["*"]
+                    "management": {
+                        "2015-10-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_policy/lib/profiles",
@@ -749,8 +955,10 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Policy" : {
-                    "2016-12-01": ["*"],
-                    "2017-06-01-preview": ["*"]
+                    "management": {
+                        "2016-12-01": ["*"],
+                        "2017-06-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_policy/lib/profiles",
@@ -762,7 +970,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.PowerBiEmbedded" : {
-                    "2016-01-29": ["*"]
+                    "management": {
+                        "2016-01-29": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_powerbi_embedded/lib/profiles",
@@ -774,9 +984,11 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.RecoveryServicesBackup" : {
-                    "2016-08-10": ["*"],
-                    "2016-12-01": ["*"],
-                    "2017-07-01": ["*"]
+                    "management": {
+                        "2016-08-10": ["*"],
+                        "2016-12-01": ["*"],
+                        "2017-07-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_recovery_services_backup/lib/profiles",
@@ -788,8 +1000,10 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.RecoveryServices" : {
-                    "2016-06-01": ["*"],
-                    "2016-12-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"],
+                        "2016-12-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_recovery_services/lib/profiles",
@@ -801,7 +1015,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.RecoveryServicesSiteRecovery" : {
-                    "2016-08-10": ["*"]
+                    "management": {
+                        "2016-08-10": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_recovery_services_site_recovery/lib/profiles",
@@ -813,7 +1029,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Redis" : {
-                    "2017-02-01": ["*"]
+                    "management": {
+                        "2017-02-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_redis/lib/profiles",
@@ -825,7 +1043,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Relay" : {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_relay/lib/profiles",
@@ -837,7 +1057,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ResourcesManagement" : {
-                    "2017-08-31-preview": ["*"]
+                    "management": {
+                        "2017-08-31-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_resources_management/lib/profiles",
@@ -849,7 +1071,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Resources" : {
-                    "2016-02-01": ["*"]
+                    "management": {
+                        "2016-02-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_resources/lib/profiles",
@@ -859,7 +1083,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Resources" : {
-                    "2017-05-10": ["*"]
+                    "management": {
+                        "2017-05-10": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_resources/lib/profiles",
@@ -871,7 +1097,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Scheduler" : {
-                    "2016-03-01": ["*"]
+                    "management": {
+                        "2016-03-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_scheduler/lib/profiles",
@@ -883,7 +1111,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Search" : {
-                    "2015-08-19": ["*"]
+                    "management": {
+                        "2015-08-19": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_search/lib/profiles",
@@ -895,7 +1125,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ServerManagement" : {
-                    "2016-07-01-preview": ["*"]
+                    "management": {
+                        "2016-07-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_server_management/lib/profiles",
@@ -907,7 +1139,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ServiceBus" : {
-                    "2017-04-01": ["*"]
+                    "management": {
+                        "2017-04-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_service_bus/lib/profiles",
@@ -919,7 +1153,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.ServiceFabric" : {
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_service_fabric/lib/profiles",
@@ -931,9 +1167,11 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.SQL" : {
-                    "2014-04-01": ["*"],
-                    "2015-05-01-preview": ["*"],
-                    "2017-03-01-preview": ["*"]
+                    "management": {
+                        "2014-04-01": ["*"],
+                        "2015-05-01-preview": ["*"],
+                        "2017-03-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_sql/lib/profiles",
@@ -945,7 +1183,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.StorSimple8000Series" : {
-                    "2017-06-01": ["*"]
+                    "management": {
+                        "2017-06-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_stor_simple8000_series/lib/profiles",
@@ -957,7 +1197,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Storage" : {
-                    "2015-06-15": ["*"]
+                    "management": {
+                        "2015-06-15": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_storage/lib/profiles",
@@ -967,7 +1209,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Storage" : {
-                    "2017-10-01": ["*"]
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_storage/lib/profiles",
@@ -979,7 +1223,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.StreamAnalytics" : {
-                    "2016-03-01": ["*"]
+                    "management": {
+                        "2016-03-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_stream_analytics/lib/profiles",
@@ -991,7 +1237,9 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Subscriptions" : {
-                    "2016-06-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
@@ -1001,7 +1249,9 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Subscriptions" : {
-                    "2016-06-01": ["*"]
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
@@ -1013,8 +1263,10 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.TrafficManager": {
-                    "2017-05-01": ["*"],
-                    "2017-09-01-preview": ["*"]
+                    "management": {
+                        "2017-05-01": ["*"],
+                        "2017-09-01-preview": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_traffic_manager/lib/profiles",
@@ -1026,16 +1278,34 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Web" : {
-                    "2015-04-01": ["*"],
-                    "2015-08-01": ["*"],
-                    "2016-03-01": ["*"],
-                    "2016-08-01": ["*"],
-                    "2016-09-01": ["*"]
+                    "management": {
+                        "2015-04-01": ["*"],
+                        "2015-08-01": ["*"],
+                        "2016-03-01": ["*"],
+                        "2016-08-01": ["*"],
+                        "2016-09-01": ["*"]
+                    }
                 }
             },
             "output_dir": "management/azure_mgmt_web/lib/profiles",
             "individual_gem_profile": true
         }
+        ]
+    },
+    "data": {
+        "azure_graph_rbac": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.GraphRbac" : {
+                        "data": {
+                            "1.6": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_graph_rbac/lib/profiles",
+                "individual_gem_profile": true
+            }
         ]
     }
 }
