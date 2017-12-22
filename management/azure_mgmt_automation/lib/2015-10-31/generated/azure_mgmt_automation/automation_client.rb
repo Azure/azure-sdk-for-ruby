@@ -25,6 +25,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # for every service call.
     attr_accessor :subscription_id
 
+    # @return [String] The resource group name.
+    attr_accessor :resource_group_name
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -236,7 +239,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_automation'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::Automation::Mgmt::V2015_10_31::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Automation::Mgmt::V2015_10_31::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

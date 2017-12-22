@@ -6,31 +6,42 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # The connection type property associated with the entity.
+    # The dsc extensionHandler property associated with the node
     #
-    class ConnectionTypeAssociationProperty
+    class DscNodeExtensionHandlerAssociationProperty
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the name of the connection type.
+      # @return [String] Gets or sets the name of the extension handler.
       attr_accessor :name
+
+      # @return [String] Gets or sets the version of the extension handler.
+      attr_accessor :version
 
 
       #
-      # Mapper for ConnectionTypeAssociationProperty class as Ruby Hash.
+      # Mapper for DscNodeExtensionHandlerAssociationProperty class as Ruby
+      # Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ConnectionTypeAssociationProperty',
+          serialized_name: 'DscNodeExtensionHandlerAssociationProperty',
           type: {
             name: 'Composite',
-            class_name: 'ConnectionTypeAssociationProperty',
+            class_name: 'DscNodeExtensionHandlerAssociationProperty',
             model_properties: {
               name: {
                 required: false,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              version: {
+                required: false,
+                serialized_name: 'version',
                 type: {
                   name: 'String'
                 }
