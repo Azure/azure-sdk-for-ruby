@@ -14,6 +14,8 @@ require_relative 'defs/module_definition_def'
 # Class to generate the profile
 #
 class ProfileGenerator
+  CLIENTS_WITH_NO_BASE_URL = %w{ComputerVisionDataClass, ContentModeratorDataClass, FaceDataClass, TextAnalyticsDataClass}
+
   #
   # Constructor for the profile generator.
   #
@@ -27,6 +29,7 @@ class ProfileGenerator
     @output_dir = "#{@sdk_path}/#{profile['output_dir']}"
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
+    @base_url_to_be_included = true
   end
 
   #
@@ -108,6 +111,9 @@ class ProfileGenerator
         else
           module_def_obj.data_class_name        = "#{get_ruby_specific_resource_type_name(resource_provider_name)}DataClass"
           module_def_obj.data_mode              = true
+          if(CLIENTS_WITH_NO_BASE_URL.include? module_def_obj.data_class_name)
+            @base_url_to_be_included = false
+          end
         end
 
         resource_types_obj.each do |resource_type_version, resource_types|
@@ -217,10 +223,6 @@ class ProfileGenerator
           operations << const_name.to_s
         end
       end
-    end
-
-    if operations.empty?
-      raise "#{resource_type} operation could not be found for RP: #{resource_provider}:Version: #{resource_type_version}"
     end
 
     management_operation_types = data_operation_types = []
@@ -366,6 +368,8 @@ class ProfileGenerator
   # For eg. '2015-06-01' should be converted to Api_2015_06_01
   #
   def get_version(version)
+    version = version.capitalize
+    version = (version.start_with?'V')?version[1..version.length]:version
     "V#{version.gsub('-','_')}"
   end
 end

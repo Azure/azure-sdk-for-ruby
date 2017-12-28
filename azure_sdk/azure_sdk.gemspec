@@ -98,5 +98,16 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{gem_versions['management']['azure_mgmt_traffic_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_web', "~>#{gem_versions['management']['azure_mgmt_web']}"
   spec.add_runtime_dependency 'azure_graph_rbac', "~>#{gem_versions['data']['azure_graph_rbac']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_computervision', "~>#{gem_versions['data']['azure_cognitiveservices_computervision']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_contentmoderator', "~>#{gem_versions['data']['azure_cognitiveservices_contentmoderator']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_customsearch', "~>#{gem_versions['data']['azure_cognitiveservices_customsearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_entitysearch', "~>#{gem_versions['data']['azure_cognitiveservices_entitysearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_face', "~>#{gem_versions['data']['azure_cognitiveservices_face']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_imagesearch', "~>#{gem_versions['data']['azure_cognitiveservices_imagesearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_newssearch', "~>#{gem_versions['data']['azure_cognitiveservices_newssearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_spellcheck', "~>#{gem_versions['data']['azure_cognitiveservices_spellcheck']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_textanalytics', "~>#{gem_versions['data']['azure_cognitiveservices_textanalytics']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_videosearch', "~>#{gem_versions['data']['azure_cognitiveservices_videosearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_websearch', "~>#{gem_versions['data']['azure_cognitiveservices_websearch']}"
   spec.add_runtime_dependency 'azure-storage', '~>0.14.0.preview'
 end

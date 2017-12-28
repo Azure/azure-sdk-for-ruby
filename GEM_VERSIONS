@@ -3,7 +3,18 @@
         "azure_sdk": "0.15.2"
     },
     "data": {
-        "azure_graph_rbac": "0.15.2"
+        "azure_graph_rbac": "0.15.2",
+        "azure_cognitiveservices_computervision": "0.15.2",
+        "azure_cognitiveservices_contentmoderator": "0.15.2",
+        "azure_cognitiveservices_customsearch": "0.15.2",
+        "azure_cognitiveservices_entitysearch": "0.15.2",
+        "azure_cognitiveservices_face": "0.15.2",
+        "azure_cognitiveservices_imagesearch": "0.15.2",
+        "azure_cognitiveservices_newssearch": "0.15.2",
+        "azure_cognitiveservices_spellcheck": "0.15.2",
+        "azure_cognitiveservices_textanalytics": "0.15.2",
+        "azure_cognitiveservices_videosearch": "0.15.2",
+        "azure_cognitiveservices_websearch": "0.15.2"
     },
     "management" : {
         "azure_mgmt_analysis_services": "0.15.2",

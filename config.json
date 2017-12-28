@@ -819,5 +819,104 @@
       "namespace": "Azure::Web::Mgmt::V2016_03_01",
       "title": "WebSiteManagementClient"
     }
+  },
+  "azure_cognitiveservices_computervision":{
+    "azure_cognitiveservices_computervision_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/ComputerVision/stable/v1.0/ComputerVision.json"
+      ],
+      "namespace": "Azure::CognitiveServices::ComputerVision::V1_0",
+      "title": "ComputerVisionClient"
+    }
+  },
+  "azure_cognitiveservices_contentmoderator":{
+    "azure_cognitiveservices_contentmoderator_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/ContentModerator/stable/v1.0/ContentModerator.json"
+      ],
+      "namespace": "Azure::CognitiveServices::ContentModerator::V1_0",
+      "title": "ContentModeratorClient"
+    }
+  },
+  "azure_cognitiveservices_customsearch":{
+    "azure_cognitiveservices_customsearch_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/CustomSearch/stable/v1.0/CustomSearch.json"
+      ],
+      "namespace": "Azure::CognitiveServices::CustomSearch::V1_0",
+      "title": "CustomSearchClient"
+    }
+  },
+  "azure_cognitiveservices_entitysearch":{
+    "azure_cognitiveservices_entitysearch_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/EntitySearch/stable/v1.0/EntitySearch.json"
+      ],
+      "namespace": "Azure::CognitiveServices::EntitySearch::V1_0",
+      "title": "EntitySearchClient"
+    }
+  },
+  "azure_cognitiveservices_face":{
+    "azure_cognitiveservices_face_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/Face/stable/v1.0/Face.json"
+      ],
+      "namespace": "Azure::CognitiveServices::Face::V1_0",
+      "title": "FaceClient"
+    }
+  },
+  "azure_cognitiveservices_imagesearch":{
+    "azure_cognitiveservices_imagesearch_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/ImageSearch/stable/v1.0/ImageSearch.json"
+      ],
+      "namespace": "Azure::CognitiveServices::ImageSearch::V1_0",
+      "title": "ImageSearchClient"
+    }
+  },
+  "azure_cognitiveservices_newssearch":{
+    "azure_cognitiveservices_newssearch_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/NewsSearch/stable/v1.0/NewsSearch.json"
+      ],
+      "namespace": "Azure::CognitiveServices::NewsSearch::V1_0",
+      "title": "NewsSearchClient"
+    }
+  },
+  "azure_cognitiveservices_spellcheck":{
+    "azure_cognitiveservices_spellcheck_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/SpellCheck/stable/V1.0/SpellCheck.json"
+      ],
+      "namespace": "Azure::CognitiveServices::SpellCheck::V1_0",
+      "title": "SpellCheckClient"
+    }
+  },
+  "azure_cognitiveservices_textanalytics":{
+    "azure_cognitiveservices_textanalytics_v2.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/TextAnalytics/stable/v2.0/TextAnalytics.json"
+      ],
+      "namespace": "Azure::CognitiveServices::TextAnalytics::V2_0",
+      "title": "TextAnalyticsClient"
+    }
+  },
+  "azure_cognitiveservices_videosearch":{
+    "azure_cognitiveservices_videosearch_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/VideoSearch/stable/v1.0/VideoSearch.json"
+      ],
+      "namespace": "Azure::CognitiveServices::VideoSearch::V1_0",
+      "title": "VideoSearchClient"
+    }
+  },
+  "azure_cognitiveservices_websearch":{
+    "azure_cognitiveservices_websearch_v1.0": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0bef2b99ad6d52781e3c308bc6b420f6eef59ef7/specification/cognitiveservices/data-plane/WebSearch/stable/v1.0/WebSearch.json"
+      ],
+      "namespace": "Azure::CognitiveServices::WebSearch::V1_0",
+      "title": "WebSearchClient"
+    }
   }
 }

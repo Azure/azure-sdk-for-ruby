@@ -28,7 +28,11 @@ module Azure::Profiles::<%= @profile_name %>
         @configurable, @base_url, @options = configurable, base_url, options
 
         <%- @data_clients_ops_mapper.each_with_index do |(key, value), index| -%>
+        <%- if(@base_url_to_be_included) -%>
         client_<%= index %> = <%= key %>.new(configurable.credentials, base_url, options)
+        <%- else -%>
+        client_<%= index %> = <%= key %>.new(configurable.credentials, options)
+        <%- end -%>
         if(client_<%= index %>.respond_to?(:subscription_id))
           client_<%= index %>.subscription_id = configurable.subscription_id
         end
