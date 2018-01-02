@@ -33,7 +33,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitRoutesTable',
           type: {
@@ -41,7 +40,6 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ExpressRouteCircuitRoutesTable',
             model_properties: {
               address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'addressPrefix',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               next_hop_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'nextHopType',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               next_hop_ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextHopIP',
                 type: {
@@ -65,7 +61,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               as_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'asPath',
                 type: {
