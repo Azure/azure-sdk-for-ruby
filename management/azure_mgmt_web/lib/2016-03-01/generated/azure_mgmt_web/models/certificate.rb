@@ -91,6 +91,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Certificate',
           type: {
@@ -98,6 +99,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'Certificate',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -106,6 +108,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -114,6 +117,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -121,6 +125,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -128,6 +133,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -136,11 +142,13 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -150,6 +158,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.friendlyName',
@@ -158,6 +167,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               subject_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subjectName',
@@ -166,11 +176,13 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               host_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -180,6 +192,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               pfx_blob: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.pfxBlob',
                 type: {
@@ -187,6 +200,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               site_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.siteName',
@@ -195,6 +209,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               self_link: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.selfLink',
@@ -203,6 +218,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               issuer: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.issuer',
@@ -211,6 +227,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               issue_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.issueDate',
@@ -219,6 +236,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               expiration_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.expirationDate',
@@ -227,6 +245,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {
@@ -234,6 +253,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.thumbprint',
@@ -242,6 +262,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               valid: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.valid',
@@ -250,6 +271,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               cer_blob: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.cerBlob',
@@ -258,6 +280,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               public_key_hash: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.publicKeyHash',
@@ -266,6 +289,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               hosting_environment_profile: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hostingEnvironmentProfile',
@@ -275,6 +299,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               key_vault_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.keyVaultId',
                 type: {
@@ -282,6 +307,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               key_vault_secret_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.keyVaultSecretName',
                 type: {
@@ -289,6 +315,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               key_vault_secret_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.keyVaultSecretStatus',
@@ -298,6 +325,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               geo_region: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.geoRegion',
@@ -306,6 +334,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               certificate_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -314,6 +343,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               server_farm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serverFarmId',
                 type: {

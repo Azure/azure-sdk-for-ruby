@@ -34,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FileSystemHttpLogsConfig',
           type: {
@@ -41,6 +42,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'FileSystemHttpLogsConfig',
             model_properties: {
               retention_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionInMb',
                 constraints: {
@@ -52,6 +54,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               retention_in_days: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionInDays',
                 type: {
@@ -59,6 +62,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {

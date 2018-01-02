@@ -38,6 +38,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SiteSourceControl',
           type: {
@@ -45,6 +46,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SiteSourceControl',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,6 +55,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,6 +64,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -68,6 +72,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -76,6 +81,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               repo_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.repoUrl',
                 type: {
@@ -83,6 +89,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               branch: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.branch',
                 type: {
@@ -90,6 +97,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_manual_integration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isManualIntegration',
                 type: {
@@ -97,6 +105,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               deployment_rollback_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deploymentRollbackEnabled',
                 type: {
@@ -104,6 +113,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_mercurial: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isMercurial',
                 type: {

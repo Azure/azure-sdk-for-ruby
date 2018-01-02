@@ -46,6 +46,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceMeta',
           type: {
@@ -53,6 +54,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'DeviceMeta',
             model_properties: {
               first_seen: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'firstSeen',
                 type: {
@@ -60,6 +62,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               last_seen: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastSeen',
                 type: {
@@ -67,6 +70,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               last_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastInfo',
                 type: {
@@ -74,6 +78,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               last_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastLocation',
                 type: {
@@ -81,6 +86,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               native_push_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nativePushEnabled',
                 type: {

@@ -30,6 +30,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ScheduleRecurrence',
           type: {
@@ -37,6 +38,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ScheduleRecurrence',
             model_properties: {
               recurrence_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'recurrenceType',
                 type: {
@@ -45,6 +47,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               recurrence_value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'recurrenceValue',
                 type: {
@@ -52,11 +55,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               weekly_days_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'weeklyDaysList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DayOfWeekElementType',
                       type: {

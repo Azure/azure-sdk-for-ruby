@@ -6,15 +6,19 @@
 module Azure::Compute::Mgmt::V2016_04_30_preview
   module Models
     #
-    # Describes a diagnostics profile.
+    # Specifies the boot diagnostic settings state. <br><br>Minimum
+    # api-version: 2015-06-15.
     #
     class DiagnosticsProfile
 
       include MsRestAzure
 
       # @return [BootDiagnostics] Boot Diagnostics is a debugging feature which
-      # allows the user to view console output and/or a screenshot of the
-      # virtual machine from the hypervisor.
+      # allows you to view Console Output and Screenshot to diagnose VM status.
+      # <br><br> For Linux Virtual Machines, you can easily view the output of
+      # your console log. <br><br> For both Windows and Linux virtual machines,
+      # Azure also enables you to see a screenshot of the VM from the
+      # hypervisor.
       attr_accessor :boot_diagnostics
 
 
@@ -24,6 +28,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticsProfile',
           type: {
@@ -31,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'DiagnosticsProfile',
             model_properties: {
               boot_diagnostics: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bootDiagnostics',
                 type: {

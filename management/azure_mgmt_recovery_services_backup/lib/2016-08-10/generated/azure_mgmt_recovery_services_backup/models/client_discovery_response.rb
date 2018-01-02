@@ -58,6 +58,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryResponse',
           type: {
@@ -65,11 +66,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
             class_name: 'ClientDiscoveryResponse',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClientDiscoveryValueForSingleApiElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'NextLink',
                 type: {

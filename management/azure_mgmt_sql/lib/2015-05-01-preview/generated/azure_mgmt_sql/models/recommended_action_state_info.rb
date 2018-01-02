@@ -49,6 +49,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedActionStateInfo',
           type: {
@@ -56,6 +57,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'RecommendedActionStateInfo',
             model_properties: {
               current_value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'currentValue',
                 type: {
@@ -63,6 +65,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               action_initiated_by: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'actionInitiatedBy',
@@ -72,6 +75,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               last_modified: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastModified',

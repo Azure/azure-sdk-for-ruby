@@ -35,6 +35,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KEKDetails',
           type: {
@@ -42,6 +43,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'KEKDetails',
             model_properties: {
               key_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyUrl',
                 type: {
@@ -49,6 +51,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               key_vault_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultId',
                 type: {
@@ -56,6 +59,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               key_backup_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyBackupData',
                 type: {

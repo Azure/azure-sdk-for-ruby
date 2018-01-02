@@ -12,8 +12,10 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
-      # @return [OperatingSystemTypes] The Operating System type. Possible
-      # values include: 'Windows', 'Linux'
+      # @return [OperatingSystemTypes] This property allows you to specify the
+      # type of the OS that is included in the disk if creating a VM from a
+      # custom image. <br><br> Possible values are: <br><br> **Windows**
+      # <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
       attr_accessor :os_type
 
       # @return [OperatingSystemStateTypes] The OS State. Possible values
@@ -29,12 +31,16 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [String] The Virtual Hard Disk.
       attr_accessor :blob_uri
 
-      # @return [CachingTypes] The caching type. Possible values include:
-      # 'None', 'ReadOnly', 'ReadWrite'
+      # @return [CachingTypes] Specifies the caching requirements. <br><br>
+      # Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+      # **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly
+      # for Premium storage**. Possible values include: 'None', 'ReadOnly',
+      # 'ReadWrite'
       attr_accessor :caching
 
-      # @return [Integer] The initial managed disk size in GB for blank data
-      # disks, and the new desired size for existing OS and Data disks.
+      # @return [Integer] Specifies the size of empty data disks in gigabytes.
+      # This element can be used to overwrite the name of the disk in a virtual
+      # machine image. <br><br> This value cannot be larger than 1023 GB
       attr_accessor :disk_size_gb
 
 
@@ -44,6 +50,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImageOSDisk',
           type: {
@@ -51,6 +58,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'ImageOSDisk',
             model_properties: {
               os_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'osType',
                 type: {
@@ -59,6 +67,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               os_state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'osState',
                 type: {
@@ -67,6 +76,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               snapshot: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'snapshot',
                 type: {
@@ -75,6 +85,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               managed_disk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {
@@ -83,6 +94,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               blob_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobUri',
                 type: {
@@ -90,6 +102,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               caching: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -98,6 +111,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               disk_size_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {

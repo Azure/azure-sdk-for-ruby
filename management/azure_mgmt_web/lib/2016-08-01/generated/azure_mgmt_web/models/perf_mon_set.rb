@@ -35,6 +35,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PerfMonSet',
           type: {
@@ -42,6 +43,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'PerfMonSet',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -63,6 +67,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               time_grain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -70,11 +75,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               values: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PerfMonSampleElementType',
                       type: {

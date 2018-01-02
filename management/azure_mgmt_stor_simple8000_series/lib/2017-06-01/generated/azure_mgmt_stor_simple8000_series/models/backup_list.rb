@@ -57,6 +57,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BackupList',
           type: {
@@ -64,11 +65,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BackupList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BackupElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

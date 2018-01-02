@@ -55,6 +55,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VMNicDetails',
           type: {
@@ -62,6 +63,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VMNicDetails',
             model_properties: {
               nic_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nicId',
                 type: {
@@ -69,6 +71,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replica_nic_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicaNicId',
                 type: {
@@ -76,6 +79,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_nic_arm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceNicArmId',
                 type: {
@@ -83,6 +87,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               v_msubnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vMSubnetName',
                 type: {
@@ -90,6 +95,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               v_mnetwork_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vMNetworkName',
                 type: {
@@ -97,6 +103,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_vmnetwork_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryVMNetworkId',
                 type: {
@@ -104,6 +111,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_vmsubnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryVMSubnetName',
                 type: {
@@ -111,6 +119,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ip_address_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddressType',
                 type: {
@@ -118,6 +127,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_nic_static_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryNicStaticIPAddress',
                 type: {
@@ -125,6 +135,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replica_nic_static_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicaNicStaticIPAddress',
                 type: {
@@ -132,6 +143,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               selection_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'selectionType',
                 type: {
@@ -139,6 +151,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_nic_ip_address_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryNicIpAddressType',
                 type: {

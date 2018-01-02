@@ -27,6 +27,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultReference',
           type: {
@@ -34,6 +35,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'KeyVaultReference',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -41,6 +43,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {

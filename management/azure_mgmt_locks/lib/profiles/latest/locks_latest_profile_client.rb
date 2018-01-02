@@ -5,17 +5,18 @@
 require 'profiles/latest/locks_module_definition'
 require 'profiles/latest/modules/locks_profile_module'
 
-module Azure::Locks::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < LocksClass
-    include MsRestAzure::Common::Configurable
+module Azure::Locks::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < LocksManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

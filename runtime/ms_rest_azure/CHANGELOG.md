@@ -1,3 +1,11 @@
+##2017.12.19 ms_rest_azure version 0.10.1
+* Added support for user assigned identity to MSITokenProvider Modified portal URLs for Azure cloud environments. Refer [Issue #1175](https://github.com/Azure/azure-sdk-for-ruby/issues/1175) for further details.
+
+##2017.11.10 ms_rest_azure version 0.10.0
+* Modified portal URLs for Azure cloud environments. Refer [PR #1106](https://github.com/Azure/azure-sdk-for-ruby/pull/1106) for further details.
+* [Breaking Change] Removed Resource and SubResource classes. Refer [PR #1106](https://github.com/Azure/azure-sdk-for-ruby/pull/1106) for further details.
+* Added Configurable and Default classes to be used by the profile gems. Refer [PR #1111](https://github.com/Azure/azure-sdk-for-ruby/pull/1111) for further details.
+
 ##2017.09.11 ms_rest_azure version 0.9.0
 * [Breaking Change] Managed Service Identity authentication to acquire token does not require `tenant_id`.[Issue #930](https://github.com/Azure/azure-sdk-for-ruby/issues/930) [PR #931](https://github.com/Azure/azure-sdk-for-ruby/pull/931)
 

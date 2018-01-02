@@ -31,6 +31,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetIPConfiguration',
           type: {
@@ -38,6 +39,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineScaleSetIPConfiguration',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               subnet: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -60,11 +64,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               load_balancer_backend_address_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerBackendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -75,11 +81,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               load_balancer_inbound_nat_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerInboundNatPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {

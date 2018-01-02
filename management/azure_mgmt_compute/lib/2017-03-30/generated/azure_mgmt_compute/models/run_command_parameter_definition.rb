@@ -32,6 +32,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunCommandParameterDefinition',
           type: {
@@ -39,6 +40,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'RunCommandParameterDefinition',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               default_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultValue',
                 type: {
@@ -60,6 +64,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               required: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'required',
                 default_value: false,

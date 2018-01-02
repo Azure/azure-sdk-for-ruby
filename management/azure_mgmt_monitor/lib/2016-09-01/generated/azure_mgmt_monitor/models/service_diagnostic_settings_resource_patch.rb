@@ -48,6 +48,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceDiagnosticSettingsResourcePatch',
           type: {
@@ -55,11 +56,13 @@ module Azure::Monitor::Mgmt::V2016_09_01
             class_name: 'ServiceDiagnosticSettingsResourcePatch',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -69,6 +72,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountId',
                 type: {
@@ -76,6 +80,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               service_bus_rule_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceBusRuleId',
                 type: {
@@ -83,6 +88,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               event_hub_authorization_rule_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventHubAuthorizationRuleId',
                 type: {
@@ -90,11 +96,13 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               metrics: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metrics',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricSettingsElementType',
                       type: {
@@ -105,11 +113,13 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               logs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.logs',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LogSettingsElementType',
                       type: {
@@ -120,6 +130,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               workspace_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.workspaceId',
                 type: {

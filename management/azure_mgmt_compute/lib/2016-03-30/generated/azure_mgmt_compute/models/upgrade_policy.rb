@@ -12,8 +12,13 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
-      # @return [UpgradeMode] The upgrade mode. Possible values include:
-      # 'Automatic', 'Manual'
+      # @return [UpgradeMode] Specifies the mode of an upgrade to virtual
+      # machines in the scale set.<br /><br /> Possible values are:<br /><br />
+      # **Manual** - You  control the application of updates to virtual
+      # machines in the scale set. You do this by using the manualUpgrade
+      # action.<br /><br /> **Automatic** - All virtual machines in the scale
+      # set are  automatically updated at the same time. Possible values
+      # include: 'Automatic', 'Manual'
       attr_accessor :mode
 
 
@@ -23,6 +28,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradePolicy',
           type: {
@@ -30,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'UpgradePolicy',
             model_properties: {
               mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {

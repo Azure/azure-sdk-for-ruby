@@ -6,4 +6,3 @@ module Azure end
 module Azure::EventGrid end
 module Azure::EventGrid::Profiles end
 module Azure::EventGrid::Profiles::Latest end
-module Azure::EventGrid::Profiles::Latest::Mgmt end

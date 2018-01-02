@@ -38,6 +38,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubDescription',
           type: {
@@ -45,6 +46,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'IotHubDescription',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,6 +55,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -64,6 +67,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,6 +76,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -79,11 +84,13 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -93,6 +100,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               subscriptionid: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'subscriptionid',
                 type: {
@@ -100,6 +108,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               resourcegroup: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'resourcegroup',
                 type: {
@@ -107,6 +116,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -114,6 +124,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -122,6 +133,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {

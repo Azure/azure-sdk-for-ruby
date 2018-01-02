@@ -62,6 +62,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DPMProtectedItemExtendedInfo',
           type: {
@@ -69,11 +70,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'DPMProtectedItemExtendedInfo',
             model_properties: {
               protectable_object_load_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectableObjectLoadPath',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -83,6 +86,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protected: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protected',
                 type: {
@@ -90,6 +94,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               is_present_on_cloud: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isPresentOnCloud',
                 type: {
@@ -97,6 +102,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_backup_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastBackupStatus',
                 type: {
@@ -104,6 +110,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_refreshed_at: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRefreshedAt',
                 type: {
@@ -111,6 +118,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               oldest_recovery_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'oldestRecoveryPoint',
                 type: {
@@ -118,6 +126,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recovery_point_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointCount',
                 type: {
@@ -125,6 +134,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               on_premise_oldest_recovery_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'onPremiseOldestRecoveryPoint',
                 type: {
@@ -132,6 +142,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               on_premise_latest_recovery_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'onPremiseLatestRecoveryPoint',
                 type: {
@@ -139,6 +150,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               on_premise_recovery_point_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'onPremiseRecoveryPointCount',
                 type: {
@@ -146,6 +158,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               is_collocated: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isCollocated',
                 type: {
@@ -153,6 +166,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protection_group_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionGroupName',
                 type: {
@@ -160,6 +174,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               disk_storage_used_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskStorageUsedInBytes',
                 type: {
@@ -167,6 +182,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               total_disk_storage_size_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalDiskStorageSizeInBytes',
                 type: {

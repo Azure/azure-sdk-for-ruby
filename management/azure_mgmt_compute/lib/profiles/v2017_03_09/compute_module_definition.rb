@@ -6,4 +6,3 @@ module Azure end
 module Azure::Compute end
 module Azure::Compute::Profiles end
 module Azure::Compute::Profiles::V2017_03_09 end
-module Azure::Compute::Profiles::V2017_03_09::Mgmt end

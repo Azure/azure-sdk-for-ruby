@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_locks'
 
-module Azure::Locks::Profiles::Latest::Mgmt
+module Azure::Locks::Profiles::Latest
+  module Mgmt
     ManagementLocks = Azure::Locks::Mgmt::V2016_09_01::ManagementLocks
 
     module Models
@@ -15,9 +16,9 @@ module Azure::Locks::Profiles::Latest::Mgmt
     end
 
     #
-    # Locks
+    # LocksManagementClass
     #
-    class LocksClass
+    class LocksManagementClass
       attr_reader :management_locks, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -39,20 +40,21 @@ module Azure::Locks::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def management_lock_object
-          Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
-        end
-        def management_lock_list_result
-          Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
-        end
-        def management_lock_owner
-          Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
-        end
-        def lock_level
-          Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
-        end
+    class ModelClasses
+      def management_lock_object
+        Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
+      end
+      def management_lock_list_result
+        Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
+      end
+      def management_lock_owner
+        Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
+      end
+      def lock_level
+        Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
       end
     end
+  end
 end

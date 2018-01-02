@@ -117,9 +117,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_recovery_services_backup'
-        if defined? Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.2"
         add_user_agent_information(sdk_information)
     end
   end

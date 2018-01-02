@@ -6,4 +6,3 @@ module Azure end
 module Azure::CustomerInsights end
 module Azure::CustomerInsights::Profiles end
 module Azure::CustomerInsights::Profiles::Latest end
-module Azure::CustomerInsights::Profiles::Latest::Mgmt end

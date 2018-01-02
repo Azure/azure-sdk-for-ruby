@@ -31,6 +31,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceTagsParameters',
           type: {
@@ -38,16 +39,19 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'DeviceTagsParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HashElementType',
                       type: {
                         name: 'Dictionary',
                         value: {
+                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -59,6 +63,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               delete_on_null: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deleteOnNull',
                 default_value: false,

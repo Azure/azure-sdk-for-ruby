@@ -44,6 +44,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagerExtendedInfo',
           type: {
@@ -51,6 +52,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ManagerExtendedInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,6 +61,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -67,6 +70,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -75,6 +79,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -83,6 +88,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.version',
                 type: {
@@ -90,6 +96,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               integrity_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.integrityKey',
                 type: {
@@ -97,6 +104,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               encryption_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionKey',
                 type: {
@@ -104,6 +112,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               encryption_key_thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionKeyThumbprint',
                 type: {
@@ -111,6 +120,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               portal_certificate_thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.portalCertificateThumbprint',
                 type: {
@@ -118,6 +128,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               algorithm: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.algorithm',
                 type: {
@@ -125,6 +136,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

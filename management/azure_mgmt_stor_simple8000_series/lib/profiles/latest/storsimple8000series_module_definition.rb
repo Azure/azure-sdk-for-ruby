@@ -6,4 +6,3 @@ module Azure end
 module Azure::StorSimple8000Series end
 module Azure::StorSimple8000Series::Profiles end
 module Azure::StorSimple8000Series::Profiles::Latest end
-module Azure::StorSimple8000Series::Profiles::Latest::Mgmt end

@@ -13,6 +13,9 @@ module Azure::Compute::Mgmt::V2016_03_30
       include MsRestAzure
 
       # @return [Array<String>] The virtual machine scale set instance ids.
+      # Omitting the virtual machine scale set instance ids will result in the
+      # operation being performed on all virtual machines in the virtual
+      # machine scale set.
       attr_accessor :instance_ids
 
 
@@ -22,6 +25,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetVMInstanceIDs',
           type: {
@@ -29,11 +33,13 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineScaleSetVMInstanceIDs',
             model_properties: {
               instance_ids: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'instanceIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

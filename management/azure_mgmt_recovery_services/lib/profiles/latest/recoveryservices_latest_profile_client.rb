@@ -5,17 +5,18 @@
 require 'profiles/latest/recoveryservices_module_definition'
 require 'profiles/latest/modules/recoveryservices_profile_module'
 
-module Azure::RecoveryServices::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < RecoveryServicesClass
-    include MsRestAzure::Common::Configurable
+module Azure::RecoveryServices::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < RecoveryServicesManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

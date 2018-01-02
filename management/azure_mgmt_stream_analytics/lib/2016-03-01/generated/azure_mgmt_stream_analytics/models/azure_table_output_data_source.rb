@@ -56,6 +56,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Storage/Table',
           type: {
@@ -63,6 +64,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AzureTableOutputDataSource',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -70,6 +72,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               account_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountName',
                 type: {
@@ -77,6 +80,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               account_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountKey',
                 type: {
@@ -84,6 +88,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               table: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.table',
                 type: {
@@ -91,6 +96,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               partition_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partitionKey',
                 type: {
@@ -98,6 +104,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               row_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.rowKey',
                 type: {
@@ -105,11 +112,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               columns_to_remove: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.columnsToRemove',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -119,6 +128,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               batch_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.batchSize',
                 type: {

@@ -30,6 +30,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobRecurrenceScheduleMonthlyOccurrence',
           type: {
@@ -37,6 +38,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobRecurrenceScheduleMonthlyOccurrence',
             model_properties: {
               day: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'day',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               occurrence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Occurrence',
                 type: {

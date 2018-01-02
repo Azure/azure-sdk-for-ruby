@@ -29,6 +29,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountKey',
           type: {
@@ -36,6 +37,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'StorageAccountKey',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'keyName',
@@ -44,6 +46,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
@@ -52,6 +55,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               permissions: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'permissions',

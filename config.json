@@ -77,27 +77,37 @@
     }
   },
   "azure_mgmt_compute": {
+    "azure_mgmt_compute_2017_12_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2017_12_01",
+      "tag": "package-compute-only-2017-12"
+    },
+    "azure_mgmt_compute_2017_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2017_09_01",
+      "tag": "package-skus-2017-09"
+    },
     "azure_mgmt_compute_2017_03_30": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/compute.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/disk.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/runCommands.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/compute.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/disk.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/runCommands.json"
       ],
       "namespace": "Azure::Compute::Mgmt::V2017_03_30",
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2016_04_30_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2016_04_30_preview",
       "tag": "package-compute-2016-04-preview"
     },
     "azure_mgmt_compute_2016_03_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2016_03_30",
       "tag": "package-compute-2016-03"
     },
     "azure_mgmt_compute_2015_06_15": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a28854583ef8a02182b9f5562d141059ac4d0059/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2015_06_15",
       "tag": "package-compute-2015-06"
     }
@@ -107,6 +117,11 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/consumption/resource-manager/readme.md",
       "namespace": "Azure::Consumption::Mgmt::V2017_04_24_preview",
       "tag": "package-2017-04-preview"
+    },
+    "azure_mgmt_consumption_2017_11_30": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e804bb7ce44b72cca7c0f9dd72d7179aee76981b/specification/consumption/resource-manager/readme.md",
+      "namespace": "Azure::Consumption::Mgmt::V2017_11_30",
+      "tag": "package-2017-11"
     }
   },
   "azure_mgmt_container_instance": {
@@ -233,12 +248,13 @@
       "tag": "package-features-2015-12"
     }
   },
-  "azure_mgmt_graph": {
-    "azure_mgmt_graph_1.6": {
+  "azure_graph_rbac": {
+    "azure_graph_rbac_1.6": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/graphrbac/data-plane/1.6/graphrbac.json"
       ],
-      "namespace": "Azure::Graph::Mgmt::V1_6"
+      "namespace": "Azure::GraphRbac::V1_6",
+      "title": "GraphRbacClient"
     }
   },
   "azure_mgmt_iot_hub": {
@@ -381,6 +397,13 @@
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/monitor/resource-manager/microsoft.insights/2015-04-01/operations_API.json"
       ],
       "namespace": "Azure::Monitor::Mgmt::V2015_04_01"
+    }
+  },
+  "azure_mgmt_msi": {
+    "azure_mgmt_msi_2015_08_31_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/13291dd9244584a66de3c53cc1a85998efd288b3/specification/msi/resource-manager/readme.md",
+      "namespace": "Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview",
+      "tag": "package-2015-08-31-preview"
     }
   },
   "azure_mgmt_network": {
@@ -547,7 +570,7 @@
   },
   "azure_mgmt_recovery_services_site_recovery": {
     "azure_mgmt_recovery_services_site_recovery_2016_08_10": {
-      "markdown": "https://github.com/Azure/azure-rest-api-specs/blob/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/recoveryservicessiterecovery/resource-manager/readme.md",
+      "markdown": "https://github.com/Azure/azure-rest-api-specs/blob/e2c0788e30810af0afaeace73b6b7c86a182432a/specification/recoveryservicessiterecovery/resource-manager/readme.md",
       "namespace": "Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10",
       "tag": "package-2016-08"
     }
@@ -680,6 +703,11 @@
     }
   },
   "azure_mgmt_storage": {
+    "azure_mgmt_storage_2017_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cd7dcd35d27b4dd6b5a7344bd0a6a2124ac36f5/specification/storage/resource-manager/readme.md",
+      "namespace": "Azure::Storage::Mgmt::V2017_10_01",
+      "tag": "package-2017-10"
+    },
     "azure_mgmt_storage_2017_06_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2017_06_01",

@@ -47,6 +47,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebhookCreateParameters',
           type: {
@@ -54,11 +55,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'WebhookCreateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -68,6 +71,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -75,6 +79,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               service_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.serviceUri',
                 type: {
@@ -82,11 +87,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               custom_headers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customHeaders',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -96,6 +103,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -103,6 +111,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               scope: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scope',
                 type: {
@@ -110,11 +119,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               actions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.actions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WebhookActionElementType',
                       type: {

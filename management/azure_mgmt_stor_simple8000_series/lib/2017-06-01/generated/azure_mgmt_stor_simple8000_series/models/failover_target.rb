@@ -60,6 +60,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverTarget',
           type: {
@@ -67,6 +68,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'FailoverTarget',
             model_properties: {
               device_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceId',
                 type: {
@@ -74,6 +76,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceStatus',
                 type: {
@@ -82,6 +85,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               model_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'modelDescription',
                 type: {
@@ -89,6 +93,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_software_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceSoftwareVersion',
                 type: {
@@ -96,6 +101,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               data_containers_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataContainersCount',
                 type: {
@@ -103,6 +109,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volumes_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumesCount',
                 type: {
@@ -110,6 +117,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               available_local_storage_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableLocalStorageInBytes',
                 type: {
@@ -117,6 +125,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               available_tiered_storage_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableTieredStorageInBytes',
                 type: {
@@ -124,6 +133,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceLocation',
                 type: {
@@ -131,6 +141,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               friendly_device_software_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyDeviceSoftwareVersion',
                 type: {
@@ -138,6 +149,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               eligibility_result: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eligibilityResult',
                 type: {

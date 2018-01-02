@@ -33,6 +33,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HardwareComponent',
           type: {
@@ -40,6 +41,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'HardwareComponent',
             model_properties: {
               component_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'componentId',
                 type: {
@@ -47,6 +49,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'displayName',
                 type: {
@@ -54,6 +57,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {
@@ -62,6 +66,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               status_display_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'statusDisplayName',
                 type: {

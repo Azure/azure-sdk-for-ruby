@@ -37,6 +37,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProviderOperationsMetadata',
           type: {
@@ -44,6 +45,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'ProviderOperationsMetadata',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -51,6 +53,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -58,6 +61,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -65,6 +69,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -72,11 +77,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               resource_types: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceTypeElementType',
                       type: {
@@ -87,11 +94,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               operations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderOperationElementType',
                       type: {

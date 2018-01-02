@@ -6,7 +6,12 @@
 module Azure::Compute::Mgmt::V2016_03_30
   module Models
     #
-    # Plan for the resource.
+    # Specifies information about the marketplace image used to create the
+    # virtual machine. This element is only used for marketplace images. Before
+    # you can use a marketplace image from an API, you must enable the image
+    # for programmatic use.  In the Azure portal, find the marketplace image
+    # that you want to use and then click **Want to deploy programmatically,
+    # Get Started ->**. Enter any required information and then click **Save**.
     #
     class Plan
 
@@ -18,7 +23,9 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [String] The publisher ID.
       attr_accessor :publisher
 
-      # @return [String] The offer ID.
+      # @return [String] Specifies the product of the image from the
+      # marketplace. This is the same value as Offer under the imageReference
+      # element.
       attr_accessor :product
 
       # @return [String] The promotion code.
@@ -31,6 +38,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Plan',
           type: {
@@ -38,6 +46,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'Plan',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +54,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publisher',
                 type: {
@@ -52,6 +62,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               product: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'product',
                 type: {
@@ -59,6 +70,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               promotion_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'promotionCode',
                 type: {

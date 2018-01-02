@@ -19,7 +19,9 @@ module Azure::Compute::Mgmt::V2015_06_15
       # @return [String] The plan ID.
       attr_accessor :name
 
-      # @return [String] The product ID.
+      # @return [String] Specifies the product of the image from the
+      # marketplace. This is the same value as Offer under the imageReference
+      # element.
       attr_accessor :product
 
 
@@ -29,6 +31,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PurchasePlan',
           type: {
@@ -36,6 +39,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'PurchasePlan',
             model_properties: {
               publisher: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'publisher',
                 type: {
@@ -43,6 +47,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -50,6 +55,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               product: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'product',
                 type: {

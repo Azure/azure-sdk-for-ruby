@@ -26,6 +26,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SyncFullSchemaProperties',
           type: {
@@ -33,12 +34,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncFullSchemaProperties',
             model_properties: {
               tables: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tables',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SyncFullSchemaTableElementType',
                       type: {
@@ -49,6 +52,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               last_update_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastUpdateTime',

@@ -57,6 +57,7 @@ module Azure::Locks::Mgmt::V2015_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementLockListResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::Locks::Mgmt::V2015_01_01
             class_name: 'ManagementLockListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ManagementLockObjectElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::Locks::Mgmt::V2015_01_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

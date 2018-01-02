@@ -51,6 +51,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VolumeContainer',
           type: {
@@ -58,6 +59,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'VolumeContainer',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -66,6 +68,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -74,6 +77,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,6 +86,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -90,6 +95,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               encryption_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionKey',
                 type: {
@@ -98,6 +104,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               encryption_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.encryptionStatus',
@@ -107,6 +114,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.volumeCount',
@@ -115,6 +123,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               storage_account_credential_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageAccountCredentialId',
                 type: {
@@ -122,6 +131,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               owner_ship_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.ownerShipStatus',
@@ -131,6 +141,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               band_width_rate_in_mbps: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bandWidthRateInMbps',
                 type: {
@@ -138,6 +149,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               bandwidth_setting_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bandwidthSettingId',
                 type: {
@@ -145,6 +157,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               total_cloud_storage_usage_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.totalCloudStorageUsageInBytes',

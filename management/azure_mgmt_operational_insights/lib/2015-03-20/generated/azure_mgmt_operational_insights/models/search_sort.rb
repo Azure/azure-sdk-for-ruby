@@ -26,6 +26,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SearchSort',
           type: {
@@ -33,6 +34,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchSort',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -40,6 +42,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               order: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'order',
                 type: {

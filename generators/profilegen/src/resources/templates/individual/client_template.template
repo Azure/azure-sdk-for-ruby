@@ -3,15 +3,30 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require 'profiles/<%= @profile_name.downcase %>/<%= @module_definition_file_name.gsub('.rb','') %>'
-<%- @file_names.each do |file_name| -%>
-require 'profiles/<%= @profile_name.downcase %>/modules/<%= file_name %>'
+<%- @module_objs.each do |module_obj| -%>
+require 'profiles/<%= @profile_name.downcase %>/modules/<%= module_obj.file_name %>'
 <%- end -%>
 
-module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt
+module Azure::<%= @module_objs[0].module_name %>::Profiles::<%= @profile_name %>
+<%- if(@mode == 'management') -%>
+  module Mgmt
+    #
+    # Client class for the <%= @profile_name %> profile SDK.
+    #
+    class Client < <%= "#{@module_objs[0].management_class_name}" %>
+      include MsRestAzure::Common::Configurable
+
+      def initialize(options = {})
+        super(options)
+      end
+
+    end
+  end
+<%- else -%>
   #
   # Client class for the <%= @profile_name %> profile SDK.
   #
-  class Client < <%= "#{@class_names[0]}" %>Class
+  class Client < <%= "#{@module_objs[0].data_class_name}" %>
     include MsRestAzure::Common::Configurable
 
     #
@@ -32,4 +47,5 @@ module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt
     end
 
   end
+<%- end -%>
 end

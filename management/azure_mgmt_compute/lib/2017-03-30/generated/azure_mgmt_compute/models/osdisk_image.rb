@@ -23,6 +23,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OSDiskImage',
           type: {
@@ -30,6 +31,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'OSDiskImage',
             model_properties: {
               operating_system: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'operatingSystem',
                 type: {

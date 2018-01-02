@@ -18,20 +18,24 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [String] The name of the extension handler publisher.
       attr_accessor :publisher
 
-      # @return [String] The type of the extension handler.
+      # @return [String] Specifies the type of the extension; an example is
+      # "CustomScriptExtension".
       attr_accessor :type
 
-      # @return [String] The type version of the extension handler.
+      # @return [String] Specifies the version of the script handler.
       attr_accessor :type_handler_version
 
-      # @return [Boolean] Whether the extension handler should be automatically
-      # upgraded across minor versions.
+      # @return [Boolean] Indicates whether the extension should use a newer
+      # minor version if one is available at deployment time. Once deployed,
+      # however, the extension will not upgrade minor versions unless
+      # redeployed, even with this property set to true.
       attr_accessor :auto_upgrade_minor_version
 
       # @return Json formatted public settings for the extension.
       attr_accessor :settings
 
-      # @return Json formatted protected settings for the extension.
+      # @return The extension can contain either protectedSettings or
+      # protectedSettingsFromKeyVault or no protected settings at all.
       attr_accessor :protected_settings
 
       # @return [String] The provisioning state, which only appears in the
@@ -45,6 +49,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetExtension',
           type: {
@@ -52,6 +57,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineScaleSetExtension',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,6 +66,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -67,6 +74,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publisher',
                 type: {
@@ -74,6 +82,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.type',
                 type: {
@@ -81,6 +90,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               type_handler_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.typeHandlerVersion',
                 type: {
@@ -88,6 +98,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               auto_upgrade_minor_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoUpgradeMinorVersion',
                 type: {
@@ -95,6 +106,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.settings',
                 type: {
@@ -102,6 +114,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               protected_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protectedSettings',
                 type: {
@@ -109,6 +122,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

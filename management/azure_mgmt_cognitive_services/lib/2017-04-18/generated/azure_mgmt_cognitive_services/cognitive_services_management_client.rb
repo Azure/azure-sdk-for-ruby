@@ -129,9 +129,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cognitive_services'
-        if defined? Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.2"
         add_user_agent_information(sdk_information)
     end
   end

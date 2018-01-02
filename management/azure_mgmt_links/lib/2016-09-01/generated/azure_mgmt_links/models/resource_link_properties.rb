@@ -30,6 +30,7 @@ module Azure::Links::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceLinkProperties',
           type: {
@@ -37,6 +38,7 @@ module Azure::Links::Mgmt::V2016_09_01
             class_name: 'ResourceLinkProperties',
             model_properties: {
               source_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'sourceId',
@@ -45,6 +47,7 @@ module Azure::Links::Mgmt::V2016_09_01
                 }
               },
               target_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetId',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Links::Mgmt::V2016_09_01
                 }
               },
               notes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'notes',
                 type: {

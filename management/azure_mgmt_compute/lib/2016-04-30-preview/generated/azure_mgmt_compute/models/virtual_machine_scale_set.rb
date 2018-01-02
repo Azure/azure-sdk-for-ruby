@@ -15,8 +15,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 
-      # @return [Plan] The purchase plan when deploying a virtual machine scale
-      # set from VM Marketplace images.
+      # @return [Plan] Specifies information about the marketplace image used
+      # to create the virtual machine. This element is only used for
+      # marketplace images. Before you can use a marketplace image from an API,
+      # you must enable the image for programmatic use.  In the Azure portal,
+      # find the marketplace image that you want to use and then click **Want
+      # to deploy programmatically, Get Started ->**. Enter any required
+      # information and then click **Save**.
       attr_accessor :plan
 
       # @return [UpgradePolicy] The upgrade policy.
@@ -31,7 +36,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       # @return [Boolean] Specifies whether the Virtual Machine Scale Set
       # should be overprovisioned.
-      attr_accessor :overprovision
+      attr_accessor :over_provision
 
       # @return [Boolean] When true this limits the scale set to a single
       # placement group, of max size 100 virtual machines.
@@ -48,6 +53,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSet',
           type: {
@@ -55,6 +61,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineScaleSet',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -63,6 +70,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -71,6 +79,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -79,6 +88,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -86,11 +96,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -100,6 +112,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -108,6 +121,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {
@@ -116,6 +130,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               upgrade_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradePolicy',
                 type: {
@@ -124,6 +139,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               virtual_machine_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachineProfile',
                 type: {
@@ -132,6 +148,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -139,14 +156,16 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                   name: 'String'
                 }
               },
-              overprovision: {
+              over_provision: {
+                client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.overprovision',
+                serialized_name: 'properties.overProvision',
                 type: {
                   name: 'Boolean'
                 }
               },
               single_placement_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.singlePlacementGroup',
                 type: {
@@ -154,6 +173,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {

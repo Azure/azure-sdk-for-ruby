@@ -32,6 +32,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CloudToDeviceProperties',
           type: {
@@ -39,6 +40,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'CloudToDeviceProperties',
             model_properties: {
               max_delivery_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDeliveryCount',
                 constraints: {
@@ -50,6 +52,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               default_ttl_as_iso8601: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultTtlAsIso8601',
                 type: {
@@ -57,6 +60,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               feedback: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'feedback',
                 type: {

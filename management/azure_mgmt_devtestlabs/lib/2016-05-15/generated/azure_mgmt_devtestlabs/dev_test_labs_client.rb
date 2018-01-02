@@ -200,9 +200,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_devtestlabs'
-        if defined? Azure::DevTestLabs::Mgmt::V2016_05_15::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::DevTestLabs::Mgmt::V2016_05_15::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.2"
         add_user_agent_information(sdk_information)
     end
   end

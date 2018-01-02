@@ -29,6 +29,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricSettings',
           type: {
@@ -36,6 +37,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
             class_name: 'MetricSettings',
             model_properties: {
               time_grain: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeGrain',
                 type: {
@@ -43,6 +45,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -50,6 +53,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               retention_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionPolicy',
                 type: {

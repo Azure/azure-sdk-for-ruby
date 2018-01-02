@@ -15,11 +15,11 @@ module Azure::Compute::Mgmt::V2015_06_15
       # @return [String] The virtual machine extension name.
       attr_accessor :name
 
-      # @return [String] The full type of the extension handler which includes
-      # both publisher and type.
+      # @return [String] Specifies the type of the extension; an example is
+      # "CustomScriptExtension".
       attr_accessor :type
 
-      # @return [String] The type version of the extension handler.
+      # @return [String] Specifies the version of the script handler.
       attr_accessor :type_handler_version
 
       # @return [Array<InstanceViewStatus>] The resource status information.
@@ -35,6 +35,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtensionInstanceView',
           type: {
@@ -42,6 +43,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineExtensionInstanceView',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               type_handler_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'typeHandlerVersion',
                 type: {
@@ -63,11 +67,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               substatuses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'substatuses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
@@ -78,11 +84,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               statuses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {

@@ -54,6 +54,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClusterUpgradePolicy',
           type: {
@@ -61,6 +62,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'ClusterUpgradePolicy',
             model_properties: {
               override_user_upgrade_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'overrideUserUpgradePolicy',
                 type: {
@@ -68,6 +70,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               force_restart: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'forceRestart',
                 type: {
@@ -75,6 +78,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               upgrade_replica_set_check_timeout: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'upgradeReplicaSetCheckTimeout',
                 type: {
@@ -82,6 +86,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               health_check_wait_duration: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'healthCheckWaitDuration',
                 type: {
@@ -89,6 +94,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               health_check_stable_duration: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'healthCheckStableDuration',
                 type: {
@@ -96,6 +102,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               health_check_retry_timeout: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'healthCheckRetryTimeout',
                 type: {
@@ -103,6 +110,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               upgrade_timeout: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'upgradeTimeout',
                 type: {
@@ -110,6 +118,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               upgrade_domain_timeout: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'upgradeDomainTimeout',
                 type: {
@@ -117,6 +126,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               health_policy: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'healthPolicy',
                 type: {
@@ -125,6 +135,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               delta_health_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deltaHealthPolicy',
                 type: {

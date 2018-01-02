@@ -6,7 +6,9 @@
 module Azure::Compute::Mgmt::V2016_04_30_preview
   module Models
     #
-    # Describes an Image.
+    # The source user image virtual hard disk. The virtual hard disk will be
+    # copied before being attached to the virtual machine. If SourceImage is
+    # provided, the destination virtual hard drive must not exist.
     #
     class Image < Resource
 
@@ -16,7 +18,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # created.
       attr_accessor :source_virtual_machine
 
-      # @return [ImageStorageProfile] The storage profile.
+      # @return [ImageStorageProfile] Specifies the storage settings for the
+      # virtual machine disks.
       attr_accessor :storage_profile
 
       # @return [String] The provisioning state.
@@ -29,6 +32,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Image',
           type: {
@@ -36,6 +40,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'Image',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,6 +49,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -52,6 +58,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,6 +67,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -67,11 +75,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -81,6 +91,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               source_virtual_machine: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceVirtualMachine',
                 type: {
@@ -89,6 +100,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               storage_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageProfile',
                 type: {
@@ -97,6 +109,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

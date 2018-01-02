@@ -30,6 +30,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ValidateCustomDomainOutput',
           type: {
@@ -37,6 +38,7 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'ValidateCustomDomainOutput',
             model_properties: {
               custom_domain_validated: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customDomainValidated',
                 type: {
@@ -44,6 +46,7 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -51,6 +54,7 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

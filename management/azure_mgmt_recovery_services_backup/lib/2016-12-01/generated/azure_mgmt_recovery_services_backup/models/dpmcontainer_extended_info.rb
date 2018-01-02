@@ -22,6 +22,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DPMContainerExtendedInfo',
           type: {
@@ -29,6 +30,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'DPMContainerExtendedInfo',
             model_properties: {
               last_refreshed_at: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRefreshedAt',
                 type: {

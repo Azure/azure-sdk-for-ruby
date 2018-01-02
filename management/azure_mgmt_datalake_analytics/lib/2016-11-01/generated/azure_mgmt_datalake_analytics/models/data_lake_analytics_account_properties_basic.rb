@@ -43,6 +43,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataLakeAnalyticsAccountPropertiesBasic',
           type: {
@@ -50,6 +51,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'DataLakeAnalyticsAccountPropertiesBasic',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -59,6 +61,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -68,6 +71,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               creation_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'creationTime',
@@ -76,6 +80,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               last_modified_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastModifiedTime',
@@ -84,6 +89,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endpoint',
@@ -92,6 +98,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               account_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'accountId',

@@ -43,6 +43,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RcmAzureMigration',
           type: {
@@ -50,6 +51,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RcmAzureMigrationPolicyDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -57,6 +59,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_point_threshold_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointThresholdInMinutes',
                 type: {
@@ -64,6 +67,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_point_history: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointHistory',
                 type: {
@@ -71,6 +75,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               app_consistent_frequency_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appConsistentFrequencyInMinutes',
                 type: {
@@ -78,6 +83,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               multi_vm_sync_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'multiVmSyncStatus',
                 type: {
@@ -86,6 +92,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               crash_consistent_frequency_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'crashConsistentFrequencyInMinutes',
                 type: {

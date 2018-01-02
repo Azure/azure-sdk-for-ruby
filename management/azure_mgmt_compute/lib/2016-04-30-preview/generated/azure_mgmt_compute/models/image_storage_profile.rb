@@ -12,10 +12,16 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
-      # @return [ImageOSDisk] The OS disk.
+      # @return [ImageOSDisk] Specifies information about the operating system
+      # disk used by the virtual machine. <br><br> For more information about
+      # disks, see [About disks and VHDs for Azure virtual
+      # machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
       attr_accessor :os_disk
 
-      # @return [Array<ImageDataDisk>] The data disks.
+      # @return [Array<ImageDataDisk>] Specifies the parameters that are used
+      # to add a data disk to a virtual machine. <br><br> For more information
+      # about disks, see [About disks and VHDs for Azure virtual
+      # machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
       attr_accessor :data_disks
 
 
@@ -25,6 +31,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImageStorageProfile',
           type: {
@@ -32,6 +39,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'ImageStorageProfile',
             model_properties: {
               os_disk: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'osDisk',
                 type: {
@@ -40,11 +48,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               data_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ImageDataDiskElementType',
                       type: {

@@ -6,4 +6,3 @@ module Azure end
 module Azure::Search end
 module Azure::Search::Profiles end
 module Azure::Search::Profiles::Latest end
-module Azure::Search::Profiles::Latest::Mgmt end

@@ -17,6 +17,7 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [Cognitive Services](https://rubygems.org/gems/azure_mgmt_cognitive_services) Azure Cognitive Services Account management
 * [Commerce](https://rubygems.org/gems/azure_mgmt_commerce) Azure Commerce Usage aggregates & Rate card management
 * [Compute](https://rubygems.org/gems/azure_mgmt_compute) Virtual Machines, Images, Extensions, Availability Sets, etc...
+* [Consumption](https://rubygems.org/gems/azure_mgmt_consumption) Usage details, Operations, etc...
 * [Datalake Analytics](https://rubygems.org/gems/azure_mgmt_datalake_analytics) Azure Datalake Analytics Account, Catalog and Job management
 * [Datalake Store](https://rubygems.org/gems/azure_mgmt_datalake_store) Azure Datalake Store Account and FileSystem management
 * [DevTest Labs](https://rubygems.org/gems/azure_mgmt_devtestlabs) Azure DevTest Labs LabOperations, ArtifactSourceOperations, ArtifactOperations, CostOperations etc...
@@ -31,6 +32,7 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [Machine Learning](https://rubygems.org/gems/azure_mgmt_machine_learning) Azure Machine Learning web services management
 * [Media Services](https://rubygems.org/gems/azure_mgmt_media_services) Media Services resource management APIs
 * [Mobile Engagement](https://rubygems.org/gems/azure_mgmt_mobile_engagement) Azure Mobile Engagement's Apps, App Collections, Devices management APIs  
+* [Managed Service Identity](https://rubygems.org/gems/azure_mgmt_msi) Create, update, list user assigned identities.
 * [Network](https://rubygems.org/gems/azure_mgmt_network) Load Balancers, Network Gateways, Security Groups, etc...
 * [Notification Hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) Notification Hubs management
 * [Policy](https://rubygems.org/gems/azure_mgmt_policy) Policy Assignment & Policy definition operations

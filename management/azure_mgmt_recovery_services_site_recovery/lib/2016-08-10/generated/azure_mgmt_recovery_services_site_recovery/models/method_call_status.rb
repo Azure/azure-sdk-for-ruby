@@ -30,6 +30,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MethodCallStatus',
           type: {
@@ -37,6 +38,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'MethodCallStatus',
             model_properties: {
               is_virtual: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isVirtual',
                 type: {
@@ -44,11 +46,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -58,6 +62,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               contains_generic_parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'containsGenericParameters',
                 type: {

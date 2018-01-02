@@ -12,6 +12,109 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+
+#
+# This rakefile consists of several tasks. This section will provide an overview of the
+# tasks and their dependencies.
+#
+# -------------------------------------------------------------------------------------------------------------------------------------------
+# | No |             Task                | Description                                                                                      |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 1  | regen                           | Regenerates all the SDK versions for all the services and all the profiles for all the services. |
+# |    |                                 | This task has regen_sdk_versions and regen_all_profiles as prereqs.                              |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 2  | regen_sdk_versions              | Regenerates all the SDK versions for all the services. At the end, this task calls               |
+# |    |                                 | regen_individual_require_files as an enhancement. This task has clean_generated as prereq. This  |
+# |.   |.                                | task is focused on code generation using autorest and will generate api versions as indicated in |
+# |    |                                 |.in the config.json file.                                                                         |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 3  | regen_all_profiles              | Regenerates all the profiles for all the services. This task has regen_rollup_profile and        |
+# |    |                                 | regen_individual_profiles as prereqs. This task uses the profile_generator to generate the       |
+# |    |                                 | with inputs from profiles.json and dir_metadata.json.                                            |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 4  | clean_generated                 | Cleans all the generated folders in multiple SDK versions.                                       |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 5  | regen_rollup_profile            | Regenerates all profiles within the rollup gem. At the end, this task calls                      |
+# |    |                                 | regen_rollup_require_files as an enhancement. This task has clean_rollup_profiles as prereq. This|
+#.|.   |                                 | task requires correct definition of rollup profiles in profiles.json file.                       |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 6  | regen_individual_profiles       | Regenerates all profiles with all the services. At the end, this task calls                      |
+# |    |                                 | regen_individual_require_files as an enhancement. This task calls clean_individual_profiles      |
+# |    |                                 | as prereq. This task requires correct definition of individual profiles in profiles.json file.   |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 7  | clean_all_profiles              | Cleans all profiles inside the rollup gem and individual gems.This task has clean_rollup_profiles|
+# |    |                                 | and clean_individual_profiles as prereqs.                                                        |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 8  | clean_rollup_profiles           | Cleans all profiles inside the rollup gem.                                                       |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 9  | clean_individual_profiles       | Cleans all profiles inside individual gems.                                                      |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 10 | regen_all_require_files         | Regenerates the require files for the rollup gem and individual gems. This task has              |
+# |    |                                 | regen_rollup_require_files and regen_individual_require_files as prereqs. A require file is the  |
+# |    |                                 | base file for a gem which includes other file. A sample could be found here:                     |
+# |.   |                                 | https://github.com/Azure/azure-sdk-for-ruby/blob/master/azure_sdk/lib/azure_sdk.rb               |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 11 | regen_rollup_require_files      | Regenerates the require files for the rollup gem                                                 |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 12 | regen_individual_require_files  | Regenerates the require files for the individual gems                                            |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 13 | release                         | Release gems. This task has build as a prereq. The gems to be released must be indicated in the  |
+# |.   |                                 | GEMS_TO_RELEASE file.                                                                            |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 14 | build                           | Builds all gems. This task has clean as a prereq.                                                |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 15 | clean                           | Cleans the pks folder inside  all the gems.                                                      |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 16 | bundle:update                   | Performs bundle update for all gems.                                                             |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 17 | spec                            | Executes tests for all gems.                                                                     |
+# -------------------------------------------------------------------------------------------------------------------------------------------
+#
+#                                                       regen
+#                                                         |
+#           -----------------------------------------------------------------------------------------------------
+#           |                                                                                                   |
+#      regen_sdk_versions -->enhancement--> regen_individual_require_files                                      |
+#           |                                                                                            regen_all_profiles
+#           |                                                                                                   |
+#      clean_generated                   ------------------------------------------------------------------------------------------------------------------------------
+#                                        |                                                                                                                            |
+#                                        |                                                                                                                            |
+#                                        |                                                                                                                            |
+#                                        |                                                                                                                            |
+#                                        |                                                     regen_all_require_files                                                |
+#                                        |                                                              |                                                             |
+#                                        |                                          -----------------------------------------                                         |
+#                                        |                                          |                                       |                                         |
+#                                        |                                          |                                       |                                         |
+#                                        |                                          |                                       |                                         |
+#                                 regen_rollup_profile -->enhancement--> regen_rollup_require_files                         |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                 regen_individual_require_files<--enhancement<--regen_individual_profiles
+#                                        |                                                                                                                            |
+#                                        |                                                             clean_all_profiles                                             |
+#                                        |                                                                    |                                                       |
+#                                        |       ---------------------------------------------------------------------------------------------------------------      |
+#                                        |       |                                                                                                             |      |
+#                                        |       |                                                                                                             |      |
+#                                 clean_rollup_profiles                                                                                                    clean_individual_profiles
+#
+#                                                release
+#                                                   |
+#                                                 build
+#                                                   |
+#                                                 clean
+#
+#                                               bundle:update
+#
+#                                                  spec
+#
+
 require 'dotenv/tasks'
 require 'rspec/core/rake_task'
 require 'open3'
@@ -21,7 +124,7 @@ require 'fileutils'
 
 gem_versions = JSON.parse(File.read(File.expand_path('../GEM_VERSIONS', __FILE__)).strip)
 gems_to_release = JSON.parse(File.read(File.expand_path('../GEMS_TO_RELEASE', __FILE__)).strip)
-GEMS_TO_IGNORE = ['azure_mgmt_insights']
+GEMS_TO_IGNORE = %w{azure_mgmt_graph}
 REGEN_EXCLUDES = ['azure_sdk']
 
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
@@ -35,21 +138,8 @@ namespace :arm do
 
   desc 'Delete multiple version folders for each sdk'
   task :clean_generated do
-    Dir.chdir(File.expand_path('../management', __FILE__))
-    gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
-    gem_folders.each do |gem|
-      Dir.chdir(File.expand_path("../management/#{gem}/lib", __FILE__))
-      subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
-      subdir_list.each do |subdir|
-        if subdir.to_s == 'profiles'
-          next
-        end
-
-        folder_to_be_cleaned = File.expand_path("../management/#{gem}/lib/#{subdir}", __FILE__)
-        puts "Cleaning folder - #{folder_to_be_cleaned}"
-        FileUtils.rm_rf(folder_to_be_cleaned)
-      end
-    end
+    clean_generated('management')
+    clean_generated('data')
     Dir.chdir(File.expand_path('..', __FILE__))
   end
 
@@ -70,6 +160,9 @@ namespace :arm do
         elsif(key == 'management')
           Dir.chdir("#{__dir__}/management/#{gem}")
           version = gem_versions['management'][gem]
+        elsif(key == 'data')
+          Dir.chdir("#{__dir__}/data/#{gem}")
+          version = gem_versions['data'][gem]
         end
 
         # Delay for 10 seconds before publishing gem
@@ -84,11 +177,13 @@ namespace :arm do
   desc 'Regen code for each sdk with all its api versions'
   task :regen_sdk_versions => :clean_generated do
     json = get_config_file
-    each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
+    each_gem do |dir| # dir corresponds to each azure_* folder
       if REGEN_EXCLUDES.include?(dir.to_s)
         update_gem_version('lib/azure_sdk/version.rb', gem_versions['rollup'][dir])
         next
       end
+
+      mode = get_mode(dir)
       
       puts "\nGenerating #{dir}\n"
       ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}"
@@ -119,10 +214,10 @@ namespace :arm do
             end
           end
         end
-        command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --package-version=#{gem_versions['management'][dir]} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
+        command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --package-version=#{gem_versions[mode][dir]} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
         execute_and_stream(command)
       end
-      update_gem_version('lib/version.rb', gem_versions['management'][dir])
+      update_gem_version('lib/version.rb', gem_versions[mode][dir])
     end
   end
 
@@ -164,11 +259,12 @@ namespace :arm do
       if REGEN_EXCLUDES.include?gem
         next
       end
+      mode = get_mode(gem)
+      Dir.chdir("#{__dir__}/#{mode}/#{gem}/lib/profiles")
 
-      Dir.chdir("#{__dir__}/management/#{gem}/lib/profiles")
       subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
       subdir_list.each do |subdir|
-        folder_to_be_cleaned = "#{__dir__}/management/#{gem}/lib/profiles/#{subdir}"
+        folder_to_be_cleaned = "#{__dir__}/#{mode}/#{gem}/lib/profiles/#{subdir}"
         puts "Cleaning folder - #{folder_to_be_cleaned}"
         FileUtils.rm_rf(folder_to_be_cleaned)
       end
@@ -195,10 +291,11 @@ namespace :arm do
       if REGEN_EXCLUDES.include?gem
         next
       end
+      mode = get_mode(gem)
 
       # Sample Command
       # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json --mode=management --key=azure_mgmt_authorization
-      command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=management --key=#{gem} --sdk_path=#{__dir__}"
+      command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=#{mode} --key=#{gem} --sdk_path=#{__dir__}"
       execute_and_stream(command)
     end
   end
@@ -245,6 +342,38 @@ end
 
 task :default => :spec
 
+def get_mode(dir)
+  mode = ''
+  if (dir.include? '_mgmt_')
+    mode = 'management'
+  else
+    mode = 'data'
+  end
+  mode
+end
+
+def clean_generated(parent_dir)
+  Dir.chdir(File.expand_path("../#{parent_dir}", __FILE__))
+  gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
+  gem_folders.each do |gem|
+    if GEMS_TO_IGNORE.include?gem
+      next
+    end
+
+    Dir.chdir(File.expand_path("../#{parent_dir}/#{gem}/lib", __FILE__))
+    subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+    subdir_list.each do |subdir|
+      if subdir.to_s == 'profiles'
+        next
+      end
+
+      folder_to_be_cleaned = File.expand_path("../#{parent_dir}/#{gem}/lib/#{subdir}", __FILE__)
+      puts "Cleaning folder - #{folder_to_be_cleaned}"
+      FileUtils.rm_rf(folder_to_be_cleaned)
+    end
+  end
+end
+
 def get_base_profile_generation_cmd
   "bundle exec ruby #{__dir__}/generators/profilegen/src/profile_generator_client.rb"
 end
@@ -276,32 +405,30 @@ def get_config_file
   JSON.parse(config_file)
 end
 
-def each_gem_dir
-  Dir.chdir("#{__dir__}/management")
-  subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
-  subdir_list.each do |subdir|
-    if GEMS_TO_IGNORE.include?subdir
-      next
-    end
-
-    yield subdir
-  end
-end
-
 def each_child
-  Dir.chdir(File.expand_path('../management', __FILE__))
-  management_level_dirs = Dir['*'].reject{|o| not File.directory?(o)}
-  management_level_dirs.each do |dir|
-    if GEMS_TO_IGNORE.include?dir
-      next
-    end
-    Dir.chdir(dir) do
-      yield(dir)
-    end
-  end
+  each_child_mode_specific('management') {|dir| yield dir }
+  each_child_mode_specific('data') {|dir| yield dir }
 
   Dir.chdir(File.expand_path('../azure_sdk', __FILE__))
   yield('azure_sdk')
+end
+
+def each_child_mode_specific(parent_dir, change_dir = true)
+  Dir.chdir(File.expand_path("../#{parent_dir}", __FILE__))
+  sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
+  sub_dirs.each do |dir|
+    if GEMS_TO_IGNORE.include?dir
+      next
+    end
+
+    if (change_dir)
+      Dir.chdir(dir) do
+        yield(dir)
+      end
+    else
+      yield dir
+    end
+  end
 end
 
 def each_gem
@@ -309,6 +436,11 @@ def each_gem
     gem_dir = dir.split('/').last
     yield gem_dir
   end
+end
+
+def each_gem_dir
+  each_child_mode_specific('management', false) {|dir| yield dir }
+  each_child_mode_specific('data', false)  {|dir| yield dir }
 end
 
 def update_gem_version(version_file, new_version)

@@ -6,4 +6,3 @@ module Azure end
 module Azure::Network end
 module Azure::Network::Profiles end
 module Azure::Network::Profiles::V2017_03_09 end
-module Azure::Network::Profiles::V2017_03_09::Mgmt end

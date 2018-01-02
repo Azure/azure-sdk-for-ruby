@@ -28,6 +28,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceTagsResult',
           type: {
@@ -35,11 +36,13 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'DeviceTagsResult',
             model_properties: {
               invalid_ids: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'invalidIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

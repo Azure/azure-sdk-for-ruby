@@ -27,7 +27,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       # @return [Boolean] Specifies whether the Virtual Machine Scale Set
       # should be overprovisioned.
-      attr_accessor :overprovision
+      attr_accessor :over_provision
 
       # @return [VirtualMachineScaleSetIdentity] The identity of the virtual
       # machine scale set, if configured.
@@ -40,6 +40,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSet',
           type: {
@@ -47,6 +48,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineScaleSet',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +57,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +66,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,6 +75,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -78,11 +83,13 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -92,6 +99,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -100,6 +108,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               upgrade_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradePolicy',
                 type: {
@@ -108,6 +117,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               virtual_machine_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachineProfile',
                 type: {
@@ -116,6 +126,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -123,14 +134,16 @@ module Azure::Compute::Mgmt::V2016_03_30
                   name: 'String'
                 }
               },
-              overprovision: {
+              over_provision: {
+                client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.overprovision',
+                serialized_name: 'properties.overProvision',
                 type: {
                   name: 'Boolean'
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {

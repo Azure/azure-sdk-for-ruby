@@ -122,9 +122,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_service'
-        if defined? Azure::ContainerService::Mgmt::V2017_01_31::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ContainerService::Mgmt::V2017_01_31::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.2"
         add_user_agent_information(sdk_information)
     end
   end

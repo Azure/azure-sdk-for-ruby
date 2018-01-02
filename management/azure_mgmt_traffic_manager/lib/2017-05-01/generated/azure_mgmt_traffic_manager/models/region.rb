@@ -30,6 +30,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Region',
           type: {
@@ -37,6 +38,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
             class_name: 'Region',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -44,6 +46,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -51,11 +54,13 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               regions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'regions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RegionElementType',
                       type: {

@@ -30,6 +30,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ArtifactDeploymentStatusProperties',
           type: {
@@ -37,6 +38,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ArtifactDeploymentStatusProperties',
             model_properties: {
               deployment_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deploymentStatus',
                 type: {
@@ -44,6 +46,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               artifacts_applied: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'artifactsApplied',
                 type: {
@@ -51,6 +54,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               total_artifacts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalArtifacts',
                 type: {

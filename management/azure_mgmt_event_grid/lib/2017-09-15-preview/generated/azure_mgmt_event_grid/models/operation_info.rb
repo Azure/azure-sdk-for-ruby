@@ -31,6 +31,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationInfo',
           type: {
@@ -38,6 +39,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
             class_name: 'OperationInfo',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -45,6 +47,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -52,6 +55,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -59,6 +63,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

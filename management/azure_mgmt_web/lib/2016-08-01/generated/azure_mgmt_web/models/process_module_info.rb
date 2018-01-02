@@ -53,6 +53,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProcessModuleInfo',
           type: {
@@ -60,6 +61,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'ProcessModuleInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,6 +70,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -76,6 +79,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -83,6 +87,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,6 +96,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               base_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.baseAddress',
                 type: {
@@ -98,6 +104,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               file_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fileName',
                 type: {
@@ -105,6 +112,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               href: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.href',
                 type: {
@@ -112,6 +120,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               file_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filePath',
                 type: {
@@ -119,6 +128,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               module_memory_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.moduleMemorySize',
                 type: {
@@ -126,6 +136,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               file_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fileVersion',
                 type: {
@@ -133,6 +144,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               file_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fileDescription',
                 type: {
@@ -140,6 +152,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               product: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.product',
                 type: {
@@ -147,6 +160,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               product_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.productVersion',
                 type: {
@@ -154,6 +168,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_debug: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isDebug',
                 type: {
@@ -161,6 +176,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               language: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.language',
                 type: {

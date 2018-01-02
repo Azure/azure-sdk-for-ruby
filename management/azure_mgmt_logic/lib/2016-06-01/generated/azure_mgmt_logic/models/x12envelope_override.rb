@@ -54,6 +54,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12EnvelopeOverride',
           type: {
@@ -61,6 +62,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12EnvelopeOverride',
             model_properties: {
               target_namespace: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetNamespace',
                 type: {
@@ -68,6 +70,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               protocol_version: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocolVersion',
                 type: {
@@ -75,6 +78,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageId',
                 type: {
@@ -82,6 +86,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               responsible_agency_code: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'responsibleAgencyCode',
                 type: {
@@ -89,6 +94,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               header_version: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'headerVersion',
                 type: {
@@ -96,6 +102,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_application_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'senderApplicationId',
                 type: {
@@ -103,6 +110,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_application_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'receiverApplicationId',
                 type: {
@@ -110,6 +118,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               functional_identifier_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'functionalIdentifierCode',
                 type: {
@@ -117,6 +126,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               date_format: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'dateFormat',
                 type: {
@@ -125,6 +135,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               time_format: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeFormat',
                 type: {

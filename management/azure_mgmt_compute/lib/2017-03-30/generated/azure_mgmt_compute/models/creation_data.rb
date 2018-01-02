@@ -25,7 +25,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       # @return [ImageDiskReference] Disk source information.
       attr_accessor :image_reference
 
-      # @return [String] If creationOption is Import, this is the URI of a blob
+      # @return [String] If createOption is Import, this is the URI of a blob
       # to be imported into a managed disk.
       attr_accessor :source_uri
 
@@ -40,6 +40,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CreationData',
           type: {
@@ -47,6 +48,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'CreationData',
             model_properties: {
               create_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -55,6 +57,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -62,6 +65,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               image_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -70,6 +74,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               source_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceUri',
                 type: {
@@ -77,6 +82,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               source_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {

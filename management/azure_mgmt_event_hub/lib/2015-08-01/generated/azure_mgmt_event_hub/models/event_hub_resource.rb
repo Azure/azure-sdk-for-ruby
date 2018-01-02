@@ -41,6 +41,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventHubResource',
           type: {
@@ -48,6 +49,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'EventHubResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -56,6 +58,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -64,6 +67,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -71,6 +75,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -79,6 +84,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               created_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -87,6 +93,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               message_retention_in_days: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.messageRetentionInDays',
                 type: {
@@ -94,6 +101,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               partition_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partitionCount',
                 type: {
@@ -101,12 +109,14 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               partition_ids: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.partitionIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -116,6 +126,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -124,6 +135,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               updated_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',

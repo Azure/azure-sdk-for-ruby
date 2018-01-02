@@ -23,6 +23,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountRegenerateKeyParameters',
           type: {
@@ -30,6 +31,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
             class_name: 'StorageAccountRegenerateKeyParameters',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyName',
                 type: {

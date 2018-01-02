@@ -1062,6 +1062,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1164,6 +1167,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def validate_async(resource_group_name, validate_request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'validate_request is nil' if validate_request.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1275,6 +1281,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def validate_move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1869,9 +1878,7 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        if defined? Azure::Web::Mgmt::V2016_03_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::Web::Mgmt::V2016_03_01::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.2"
         add_user_agent_information(sdk_information)
     end
   end

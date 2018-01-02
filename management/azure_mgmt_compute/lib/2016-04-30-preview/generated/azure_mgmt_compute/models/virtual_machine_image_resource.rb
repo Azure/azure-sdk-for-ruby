@@ -18,7 +18,10 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [String] The supported Azure location of the resource.
       attr_accessor :location
 
-      # @return [Hash{String => String}] The tags attached to the resource.
+      # @return [Hash{String => String}] Specifies the tags that are assigned
+      # to the virtual machine. For more information about using tags, see
+      # [Using tags to organize your Azure
+      # resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).
       attr_accessor :tags
 
 
@@ -28,6 +31,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineImageResource',
           type: {
@@ -35,6 +39,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineImageResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -42,6 +47,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +55,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -56,11 +63,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

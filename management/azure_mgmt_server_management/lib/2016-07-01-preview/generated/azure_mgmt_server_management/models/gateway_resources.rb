@@ -57,6 +57,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayResources',
           type: {
@@ -64,11 +65,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'GatewayResources',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GatewayResourceElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

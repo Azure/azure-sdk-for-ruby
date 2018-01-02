@@ -35,6 +35,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatusProvisionILRExtendedInfo',
           type: {
@@ -42,6 +43,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'OperationStatusProvisionILRExtendedInfo',
             model_properties: {
               objectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -49,6 +51,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recovery_target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryTarget',
                 type: {

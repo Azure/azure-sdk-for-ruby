@@ -12,12 +12,19 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
-      # @return [ProtocolTypes] The Protocol used by the WinRM listener. Http
-      # and Https are supported. Possible values include: 'Http', 'Https'
+      # @return [ProtocolTypes] Specifies the protocol of listener. <br><br>
+      # Possible values are: <br>**http** <br><br> **https**. Possible values
+      # include: 'Http', 'Https'
       attr_accessor :protocol
 
-      # @return [String] The Certificate URL in KMS for Https listeners. Should
-      # be null for Http listeners.
+      # @return [String] This is the URL of a certificate that has been
+      # uploaded to Key Vault as a secret. For adding a secret to the Key
+      # Vault, see [Add a key or secret to the key
+      # vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+      # In this case, your certificate needs to be It is the Base64 encoding of
+      # the following JSON Object which is encoded in UTF-8: <br><br> {<br>
+      # "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+      # "password":"<pfx-file-password>"<br>}
       attr_accessor :certificate_url
 
 
@@ -27,6 +34,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WinRMListener',
           type: {
@@ -34,6 +42,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'WinRMListener',
             model_properties: {
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -42,6 +51,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               certificate_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateUrl',
                 type: {

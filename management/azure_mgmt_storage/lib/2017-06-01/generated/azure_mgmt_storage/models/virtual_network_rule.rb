@@ -32,6 +32,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkRule',
           type: {
@@ -39,6 +40,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'VirtualNetworkRule',
             model_properties: {
               virtual_network_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 default_value: 'Allow',
@@ -55,6 +58,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {

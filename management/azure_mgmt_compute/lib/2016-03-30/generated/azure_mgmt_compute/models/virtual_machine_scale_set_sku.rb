@@ -18,8 +18,8 @@ module Azure::Compute::Mgmt::V2016_03_30
       # @return [Sku] The Sku.
       attr_accessor :sku
 
-      # @return [VirtualMachineScaleSetSkuCapacity] Available scaling
-      # information.
+      # @return [VirtualMachineScaleSetSkuCapacity] Specifies the number of
+      # virtual machines in the scale set.
       attr_accessor :capacity
 
 
@@ -29,6 +29,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetSku',
           type: {
@@ -36,6 +37,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineScaleSetSku',
             model_properties: {
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -44,6 +46,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'sku',
@@ -53,6 +56,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'capacity',

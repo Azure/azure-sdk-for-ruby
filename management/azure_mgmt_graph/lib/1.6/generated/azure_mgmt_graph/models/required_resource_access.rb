@@ -34,6 +34,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RequiredResourceAccess',
           type: {
@@ -41,11 +42,13 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'RequiredResourceAccess',
             model_properties: {
               resource_access: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'resourceAccess',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceAccessElementType',
                       type: {
@@ -56,6 +59,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               resource_app_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceAppId',
                 type: {

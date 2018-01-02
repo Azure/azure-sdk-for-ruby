@@ -1,3 +1,6 @@
+##2017.11.10 ms_rest version 0.7.2
+* [Enhancement] Added code to check & validate the constraints on the model. Refer [PR #1119](https://github.com/Azure/azure-sdk-for-ruby/pull/1119/files) for more details.
+
 ##2017.07.27 ms_rest version 0.7.1
 * [Bug Fix] Modified to_json logic in JSONable module to handle 'mapper' & 'object' options.[PR #860](https://github.com/Azure/azure-sdk-for-ruby/pull/860)
 

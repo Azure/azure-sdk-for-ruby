@@ -34,6 +34,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Error',
           type: {
@@ -41,6 +42,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'Error',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -48,6 +50,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -62,11 +66,13 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ErrorDetailsElementType',
                       type: {
@@ -77,6 +83,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               inner_error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'innerError',
                 type: {

@@ -46,6 +46,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceMetric',
           type: {
@@ -53,6 +54,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'ResourceMetric',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,6 +64,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -70,6 +73,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               time_grain: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timeGrain',
@@ -78,6 +82,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -86,6 +91,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -94,6 +100,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceId',
@@ -102,6 +109,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -110,12 +118,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               metric_values: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'metricValues',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceMetricValueElementType',
                       type: {
@@ -126,12 +136,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceMetricPropertyElementType',
                       type: {

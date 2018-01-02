@@ -19,6 +19,14 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure services.'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
+  spec.metadata      = {
+    'bug_tracker_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/issues',
+    'changelog_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/ChangeLog.md',
+    'documentation_uri' => 'https://azure.microsoft.com/en-us/develop/ruby/',
+    'homepage_uri' => 'https://aka.ms/azure-sdk-for-ruby',
+    'source_code_uri' => "https://github.com/Azure/azure-sdk-for-ruby/tree/ARM-#{Azure::VERSION}",
+    'wiki_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/wiki'
+  }
 
   spec.files         = Dir["LICENSE.txt", "lib/**/*"]
   spec.bindir        = 'bin'
@@ -53,7 +61,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_event_grid', "~>#{gem_versions['management']['azure_mgmt_event_grid']}"
   spec.add_runtime_dependency 'azure_mgmt_event_hub', "~>#{gem_versions['management']['azure_mgmt_event_hub']}"
   spec.add_runtime_dependency 'azure_mgmt_features', "~>#{gem_versions['management']['azure_mgmt_features']}"
-  spec.add_runtime_dependency 'azure_mgmt_graph', "~>#{gem_versions['management']['azure_mgmt_graph']}"
   spec.add_runtime_dependency 'azure_mgmt_iot_hub', "~>#{gem_versions['management']['azure_mgmt_iot_hub']}"
   spec.add_runtime_dependency 'azure_mgmt_key_vault', "~>#{gem_versions['management']['azure_mgmt_key_vault']}"
   spec.add_runtime_dependency 'azure_mgmt_links', "~>#{gem_versions['management']['azure_mgmt_links']}"
@@ -65,6 +72,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_media_services', "~>#{gem_versions['management']['azure_mgmt_media_services']}"
   spec.add_runtime_dependency 'azure_mgmt_mobile_engagement', "~>#{gem_versions['management']['azure_mgmt_mobile_engagement']}"
   spec.add_runtime_dependency 'azure_mgmt_monitor', "~>#{gem_versions['management']['azure_mgmt_monitor']}"
+  spec.add_runtime_dependency 'azure_mgmt_msi', "~>#{gem_versions['management']['azure_mgmt_msi']}"
   spec.add_runtime_dependency 'azure_mgmt_network', "~>#{gem_versions['management']['azure_mgmt_network']}"
   spec.add_runtime_dependency 'azure_mgmt_notification_hubs', "~>#{gem_versions['management']['azure_mgmt_notification_hubs']}"
   spec.add_runtime_dependency 'azure_mgmt_operational_insights', "~>#{gem_versions['management']['azure_mgmt_operational_insights']}"
@@ -89,5 +97,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{gem_versions['management']['azure_mgmt_subscriptions']}"
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{gem_versions['management']['azure_mgmt_traffic_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_web', "~>#{gem_versions['management']['azure_mgmt_web']}"
+  spec.add_runtime_dependency 'azure_graph_rbac', "~>#{gem_versions['data']['azure_graph_rbac']}"
   spec.add_runtime_dependency 'azure-storage', '~>0.14.0.preview'
 end

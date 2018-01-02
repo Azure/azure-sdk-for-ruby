@@ -15,19 +15,26 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [String] The disk name.
       attr_accessor :name
 
-      # @return [Integer] The logical unit number.
+      # @return [Integer] Specifies the logical unit number of the data disk.
+      # This value is used to identify data disks within the VM and therefore
+      # must be unique for each data disk attached to a VM.
       attr_accessor :lun
 
-      # @return [CachingTypes] The caching type. Possible values include:
-      # 'None', 'ReadOnly', 'ReadWrite'
+      # @return [CachingTypes] Specifies the caching requirements. <br><br>
+      # Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+      # **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly
+      # for Premium storage**. Possible values include: 'None', 'ReadOnly',
+      # 'ReadWrite'
       attr_accessor :caching
 
       # @return [DiskCreateOptionTypes] The create option. Possible values
-      # include: 'fromImage', 'empty', 'attach'
+      # include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
-      # @return [Integer] The initial disk size in GB for blank data disks, and
-      # the new desired size for existing OS and Data disks.
+      # @return [Integer] Specifies the size of an empty data disk in
+      # gigabytes. This element can be used to overwrite the name of the disk
+      # in a virtual machine image. <br><br> This value cannot be larger than
+      # 1023 GB
       attr_accessor :disk_size_gb
 
       # @return [VirtualMachineScaleSetManagedDiskParameters] The managed disk
@@ -41,6 +48,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetDataDisk',
           type: {
@@ -48,6 +56,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineScaleSetDataDisk',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -55,6 +64,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               lun: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'lun',
                 type: {
@@ -62,6 +72,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               caching: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -70,6 +81,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               create_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -78,6 +90,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               disk_size_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
@@ -85,6 +98,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               managed_disk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {

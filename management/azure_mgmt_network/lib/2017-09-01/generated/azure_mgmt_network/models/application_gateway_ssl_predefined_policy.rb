@@ -31,6 +31,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySslPredefinedPolicy',
           type: {
@@ -38,6 +39,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ApplicationGatewaySslPredefinedPolicy',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -52,11 +55,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               cipher_suites: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cipherSuites',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslCipherSuiteElementType',
                       type: {
@@ -66,6 +71,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               min_protocol_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.minProtocolVersion',
                 type: {

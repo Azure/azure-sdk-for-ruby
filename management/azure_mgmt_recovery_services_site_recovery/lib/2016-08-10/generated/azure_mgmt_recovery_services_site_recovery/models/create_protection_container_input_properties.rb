@@ -23,6 +23,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CreateProtectionContainerInputProperties',
           type: {
@@ -30,11 +31,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'CreateProtectionContainerInputProperties',
             model_properties: {
               provider_specific_input: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificInput',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ReplicationProviderSpecificContainerCreationInputElementType',
                       type: {

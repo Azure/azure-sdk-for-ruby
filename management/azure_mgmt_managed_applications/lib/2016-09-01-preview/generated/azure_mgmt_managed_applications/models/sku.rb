@@ -37,6 +37,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -44,6 +45,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -51,6 +53,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -58,6 +61,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -65,6 +69,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               family: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'family',
                 type: {
@@ -72,6 +77,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               model: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'model',
                 type: {
@@ -79,6 +85,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

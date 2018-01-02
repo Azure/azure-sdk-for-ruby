@@ -6,31 +6,34 @@
 module Azure::Compute::Mgmt::V2016_04_30_preview
   module Models
     #
-    # Describes Windows Configuration of the OS Profile.
+    # Specifies Windows operating system settings on the virtual machine.
     #
     class WindowsConfiguration
 
       include MsRestAzure
 
-      # @return [Boolean] Indicates whether the virtual machine agent should be
-      # provisioned on the Virtual Machine. If not specified, then the default
-      # behavior is to set it to true.
+      # @return [Boolean] Indicates whether virtual machine agent should be
+      # provisioned on the virtual machine. <br><br> When this property is not
+      # specified in the request body, default behavior is to set it to true.
+      # This will ensure that VM Agent is installed on the VM so that
+      # extensions can be added to the VM later.
       attr_accessor :provision_vmagent
 
-      # @return [Boolean] Indicates whether Windows updates are automatically
-      # installed on the VM.
+      # @return [Boolean] Indicates whether virtual machine is enabled for
+      # automatic updates.
       attr_accessor :enable_automatic_updates
 
-      # @return [String] The time zone of the VM
+      # @return [String] Specifies the time zone of the virtual machine. e.g.
+      # "Pacific Standard Time"
       attr_accessor :time_zone
 
-      # @return [Array<AdditionalUnattendContent>] Additional base-64 encoded
-      # XML formatted information that can be included in the Unattend.xml
-      # file.
+      # @return [Array<AdditionalUnattendContent>] Specifies additional base-64
+      # encoded XML formatted information that can be included in the
+      # Unattend.xml file, which is used by Windows Setup.
       attr_accessor :additional_unattend_content
 
-      # @return [WinRMConfiguration] The Windows Remote Management
-      # configuration of the VM
+      # @return [WinRMConfiguration] Specifies the Windows Remote Management
+      # listeners. This enables remote Windows PowerShell.
       attr_accessor :win_rm
 
 
@@ -40,6 +43,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WindowsConfiguration',
           type: {
@@ -47,6 +51,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'WindowsConfiguration',
             model_properties: {
               provision_vmagent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisionVMAgent',
                 type: {
@@ -54,6 +59,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               enable_automatic_updates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableAutomaticUpdates',
                 type: {
@@ -61,6 +67,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -68,11 +75,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               additional_unattend_content: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'additionalUnattendContent',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AdditionalUnattendContentElementType',
                       type: {
@@ -83,6 +92,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               win_rm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'winRM',
                 type: {

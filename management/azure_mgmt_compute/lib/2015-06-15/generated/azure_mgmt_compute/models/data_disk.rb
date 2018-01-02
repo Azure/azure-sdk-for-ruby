@@ -12,7 +12,9 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
-      # @return [Integer] The logical unit number.
+      # @return [Integer] Specifies the logical unit number of the data disk.
+      # This value is used to identify data disks within the VM and therefore
+      # must be unique for each data disk attached to a VM.
       attr_accessor :lun
 
       # @return [String] The disk name.
@@ -21,22 +23,34 @@ module Azure::Compute::Mgmt::V2015_06_15
       # @return [VirtualHardDisk] The virtual hard disk.
       attr_accessor :vhd
 
-      # @return [VirtualHardDisk] The source user image virtual hard disk. This
-      # virtual hard disk will be copied before using it to attach to the
-      # virtual machine. If SourceImage is provided, the destination virtual
-      # hard disk must not exist.
+      # @return [VirtualHardDisk] The source user image virtual hard disk. The
+      # virtual hard disk will be copied before being attached to the virtual
+      # machine. If SourceImage is provided, the destination virtual hard drive
+      # must not exist.
       attr_accessor :image
 
-      # @return [CachingTypes] The caching type. Possible values include:
-      # 'None', 'ReadOnly', 'ReadWrite'
+      # @return [CachingTypes] Specifies the caching requirements. <br><br>
+      # Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br>
+      # **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly
+      # for Premium storage**. Possible values include: 'None', 'ReadOnly',
+      # 'ReadWrite'
       attr_accessor :caching
 
-      # @return [DiskCreateOptionTypes] The create option. Possible values
-      # include: 'fromImage', 'empty', 'attach'
+      # @return [DiskCreateOptionTypes] Specifies how the virtual machine
+      # should be created.<br><br> Possible values are:<br><br> **Attach**
+      # \u2013 This value is used when you are using a specialized disk to
+      # create the virtual machine.<br><br> **FromImage** \u2013 This value is
+      # used when you are using an image to create the virtual machine. If you
+      # are using a platform image, you also use the imageReference element
+      # described above. If you are using a marketplace image, you  also use
+      # the plan element previously described. Possible values include:
+      # 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
-      # @return [Integer] The initial disk size in GB for blank data disks, and
-      # the new desired size for existing OS and Data disks.
+      # @return [Integer] Specifies the size of an empty data disk in
+      # gigabytes. This element can be used to overwrite the name of the disk
+      # in a virtual machine image. <br><br> This value cannot be larger than
+      # 1023 GB
       attr_accessor :disk_size_gb
 
 
@@ -46,6 +60,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataDisk',
           type: {
@@ -53,6 +68,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'DataDisk',
             model_properties: {
               lun: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'lun',
                 type: {
@@ -60,6 +76,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -67,6 +84,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               vhd: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'vhd',
                 type: {
@@ -75,6 +93,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'image',
                 type: {
@@ -83,6 +102,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               caching: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -91,6 +111,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               create_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -99,6 +120,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               disk_size_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {

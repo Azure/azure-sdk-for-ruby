@@ -31,6 +31,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryNameStatus',
           type: {
@@ -38,6 +39,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
             class_name: 'RegistryNameStatus',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -45,6 +47,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -52,6 +55,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

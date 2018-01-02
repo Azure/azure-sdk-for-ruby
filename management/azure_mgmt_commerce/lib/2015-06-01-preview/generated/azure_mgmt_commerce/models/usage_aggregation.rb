@@ -71,6 +71,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsageAggregation',
           type: {
@@ -78,6 +79,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'UsageAggregation',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -85,6 +87,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -92,6 +95,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -99,6 +103,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               subscription_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subscriptionId',
                 type: {
@@ -106,6 +111,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.meterId',
                 type: {
@@ -113,6 +119,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               usage_start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.usageStartTime',
                 type: {
@@ -120,6 +127,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               usage_end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.usageEndTime',
                 type: {
@@ -127,6 +135,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               quantity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.quantity',
                 type: {
@@ -134,6 +143,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.unit',
                 type: {
@@ -141,6 +151,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.meterName',
                 type: {
@@ -148,6 +159,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_category: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.meterCategory',
                 type: {
@@ -155,6 +167,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_sub_category: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.meterSubCategory',
                 type: {
@@ -162,6 +175,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_region: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.meterRegion',
                 type: {
@@ -169,6 +183,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               info_fields: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.infoFields',
                 type: {
@@ -177,6 +192,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               instance_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.instanceData',
                 type: {

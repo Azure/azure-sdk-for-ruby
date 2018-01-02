@@ -37,6 +37,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GenericResource',
           type: {
@@ -44,6 +45,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'GenericResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,6 +54,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,6 +63,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -68,6 +72,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -75,11 +80,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -89,6 +96,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {
@@ -97,6 +105,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -104,6 +113,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 constraints: {
@@ -114,6 +124,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               managed_by: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedBy',
                 type: {
@@ -121,6 +132,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -129,6 +141,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {

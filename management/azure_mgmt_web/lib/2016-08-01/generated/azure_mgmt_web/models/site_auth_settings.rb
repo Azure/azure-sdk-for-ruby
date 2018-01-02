@@ -180,6 +180,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SiteAuthSettings',
           type: {
@@ -187,6 +188,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SiteAuthSettings',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -195,6 +197,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -203,6 +206,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -210,6 +214,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -218,6 +223,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enabled',
                 type: {
@@ -225,6 +231,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               runtime_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runtimeVersion',
                 type: {
@@ -232,6 +239,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               unauthenticated_client_action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.unauthenticatedClientAction',
                 type: {
@@ -240,6 +248,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               token_store_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tokenStoreEnabled',
                 type: {
@@ -247,11 +256,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               allowed_external_redirect_urls: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowedExternalRedirectUrls',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -261,6 +272,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               default_provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultProvider',
                 type: {
@@ -269,6 +281,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               token_refresh_extension_hours: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tokenRefreshExtensionHours',
                 type: {
@@ -276,6 +289,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               client_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clientId',
                 type: {
@@ -283,6 +297,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               client_secret: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clientSecret',
                 type: {
@@ -290,6 +305,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               issuer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.issuer',
                 type: {
@@ -297,11 +313,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               allowed_audiences: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowedAudiences',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -311,11 +329,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               additional_login_params: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.additionalLoginParams',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -325,6 +345,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               google_client_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.googleClientId',
                 type: {
@@ -332,6 +353,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               google_client_secret: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.googleClientSecret',
                 type: {
@@ -339,11 +361,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               google_oauth_scopes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.googleOAuthScopes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -353,6 +377,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               facebook_app_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.facebookAppId',
                 type: {
@@ -360,6 +385,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               facebook_app_secret: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.facebookAppSecret',
                 type: {
@@ -367,11 +393,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               facebook_oauth_scopes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.facebookOAuthScopes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -381,6 +409,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               twitter_consumer_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.twitterConsumerKey',
                 type: {
@@ -388,6 +417,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               twitter_consumer_secret: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.twitterConsumerSecret',
                 type: {
@@ -395,6 +425,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               microsoft_account_client_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.microsoftAccountClientId',
                 type: {
@@ -402,6 +433,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               microsoft_account_client_secret: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.microsoftAccountClientSecret',
                 type: {
@@ -409,11 +441,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               microsoft_account_oauth_scopes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.microsoftAccountOAuthScopes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -27,6 +27,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CloudApplianceSettings',
           type: {
@@ -34,6 +35,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'CloudApplianceSettings',
             model_properties: {
               service_data_encryption_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceDataEncryptionKey',
                 type: {
@@ -42,6 +44,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               channel_integrity_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'channelIntegrityKey',
                 type: {

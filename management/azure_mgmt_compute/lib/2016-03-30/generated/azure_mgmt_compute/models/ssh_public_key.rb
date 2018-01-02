@@ -13,14 +13,16 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
-      # @return [String] Specifies the full path on the created VM where SSH
+      # @return [String] Specifies the full path on the created VM where ssh
       # public key is stored. If the file already exists, the specified key is
-      # appended to the file.
+      # appended to the file. Example: /home/user/.ssh/authorized_keys
       attr_accessor :path
 
-      # @return [String] Certificate public key used to authenticate to the VM
-      # through SSH. The certificate must be in Pem format with or without
-      # headers.
+      # @return [String] SSH public key certificate used to authenticate with
+      # the VM through ssh. The key needs to be at least 2048-bit and in
+      # ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on
+      # Linux and Mac for Linux VMs in
+      # Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
       attr_accessor :key_data
 
 
@@ -30,6 +32,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SshPublicKey',
           type: {
@@ -37,6 +40,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'SshPublicKey',
             model_properties: {
               path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -44,6 +48,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               key_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyData',
                 type: {

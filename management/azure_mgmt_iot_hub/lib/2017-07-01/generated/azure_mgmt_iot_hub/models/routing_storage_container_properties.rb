@@ -57,6 +57,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RoutingStorageContainerProperties',
           type: {
@@ -64,6 +65,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'RoutingStorageContainerProperties',
             model_properties: {
               connection_string: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'connectionString',
                 type: {
@@ -71,6 +73,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -81,6 +84,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               subscription_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -88,6 +92,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               resource_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroup',
                 type: {
@@ -95,6 +100,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               container_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'containerName',
                 type: {
@@ -102,6 +108,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               file_name_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileNameFormat',
                 type: {
@@ -109,6 +116,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               batch_frequency_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'batchFrequencyInSeconds',
                 constraints: {
@@ -120,6 +128,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               max_chunk_size_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxChunkSizeInBytes',
                 constraints: {
@@ -131,6 +140,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               encoding: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'encoding',
                 type: {

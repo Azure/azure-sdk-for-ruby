@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_cdn'
 
-module Azure::CDN::Profiles::Latest::Mgmt
+module Azure::CDN::Profiles::Latest
+  module Mgmt
     Profiles = Azure::CDN::Mgmt::V2017_04_02::Profiles
     Endpoints = Azure::CDN::Mgmt::V2017_04_02::Endpoints
     Origins = Azure::CDN::Mgmt::V2017_04_02::Origins
@@ -64,9 +65,9 @@ module Azure::CDN::Profiles::Latest::Mgmt
     end
 
     #
-    # CDN
+    # CDNManagementClass
     #
-    class CDNClass
+    class CDNManagementClass
       attr_reader :profiles, :endpoints, :origins, :custom_domains, :resource_usage_operations, :operations, :edge_nodes, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -94,149 +95,150 @@ module Azure::CDN::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def custom_domain_list_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomainListResult
-        end
-        def sku
-          Azure::CDN::Mgmt::V2017_04_02::Models::Sku
-        end
-        def validate_custom_domain_input
-          Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainInput
-        end
-        def profile_list_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::ProfileListResult
-        end
-        def validate_custom_domain_output
-          Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainOutput
-        end
-        def sso_uri
-          Azure::CDN::Mgmt::V2017_04_02::Models::SsoUri
-        end
-        def check_name_availability_input
-          Azure::CDN::Mgmt::V2017_04_02::Models::CheckNameAvailabilityInput
-        end
-        def deep_created_origin
-          Azure::CDN::Mgmt::V2017_04_02::Models::DeepCreatedOrigin
-        end
-        def check_name_availability_output
-          Azure::CDN::Mgmt::V2017_04_02::Models::CheckNameAvailabilityOutput
-        end
-        def endpoint_list_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::EndpointListResult
-        end
-        def validate_probe_input
-          Azure::CDN::Mgmt::V2017_04_02::Models::ValidateProbeInput
-        end
-        def endpoint_update_parameters
-          Azure::CDN::Mgmt::V2017_04_02::Models::EndpointUpdateParameters
-        end
-        def validate_probe_output
-          Azure::CDN::Mgmt::V2017_04_02::Models::ValidateProbeOutput
-        end
-        def load_parameters
-          Azure::CDN::Mgmt::V2017_04_02::Models::LoadParameters
-        end
-        def resource_usage
-          Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsage
-        end
-        def origin_update_parameters
-          Azure::CDN::Mgmt::V2017_04_02::Models::OriginUpdateParameters
-        end
-        def resource_usage_list_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsageListResult
-        end
-        def origin_list_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::OriginListResult
-        end
-        def custom_domain_parameters
-          Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomainParameters
-        end
-        def profile_update_parameters
-          Azure::CDN::Mgmt::V2017_04_02::Models::ProfileUpdateParameters
-        end
-        def error_response
-          Azure::CDN::Mgmt::V2017_04_02::Models::ErrorResponse
-        end
-        def resource
-          Azure::CDN::Mgmt::V2017_04_02::Models::Resource
-        end
-        def operation_display
-          Azure::CDN::Mgmt::V2017_04_02::Models::OperationDisplay
-        end
-        def purge_parameters
-          Azure::CDN::Mgmt::V2017_04_02::Models::PurgeParameters
-        end
-        def operation
-          Azure::CDN::Mgmt::V2017_04_02::Models::Operation
-        end
-        def supported_optimization_types_list_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::SupportedOptimizationTypesListResult
-        end
-        def operations_list_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::OperationsListResult
-        end
-        def edgenode_result
-          Azure::CDN::Mgmt::V2017_04_02::Models::EdgenodeResult
-        end
-        def cidr_ip_address
-          Azure::CDN::Mgmt::V2017_04_02::Models::CidrIpAddress
-        end
-        def geo_filter
-          Azure::CDN::Mgmt::V2017_04_02::Models::GeoFilter
-        end
-        def ip_address_group
-          Azure::CDN::Mgmt::V2017_04_02::Models::IpAddressGroup
-        end
-        def profile
-          Azure::CDN::Mgmt::V2017_04_02::Models::Profile
-        end
-        def endpoint
-          Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint
-        end
-        def origin
-          Azure::CDN::Mgmt::V2017_04_02::Models::Origin
-        end
-        def custom_domain
-          Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomain
-        end
-        def edge_node
-          Azure::CDN::Mgmt::V2017_04_02::Models::EdgeNode
-        end
-        def sku_name
-          Azure::CDN::Mgmt::V2017_04_02::Models::SkuName
-        end
-        def profile_resource_state
-          Azure::CDN::Mgmt::V2017_04_02::Models::ProfileResourceState
-        end
-        def optimization_type
-          Azure::CDN::Mgmt::V2017_04_02::Models::OptimizationType
-        end
-        def endpoint_resource_state
-          Azure::CDN::Mgmt::V2017_04_02::Models::EndpointResourceState
-        end
-        def query_string_caching_behavior
-          Azure::CDN::Mgmt::V2017_04_02::Models::QueryStringCachingBehavior
-        end
-        def geo_filter_actions
-          Azure::CDN::Mgmt::V2017_04_02::Models::GeoFilterActions
-        end
-        def origin_resource_state
-          Azure::CDN::Mgmt::V2017_04_02::Models::OriginResourceState
-        end
-        def custom_domain_resource_state
-          Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomainResourceState
-        end
-        def custom_https_provisioning_state
-          Azure::CDN::Mgmt::V2017_04_02::Models::CustomHttpsProvisioningState
-        end
-        def custom_https_provisioning_substate
-          Azure::CDN::Mgmt::V2017_04_02::Models::CustomHttpsProvisioningSubstate
-        end
-        def resource_type
-          Azure::CDN::Mgmt::V2017_04_02::Models::ResourceType
-        end
+    class ModelClasses
+      def custom_domain_list_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomainListResult
+      end
+      def sku
+        Azure::CDN::Mgmt::V2017_04_02::Models::Sku
+      end
+      def validate_custom_domain_input
+        Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainInput
+      end
+      def profile_list_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::ProfileListResult
+      end
+      def validate_custom_domain_output
+        Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainOutput
+      end
+      def sso_uri
+        Azure::CDN::Mgmt::V2017_04_02::Models::SsoUri
+      end
+      def check_name_availability_input
+        Azure::CDN::Mgmt::V2017_04_02::Models::CheckNameAvailabilityInput
+      end
+      def deep_created_origin
+        Azure::CDN::Mgmt::V2017_04_02::Models::DeepCreatedOrigin
+      end
+      def check_name_availability_output
+        Azure::CDN::Mgmt::V2017_04_02::Models::CheckNameAvailabilityOutput
+      end
+      def endpoint_list_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::EndpointListResult
+      end
+      def validate_probe_input
+        Azure::CDN::Mgmt::V2017_04_02::Models::ValidateProbeInput
+      end
+      def endpoint_update_parameters
+        Azure::CDN::Mgmt::V2017_04_02::Models::EndpointUpdateParameters
+      end
+      def validate_probe_output
+        Azure::CDN::Mgmt::V2017_04_02::Models::ValidateProbeOutput
+      end
+      def load_parameters
+        Azure::CDN::Mgmt::V2017_04_02::Models::LoadParameters
+      end
+      def resource_usage
+        Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsage
+      end
+      def origin_update_parameters
+        Azure::CDN::Mgmt::V2017_04_02::Models::OriginUpdateParameters
+      end
+      def resource_usage_list_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsageListResult
+      end
+      def origin_list_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::OriginListResult
+      end
+      def custom_domain_parameters
+        Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomainParameters
+      end
+      def profile_update_parameters
+        Azure::CDN::Mgmt::V2017_04_02::Models::ProfileUpdateParameters
+      end
+      def error_response
+        Azure::CDN::Mgmt::V2017_04_02::Models::ErrorResponse
+      end
+      def resource
+        Azure::CDN::Mgmt::V2017_04_02::Models::Resource
+      end
+      def operation_display
+        Azure::CDN::Mgmt::V2017_04_02::Models::OperationDisplay
+      end
+      def purge_parameters
+        Azure::CDN::Mgmt::V2017_04_02::Models::PurgeParameters
+      end
+      def operation
+        Azure::CDN::Mgmt::V2017_04_02::Models::Operation
+      end
+      def supported_optimization_types_list_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::SupportedOptimizationTypesListResult
+      end
+      def operations_list_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::OperationsListResult
+      end
+      def edgenode_result
+        Azure::CDN::Mgmt::V2017_04_02::Models::EdgenodeResult
+      end
+      def cidr_ip_address
+        Azure::CDN::Mgmt::V2017_04_02::Models::CidrIpAddress
+      end
+      def geo_filter
+        Azure::CDN::Mgmt::V2017_04_02::Models::GeoFilter
+      end
+      def ip_address_group
+        Azure::CDN::Mgmt::V2017_04_02::Models::IpAddressGroup
+      end
+      def profile
+        Azure::CDN::Mgmt::V2017_04_02::Models::Profile
+      end
+      def endpoint
+        Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint
+      end
+      def origin
+        Azure::CDN::Mgmt::V2017_04_02::Models::Origin
+      end
+      def custom_domain
+        Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomain
+      end
+      def edge_node
+        Azure::CDN::Mgmt::V2017_04_02::Models::EdgeNode
+      end
+      def sku_name
+        Azure::CDN::Mgmt::V2017_04_02::Models::SkuName
+      end
+      def profile_resource_state
+        Azure::CDN::Mgmt::V2017_04_02::Models::ProfileResourceState
+      end
+      def optimization_type
+        Azure::CDN::Mgmt::V2017_04_02::Models::OptimizationType
+      end
+      def endpoint_resource_state
+        Azure::CDN::Mgmt::V2017_04_02::Models::EndpointResourceState
+      end
+      def query_string_caching_behavior
+        Azure::CDN::Mgmt::V2017_04_02::Models::QueryStringCachingBehavior
+      end
+      def geo_filter_actions
+        Azure::CDN::Mgmt::V2017_04_02::Models::GeoFilterActions
+      end
+      def origin_resource_state
+        Azure::CDN::Mgmt::V2017_04_02::Models::OriginResourceState
+      end
+      def custom_domain_resource_state
+        Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomainResourceState
+      end
+      def custom_https_provisioning_state
+        Azure::CDN::Mgmt::V2017_04_02::Models::CustomHttpsProvisioningState
+      end
+      def custom_https_provisioning_substate
+        Azure::CDN::Mgmt::V2017_04_02::Models::CustomHttpsProvisioningSubstate
+      end
+      def resource_type
+        Azure::CDN::Mgmt::V2017_04_02::Models::ResourceType
       end
     end
+  end
 end

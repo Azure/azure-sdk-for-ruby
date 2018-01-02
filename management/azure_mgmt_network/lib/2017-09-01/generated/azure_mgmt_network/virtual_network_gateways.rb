@@ -475,6 +475,7 @@ module Azure::Network::Mgmt::V2017_09_01
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
+            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {
@@ -530,6 +531,7 @@ module Azure::Network::Mgmt::V2017_09_01
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
+            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {
@@ -582,6 +584,7 @@ module Azure::Network::Mgmt::V2017_09_01
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
+            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {
@@ -726,6 +729,7 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -937,6 +941,7 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -1362,6 +1367,7 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -1481,6 +1487,7 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -1587,6 +1594,7 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {

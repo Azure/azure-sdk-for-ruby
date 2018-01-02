@@ -33,6 +33,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GraphEdge',
           type: {
@@ -40,6 +41,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'GraphEdge',
             model_properties: {
               source_node_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceNodeId',
                 type: {
@@ -47,6 +49,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               source_port_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourcePortId',
                 type: {
@@ -54,6 +57,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               target_node_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetNodeId',
                 type: {
@@ -61,6 +65,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               target_port_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetPortId',
                 type: {
