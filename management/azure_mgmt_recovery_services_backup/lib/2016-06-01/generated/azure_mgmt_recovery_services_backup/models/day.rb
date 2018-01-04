@@ -29,7 +29,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Day',
           type: {
@@ -37,7 +36,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'Day',
             model_properties: {
               date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'date',
                 type: {
@@ -45,7 +43,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               is_last: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isLast',
                 type: {
