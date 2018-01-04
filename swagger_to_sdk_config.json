@@ -737,7 +737,7 @@
         "package-name": "azure_mgmt_monitor",
         "input-file": [
           "specification/monitor/resource-manager/microsoft.insights/stable/2015-04-01/autoscale_API.json",
-          "specification/monitor/resource-manager/microsoft.insights/stable/2015-04-01/operations_API.jso"
+          "specification/monitor/resource-manager/microsoft.insights/stable/2015-04-01/operations_API.json"
         ],
         "title": "MonitorClient"
       },
