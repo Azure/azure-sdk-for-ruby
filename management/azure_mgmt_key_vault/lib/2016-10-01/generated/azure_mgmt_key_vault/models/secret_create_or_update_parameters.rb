@@ -6,59 +6,32 @@
 module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
-    # Resource information with extended details.
+    # Parameters for creating or updating a secret
     #
-    class Vault < Resource
+    class SecretCreateOrUpdateParameters
 
       include MsRestAzure
 
-      # @return [VaultProperties] Properties of the vault
+      # @return [Hash{String => String}] The tags that will be assigned to the
+      # secret.
+      attr_accessor :tags
+
+      # @return [SecretProperties] Properties of the secret
       attr_accessor :properties
 
 
       #
-      # Mapper for Vault class as Ruby Hash.
+      # Mapper for SecretCreateOrUpdateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Vault',
+          serialized_name: 'SecretCreateOrUpdateParameters',
           type: {
             name: 'Composite',
-            class_name: 'Vault',
+            class_name: 'SecretCreateOrUpdateParameters',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -76,10 +49,9 @@ module Azure::KeyVault::Mgmt::V2016_10_01
               properties: {
                 required: true,
                 serialized_name: 'properties',
-                default_value: {},
                 type: {
                   name: 'Composite',
-                  class_name: 'VaultProperties'
+                  class_name: 'SecretProperties'
                 }
               }
             }

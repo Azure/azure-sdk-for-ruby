@@ -37,7 +37,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AccessPolicyEntry',
           type: {
@@ -45,7 +44,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'AccessPolicyEntry',
             model_properties: {
               tenant_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'tenantId',
                 type: {
@@ -53,7 +51,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectId',
                 type: {
@@ -61,7 +58,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               application_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationId',
                 type: {
@@ -69,7 +65,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               permissions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'permissions',
                 type: {
