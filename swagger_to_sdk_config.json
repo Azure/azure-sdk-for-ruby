@@ -179,16 +179,12 @@
       "build_dir": "management/azure_mgmt_compute/lib/2017-09-01"
     },
     "azure_mgmt_compute_2017_03_30": {
+      "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::Compute::Mgmt::V2017_03_30",
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_compute",
-        "input-file": [
-          "specification/compute/resource-manager/Microsoft.Compute/2017-03-30/compute.json",
-          "specification/compute/resource-manager/Microsoft.Compute/2017-03-30/disk.json",
-          "specification/compute/resource-manager/Microsoft.Compute/2017-03-30/runCommands.json"
-        ],
-        "title": "ComputeManagementClient"
+        "tag": "package-compute-2017-03"
       },
       "output_dir": "management/azure_mgmt_compute/lib/2017-03-30",
       "generated_relative_base_directory": "2017-03-30",
@@ -315,26 +311,24 @@
       "build_dir": "management/azure_mgmt_container_service/lib/2017-01-31"
     },
     "azure_mgmt_container_service_2016_09_30": {
+      "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ContainerService::Mgmt::V2016_09_30",
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_container_service",
-        "input-file": [
-          "specification/compute/resource-manager/Microsoft.ContainerService/2016-09-30/containerService.json"
-        ]
+        "tag": "package-container-service-2016-09"
       },
       "output_dir": "management/azure_mgmt_container_service/lib/2016-09-30",
       "generated_relative_base_directory": "2016-09-30",
       "build_dir": "management/azure_mgmt_container_service/lib/2016-09-30"
     },
     "azure_mgmt_container_service_2016_03_30": {
+      "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ContainerService::Mgmt::V2016_03_30",
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_container_service",
-        "input-file": [
-          "specification/compute/resource-manager/Microsoft.ContainerService/2016-03-30/containerService.json"
-        ]
+        "tag": "package-container-service-2016-03"
       },
       "output_dir": "management/azure_mgmt_container_service/lib/2016-03-30",
       "generated_relative_base_directory": "2016-03-30",
@@ -485,13 +479,12 @@
       "build_dir": "management/azure_mgmt_features/lib/2015-12-01"
     },
     "azure_mgmt_graph_1.6": {
+      "markdown": "specification/graphrbac/data-plane/readme.md",
       "autorest_options": {
         "namespace": "Azure::Graph::Mgmt::V1_6",
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_graph",
-        "input-file": [
-          "specification/graphrbac/data-plane/1.6/graphrbac.json"
-        ]
+        "tag": "1.6"
       },
       "output_dir": "management/azure_mgmt_graph/lib/1.6",
       "generated_relative_base_directory": "1.6",
@@ -683,8 +676,8 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
-          "specification/monitor/resource-manager/microsoft.insights/2017-05-01-preview/diagnosticsSettingsCategories_API.json",
-          "specification/monitor/resource-manager/microsoft.insights/2017-05-01-preview/diagnosticsSettings_API.json"
+          "specification/monitor/resource-manager/microsoft.insights/stable/2017-05-01-preview/diagnosticsSettingsCategories_API.json",
+          "specification/monitor/resource-manager/microsoft.insights/stable/2017-05-01-preview/diagnosticsSettings_API.json"
         ],
         "title": "MonitorClient"
       },
@@ -698,8 +691,8 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
-          "specification/monitor/resource-manager/microsoft.insights/2017-04-01/actionGroups_API.json",
-          "specification/monitor/resource-manager/microsoft.insights/2017-04-01/activityLogAlerts_API.json"
+          "specification/monitor/resource-manager/microsoft.insights/stable/2017-04-01/actionGroups_API.json",
+          "specification/monitor/resource-manager/microsoft.insights/stable/2017-04-01/activityLogAlerts_API.json"
         ],
         "title": "MonitorClient"
       },
@@ -713,7 +706,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
-          "specification/monitor/resource-manager/microsoft.insights/2016-09-01/serviceDiagnosticsSettings_API.json"
+          "specification/monitor/resource-manager/microsoft.insights/stable/2016-09-01/serviceDiagnosticsSettings_API.json"
         ],
         "title": "MonitorClient"
       },
@@ -727,9 +720,9 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
-          "specification/monitor/resource-manager/microsoft.insights/2016-03-01/alertRulesIncidents_API.json",
-          "specification/monitor/resource-manager/microsoft.insights/2016-03-01/alertRules_API.json",
-          "specification/monitor/resource-manager/microsoft.insights/2016-03-01/logProfiles_API.json"
+          "specification/monitor/resource-manager/microsoft.insights/stable/2016-03-01/alertRulesIncidents_API.json",
+          "specification/monitor/resource-manager/microsoft.insights/stable/2016-03-01/alertRules_API.json",
+          "specification/monitor/resource-manager/microsoft.insights/stable/2016-03-01/logProfiles_API.json"
         ],
         "title": "MonitorClient"
       },
@@ -743,8 +736,8 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
-          "specification/monitor/resource-manager/microsoft.insights/2015-04-01/autoscale_API.json",
-          "specification/monitor/resource-manager/microsoft.insights/2015-04-01/operations_API.json"
+          "specification/monitor/resource-manager/microsoft.insights/stable/2015-04-01/autoscale_API.json",
+          "specification/monitor/resource-manager/microsoft.insights/stable/2015-04-01/operations_API.json"
         ],
         "title": "MonitorClient"
       },
@@ -770,23 +763,23 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_network",
         "input-file": [
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/applicationGateway.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/applicationSecurityGroup.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/checkDnsAvailability.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/endpointService.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/expressRouteCircuit.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/loadBalancer.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/network.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/networkInterface.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/networkSecurityGroup.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/networkWatcher.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/publicIpAddress.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/routeFilter.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/serviceCommunity.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/routeTable.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/usage.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/virtualNetwork.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/virtualNetworkGateway.json"
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/applicationGateway.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/applicationSecurityGroup.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/checkDnsAvailability.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/endpointService.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/expressRouteCircuit.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/loadBalancer.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/network.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/networkInterface.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/networkSecurityGroup.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/networkWatcher.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/publicIpAddress.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/routeFilter.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/serviceCommunity.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/routeTable.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/usage.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/virtualNetwork.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/virtualNetworkGateway.json"
         ]
       },
       "output_dir": "management/azure_mgmt_network/lib/2017-09-01",
@@ -799,8 +792,8 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_network",
         "input-file": [
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/vmssNetworkInterface.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-09-01/vmssPublicIpAddress.json"
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/vmssNetworkInterface.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-09-01/vmssPublicIpAddress.json"
         ]
       },
       "output_dir": "management/azure_mgmt_network/lib/2017-03-30",
@@ -813,21 +806,21 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_network",
         "input-file": [
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/applicationGateway.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/checkDnsAvailability.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/expressRouteCircuit.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/loadBalancer.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/network.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/networkInterface.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/networkSecurityGroup.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/networkWatcher.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/publicIpAddress.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/routeFilter.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/routeTable.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/serviceCommunity.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/usage.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/virtualNetwork.json",
-          "specification/network/resource-manager/Microsoft.Network/2017-03-01/virtualNetworkGateway.json"
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/applicationGateway.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/checkDnsAvailability.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/expressRouteCircuit.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/loadBalancer.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/network.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/networkInterface.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/networkSecurityGroup.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/networkWatcher.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/publicIpAddress.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/routeFilter.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/routeTable.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/serviceCommunity.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/usage.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/virtualNetwork.json",
+          "specification/network/resource-manager/Microsoft.Network/stable/2017-03-01/virtualNetworkGateway.json"
         ]
       },
       "output_dir": "management/azure_mgmt_network/lib/2017-03-01",
@@ -924,7 +917,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_operational_insights",
         "input-file": [
-          "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/2015-11-01-preview/OperationalInsights.json"
+          "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2015-11-01-preview/OperationalInsights.json"
         ]
       },
       "output_dir": "management/azure_mgmt_operational_insights/lib/2015-11-01-preview",
@@ -949,8 +942,8 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_policy",
         "input-file": [
-          "specification/resources/resource-manager/Microsoft.Authorization/2017-06-01-preview/policyAssignments.json",
-          "specification/resources/resource-manager/Microsoft.Authorization/2017-06-01-preview/policySetDefinitions.json"
+          "specification/resources/resource-manager/Microsoft.Authorization/preview/2017-06-01-preview/policyAssignments.json",
+          "specification/resources/resource-manager/Microsoft.Authorization/preview/2017-06-01-preview/policySetDefinitions.json"
         ],
         "title": "PolicyClient"
       },
@@ -1012,7 +1005,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_recovery_services",
         "input-file": [
-          "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/2016-12-01/backup.json"
+          "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2016-12-01/backup.json"
         ]
       },
       "output_dir": "management/azure_mgmt_recovery_services/lib/2016-12-01",
@@ -1037,7 +1030,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_recovery_services_backup",
         "input-file": [
-          "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/2017-07-01/jobs.json"
+          "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2017-07-01/jobs.json"
         ]
       },
       "output_dir": "management/azure_mgmt_recovery_services_backup/lib/2017-07-01",
@@ -1050,7 +1043,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_recovery_services_backup",
         "input-file": [
-          "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/2016-12-01/backupManagement.json"
+          "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2016-12-01/backupManagement.json"
         ]
       },
       "output_dir": "management/azure_mgmt_recovery_services_backup/lib/2016-12-01",
@@ -1063,7 +1056,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_recovery_services_backup",
         "input-file": [
-          "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/2016-08-10/operations.json"
+          "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2016-08-10/operations.json"
         ]
       },
       "output_dir": "management/azure_mgmt_recovery_services_backup/lib/2016-08-10",
@@ -1160,7 +1153,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_resources",
         "input-file": [
-          "specification/resources/resource-manager/Microsoft.Resources/2017-05-10/resources.json"
+          "specification/resources/resource-manager/Microsoft.Resources/stable/2017-05-10/resources.json"
         ]
       },
       "output_dir": "management/azure_mgmt_resources/lib/2017-05-10",
@@ -1173,7 +1166,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_resources",
         "input-file": [
-          "specification/resources/resource-manager/Microsoft.Resources/2016-09-01/resources.json"
+          "specification/resources/resource-manager/Microsoft.Resources/stable/2016-09-01/resources.json"
         ]
       },
       "output_dir": "management/azure_mgmt_resources/lib/2016-09-01",
@@ -1186,7 +1179,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_resources",
         "input-file": [
-          "specification/resources/resource-manager/Microsoft.Resources/2016-07-01/resources.json"
+          "specification/resources/resource-manager/Microsoft.Resources/stable/2016-07-01/resources.json"
         ]
       },
       "output_dir": "management/azure_mgmt_resources/lib/2016-07-01",
@@ -1199,7 +1192,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_resources",
         "input-file": [
-          "specification/resources/resource-manager/Microsoft.Resources/2016-02-01/resources.json"
+          "specification/resources/resource-manager/Microsoft.Resources/stable/2016-02-01/resources.json"
         ]
       },
       "output_dir": "management/azure_mgmt_resources/lib/2016-02-01",
@@ -1320,7 +1313,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_sql",
         "input-file": [
-          "specification/sql/resource-manager/Microsoft.Sql/2017-03-01-preview/cancelOperations.json"
+          "specification/sql/resource-manager/Microsoft.Sql/preview/2017-03-01-preview/cancelOperations.json"
         ]
       },
       "output_dir": "management/azure_mgmt_sql/lib/2017-03-01-preview",
@@ -1453,7 +1446,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_traffic_manager",
         "input-file": [
-          "specification/trafficmanager/resource-manager/Microsoft.Network/2017-09-01-preview/trafficmanageranalytics.json"
+          "specification/trafficmanager/resource-manager/Microsoft.Network/preview/2017-09-01-preview/trafficmanageranalytics.json"
         ]
       },
       "output_dir": "management/azure_mgmt_traffic_manager/lib/2017-09-01-preview",
@@ -1502,7 +1495,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_web",
         "input-file": [
-          "specification/web/resource-manager/Microsoft.CertificateRegistration/2015-08-01/AppServiceCertificateOrders.json"
+          "specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2015-08-01/AppServiceCertificateOrders.json"
         ],
         "title": "WebSiteManagementClient"
       },
@@ -1516,8 +1509,8 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_web",
         "input-file": [
-          "specification/web/resource-manager/Microsoft.DomainRegistration/2015-04-01/Domains.json",
-          "specification/web/resource-manager/Microsoft.DomainRegistration/2015-04-01/TopLevelDomains.json"
+          "specification/web/resource-manager/Microsoft.DomainRegistration/stable/2015-04-01/Domains.json",
+          "specification/web/resource-manager/Microsoft.DomainRegistration/stable/2015-04-01/TopLevelDomains.json"
         ],
         "title": "WebSiteManagementClient"
       },
@@ -1531,8 +1524,8 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_web",
         "input-file": [
-          "specification/web/resource-manager/Microsoft.Web/2016-09-01/AppServiceEnvironments.json",
-          "specification/web/resource-manager/Microsoft.Web/2016-09-01/AppServicePlans.json"
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-09-01/AppServiceEnvironments.json",
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-09-01/AppServicePlans.json"
         ],
         "title": "WebSiteManagementClient"
       },
@@ -1546,7 +1539,7 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_web",
         "input-file": [
-          "specification/web/resource-manager/Microsoft.Web/2016-08-01/WebApps.json"
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-08-01/WebApps.json"
         ],
         "title": "WebSiteManagementClient"
       },
@@ -1560,11 +1553,11 @@
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_web",
         "input-file": [
-          "specification/web/resource-manager/Microsoft.Web/2016-03-01/Certificates.json",
-          "specification/web/resource-manager/Microsoft.Web/2016-03-01/DeletedWebApps.json",
-          "specification/web/resource-manager/Microsoft.Web/2016-03-01/Provider.json",
-          "specification/web/resource-manager/Microsoft.Web/2016-03-01/Recommendations.json",
-          "specification/web/resource-manager/Microsoft.Web/2016-03-01/ResourceProvider.json"
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-03-01/Certificates.json",
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-03-01/DeletedWebApps.json",
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-03-01/Provider.json",
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-03-01/Recommendations.json",
+          "specification/web/resource-manager/Microsoft.Web/stable/2016-03-01/ResourceProvider.json"
         ],
         "title": "WebSiteManagementClient"
       },
