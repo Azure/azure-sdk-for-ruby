@@ -672,12 +672,12 @@
     },
     "azure_mgmt_monitor_2017_05_01_preview": {
       "autorest_options": {
-        "namespace": "Azure::MobileEngagement::Mgmt::V2014_12_01",
+        "namespace": "Azure::Monitor::Mgmt::V2017_05_01_preview",
         "package-version": "0.15.2",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
-          "specification/monitor/resource-manager/microsoft.insights/stable/2017-05-01-preview/diagnosticsSettingsCategories_API.json",
-          "specification/monitor/resource-manager/microsoft.insights/stable/2017-05-01-preview/diagnosticsSettings_API.json"
+          "specification/monitor/resource-manager/microsoft.insights/preview/2017-05-01-preview/diagnosticsSettingsCategories_API.json",
+          "specification/monitor/resource-manager/microsoft.insights/preview/2017-05-01-preview/diagnosticsSettings_API.json"
         ],
         "title": "MonitorClient"
       },
