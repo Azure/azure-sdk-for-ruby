@@ -130,22 +130,30 @@ REGEN_EXCLUDES = ['azure_sdk']
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
 namespace :arm do
   desc 'Delete ./pkg for each of the Azure Resource Manager projects'
-  task :clean do
-    each_gem do
+  task :clean, [:key] do |_, args|
+    each_gem do |dir|
+      if !should_i_continue(args[:key], dir)
+        next
+      end
+
       FileUtils.rm_rf('pkg')
     end
   end
 
   desc 'Delete multiple version folders for each sdk'
-  task :clean_generated do
-    clean_generated('management')
-    clean_generated('data')
+  task :clean_generated, [:key] do |_, args|
+    clean_generated('management', args[:key])
+    clean_generated('data', args[:key])
     Dir.chdir(File.expand_path('..', __FILE__))
   end
 
   desc 'Build gems for each of the Azure Resource Manager projects'
-  task :build => :clean do
-    each_gem do
+  task :build, [:key] => :clean do |_, args|
+    each_gem do |dir|
+      if !should_i_continue(args[:key], dir)
+        next
+      end
+
       execute_and_stream('rake build')
     end
   end
@@ -175,9 +183,13 @@ namespace :arm do
   end
 
   desc 'Regen code for each sdk with all its api versions'
-  task :regen_sdk_versions => :clean_generated do
+  task :regen_sdk_versions, [:key] => :clean_generated do |_, args|
     json = get_config_file
     each_gem do |dir| # dir corresponds to each azure_* folder
+      if !should_i_continue(args[:key], dir)
+        next
+      end
+
       if REGEN_EXCLUDES.include?(dir.to_s)
         update_gem_version('lib/azure_sdk/version.rb', gem_versions['rollup'][dir])
         next
@@ -222,18 +234,26 @@ namespace :arm do
   end
 
   desc 'Bundler related helper'
-  namespace :bundle do
+  namespace :bundle do |_, args|
     desc 'bundle update for each of the Azure Resource Manager projects'
     task :update do
       each_gem do
+        if !should_i_continue(args[:key], dir)
+          next
+        end
+
         execute_and_stream('bundle update')
       end
     end
   end
 
   desc 'run specs for each of the Azure Resource Manager projects'
-  task :spec => :dotenv do
+  task :spec, [:key] => :dotenv do |_, args|
     each_gem do |gem_dir|
+      if !should_i_continue(args[:key], gem_dir)
+        next
+      end
+
       puts "Executing spec on #{gem_dir}"
       execute_and_stream('bundle install')
       execute_and_stream('bundle exec rspec')
@@ -254,11 +274,16 @@ namespace :arm do
   end
 
   desc 'Clean Individual Profiles'
-  task :clean_individual_profiles do
+  task :clean_individual_profiles, [:key] do |_, args|
     each_gem_dir do |gem|
+      if !should_i_continue(args[:key], gem)
+        next
+      end
+
       if REGEN_EXCLUDES.include?gem
         next
       end
+
       mode = get_mode(gem)
       Dir.chdir("#{__dir__}/#{mode}/#{gem}/lib/profiles")
 
@@ -272,7 +297,7 @@ namespace :arm do
   end
 
   desc 'Clean All profiles'
-  task :clean_all_profiles => [:clean_rollup_profiles, :clean_individual_profiles] do
+  task :clean_all_profiles, [:key] => [:clean_rollup_profiles, :clean_individual_profiles] do
     puts 'Cleaned all profiles'
   end
 
@@ -286,8 +311,12 @@ namespace :arm do
   end
 
   desc 'Regen individual profiles'
-  task :regen_individual_profiles => :clean_individual_profiles do
+  task :regen_individual_profiles, [:key] => :clean_individual_profiles do |_, args|
     each_gem_dir do |gem|
+      if !should_i_continue(args[:key], gem)
+        next
+      end
+
       if REGEN_EXCLUDES.include?gem
         next
       end
@@ -301,29 +330,30 @@ namespace :arm do
   end
 
   desc 'Generate individual require files'
-  task :regen_individual_require_files do
-    command = "bundle exec ruby #{__dir__}/generators/requirefilegen/src/require_file_generator.rb --mode=individual --sdk_path=#{__dir__}"
+  task :regen_individual_require_files, [:key] do |_, args|
+    key = args[:key].nil? ? '*' : args[:key]
+    command = "bundle exec ruby #{__dir__}/generators/requirefilegen/src/require_file_generator.rb --mode=individual --sdk_path=#{__dir__} --gem_name=#{key}"
     execute_and_stream(command)
   end
 
   desc 'Generate rollup require files'
   task :regen_rollup_require_files do
-    command = "bundle exec ruby #{__dir__}/generators/requirefilegen/src/require_file_generator.rb --mode=rollup --sdk_path=#{__dir__}"
+    command = "bundle exec ruby #{__dir__}/generators/requirefilegen/src/require_file_generator.rb --mode=rollup --sdk_path=#{__dir__} --gem_name=azure_sdk"
     execute_and_stream(command)
   end
 
   desc 'Generate all require files'
-  task :regen_all_require_files => [:regen_individual_require_files, :regen_rollup_require_files] do
+  task :regen_all_require_files, [:key] => [:regen_individual_require_files, :regen_rollup_require_files] do
     puts 'Generated all require files'
   end
 
   desc 'Regen all profiles'
-  task :regen_all_profiles => [:regen_rollup_profile, :regen_individual_profiles] do
+  task :regen_all_profiles, [:key] => [:regen_rollup_profile, :regen_individual_profiles] do
     puts 'Regenerated all profiles'
   end
 
   desc 'Regen all versions of sdk and profiles'
-  task :regen => [:regen_sdk_versions, :regen_all_profiles] do
+  task :regen, [:key] => [:regen_sdk_versions, :regen_all_profiles] do
     puts 'Regenerated all versions of sdk and profiles'
   end
 end
@@ -332,15 +362,23 @@ Rake::Task['arm:regen_rollup_profile'].enhance do
   Rake::Task['arm:regen_rollup_require_files'].invoke
 end
 
-Rake::Task['arm:regen_individual_profiles'].enhance do
-  Rake::Task['arm:regen_individual_require_files'].invoke
+Rake::Task['arm:regen_individual_profiles'].enhance do |_, args|
+  Rake::Task['arm:regen_individual_require_files'].invoke(args[:key])
 end
 
-Rake::Task['arm:regen_sdk_versions'].enhance do
-  Rake::Task['arm:regen_individual_require_files'].invoke
+Rake::Task['arm:regen_sdk_versions'].enhance do |_, args|
+  Rake::Task['arm:regen_individual_require_files'].invoke(args[:key])
 end
 
 task :default => :spec
+
+def should_i_continue(key, dir)
+  if(key.nil? || key == dir)
+    return true
+  end
+
+  false
+end
 
 def get_mode(dir)
   mode = ''
@@ -352,10 +390,14 @@ def get_mode(dir)
   mode
 end
 
-def clean_generated(parent_dir)
+def clean_generated(parent_dir, key)
   Dir.chdir(File.expand_path("../#{parent_dir}", __FILE__))
   gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
   gem_folders.each do |gem|
+    if !should_i_continue(key, gem)
+      next
+    end
+
     if GEMS_TO_IGNORE.include?gem
       next
     end
