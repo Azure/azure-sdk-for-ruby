@@ -17,6 +17,10 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [Array<ResourceAccess>] The list of OAuth2.0 permission scopes
       # and app roles that the application requires from the specified
       # resource.
@@ -34,21 +38,31 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RequiredResourceAccess',
           type: {
             name: 'Composite',
             class_name: 'RequiredResourceAccess',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               resource_access: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'resourceAccess',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceAccessElementType',
                       type: {
@@ -59,7 +73,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               resource_app_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceAppId',
                 type: {

@@ -12,6 +12,10 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [Boolean] If true, only membership in security-enabled groups
       # should be checked. Otherwise, membership in all groups should be
       # checked.
@@ -24,15 +28,26 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserGetMemberGroupsParameters',
           type: {
             name: 'Composite',
             class_name: 'UserGetMemberGroupsParameters',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               security_enabled_only: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'securityEnabledOnly',
                 type: {

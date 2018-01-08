@@ -6,28 +6,27 @@
 module Azure::Graph::Mgmt::V1_6
   module Models
     #
-    # Server response for GetMemberGroups API call.
+    # DirectoryObject list operation result.
     #
-    class UserGetMemberGroupsResult
+    class DirectoryObjectListResult
 
       include MsRestAzure
 
-      # @return [Array<String>] A collection of group IDs of which the user is
-      # a member.
+      # @return [Array<DirectoryObject>] A collection of DirectoryObject.
       attr_accessor :value
 
 
       #
-      # Mapper for UserGetMemberGroupsResult class as Ruby Hash.
+      # Mapper for DirectoryObjectListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'UserGetMemberGroupsResult',
+          serialized_name: 'DirectoryObjectListResult',
           type: {
             name: 'Composite',
-            class_name: 'UserGetMemberGroupsResult',
+            class_name: 'DirectoryObjectListResult',
             model_properties: {
               value: {
                 required: false,
@@ -36,9 +35,12 @@ module Azure::Graph::Mgmt::V1_6
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'DirectoryObjectElementType',
                       type: {
-                        name: 'String'
+                        name: 'Composite',
+                        polymorphic_discriminator: 'objectType',
+                        uber_parent: 'DirectoryObject',
+                        class_name: 'DirectoryObject'
                       }
                   }
                 }

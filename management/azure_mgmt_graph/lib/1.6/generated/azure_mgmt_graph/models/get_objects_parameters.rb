@@ -12,6 +12,10 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [Array<String>] The requested object IDs.
       attr_accessor :object_ids
 
@@ -29,21 +33,31 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GetObjectsParameters',
           type: {
             name: 'Composite',
             class_name: 'GetObjectsParameters',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               object_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -53,13 +67,11 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'types',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -69,7 +81,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               include_directory_object_references: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'includeDirectoryObjectReferences',
                 type: {

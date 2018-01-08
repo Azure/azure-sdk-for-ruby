@@ -12,6 +12,10 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [DateTime] Start date.
       attr_accessor :start_date
 
@@ -31,15 +35,26 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PasswordCredential',
           type: {
             name: 'Composite',
             class_name: 'PasswordCredential',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               start_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startDate',
                 type: {
@@ -47,7 +62,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               end_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endDate',
                 type: {
@@ -55,7 +69,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               key_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyId',
                 type: {
@@ -63,7 +76,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
