@@ -5,7 +5,7 @@
 
 module Azure::ContainerService::Mgmt::V2016_03_30
   #
-  # The Container Service Client.
+  # Compute Client
   #
   class ContainerServices
     include MsRestAzure
@@ -18,7 +18,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       @client = client
     end
 
-    # @return [ContainerServiceClient] reference to the ContainerServiceClient
+    # @return [ComputeManagementClient] reference to the ComputeManagementClient
     attr_reader :client
 
     #
