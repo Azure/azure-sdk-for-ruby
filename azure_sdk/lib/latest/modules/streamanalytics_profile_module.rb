@@ -100,7 +100,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @operations = client_0.operations
           @streaming_jobs = client_0.streaming_jobs
           @inputs = client_0.inputs
@@ -110,6 +110,12 @@ module Azure::Profiles::Latest
           @subscriptions = client_0.subscriptions
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/StreamAnalytics'
+          profile_information = "#{profile_information}/Latest"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

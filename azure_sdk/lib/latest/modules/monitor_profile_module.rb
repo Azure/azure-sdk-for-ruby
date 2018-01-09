@@ -100,7 +100,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @autoscale_settings = client_0.autoscale_settings
           @operations = client_0.operations
 
@@ -108,7 +108,7 @@ module Azure::Profiles::Latest
           if(client_1.respond_to?(:subscription_id))
             client_1.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_1)
           @alert_rule_incidents = client_1.alert_rule_incidents
           @alert_rules = client_1.alert_rules
           @log_profiles = client_1.log_profiles
@@ -117,7 +117,7 @@ module Azure::Profiles::Latest
           if(client_2.respond_to?(:subscription_id))
             client_2.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_2)
           @action_groups = client_2.action_groups
           @activity_log_alerts = client_2.activity_log_alerts
 
@@ -125,11 +125,17 @@ module Azure::Profiles::Latest
           if(client_3.respond_to?(:subscription_id))
             client_3.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_3)
           @diagnostic_settings_category_operations = client_3.diagnostic_settings_category_operations
           @diagnostic_settings_operations = client_3.diagnostic_settings_operations
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/Monitor'
+          profile_information = "#{profile_information}/Latest"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

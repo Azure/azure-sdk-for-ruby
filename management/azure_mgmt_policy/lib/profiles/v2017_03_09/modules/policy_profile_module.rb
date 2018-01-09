@@ -38,11 +38,19 @@ module Azure::Policy::Profiles::V2017_03_09
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @policy_assignments = client_0.policy_assignments
         @policy_definitions = client_0.policy_definitions
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Mgmt/Policy'
+        profile_information = "#{profile_information}/V2017_03_09"
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

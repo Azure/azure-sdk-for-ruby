@@ -216,6 +216,7 @@ module Azure::Compute::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @disks = client_0.disks
         @snapshots = client_0.snapshots
         @virtual_machine_run_commands = client_0.virtual_machine_run_commands
@@ -224,12 +225,14 @@ module Azure::Compute::Profiles::Latest
         if(client_1.respond_to?(:subscription_id))
           client_1.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_1)
         @resource_skus = client_1.resource_skus
 
         client_2 = Azure::Compute::Mgmt::V2017_12_01::ComputeManagementClient.new(configurable.credentials, base_url, options)
         if(client_2.respond_to?(:subscription_id))
           client_2.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_2)
         @availability_sets = client_2.availability_sets
         @virtual_machine_extension_images = client_2.virtual_machine_extension_images
         @virtual_machine_extensions = client_2.virtual_machine_extensions
@@ -245,6 +248,13 @@ module Azure::Compute::Profiles::Latest
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Mgmt/Compute'
+        profile_information = "#{profile_information}/Latest"
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

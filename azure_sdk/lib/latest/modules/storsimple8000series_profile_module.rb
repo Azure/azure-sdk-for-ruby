@@ -196,7 +196,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @operations = client_0.operations
           @managers = client_0.managers
           @access_control_records = client_0.access_control_records
@@ -215,6 +215,12 @@ module Azure::Profiles::Latest
           @storage_account_credentials = client_0.storage_account_credentials
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/StorSimple8000Series'
+          profile_information = "#{profile_information}/Latest"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

@@ -65,6 +65,7 @@ module Azure::ServerManagement::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @gateway = client_0.gateway
         @node = client_0.node
         @session = client_0.session
@@ -72,6 +73,13 @@ module Azure::ServerManagement::Profiles::Latest
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Mgmt/ServerManagement'
+        profile_information = "#{profile_information}/Latest"
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

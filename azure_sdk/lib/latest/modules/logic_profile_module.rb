@@ -169,7 +169,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @workflows = client_0.workflows
           @workflow_versions = client_0.workflow_versions
           @workflow_triggers = client_0.workflow_triggers
@@ -185,6 +185,12 @@ module Azure::Profiles::Latest
           @sessions = client_0.sessions
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/Logic'
+          profile_information = "#{profile_information}/Latest"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

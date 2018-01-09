@@ -48,12 +48,20 @@ module Azure::Search::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @admin_keys = client_0.admin_keys
         @query_keys = client_0.query_keys
         @services = client_0.services
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Mgmt/Search'
+        profile_information = "#{profile_information}/Latest"
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

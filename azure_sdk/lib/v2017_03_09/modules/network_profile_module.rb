@@ -157,7 +157,7 @@ module Azure::Profiles::V2017_03_09
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @application_gateways = client_0.application_gateways
           @express_route_circuit_authorizations = client_0.express_route_circuit_authorizations
           @express_route_circuit_peerings = client_0.express_route_circuit_peerings
@@ -178,6 +178,12 @@ module Azure::Profiles::V2017_03_09
           @local_network_gateways = client_0.local_network_gateways
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/Network'
+          profile_information = "#{profile_information}/V2017_03_09"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

@@ -192,7 +192,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @labs = client_0.labs
           @global_schedules = client_0.global_schedules
           @artifact_sources = client_0.artifact_sources
@@ -216,6 +216,12 @@ module Azure::Profiles::Latest
           @virtual_networks = client_0.virtual_networks
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/DevTestLabs'
+          profile_information = "#{profile_information}/Latest"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

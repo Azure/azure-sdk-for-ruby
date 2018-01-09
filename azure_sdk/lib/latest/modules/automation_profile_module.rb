@@ -177,7 +177,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @automation_account_operations = client_0.automation_account_operations
           @operations = client_0.operations
           @statistics_operations = client_0.statistics_operations
@@ -209,6 +209,12 @@ module Azure::Profiles::Latest
           @webhook_operations = client_0.webhook_operations
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/Automation'
+          profile_information = "#{profile_information}/Latest"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

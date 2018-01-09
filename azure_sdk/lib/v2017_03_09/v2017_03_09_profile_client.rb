@@ -22,6 +22,19 @@ module Azure::Profiles::V2017_03_09
 
     attr_reader  :storage, :network, :compute, :features, :links, :locks, :policy, :resources, :subscriptions
 
+    #
+    # Initializes a new instance of the Client class.
+    # @param options [Hash] hash of client options.
+    #    options = {
+    #      tenant_id: 'YOUR TENANT ID',
+    #      client_id: 'YOUR CLIENT ID',
+    #      client_secret: 'YOUR CLIENT SECRET',
+    #      subscription_id: 'YOUR SUBSCRIPTION ID',
+    #      credentials: credentials
+    #    }
+    #   'credentials' are optional and if not passed in the hash, will be obtained
+    #   from MsRest::TokenCredentials using MsRestAzure::ApplicationTokenProvider.
+    #
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
         @options = setup_default_options

@@ -65,6 +65,7 @@ module Azure::NotificationHubs::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @namespaces = client_0.namespaces
         @name = client_0.name
         @notification_hubs = client_0.notification_hubs
@@ -72,6 +73,13 @@ module Azure::NotificationHubs::Profiles::Latest
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Mgmt/NotificationHubs'
+        profile_information = "#{profile_information}/Latest"
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

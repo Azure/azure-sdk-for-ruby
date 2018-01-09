@@ -268,7 +268,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @backup_long_term_retention_policies = client_0.backup_long_term_retention_policies
           @backup_long_term_retention_vaults = client_0.backup_long_term_retention_vaults
           @restore_points = client_0.restore_points
@@ -306,7 +306,7 @@ module Azure::Profiles::Latest
           if(client_1.respond_to?(:subscription_id))
             client_1.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_1)
           @database_advisors = client_1.database_advisors
           @database_recommended_actions = client_1.database_recommended_actions
           @server_advisors = client_1.server_advisors
@@ -325,10 +325,16 @@ module Azure::Profiles::Latest
           if(client_2.respond_to?(:subscription_id))
             client_2.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_2)
           @database_operations = client_2.database_operations
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/Rollup/Mgmt/SQL'
+          profile_information = "#{profile_information}/Latest"
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses
