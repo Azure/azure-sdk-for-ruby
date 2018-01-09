@@ -6,32 +6,32 @@
 module Azure::Monitor::Mgmt::V2017_04_01
   module Models
     #
-    # An activity log alert object for the body of patch operations.
+    # An action group object for the body of patch operations.
     #
-    class ActivityLogAlertPatchBody
+    class ActionGroupPatchBody
 
       include MsRestAzure
 
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
-      # @return [Boolean] Indicates whether this activity log alert is enabled.
-      # If an activity log alert is not enabled, then none of its actions will
-      # be activated. Default value: true .
+      # @return [Boolean] Indicates whether this action group is enabled. If an
+      # action group is not enabled, then none of its actions will be
+      # activated. Default value: true .
       attr_accessor :enabled
 
 
       #
-      # Mapper for ActivityLogAlertPatchBody class as Ruby Hash.
+      # Mapper for ActionGroupPatchBody class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ActivityLogAlertPatchBody',
+          serialized_name: 'ActionGroupPatchBody',
           type: {
             name: 'Composite',
-            class_name: 'ActivityLogAlertPatchBody',
+            class_name: 'ActionGroupPatchBody',
             model_properties: {
               tags: {
                 required: false,

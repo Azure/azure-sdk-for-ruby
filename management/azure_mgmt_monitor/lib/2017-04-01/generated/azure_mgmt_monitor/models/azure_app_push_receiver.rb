@@ -6,35 +6,31 @@
 module Azure::Monitor::Mgmt::V2017_04_01
   module Models
     #
-    # An email receiver.
+    # The Azure mobile App push notification receiver.
     #
-    class EmailReceiver
+    class AzureAppPushReceiver
 
       include MsRestAzure
 
-      # @return [String] The name of the email receiver. Names must be unique
-      # across all receivers within an action group.
+      # @return [String] The name of the Azure mobile app push receiver. Names
+      # must be unique across all receivers within an action group.
       attr_accessor :name
 
-      # @return [String] The email address of this receiver.
+      # @return [String] The email address registered for the Azure mobile app.
       attr_accessor :email_address
-
-      # @return [ReceiverStatus] The receiver status of the e-mail. Possible
-      # values include: 'NotSpecified', 'Enabled', 'Disabled'
-      attr_accessor :status
 
 
       #
-      # Mapper for EmailReceiver class as Ruby Hash.
+      # Mapper for AzureAppPushReceiver class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'EmailReceiver',
+          serialized_name: 'AzureAppPushReceiver',
           type: {
             name: 'Composite',
-            class_name: 'EmailReceiver',
+            class_name: 'AzureAppPushReceiver',
             model_properties: {
               name: {
                 required: true,
@@ -48,15 +44,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 serialized_name: 'emailAddress',
                 type: {
                   name: 'String'
-                }
-              },
-              status: {
-                required: false,
-                read_only: true,
-                serialized_name: 'status',
-                type: {
-                  name: 'Enum',
-                  module: 'ReceiverStatus'
                 }
               }
             }
