@@ -73,7 +73,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     def create_or_update_async(resource_group_name, vault_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
-      fail ArgumentError, "'vault_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{3,24}$'" if !vault_name.nil? && vault_name.match(Regexp.new('^^[a-zA-Z0-9-]{3,24}$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -105,6 +104,123 @@ module Azure::KeyVault::Mgmt::V2016_10_01
           base_url: request_url
       }
       promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update a key vault in the specified subscription.
+    #
+    # @param resource_group_name [String] The name of the Resource Group to which
+    # the server belongs.
+    # @param vault_name [String] Name of the vault
+    # @param parameters [VaultPatchParameters] Parameters to patch the vault
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Vault] operation results.
+    #
+    def update(resource_group_name, vault_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, vault_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update a key vault in the specified subscription.
+    #
+    # @param resource_group_name [String] The name of the Resource Group to which
+    # the server belongs.
+    # @param vault_name [String] Name of the vault
+    # @param parameters [VaultPatchParameters] Parameters to patch the vault
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, vault_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, vault_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Update a key vault in the specified subscription.
+    #
+    # @param resource_group_name [String] The name of the Resource Group to which
+    # the server belongs.
+    # @param vault_name [String] Name of the vault
+    # @param parameters [VaultPatchParameters] Parameters to patch the vault
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(resource_group_name, vault_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -321,6 +437,133 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     end
 
     #
+    # Update access policies in a key vault in the specified subscription.
+    #
+    # @param resource_group_name [String] The name of the Resource Group to which
+    # the vault belongs.
+    # @param vault_name [String] Name of the vault
+    # @param operation_kind [AccessPolicyUpdateKind] Name of the operation.
+    # Possible values include: 'add', 'replace', 'remove'
+    # @param parameters [VaultAccessPolicyParameters] Access policy to merge into
+    # the vault
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [VaultAccessPolicyParameters] operation results.
+    #
+    def update_access_policy(resource_group_name, vault_name, operation_kind, parameters, custom_headers = nil)
+      response = update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update access policies in a key vault in the specified subscription.
+    #
+    # @param resource_group_name [String] The name of the Resource Group to which
+    # the vault belongs.
+    # @param vault_name [String] Name of the vault
+    # @param operation_kind [AccessPolicyUpdateKind] Name of the operation.
+    # Possible values include: 'add', 'replace', 'remove'
+    # @param parameters [VaultAccessPolicyParameters] Access policy to merge into
+    # the vault
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_access_policy_with_http_info(resource_group_name, vault_name, operation_kind, parameters, custom_headers = nil)
+      update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers).value!
+    end
+
+    #
+    # Update access policies in a key vault in the specified subscription.
+    #
+    # @param resource_group_name [String] The name of the Resource Group to which
+    # the vault belongs.
+    # @param vault_name [String] Name of the vault
+    # @param operation_kind [AccessPolicyUpdateKind] Name of the operation.
+    # Possible values include: 'add', 'replace', 'remove'
+    # @param parameters [VaultAccessPolicyParameters] Access policy to merge into
+    # the vault
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, 'operation_kind is nil' if operation_kind.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/accessPolicies/{operationKind}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'operationKind' => operation_kind,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyParameters.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyParameters.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # The List operation gets information about the vaults associated with the
     # subscription and within the specified resource group.
     #
@@ -383,6 +626,95 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'$top' => top,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The List operation gets information about the vaults associated with the
+    # subscription.
+    #
+    # @param top [Integer] Maximum number of results to return.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Vault>] operation results.
+    #
+    def list_by_subscription(top = nil, custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(top, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # The List operation gets information about the vaults associated with the
+    # subscription.
+    #
+    # @param top [Integer] Maximum number of results to return.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_subscription_with_http_info(top = nil, custom_headers = nil)
+      list_by_subscription_async(top, custom_headers).value!
+    end
+
+    #
+    # The List operation gets information about the vaults associated with the
+    # subscription.
+    #
+    # @param top [Integer] Maximum number of results to return.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_subscription_async(top = nil, custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/vaults'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'$top' => top,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -720,6 +1052,105 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     end
 
     #
+    # Checks that the vault name is valid and is not already in use.
+    #
+    # @param vault_name [VaultCheckNameAvailabilityParameters] The name of the
+    # vault.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckNameAvailabilityResult] operation results.
+    #
+    def check_name_availability(vault_name, custom_headers = nil)
+      response = check_name_availability_async(vault_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Checks that the vault name is valid and is not already in use.
+    #
+    # @param vault_name [VaultCheckNameAvailabilityParameters] The name of the
+    # vault.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_with_http_info(vault_name, custom_headers = nil)
+      check_name_availability_async(vault_name, custom_headers).value!
+    end
+
+    #
+    # Checks that the vault name is valid and is not already in use.
+    #
+    # @param vault_name [VaultCheckNameAvailabilityParameters] The name of the
+    # vault.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_async(vault_name, custom_headers = nil)
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCheckNameAvailabilityParameters.mapper()
+      request_content = @client.serialize(request_mapper,  vault_name)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/checkNameAvailability'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::CheckNameAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Permanently deletes the specified vault. aka Purges the deleted Azure key
     # vault.
     #
@@ -845,6 +1276,96 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The List operation gets information about the vaults associated with the
+    # subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [VaultListResult] operation results.
+    #
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The List operation gets information about the vaults associated with the
+    # subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # The List operation gets information about the vaults associated with the
+    # subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -1087,6 +1608,27 @@ module Azure::KeyVault::Mgmt::V2016_10_01
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_by_resource_group_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # The List operation gets information about the vaults associated with the
+    # subscription.
+    #
+    # @param top [Integer] Maximum number of results to return.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [VaultListResult] which provide lazy access to pages of the response.
+    #
+    def list_by_subscription_as_lazy(top = nil, custom_headers = nil)
+      response = list_by_subscription_async(top, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end
