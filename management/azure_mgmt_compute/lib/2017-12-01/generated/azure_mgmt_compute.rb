@@ -164,6 +164,7 @@ module Azure::Compute::Mgmt::V2017_12_01
     autoload :UpgradeMode,                                        '2017-12-01/generated/azure_mgmt_compute/models/upgrade_mode.rb'
     autoload :OperatingSystemStateTypes,                          '2017-12-01/generated/azure_mgmt_compute/models/operating_system_state_types.rb'
     autoload :IPVersion,                                          '2017-12-01/generated/azure_mgmt_compute/models/ipversion.rb'
+    autoload :VirtualMachinePriorityTypes,                        '2017-12-01/generated/azure_mgmt_compute/models/virtual_machine_priority_types.rb'
     autoload :VirtualMachineScaleSetSkuScaleType,                 '2017-12-01/generated/azure_mgmt_compute/models/virtual_machine_scale_set_sku_scale_type.rb'
     autoload :RollingUpgradeStatusCode,                           '2017-12-01/generated/azure_mgmt_compute/models/rolling_upgrade_status_code.rb'
     autoload :RollingUpgradeActionType,                           '2017-12-01/generated/azure_mgmt_compute/models/rolling_upgrade_action_type.rb'
