@@ -14,6 +14,7 @@ require 'ostruct'
 #    -m, --mode : Mode for which the require files are to be generated.
 #                 ['rollup', 'individual']
 #    -s, --sdk_path : Path to Azure Ruby SDK
+#    -g, --gem_name : Name of the gem
 #
 
 class RequireFileGeneratorOptionsParser
@@ -34,6 +35,10 @@ class RequireFileGeneratorOptionsParser
         options.sdk_path = sdk_path
       end
 
+      opts.on('-gGEM_NAME', '--gem_name=GEM_NAME', 'Gem Name') do |gem_name|
+        options.gem_name = gem_name
+      end
+
       opts.on('-h', '--help', 'Prints this help') do
         puts opts
         exit
@@ -50,7 +55,7 @@ class RequireFileGeneratorOptionsParser
   def self.options(args)
     args << '-h' if args.empty?
     options = self.parse(args)
-    mandatory_params = [:mode, :sdk_path]
+    mandatory_params = [:mode, :sdk_path, :gem_name]
     missing_params = mandatory_params.select{|param| options[param].nil?}
     raise OptionParser::MissingArgument.new(missing_params.join(', ')) unless missing_params.empty?
     options

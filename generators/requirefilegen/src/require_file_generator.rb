@@ -11,13 +11,14 @@ class RequireFileGenerator
 
   attr_accessor :requires
 
-  def initialize(azure_sdk_for_ruby_location)
+  def initialize(azure_sdk_for_ruby_location, gem_name)
     @azure_sdk_location = "#{azure_sdk_for_ruby_location}/azure_sdk"
     @mgmt_sdks_location = "#{azure_sdk_for_ruby_location}/management"
     @data_sdks_location = "#{azure_sdk_for_ruby_location}/data"
     @azure_sdk_for_ruby_location = azure_sdk_for_ruby_location
     @file_to_be_written = ''
     @requires = []
+    @gem_name = gem_name
   end
 
   #
@@ -64,6 +65,12 @@ class RequireFileGenerator
     Dir.chdir("#{location}")
     gems = Dir['*'].reject{|o| not File.directory?(o)}
     gems.each do |gem|
+      if @gem_name != '*'
+        if gem != @gem_name
+          next
+        end
+      end
+
       # azure_mgmt_insights is a special case gem which we have stopped
       # supporting. But the folder is present and should be ignored in this
       # process
@@ -232,7 +239,7 @@ class RequireFileGenerator
 end
 
 options = RequireFileGeneratorOptionsParser.options ARGV
-obj = RequireFileGenerator.new(options.sdk_path)
+obj = RequireFileGenerator.new(options.sdk_path, options.gem_name)
 if options.mode == 'rollup'
   obj.generate_require_files_for_rollup_gem
 else
