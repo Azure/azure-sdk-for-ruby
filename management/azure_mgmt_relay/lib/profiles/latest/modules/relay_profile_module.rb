@@ -62,6 +62,7 @@ module Azure::Relay::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @operations = client_0.operations
         @namespaces = client_0.namespaces
         @hybrid_connections = client_0.hybrid_connections
@@ -69,6 +70,12 @@ module Azure::Relay::Profiles::Latest
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Latest/Relay/Mgmt'
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

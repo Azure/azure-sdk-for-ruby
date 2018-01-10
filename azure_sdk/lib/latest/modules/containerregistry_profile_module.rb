@@ -67,13 +67,18 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @registries = client_0.registries
           @operations = client_0.operations
           @replications = client_0.replications
           @webhooks = client_0.webhooks
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/azure_sdk/Latest/ContainerRegistry/Mgmt'
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

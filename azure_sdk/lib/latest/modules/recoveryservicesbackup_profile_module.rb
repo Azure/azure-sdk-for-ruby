@@ -213,14 +213,14 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @operations = client_0.operations
 
           client_1 = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
           if(client_1.respond_to?(:subscription_id))
             client_1.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_1)
           @backup_resource_vault_configs = client_1.backup_resource_vault_configs
           @backup_engines = client_1.backup_engines
           @protection_container_refresh_operation_results = client_1.protection_container_refresh_operation_results
@@ -254,11 +254,16 @@ module Azure::Profiles::Latest
           if(client_2.respond_to?(:subscription_id))
             client_2.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_2)
           @backup_jobs = client_2.backup_jobs
           @job_details = client_2.job_details
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/azure_sdk/Latest/RecoveryServicesBackup/Mgmt'
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

@@ -50,7 +50,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @endpoints = client_0.endpoints
           @profiles = client_0.profiles
           @geographic_hierarchies = client_0.geographic_hierarchies
@@ -59,11 +59,16 @@ module Azure::Profiles::Latest
           if(client_1.respond_to?(:subscription_id))
             client_1.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_1)
           @heat_map = client_1.heat_map
           @traffic_manager_user_metrics_keys = client_1.traffic_manager_user_metrics_keys
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/azure_sdk/Latest/TrafficManager/Mgmt'
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

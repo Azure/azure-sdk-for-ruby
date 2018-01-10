@@ -49,12 +49,17 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @clusters = client_0.clusters
           @cluster_versions = client_0.cluster_versions
           @operations = client_0.operations
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/azure_sdk/Latest/ServiceFabric/Mgmt'
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

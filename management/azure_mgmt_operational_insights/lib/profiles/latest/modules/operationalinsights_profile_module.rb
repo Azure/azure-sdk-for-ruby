@@ -76,6 +76,7 @@ module Azure::OperationalInsights::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @storage_insights = client_0.storage_insights
         @saved_searches = client_0.saved_searches
 
@@ -83,12 +84,19 @@ module Azure::OperationalInsights::Profiles::Latest
         if(client_1.respond_to?(:subscription_id))
           client_1.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_1)
         @linked_services = client_1.linked_services
         @data_sources = client_1.data_sources
         @workspaces = client_1.workspaces
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Latest/OperationalInsights/Mgmt'
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

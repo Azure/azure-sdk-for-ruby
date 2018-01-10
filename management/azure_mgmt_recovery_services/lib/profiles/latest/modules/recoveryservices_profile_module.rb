@@ -78,6 +78,7 @@ module Azure::RecoveryServices::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @vault_certificates = client_0.vault_certificates
         @registered_identities = client_0.registered_identities
         @replication_usages = client_0.replication_usages
@@ -90,11 +91,18 @@ module Azure::RecoveryServices::Profiles::Latest
         if(client_1.respond_to?(:subscription_id))
           client_1.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_1)
         @backup_vault_configs = client_1.backup_vault_configs
         @backup_storage_configs = client_1.backup_storage_configs
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Latest/RecoveryServices/Mgmt'
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses
