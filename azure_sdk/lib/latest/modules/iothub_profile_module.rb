@@ -91,8 +91,7 @@ module Azure::Profiles::Latest
         end
 
         def add_telemetry(client)
-          profile_information = 'Profiles/Rollup/Mgmt/IotHub'
-          profile_information = "#{profile_information}/Latest"
+          profile_information = 'Profiles/azure_sdk/Latest/IotHub/Mgmt'
           client.add_user_agent_information(profile_information)
         end
 

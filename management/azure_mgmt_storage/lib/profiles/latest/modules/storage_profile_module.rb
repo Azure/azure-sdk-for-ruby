@@ -102,8 +102,7 @@ module Azure::Storage::Profiles::Latest
       end
 
       def add_telemetry(client)
-        profile_information = 'Profiles/Mgmt/Storage'
-        profile_information = "#{profile_information}/Latest"
+        profile_information = 'Profiles/Latest/Storage/Mgmt'
         client.add_user_agent_information(profile_information)
       end
 

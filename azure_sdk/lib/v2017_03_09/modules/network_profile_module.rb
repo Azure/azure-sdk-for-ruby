@@ -181,8 +181,7 @@ module Azure::Profiles::V2017_03_09
         end
 
         def add_telemetry(client)
-          profile_information = 'Profiles/Rollup/Mgmt/Network'
-          profile_information = "#{profile_information}/V2017_03_09"
+          profile_information = 'Profiles/azure_sdk/V2017_03_09/Network/Mgmt'
           client.add_user_agent_information(profile_information)
         end
 

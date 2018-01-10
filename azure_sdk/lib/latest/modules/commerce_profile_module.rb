@@ -43,8 +43,7 @@ module Azure::Profiles::Latest
         end
 
         def add_telemetry(client)
-          profile_information = 'Profiles/Rollup/Mgmt/Commerce'
-          profile_information = "#{profile_information}/Latest"
+          profile_information = 'Profiles/azure_sdk/Latest/Commerce/Mgmt'
           client.add_user_agent_information(profile_information)
         end
 
