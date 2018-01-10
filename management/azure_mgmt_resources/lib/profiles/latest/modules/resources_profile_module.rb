@@ -84,6 +84,7 @@ module Azure::Resources::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @deployments = client_0.deployments
         @providers = client_0.providers
         @resources = client_0.resources
@@ -93,6 +94,12 @@ module Azure::Resources::Profiles::Latest
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Latest/Resources/Mgmt'
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

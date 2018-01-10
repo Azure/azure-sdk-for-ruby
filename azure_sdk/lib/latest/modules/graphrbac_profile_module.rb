@@ -65,6 +65,7 @@ module Azure::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @objects = client_0.objects
         @applications = client_0.applications
         @groups = client_0.groups
@@ -73,6 +74,11 @@ module Azure::Profiles::Latest
         @domains = client_0.domains
 
         @model_classes = ModelClasses.new
+      end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/azure_sdk/Latest/GraphRbac'
+        client.add_user_agent_information(profile_information)
       end
 
       class ModelClasses

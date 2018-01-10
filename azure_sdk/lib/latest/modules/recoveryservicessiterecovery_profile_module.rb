@@ -366,7 +366,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @replication_vault_health = client_0.replication_vault_health
           @replication_protected_items = client_0.replication_protected_items
           @replication_network_mappings = client_0.replication_network_mappings
@@ -389,6 +389,11 @@ module Azure::Profiles::Latest
           @replication_alert_settings = client_0.replication_alert_settings
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/azure_sdk/Latest/RecoveryServicesSiteRecovery/Mgmt'
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses

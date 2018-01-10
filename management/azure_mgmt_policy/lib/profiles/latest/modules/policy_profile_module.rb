@@ -45,17 +45,25 @@ module Azure::Policy::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @policy_definitions = client_0.policy_definitions
 
         client_1 = Azure::Policy::Mgmt::V2017_06_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
         if(client_1.respond_to?(:subscription_id))
           client_1.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_1)
         @policy_assignments = client_1.policy_assignments
         @policy_set_definitions = client_1.policy_set_definitions
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Latest/Policy/Mgmt'
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

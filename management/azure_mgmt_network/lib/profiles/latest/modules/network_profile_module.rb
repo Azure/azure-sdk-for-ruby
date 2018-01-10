@@ -332,6 +332,7 @@ module Azure::Network::Profiles::Latest
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @application_gateways = client_0.application_gateways
         @application_security_groups = client_0.application_security_groups
         @available_endpoint_services = client_0.available_endpoint_services
@@ -370,6 +371,12 @@ module Azure::Network::Profiles::Latest
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/Latest/Network/Mgmt'
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

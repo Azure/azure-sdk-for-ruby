@@ -37,10 +37,17 @@ module Azure::Links::Profiles::V2017_03_09
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
+        add_telemetry(client_0)
         @resource_links = client_0.resource_links
 
         @model_classes = ModelClasses.new
       end
+
+      def add_telemetry(client)
+        profile_information = 'Profiles/V2017_03_09/Links/Mgmt'
+        client.add_user_agent_information(profile_information)
+      end
+
     end
 
     class ModelClasses

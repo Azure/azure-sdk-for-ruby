@@ -303,7 +303,7 @@ module Azure::Profiles::Latest
           if(client_0.respond_to?(:subscription_id))
             client_0.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_0)
           @domains = client_0.domains
           @top_level_domains = client_0.top_level_domains
 
@@ -311,14 +311,14 @@ module Azure::Profiles::Latest
           if(client_1.respond_to?(:subscription_id))
             client_1.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_1)
           @app_service_certificate_orders = client_1.app_service_certificate_orders
 
           client_2 = Azure::Web::Mgmt::V2016_03_01::WebSiteManagementClient.new(configurable.credentials, base_url, options)
           if(client_2.respond_to?(:subscription_id))
             client_2.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_2)
           @certificates = client_2.certificates
           @deleted_web_apps = client_2.deleted_web_apps
           @provider = client_2.provider
@@ -328,18 +328,23 @@ module Azure::Profiles::Latest
           if(client_3.respond_to?(:subscription_id))
             client_3.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_3)
           @web_apps = client_3.web_apps
 
           client_4 = Azure::Web::Mgmt::V2016_09_01::WebSiteManagementClient.new(configurable.credentials, base_url, options)
           if(client_4.respond_to?(:subscription_id))
             client_4.subscription_id = configurable.subscription_id
           end
-
+          add_telemetry(client_4)
           @app_service_environments = client_4.app_service_environments
           @app_service_plans = client_4.app_service_plans
 
           @model_classes = ModelClasses.new
+        end
+
+        def add_telemetry(client)
+          profile_information = 'Profiles/azure_sdk/Latest/Web/Mgmt'
+          client.add_user_agent_information(profile_information)
         end
 
         class ModelClasses
