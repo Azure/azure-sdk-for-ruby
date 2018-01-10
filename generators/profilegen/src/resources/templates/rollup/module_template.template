@@ -44,8 +44,7 @@ module Azure::Profiles::<%= @profile_name %>
       end
 
       def add_telemetry(client)
-        profile_information = 'Profiles/Rollup/<%= @module_name %>'
-        profile_information = "#{profile_information}/<%= @profile_name %>"
+        profile_information = 'Profiles/azure_sdk/<%= @profile_name %>/<%= @module_name %>'
         client.add_user_agent_information(profile_information)
       end
 
@@ -95,8 +94,7 @@ module Azure::Profiles::<%= @profile_name %>
         end
 
         def add_telemetry(client)
-          profile_information = 'Profiles/Rollup/Mgmt/<%= @module_name %>'
-          profile_information = "#{profile_information}/<%= @profile_name %>"
+          profile_information = 'Profiles/azure_sdk/<%= @profile_name %>/<%= @module_name %>/Mgmt'
           client.add_user_agent_information(profile_information)
         end
 
