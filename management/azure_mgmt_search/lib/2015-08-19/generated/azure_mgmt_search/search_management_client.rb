@@ -37,6 +37,9 @@ module Azure::Search::Mgmt::V2015_08_19
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [AdminKeys] admin_keys
     attr_reader :admin_keys
 
@@ -59,6 +62,7 @@ module Azure::Search::Mgmt::V2015_08_19
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @admin_keys = AdminKeys.new(self)
       @query_keys = QueryKeys.new(self)
       @services = Services.new(self)
@@ -131,7 +135,9 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_search'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::Search::Mgmt::V2015_08_19::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Search::Mgmt::V2015_08_19::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
