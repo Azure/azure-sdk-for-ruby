@@ -60,7 +60,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationListResult',
           type: {
@@ -68,14 +67,12 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'OperationListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationElementType',
                       type: {
@@ -86,7 +83,6 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',
