@@ -38,7 +38,9 @@ module Azure::<%= @module_name %>::Profiles::<%= @profile_name %>
 
         reset!(options)
 
-        @configurable, @base_url, @options = self, nil, nil
+        @configurable = self
+        @base_url = options[:base_url].nil? ? nil:options[:base_url]
+        @options = options[:options].nil? ? nil:options[:options]
 
         <%- @management_clients_ops_mapper.each_with_index do |(key, value), index| -%>
         client_<%= index %> = <%= key %>.new(configurable.credentials, base_url, options)
@@ -101,7 +103,9 @@ module Azure::<%= @module_name %>::Profiles::<%= @profile_name %>
 
       reset!(options)
 
-      @configurable, @base_url, @options = self, nil, nil
+      @configurable = self
+      @base_url = options[:base_url].nil? ? nil:options[:base_url]
+      @options = options[:options].nil? ? nil:options[:options]
 
       <%- @data_clients_ops_mapper.each_with_index do |(key, value), index| -%>
       client_<%= index %> = <%= key %>.new(configurable.credentials, base_url, options)
