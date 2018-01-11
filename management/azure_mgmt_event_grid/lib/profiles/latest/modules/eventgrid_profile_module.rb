@@ -55,7 +55,9 @@ module Azure::EventGrid::Profiles::Latest
 
         reset!(options)
 
-        @configurable, @base_url, @options = self, nil, nil
+        @configurable = self
+        @base_url = options[:base_url].nil? ? nil:options[:base_url]
+        @options = options[:options].nil? ? nil:options[:options]
 
         client_0 = Azure::EventGrid::Mgmt::V2017_09_15_preview::EventGridManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

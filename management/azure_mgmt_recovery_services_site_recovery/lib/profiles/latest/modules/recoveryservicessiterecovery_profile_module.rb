@@ -370,7 +370,9 @@ module Azure::RecoveryServicesSiteRecovery::Profiles::Latest
 
         reset!(options)
 
-        @configurable, @base_url, @options = self, nil, nil
+        @configurable = self
+        @base_url = options[:base_url].nil? ? nil:options[:base_url]
+        @options = options[:options].nil? ? nil:options[:options]
 
         client_0 = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::SiteRecoveryManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
