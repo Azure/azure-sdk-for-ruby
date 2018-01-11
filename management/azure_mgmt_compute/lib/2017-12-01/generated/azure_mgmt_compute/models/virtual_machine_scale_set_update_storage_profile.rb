@@ -29,7 +29,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateStorageProfile',
           type: {
@@ -37,7 +36,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineScaleSetUpdateStorageProfile',
             model_properties: {
               image_reference: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               os_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDisk',
                 type: {
@@ -55,13 +52,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               data_disks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetDataDiskElementType',
                       type: {
