@@ -157,9 +157,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -259,9 +256,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def get_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -368,9 +362,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def create_or_update_async(resource_group_name, name, certificate_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'certificate_envelope is nil' if certificate_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -480,9 +471,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def delete_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -531,8 +519,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate, if it
-    # exists already.
+    # @param certificate_envelope [CertificatePatchResource] Details of
+    # certificate, if it exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -551,8 +539,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate, if it
-    # exists already.
+    # @param certificate_envelope [CertificatePatchResource] Details of
+    # certificate, if it exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -570,8 +558,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate, if it
-    # exists already.
+    # @param certificate_envelope [CertificatePatchResource] Details of
+    # certificate, if it exists already.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -579,9 +567,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def update_async(resource_group_name, name, certificate_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'certificate_envelope is nil' if certificate_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -597,7 +582,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::Certificate.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CertificatePatchResource.mapper()
       request_content = @client.serialize(request_mapper,  certificate_envelope)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

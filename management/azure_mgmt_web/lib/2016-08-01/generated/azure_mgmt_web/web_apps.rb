@@ -166,9 +166,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_by_resource_group_async(resource_group_name, include_slots = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -268,9 +265,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -298,7 +292,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -457,9 +451,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_async(resource_group_name, name, delete_metrics = nil, delete_empty_server_farm = nil, skip_dns_registration = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -487,12 +478,174 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404
+        unless status_code == 200 || status_code == 204 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [SitePatchResource] A JSON representation of the app
+    # properties. See example.
+    # @param skip_dns_registration [Boolean] If true web app hostname is not
+    # registered with DNS on creation. This parameter is
+    # only used for app creation.
+    # @param skip_custom_domain_verification [Boolean] If true, custom (non
+    # *.azurewebsites.net) domains associated with web app are not verified.
+    # @param force_dns_registration [Boolean] If true, web app hostname is force
+    # registered with DNS.
+    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
+    # domain name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Site] operation results.
+    #
+    def update(resource_group_name, name, site_envelope, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
+      response = update_async(resource_group_name, name, site_envelope, skip_dns_registration, skip_custom_domain_verification, force_dns_registration, ttl_in_seconds, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [SitePatchResource] A JSON representation of the app
+    # properties. See example.
+    # @param skip_dns_registration [Boolean] If true web app hostname is not
+    # registered with DNS on creation. This parameter is
+    # only used for app creation.
+    # @param skip_custom_domain_verification [Boolean] If true, custom (non
+    # *.azurewebsites.net) domains associated with web app are not verified.
+    # @param force_dns_registration [Boolean] If true, web app hostname is force
+    # registered with DNS.
+    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
+    # domain name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, name, site_envelope, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
+      update_async(resource_group_name, name, site_envelope, skip_dns_registration, skip_custom_domain_verification, force_dns_registration, ttl_in_seconds, custom_headers).value!
+    end
+
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [SitePatchResource] A JSON representation of the app
+    # properties. See example.
+    # @param skip_dns_registration [Boolean] If true web app hostname is not
+    # registered with DNS on creation. This parameter is
+    # only used for app creation.
+    # @param skip_custom_domain_verification [Boolean] If true, custom (non
+    # *.azurewebsites.net) domains associated with web app are not verified.
+    # @param force_dns_registration [Boolean] If true, web app hostname is force
+    # registered with DNS.
+    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
+    # domain name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(resource_group_name, name, site_envelope, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'site_envelope is nil' if site_envelope.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SitePatchResource.mapper()
+      request_content = @client.serialize(request_mapper,  site_envelope)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'skipDnsRegistration' => skip_dns_registration,'skipCustomDomainVerification' => skip_custom_domain_verification,'forceDnsRegistration' => force_dns_registration,'ttlInSeconds' => ttl_in_seconds,'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Site.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Site.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -553,9 +706,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def analyze_custom_hostname_async(resource_group_name, name, host_name = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -667,9 +817,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def apply_slot_config_to_production_async(resource_group_name, name, slot_swap_entity, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -776,9 +923,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def backup_async(resource_group_name, name, request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -889,9 +1033,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_backups_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1004,9 +1145,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def discover_restore_async(resource_group_name, name, request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1120,9 +1258,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_backup_status_async(resource_group_name, name, backup_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1226,9 +1361,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_backup_async(resource_group_name, name, backup_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1344,9 +1476,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_backup_status_secrets_async(resource_group_name, name, backup_id, request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, 'request is nil' if request.nil?
@@ -1508,9 +1637,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_configurations_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1614,9 +1740,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_application_settings_async(resource_group_name, name, app_settings, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'app_settings is nil' if app_settings.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1727,9 +1850,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_application_settings_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1836,9 +1956,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_auth_settings_async(resource_group_name, name, site_auth_settings, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_auth_settings is nil' if site_auth_settings.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1949,9 +2066,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_auth_settings_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2055,9 +2169,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_backup_configuration_async(resource_group_name, name, request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -2167,9 +2278,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_backup_configuration_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2260,9 +2368,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_backup_configuration_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2369,9 +2474,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_connection_strings_async(resource_group_name, name, connection_strings, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'connection_strings is nil' if connection_strings.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -2482,9 +2584,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_connection_strings_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2585,9 +2684,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_diagnostic_logs_configuration_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2694,9 +2790,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_diagnostic_logs_config_async(resource_group_name, name, site_logs_config, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_logs_config is nil' if site_logs_config.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -2813,9 +2906,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_metadata_async(resource_group_name, name, metadata, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'metadata is nil' if metadata.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -2926,9 +3016,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_metadata_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -3078,9 +3165,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_site_push_settings_async(resource_group_name, name, push_settings, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'push_settings is nil' if push_settings.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -3191,9 +3275,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_site_push_settings_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -3300,9 +3381,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_slot_configuration_names_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -3415,9 +3493,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_slot_configuration_names_async(resource_group_name, name, slot_config_names, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_config_names is nil' if slot_config_names.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -3534,9 +3609,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_configuration_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -3643,9 +3715,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_configuration_async(resource_group_name, name, site_config, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_config is nil' if site_config.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -3762,9 +3831,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_configuration_async(resource_group_name, name, site_config, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_config is nil' if site_config.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -3838,11 +3904,11 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [Array<SiteConfigurationSnapshotInfo>] operation results.
     #
     def list_configuration_snapshot_info(resource_group_name, name, custom_headers = nil)
-      response = list_configuration_snapshot_info_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_configuration_snapshot_info_as_lazy(resource_group_name, name, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -3881,9 +3947,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_configuration_snapshot_info_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -3921,23 +3984,7 @@ module Azure::Web::Mgmt::V2016_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              client_side_validation: true,
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    client_side_validation: true,
-                    required: false,
-                    serialized_name: 'SiteConfigurationSnapshotInfoElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'SiteConfigurationSnapshotInfo'
-                    }
-                }
-              }
-            }
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigurationSnapshotInfoCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -4003,9 +4050,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -4109,9 +4153,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def recover_site_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -4146,6 +4187,218 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NOT_IMPLEMENTED] operation results.
+    #
+    def get_web_site_container_logs(resource_group_name, name, custom_headers = nil)
+      response = get_web_site_container_logs_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_web_site_container_logs_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_web_site_container_logs_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_web_site_container_logs_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NOT_IMPLEMENTED] operation results.
+    #
+    def get_web_site_container_logs_zip(resource_group_name, name, custom_headers = nil)
+      response = get_web_site_container_logs_zip_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_web_site_container_logs_zip_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_web_site_container_logs_zip_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_web_site_container_logs_zip_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs/zip/download'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -4203,9 +4456,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_continuous_web_jobs_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -4264,15 +4514,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ContinuousWebJob] operation results.
     #
-    def get_continuous_web_job(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = get_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def get_continuous_web_job(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = get_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -4284,15 +4533,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_continuous_web_job_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      get_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def get_continuous_web_job_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      get_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -4303,20 +4551,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def get_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -4334,7 +4577,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -4375,14 +4618,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete_continuous_web_job(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = delete_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def delete_continuous_web_job(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = delete_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
       nil
     end
 
@@ -4394,15 +4636,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_continuous_web_job_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      delete_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def delete_continuous_web_job_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      delete_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -4413,20 +4654,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def delete_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -4444,7 +4680,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -4475,14 +4711,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def start_continuous_web_job(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = start_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def start_continuous_web_job(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = start_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
       nil
     end
 
@@ -4494,15 +4729,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def start_continuous_web_job_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      start_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def start_continuous_web_job_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      start_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -4513,20 +4747,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def start_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def start_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -4544,7 +4773,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -4575,14 +4804,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def stop_continuous_web_job(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = stop_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def stop_continuous_web_job(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = stop_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
       nil
     end
 
@@ -4594,15 +4822,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def stop_continuous_web_job_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      stop_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def stop_continuous_web_job_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      stop_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -4613,20 +4840,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def stop_continuous_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def stop_continuous_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -4644,7 +4866,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -4717,9 +4939,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_deployments_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -4823,9 +5042,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_deployment_async(resource_group_name, name, id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -4933,9 +5149,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_deployment_async(resource_group_name, name, id, deployment, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'deployment is nil' if deployment.nil?
@@ -5049,9 +5262,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_deployment_async(resource_group_name, name, id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -5152,9 +5362,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_deployment_log_async(resource_group_name, name, id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -5256,9 +5463,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_domain_ownership_identifiers_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -5365,9 +5569,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -5487,9 +5688,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
@@ -5606,9 +5804,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -5718,9 +5913,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
@@ -5832,9 +6024,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_msdeploy_status_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -5983,9 +6172,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_msdeploy_log_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6086,9 +6272,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_functions_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6189,9 +6372,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_functions_admin_token_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6230,7 +6410,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -6302,9 +6481,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_function_async(resource_group_name, name, function_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -6458,9 +6634,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_function_async(resource_group_name, name, function_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -6555,9 +6728,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_function_secrets_async(resource_group_name, name, function_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -6659,9 +6829,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_host_name_bindings_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6765,9 +6932,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_host_name_binding_async(resource_group_name, name, host_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'host_name is nil' if host_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -6878,9 +7042,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_host_name_binding_async(resource_group_name, name, host_name, host_name_binding, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'host_name is nil' if host_name.nil?
       fail ArgumentError, 'host_name_binding is nil' if host_name_binding.nil?
@@ -6994,9 +7155,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_host_name_binding_async(resource_group_name, name, host_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'host_name is nil' if host_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -7094,9 +7252,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -7211,9 +7366,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -7331,9 +7483,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -7438,9 +7587,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -7559,9 +7705,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -7664,9 +7807,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_hybrid_connections_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -7773,9 +7913,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_relay_service_connections_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -7879,9 +8016,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_relay_service_connection_async(resource_group_name, name, entity_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -7998,9 +8132,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_relay_service_connection_async(resource_group_name, name, entity_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -8114,9 +8245,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_relay_service_connection_async(resource_group_name, name, entity_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -8223,9 +8351,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_relay_service_connection_async(resource_group_name, name, entity_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -8337,9 +8462,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_identifiers_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -8443,9 +8565,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_ms_deploy_status_async(resource_group_name, name, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -8600,9 +8719,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_msdeploy_log_async(resource_group_name, name, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -8719,9 +8835,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_processes_async(resource_group_name, name, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -8841,9 +8954,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_process_async(resource_group_name, name, process_id, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -8963,9 +9073,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_instance_process_async(resource_group_name, name, process_id, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -9025,7 +9132,7 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [NOT_IMPLEMENTED] operation results.
     #
     def get_instance_process_dump(resource_group_name, name, process_id, instance_id, custom_headers = nil)
       response = get_instance_process_dump_async(resource_group_name, name, process_id, instance_id, custom_headers).value!
@@ -9076,9 +9183,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_process_dump_async(resource_group_name, name, process_id, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -9114,6 +9218,22 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -9189,9 +9309,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_process_modules_async(resource_group_name, name, process_id, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -9259,14 +9376,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param instance_id [String] ID of a specific scaled-out instance. This is the
     # value of the name property in the JSON response from "GET
     # api/sites/{siteName}/instances".
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ProcessModuleInfo] operation results.
     #
-    def get_instance_process_module(resource_group_name, name, process_id, base_address, instance_id, base_address1, custom_headers = nil)
-      response = get_instance_process_module_async(resource_group_name, name, process_id, base_address, instance_id, base_address1, custom_headers).value!
+    def get_instance_process_module(resource_group_name, name, process_id, base_address, instance_id, custom_headers = nil)
+      response = get_instance_process_module_async(resource_group_name, name, process_id, base_address, instance_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -9285,14 +9401,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param instance_id [String] ID of a specific scaled-out instance. This is the
     # value of the name property in the JSON response from "GET
     # api/sites/{siteName}/instances".
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_instance_process_module_with_http_info(resource_group_name, name, process_id, base_address, instance_id, base_address1, custom_headers = nil)
-      get_instance_process_module_async(resource_group_name, name, process_id, base_address, instance_id, base_address1, custom_headers).value!
+    def get_instance_process_module_with_http_info(resource_group_name, name, process_id, base_address, instance_id, custom_headers = nil)
+      get_instance_process_module_async(resource_group_name, name, process_id, base_address, instance_id, custom_headers).value!
     end
 
     #
@@ -9310,22 +9425,17 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param instance_id [String] ID of a specific scaled-out instance. This is the
     # value of the name property in the JSON response from "GET
     # api/sites/{siteName}/instances".
-    # @param base_address1 [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_instance_process_module_async(resource_group_name, name, process_id, base_address, instance_id, base_address1, custom_headers = nil)
+    def get_instance_process_module_async(resource_group_name, name, process_id, base_address, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'base_address is nil' if base_address.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
-      fail ArgumentError, 'base_address1 is nil' if base_address1.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -9335,14 +9445,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules/{base_address}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'instanceId' => instance_id,'base_address' => base_address1,'subscriptionId' => @client.subscription_id},
-          query_params: {'baseAddress' => base_address,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'baseAddress' => base_address,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -9443,9 +9553,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_process_threads_async(resource_group_name, name, process_id, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -9569,9 +9676,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_process_thread_async(resource_group_name, name, process_id, thread_id, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'thread_id is nil' if thread_id.nil?
@@ -9675,9 +9779,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def is_cloneable_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -9778,9 +9879,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_sync_function_triggers_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -9881,9 +9979,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_metric_definitions_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10002,9 +10097,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_metrics_async(resource_group_name, name, details = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10214,9 +10306,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_migrate_my_sql_status_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10323,9 +10412,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_network_features_async(resource_group_name, name, view, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'view is nil' if view.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -10442,9 +10528,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def start_web_site_network_trace_async(resource_group_name, name, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10483,7 +10566,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -10552,9 +10634,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def stop_web_site_network_trace_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10593,7 +10672,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -10667,9 +10745,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def generate_new_site_publishing_password_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10697,7 +10772,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -10772,9 +10847,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_perf_mon_counters_async(resource_group_name, name, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10876,9 +10948,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_site_php_error_log_flag_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -10979,9 +11048,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_premier_add_ons_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -11085,9 +11151,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_premier_add_on_async(resource_group_name, name, premier_add_on_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'premier_add_on_name is nil' if premier_add_on_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -11198,9 +11261,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def add_premier_add_on_async(resource_group_name, name, premier_add_on_name, premier_add_on, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'premier_add_on_name is nil' if premier_add_on_name.nil?
       fail ArgumentError, 'premier_add_on is nil' if premier_add_on.nil?
@@ -11314,9 +11374,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_premier_add_on_async(resource_group_name, name, premier_add_on_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'premier_add_on_name is nil' if premier_add_on_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -11414,9 +11471,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_processes_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -11526,9 +11580,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_process_async(resource_group_name, name, process_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -11638,9 +11689,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_process_async(resource_group_name, name, process_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -11696,7 +11744,7 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [NOT_IMPLEMENTED] operation results.
     #
     def get_process_dump(resource_group_name, name, process_id, custom_headers = nil)
       response = get_process_dump_async(resource_group_name, name, process_id, custom_headers).value!
@@ -11741,9 +11789,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_process_dump_async(resource_group_name, name, process_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -11778,6 +11823,22 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -11844,9 +11905,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_process_modules_async(resource_group_name, name, process_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -11910,14 +11968,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param name [String] Site name.
     # @param process_id [String] PID.
     # @param base_address [String] Module base address.
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ProcessModuleInfo] operation results.
     #
-    def get_process_module(resource_group_name, name, process_id, base_address, base_address1, custom_headers = nil)
-      response = get_process_module_async(resource_group_name, name, process_id, base_address, base_address1, custom_headers).value!
+    def get_process_module(resource_group_name, name, process_id, base_address, custom_headers = nil)
+      response = get_process_module_async(resource_group_name, name, process_id, base_address, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -11933,14 +11990,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param name [String] Site name.
     # @param process_id [String] PID.
     # @param base_address [String] Module base address.
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_process_module_with_http_info(resource_group_name, name, process_id, base_address, base_address1, custom_headers = nil)
-      get_process_module_async(resource_group_name, name, process_id, base_address, base_address1, custom_headers).value!
+    def get_process_module_with_http_info(resource_group_name, name, process_id, base_address, custom_headers = nil)
+      get_process_module_async(resource_group_name, name, process_id, base_address, custom_headers).value!
     end
 
     #
@@ -11955,21 +12011,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param name [String] Site name.
     # @param process_id [String] PID.
     # @param base_address [String] Module base address.
-    # @param base_address1 [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_process_module_async(resource_group_name, name, process_id, base_address, base_address1, custom_headers = nil)
+    def get_process_module_async(resource_group_name, name, process_id, base_address, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'base_address is nil' if base_address.nil?
-      fail ArgumentError, 'base_address1 is nil' if base_address1.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -11979,14 +12030,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules/{base_address}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules/{baseAddress}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'base_address' => base_address1,'subscriptionId' => @client.subscription_id},
-          query_params: {'baseAddress' => base_address,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'baseAddress' => base_address,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -12078,9 +12129,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_process_threads_async(resource_group_name, name, process_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -12194,9 +12242,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_process_thread_async(resource_group_name, name, process_id, thread_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'thread_id is nil' if thread_id.nil?
@@ -12299,9 +12344,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_public_certificates_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -12411,9 +12453,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -12524,9 +12563,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_public_certificate_async(resource_group_name, name, public_certificate_name, public_certificate, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
       fail ArgumentError, 'public_certificate is nil' if public_certificate.nil?
@@ -12640,9 +12676,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -12743,9 +12776,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_publishing_profile_xml_with_secrets_async(resource_group_name, name, publishing_profile_options, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'publishing_profile_options is nil' if publishing_profile_options.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -12794,7 +12824,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -12916,9 +12945,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def reset_production_slot_config_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -13026,9 +13052,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def restart_async(resource_group_name, name, soft_restart = nil, synchronous = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -13119,9 +13142,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_site_extensions_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -13183,14 +13203,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteExtensionInfo] operation results.
     #
-    def get_site_extension(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
-      response = get_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers).value!
+    def get_site_extension(resource_group_name, name, site_extension_id, custom_headers = nil)
+      response = get_site_extension_async(resource_group_name, name, site_extension_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -13205,14 +13224,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_extension_with_http_info(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
-      get_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers).value!
+    def get_site_extension_with_http_info(resource_group_name, name, site_extension_id, custom_headers = nil)
+      get_site_extension_async(resource_group_name, name, site_extension_id, custom_headers).value!
     end
 
     #
@@ -13226,20 +13244,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
+    def get_site_extension_async(resource_group_name, name, site_extension_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_extension_id is nil' if site_extension_id.nil?
-      fail ArgumentError, 'extension_name is nil' if extension_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -13249,14 +13262,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{extensionName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'extensionName' => extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'siteExtensionId' => site_extension_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'siteExtensionId' => site_extension_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -13298,14 +13311,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteExtensionInfo] operation results.
     #
-    def install_site_extension(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
-      response = install_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers).value!
+    def install_site_extension(resource_group_name, name, site_extension_id, custom_headers = nil)
+      response = install_site_extension_async(resource_group_name, name, site_extension_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -13314,16 +13326,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def install_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
+    def install_site_extension_async(resource_group_name, name, site_extension_id, custom_headers = nil)
       # Send request
-      promise = begin_install_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers)
+      promise = begin_install_site_extension_async(resource_group_name, name, site_extension_id, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -13348,13 +13359,12 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete_site_extension(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
-      response = delete_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers).value!
+    def delete_site_extension(resource_group_name, name, site_extension_id, custom_headers = nil)
+      response = delete_site_extension_async(resource_group_name, name, site_extension_id, custom_headers).value!
       nil
     end
 
@@ -13367,14 +13377,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_site_extension_with_http_info(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
-      delete_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers).value!
+    def delete_site_extension_with_http_info(resource_group_name, name, site_extension_id, custom_headers = nil)
+      delete_site_extension_async(resource_group_name, name, site_extension_id, custom_headers).value!
     end
 
     #
@@ -13386,20 +13395,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
+    def delete_site_extension_async(resource_group_name, name, site_extension_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_extension_id is nil' if site_extension_id.nil?
-      fail ArgumentError, 'extension_name is nil' if extension_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -13409,14 +13413,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{extensionName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'extensionName' => extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'siteExtensionId' => site_extension_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'siteExtensionId' => site_extension_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -13489,9 +13493,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_slots_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -13598,9 +13599,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -13629,7 +13627,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -13798,9 +13796,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_slot_async(resource_group_name, name, slot, delete_metrics = nil, delete_empty_server_farm = nil, skip_dns_registration = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -13829,12 +13824,181 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404
+        unless status_code == 200 || status_code == 204 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [SitePatchResource] A JSON representation of the app
+    # properties. See example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
+    # @param skip_dns_registration [Boolean] If true web app hostname is not
+    # registered with DNS on creation. This parameter is
+    # only used for app creation.
+    # @param skip_custom_domain_verification [Boolean] If true, custom (non
+    # *.azurewebsites.net) domains associated with web app are not verified.
+    # @param force_dns_registration [Boolean] If true, web app hostname is force
+    # registered with DNS.
+    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
+    # domain name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Site] operation results.
+    #
+    def update_slot(resource_group_name, name, site_envelope, slot, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
+      response = update_slot_async(resource_group_name, name, site_envelope, slot, skip_dns_registration, skip_custom_domain_verification, force_dns_registration, ttl_in_seconds, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [SitePatchResource] A JSON representation of the app
+    # properties. See example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
+    # @param skip_dns_registration [Boolean] If true web app hostname is not
+    # registered with DNS on creation. This parameter is
+    # only used for app creation.
+    # @param skip_custom_domain_verification [Boolean] If true, custom (non
+    # *.azurewebsites.net) domains associated with web app are not verified.
+    # @param force_dns_registration [Boolean] If true, web app hostname is force
+    # registered with DNS.
+    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
+    # domain name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_slot_with_http_info(resource_group_name, name, site_envelope, slot, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
+      update_slot_async(resource_group_name, name, site_envelope, slot, skip_dns_registration, skip_custom_domain_verification, force_dns_registration, ttl_in_seconds, custom_headers).value!
+    end
+
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [SitePatchResource] A JSON representation of the app
+    # properties. See example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
+    # @param skip_dns_registration [Boolean] If true web app hostname is not
+    # registered with DNS on creation. This parameter is
+    # only used for app creation.
+    # @param skip_custom_domain_verification [Boolean] If true, custom (non
+    # *.azurewebsites.net) domains associated with web app are not verified.
+    # @param force_dns_registration [Boolean] If true, web app hostname is force
+    # registered with DNS.
+    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
+    # domain name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_slot_async(resource_group_name, name, site_envelope, slot, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'site_envelope is nil' if site_envelope.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SitePatchResource.mapper()
+      request_content = @client.serialize(request_mapper,  site_envelope)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'skipDnsRegistration' => skip_dns_registration,'skipCustomDomainVerification' => skip_custom_domain_verification,'forceDnsRegistration' => force_dns_registration,'ttlInSeconds' => ttl_in_seconds,'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Site.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Site.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -13901,9 +14065,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def analyze_custom_hostname_slot_async(resource_group_name, name, slot, host_name = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -14022,9 +14183,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def apply_slot_configuration_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -14138,9 +14296,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def backup_slot_async(resource_group_name, name, request, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -14258,9 +14413,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_backups_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -14380,9 +14532,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def discover_restore_slot_async(resource_group_name, name, request, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -14503,9 +14652,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_backup_status_slot_async(resource_group_name, name, backup_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -14616,9 +14762,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_backup_slot_async(resource_group_name, name, backup_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -14741,9 +14884,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_backup_status_secrets_slot_async(resource_group_name, name, backup_id, request, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, 'request is nil' if request.nil?
@@ -14916,9 +15056,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_configurations_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -15029,9 +15166,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_application_settings_slot_async(resource_group_name, name, app_settings, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'app_settings is nil' if app_settings.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -15149,9 +15283,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_application_settings_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -15265,9 +15396,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_auth_settings_slot_async(resource_group_name, name, site_auth_settings, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_auth_settings is nil' if site_auth_settings.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -15385,9 +15513,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_auth_settings_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -15498,9 +15623,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_backup_configuration_slot_async(resource_group_name, name, request, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -15617,9 +15739,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_backup_configuration_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -15717,9 +15836,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_backup_configuration_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -15833,9 +15949,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_connection_strings_slot_async(resource_group_name, name, connection_strings, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'connection_strings is nil' if connection_strings.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -15953,9 +16066,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_connection_strings_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -16063,9 +16173,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_diagnostic_logs_configuration_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -16179,9 +16286,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_diagnostic_logs_config_slot_async(resource_group_name, name, site_logs_config, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_logs_config is nil' if site_logs_config.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -16305,9 +16409,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_metadata_slot_async(resource_group_name, name, metadata, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'metadata is nil' if metadata.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -16425,9 +16526,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_metadata_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -16588,9 +16686,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_site_push_settings_slot_async(resource_group_name, name, push_settings, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'push_settings is nil' if push_settings.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -16708,9 +16803,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_site_push_settings_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -16824,9 +16916,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_configuration_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -16940,9 +17029,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_configuration_slot_async(resource_group_name, name, site_config, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_config is nil' if site_config.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -17066,9 +17152,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_configuration_slot_async(resource_group_name, name, site_config, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_config is nil' if site_config.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -17145,11 +17228,11 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [Array<SiteConfigurationSnapshotInfo>] operation results.
     #
     def list_configuration_snapshot_info_slot(resource_group_name, name, slot, custom_headers = nil)
-      response = list_configuration_snapshot_info_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_configuration_snapshot_info_slot_as_lazy(resource_group_name, name, slot, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -17192,9 +17275,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_configuration_snapshot_info_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -17233,23 +17313,7 @@ module Azure::Web::Mgmt::V2016_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              client_side_validation: true,
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    client_side_validation: true,
-                    required: false,
-                    serialized_name: 'SiteConfigurationSnapshotInfoElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'SiteConfigurationSnapshotInfo'
-                    }
-                }
-              }
-            }
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigurationSnapshotInfoCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -17321,9 +17385,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -17434,9 +17495,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def recover_site_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -17472,6 +17530,232 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NOT_IMPLEMENTED] operation results.
+    #
+    def get_web_site_container_logs_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_web_site_container_logs_slot_async(resource_group_name, name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_web_site_container_logs_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_web_site_container_logs_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # Gets the last lines of docker logs for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_web_site_container_logs_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NOT_IMPLEMENTED] operation results.
+    #
+    def get_web_site_container_logs_zip_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_web_site_container_logs_zip_slot_async(resource_group_name, name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_web_site_container_logs_zip_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_web_site_container_logs_zip_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # Gets the ZIP archived docker log files for the given site
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_web_site_container_logs_zip_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs/zip/download'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -17535,9 +17819,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_continuous_web_jobs_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -17597,17 +17878,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ContinuousWebJob] operation results.
     #
-    def get_continuous_web_job_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = get_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def get_continuous_web_job_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = get_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -17619,17 +17899,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      get_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def get_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      get_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -17640,24 +17919,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def get_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -17673,8 +17947,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -17715,16 +17989,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete_continuous_web_job_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = delete_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def delete_continuous_web_job_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = delete_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       nil
     end
 
@@ -17736,17 +18009,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      delete_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def delete_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      delete_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -17757,24 +18029,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def delete_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -17790,8 +18057,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -17822,16 +18089,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def start_continuous_web_job_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = start_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def start_continuous_web_job_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = start_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       nil
     end
 
@@ -17843,17 +18109,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def start_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      start_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def start_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      start_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -17864,24 +18129,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def start_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def start_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -17897,8 +18157,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -17929,16 +18189,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def stop_continuous_web_job_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = stop_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def stop_continuous_web_job_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = stop_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       nil
     end
 
@@ -17950,17 +18209,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def stop_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      stop_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def stop_continuous_web_job_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      stop_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -17971,24 +18229,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def stop_continuous_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def stop_continuous_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -18004,8 +18257,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -18084,9 +18337,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_deployments_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -18197,9 +18447,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_deployment_slot_async(resource_group_name, name, id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -18314,9 +18561,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_deployment_slot_async(resource_group_name, name, id, slot, deployment, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -18437,9 +18681,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_deployment_slot_async(resource_group_name, name, id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -18547,9 +18788,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_deployment_log_slot_async(resource_group_name, name, id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -18658,9 +18896,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_domain_ownership_identifiers_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -18774,9 +19009,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -18903,9 +19135,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
@@ -19029,9 +19258,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -19148,9 +19374,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
       fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
@@ -19269,9 +19492,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_msdeploy_status_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -19431,9 +19651,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_msdeploy_log_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -19541,9 +19758,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_functions_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -19651,9 +19865,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_functions_admin_token_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -19693,7 +19904,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -19771,9 +19981,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_function_slot_async(resource_group_name, name, function_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -19938,9 +20145,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_instance_function_slot_async(resource_group_name, name, function_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -20042,9 +20246,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_function_secrets_slot_async(resource_group_name, name, function_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -20153,9 +20354,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_host_name_bindings_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -20266,9 +20464,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_host_name_binding_slot_async(resource_group_name, name, slot, host_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'host_name is nil' if host_name.nil?
@@ -20386,9 +20581,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_host_name_binding_slot_async(resource_group_name, name, host_name, host_name_binding, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'host_name is nil' if host_name.nil?
       fail ArgumentError, 'host_name_binding is nil' if host_name_binding.nil?
@@ -20509,9 +20701,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_host_name_binding_slot_async(resource_group_name, name, slot, host_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'host_name is nil' if host_name.nil?
@@ -20613,9 +20802,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_hybrid_connection_slot_async(resource_group_name, name, namespace_name, relay_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -20734,9 +20920,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_hybrid_connection_slot_async(resource_group_name, name, namespace_name, relay_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -20858,9 +21041,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_hybrid_connection_slot_async(resource_group_name, name, namespace_name, relay_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -20969,9 +21149,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_hybrid_connection_slot_async(resource_group_name, name, namespace_name, relay_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -21094,9 +21271,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_hybrid_connection_keys_slot_async(resource_group_name, name, namespace_name, relay_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -21203,9 +21377,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_hybrid_connections_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -21319,9 +21490,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_relay_service_connections_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -21432,9 +21600,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_relay_service_connection_slot_async(resource_group_name, name, entity_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -21558,9 +21723,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_relay_service_connection_slot_async(resource_group_name, name, entity_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -21681,9 +21843,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_relay_service_connection_slot_async(resource_group_name, name, entity_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -21797,9 +21956,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_relay_service_connection_slot_async(resource_group_name, name, entity_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'entity_name is nil' if entity_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -21918,9 +22074,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_identifiers_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -22031,9 +22184,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_ms_deploy_status_slot_async(resource_group_name, name, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -22199,9 +22349,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_msdeploy_log_slot_async(resource_group_name, name, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -22325,9 +22472,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_processes_slot_async(resource_group_name, name, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -22454,9 +22598,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_process_slot_async(resource_group_name, name, process_id, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -22583,9 +22724,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_instance_process_slot_async(resource_group_name, name, process_id, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -22648,7 +22786,7 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [NOT_IMPLEMENTED] operation results.
     #
     def get_instance_process_dump_slot(resource_group_name, name, process_id, slot, instance_id, custom_headers = nil)
       response = get_instance_process_dump_slot_async(resource_group_name, name, process_id, slot, instance_id, custom_headers).value!
@@ -22703,9 +22841,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_process_dump_slot_async(resource_group_name, name, process_id, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -22742,6 +22877,22 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -22823,9 +22974,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_process_modules_slot_async(resource_group_name, name, process_id, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -22896,14 +23044,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param instance_id [String] ID of a specific scaled-out instance. This is the
     # value of the name property in the JSON response from "GET
     # api/sites/{siteName}/instances".
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ProcessModuleInfo] operation results.
     #
-    def get_instance_process_module_slot(resource_group_name, name, process_id, base_address, slot, instance_id, base_address1, custom_headers = nil)
-      response = get_instance_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, instance_id, base_address1, custom_headers).value!
+    def get_instance_process_module_slot(resource_group_name, name, process_id, base_address, slot, instance_id, custom_headers = nil)
+      response = get_instance_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, instance_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -22924,14 +23071,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param instance_id [String] ID of a specific scaled-out instance. This is the
     # value of the name property in the JSON response from "GET
     # api/sites/{siteName}/instances".
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_instance_process_module_slot_with_http_info(resource_group_name, name, process_id, base_address, slot, instance_id, base_address1, custom_headers = nil)
-      get_instance_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, instance_id, base_address1, custom_headers).value!
+    def get_instance_process_module_slot_with_http_info(resource_group_name, name, process_id, base_address, slot, instance_id, custom_headers = nil)
+      get_instance_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, instance_id, custom_headers).value!
     end
 
     #
@@ -22951,23 +23097,18 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param instance_id [String] ID of a specific scaled-out instance. This is the
     # value of the name property in the JSON response from "GET
     # api/sites/{siteName}/instances".
-    # @param base_address1 [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_instance_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, instance_id, base_address1, custom_headers = nil)
+    def get_instance_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'base_address is nil' if base_address.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
-      fail ArgumentError, 'base_address1 is nil' if base_address1.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -22977,14 +23118,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules/{base_address}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'slot' => slot,'instanceId' => instance_id,'base_address' => base_address1,'subscriptionId' => @client.subscription_id},
-          query_params: {'baseAddress' => base_address,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'baseAddress' => base_address,'slot' => slot,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -23091,9 +23232,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_instance_process_threads_slot_async(resource_group_name, name, process_id, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -23224,9 +23362,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_instance_process_thread_slot_async(resource_group_name, name, process_id, thread_id, slot, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'thread_id is nil' if thread_id.nil?
@@ -23337,9 +23472,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def is_cloneable_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -23447,9 +23579,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_sync_function_triggers_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -23557,9 +23686,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_metric_definitions_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -23685,9 +23811,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_metrics_slot_async(resource_group_name, name, slot, details = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -23799,9 +23922,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_migrate_my_sql_status_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -23915,9 +24035,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_network_features_slot_async(resource_group_name, name, view, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'view is nil' if view.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -24038,9 +24155,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def start_web_site_network_trace_slot_async(resource_group_name, name, slot, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -24080,7 +24194,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -24152,9 +24265,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def stop_web_site_network_trace_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -24194,7 +24304,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -24274,9 +24383,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def generate_new_site_publishing_password_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -24305,7 +24411,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -24386,9 +24492,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_perf_mon_counters_slot_async(resource_group_name, name, slot, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -24497,9 +24600,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_site_php_error_log_flag_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -24607,9 +24707,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_premier_add_ons_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -24720,9 +24817,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_premier_add_on_slot_async(resource_group_name, name, premier_add_on_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'premier_add_on_name is nil' if premier_add_on_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -24840,9 +24934,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def add_premier_add_on_slot_async(resource_group_name, name, premier_add_on_name, premier_add_on, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'premier_add_on_name is nil' if premier_add_on_name.nil?
       fail ArgumentError, 'premier_add_on is nil' if premier_add_on.nil?
@@ -24963,9 +25054,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_premier_add_on_slot_async(resource_group_name, name, premier_add_on_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'premier_add_on_name is nil' if premier_add_on_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -25070,9 +25158,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_processes_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -25189,9 +25274,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_process_slot_async(resource_group_name, name, process_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -25308,9 +25390,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_process_slot_async(resource_group_name, name, process_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -25369,7 +25448,7 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [NOT_IMPLEMENTED] operation results.
     #
     def get_process_dump_slot(resource_group_name, name, process_id, slot, custom_headers = nil)
       response = get_process_dump_slot_async(resource_group_name, name, process_id, slot, custom_headers).value!
@@ -25418,9 +25497,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_process_dump_slot_async(resource_group_name, name, process_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -25456,6 +25532,22 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Stream'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -25528,9 +25620,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_process_modules_slot_async(resource_group_name, name, process_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -25597,14 +25686,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param base_address [String] Module base address.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API returns deployments for the production slot.
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ProcessModuleInfo] operation results.
     #
-    def get_process_module_slot(resource_group_name, name, process_id, base_address, slot, base_address1, custom_headers = nil)
-      response = get_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, base_address1, custom_headers).value!
+    def get_process_module_slot(resource_group_name, name, process_id, base_address, slot, custom_headers = nil)
+      response = get_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -25622,14 +25710,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param base_address [String] Module base address.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API returns deployments for the production slot.
-    # @param base_address1 [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_process_module_slot_with_http_info(resource_group_name, name, process_id, base_address, slot, base_address1, custom_headers = nil)
-      get_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, base_address1, custom_headers).value!
+    def get_process_module_slot_with_http_info(resource_group_name, name, process_id, base_address, slot, custom_headers = nil)
+      get_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, custom_headers).value!
     end
 
     #
@@ -25646,22 +25733,17 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param base_address [String] Module base address.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API returns deployments for the production slot.
-    # @param base_address1 [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, base_address1, custom_headers = nil)
+    def get_process_module_slot_async(resource_group_name, name, process_id, base_address, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'base_address is nil' if base_address.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, 'base_address1 is nil' if base_address1.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -25671,14 +25753,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules/{base_address}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules/{baseAddress}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'slot' => slot,'base_address' => base_address1,'subscriptionId' => @client.subscription_id},
-          query_params: {'baseAddress' => base_address,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'processId' => process_id,'baseAddress' => base_address,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -25776,9 +25858,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_process_threads_slot_async(resource_group_name, name, process_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -25899,9 +25978,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_process_thread_slot_async(resource_group_name, name, process_id, thread_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'process_id is nil' if process_id.nil?
       fail ArgumentError, 'thread_id is nil' if thread_id.nil?
@@ -26011,9 +26087,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_public_certificates_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -26130,9 +26203,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
@@ -26250,9 +26320,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_public_certificate_slot_async(resource_group_name, name, public_certificate_name, public_certificate, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
       fail ArgumentError, 'public_certificate is nil' if public_certificate.nil?
@@ -26373,9 +26440,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
@@ -26483,9 +26547,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_publishing_profile_xml_with_secrets_slot_async(resource_group_name, name, publishing_profile_options, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'publishing_profile_options is nil' if publishing_profile_options.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -26535,7 +26596,6 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -26667,9 +26727,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def reset_slot_configuration_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -26784,9 +26841,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def restart_slot_async(resource_group_name, name, slot, soft_restart = nil, synchronous = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -26884,9 +26938,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_site_extensions_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -26951,14 +27002,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteExtensionInfo] operation results.
     #
-    def get_site_extension_slot(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
-      response = get_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers).value!
+    def get_site_extension_slot(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
+      response = get_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -26975,14 +27025,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_extension_slot_with_http_info(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
-      get_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers).value!
+    def get_site_extension_slot_with_http_info(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
+      get_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers).value!
     end
 
     #
@@ -26998,21 +27047,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
+    def get_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_extension_id is nil' if site_extension_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, 'extension_name is nil' if extension_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -27022,14 +27066,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{extensionName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'extensionName' => extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'siteExtensionId' => site_extension_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'siteExtensionId' => site_extension_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -27073,14 +27117,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteExtensionInfo] operation results.
     #
-    def install_site_extension_slot(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
-      response = install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers).value!
+    def install_site_extension_slot(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
+      response = install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -27091,16 +27134,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
+    def install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
       # Send request
-      promise = begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers)
+      promise = begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -27127,13 +27169,12 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete_site_extension_slot(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
-      response = delete_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers).value!
+    def delete_site_extension_slot(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
+      response = delete_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers).value!
       nil
     end
 
@@ -27148,14 +27189,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_site_extension_slot_with_http_info(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
-      delete_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers).value!
+    def delete_site_extension_slot_with_http_info(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
+      delete_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers).value!
     end
 
     #
@@ -27169,21 +27209,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
+    def delete_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_extension_id is nil' if site_extension_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, 'extension_name is nil' if extension_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -27193,14 +27228,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{extensionName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'extensionName' => extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'siteExtensionId' => site_extension_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'siteExtensionId' => site_extension_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -27285,9 +27320,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_slot_differences_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -27452,9 +27484,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_snapshots_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -27562,9 +27591,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_source_control_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -27725,9 +27751,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_source_control_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -27762,6 +27785,139 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteSourceControl] operation results.
+    #
+    def update_source_control_slot(resource_group_name, name, site_source_control, slot, custom_headers = nil)
+      response = update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_source_control_slot_with_http_info(resource_group_name, name, site_source_control, slot, custom_headers = nil)
+      update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers).value!
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+      request_content = @client.serialize(request_mapper,  site_source_control)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -27824,9 +27980,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def start_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -27923,9 +28076,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def stop_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -28022,9 +28172,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def sync_repository_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -28121,9 +28268,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def sync_function_triggers_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -28221,9 +28365,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_triggered_web_jobs_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -28283,17 +28424,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TriggeredWebJob] operation results.
     #
-    def get_triggered_web_job_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = get_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def get_triggered_web_job_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = get_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -28305,17 +28445,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_triggered_web_job_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      get_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def get_triggered_web_job_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      get_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -28326,24 +28465,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def get_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -28359,8 +28493,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -28401,16 +28535,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete_triggered_web_job_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = delete_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def delete_triggered_web_job_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = delete_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       nil
     end
 
@@ -28422,17 +28555,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_triggered_web_job_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      delete_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def delete_triggered_web_job_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      delete_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -28443,24 +28575,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def delete_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -28476,8 +28603,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -28508,17 +28635,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<TriggeredJobHistory>] operation results.
     #
-    def list_triggered_web_job_history_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      first_page = list_triggered_web_job_history_slot_as_lazy(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers)
+    def list_triggered_web_job_history_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      first_page = list_triggered_web_job_history_slot_as_lazy(resource_group_name, name, web_job_name, slot, custom_headers)
       first_page.get_all_items
     end
 
@@ -28530,17 +28656,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_triggered_web_job_history_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      list_triggered_web_job_history_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def list_triggered_web_job_history_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      list_triggered_web_job_history_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -28551,24 +28676,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_triggered_web_job_history_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def list_triggered_web_job_history_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -28584,8 +28704,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -28628,18 +28748,17 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param id [String] History ID.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TriggeredJobHistory] operation results.
     #
-    def get_triggered_web_job_history_slot(resource_group_name, name, web_job_id, id, slot, web_job_name, custom_headers = nil)
-      response = get_triggered_web_job_history_slot_async(resource_group_name, name, web_job_id, id, slot, web_job_name, custom_headers).value!
+    def get_triggered_web_job_history_slot(resource_group_name, name, web_job_name, id, slot, custom_headers = nil)
+      response = get_triggered_web_job_history_slot_async(resource_group_name, name, web_job_name, id, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -28653,18 +28772,17 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param id [String] History ID.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_triggered_web_job_history_slot_with_http_info(resource_group_name, name, web_job_id, id, slot, web_job_name, custom_headers = nil)
-      get_triggered_web_job_history_slot_async(resource_group_name, name, web_job_id, id, slot, web_job_name, custom_headers).value!
+    def get_triggered_web_job_history_slot_with_http_info(resource_group_name, name, web_job_name, id, slot, custom_headers = nil)
+      get_triggered_web_job_history_slot_async(resource_group_name, name, web_job_name, id, slot, custom_headers).value!
     end
 
     #
@@ -28677,26 +28795,21 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param id [String] History ID.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_triggered_web_job_history_slot_async(resource_group_name, name, web_job_id, id, slot, web_job_name, custom_headers = nil)
+    def get_triggered_web_job_history_slot_async(resource_group_name, name, web_job_name, id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
+      fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -28712,8 +28825,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'id' => id,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'id' => id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -28754,16 +28867,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def run_triggered_web_job_slot(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = run_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def run_triggered_web_job_slot(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = run_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       nil
     end
 
@@ -28775,17 +28887,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def run_triggered_web_job_slot_with_http_info(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      run_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def run_triggered_web_job_slot_with_http_info(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      run_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
     end
 
     #
@@ -28796,24 +28907,19 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def run_triggered_web_job_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
+    def run_triggered_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -28829,8 +28935,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -28927,9 +29033,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_usages_slot_async(resource_group_name, name, slot, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -29038,9 +29141,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_vnet_connections_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -29080,13 +29180,11 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VnetInfoElementType',
                     type: {
@@ -29167,9 +29265,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_vnet_connection_slot_async(resource_group_name, name, vnet_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -29293,9 +29388,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_vnet_connection_slot_async(resource_group_name, name, vnet_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -29422,9 +29514,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_vnet_connection_slot_async(resource_group_name, name, vnet_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -29538,9 +29627,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_vnet_connection_slot_async(resource_group_name, name, vnet_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -29668,9 +29754,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_vnet_connection_gateway_slot_async(resource_group_name, name, vnet_name, gateway_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -29798,9 +29881,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_vnet_connection_gateway_slot_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -29938,9 +30018,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_vnet_connection_gateway_slot_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -30060,9 +30137,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_web_jobs_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -30173,9 +30247,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_web_job_slot_async(resource_group_name, name, web_job_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -30284,9 +30355,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_slot_differences_from_production_async(resource_group_name, name, slot_swap_entity, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -30443,9 +30511,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_snapshots_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -30546,9 +30611,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_source_control_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -30698,9 +30760,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_source_control_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -30734,6 +30793,132 @@ module Azure::Web::Mgmt::V2016_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteSourceControl] operation results.
+    #
+    def update_source_control(resource_group_name, name, site_source_control, custom_headers = nil)
+      response = update_source_control_async(resource_group_name, name, site_source_control, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_source_control_with_http_info(resource_group_name, name, site_source_control, custom_headers = nil)
+      update_source_control_async(resource_group_name, name, site_source_control, custom_headers).value!
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_source_control_async(resource_group_name, name, site_source_control, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+      request_content = @client.serialize(request_mapper,  site_source_control)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -30790,9 +30975,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def start_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -30882,9 +31064,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def stop_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -30974,9 +31153,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def sync_repository_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31066,9 +31242,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def sync_function_triggers_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31159,9 +31332,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_triggered_web_jobs_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31220,15 +31390,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TriggeredWebJob] operation results.
     #
-    def get_triggered_web_job(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = get_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def get_triggered_web_job(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = get_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -31240,15 +31409,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_triggered_web_job_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      get_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def get_triggered_web_job_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      get_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -31259,20 +31427,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def get_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31290,7 +31453,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -31331,14 +31494,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete_triggered_web_job(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = delete_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def delete_triggered_web_job(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = delete_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
       nil
     end
 
@@ -31350,15 +31512,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_triggered_web_job_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      delete_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def delete_triggered_web_job_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      delete_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -31369,20 +31530,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def delete_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31400,7 +31556,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -31431,15 +31587,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<TriggeredJobHistory>] operation results.
     #
-    def list_triggered_web_job_history(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      first_page = list_triggered_web_job_history_as_lazy(resource_group_name, name, web_job_id, web_job_name, custom_headers)
+    def list_triggered_web_job_history(resource_group_name, name, web_job_name, custom_headers = nil)
+      first_page = list_triggered_web_job_history_as_lazy(resource_group_name, name, web_job_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -31451,15 +31606,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_triggered_web_job_history_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      list_triggered_web_job_history_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def list_triggered_web_job_history_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      list_triggered_web_job_history_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -31470,20 +31624,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_triggered_web_job_history_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def list_triggered_web_job_history_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31501,7 +31650,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -31544,16 +31693,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param id [String] History ID.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TriggeredJobHistory] operation results.
     #
-    def get_triggered_web_job_history(resource_group_name, name, web_job_id, id, web_job_name, custom_headers = nil)
-      response = get_triggered_web_job_history_async(resource_group_name, name, web_job_id, id, web_job_name, custom_headers).value!
+    def get_triggered_web_job_history(resource_group_name, name, web_job_name, id, custom_headers = nil)
+      response = get_triggered_web_job_history_async(resource_group_name, name, web_job_name, id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -31567,16 +31715,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param id [String] History ID.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_triggered_web_job_history_with_http_info(resource_group_name, name, web_job_id, id, web_job_name, custom_headers = nil)
-      get_triggered_web_job_history_async(resource_group_name, name, web_job_id, id, web_job_name, custom_headers).value!
+    def get_triggered_web_job_history_with_http_info(resource_group_name, name, web_job_name, id, custom_headers = nil)
+      get_triggered_web_job_history_async(resource_group_name, name, web_job_name, id, custom_headers).value!
     end
 
     #
@@ -31589,23 +31736,18 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param id [String] History ID.
-    # @param web_job_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_triggered_web_job_history_async(resource_group_name, name, web_job_id, id, web_job_name, custom_headers = nil)
+    def get_triggered_web_job_history_async(resource_group_name, name, web_job_name, id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
-      fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
+      fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -31621,8 +31763,8 @@ module Azure::Web::Mgmt::V2016_08_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'id' => id,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'id' => id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -31663,14 +31805,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def run_triggered_web_job(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = run_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def run_triggered_web_job(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = run_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
       nil
     end
 
@@ -31682,15 +31823,14 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def run_triggered_web_job_with_http_info(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      run_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def run_triggered_web_job_with_http_info(resource_group_name, name, web_job_name, custom_headers = nil)
+      run_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers).value!
     end
 
     #
@@ -31701,20 +31841,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def run_triggered_web_job_async(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
+    def run_triggered_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'web_job_id is nil' if web_job_id.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31732,7 +31867,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'webJobName' => web_job_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'webJobId' => web_job_id,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -31823,9 +31958,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_usages_async(resource_group_name, name, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31927,9 +32059,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_vnet_connections_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -31968,13 +32097,11 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VnetInfoElementType',
                     type: {
@@ -32049,9 +32176,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_vnet_connection_async(resource_group_name, name, vnet_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -32168,9 +32292,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_vnet_connection_async(resource_group_name, name, vnet_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -32290,9 +32411,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def delete_vnet_connection_async(resource_group_name, name, vnet_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -32399,9 +32517,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_vnet_connection_async(resource_group_name, name, vnet_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'connection_envelope is nil' if connection_envelope.nil?
@@ -32522,9 +32637,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_vnet_connection_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -32642,9 +32754,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def create_or_update_vnet_connection_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -32772,9 +32881,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def update_vnet_connection_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -32887,9 +32993,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def list_web_jobs_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -32993,9 +33096,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def get_web_job_async(resource_group_name, name, web_job_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'web_job_name is nil' if web_job_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -33139,9 +33239,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_or_update_async(resource_group_name, name, site_envelope, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_envelope is nil' if site_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -33268,9 +33365,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_restore_async(resource_group_name, name, backup_id, request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, 'request is nil' if request.nil?
@@ -33382,9 +33476,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_list_publishing_credentials_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -33488,9 +33579,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_msdeploy_operation_async(resource_group_name, name, msdeploy, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'msdeploy is nil' if msdeploy.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -33607,9 +33695,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_function_async(resource_group_name, name, function_name, function_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, 'function_envelope is nil' if function_envelope.nil?
@@ -33727,9 +33812,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_instance_msdeploy_operation_async(resource_group_name, name, instance_id, msdeploy, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
       fail ArgumentError, 'msdeploy is nil' if msdeploy.nil?
@@ -33851,9 +33933,6 @@ module Azure::Web::Mgmt::V2016_08_01
     def begin_migrate_storage_async(subscription_name, resource_group_name, name, migration_options, custom_headers = nil)
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'migration_options is nil' if migration_options.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -33970,9 +34049,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_migrate_my_sql_async(resource_group_name, name, migration_request_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'migration_request_envelope is nil' if migration_request_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -34091,9 +34167,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_recover_async(resource_group_name, name, recovery_entity, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'recovery_entity is nil' if recovery_entity.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -34131,7 +34204,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -34153,14 +34226,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteExtensionInfo] operation results.
     #
-    def begin_install_site_extension(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
-      response = begin_install_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers).value!
+    def begin_install_site_extension(resource_group_name, name, site_extension_id, custom_headers = nil)
+      response = begin_install_site_extension_async(resource_group_name, name, site_extension_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -34173,14 +34245,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_install_site_extension_with_http_info(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
-      begin_install_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers).value!
+    def begin_install_site_extension_with_http_info(resource_group_name, name, site_extension_id, custom_headers = nil)
+      begin_install_site_extension_async(resource_group_name, name, site_extension_id, custom_headers).value!
     end
 
     #
@@ -34192,20 +34263,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # resource belongs.
     # @param name [String] Site name.
     # @param site_extension_id [String] Site extension name.
-    # @param extension_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_install_site_extension_async(resource_group_name, name, site_extension_id, extension_name, custom_headers = nil)
+    def begin_install_site_extension_async(resource_group_name, name, site_extension_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_extension_id is nil' if site_extension_id.nil?
-      fail ArgumentError, 'extension_name is nil' if extension_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -34215,14 +34281,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{extensionName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'extensionName' => extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'siteExtensionId' => site_extension_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'siteExtensionId' => site_extension_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -34363,9 +34429,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_or_update_slot_async(resource_group_name, name, site_envelope, slot, skip_dns_registration = nil, skip_custom_domain_verification = nil, force_dns_registration = nil, ttl_in_seconds = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_envelope is nil' if site_envelope.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -34499,9 +34562,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_restore_slot_async(resource_group_name, name, backup_id, request, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'backup_id is nil' if backup_id.nil?
       fail ArgumentError, 'request is nil' if request.nil?
@@ -34620,9 +34680,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_list_publishing_credentials_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -34733,9 +34790,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_msdeploy_operation_slot_async(resource_group_name, name, slot, msdeploy, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'msdeploy is nil' if msdeploy.nil?
@@ -34859,9 +34913,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_instance_function_slot_async(resource_group_name, name, function_name, slot, function_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'function_name is nil' if function_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -34986,9 +35037,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_instance_msdeploy_operation_slot_async(resource_group_name, name, slot, instance_id, msdeploy, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -35115,9 +35163,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_recover_slot_async(resource_group_name, name, recovery_entity, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'recovery_entity is nil' if recovery_entity.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -35156,7 +35201,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -35180,14 +35225,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteExtensionInfo] operation results.
     #
-    def begin_install_site_extension_slot(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
-      response = begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers).value!
+    def begin_install_site_extension_slot(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
+      response = begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -35202,14 +35246,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_install_site_extension_slot_with_http_info(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
-      begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers).value!
+    def begin_install_site_extension_slot_with_http_info(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
+      begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers).value!
     end
 
     #
@@ -35223,21 +35266,16 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param site_extension_id [String] Site extension name.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param extension_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, extension_name, custom_headers = nil)
+    def begin_install_site_extension_slot_async(resource_group_name, name, site_extension_id, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_extension_id is nil' if site_extension_id.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, 'extension_name is nil' if extension_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -35247,14 +35285,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{extensionName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'extensionName' => extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'siteExtensionId' => site_extension_id,'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'siteExtensionId' => site_extension_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -35358,9 +35396,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_swap_slot_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -35474,9 +35509,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_or_update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -35603,9 +35635,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_swap_slot_with_production_async(resource_group_name, name, slot_swap_entity, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -35712,9 +35741,6 @@ module Azure::Web::Mgmt::V2016_08_01
     #
     def begin_create_or_update_source_control_async(resource_group_name, name, site_source_control, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -36145,6 +36171,105 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResourceCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteConfigurationSnapshotInfoCollection] operation results.
+    #
+    def list_configuration_snapshot_info_next(next_page_link, custom_headers = nil)
+      response = list_configuration_snapshot_info_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_configuration_snapshot_info_next_with_http_info(next_page_link, custom_headers = nil)
+      list_configuration_snapshot_info_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_configuration_snapshot_info_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigurationSnapshotInfoCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -38041,6 +38166,105 @@ module Azure::Web::Mgmt::V2016_08_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResourceCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteConfigurationSnapshotInfoCollection] operation results.
+    #
+    def list_configuration_snapshot_info_slot_next(next_page_link, custom_headers = nil)
+      response = list_configuration_snapshot_info_slot_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_configuration_snapshot_info_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_configuration_snapshot_info_slot_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_configuration_snapshot_info_slot_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigurationSnapshotInfoCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -40898,6 +41122,33 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteConfigurationSnapshotInfoCollection] which provide lazy access
+    # to pages of the response.
+    #
+    def list_configuration_snapshot_info_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = list_configuration_snapshot_info_async(resource_group_name, name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_configuration_snapshot_info_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
     # List continuous web jobs for an app, or a deployment slot.
     #
     # List continuous web jobs for an app, or a deployment slot.
@@ -41431,6 +41682,35 @@ module Azure::Web::Mgmt::V2016_08_01
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_configurations_slot_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteConfigurationSnapshotInfoCollection] which provide lazy access
+    # to pages of the response.
+    #
+    def list_configuration_snapshot_info_slot_as_lazy(resource_group_name, name, slot, custom_headers = nil)
+      response = list_configuration_snapshot_info_slot_async(resource_group_name, name, slot, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_configuration_snapshot_info_slot_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -42020,18 +42300,17 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
+    # @param web_job_name [String] Name of Web Job.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API deletes a deployment for the production slot.
-    # @param web_job_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TriggeredJobHistoryCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_triggered_web_job_history_slot_as_lazy(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers = nil)
-      response = list_triggered_web_job_history_slot_async(resource_group_name, name, web_job_id, slot, web_job_name, custom_headers).value!
+    def list_triggered_web_job_history_slot_as_lazy(resource_group_name, name, web_job_name, slot, custom_headers = nil)
+      response = list_triggered_web_job_history_slot_async(resource_group_name, name, web_job_name, slot, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -42186,16 +42465,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Site name.
-    # @param web_job_id [String] Web job ID.
-    # @param web_job_name [String]
+    # @param web_job_name [String] Name of Web Job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TriggeredJobHistoryCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_triggered_web_job_history_as_lazy(resource_group_name, name, web_job_id, web_job_name, custom_headers = nil)
-      response = list_triggered_web_job_history_async(resource_group_name, name, web_job_id, web_job_name, custom_headers).value!
+    def list_triggered_web_job_history_as_lazy(resource_group_name, name, web_job_name, custom_headers = nil)
+      response = list_triggered_web_job_history_async(resource_group_name, name, web_job_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

@@ -6,8 +6,9 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Model object.
-    #
+    # Dimension of a resource metric. For e.g. instance specific HTTP requests
+    # for a web app,
+    # where instance name is dimension of the metric HTTP request
     #
     class Dimension
 
@@ -32,7 +33,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Dimension',
           type: {
@@ -40,7 +40,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'Dimension',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +47,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               internal_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalName',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               to_be_exported_for_shoebox: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'toBeExportedForShoebox',
                 type: {
