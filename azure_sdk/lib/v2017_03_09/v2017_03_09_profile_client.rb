@@ -30,10 +30,15 @@ module Azure::Profiles::V2017_03_09
     #      client_id: 'YOUR CLIENT ID',
     #      client_secret: 'YOUR CLIENT SECRET',
     #      subscription_id: 'YOUR SUBSCRIPTION ID',
-    #      credentials: credentials
+    #      credentials: credentials,
+    #      active_directory_settings: active_directory_settings,
+    #      base_url: 'YOUR BASE URL',
+    #      options: options
     #    }
     #   'credentials' are optional and if not passed in the hash, will be obtained
     #   from MsRest::TokenCredentials using MsRestAzure::ApplicationTokenProvider.
+    #
+    #   Also, base_url, active_directory_settings & options are optional.
     #
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -44,86 +49,89 @@ module Azure::Profiles::V2017_03_09
 
       reset!(options)
 
-      @storage = StorageAdapter.new(self)
-      @network = NetworkAdapter.new(self)
-      @compute = ComputeAdapter.new(self)
-      @features = FeaturesAdapter.new(self)
-      @links = LinksAdapter.new(self)
-      @locks = LocksAdapter.new(self)
-      @policy = PolicyAdapter.new(self)
-      @resources = ResourcesAdapter.new(self)
-      @subscriptions = SubscriptionsAdapter.new(self)
+      base_url = options[:base_url].nil? ? nil:options[:base_url]
+      sdk_options = options[:options].nil? ? nil:options[:options]
+
+      @storage = StorageAdapter.new(self, base_url, sdk_options)
+      @network = NetworkAdapter.new(self, base_url, sdk_options)
+      @compute = ComputeAdapter.new(self, base_url, sdk_options)
+      @features = FeaturesAdapter.new(self, base_url, sdk_options)
+      @links = LinksAdapter.new(self, base_url, sdk_options)
+      @locks = LocksAdapter.new(self, base_url, sdk_options)
+      @policy = PolicyAdapter.new(self, base_url, sdk_options)
+      @resources = ResourcesAdapter.new(self, base_url, sdk_options)
+      @subscriptions = SubscriptionsAdapter.new(self, base_url, sdk_options)
     end
 
     class StorageAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Storage::Mgmt::StorageManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Storage::Mgmt::StorageManagementClass.new(context, base_url, options)
       end
     end
 
     class NetworkAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Network::Mgmt::NetworkManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Network::Mgmt::NetworkManagementClass.new(context, base_url, options)
       end
     end
 
     class ComputeAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Compute::Mgmt::ComputeManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Compute::Mgmt::ComputeManagementClass.new(context, base_url, options)
       end
     end
 
     class FeaturesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Features::Mgmt::FeaturesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Features::Mgmt::FeaturesManagementClass.new(context, base_url, options)
       end
     end
 
     class LinksAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Links::Mgmt::LinksManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Links::Mgmt::LinksManagementClass.new(context, base_url, options)
       end
     end
 
     class LocksAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Locks::Mgmt::LocksManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Locks::Mgmt::LocksManagementClass.new(context, base_url, options)
       end
     end
 
     class PolicyAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Policy::Mgmt::PolicyManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Policy::Mgmt::PolicyManagementClass.new(context, base_url, options)
       end
     end
 
     class ResourcesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Resources::Mgmt::ResourcesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Resources::Mgmt::ResourcesManagementClass.new(context, base_url, options)
       end
     end
 
     class SubscriptionsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::V2017_03_09::Subscriptions::Mgmt::SubscriptionsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::V2017_03_09::Subscriptions::Mgmt::SubscriptionsManagementClass.new(context, base_url, options)
       end
     end
 

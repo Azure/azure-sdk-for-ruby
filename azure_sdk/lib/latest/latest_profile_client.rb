@@ -79,10 +79,15 @@ module Azure::Profiles::Latest
     #      client_id: 'YOUR CLIENT ID',
     #      client_secret: 'YOUR CLIENT SECRET',
     #      subscription_id: 'YOUR SUBSCRIPTION ID',
-    #      credentials: credentials
+    #      credentials: credentials,
+    #      active_directory_settings: active_directory_settings,
+    #      base_url: 'YOUR BASE URL',
+    #      options: options
     #    }
     #   'credentials' are optional and if not passed in the hash, will be obtained
     #   from MsRest::TokenCredentials using MsRestAzure::ApplicationTokenProvider.
+    #
+    #   Also, base_url, active_directory_settings & options are optional.
     #
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -93,237 +98,240 @@ module Azure::Profiles::Latest
 
       reset!(options)
 
-      @analysis_services = AnalysisServicesAdapter.new(self)
-      @authorization = AuthorizationAdapter.new(self)
-      @automation = AutomationAdapter.new(self)
-      @batch = BatchAdapter.new(self)
-      @billing = BillingAdapter.new(self)
-      @cdn = CDNAdapter.new(self)
-      @cognitive_services = CognitiveServicesAdapter.new(self)
-      @commerce = CommerceAdapter.new(self)
-      @compute = ComputeAdapter.new(self)
-      @consumption = ConsumptionAdapter.new(self)
-      @container_instance = ContainerInstanceAdapter.new(self)
-      @container_registry = ContainerRegistryAdapter.new(self)
-      @container_service = ContainerServiceAdapter.new(self)
-      @customer_insights = CustomerInsightsAdapter.new(self)
-      @data_lake_analytics = DataLakeAnalyticsAdapter.new(self)
-      @data_lake_store = DataLakeStoreAdapter.new(self)
-      @dev_test_labs = DevTestLabsAdapter.new(self)
-      @dns = DnsAdapter.new(self)
-      @event_grid = EventGridAdapter.new(self)
-      @event_hub = EventHubAdapter.new(self)
-      @features = FeaturesAdapter.new(self)
-      @graph_rbac = GraphRbacAdapter.new(self)
-      @iot_hub = IotHubAdapter.new(self)
-      @key_vault = KeyVaultAdapter.new(self)
-      @links = LinksAdapter.new(self)
-      @locks = LocksAdapter.new(self)
-      @logic = LogicAdapter.new(self)
-      @machine_learning = MachineLearningAdapter.new(self)
-      @managed_applications = ManagedApplicationsAdapter.new(self)
-      @marketplace_ordering = MarketplaceOrderingAdapter.new(self)
-      @media_services = MediaServicesAdapter.new(self)
-      @mobile_engagement = MobileEngagementAdapter.new(self)
-      @monitor = MonitorAdapter.new(self)
-      @managed_service_identity = ManagedServiceIdentityAdapter.new(self)
-      @network = NetworkAdapter.new(self)
-      @notification_hubs = NotificationHubsAdapter.new(self)
-      @operational_insights = OperationalInsightsAdapter.new(self)
-      @policy = PolicyAdapter.new(self)
-      @power_bi_embedded = PowerBiEmbeddedAdapter.new(self)
-      @recovery_services = RecoveryServicesAdapter.new(self)
-      @recovery_services_backup = RecoveryServicesBackupAdapter.new(self)
-      @recovery_services_site_recovery = RecoveryServicesSiteRecoveryAdapter.new(self)
-      @redis = RedisAdapter.new(self)
-      @relay = RelayAdapter.new(self)
-      @resources = ResourcesAdapter.new(self)
-      @resources_management = ResourcesManagementAdapter.new(self)
-      @scheduler = SchedulerAdapter.new(self)
-      @search = SearchAdapter.new(self)
-      @server_management = ServerManagementAdapter.new(self)
-      @service_bus = ServiceBusAdapter.new(self)
-      @service_fabric = ServiceFabricAdapter.new(self)
-      @sql = SQLAdapter.new(self)
-      @stor_simple8000_series = StorSimple8000SeriesAdapter.new(self)
-      @storage = StorageAdapter.new(self)
-      @stream_analytics = StreamAnalyticsAdapter.new(self)
-      @subscriptions = SubscriptionsAdapter.new(self)
-      @traffic_manager = TrafficManagerAdapter.new(self)
-      @web = WebAdapter.new(self)
+      base_url = options[:base_url].nil? ? nil:options[:base_url]
+      sdk_options = options[:options].nil? ? nil:options[:options]
+
+      @analysis_services = AnalysisServicesAdapter.new(self, base_url, sdk_options)
+      @authorization = AuthorizationAdapter.new(self, base_url, sdk_options)
+      @automation = AutomationAdapter.new(self, base_url, sdk_options)
+      @batch = BatchAdapter.new(self, base_url, sdk_options)
+      @billing = BillingAdapter.new(self, base_url, sdk_options)
+      @cdn = CDNAdapter.new(self, base_url, sdk_options)
+      @cognitive_services = CognitiveServicesAdapter.new(self, base_url, sdk_options)
+      @commerce = CommerceAdapter.new(self, base_url, sdk_options)
+      @compute = ComputeAdapter.new(self, base_url, sdk_options)
+      @consumption = ConsumptionAdapter.new(self, base_url, sdk_options)
+      @container_instance = ContainerInstanceAdapter.new(self, base_url, sdk_options)
+      @container_registry = ContainerRegistryAdapter.new(self, base_url, sdk_options)
+      @container_service = ContainerServiceAdapter.new(self, base_url, sdk_options)
+      @customer_insights = CustomerInsightsAdapter.new(self, base_url, sdk_options)
+      @data_lake_analytics = DataLakeAnalyticsAdapter.new(self, base_url, sdk_options)
+      @data_lake_store = DataLakeStoreAdapter.new(self, base_url, sdk_options)
+      @dev_test_labs = DevTestLabsAdapter.new(self, base_url, sdk_options)
+      @dns = DnsAdapter.new(self, base_url, sdk_options)
+      @event_grid = EventGridAdapter.new(self, base_url, sdk_options)
+      @event_hub = EventHubAdapter.new(self, base_url, sdk_options)
+      @features = FeaturesAdapter.new(self, base_url, sdk_options)
+      @graph_rbac = GraphRbacAdapter.new(self, base_url, sdk_options)
+      @iot_hub = IotHubAdapter.new(self, base_url, sdk_options)
+      @key_vault = KeyVaultAdapter.new(self, base_url, sdk_options)
+      @links = LinksAdapter.new(self, base_url, sdk_options)
+      @locks = LocksAdapter.new(self, base_url, sdk_options)
+      @logic = LogicAdapter.new(self, base_url, sdk_options)
+      @machine_learning = MachineLearningAdapter.new(self, base_url, sdk_options)
+      @managed_applications = ManagedApplicationsAdapter.new(self, base_url, sdk_options)
+      @marketplace_ordering = MarketplaceOrderingAdapter.new(self, base_url, sdk_options)
+      @media_services = MediaServicesAdapter.new(self, base_url, sdk_options)
+      @mobile_engagement = MobileEngagementAdapter.new(self, base_url, sdk_options)
+      @monitor = MonitorAdapter.new(self, base_url, sdk_options)
+      @managed_service_identity = ManagedServiceIdentityAdapter.new(self, base_url, sdk_options)
+      @network = NetworkAdapter.new(self, base_url, sdk_options)
+      @notification_hubs = NotificationHubsAdapter.new(self, base_url, sdk_options)
+      @operational_insights = OperationalInsightsAdapter.new(self, base_url, sdk_options)
+      @policy = PolicyAdapter.new(self, base_url, sdk_options)
+      @power_bi_embedded = PowerBiEmbeddedAdapter.new(self, base_url, sdk_options)
+      @recovery_services = RecoveryServicesAdapter.new(self, base_url, sdk_options)
+      @recovery_services_backup = RecoveryServicesBackupAdapter.new(self, base_url, sdk_options)
+      @recovery_services_site_recovery = RecoveryServicesSiteRecoveryAdapter.new(self, base_url, sdk_options)
+      @redis = RedisAdapter.new(self, base_url, sdk_options)
+      @relay = RelayAdapter.new(self, base_url, sdk_options)
+      @resources = ResourcesAdapter.new(self, base_url, sdk_options)
+      @resources_management = ResourcesManagementAdapter.new(self, base_url, sdk_options)
+      @scheduler = SchedulerAdapter.new(self, base_url, sdk_options)
+      @search = SearchAdapter.new(self, base_url, sdk_options)
+      @server_management = ServerManagementAdapter.new(self, base_url, sdk_options)
+      @service_bus = ServiceBusAdapter.new(self, base_url, sdk_options)
+      @service_fabric = ServiceFabricAdapter.new(self, base_url, sdk_options)
+      @sql = SQLAdapter.new(self, base_url, sdk_options)
+      @stor_simple8000_series = StorSimple8000SeriesAdapter.new(self, base_url, sdk_options)
+      @storage = StorageAdapter.new(self, base_url, sdk_options)
+      @stream_analytics = StreamAnalyticsAdapter.new(self, base_url, sdk_options)
+      @subscriptions = SubscriptionsAdapter.new(self, base_url, sdk_options)
+      @traffic_manager = TrafficManagerAdapter.new(self, base_url, sdk_options)
+      @web = WebAdapter.new(self, base_url, sdk_options)
     end
 
     class AnalysisServicesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::AnalysisServices::Mgmt::AnalysisServicesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::AnalysisServices::Mgmt::AnalysisServicesManagementClass.new(context, base_url, options)
       end
     end
 
     class AuthorizationAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Authorization::Mgmt::AuthorizationManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Authorization::Mgmt::AuthorizationManagementClass.new(context, base_url, options)
       end
     end
 
     class AutomationAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Automation::Mgmt::AutomationManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Automation::Mgmt::AutomationManagementClass.new(context, base_url, options)
       end
     end
 
     class BatchAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Batch::Mgmt::BatchManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Batch::Mgmt::BatchManagementClass.new(context, base_url, options)
       end
     end
 
     class BillingAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Billing::Mgmt::BillingManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Billing::Mgmt::BillingManagementClass.new(context, base_url, options)
       end
     end
 
     class CDNAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::CDN::Mgmt::CDNManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::CDN::Mgmt::CDNManagementClass.new(context, base_url, options)
       end
     end
 
     class CognitiveServicesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::CognitiveServices::Mgmt::CognitiveServicesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::CognitiveServices::Mgmt::CognitiveServicesManagementClass.new(context, base_url, options)
       end
     end
 
     class CommerceAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Commerce::Mgmt::CommerceManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Commerce::Mgmt::CommerceManagementClass.new(context, base_url, options)
       end
     end
 
     class ComputeAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Compute::Mgmt::ComputeManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Compute::Mgmt::ComputeManagementClass.new(context, base_url, options)
       end
     end
 
     class ConsumptionAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Consumption::Mgmt::ConsumptionManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Consumption::Mgmt::ConsumptionManagementClass.new(context, base_url, options)
       end
     end
 
     class ContainerInstanceAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ContainerInstance::Mgmt::ContainerInstanceManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ContainerInstance::Mgmt::ContainerInstanceManagementClass.new(context, base_url, options)
       end
     end
 
     class ContainerRegistryAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ContainerRegistry::Mgmt::ContainerRegistryManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ContainerRegistry::Mgmt::ContainerRegistryManagementClass.new(context, base_url, options)
       end
     end
 
     class ContainerServiceAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ContainerService::Mgmt::ContainerServiceManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ContainerService::Mgmt::ContainerServiceManagementClass.new(context, base_url, options)
       end
     end
 
     class CustomerInsightsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::CustomerInsights::Mgmt::CustomerInsightsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::CustomerInsights::Mgmt::CustomerInsightsManagementClass.new(context, base_url, options)
       end
     end
 
     class DataLakeAnalyticsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::DataLakeAnalytics::Mgmt::DataLakeAnalyticsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::DataLakeAnalytics::Mgmt::DataLakeAnalyticsManagementClass.new(context, base_url, options)
       end
     end
 
     class DataLakeStoreAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::DataLakeStore::Mgmt::DataLakeStoreManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::DataLakeStore::Mgmt::DataLakeStoreManagementClass.new(context, base_url, options)
       end
     end
 
     class DevTestLabsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::DevTestLabs::Mgmt::DevTestLabsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::DevTestLabs::Mgmt::DevTestLabsManagementClass.new(context, base_url, options)
       end
     end
 
     class DnsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Dns::Mgmt::DnsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Dns::Mgmt::DnsManagementClass.new(context, base_url, options)
       end
     end
 
     class EventGridAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::EventGrid::Mgmt::EventGridManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::EventGrid::Mgmt::EventGridManagementClass.new(context, base_url, options)
       end
     end
 
     class EventHubAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::EventHub::Mgmt::EventHubManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::EventHub::Mgmt::EventHubManagementClass.new(context, base_url, options)
       end
     end
 
     class FeaturesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Features::Mgmt::FeaturesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Features::Mgmt::FeaturesManagementClass.new(context, base_url, options)
       end
     end
 
     class GraphRbacAdapter < Azure::Profiles::Latest::GraphRbac::GraphRbacDataClass
 
-      def initialize(context)
+      def initialize(context, base_url, options)
         super(context)
       end
     end
@@ -331,288 +339,288 @@ module Azure::Profiles::Latest
     class IotHubAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::IotHub::Mgmt::IotHubManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::IotHub::Mgmt::IotHubManagementClass.new(context, base_url, options)
       end
     end
 
     class KeyVaultAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::KeyVault::Mgmt::KeyVaultManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::KeyVault::Mgmt::KeyVaultManagementClass.new(context, base_url, options)
       end
     end
 
     class LinksAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Links::Mgmt::LinksManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Links::Mgmt::LinksManagementClass.new(context, base_url, options)
       end
     end
 
     class LocksAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Locks::Mgmt::LocksManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Locks::Mgmt::LocksManagementClass.new(context, base_url, options)
       end
     end
 
     class LogicAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Logic::Mgmt::LogicManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Logic::Mgmt::LogicManagementClass.new(context, base_url, options)
       end
     end
 
     class MachineLearningAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::MachineLearning::Mgmt::MachineLearningManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::MachineLearning::Mgmt::MachineLearningManagementClass.new(context, base_url, options)
       end
     end
 
     class ManagedApplicationsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ManagedApplications::Mgmt::ManagedApplicationsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ManagedApplications::Mgmt::ManagedApplicationsManagementClass.new(context, base_url, options)
       end
     end
 
     class MarketplaceOrderingAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::MarketplaceOrdering::Mgmt::MarketplaceOrderingManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::MarketplaceOrdering::Mgmt::MarketplaceOrderingManagementClass.new(context, base_url, options)
       end
     end
 
     class MediaServicesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::MediaServices::Mgmt::MediaServicesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::MediaServices::Mgmt::MediaServicesManagementClass.new(context, base_url, options)
       end
     end
 
     class MobileEngagementAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::MobileEngagement::Mgmt::MobileEngagementManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::MobileEngagement::Mgmt::MobileEngagementManagementClass.new(context, base_url, options)
       end
     end
 
     class MonitorAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Monitor::Mgmt::MonitorManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Monitor::Mgmt::MonitorManagementClass.new(context, base_url, options)
       end
     end
 
     class ManagedServiceIdentityAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ManagedServiceIdentity::Mgmt::ManagedServiceIdentityManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ManagedServiceIdentity::Mgmt::ManagedServiceIdentityManagementClass.new(context, base_url, options)
       end
     end
 
     class NetworkAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Network::Mgmt::NetworkManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Network::Mgmt::NetworkManagementClass.new(context, base_url, options)
       end
     end
 
     class NotificationHubsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::NotificationHubs::Mgmt::NotificationHubsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::NotificationHubs::Mgmt::NotificationHubsManagementClass.new(context, base_url, options)
       end
     end
 
     class OperationalInsightsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::OperationalInsights::Mgmt::OperationalInsightsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::OperationalInsights::Mgmt::OperationalInsightsManagementClass.new(context, base_url, options)
       end
     end
 
     class PolicyAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Policy::Mgmt::PolicyManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Policy::Mgmt::PolicyManagementClass.new(context, base_url, options)
       end
     end
 
     class PowerBiEmbeddedAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::PowerBiEmbedded::Mgmt::PowerBiEmbeddedManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::PowerBiEmbedded::Mgmt::PowerBiEmbeddedManagementClass.new(context, base_url, options)
       end
     end
 
     class RecoveryServicesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::RecoveryServices::Mgmt::RecoveryServicesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::RecoveryServices::Mgmt::RecoveryServicesManagementClass.new(context, base_url, options)
       end
     end
 
     class RecoveryServicesBackupAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::RecoveryServicesBackup::Mgmt::RecoveryServicesBackupManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::RecoveryServicesBackup::Mgmt::RecoveryServicesBackupManagementClass.new(context, base_url, options)
       end
     end
 
     class RecoveryServicesSiteRecoveryAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::RecoveryServicesSiteRecovery::Mgmt::RecoveryServicesSiteRecoveryManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::RecoveryServicesSiteRecovery::Mgmt::RecoveryServicesSiteRecoveryManagementClass.new(context, base_url, options)
       end
     end
 
     class RedisAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Redis::Mgmt::RedisManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Redis::Mgmt::RedisManagementClass.new(context, base_url, options)
       end
     end
 
     class RelayAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Relay::Mgmt::RelayManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Relay::Mgmt::RelayManagementClass.new(context, base_url, options)
       end
     end
 
     class ResourcesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Resources::Mgmt::ResourcesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Resources::Mgmt::ResourcesManagementClass.new(context, base_url, options)
       end
     end
 
     class ResourcesManagementAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ResourcesManagement::Mgmt::ResourcesManagementManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ResourcesManagement::Mgmt::ResourcesManagementManagementClass.new(context, base_url, options)
       end
     end
 
     class SchedulerAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Scheduler::Mgmt::SchedulerManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Scheduler::Mgmt::SchedulerManagementClass.new(context, base_url, options)
       end
     end
 
     class SearchAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Search::Mgmt::SearchManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Search::Mgmt::SearchManagementClass.new(context, base_url, options)
       end
     end
 
     class ServerManagementAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ServerManagement::Mgmt::ServerManagementManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ServerManagement::Mgmt::ServerManagementManagementClass.new(context, base_url, options)
       end
     end
 
     class ServiceBusAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ServiceBus::Mgmt::ServiceBusManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ServiceBus::Mgmt::ServiceBusManagementClass.new(context, base_url, options)
       end
     end
 
     class ServiceFabricAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::ServiceFabric::Mgmt::ServiceFabricManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ServiceFabric::Mgmt::ServiceFabricManagementClass.new(context, base_url, options)
       end
     end
 
     class SQLAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::SQL::Mgmt::SQLManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::SQL::Mgmt::SQLManagementClass.new(context, base_url, options)
       end
     end
 
     class StorSimple8000SeriesAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::StorSimple8000Series::Mgmt::StorSimple8000SeriesManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::StorSimple8000Series::Mgmt::StorSimple8000SeriesManagementClass.new(context, base_url, options)
       end
     end
 
     class StorageAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Storage::Mgmt::StorageManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Storage::Mgmt::StorageManagementClass.new(context, base_url, options)
       end
     end
 
     class StreamAnalyticsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::StreamAnalytics::Mgmt::StreamAnalyticsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::StreamAnalytics::Mgmt::StreamAnalyticsManagementClass.new(context, base_url, options)
       end
     end
 
     class SubscriptionsAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Subscriptions::Mgmt::SubscriptionsManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Subscriptions::Mgmt::SubscriptionsManagementClass.new(context, base_url, options)
       end
     end
 
     class TrafficManagerAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::TrafficManager::Mgmt::TrafficManagerManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::TrafficManager::Mgmt::TrafficManagerManagementClass.new(context, base_url, options)
       end
     end
 
     class WebAdapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = Azure::Profiles::Latest::Web::Mgmt::WebManagementClass.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Web::Mgmt::WebManagementClass.new(context, base_url, options)
       end
     end
 

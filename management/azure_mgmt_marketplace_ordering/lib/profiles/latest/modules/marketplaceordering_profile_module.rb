@@ -34,7 +34,9 @@ module Azure::MarketplaceOrdering::Profiles::Latest
 
         reset!(options)
 
-        @configurable, @base_url, @options = self, nil, nil
+        @configurable = self
+        @base_url = options[:base_url].nil? ? nil:options[:base_url]
+        @options = options[:options].nil? ? nil:options[:options]
 
         client_0 = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::MarketplaceOrderingAgreements.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

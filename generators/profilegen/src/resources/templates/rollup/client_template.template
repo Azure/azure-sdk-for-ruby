@@ -25,10 +25,15 @@ module Azure::Profiles::<%= @profile_name %>
     #      client_id: 'YOUR CLIENT ID',
     #      client_secret: 'YOUR CLIENT SECRET',
     #      subscription_id: 'YOUR SUBSCRIPTION ID',
-    #      credentials: credentials
+    #      credentials: credentials,
+    #      active_directory_settings: active_directory_settings,
+    #      base_url: 'YOUR BASE URL',
+    #      options: options
     #    }
     #   'credentials' are optional and if not passed in the hash, will be obtained
     #   from MsRest::TokenCredentials using MsRestAzure::ApplicationTokenProvider.
+    #
+    #   Also, base_url, active_directory_settings & options are optional.
     #
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -39,8 +44,11 @@ module Azure::Profiles::<%= @profile_name %>
 
       reset!(options)
 
+      base_url = options[:base_url].nil? ? nil:options[:base_url]
+      sdk_options = options[:options].nil? ? nil:options[:options]
+
       <%- @module_objs.each do |module_obj| -%>
-      @<%= module_obj.module_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= module_obj.module_name %>Adapter.new(self)
+      @<%= module_obj.module_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= module_obj.module_name %>Adapter.new(self, base_url, sdk_options)
       <%- end -%>
     end
 
@@ -51,10 +59,10 @@ module Azure::Profiles::<%= @profile_name %>
       attr_accessor :mgmt
       <%- end -%>
 
-      def initialize(context)
+      def initialize(context, base_url, options)
         super(context)
         <%- if module_obj.management_mode -%>
-        @mgmt = <%= module_obj.get_full_class_name(true) %>.new(context)
+        @mgmt = <%= module_obj.get_full_class_name(true) %>.new(context, base_url, options)
         <%- end -%>
       end
     end
@@ -62,8 +70,8 @@ module Azure::Profiles::<%= @profile_name %>
     class <%= module_obj.module_name %>Adapter
       attr_accessor :mgmt
 
-      def initialize(context)
-        @mgmt = <%= module_obj.get_full_class_name(true) %>.new(context)
+      def initialize(context, base_url, options)
+        @mgmt = <%= module_obj.get_full_class_name(true) %>.new(context, base_url, options)
       end
     end
     <%- end -%>

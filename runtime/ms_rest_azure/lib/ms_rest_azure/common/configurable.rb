@@ -50,17 +50,22 @@ module MsRestAzure::Common
         instance_variable_set(:"@#{key}", options.fetch(key, default_value))
       end
 
-      fail ArgumentError, 'tenant_id is nil' if self.tenant_id.nil?
-      fail ArgumentError, 'client_id is nil' if self.client_id.nil?
-      fail ArgumentError, 'client_secret is nil' if self.client_secret.nil?
       fail ArgumentError, 'subscription_id is nil' if self.subscription_id.nil?
-      fail ArgumentError, 'active_directory_settings is nil' if self.active_directory_settings.nil?
 
-      default_value = MsRest::TokenCredentials.new(
-        MsRestAzure::ApplicationTokenProvider.new(
-          self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
+      if(options[:credentials].nil?)
+        # The user has not passed in the credentials. So, the SDK has to
+        # build the credentials itself.
+        fail ArgumentError, 'tenant_id is nil' if self.tenant_id.nil?
+        fail ArgumentError, 'client_id is nil' if self.client_id.nil?
+        fail ArgumentError, 'client_secret is nil' if self.client_secret.nil?
+        fail ArgumentError, 'active_directory_settings is nil' if self.active_directory_settings.nil?
 
-      instance_variable_set(:"@credentials", options.fetch(:credentials, default_value))
+        self.credentials = MsRest::TokenCredentials.new(
+            MsRestAzure::ApplicationTokenProvider.new(
+                self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
+      else
+        self.credentials = options[:credentials]
+      end
 
       self
     end

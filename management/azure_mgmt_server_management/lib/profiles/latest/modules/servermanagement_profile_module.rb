@@ -59,7 +59,9 @@ module Azure::ServerManagement::Profiles::Latest
 
         reset!(options)
 
-        @configurable, @base_url, @options = self, nil, nil
+        @configurable = self
+        @base_url = options[:base_url].nil? ? nil:options[:base_url]
+        @options = options[:options].nil? ? nil:options[:options]
 
         client_0 = Azure::ServerManagement::Mgmt::V2016_07_01_preview::ServerManagement.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

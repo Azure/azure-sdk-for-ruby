@@ -46,7 +46,9 @@ module Azure::Dns::Profiles::Latest
 
         reset!(options)
 
-        @configurable, @base_url, @options = self, nil, nil
+        @configurable = self
+        @base_url = options[:base_url].nil? ? nil:options[:base_url]
+        @options = options[:options].nil? ? nil:options[:options]
 
         client_0 = Azure::Dns::Mgmt::V2016_04_01::DnsManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

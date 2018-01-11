@@ -20,10 +20,15 @@ module Azure::GraphRbac::Profiles::Latest
     #      client_id: 'YOUR CLIENT ID',
     #      client_secret: 'YOUR CLIENT SECRET',
     #      subscription_id: 'YOUR SUBSCRIPTION ID',
-    #      credentials: credentials
+    #      credentials: credentials,
+    #      active_directory_settings: active_directory_settings,
+    #      base_url: 'YOUR BASE URL',
+    #      options: options
     #    }
     #   'credentials' are optional and if not passed in the hash, will be obtained
     #   from MsRest::TokenCredentials using MsRestAzure::ApplicationTokenProvider.
+    #
+    #   Also, base_url, active_directory_settings & options are optional.
     #
     def initialize(options = {})
       super(options)
