@@ -45,7 +45,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'A2A',
           type: {
@@ -53,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'A2AReprotectInput',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -61,7 +59,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_container_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryContainerId',
                 type: {
@@ -69,13 +66,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_disks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmDisks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'A2AVmDiskInputDetailsElementType',
                       type: {
@@ -86,7 +81,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_resource_group_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryResourceGroupId',
                 type: {
@@ -94,7 +88,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_cloud_service_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryCloudServiceId',
                 type: {
@@ -102,7 +95,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_availability_set_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAvailabilitySetId',
                 type: {
@@ -110,7 +102,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               policy_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyId',
                 type: {

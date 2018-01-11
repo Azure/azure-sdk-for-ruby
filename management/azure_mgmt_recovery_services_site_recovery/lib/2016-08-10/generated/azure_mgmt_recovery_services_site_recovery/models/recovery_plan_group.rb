@@ -32,7 +32,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPlanGroup',
           type: {
@@ -40,7 +39,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanGroup',
             model_properties: {
               group_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'groupType',
                 type: {
@@ -49,13 +47,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replication_protected_items: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationProtectedItems',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanProtectedItemElementType',
                       type: {
@@ -66,13 +62,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               start_group_actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startGroupActions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanActionElementType',
                       type: {
@@ -83,13 +77,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               end_group_actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endGroupActions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanActionElementType',
                       type: {
