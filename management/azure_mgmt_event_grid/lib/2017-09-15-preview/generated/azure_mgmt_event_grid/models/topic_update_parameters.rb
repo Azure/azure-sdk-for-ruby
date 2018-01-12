@@ -6,39 +6,38 @@
 module Azure::EventGrid::Mgmt::V2017_09_15_preview
   module Models
     #
-    # Result of the List EventSubscriptions operation
+    # Properties of the Topic update
     #
-    class EventSubscriptionsListResult
+    class TopicUpdateParameters
 
       include MsRestAzure
 
-      # @return [Array<EventSubscription>] A collection of EventSubscriptions
-      attr_accessor :value
+      # @return [Hash{String => String}] Tags of the resource
+      attr_accessor :tags
 
 
       #
-      # Mapper for EventSubscriptionsListResult class as Ruby Hash.
+      # Mapper for TopicUpdateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'EventSubscriptionsListResult',
+          serialized_name: 'TopicUpdateParameters',
           type: {
             name: 'Composite',
-            class_name: 'EventSubscriptionsListResult',
+            class_name: 'TopicUpdateParameters',
             model_properties: {
-              value: {
+              tags: {
                 required: false,
-                serialized_name: 'value',
+                serialized_name: 'tags',
                 type: {
-                  name: 'Sequence',
-                  element: {
+                  name: 'Dictionary',
+                  value: {
                       required: false,
-                      serialized_name: 'EventSubscriptionElementType',
+                      serialized_name: 'StringElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'EventSubscription'
+                        name: 'String'
                       }
                   }
                 }
