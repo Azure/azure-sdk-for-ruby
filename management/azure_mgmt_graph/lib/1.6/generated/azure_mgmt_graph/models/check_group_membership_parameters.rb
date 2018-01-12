@@ -12,6 +12,10 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [String] The object ID of the group to check.
       attr_accessor :group_id
 
@@ -26,15 +30,26 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckGroupMembershipParameters',
           type: {
             name: 'Composite',
             class_name: 'CheckGroupMembershipParameters',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               group_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'groupId',
                 type: {
@@ -42,7 +57,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               member_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'memberId',
                 type: {

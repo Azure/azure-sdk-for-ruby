@@ -58,7 +58,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactFramingSettings',
           type: {
@@ -66,7 +65,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactFramingSettings',
             model_properties: {
               service_code_list_directory_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceCodeListDirectoryVersion',
                 type: {
@@ -74,7 +72,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               character_encoding: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'characterEncoding',
                 type: {
@@ -82,7 +79,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               protocol_version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocolVersion',
                 type: {
@@ -90,7 +86,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               data_element_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dataElementSeparator',
                 type: {
@@ -98,7 +93,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               component_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'componentSeparator',
                 type: {
@@ -106,7 +100,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminator',
                 type: {
@@ -114,7 +107,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               release_indicator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'releaseIndicator',
                 type: {
@@ -122,7 +114,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               repetition_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'repetitionSeparator',
                 type: {
@@ -130,7 +121,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               character_set: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'characterSet',
                 type: {
@@ -139,7 +129,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               decimal_point_indicator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'decimalPointIndicator',
                 type: {
@@ -148,7 +137,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator_suffix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminatorSuffix',
                 type: {

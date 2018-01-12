@@ -26,7 +26,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PolicySetResult',
           type: {
@@ -34,7 +33,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'PolicySetResult',
             model_properties: {
               has_error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hasError',
                 type: {
@@ -42,13 +40,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               policy_violations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyViolations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PolicyViolationElementType',
                       type: {

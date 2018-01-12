@@ -60,7 +60,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WebhookListResult',
           type: {
@@ -68,13 +67,11 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'WebhookListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WebhookElementType',
                       type: {
@@ -85,7 +82,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

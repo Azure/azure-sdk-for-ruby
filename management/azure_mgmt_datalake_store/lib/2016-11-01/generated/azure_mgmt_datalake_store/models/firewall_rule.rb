@@ -27,7 +27,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FirewallRule',
           type: {
@@ -35,7 +34,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'FirewallRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,7 +42,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -52,7 +49,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -61,7 +57,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               start_ip_address: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.startIpAddress',
                 type: {
@@ -69,7 +64,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               end_ip_address: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.endIpAddress',
                 type: {

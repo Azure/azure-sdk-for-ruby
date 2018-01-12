@@ -28,7 +28,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExportResourceUsageParameters',
           type: {
@@ -36,7 +35,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ExportResourceUsageParameters',
             model_properties: {
               blob_storage_absolute_sas_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobStorageAbsoluteSasUri',
                 type: {
@@ -44,7 +42,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               usage_start_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'usageStartDate',
                 type: {

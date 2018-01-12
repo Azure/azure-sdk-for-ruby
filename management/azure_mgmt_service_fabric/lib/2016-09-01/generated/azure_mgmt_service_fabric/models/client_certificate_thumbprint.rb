@@ -26,7 +26,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClientCertificateThumbprint',
           type: {
@@ -34,7 +33,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'ClientCertificateThumbprint',
             model_properties: {
               is_admin: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'isAdmin',
                 type: {
@@ -42,7 +40,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               certificate_thumbprint: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'certificateThumbprint',
                 type: {

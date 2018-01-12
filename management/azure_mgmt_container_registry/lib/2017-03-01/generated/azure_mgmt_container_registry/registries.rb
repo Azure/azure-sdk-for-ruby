@@ -173,9 +173,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
 
 
       request_headers = {}
@@ -317,9 +314,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
 
 
       request_headers = {}
@@ -410,9 +404,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, 'registry_update_parameters is nil' if registry_update_parameters.nil?
 
 
@@ -690,9 +681,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
 
 
       request_headers = {}
@@ -799,9 +787,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, 'regenerate_credential_parameters is nil' if regenerate_credential_parameters.nil?
 
 
@@ -912,9 +897,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, 'registry_create_parameters is nil' if registry_create_parameters.nil?
 
 

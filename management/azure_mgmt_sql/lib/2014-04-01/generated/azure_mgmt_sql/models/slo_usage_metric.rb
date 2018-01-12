@@ -13,9 +13,16 @@ module Azure::SQL::Mgmt::V2014_04_01
       include MsRestAzure
 
       # @return [ServiceObjectiveName] The serviceLevelObjective for SLO usage
-      # metric. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1',
-      # 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
-      # 'ElasticPool'
+      # metric. Possible values include: 'System', 'System0', 'System1',
+      # 'System2', 'System3', 'System4', 'System2L', 'System3L', 'System4L',
+      # 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12',
+      # 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4',
+      # 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000',
+      # 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000', 'DW2000c',
+      # 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+      # 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200',
+      # 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500',
+      # 'DS2000', 'ElasticPool'
       attr_accessor :service_level_objective
 
       # @return The serviceLevelObjectiveId for SLO usage metric.
@@ -31,7 +38,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SloUsageMetric',
           type: {
@@ -39,7 +45,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'SloUsageMetric',
             model_properties: {
               service_level_objective: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serviceLevelObjective',
@@ -48,7 +53,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_level_objective_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serviceLevelObjectiveId',
@@ -57,7 +61,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               in_range_time_ratio: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'inRangeTimeRatio',

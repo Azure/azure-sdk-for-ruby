@@ -12,6 +12,10 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [String] A member object URL, such as
       # "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd",
       # where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and
@@ -26,15 +30,26 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupAddMemberParameters',
           type: {
             name: 'Composite',
             class_name: 'GroupAddMemberParameters',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {

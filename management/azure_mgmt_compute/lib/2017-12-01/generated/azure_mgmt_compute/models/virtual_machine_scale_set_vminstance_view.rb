@@ -57,7 +57,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetVMInstanceView',
           type: {
@@ -65,7 +64,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineScaleSetVMInstanceView',
             model_properties: {
               platform_update_domain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'platformUpdateDomain',
                 type: {
@@ -73,7 +71,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               platform_fault_domain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'platformFaultDomain',
                 type: {
@@ -81,7 +78,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               rdp_thumb_print: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rdpThumbPrint',
                 type: {
@@ -89,7 +85,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               vm_agent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmAgent',
                 type: {
@@ -98,13 +93,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               disks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'disks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiskInstanceViewElementType',
                       type: {
@@ -115,13 +108,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               extensions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineExtensionInstanceViewElementType',
                       type: {
@@ -132,7 +123,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               vm_health: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'vmHealth',
@@ -142,7 +132,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               boot_diagnostics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bootDiagnostics',
                 type: {
@@ -151,13 +140,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               statuses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
@@ -168,7 +155,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               placement_group_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'placementGroupId',
                 type: {

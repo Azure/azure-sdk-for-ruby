@@ -37,7 +37,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPlanTestFailoverInputProperties',
           type: {
@@ -45,7 +44,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanTestFailoverInputProperties',
             model_properties: {
               failover_direction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'failoverDirection',
                 type: {
@@ -54,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               network_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'networkType',
                 type: {
@@ -62,7 +59,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               network_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkId',
                 type: {
@@ -70,7 +66,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               skip_test_failover_cleanup: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skipTestFailoverCleanup',
                 type: {
@@ -78,13 +73,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanProviderSpecificFailoverInputElementType',
                       type: {

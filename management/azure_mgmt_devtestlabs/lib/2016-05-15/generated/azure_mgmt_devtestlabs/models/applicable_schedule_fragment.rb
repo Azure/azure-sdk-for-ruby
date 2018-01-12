@@ -28,7 +28,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicableScheduleFragment',
           type: {
@@ -36,7 +35,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ApplicableScheduleFragment',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -45,7 +43,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,7 +51,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,7 +59,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -71,13 +66,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,7 +80,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_vms_shutdown: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labVmsShutdown',
                 type: {
@@ -96,7 +88,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_vms_startup: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labVmsStartup',
                 type: {

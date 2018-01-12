@@ -22,7 +22,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SharedAccessAuthorizationRuleProperties',
           type: {
@@ -30,13 +29,11 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'SharedAccessAuthorizationRuleProperties',
             model_properties: {
               rights: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rights',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessRightsElementType',
                       type: {

@@ -213,7 +213,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
-            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {

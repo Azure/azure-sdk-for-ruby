@@ -260,9 +260,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
 
 
       request_headers = {}
@@ -363,9 +360,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -469,9 +463,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
 
 
       request_headers = {}
@@ -559,9 +550,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -672,9 +660,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -779,9 +764,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
 
 
       request_headers = {}
@@ -884,9 +866,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
-      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 

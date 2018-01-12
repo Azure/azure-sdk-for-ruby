@@ -23,7 +23,6 @@ module Azure::Redis::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisRegenerateKeyParameters',
           type: {
@@ -31,7 +30,6 @@ module Azure::Redis::Mgmt::V2016_04_01
             class_name: 'RedisRegenerateKeyParameters',
             model_properties: {
               key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 type: {

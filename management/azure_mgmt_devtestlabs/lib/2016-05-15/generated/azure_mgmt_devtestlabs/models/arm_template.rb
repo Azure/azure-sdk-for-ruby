@@ -42,7 +42,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ArmTemplate',
           type: {
@@ -50,7 +49,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ArmTemplate',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,7 +57,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,7 +65,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,7 +73,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -85,13 +80,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -101,7 +94,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.displayName',
@@ -110,7 +102,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.description',
@@ -119,7 +110,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               publisher: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.publisher',
@@ -128,7 +118,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               icon: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.icon',
@@ -137,7 +126,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               contents: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.contents',
@@ -146,7 +134,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdDate',
@@ -155,14 +142,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               parameters_value_files_info: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.parametersValueFilesInfo',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParametersValueFileInfoElementType',
                       type: {

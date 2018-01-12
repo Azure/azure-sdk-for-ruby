@@ -31,7 +31,6 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionDestination',
           type: {
@@ -39,7 +38,6 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
             class_name: 'EventSubscriptionDestination',
             model_properties: {
               endpoint_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpointType',
                 type: {
@@ -47,7 +45,6 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               endpoint_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpointUrl',
                 type: {
@@ -55,7 +52,6 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               endpoint_base_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endpointBaseUrl',

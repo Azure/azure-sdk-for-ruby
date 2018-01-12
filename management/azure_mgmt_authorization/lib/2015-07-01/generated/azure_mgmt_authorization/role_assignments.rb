@@ -562,7 +562,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Deletes a role assignment.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to delete.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -576,7 +581,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Deletes a role assignment.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to delete.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -589,7 +599,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Deletes a role assignment.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to delete.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -648,7 +663,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Creates a role assignment by ID.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to create.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
     # assignment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -664,7 +684,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Creates a role assignment by ID.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to create.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
     # assignment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -679,7 +704,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Creates a role assignment by ID.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to create.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
     # assignment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -750,7 +780,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Gets a role assignment by ID.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to get.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -764,7 +799,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Gets a role assignment by ID.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to get.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -777,7 +817,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Gets a role assignment by ID.
     #
-    # @param role_assignment_id [String] The ID of the role assignment to get.
+    # @param role_assignment_id [String] The fully qualified ID of the role
+    # assignment, including the scope, resource name and resource type. Use the
+    # format,
+    # /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+    # Example:
+    # /subscriptions/{subId}/resourcegroups/{rgname}//providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

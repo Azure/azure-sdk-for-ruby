@@ -24,7 +24,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobHistoryFilter',
           type: {
@@ -32,7 +31,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobHistoryFilter',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

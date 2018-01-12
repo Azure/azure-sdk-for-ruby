@@ -13,7 +13,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
-      @@discriminatorMap["A2A"] = "AzureFabricCreationInput"
+      @@discriminatorMap["Azure"] = "AzureFabricCreationInput"
       @@discriminatorMap["VMwareV2"] = "VMwareV2FabricCreationInput"
 
       def initialize
@@ -29,7 +29,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FabricSpecificCreationInput',
           type: {

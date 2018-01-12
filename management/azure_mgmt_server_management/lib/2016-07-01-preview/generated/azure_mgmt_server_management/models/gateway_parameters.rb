@@ -31,7 +31,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayParameters',
           type: {
@@ -39,7 +38,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'GatewayParameters',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -47,7 +45,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
@@ -55,7 +52,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               upgrade_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradeMode',
                 type: {

@@ -13,10 +13,10 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<Vault>] Gets or sets the list of vaults.
+      # @return [Array<Vault>] The list of vaults.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of vaults.
+      # @return [String] The URL to get the next set of vaults.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -57,7 +57,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultListResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'VaultListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

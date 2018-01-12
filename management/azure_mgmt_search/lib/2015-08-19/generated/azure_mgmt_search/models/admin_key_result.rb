@@ -26,7 +26,6 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdminKeyResult',
           type: {
@@ -34,7 +33,6 @@ module Azure::Search::Mgmt::V2015_08_19
             class_name: 'AdminKeyResult',
             model_properties: {
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primaryKey',
@@ -43,7 +41,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryKey',

@@ -28,7 +28,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -36,7 +35,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {

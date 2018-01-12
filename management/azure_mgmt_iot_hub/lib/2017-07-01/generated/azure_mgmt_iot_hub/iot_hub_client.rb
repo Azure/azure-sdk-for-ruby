@@ -128,7 +128,9 @@ module Azure::IotHub::Mgmt::V2017_07_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_iot_hub'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::IotHub::Mgmt::V2017_07_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::IotHub::Mgmt::V2017_07_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

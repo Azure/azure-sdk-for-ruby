@@ -56,7 +56,6 @@ module Azure::Redis::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisCreateOrUpdateParameters',
           type: {
@@ -64,7 +63,6 @@ module Azure::Redis::Mgmt::V2015_08_01
             class_name: 'RedisCreateOrUpdateParameters',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -73,7 +71,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -82,7 +79,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,7 +87,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -99,13 +94,11 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -115,7 +108,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               redis_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.redisVersion',
                 type: {
@@ -123,7 +115,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.sku',
                 type: {
@@ -132,13 +123,11 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               redis_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.redisConfiguration',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -148,7 +137,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               enable_non_ssl_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableNonSslPort',
                 type: {
@@ -156,13 +144,11 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               tenant_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tenantSettings',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -172,7 +158,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               shard_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.shardCount',
                 type: {
@@ -180,7 +165,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               virtual_network: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualNetwork',
                 type: {
@@ -188,7 +172,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -196,7 +179,6 @@ module Azure::Redis::Mgmt::V2015_08_01
                 }
               },
               static_ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.staticIP',
                 type: {

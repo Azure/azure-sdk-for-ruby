@@ -35,15 +35,26 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserUpdateParameters',
           type: {
             name: 'Composite',
             class_name: 'UserUpdateParameters',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               immutable_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'immutableId',
                 type: {
@@ -51,7 +62,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               usage_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'usageLocation',
                 type: {
@@ -59,7 +69,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               given_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'givenName',
                 type: {
@@ -67,7 +76,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               surname: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'surname',
                 type: {
@@ -75,7 +83,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userType',
                 type: {
@@ -83,7 +90,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               account_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountEnabled',
                 type: {
@@ -91,7 +97,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -99,7 +104,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               password_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwordProfile',
                 type: {
@@ -108,7 +112,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_principal_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userPrincipalName',
                 type: {
@@ -116,7 +119,6 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail_nickname: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mailNickname',
                 type: {

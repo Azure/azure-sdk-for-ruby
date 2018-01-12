@@ -31,7 +31,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResponse',
           type: {
@@ -39,7 +38,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'CheckNameAvailabilityResponse',
             model_properties: {
               name_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'NameAvailable',
                 type: {
@@ -47,7 +45,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Reason',
                 type: {
@@ -55,7 +52,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Message',
                 type: {

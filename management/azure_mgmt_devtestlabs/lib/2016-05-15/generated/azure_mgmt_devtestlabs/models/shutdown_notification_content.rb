@@ -54,7 +54,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ShutdownNotificationContent',
           type: {
@@ -62,7 +61,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ShutdownNotificationContent',
             model_properties: {
               skip_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skipUrl',
                 type: {
@@ -70,7 +68,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               delay_url60: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'delayUrl60',
                 type: {
@@ -78,7 +75,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               delay_url120: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'delayUrl120',
                 type: {
@@ -86,7 +82,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               vm_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmName',
                 type: {
@@ -94,7 +89,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               guid: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'guid',
                 type: {
@@ -102,7 +96,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               owner: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'owner',
                 type: {
@@ -110,7 +103,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               event_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventType',
                 type: {
@@ -118,7 +110,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'text',
                 type: {
@@ -126,7 +117,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -134,7 +124,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_group_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroupName',
                 type: {
@@ -142,7 +131,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'labName',
                 type: {
