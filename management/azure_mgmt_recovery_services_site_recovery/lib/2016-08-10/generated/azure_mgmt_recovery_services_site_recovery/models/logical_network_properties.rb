@@ -34,7 +34,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LogicalNetworkProperties',
           type: {
@@ -42,7 +41,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'LogicalNetworkProperties',
             model_properties: {
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -50,7 +48,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               network_virtualization_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkVirtualizationStatus',
                 type: {
@@ -58,7 +55,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               logical_network_usage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logicalNetworkUsage',
                 type: {
@@ -66,7 +62,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               logical_network_definitions_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logicalNetworkDefinitionsStatus',
                 type: {

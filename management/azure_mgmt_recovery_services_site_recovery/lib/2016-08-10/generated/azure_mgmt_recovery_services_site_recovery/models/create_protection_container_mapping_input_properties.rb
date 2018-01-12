@@ -30,7 +30,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateProtectionContainerMappingInputProperties',
           type: {
@@ -38,7 +37,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'CreateProtectionContainerMappingInputProperties',
             model_properties: {
               target_protection_container_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetProtectionContainerId',
                 type: {
@@ -46,7 +44,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               policy_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'PolicyId',
                 type: {
@@ -54,7 +51,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_input: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificInput',
                 type: {

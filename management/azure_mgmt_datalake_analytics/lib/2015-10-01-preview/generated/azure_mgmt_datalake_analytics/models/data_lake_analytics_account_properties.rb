@@ -59,7 +59,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataLakeAnalyticsAccountProperties',
           type: {
@@ -67,7 +66,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'DataLakeAnalyticsAccountProperties',
             model_properties: {
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -77,7 +75,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -87,7 +84,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               default_data_lake_store_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultDataLakeStoreAccount',
                 type: {
@@ -95,7 +91,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               max_degree_of_parallelism: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDegreeOfParallelism',
                 type: {
@@ -103,7 +98,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               max_job_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxJobCount',
                 type: {
@@ -111,13 +105,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               data_lake_store_accounts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataLakeStoreAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataLakeStoreAccountInfoElementType',
                       type: {
@@ -128,13 +120,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               storage_accounts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StorageAccountInfoElementType',
                       type: {
@@ -145,7 +135,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'creationTime',
@@ -154,7 +143,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastModifiedTime',
@@ -163,7 +151,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               endpoint: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endpoint',

@@ -26,7 +26,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EnvironmentDeploymentProperties',
           type: {
@@ -34,7 +33,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'EnvironmentDeploymentProperties',
             model_properties: {
               arm_template_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'armTemplateId',
                 type: {
@@ -42,13 +40,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArmTemplateParameterPropertiesElementType',
                       type: {

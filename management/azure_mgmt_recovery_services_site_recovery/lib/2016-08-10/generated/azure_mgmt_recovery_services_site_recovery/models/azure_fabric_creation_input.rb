@@ -14,7 +14,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       def initialize
-        @instanceType = "A2A"
+        @instanceType = "Azure"
       end
 
       attr_accessor :instanceType
@@ -29,15 +29,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
-          serialized_name: 'A2A',
+          serialized_name: 'Azure',
           type: {
             name: 'Composite',
             class_name: 'AzureFabricCreationInput',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -45,7 +43,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {

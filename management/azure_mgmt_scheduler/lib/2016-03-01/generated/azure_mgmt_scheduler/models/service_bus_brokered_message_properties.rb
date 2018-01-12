@@ -59,7 +59,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceBusBrokeredMessageProperties',
           type: {
@@ -67,7 +66,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'ServiceBusBrokeredMessageProperties',
             model_properties: {
               content_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentType',
                 type: {
@@ -75,7 +73,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               correlation_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'correlationId',
                 type: {
@@ -83,7 +80,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               force_persistence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'forcePersistence',
                 type: {
@@ -91,7 +87,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -99,7 +94,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               message_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageId',
                 type: {
@@ -107,7 +101,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               partition_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'partitionKey',
                 type: {
@@ -115,7 +108,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               reply_to: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyTo',
                 type: {
@@ -123,7 +115,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               reply_to_session_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyToSessionId',
                 type: {
@@ -131,7 +122,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               scheduled_enqueue_time_utc: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scheduledEnqueueTimeUtc',
                 type: {
@@ -139,7 +129,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               session_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sessionId',
                 type: {
@@ -147,7 +136,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               time_to_live: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeToLive',
                 type: {
@@ -155,7 +143,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               to: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'to',
                 type: {
@@ -163,7 +150,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               via_partition_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'viaPartitionKey',
                 type: {

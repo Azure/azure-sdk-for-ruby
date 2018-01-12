@@ -13,6 +13,13 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "ActiveDirectoryOAuth"
+      end
+
+      attr_accessor :type
+
       # @return [String] Gets or sets the secret, return value will always be
       # empty.
       attr_accessor :secret
@@ -33,24 +40,20 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
-          serialized_name: 'OAuthAuthentication',
+          serialized_name: 'ActiveDirectoryOAuth',
           type: {
             name: 'Composite',
             class_name: 'OAuthAuthentication',
             model_properties: {
               type: {
-                client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'type',
                 type: {
-                  name: 'Enum',
-                  module: 'HttpAuthenticationType'
+                  name: 'String'
                 }
               },
               secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secret',
                 type: {
@@ -58,7 +61,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               tenant: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenant',
                 type: {
@@ -66,7 +68,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               audience: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audience',
                 type: {
@@ -74,7 +75,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               client_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientId',
                 type: {

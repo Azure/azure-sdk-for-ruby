@@ -23,6 +23,10 @@ module Azure::SQL::Mgmt::V2014_04_01
       # service objectives for the edition.
       attr_accessor :supported_service_level_objectives
 
+      # @return [Boolean] Whether or not zone redundancy is supported for the
+      # edition.
+      attr_accessor :zone_redundant
+
 
       #
       # Mapper for EditionCapability class as Ruby Hash.
@@ -30,7 +34,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EditionCapability',
           type: {
@@ -38,7 +41,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'EditionCapability',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -47,7 +49,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -57,14 +58,12 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               supported_service_level_objectives: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportedServiceLevelObjectives',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ServiceObjectiveCapabilityElementType',
                       type: {
@@ -72,6 +71,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                         class_name: 'ServiceObjectiveCapability'
                       }
                   }
+                }
+              },
+              zone_redundant: {
+                required: false,
+                read_only: true,
+                serialized_name: 'zoneRedundant',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

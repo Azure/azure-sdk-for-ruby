@@ -24,7 +24,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Actor',
           type: {
@@ -32,7 +31,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Actor',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

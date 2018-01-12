@@ -29,7 +29,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClusterVersionDetails',
           type: {
@@ -37,7 +36,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'ClusterVersionDetails',
             model_properties: {
               code_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'codeVersion',
                 type: {
@@ -45,7 +43,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               support_expiry_utc: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'supportExpiryUtc',
                 type: {
@@ -53,7 +50,6 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               environment: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'environment',
                 type: {

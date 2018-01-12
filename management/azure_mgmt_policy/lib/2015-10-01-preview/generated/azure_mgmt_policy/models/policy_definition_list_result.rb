@@ -57,7 +57,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyDefinitionListResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
             class_name: 'PolicyDefinitionListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PolicyDefinitionElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

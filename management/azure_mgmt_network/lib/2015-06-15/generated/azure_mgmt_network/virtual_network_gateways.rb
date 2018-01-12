@@ -440,7 +440,6 @@ module Azure::Network::Mgmt::V2015_06_15
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {

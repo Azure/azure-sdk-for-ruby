@@ -55,7 +55,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Workflow',
           type: {
@@ -63,7 +62,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'Workflow',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -72,7 +70,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -81,7 +78,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -90,7 +86,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -98,13 +93,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -114,7 +107,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -124,7 +116,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               created_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdTime',
@@ -133,7 +124,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.changedTime',
@@ -142,7 +132,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.state',
                 type: {
@@ -151,7 +140,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.version',
@@ -160,7 +148,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               access_endpoint: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.accessEndpoint',
@@ -169,7 +156,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -178,7 +164,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               integration_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.integrationAccount',
                 type: {
@@ -187,7 +172,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               definition: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.definition',
                 type: {
@@ -195,13 +179,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WorkflowParameterElementType',
                       type: {

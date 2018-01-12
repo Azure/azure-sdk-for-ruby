@@ -18,9 +18,13 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       # 'Failed'. Possible values include: 'Accepted', 'Succeeded', 'Failed'
       attr_accessor :provisioning_state
 
+      # @return [String] ARM Id of the Primary/Secondary eventhub namespace
+      # name, which is part of GEO DR pairning
+      attr_accessor :partner_namespace
+
       # @return [String] Primary/Secondary eventhub namespace name, which is
       # part of GEO DR pairning
-      attr_accessor :partner_namespace
+      attr_accessor :alternate_name
 
       # @return [RoleDisasterRecovery] role of namespace in GEO DR - possible
       # values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible
@@ -34,7 +38,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ArmDisasterRecovery',
           type: {
@@ -42,7 +45,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'ArmDisasterRecovery',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,7 +53,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,7 +61,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,7 +69,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -79,15 +78,20 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               partner_namespace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partnerNamespace',
                 type: {
                   name: 'String'
                 }
               },
+              alternate_name: {
+                required: false,
+                serialized_name: 'properties.alternateName',
+                type: {
+                  name: 'String'
+                }
+              },
               role: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.role',

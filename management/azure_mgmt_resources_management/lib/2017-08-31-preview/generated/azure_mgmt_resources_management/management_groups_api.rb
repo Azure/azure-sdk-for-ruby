@@ -125,7 +125,9 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_resources_management'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::ResourcesManagement::Mgmt::V2017_08_31_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ResourcesManagement::Mgmt::V2017_08_31_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

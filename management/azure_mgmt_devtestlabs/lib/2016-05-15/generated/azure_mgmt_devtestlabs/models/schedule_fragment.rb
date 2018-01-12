@@ -54,7 +54,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ScheduleFragment',
           type: {
@@ -62,7 +61,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ScheduleFragment',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -71,7 +69,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,7 +77,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -89,7 +85,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -97,13 +92,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -113,7 +106,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -121,7 +113,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               task_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.taskType',
                 type: {
@@ -129,7 +120,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               weekly_recurrence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.weeklyRecurrence',
                 type: {
@@ -138,7 +128,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               daily_recurrence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dailyRecurrence',
                 type: {
@@ -147,7 +136,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               hourly_recurrence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hourlyRecurrence',
                 type: {
@@ -156,7 +144,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               time_zone_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeZoneId',
                 type: {
@@ -164,7 +151,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               notification_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notificationSettings',
                 type: {
@@ -173,7 +159,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               target_resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetResourceId',
                 type: {
@@ -181,7 +166,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -189,7 +173,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

@@ -40,7 +40,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedActionMetricInfo',
           type: {
@@ -48,7 +47,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'RecommendedActionMetricInfo',
             model_properties: {
               metric_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'metricName',
@@ -57,7 +55,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -66,7 +63,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               time_grain: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timeGrain',
@@ -75,7 +71,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -84,7 +79,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',

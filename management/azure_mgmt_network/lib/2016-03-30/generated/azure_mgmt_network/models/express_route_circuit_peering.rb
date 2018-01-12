@@ -71,7 +71,6 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitPeering',
           type: {
@@ -79,7 +78,6 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'ExpressRouteCircuitPeering',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -87,7 +85,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               peering_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peeringType',
                 type: {
@@ -95,7 +92,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.state',
                 type: {
@@ -103,7 +99,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               azure_asn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.azureASN',
                 type: {
@@ -111,7 +106,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               peer_asn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peerASN',
                 type: {
@@ -119,7 +113,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               primary_peer_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primaryPeerAddressPrefix',
                 type: {
@@ -127,7 +120,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               secondary_peer_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secondaryPeerAddressPrefix',
                 type: {
@@ -135,7 +127,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               primary_azure_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primaryAzurePort',
                 type: {
@@ -143,7 +134,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               secondary_azure_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secondaryAzurePort',
                 type: {
@@ -151,7 +141,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               shared_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sharedKey',
                 type: {
@@ -159,7 +148,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               vlan_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vlanId',
                 type: {
@@ -167,7 +155,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               microsoft_peering_config: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.microsoftPeeringConfig',
                 type: {
@@ -176,7 +163,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               stats: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.stats',
                 type: {
@@ -185,7 +171,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -193,7 +178,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -201,7 +185,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

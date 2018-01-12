@@ -125,7 +125,9 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_commerce'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::Commerce::Mgmt::V2015_06_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Commerce::Mgmt::V2015_06_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

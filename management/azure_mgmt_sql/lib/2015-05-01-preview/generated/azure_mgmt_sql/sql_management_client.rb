@@ -71,6 +71,9 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # @return [SyncMembers] sync_members
     attr_reader :sync_members
 
+    # @return [SubscriptionUsages] subscription_usages
+    attr_reader :subscription_usages
+
     # @return [VirtualNetworkRules] virtual_network_rules
     attr_reader :virtual_network_rules
 
@@ -99,6 +102,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       @sync_agents = SyncAgents.new(self)
       @sync_groups = SyncGroups.new(self)
       @sync_members = SyncMembers.new(self)
+      @subscription_usages = SubscriptionUsages.new(self)
       @virtual_network_rules = VirtualNetworkRules.new(self)
       @api_version = '2015-05-01-preview'
       @accept_language = 'en-US'
@@ -169,7 +173,9 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::SQL::Mgmt::V2015_05_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::SQL::Mgmt::V2015_05_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

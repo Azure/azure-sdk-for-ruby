@@ -74,6 +74,9 @@ module Azure::SQL::Mgmt::V2014_04_01
     # transparent_data_encryption_configurations
     attr_reader :transparent_data_encryption_configurations
 
+    # @return [Extensions] extensions
+    attr_reader :extensions
+
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
@@ -94,6 +97,9 @@ module Azure::SQL::Mgmt::V2014_04_01
 
     # @return [QueryStatistics] query_statistics
     attr_reader :query_statistics
+
+    # @return [QueryTexts] query_texts
+    attr_reader :query_texts
 
     # @return [ReplicationLinks] replication_links
     attr_reader :replication_links
@@ -169,6 +175,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       @data_masking_policies = DataMaskingPolicies.new(self)
       @data_masking_rules = DataMaskingRules.new(self)
       @transparent_data_encryption_configurations = TransparentDataEncryptionConfigurations.new(self)
+      @extensions = Extensions.new(self)
       @firewall_rules = FirewallRules.new(self)
       @geo_backup_policies = GeoBackupPolicies.new(self)
       @databases = Databases.new(self)
@@ -176,6 +183,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       @operations = Operations.new(self)
       @queries = Queries.new(self)
       @query_statistics = QueryStatistics.new(self)
+      @query_texts = QueryTexts.new(self)
       @replication_links = ReplicationLinks.new(self)
       @server_azure_adadministrators = ServerAzureADAdministrators.new(self)
       @server_communication_links = ServerCommunicationLinks.new(self)
@@ -261,7 +269,9 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::SQL::Mgmt::V2014_04_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::SQL::Mgmt::V2014_04_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

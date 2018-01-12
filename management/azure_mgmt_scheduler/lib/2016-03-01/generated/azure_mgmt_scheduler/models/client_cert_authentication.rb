@@ -13,6 +13,13 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "ClientCertificate"
+      end
+
+      attr_accessor :type
+
       # @return [String] Gets or sets the certificate password, return value
       # will always be empty.
       attr_accessor :password
@@ -37,24 +44,20 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
-          serialized_name: 'ClientCertAuthentication',
+          serialized_name: 'ClientCertificate',
           type: {
             name: 'Composite',
             class_name: 'ClientCertAuthentication',
             model_properties: {
               type: {
-                client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'type',
                 type: {
-                  name: 'Enum',
-                  module: 'HttpAuthenticationType'
+                  name: 'String'
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {
@@ -62,7 +65,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               pfx: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pfx',
                 type: {
@@ -70,7 +72,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               certificate_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateThumbprint',
                 type: {
@@ -78,7 +79,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               certificate_expiration_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateExpirationDate',
                 type: {
@@ -86,7 +86,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               certificate_subject_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateSubjectName',
                 type: {

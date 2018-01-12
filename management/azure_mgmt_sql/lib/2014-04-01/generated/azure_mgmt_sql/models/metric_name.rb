@@ -25,7 +25,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricName',
           type: {
@@ -33,7 +32,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'MetricName',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
@@ -42,7 +40,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               localized_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'localizedValue',

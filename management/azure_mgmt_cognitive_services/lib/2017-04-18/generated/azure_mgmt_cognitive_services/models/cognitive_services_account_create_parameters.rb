@@ -16,8 +16,10 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       attr_accessor :sku
 
       # @return [Kind] Required. Gets or sets the Kind of the resource.
-      # Possible values include: 'Academic', 'Bing.Autosuggest', 'Bing.Search',
-      # 'Bing.Speech', 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator',
+      # Possible values include: 'Academic', 'Bing.Autosuggest',
+      # 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search',
+      # 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck',
+      # 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator',
       # 'CustomSpeech', 'Emotion', 'Face', 'LUIS', 'Recommendations',
       # 'SpeakerRecognition', 'Speech', 'SpeechTranslation', 'TextAnalytics',
       # 'TextTranslation', 'WebLM'
@@ -48,7 +50,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccountCreateParameters',
           type: {
@@ -56,7 +57,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesAccountCreateParameters',
             model_properties: {
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -65,7 +65,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'kind',
                 type: {
@@ -73,7 +72,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -81,13 +79,11 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -97,7 +93,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {

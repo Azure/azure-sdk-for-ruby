@@ -21,18 +21,25 @@ require 'ms_rest_azure'
 
 module Azure::Consumption::Mgmt::V2017_11_30
   autoload :UsageDetails,                                       '2017-11-30/generated/azure_mgmt_consumption/usage_details.rb'
+  autoload :ReservationsSummaries,                              '2017-11-30/generated/azure_mgmt_consumption/reservations_summaries.rb'
+  autoload :ReservationsDetails,                                '2017-11-30/generated/azure_mgmt_consumption/reservations_details.rb'
   autoload :Operations,                                         '2017-11-30/generated/azure_mgmt_consumption/operations.rb'
   autoload :ConsumptionManagementClient,                        '2017-11-30/generated/azure_mgmt_consumption/consumption_management_client.rb'
 
   module Models
+    autoload :ReservationDetailsListResult,                       '2017-11-30/generated/azure_mgmt_consumption/models/reservation_details_list_result.rb'
+    autoload :ErrorDetails,                                       '2017-11-30/generated/azure_mgmt_consumption/models/error_details.rb'
+    autoload :MeterDetails,                                       '2017-11-30/generated/azure_mgmt_consumption/models/meter_details.rb'
+    autoload :UsageDetailsListResult,                             '2017-11-30/generated/azure_mgmt_consumption/models/usage_details_list_result.rb'
+    autoload :OperationListResult,                                '2017-11-30/generated/azure_mgmt_consumption/models/operation_list_result.rb'
+    autoload :ReservationSummariesListResult,                     '2017-11-30/generated/azure_mgmt_consumption/models/reservation_summaries_list_result.rb'
     autoload :ErrorResponse,                                      '2017-11-30/generated/azure_mgmt_consumption/models/error_response.rb'
     autoload :OperationDisplay,                                   '2017-11-30/generated/azure_mgmt_consumption/models/operation_display.rb'
-    autoload :UsageDetailsListResult,                             '2017-11-30/generated/azure_mgmt_consumption/models/usage_details_list_result.rb'
-    autoload :Operation,                                          '2017-11-30/generated/azure_mgmt_consumption/models/operation.rb'
-    autoload :MeterDetails,                                       '2017-11-30/generated/azure_mgmt_consumption/models/meter_details.rb'
-    autoload :OperationListResult,                                '2017-11-30/generated/azure_mgmt_consumption/models/operation_list_result.rb'
-    autoload :ErrorDetails,                                       '2017-11-30/generated/azure_mgmt_consumption/models/error_details.rb'
     autoload :Resource,                                           '2017-11-30/generated/azure_mgmt_consumption/models/resource.rb'
+    autoload :Operation,                                          '2017-11-30/generated/azure_mgmt_consumption/models/operation.rb'
     autoload :UsageDetail,                                        '2017-11-30/generated/azure_mgmt_consumption/models/usage_detail.rb'
+    autoload :ReservationSummaries,                               '2017-11-30/generated/azure_mgmt_consumption/models/reservation_summaries.rb'
+    autoload :ReservationDetails,                                 '2017-11-30/generated/azure_mgmt_consumption/models/reservation_details.rb'
+    autoload :Datagrain,                                          '2017-11-30/generated/azure_mgmt_consumption/models/datagrain.rb'
   end
 end

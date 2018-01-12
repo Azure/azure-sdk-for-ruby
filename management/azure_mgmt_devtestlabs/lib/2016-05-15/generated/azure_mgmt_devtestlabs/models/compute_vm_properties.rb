@@ -43,7 +43,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ComputeVmProperties',
           type: {
@@ -51,13 +50,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ComputeVmProperties',
             model_properties: {
               statuses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ComputeVmInstanceViewStatusElementType',
                       type: {
@@ -68,7 +65,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -76,7 +72,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               vm_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmSize',
                 type: {
@@ -84,7 +79,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               network_interface_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaceId',
                 type: {
@@ -92,7 +86,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               os_disk_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDiskId',
                 type: {
@@ -100,13 +93,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               data_disk_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDiskIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -116,13 +107,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               data_disks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ComputeDataDiskElementType',
                       type: {
