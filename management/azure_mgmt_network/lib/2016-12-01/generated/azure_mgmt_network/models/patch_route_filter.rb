@@ -45,7 +45,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PatchRouteFilter',
           type: {
@@ -53,7 +52,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'PatchRouteFilter',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -61,13 +59,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.rules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RouteFilterRuleElementType',
                       type: {
@@ -78,14 +74,12 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               peerings: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.peerings',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteCircuitPeeringElementType',
                       type: {
@@ -96,7 +90,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -105,7 +98,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -114,7 +106,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -123,7 +114,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -132,13 +122,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
