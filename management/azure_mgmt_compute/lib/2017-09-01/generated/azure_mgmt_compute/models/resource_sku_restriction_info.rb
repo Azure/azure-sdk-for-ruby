@@ -27,7 +27,6 @@ module Azure::Compute::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuRestrictionInfo',
           type: {
@@ -35,14 +34,12 @@ module Azure::Compute::Mgmt::V2017_09_01
             class_name: 'ResourceSkuRestrictionInfo',
             model_properties: {
               locations: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -52,14 +49,12 @@ module Azure::Compute::Mgmt::V2017_09_01
                 }
               },
               zones: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'zones',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
