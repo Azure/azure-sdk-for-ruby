@@ -23,7 +23,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetExtensionProfile',
           type: {
@@ -31,13 +30,11 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineScaleSetExtensionProfile',
             model_properties: {
               extensions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetExtensionElementType',
                       type: {

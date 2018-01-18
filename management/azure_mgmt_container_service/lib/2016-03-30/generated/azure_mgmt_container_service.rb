@@ -21,7 +21,7 @@ require 'ms_rest_azure'
 
 module Azure::ContainerService::Mgmt::V2016_03_30
   autoload :ContainerServices,                                  '2016-03-30/generated/azure_mgmt_container_service/container_services.rb'
-  autoload :ContainerServiceClient,                             '2016-03-30/generated/azure_mgmt_container_service/container_service_client.rb'
+  autoload :ComputeManagementClient,                            '2016-03-30/generated/azure_mgmt_container_service/compute_management_client.rb'
 
   module Models
     autoload :ContainerServiceSshConfiguration,                   '2016-03-30/generated/azure_mgmt_container_service/models/container_service_ssh_configuration.rb'

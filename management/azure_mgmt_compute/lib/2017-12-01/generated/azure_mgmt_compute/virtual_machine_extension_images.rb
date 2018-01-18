@@ -199,13 +199,11 @@ module Azure::Compute::Mgmt::V2017_12_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VirtualMachineExtensionImageElementType',
                     type: {
@@ -319,13 +317,11 @@ module Azure::Compute::Mgmt::V2017_12_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VirtualMachineExtensionImageElementType',
                     type: {
