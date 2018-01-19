@@ -40,7 +40,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Variable',
           type: {
@@ -48,7 +47,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Variable',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.value',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_encrypted: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isEncrypted',
                 type: {
@@ -80,7 +75,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -88,7 +82,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -96,7 +89,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

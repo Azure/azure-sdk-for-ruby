@@ -41,7 +41,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RunbookCreateOrUpdateDraftProperties',
           type: {
@@ -49,7 +48,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'RunbookCreateOrUpdateDraftProperties',
             model_properties: {
               log_verbose: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logVerbose',
                 type: {
@@ -57,7 +55,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               log_progress: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logProgress',
                 type: {
@@ -65,7 +62,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               runbook_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'runbookType',
                 type: {
@@ -73,7 +69,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               draft: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'draft',
                 type: {
@@ -82,7 +77,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -90,7 +84,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               log_activity_trace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logActivityTrace',
                 type: {
