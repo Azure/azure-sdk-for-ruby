@@ -36,7 +36,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InstanceViewStatus',
           type: {
@@ -44,7 +43,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'InstanceViewStatus',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -52,7 +50,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               display_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayStatus',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -77,7 +72,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'time',
                 type: {
