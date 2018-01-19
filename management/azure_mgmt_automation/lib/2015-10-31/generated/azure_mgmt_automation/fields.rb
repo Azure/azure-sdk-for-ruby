@@ -24,7 +24,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of fields of a given type identified by module name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param type_name [String] The name of type.
@@ -33,15 +32,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [TypeFieldListResult] operation results.
     #
-    def list_by_type(resource_group_name, automation_account_name, module_name, type_name, custom_headers = nil)
-      response = list_by_type_async(resource_group_name, automation_account_name, module_name, type_name, custom_headers).value!
+    def list_by_type(automation_account_name, module_name, type_name, custom_headers = nil)
+      response = list_by_type_async(automation_account_name, module_name, type_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve a list of fields of a given type identified by module name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param type_name [String] The name of type.
@@ -50,14 +48,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_type_with_http_info(resource_group_name, automation_account_name, module_name, type_name, custom_headers = nil)
-      list_by_type_async(resource_group_name, automation_account_name, module_name, type_name, custom_headers).value!
+    def list_by_type_with_http_info(automation_account_name, module_name, type_name, custom_headers = nil)
+      list_by_type_async(automation_account_name, module_name, type_name, custom_headers).value!
     end
 
     #
     # Retrieve a list of fields of a given type identified by module name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param type_name [String] The name of type.
@@ -66,9 +63,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_type_async(resource_group_name, automation_account_name, module_name, type_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def list_by_type_async(automation_account_name, module_name, type_name, custom_headers = nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'module_name is nil' if module_name.nil?
       fail ArgumentError, 'type_name is nil' if type_name.nil?
@@ -87,7 +83,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'moduleName' => module_name,'typeName' => type_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'moduleName' => module_name,'typeName' => type_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

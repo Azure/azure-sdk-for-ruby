@@ -39,7 +39,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobSchedule',
           type: {
@@ -47,7 +46,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'JobSchedule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -55,7 +53,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               job_schedule_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.jobScheduleId',
                 type: {
@@ -63,7 +60,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               schedule: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.schedule',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               runbook: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runbook',
                 type: {
@@ -81,7 +76,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               run_on: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runOn',
                 type: {
@@ -89,13 +83,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

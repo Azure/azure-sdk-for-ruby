@@ -39,7 +39,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RunbookDraft',
           type: {
@@ -47,7 +46,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'RunbookDraft',
             model_properties: {
               in_edit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inEdit',
                 type: {
@@ -55,7 +53,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               draft_content_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'draftContentLink',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'creationTime',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastModifiedTime',
                 type: {
@@ -80,13 +75,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RunbookParameterElementType',
                       type: {
@@ -97,13 +90,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               output_types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

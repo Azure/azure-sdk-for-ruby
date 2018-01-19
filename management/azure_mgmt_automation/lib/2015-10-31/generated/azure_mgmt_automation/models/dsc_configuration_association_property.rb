@@ -22,7 +22,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscConfigurationAssociationProperty',
           type: {
@@ -30,7 +29,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscConfigurationAssociationProperty',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
