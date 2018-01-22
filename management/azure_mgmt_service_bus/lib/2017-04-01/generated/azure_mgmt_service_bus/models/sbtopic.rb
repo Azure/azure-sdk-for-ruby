@@ -83,7 +83,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SBTopic',
           type: {
@@ -91,7 +90,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'SBTopic',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -100,7 +98,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -109,7 +106,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -118,7 +114,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               size_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.sizeInBytes',
@@ -127,7 +122,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               created_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -136,7 +130,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               updated_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
@@ -145,7 +138,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               accessed_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.accessedAt',
@@ -154,7 +146,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               subscription_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subscriptionCount',
@@ -163,7 +154,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               count_details: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.countDetails',
@@ -173,7 +163,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               default_message_time_to_live: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultMessageTimeToLive',
                 type: {
@@ -181,7 +170,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               max_size_in_megabytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxSizeInMegabytes',
                 type: {
@@ -189,7 +177,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               requires_duplicate_detection: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requiresDuplicateDetection',
                 type: {
@@ -197,7 +184,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               duplicate_detection_history_time_window: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.duplicateDetectionHistoryTimeWindow',
                 type: {
@@ -205,7 +191,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               enable_batched_operations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableBatchedOperations',
                 type: {
@@ -213,7 +198,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -222,7 +206,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               support_ordering: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.supportOrdering',
                 type: {
@@ -230,7 +213,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               auto_delete_on_idle: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
@@ -238,7 +220,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               enable_partitioning: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enablePartitioning',
                 type: {
@@ -246,7 +227,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               enable_express: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableExpress',
                 type: {
