@@ -6,34 +6,44 @@
 module Azure::AnalysisServices::Mgmt::V2017_07_14
   module Models
     #
-    # Detail of gateway errors
+    # The checking result of server name availibility.
     #
-    class GatewayError
+    class CheckServerNameAvailabilityResult
 
       include MsRestAzure
 
-      # @return [String] Error code of list gateway.
-      attr_accessor :code
+      # @return [Boolean] Indicator of available of the server name.
+      attr_accessor :name_available
 
-      # @return [String] Error message of list gateway.
+      # @return [String] The reason of unavailability.
+      attr_accessor :reason
+
+      # @return [String] The detailed message of the request unavailability.
       attr_accessor :message
 
 
       #
-      # Mapper for GatewayError class as Ruby Hash.
+      # Mapper for CheckServerNameAvailabilityResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'GatewayError',
+          serialized_name: 'CheckServerNameAvailabilityResult',
           type: {
             name: 'Composite',
-            class_name: 'GatewayError',
+            class_name: 'CheckServerNameAvailabilityResult',
             model_properties: {
-              code: {
+              name_available: {
                 required: false,
-                serialized_name: 'code',
+                serialized_name: 'nameAvailable',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              reason: {
+                required: false,
+                serialized_name: 'reason',
                 type: {
                   name: 'String'
                 }
