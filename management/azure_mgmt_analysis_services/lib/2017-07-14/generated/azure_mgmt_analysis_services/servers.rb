@@ -73,13 +73,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def get_details_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -410,9 +404,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -678,13 +669,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def list_skus_for_existing_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -784,13 +769,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def list_gateway_status_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -889,13 +868,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def dissociate_gateway_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -928,6 +901,299 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Check the name availability in the target location.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param server_parameters [CheckServerNameAvailabilityParameters] Contains the
+    # information used to provision the Analysis Services server.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckServerNameAvailabilityResult] operation results.
+    #
+    def check_name_availability(location, server_parameters, custom_headers = nil)
+      response = check_name_availability_async(location, server_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check the name availability in the target location.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param server_parameters [CheckServerNameAvailabilityParameters] Contains the
+    # information used to provision the Analysis Services server.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_with_http_info(location, server_parameters, custom_headers = nil)
+      check_name_availability_async(location, server_parameters, custom_headers).value!
+    end
+
+    #
+    # Check the name availability in the target location.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param server_parameters [CheckServerNameAvailabilityParameters] Contains the
+    # information used to provision the Analysis Services server.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_async(location, server_parameters, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'server_parameters is nil' if server_parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::CheckServerNameAvailabilityParameters.mapper()
+      request_content = @client.serialize(request_mapper,  server_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'location' => location,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::CheckServerNameAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List the result of the specified operation.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param operation_id [String] The target operation Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def list_operation_results(location, operation_id, custom_headers = nil)
+      response = list_operation_results_async(location, operation_id, custom_headers).value!
+      nil
+    end
+
+    #
+    # List the result of the specified operation.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param operation_id [String] The target operation Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_operation_results_with_http_info(location, operation_id, custom_headers = nil)
+      list_operation_results_async(location, operation_id, custom_headers).value!
+    end
+
+    #
+    # List the result of the specified operation.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param operation_id [String] The target operation Id.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_operation_results_async(location, operation_id, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'location' => location,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List the status of operation.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param operation_id [String] The target operation Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [OperationStatus] operation results.
+    #
+    def list_operation_statuses(location, operation_id, custom_headers = nil)
+      response = list_operation_statuses_async(location, operation_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List the status of operation.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param operation_id [String] The target operation Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_operation_statuses_with_http_info(location, operation_id, custom_headers = nil)
+      list_operation_statuses_async(location, operation_id, custom_headers).value!
+    end
+
+    #
+    # List the status of operation.
+    #
+    # @param location [String] The region name which the operation will lookup
+    # into.
+    # @param operation_id [String] The target operation Id.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_operation_statuses_async(location, operation_id, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'location' => location,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::OperationStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::OperationStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -994,13 +1260,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_create_async(resource_group_name, server_name, server_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, 'server_parameters is nil' if server_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1119,13 +1379,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_delete_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -1221,13 +1475,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, 'server_update_parameters is nil' if server_update_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1346,13 +1594,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_suspend_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -1441,13 +1683,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_resume_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

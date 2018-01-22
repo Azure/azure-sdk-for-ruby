@@ -6,43 +6,48 @@
 module Azure::AnalysisServices::Mgmt::V2016_05_16
   module Models
     #
-    # Represents the SKU name and Azure pricing tier for Analysis Services
-    # resource.
+    # Details of server name request body.
     #
-    class ResourceSku
+    class CheckServerNameAvailabilityParameters
 
       include MsRestAzure
 
-      # @return [String] Name of the SKU level.
+      # @return [String] Name for checking availability.
       attr_accessor :name
 
-      # @return [SkuTier] The name of the Azure pricing tier to which the SKU
-      # applies. Possible values include: 'Development', 'Basic', 'Standard'
-      attr_accessor :tier
+      # @return [String] The resource type of azure analysis services. Default
+      # value: 'Microsoft.AnalysisServices/servers' .
+      attr_accessor :type
 
 
       #
-      # Mapper for ResourceSku class as Ruby Hash.
+      # Mapper for CheckServerNameAvailabilityParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ResourceSku',
+          serialized_name: 'CheckServerNameAvailabilityParameters',
           type: {
             name: 'Composite',
-            class_name: 'ResourceSku',
+            class_name: 'CheckServerNameAvailabilityParameters',
             model_properties: {
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
+                constraints: {
+                  MaxLength: 63,
+                  MinLength: 3,
+                  Pattern: '^[a-z][a-z0-9]*$'
+                },
                 type: {
                   name: 'String'
                 }
               },
-              tier: {
+              type: {
                 required: false,
-                serialized_name: 'tier',
+                serialized_name: 'type',
+                default_value: 'Microsoft.AnalysisServices/servers',
                 type: {
                   name: 'String'
                 }

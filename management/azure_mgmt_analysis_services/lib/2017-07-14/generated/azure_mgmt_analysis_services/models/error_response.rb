@@ -6,43 +6,41 @@
 module Azure::AnalysisServices::Mgmt::V2017_07_14
   module Models
     #
-    # Represents the SKU name and Azure pricing tier for Analysis Services
-    # resource.
+    # Describes the format of Error response.
     #
-    class ResourceSku
+    class ErrorResponse
 
       include MsRestAzure
 
-      # @return [String] Name of the SKU level.
-      attr_accessor :name
+      # @return [String] Error code
+      attr_accessor :code
 
-      # @return [SkuTier] The name of the Azure pricing tier to which the SKU
-      # applies. Possible values include: 'Development', 'Basic', 'Standard'
-      attr_accessor :tier
+      # @return [String] Error message indicating why the operation failed.
+      attr_accessor :message
 
 
       #
-      # Mapper for ResourceSku class as Ruby Hash.
+      # Mapper for ErrorResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ResourceSku',
+          serialized_name: 'ErrorResponse',
           type: {
             name: 'Composite',
-            class_name: 'ResourceSku',
+            class_name: 'ErrorResponse',
             model_properties: {
-              name: {
-                required: true,
-                serialized_name: 'name',
+              code: {
+                required: false,
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              tier: {
+              message: {
                 required: false,
-                serialized_name: 'tier',
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }
