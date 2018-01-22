@@ -27,8 +27,8 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
       # @return [String] Link to the privacy policy of the publisher.
       attr_accessor :privacy_policy_link
 
-      # @return [String] Date and time in UTC of when the terms were accepted.
-      # This is empty if Accepted is false.
+      # @return [DateTime] Date and time in UTC of when the terms were
+      # accepted. This is empty if Accepted is false.
       attr_accessor :retrieve_datetime
 
       # @return [String] Terms signature.
@@ -114,7 +114,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 required: false,
                 serialized_name: 'properties.retrieveDatetime',
                 type: {
-                  name: 'String'
+                  name: 'DateTime'
                 }
               },
               signature: {
