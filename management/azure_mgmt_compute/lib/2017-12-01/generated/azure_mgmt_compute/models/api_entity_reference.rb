@@ -23,7 +23,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiEntityReference',
           type: {
@@ -31,7 +30,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'ApiEntityReference',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
