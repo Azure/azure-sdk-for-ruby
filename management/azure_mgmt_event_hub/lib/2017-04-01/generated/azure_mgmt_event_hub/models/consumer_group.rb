@@ -31,7 +31,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConsumerGroup',
           type: {
@@ -39,7 +38,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'ConsumerGroup',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +54,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,7 +62,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               created_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -75,7 +70,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               updated_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
@@ -84,7 +78,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               user_metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userMetadata',
                 type: {
