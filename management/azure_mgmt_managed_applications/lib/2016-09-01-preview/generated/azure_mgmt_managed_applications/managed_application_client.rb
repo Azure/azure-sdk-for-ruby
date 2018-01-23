@@ -124,7 +124,9 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_managed_applications'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::ManagedApplications::Mgmt::V2016_09_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ManagedApplications::Mgmt::V2016_09_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

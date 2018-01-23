@@ -22,7 +22,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       attr_accessor :properties
 
       # @return [String] The location of the resource group. It cannot be
-      # changed after the resource group has been created. It muct be one of
+      # changed after the resource group has been created. It must be one of
       # the supported Azure locations.
       attr_accessor :location
 
@@ -41,7 +41,6 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceGroup',
           type: {
@@ -49,7 +48,6 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ResourceGroup',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -58,7 +56,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -66,7 +63,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -75,7 +71,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -83,7 +78,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               managed_by: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedBy',
                 type: {
@@ -91,13 +85,11 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

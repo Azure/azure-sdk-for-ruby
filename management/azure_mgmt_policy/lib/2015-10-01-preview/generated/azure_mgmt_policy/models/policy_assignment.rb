@@ -37,7 +37,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyAssignment',
           type: {
@@ -45,7 +44,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
             class_name: 'PolicyAssignment',
             model_properties: {
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
                 }
               },
               policy_definition_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.policyDefinitionId',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
                 }
               },
               scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scope',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -77,7 +72,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -85,7 +79,6 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
