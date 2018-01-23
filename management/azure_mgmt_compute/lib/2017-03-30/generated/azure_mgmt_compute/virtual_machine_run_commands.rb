@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # VirtualMachineRunCommands
+  # Compute Client
   #
   class VirtualMachineRunCommands
     include MsRestAzure
@@ -59,7 +59,6 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     def list_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, "'location' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !location.nil? && location.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -150,7 +149,6 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     def get_async(location, command_id, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, "'location' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !location.nil? && location.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'command_id is nil' if command_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

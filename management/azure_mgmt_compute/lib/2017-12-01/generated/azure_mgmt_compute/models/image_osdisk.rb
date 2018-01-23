@@ -55,7 +55,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageOSDisk',
           type: {
@@ -63,7 +62,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'ImageOSDisk',
             model_properties: {
               os_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'osType',
                 type: {
@@ -72,7 +70,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               os_state: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'osState',
                 type: {
@@ -81,7 +78,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               snapshot: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'snapshot',
                 type: {
@@ -90,7 +86,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               managed_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {
@@ -99,7 +94,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               blob_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobUri',
                 type: {
@@ -107,7 +101,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -116,7 +109,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
@@ -124,7 +116,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               storage_account_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountType',
                 type: {

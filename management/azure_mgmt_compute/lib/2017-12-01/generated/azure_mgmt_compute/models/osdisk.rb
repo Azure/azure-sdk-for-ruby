@@ -45,6 +45,10 @@ module Azure::Compute::Mgmt::V2017_12_01
       # 'ReadWrite'
       attr_accessor :caching
 
+      # @return [Boolean] Specifies whether writeAccelerator should be enabled
+      # or disabled on the disk.
+      attr_accessor :write_accelerator_enabled
+
       # @return [DiskCreateOptionTypes] Specifies how the virtual machine
       # should be created.<br><br> Possible values are:<br><br> **Attach**
       # \u2013 This value is used when you are using a specialized disk to
@@ -72,7 +76,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OSDisk',
           type: {
@@ -80,7 +83,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'OSDisk',
             model_properties: {
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -89,7 +91,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               encryption_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionSettings',
                 type: {
@@ -98,7 +99,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -106,7 +106,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               vhd: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhd',
                 type: {
@@ -115,7 +114,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'image',
                 type: {
@@ -124,7 +122,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -132,8 +129,14 @@ module Azure::Compute::Mgmt::V2017_12_01
                   module: 'CachingTypes'
                 }
               },
+              write_accelerator_enabled: {
+                required: false,
+                serialized_name: 'writeAcceleratorEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               create_option: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -142,7 +145,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
@@ -150,7 +152,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               managed_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {

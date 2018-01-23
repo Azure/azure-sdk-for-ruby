@@ -17,6 +17,10 @@ module Azure::Compute::Mgmt::V2017_12_01
       # 'None', 'ReadOnly', 'ReadWrite'
       attr_accessor :caching
 
+      # @return [Boolean] Specifies whether writeAccelerator should be enabled
+      # or disabled on the disk.
+      attr_accessor :write_accelerator_enabled
+
       # @return [VirtualHardDisk] The Source User Image VirtualHardDisk. This
       # VirtualHardDisk will be copied before using it to attach to the Virtual
       # Machine. If SourceImage is provided, the destination VirtualHardDisk
@@ -37,7 +41,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateOSDisk',
           type: {
@@ -45,7 +48,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineScaleSetUpdateOSDisk',
             model_properties: {
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -53,8 +55,14 @@ module Azure::Compute::Mgmt::V2017_12_01
                   module: 'CachingTypes'
                 }
               },
+              write_accelerator_enabled: {
+                required: false,
+                serialized_name: 'writeAcceleratorEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'image',
                 type: {
@@ -63,13 +71,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               vhd_containers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdContainers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -79,7 +85,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               managed_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {
