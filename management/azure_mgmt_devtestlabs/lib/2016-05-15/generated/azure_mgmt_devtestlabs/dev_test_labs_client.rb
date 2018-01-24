@@ -34,8 +34,14 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [ProviderOperations] provider_operations
+    attr_reader :provider_operations
+
     # @return [Labs] labs
     attr_reader :labs
+
+    # @return [Operations] operations
+    attr_reader :operations
 
     # @return [GlobalSchedules] global_schedules
     attr_reader :global_schedules
@@ -110,7 +116,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @provider_operations = ProviderOperations.new(self)
       @labs = Labs.new(self)
+      @operations = Operations.new(self)
       @global_schedules = GlobalSchedules.new(self)
       @artifact_sources = ArtifactSources.new(self)
       @arm_templates = ArmTemplates.new(self)
@@ -200,7 +208,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_devtestlabs'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::DevTestLabs::Mgmt::V2016_05_15::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::DevTestLabs::Mgmt::V2016_05_15::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
