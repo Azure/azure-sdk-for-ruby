@@ -30,7 +30,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       # @return [ProvisioningState] Gets the status of the cognitive services
       # account at the time the operation was called. Possible values include:
-      # 'Creating', 'ResolvingDNS', 'Succeeded', 'Failed'
+      # 'Creating', 'ResolvingDNS', 'Moving', 'Deleting', 'Succeeded', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [String] Endpoint of the created account.
@@ -114,8 +114,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Enum',
-                  module: 'ProvisioningState'
+                  name: 'String'
                 }
               },
               endpoint: {
