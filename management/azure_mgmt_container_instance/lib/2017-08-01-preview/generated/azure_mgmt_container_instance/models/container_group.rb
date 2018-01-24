@@ -51,7 +51,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerGroup',
           type: {
@@ -59,7 +58,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'ContainerGroup',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,7 +66,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -77,7 +74,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -86,7 +82,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -94,13 +89,11 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -110,7 +103,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -119,13 +111,11 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               containers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.containers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContainerElementType',
                       type: {
@@ -136,13 +126,11 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               image_registry_credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.imageRegistryCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ImageRegistryCredentialElementType',
                       type: {
@@ -153,7 +141,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               restart_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.restartPolicy',
                 type: {
@@ -161,7 +148,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipAddress',
                 type: {
@@ -170,7 +156,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osType',
                 type: {
@@ -178,7 +163,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -187,13 +171,11 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               volumes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.volumes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VolumeElementType',
                       type: {
