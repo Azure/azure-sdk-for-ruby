@@ -33,7 +33,6 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceGroupPatchable',
           type: {
@@ -41,7 +40,6 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ResourceGroupPatchable',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               managed_by: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedBy',
                 type: {
@@ -66,13 +62,11 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
