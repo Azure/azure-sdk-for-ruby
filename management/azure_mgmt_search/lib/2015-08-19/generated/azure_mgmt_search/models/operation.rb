@@ -6,31 +6,31 @@
 module Azure::Search::Mgmt::V2015_08_19
   module Models
     #
-    # Describes an API key for a given Azure Search service that has
-    # permissions for query operations only.
+    # Describes a REST API operation.
     #
-    class QueryKey
+    class Operation
 
       include MsRestAzure
 
-      # @return [String] The name of the query API key; may be empty.
+      # @return [String] The name of the operation. This name is of the form
+      # {provider}/{resource}/{operation}.
       attr_accessor :name
 
-      # @return [String] The value of the query API key.
-      attr_accessor :key
+      # @return [OperationDisplay] The object that describes the operation.
+      attr_accessor :display
 
 
       #
-      # Mapper for QueryKey class as Ruby Hash.
+      # Mapper for Operation class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'QueryKey',
+          serialized_name: 'Operation',
           type: {
             name: 'Composite',
-            class_name: 'QueryKey',
+            class_name: 'Operation',
             model_properties: {
               name: {
                 required: false,
@@ -40,12 +40,13 @@ module Azure::Search::Mgmt::V2015_08_19
                   name: 'String'
                 }
               },
-              key: {
+              display: {
                 required: false,
                 read_only: true,
-                serialized_name: 'key',
+                serialized_name: 'display',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'OperationDisplay'
                 }
               }
             }
