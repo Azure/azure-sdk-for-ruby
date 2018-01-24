@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # VirtualMachineSizes
+  # Compute Client
   #
   class VirtualMachineSizes
     include MsRestAzure
@@ -62,7 +62,6 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     def list_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, "'location' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !location.nil? && location.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

@@ -23,7 +23,6 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceSshConfiguration',
           type: {
@@ -31,13 +30,11 @@ module Azure::ContainerService::Mgmt::V2016_03_30
             class_name: 'ContainerServiceSshConfiguration',
             model_properties: {
               public_keys: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'publicKeys',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContainerServiceSshPublicKeyElementType',
                       type: {

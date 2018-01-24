@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerService::Mgmt::V2016_09_30
+module Azure::ContainerService::Mgmt::V2016_03_30
   #
   # A service client - single point of access to the REST API.
   #
-  class ContainerServiceClient < MsRestAzure::AzureServiceClient
+  class ComputeManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -40,7 +40,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
     attr_reader :container_services
 
     #
-    # Creates initializes a new instance of the ContainerServiceClient class.
+    # Creates initializes a new instance of the ComputeManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -53,7 +53,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       @credentials = credentials
 
       @container_services = ContainerServices.new(self)
-      @api_version = '2016-09-30'
+      @api_version = '2016-03-30'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -122,7 +122,9 @@ module Azure::ContainerService::Mgmt::V2016_09_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_service'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::ContainerService::Mgmt::V2016_03_30::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ContainerService::Mgmt::V2016_03_30::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
