@@ -65,7 +65,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ARMInnerError',
           type: {
@@ -73,7 +72,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ARMInnerError',
             model_properties: {
               trace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'trace',
                 type: {
@@ -81,7 +79,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 type: {
@@ -89,7 +86,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               method_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'methodStatus',
                 type: {
@@ -98,7 +94,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               cloud_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloudId',
                 type: {
@@ -106,7 +101,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               h_vhost_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hVHostId',
                 type: {
@@ -114,7 +108,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               h_vcluster_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hVClusterId',
                 type: {
@@ -122,7 +115,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               network_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkId',
                 type: {
@@ -130,7 +122,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmId',
                 type: {
@@ -138,7 +129,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricId',
                 type: {
@@ -146,7 +136,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               live_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'liveId',
                 type: {
@@ -154,7 +143,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               container_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerId',
                 type: {
@@ -162,7 +150,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -170,7 +157,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resource_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceName',
                 type: {
@@ -178,7 +164,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -186,7 +171,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               serialized_srslog_context: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serializedSRSLogContext',
                 type: {
