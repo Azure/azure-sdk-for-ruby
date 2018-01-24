@@ -32,7 +32,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Image',
           type: {
@@ -40,7 +39,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'Image',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,7 +47,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -58,7 +55,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,7 +63,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -75,13 +70,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,7 +84,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               source_virtual_machine: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceVirtualMachine',
                 type: {
@@ -100,7 +92,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               storage_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageProfile',
                 type: {
@@ -109,7 +100,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

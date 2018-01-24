@@ -27,7 +27,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineStatusCodeCount',
           type: {
@@ -35,7 +34,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineStatusCodeCount',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -44,7 +42,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'count',
