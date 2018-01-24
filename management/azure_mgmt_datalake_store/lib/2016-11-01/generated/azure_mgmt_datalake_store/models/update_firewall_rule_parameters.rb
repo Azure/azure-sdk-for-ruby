@@ -6,7 +6,7 @@
 module Azure::DataLakeStore::Mgmt::V2016_11_01
   module Models
     #
-    # Data Lake Analytics firewall rule update parameters
+    # Data Lake Store firewall rule update parameters
     #
     class UpdateFirewallRuleParameters
 
