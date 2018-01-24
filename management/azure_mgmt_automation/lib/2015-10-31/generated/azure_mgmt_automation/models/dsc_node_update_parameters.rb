@@ -26,7 +26,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscNodeUpdateParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscNodeUpdateParameters',
             model_properties: {
               node_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nodeId',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               node_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nodeConfiguration',
                 type: {

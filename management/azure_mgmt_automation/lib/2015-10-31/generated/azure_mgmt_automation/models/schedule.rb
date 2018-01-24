@@ -69,7 +69,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Schedule',
           type: {
@@ -77,7 +76,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Schedule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -85,7 +83,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -93,7 +90,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -101,7 +97,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               start_time_offset_minutes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTimeOffsetMinutes',
@@ -110,7 +105,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               expiry_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expiryTime',
                 type: {
@@ -118,7 +112,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               expiry_time_offset_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expiryTimeOffsetMinutes',
                 type: {
@@ -126,7 +119,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isEnabled',
                 default_value: false,
@@ -135,7 +127,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               next_run: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.nextRun',
                 type: {
@@ -143,7 +134,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               next_run_offset_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.nextRunOffsetMinutes',
                 type: {
@@ -151,7 +141,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.interval',
                 type: {
@@ -159,7 +148,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               frequency: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frequency',
                 type: {
@@ -167,7 +155,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               time_zone: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeZone',
                 type: {
@@ -175,7 +162,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               advanced_schedule: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.advancedSchedule',
                 type: {
@@ -184,7 +170,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -192,7 +177,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -200,7 +184,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

@@ -60,7 +60,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Webhook',
           type: {
@@ -68,7 +67,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Webhook',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -76,7 +74,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -84,7 +81,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isEnabled',
                 default_value: false,
@@ -93,7 +89,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uri',
                 type: {
@@ -101,7 +96,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               expiry_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expiryTime',
                 type: {
@@ -109,7 +103,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_invoked_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastInvokedTime',
                 type: {
@@ -117,13 +110,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -133,7 +124,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               runbook: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runbook',
                 type: {
@@ -142,7 +132,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               run_on: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runOn',
                 type: {
@@ -150,7 +139,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -158,7 +146,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -166,7 +153,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
