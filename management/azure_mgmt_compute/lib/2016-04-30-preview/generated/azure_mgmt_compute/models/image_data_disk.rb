@@ -45,7 +45,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageDataDisk',
           type: {
@@ -53,7 +52,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'ImageDataDisk',
             model_properties: {
               lun: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lun',
                 type: {
@@ -61,7 +59,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               snapshot: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'snapshot',
                 type: {
@@ -70,7 +67,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               managed_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {
@@ -79,7 +75,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               blob_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobUri',
                 type: {
@@ -87,7 +82,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -96,7 +90,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
