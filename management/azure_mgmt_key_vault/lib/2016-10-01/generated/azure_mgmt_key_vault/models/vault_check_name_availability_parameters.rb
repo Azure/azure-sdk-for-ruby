@@ -6,48 +6,46 @@
 module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
-    # SKU details
+    # The parameters used to check the availabity of the vault name.
     #
-    class Sku
+    class VaultCheckNameAvailabilityParameters
 
       include MsRestAzure
 
-      # @return [String] SKU family name. Default value: 'A' .
-      attr_accessor :family
-
-      # @return [SkuName] SKU name to specify whether the key vault is a
-      # standard vault or a premium vault. Possible values include: 'standard',
-      # 'premium'
+      # @return [String] The vault name.
       attr_accessor :name
+
+      # @return [String] The type of resource, Microsoft.KeyVault/vaults.
+      # Default value: 'Microsoft.KeyVault/vaults' .
+      attr_accessor :type
 
 
       #
-      # Mapper for Sku class as Ruby Hash.
+      # Mapper for VaultCheckNameAvailabilityParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Sku',
+          serialized_name: 'VaultCheckNameAvailabilityParameters',
           type: {
             name: 'Composite',
-            class_name: 'Sku',
+            class_name: 'VaultCheckNameAvailabilityParameters',
             model_properties: {
-              family: {
-                required: true,
-                is_constant: true,
-                serialized_name: 'family',
-                default_value: 'A',
-                type: {
-                  name: 'String'
-                }
-              },
               name: {
                 required: true,
                 serialized_name: 'name',
                 type: {
-                  name: 'Enum',
-                  module: 'SkuName'
+                  name: 'String'
+                }
+              },
+              type: {
+                required: true,
+                is_constant: true,
+                serialized_name: 'type',
+                default_value: 'Microsoft.KeyVault/vaults',
+                type: {
+                  name: 'String'
                 }
               }
             }
