@@ -33,6 +33,18 @@ module Azure::Monitor::Mgmt::V2017_04_01
       # part of this action group.
       attr_accessor :webhook_receivers
 
+      # @return [Array<ItsmReceiver>] The list of ITSM receivers that are part
+      # of this action group.
+      attr_accessor :itsm_receivers
+
+      # @return [Array<AzureAppPushReceiver>] The list of AzureAppPush
+      # receivers that are part of this action group.
+      attr_accessor :azure_app_push_receivers
+
+      # @return [Array<AutomationRunbookReceiver>] The list of
+      # AutomationRunbook receivers that are part of this action group.
+      attr_accessor :automation_runbook_receivers
+
 
       #
       # Mapper for ActionGroupResource class as Ruby Hash.
@@ -40,7 +52,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ActionGroupResource',
           type: {
@@ -48,7 +59,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActionGroupResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,7 +67,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,7 +75,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -75,7 +83,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -83,13 +90,11 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -99,7 +104,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               group_short_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.groupShortName',
                 constraints: {
@@ -110,7 +114,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.enabled',
                 default_value: true,
@@ -119,13 +122,11 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               email_receivers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.emailReceivers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EmailReceiverElementType',
                       type: {
@@ -136,13 +137,11 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               sms_receivers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.smsReceivers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SmsReceiverElementType',
                       type: {
@@ -153,18 +152,61 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               webhook_receivers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.webhookReceivers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WebhookReceiverElementType',
                       type: {
                         name: 'Composite',
                         class_name: 'WebhookReceiver'
+                      }
+                  }
+                }
+              },
+              itsm_receivers: {
+                required: false,
+                serialized_name: 'properties.itsmReceivers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ItsmReceiverElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ItsmReceiver'
+                      }
+                  }
+                }
+              },
+              azure_app_push_receivers: {
+                required: false,
+                serialized_name: 'properties.azureAppPushReceivers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AzureAppPushReceiverElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AzureAppPushReceiver'
+                      }
+                  }
+                }
+              },
+              automation_runbook_receivers: {
+                required: false,
+                serialized_name: 'properties.automationRunbookReceivers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AutomationRunbookReceiverElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AutomationRunbookReceiver'
                       }
                   }
                 }
