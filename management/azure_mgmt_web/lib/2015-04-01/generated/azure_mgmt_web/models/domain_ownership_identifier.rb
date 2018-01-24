@@ -88,6 +88,14 @@ module Azure::Web::Mgmt::V2015_04_01
                   }
                 }
               },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceIdentity'
+                }
+              },
               ownership_id: {
                 client_side_validation: true,
                 required: false,

@@ -97,6 +97,14 @@ module Azure::Web::Mgmt::V2015_08_01
                   }
                 }
               },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceIdentity'
+                }
+              },
               certificate_order_action_type: {
                 client_side_validation: true,
                 required: false,
