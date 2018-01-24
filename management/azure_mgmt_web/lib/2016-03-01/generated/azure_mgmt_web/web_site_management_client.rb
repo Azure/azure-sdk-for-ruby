@@ -401,6 +401,98 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # Gets source control token
+    #
+    # Gets source control token
+    #
+    # @param source_control_type [String] Type of source control
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SourceControl] operation results.
+    #
+    def get_source_control(source_control_type, custom_headers = nil)
+      response = get_source_control_async(source_control_type, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets source control token
+    #
+    # Gets source control token
+    #
+    # @param source_control_type [String] Type of source control
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_source_control_with_http_info(source_control_type, custom_headers = nil)
+      get_source_control_async(source_control_type, custom_headers).value!
+    end
+
+    #
+    # Gets source control token
+    #
+    # Gets source control token
+    #
+    # @param source_control_type [String] Type of source control
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_source_control_async(source_control_type, custom_headers = nil)
+      fail ArgumentError, 'source_control_type is nil' if source_control_type.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'providers/Microsoft.Web/sourcecontrols/{sourceControlType}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'sourceControlType' => source_control_type},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Updates source control token
     #
     # Updates source control token
@@ -512,7 +604,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Site', 'Slot', 'HostingEnvironment'
+    # Possible values include: 'Site', 'Slot', 'HostingEnvironment',
+    # 'PublishingUser', 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots',
+    # 'Microsoft.Web/hostingEnvironments', 'Microsoft.Web/publishingUsers'
     # @param is_fqdn [Boolean] Is fully qualified domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -531,7 +625,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Site', 'Slot', 'HostingEnvironment'
+    # Possible values include: 'Site', 'Slot', 'HostingEnvironment',
+    # 'PublishingUser', 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots',
+    # 'Microsoft.Web/hostingEnvironments', 'Microsoft.Web/publishingUsers'
     # @param is_fqdn [Boolean] Is fully qualified domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -549,7 +645,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Site', 'Slot', 'HostingEnvironment'
+    # Possible values include: 'Site', 'Slot', 'HostingEnvironment',
+    # 'PublishingUser', 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots',
+    # 'Microsoft.Web/hostingEnvironments', 'Microsoft.Web/publishingUsers'
     # @param is_fqdn [Boolean] Is fully qualified domain name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -611,6 +709,95 @@ module Azure::Web::Mgmt::V2016_03_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailability.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets list of available geo regions plus ministamps
+    #
+    # Gets list of available geo regions plus ministamps
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DeploymentLocations] operation results.
+    #
+    def get_subscription_deployment_locations(custom_headers = nil)
+      response = get_subscription_deployment_locations_async(custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets list of available geo regions plus ministamps
+    #
+    # Gets list of available geo regions plus ministamps
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_subscription_deployment_locations_with_http_info(custom_headers = nil)
+      get_subscription_deployment_locations_async(custom_headers).value!
+    end
+
+    #
+    # Gets list of available geo regions plus ministamps
+    #
+    # Gets list of available geo regions plus ministamps
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_subscription_deployment_locations_async(custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/deploymentLocations'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DeploymentLocations.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -715,6 +902,108 @@ module Azure::Web::Mgmt::V2016_03_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param name_identifier [NameIdentifier] Hostname information.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Identifier>] operation results.
+    #
+    def list_site_identifiers_assigned_to_host_name(name_identifier, custom_headers = nil)
+      first_page = list_site_identifiers_assigned_to_host_name_as_lazy(name_identifier, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param name_identifier [NameIdentifier] Hostname information.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_site_identifiers_assigned_to_host_name_with_http_info(name_identifier, custom_headers = nil)
+      list_site_identifiers_assigned_to_host_name_async(name_identifier, custom_headers).value!
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param name_identifier [NameIdentifier] Hostname information.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_site_identifiers_assigned_to_host_name_async(name_identifier, custom_headers = nil)
+      fail ArgumentError, 'name_identifier is nil' if name_identifier.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::NameIdentifier.mapper()
+      request_content = self.serialize(request_mapper,  name_identifier)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/listSitesAssignedToHostName'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::IdentifierCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -906,7 +1195,8 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
-    # Verifies if this VNET is compatible with an App Service Environment.
+    # Verifies if this VNET is compatible with an App Service Environment by
+    # analyzing the Network Security Group rules.
     #
     # Verifies if this VNET is compatible with an App Service Environment by
     # analyzing the Network Security Group rules.
@@ -923,7 +1213,8 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
-    # Verifies if this VNET is compatible with an App Service Environment.
+    # Verifies if this VNET is compatible with an App Service Environment by
+    # analyzing the Network Security Group rules.
     #
     # Verifies if this VNET is compatible with an App Service Environment by
     # analyzing the Network Security Group rules.
@@ -939,7 +1230,8 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
-    # Verifies if this VNET is compatible with an App Service Environment.
+    # Verifies if this VNET is compatible with an App Service Environment by
+    # analyzing the Network Security Group rules.
     #
     # Verifies if this VNET is compatible with an App Service Environment by
     # analyzing the Network Security Group rules.
@@ -1062,9 +1354,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1167,9 +1456,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def validate_async(resource_group_name, validate_request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'validate_request is nil' if validate_request.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1281,9 +1567,6 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def validate_move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1507,6 +1790,99 @@ module Azure::Web::Mgmt::V2016_03_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IdentifierCollection] operation results.
+    #
+    def list_site_identifiers_assigned_to_host_name_next(next_page_link, custom_headers = nil)
+      response = list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_site_identifiers_assigned_to_host_name_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::IdentifierCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1791,6 +2167,100 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param name_identifier [NameIdentifier] Hostname information.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IdentifierCollection] operation results.
+    #
+    def list_site_identifiers_assigned_to_host_name_as_lazy(name_identifier, custom_headers = nil)
+      first_page = list_site_identifiers_assigned_to_host_name_as_lazy_as_lazy(name_identifier, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param name_identifier [NameIdentifier] Hostname information.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_site_identifiers_assigned_to_host_name_as_lazy_with_http_info(name_identifier, custom_headers = nil)
+      list_site_identifiers_assigned_to_host_name_as_lazy_async(name_identifier, custom_headers).value!
+    end
+
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # List all apps that are assigned to a hostname.
+    #
+    # @param name_identifier [NameIdentifier] Hostname information.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_site_identifiers_assigned_to_host_name_as_lazy_async(name_identifier, custom_headers = nil)
+      fail ArgumentError, 'name_identifier is nil' if name_identifier.nil?
+
+
+      request_headers = {}
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::NameIdentifier.mapper()
+      request_content = self.serialize(request_mapper,  name_identifier)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/listSitesAssignedToHostName'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::IdentifierCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # List all premier add-on offers.
     #
     # List all premier add-on offers.
@@ -1878,7 +2348,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::Web::Mgmt::V2016_03_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Web::Mgmt::V2016_03_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

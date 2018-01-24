@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NameValuePair',
           type: {
@@ -33,7 +32,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'NameValuePair',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
