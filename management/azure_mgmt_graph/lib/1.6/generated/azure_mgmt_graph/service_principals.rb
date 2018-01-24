@@ -258,8 +258,7 @@ module Azure::Graph::Mgmt::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -336,8 +335,7 @@ module Azure::Graph::Mgmt::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -427,8 +425,7 @@ module Azure::Graph::Mgmt::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -532,8 +529,7 @@ module Azure::Graph::Mgmt::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -611,8 +607,7 @@ module Azure::Graph::Mgmt::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -713,8 +708,7 @@ module Azure::Graph::Mgmt::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
