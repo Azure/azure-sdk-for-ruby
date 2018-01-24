@@ -8,7 +8,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # Properties of the vault
     #
-    class VaultProperties
+    class VaultPatchProperties
 
       include MsRestAzure
 
@@ -23,10 +23,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       # have access to the key vault. All identities in the array must use the
       # same tenant ID as the key vault's tenant ID.
       attr_accessor :access_policies
-
-      # @return [String] The URI of the vault for performing operations on keys
-      # and secrets.
-      attr_accessor :vault_uri
 
       # @return [Boolean] Property to specify whether Azure Virtual Machines
       # are permitted to retrieve certificates stored as secrets from the key
@@ -53,28 +49,27 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
 
       #
-      # Mapper for VaultProperties class as Ruby Hash.
+      # Mapper for VaultPatchProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VaultProperties',
+          serialized_name: 'VaultPatchProperties',
           type: {
             name: 'Composite',
-            class_name: 'VaultProperties',
+            class_name: 'VaultPatchProperties',
             model_properties: {
               tenant_id: {
-                required: true,
+                required: false,
                 serialized_name: 'tenantId',
                 type: {
                   name: 'String'
                 }
               },
               sku: {
-                required: true,
+                required: false,
                 serialized_name: 'sku',
-                default_value: {},
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
@@ -93,14 +88,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                         class_name: 'AccessPolicyEntry'
                       }
                   }
-                }
-              },
-              vault_uri: {
-                required: false,
-                read_only: true,
-                serialized_name: 'vaultUri',
-                type: {
-                  name: 'String'
                 }
               },
               enabled_for_deployment: {

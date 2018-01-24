@@ -8,25 +8,25 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # Resource information with extended details.
     #
-    class Vault < Resource
+    class Secret < Resource
 
       include MsRestAzure
 
-      # @return [VaultProperties] Properties of the vault
+      # @return [SecretProperties] Properties of the secret
       attr_accessor :properties
 
 
       #
-      # Mapper for Vault class as Ruby Hash.
+      # Mapper for Secret class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Vault',
+          serialized_name: 'Secret',
           type: {
             name: 'Composite',
-            class_name: 'Vault',
+            class_name: 'Secret',
             model_properties: {
               id: {
                 required: false,
@@ -76,10 +76,9 @@ module Azure::KeyVault::Mgmt::V2016_10_01
               properties: {
                 required: true,
                 serialized_name: 'properties',
-                default_value: {},
                 type: {
                   name: 'Composite',
-                  class_name: 'VaultProperties'
+                  class_name: 'SecretProperties'
                 }
               }
             }

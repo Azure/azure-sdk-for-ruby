@@ -3,46 +3,35 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::KeyVault::Mgmt::V2015_06_01
+module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
-    # Parameters for creating or updating a vault
+    # Parameters for patching a secret
     #
-    class VaultCreateOrUpdateParameters
+    class SecretPatchParameters
 
       include MsRestAzure
 
-      # @return [String] The supported Azure location where the key vault
-      # should be created.
-      attr_accessor :location
-
       # @return [Hash{String => String}] The tags that will be assigned to the
-      # key vault.
+      # secret.
       attr_accessor :tags
 
-      # @return [VaultProperties] Properties of the vault
+      # @return [SecretPatchProperties] Properties of the secret
       attr_accessor :properties
 
 
       #
-      # Mapper for VaultCreateOrUpdateParameters class as Ruby Hash.
+      # Mapper for SecretPatchParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VaultCreateOrUpdateParameters',
+          serialized_name: 'SecretPatchParameters',
           type: {
             name: 'Composite',
-            class_name: 'VaultCreateOrUpdateParameters',
+            class_name: 'SecretPatchParameters',
             model_properties: {
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -58,12 +47,11 @@ module Azure::KeyVault::Mgmt::V2015_06_01
                 }
               },
               properties: {
-                required: true,
+                required: false,
                 serialized_name: 'properties',
-                default_value: {},
                 type: {
                   name: 'Composite',
-                  class_name: 'VaultProperties'
+                  class_name: 'SecretPatchProperties'
                 }
               }
             }

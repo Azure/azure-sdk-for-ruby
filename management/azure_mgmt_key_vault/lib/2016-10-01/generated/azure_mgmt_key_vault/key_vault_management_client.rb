@@ -17,7 +17,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
+    # @return [String] Subscription credentials which uniquely identify
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
@@ -39,6 +39,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # @return [Vaults] vaults
     attr_reader :vaults
 
+    # @return [Operations] operations
+    attr_reader :operations
+
+    # @return [Secrets] secrets
+    attr_reader :secrets
+
     #
     # Creates initializes a new instance of the KeyVaultManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -53,6 +59,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       @credentials = credentials
 
       @vaults = Vaults.new(self)
+      @operations = Operations.new(self)
+      @secrets = Secrets.new(self)
       @api_version = '2016-10-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -122,7 +130,9 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_key_vault'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::KeyVault::Mgmt::V2016_10_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::KeyVault::Mgmt::V2016_10_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

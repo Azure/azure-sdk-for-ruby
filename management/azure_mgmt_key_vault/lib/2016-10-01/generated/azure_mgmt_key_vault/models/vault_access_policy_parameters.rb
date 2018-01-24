@@ -6,27 +6,39 @@
 module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
-    # Resource information with extended details.
+    # Parameters for updating the access policy in a vault
     #
-    class Vault < Resource
+    class VaultAccessPolicyParameters
 
       include MsRestAzure
 
-      # @return [VaultProperties] Properties of the vault
+      # @return [String] The resource id of the access policy.
+      attr_accessor :id
+
+      # @return [String] The resource name of the access policy.
+      attr_accessor :name
+
+      # @return [String] The resource name of the access policy.
+      attr_accessor :type
+
+      # @return [String] The resource type of the the access policy.
+      attr_accessor :location
+
+      # @return [VaultAccessPolicyProperties] Properties of the access policy
       attr_accessor :properties
 
 
       #
-      # Mapper for Vault class as Ruby Hash.
+      # Mapper for VaultAccessPolicyParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Vault',
+          serialized_name: 'VaultAccessPolicyParameters',
           type: {
             name: 'Composite',
-            class_name: 'Vault',
+            class_name: 'VaultAccessPolicyParameters',
             model_properties: {
               id: {
                 required: false,
@@ -53,33 +65,19 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               location: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               properties: {
                 required: true,
                 serialized_name: 'properties',
-                default_value: {},
                 type: {
                   name: 'Composite',
-                  class_name: 'VaultProperties'
+                  class_name: 'VaultAccessPolicyProperties'
                 }
               }
             }

@@ -6,17 +6,17 @@
 module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
-    # List of vaults
+    # List of secrets
     #
-    class DeletedVaultListResult
+    class SecretListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<DeletedVault>] The list of deleted vaults.
+      # @return [Array<Secret>] The list of secrets.
       attr_accessor :value
 
-      # @return [String] The URL to get the next set of deleted vaults.
+      # @return [String] The URL to get the next set of secrets.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -25,7 +25,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<DeletedVault>] operation results.
+      # @return [Array<Secret>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +40,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       # Gets the next page of results.
       #
-      # @return [DeletedVaultListResult] with next page content.
+      # @return [SecretListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,16 +52,16 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       end
 
       #
-      # Mapper for DeletedVaultListResult class as Ruby Hash.
+      # Mapper for SecretListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DeletedVaultListResult',
+          serialized_name: 'SecretListResult',
           type: {
             name: 'Composite',
-            class_name: 'DeletedVaultListResult',
+            class_name: 'SecretListResult',
             model_properties: {
               value: {
                 required: false,
@@ -70,10 +70,10 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'DeletedVaultElementType',
+                      serialized_name: 'SecretElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'DeletedVault'
+                        class_name: 'Secret'
                       }
                   }
                 }
