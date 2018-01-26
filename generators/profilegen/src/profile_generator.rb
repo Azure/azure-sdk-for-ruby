@@ -29,7 +29,6 @@ class ProfileGenerator
     @output_dir = "#{@sdk_path}/#{profile['output_dir']}"
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
-    @base_url_to_be_included = true
   end
 
   #
@@ -112,7 +111,7 @@ class ProfileGenerator
           module_def_obj.data_class_name        = "#{get_ruby_specific_resource_type_name(resource_provider_name)}DataClass"
           module_def_obj.data_mode              = true
           if(CLIENTS_WITH_NO_BASE_URL.include? module_def_obj.data_class_name)
-            @base_url_to_be_included = false
+            module_def_obj.base_url_to_be_included = false
           end
         end
 
