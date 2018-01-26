@@ -17,8 +17,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
       attr_accessor :enabled
 
       # @return [EncodingCaptureDescription] Enumerates the possible values for
-      # the encoding format of capture description. Possible values include:
-      # 'Avro', 'AvroDeflate'
+      # the encoding format of capture description. Note: 'AvroDeflate' will be
+      # deprecated in New API Version. Possible values include: 'Avro',
+      # 'AvroDeflate'
       attr_accessor :encoding
 
       # @return [Integer] The time window allows you to set the frequency with
@@ -42,7 +43,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CaptureDescription',
           type: {
@@ -50,7 +50,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'CaptureDescription',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -58,7 +57,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               encoding: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encoding',
                 type: {
@@ -67,7 +65,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               interval_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'intervalInSeconds',
                 constraints: {
@@ -79,7 +76,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               size_limit_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sizeLimitInBytes',
                 constraints: {
@@ -91,7 +87,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'destination',
                 type: {
