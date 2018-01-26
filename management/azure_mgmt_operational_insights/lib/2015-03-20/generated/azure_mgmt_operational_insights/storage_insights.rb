@@ -92,11 +92,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight.mapper()

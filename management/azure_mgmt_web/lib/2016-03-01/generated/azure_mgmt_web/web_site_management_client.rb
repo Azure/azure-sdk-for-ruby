@@ -117,6 +117,9 @@ module Azure::Web::Mgmt::V2016_03_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
+      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
+        @request_headers['Content-Type'] = options[:headers]['Content-Type']
+      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -262,11 +265,11 @@ module Azure::Web::Mgmt::V2016_03_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
@@ -453,11 +456,11 @@ module Azure::Web::Mgmt::V2016_03_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.mapper()
@@ -571,11 +574,11 @@ module Azure::Web::Mgmt::V2016_03_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest.mapper()
@@ -958,11 +961,11 @@ module Azure::Web::Mgmt::V2016_03_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::VnetParameters.mapper()
@@ -1072,11 +1075,11 @@ module Azure::Web::Mgmt::V2016_03_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
@@ -1177,11 +1180,11 @@ module Azure::Web::Mgmt::V2016_03_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest.mapper()
@@ -1291,11 +1294,11 @@ module Azure::Web::Mgmt::V2016_03_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()

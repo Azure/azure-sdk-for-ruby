@@ -1110,11 +1110,11 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters.mapper()
@@ -1217,11 +1217,11 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachine.mapper()
@@ -2074,11 +2074,11 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput.mapper()

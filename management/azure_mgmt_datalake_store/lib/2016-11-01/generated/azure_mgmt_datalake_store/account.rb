@@ -665,11 +665,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount.mapper()
@@ -785,11 +785,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountUpdateParameters.mapper()

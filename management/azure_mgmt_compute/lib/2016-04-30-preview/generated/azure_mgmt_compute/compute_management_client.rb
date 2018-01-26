@@ -150,6 +150,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
+      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
+        @request_headers['Content-Type'] = options[:headers]['Content-Type']
+      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
