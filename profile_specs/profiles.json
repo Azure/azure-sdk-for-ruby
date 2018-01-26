@@ -361,6 +361,61 @@
                         "2016-08-01": ["*"],
                         "2016-09-01": ["*"]
                     }
+                },
+                "Microsoft.CognitiveServices.ComputerVision": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.ContentModerator": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.CustomSearch": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.EntitySearch": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.Face": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.ImageSearch": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.NewsSearch": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.SpellCheck": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.TextAnalytics": {
+                    "data": {
+                        "v2.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.VideoSearch": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.WebSearch": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
                 }
             },
             "output_dir": "azure_sdk/lib"
@@ -1304,6 +1359,160 @@
                     }
                 },
                 "output_dir": "data/azure_graph_rbac/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_computervision": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.ComputerVision" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_computervision/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_contentmoderator": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.ContentModerator" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_contentmoderator/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_customsearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.CustomSearch" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_customsearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_entitysearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.EntitySearch" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_entitysearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_face": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Face" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_face/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_imagesearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.ImageSearch" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_imagesearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_newssearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.NewsSearch" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_newssearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_spellcheck": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.SpellCheck" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_spellcheck/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_textanalytics": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.TextAnalytics" : {
+                        "data": {
+                            "v2.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_textanalytics/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_videosearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.VideoSearch" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_videosearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_websearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.WebSearch" : {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_websearch/lib/profiles",
                 "individual_gem_profile": true
             }
         ]

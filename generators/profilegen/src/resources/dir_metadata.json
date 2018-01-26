@@ -411,5 +411,82 @@
       "namespace": "Azure::Web::Mgmt",
       "module_require": "azure_mgmt_web"
     }
+  },
+  "Microsoft.CognitiveServices.ComputerVision": {
+    "data": {
+      "path": "data/azure_cognitiveservices_computervision",
+      "namespace": "Azure::CognitiveServices::ComputerVision",
+      "module_require": "azure_cognitiveservices_computervision"
+    }
+  },
+  "Microsoft.CognitiveServices.ContentModerator": {
+    "data": {
+      "path": "data/azure_cognitiveservices_contentmoderator",
+      "namespace": "Azure::CognitiveServices::ContentModerator",
+      "module_require": "azure_cognitiveservices_contentmoderator"
+    }
+  },
+  "Microsoft.CognitiveServices.CustomSearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_customsearch",
+      "namespace": "Azure::CognitiveServices::CustomSearch",
+      "module_require": "azure_cognitiveservices_customsearch"
+    }
+  },
+  "Microsoft.CognitiveServices.EntitySearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_entitysearch",
+      "namespace": "Azure::CognitiveServices::EntitySearch",
+      "module_require": "azure_cognitiveservices_entitysearch"
+    }
+  },
+  "Microsoft.CognitiveServices.Face": {
+    "data": {
+      "path": "data/azure_cognitiveservices_face",
+      "namespace": "Azure::CognitiveServices::Face",
+      "module_require": "azure_cognitiveservices_face"
+    }
+  },
+  "Microsoft.CognitiveServices.ImageSearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_imagesearch",
+      "namespace": "Azure::CognitiveServices::ImageSearch",
+      "module_require": "azure_cognitiveservices_imagesearch"
+    }
+  },
+  "Microsoft.CognitiveServices.NewsSearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_newssearch",
+      "namespace": "Azure::CognitiveServices::NewsSearch",
+      "module_require": "azure_cognitiveservices_newssearch"
+    }
+  },
+  "Microsoft.CognitiveServices.SpellCheck": {
+    "data": {
+      "path": "data/azure_cognitiveservices_spellcheck",
+      "namespace": "Azure::CognitiveServices::SpellCheck",
+      "module_require": "azure_cognitiveservices_spellcheck"
+    }
+  },
+  "Microsoft.CognitiveServices.TextAnalytics": {
+    "data": {
+      "path": "data/azure_cognitiveservices_textanalytics",
+      "namespace": "Azure::CognitiveServices::TextAnalytics",
+      "module_require": "azure_cognitiveservices_textanalytics"
+    }
+  },
+  "Microsoft.CognitiveServices.VideoSearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_videosearch",
+      "namespace": "Azure::CognitiveServices::VideoSearch",
+      "module_require": "azure_cognitiveservices_videosearch"
+    }
+  },
+  "Microsoft.CognitiveServices.WebSearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_websearch",
+      "namespace": "Azure::CognitiveServices::WebSearch",
+      "module_require": "azure_cognitiveservices_websearch"
+    }
   }
 }

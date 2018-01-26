@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
     'changelog_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/ChangeLog.md',
     'documentation_uri' => 'https://azure.microsoft.com/en-us/develop/ruby/',
     'homepage_uri' => 'https://aka.ms/azure-sdk-for-ruby',
-    'source_code_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_graph'
+    'source_code_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_graph_rbac'
   }
 
   spec.files         = Dir["LICENSE.txt", "lib/**/*"]

@@ -123,11 +123,11 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Redis::Mgmt::V2017_02_01::Models::RedisUpdateParameters.mapper()
@@ -626,11 +626,11 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Redis::Mgmt::V2017_02_01::Models::RedisRegenerateKeyParameters.mapper()
@@ -736,11 +736,11 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Redis::Mgmt::V2017_02_01::Models::RedisRebootParameters.mapper()
@@ -930,11 +930,11 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Redis::Mgmt::V2017_02_01::Models::RedisCreateParameters.mapper()
@@ -1126,11 +1126,11 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Redis::Mgmt::V2017_02_01::Models::ImportRDBParameters.mapper()
@@ -1222,11 +1222,11 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Redis::Mgmt::V2017_02_01::Models::ExportRDBParameters.mapper()

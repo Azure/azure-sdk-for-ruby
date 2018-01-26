@@ -678,11 +678,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmSlotEntity.mapper()
@@ -787,11 +787,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::BackupRequest.mapper()
@@ -1015,11 +1015,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RestoreRequest.mapper()
@@ -1356,11 +1356,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::BackupRequest.mapper()
@@ -1625,11 +1625,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::StringDictionary.mapper()
@@ -1847,11 +1847,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteAuthSettings.mapper()
@@ -2066,11 +2066,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::BackupRequest.mapper()
@@ -2380,11 +2380,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::ConnectionStringDictionary.mapper()
@@ -2705,11 +2705,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteLogsConfig.mapper()
@@ -2824,11 +2824,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::StringDictionary.mapper()
@@ -3089,11 +3089,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::PushSettings.mapper()
@@ -3426,11 +3426,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SlotConfigNamesResource.mapper()
@@ -3654,11 +3654,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResource.mapper()
@@ -3773,11 +3773,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResource.mapper()
@@ -4945,11 +4945,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Deployment.mapper()
@@ -5499,11 +5499,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Identifier.mapper()
@@ -5730,11 +5730,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Identifier.mapper()
@@ -6890,11 +6890,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::HostNameBinding.mapper()
@@ -7224,11 +7224,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::HybridConnection.mapper()
@@ -7451,11 +7451,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::HybridConnection.mapper()
@@ -8010,11 +8010,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RelayServiceConnectionEntity.mapper()
@@ -8235,11 +8235,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RelayServiceConnectionEntity.mapper()
@@ -11210,11 +11210,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::PremierAddOn.mapper()
@@ -12536,11 +12536,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::PublicCertificate.mapper()
@@ -12754,11 +12754,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmPublishingProfileOptions.mapper()
@@ -14034,11 +14034,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmSlotEntity.mapper()
@@ -14150,11 +14150,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::BackupRequest.mapper()
@@ -14392,11 +14392,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RestoreRequest.mapper()
@@ -14754,11 +14754,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::BackupRequest.mapper()
@@ -15041,11 +15041,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::StringDictionary.mapper()
@@ -15277,11 +15277,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteAuthSettings.mapper()
@@ -15510,11 +15510,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::BackupRequest.mapper()
@@ -15845,11 +15845,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::ConnectionStringDictionary.mapper()
@@ -16191,11 +16191,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteLogsConfig.mapper()
@@ -16317,11 +16317,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::StringDictionary.mapper()
@@ -16600,11 +16600,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::PushSettings.mapper()
@@ -16952,11 +16952,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResource.mapper()
@@ -17078,11 +17078,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResource.mapper()
@@ -18327,11 +18327,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Deployment.mapper()
@@ -18916,11 +18916,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Identifier.mapper()
@@ -19161,11 +19161,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Identifier.mapper()
@@ -20399,11 +20399,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::HostNameBinding.mapper()
@@ -20748,11 +20748,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::HybridConnection.mapper()
@@ -20983,11 +20983,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::HybridConnection.mapper()
@@ -21571,11 +21571,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RelayServiceConnectionEntity.mapper()
@@ -21810,11 +21810,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RelayServiceConnectionEntity.mapper()
@@ -24853,11 +24853,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::PremierAddOn.mapper()
@@ -26263,11 +26263,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::PublicCertificate.mapper()
@@ -26495,11 +26495,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmPublishingProfileOptions.mapper()
@@ -27297,11 +27297,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmSlotEntity.mapper()
@@ -29306,11 +29306,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetInfo.mapper()
@@ -29551,11 +29551,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetInfo.mapper()
@@ -29812,11 +29812,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetGateway.mapper()
@@ -29952,11 +29952,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetGateway.mapper()
@@ -30295,11 +30295,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmSlotEntity.mapper()
@@ -32180,11 +32180,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetInfo.mapper()
@@ -32411,11 +32411,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetInfo.mapper()
@@ -32655,11 +32655,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetGateway.mapper()
@@ -32785,11 +32785,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::VnetGateway.mapper()
@@ -33150,11 +33150,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Site.mapper()
@@ -33280,11 +33280,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RestoreRequest.mapper()
@@ -33499,11 +33499,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::MSDeploy.mapper()
@@ -33619,11 +33619,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelope.mapper()
@@ -33739,11 +33739,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::MSDeploy.mapper()
@@ -33862,11 +33862,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::StorageMigrationOptions.mapper()
@@ -33981,11 +33981,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::MigrateMySqlRequest.mapper()
@@ -34102,11 +34102,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SnapshotRecoveryRequest.mapper()
@@ -34375,11 +34375,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::Site.mapper()
@@ -34512,11 +34512,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::RestoreRequest.mapper()
@@ -34745,11 +34745,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::MSDeploy.mapper()
@@ -34872,11 +34872,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelope.mapper()
@@ -34999,11 +34999,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::MSDeploy.mapper()
@@ -35127,11 +35127,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SnapshotRecoveryRequest.mapper()
@@ -35370,11 +35370,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmSlotEntity.mapper()
@@ -35486,11 +35486,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
@@ -35614,11 +35614,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::CsmSlotEntity.mapper()
@@ -35723,11 +35723,11 @@ module Azure::Web::Mgmt::V2016_08_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()

@@ -57,7 +57,7 @@ module Azure::Automation::Profiles::Latest
       DscNodeConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
       WebhookListResult = Azure::Automation::Mgmt::V2015_10_31::Models::WebhookListResult
       DscNodeConfigurationListResult = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfigurationListResult
-      Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+      Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
       DscNodeListResult = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeListResult
       AutomationAccountListResult = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountListResult
       DscNodeUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeUpdateParameters
@@ -100,7 +100,7 @@ module Azure::Automation::Profiles::Latest
       JobStream = Azure::Automation::Mgmt::V2015_10_31::Models::JobStream
       DscConfigurationParameter = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationParameter
       JobStreamListResult = Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamListResult
-      Resource = Azure::Automation::Mgmt::V2015_10_31::Models::Resource
+      Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
       ModuleCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleCreateOrUpdateParameters
       OperationListResult = Azure::Automation::Mgmt::V2015_10_31::Models::OperationListResult
       ModuleListResult = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleListResult
@@ -132,7 +132,7 @@ module Azure::Automation::Profiles::Latest
       TestJobCreateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::TestJobCreateParameters
       DscConfigurationAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationAssociationProperty
       TestJob = Azure::Automation::Mgmt::V2015_10_31::Models::TestJob
-      Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
+      Resource = Azure::Automation::Mgmt::V2015_10_31::Models::Resource
       TypeField = Azure::Automation::Mgmt::V2015_10_31::Models::TypeField
       ConnectionUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionUpdateParameters
       TypeFieldListResult = Azure::Automation::Mgmt::V2015_10_31::Models::TypeFieldListResult
@@ -291,8 +291,8 @@ module Azure::Automation::Profiles::Latest
       def dsc_node_configuration_list_result
         Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfigurationListResult
       end
-      def webhook
-        Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+      def sku
+        Azure::Automation::Mgmt::V2015_10_31::Models::Sku
       end
       def dsc_node_list_result
         Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeListResult
@@ -420,8 +420,8 @@ module Azure::Automation::Profiles::Latest
       def job_stream_list_result
         Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamListResult
       end
-      def resource
-        Azure::Automation::Mgmt::V2015_10_31::Models::Resource
+      def webhook
+        Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
       end
       def module_create_or_update_parameters
         Azure::Automation::Mgmt::V2015_10_31::Models::ModuleCreateOrUpdateParameters
@@ -516,8 +516,8 @@ module Azure::Automation::Profiles::Latest
       def test_job
         Azure::Automation::Mgmt::V2015_10_31::Models::TestJob
       end
-      def sku
-        Azure::Automation::Mgmt::V2015_10_31::Models::Sku
+      def resource
+        Azure::Automation::Mgmt::V2015_10_31::Models::Resource
       end
       def type_field
         Azure::Automation::Mgmt::V2015_10_31::Models::TypeField

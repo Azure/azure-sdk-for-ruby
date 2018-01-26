@@ -13,6 +13,7 @@ require 'ms_rest/credentials/string_token_provider'
 require 'ms_rest/credentials/service_client_credentials'
 require 'ms_rest/credentials/basic_authentication_credentials'
 require 'ms_rest/credentials/token_credentials'
+require 'ms_rest/credentials/cognitive_services_credentials'
 
 require 'ms_rest/rest_error.rb'
 require 'ms_rest/deserialization_error.rb'

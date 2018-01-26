@@ -68,11 +68,11 @@ module Azure::SQL::Profiles::Latest
       RecommendedElasticPoolListResult = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolListResult
       ReplicationLinkListResult = Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationLinkListResult
       MaxSizeCapability = Azure::SQL::Mgmt::V2014_04_01::Models::MaxSizeCapability
-      RecommendedElasticPoolMetric = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolMetric
-      EditionCapability = Azure::SQL::Mgmt::V2014_04_01::Models::EditionCapability
       DatabaseUsageListResult = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseUsageListResult
-      ElasticPoolPerDatabaseMaxDtuCapability = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolPerDatabaseMaxDtuCapability
+      EditionCapability = Azure::SQL::Mgmt::V2014_04_01::Models::EditionCapability
       QueryStatisticListResult = Azure::SQL::Mgmt::V2014_04_01::Models::QueryStatisticListResult
+      ElasticPoolPerDatabaseMaxDtuCapability = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolPerDatabaseMaxDtuCapability
+      RecommendedElasticPoolMetric = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolMetric
       ElasticPoolEditionCapability = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolEditionCapability
       TopQueriesListResult = Azure::SQL::Mgmt::V2014_04_01::Models::TopQueriesListResult
       LocationCapabilities = Azure::SQL::Mgmt::V2014_04_01::Models::LocationCapabilities
@@ -124,11 +124,11 @@ module Azure::SQL::Profiles::Latest
       ServiceTierAdvisor = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisor
       DatabaseUpdate = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseUpdate
       ElasticPoolUpdate = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolUpdate
+      Database = Azure::SQL::Mgmt::V2014_04_01::Models::Database
+      ElasticPool = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPool
       TransparentDataEncryptionActivity = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivity
       ElasticPoolDatabaseActivity = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDatabaseActivity
       ElasticPoolActivity = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolActivity
-      Database = Azure::SQL::Mgmt::V2014_04_01::Models::Database
-      ElasticPool = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPool
       RecommendedElasticPool = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPool
       FirewallRule = Azure::SQL::Mgmt::V2014_04_01::Models::FirewallRule
       GeoBackupPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::GeoBackupPolicy
@@ -393,20 +393,20 @@ module Azure::SQL::Profiles::Latest
       def max_size_capability
         Azure::SQL::Mgmt::V2014_04_01::Models::MaxSizeCapability
       end
-      def recommended_elastic_pool_metric
-        Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolMetric
+      def database_usage_list_result
+        Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseUsageListResult
       end
       def edition_capability
         Azure::SQL::Mgmt::V2014_04_01::Models::EditionCapability
       end
-      def database_usage_list_result
-        Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseUsageListResult
+      def query_statistic_list_result
+        Azure::SQL::Mgmt::V2014_04_01::Models::QueryStatisticListResult
       end
       def elastic_pool_per_database_max_dtu_capability
         Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolPerDatabaseMaxDtuCapability
       end
-      def query_statistic_list_result
-        Azure::SQL::Mgmt::V2014_04_01::Models::QueryStatisticListResult
+      def recommended_elastic_pool_metric
+        Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolMetric
       end
       def elastic_pool_edition_capability
         Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolEditionCapability
@@ -561,6 +561,12 @@ module Azure::SQL::Profiles::Latest
       def elastic_pool_update
         Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolUpdate
       end
+      def database
+        Azure::SQL::Mgmt::V2014_04_01::Models::Database
+      end
+      def elastic_pool
+        Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPool
+      end
       def transparent_data_encryption_activity
         Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivity
       end
@@ -569,12 +575,6 @@ module Azure::SQL::Profiles::Latest
       end
       def elastic_pool_activity
         Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolActivity
-      end
-      def database
-        Azure::SQL::Mgmt::V2014_04_01::Models::Database
-      end
-      def elastic_pool
-        Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPool
       end
       def recommended_elastic_pool
         Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPool

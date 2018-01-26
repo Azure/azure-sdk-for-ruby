@@ -76,11 +76,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::NetworkWatcher.mapper()
@@ -492,11 +492,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::TopologyParameters.mapper()
@@ -1017,11 +1017,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::VerificationIPFlowParameters.mapper()
@@ -1134,11 +1134,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::NextHopParameters.mapper()
@@ -1251,11 +1251,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::SecurityGroupViewParameters.mapper()
@@ -1371,11 +1371,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::TroubleshootingParameters.mapper()
@@ -1491,11 +1491,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::QueryTroubleshootingParameters.mapper()
@@ -1614,11 +1614,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::FlowLogInformation.mapper()
@@ -1737,11 +1737,11 @@ module Azure::Network::Mgmt::V2016_12_01
 
       request_headers = {}
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_12_01::Models::FlowLogStatusParameters.mapper()

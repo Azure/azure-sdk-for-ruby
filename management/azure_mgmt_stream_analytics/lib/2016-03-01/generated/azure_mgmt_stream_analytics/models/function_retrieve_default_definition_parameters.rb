@@ -14,8 +14,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
-      @@discriminatorMap["Microsoft.StreamAnalytics/JavascriptUdf"] = "JavaScriptFunctionRetrieveDefaultDefinitionParameters"
       @@discriminatorMap["Microsoft.MachineLearning/WebService"] = "AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters"
+      @@discriminatorMap["Microsoft.StreamAnalytics/JavascriptUdf"] = "JavaScriptFunctionRetrieveDefaultDefinitionParameters"
 
       def initialize
         @bindingType = "FunctionRetrieveDefaultDefinitionParameters"
