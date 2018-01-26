@@ -3,3 +3,4 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '1.0/generated/azure_cognitiveservices_videosearch'
+require 'profiles/latest/videosearch_latest_profile_client'
