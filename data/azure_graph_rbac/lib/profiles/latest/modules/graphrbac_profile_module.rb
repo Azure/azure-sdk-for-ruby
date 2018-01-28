@@ -73,7 +73,7 @@ module Azure::GraphRbac::Profiles::Latest
       @base_url = options[:base_url].nil? ? nil:options[:base_url]
       @options = options[:options].nil? ? nil:options[:options]
 
-      client_0 = Azure::GraphRbac::V1_6::GraphRbacClient.new(configurable.credentials, options)
+      client_0 = Azure::GraphRbac::V1_6::GraphRbacClient.new(configurable.credentials, base_url, options)
       if(client_0.respond_to?(:subscription_id))
         client_0.subscription_id = configurable.subscription_id
       end

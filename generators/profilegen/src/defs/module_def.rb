@@ -14,6 +14,7 @@ class ModuleDef < Definition
   attr_accessor :management_operation_types, :data_operation_types
   attr_accessor :management_model_types, :data_model_types
   attr_accessor :management_clients_ops_mapper, :data_clients_ops_mapper
+  attr_accessor :base_url_to_be_included
 
   def initialize
     @profile_name = nil
@@ -32,6 +33,7 @@ class ModuleDef < Definition
     @data_operation_types = []
     @data_model_types = []
     @data_clients_ops_mapper = {}
+    @base_url_to_be_included = true
   end
 
   def get_full_class_name(management_mode = false)
