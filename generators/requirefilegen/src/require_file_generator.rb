@@ -123,8 +123,18 @@ class RequireFileGenerator
       end
 
       remove_rb_extension
+      post_processing_requires
       file = get_require_file
       file.write(get_renderer(get_renderer_template))
+    end
+  end
+
+  def post_processing_requires
+    if(@requires.length > 1)
+      if(@requires[0].start_with?'profiles/')
+        @requires << @requires[0]
+        @requires.shift
+      end
     end
   end
 
