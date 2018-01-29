@@ -149,7 +149,7 @@
                 },
                 "Microsoft.EventGrid": {
                     "management": {
-                        "2017-09-15-preview": ["*"]
+                        "2018-01-01": ["*"]
                     }
                 },
                 "Microsoft.EventHub": {
@@ -695,7 +695,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2017-09-15-preview": ["*"]
+                        "2018-01-01": ["*"]
                     }
                 }
             },
