@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventGrid::Mgmt::V2017_09_15_preview
+module Azure::EventGrid::Mgmt::V2018_01_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -65,7 +65,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       @operations = Operations.new(self)
       @topics = Topics.new(self)
       @topic_types = TopicTypes.new(self)
-      @api_version = '2017-09-15-preview'
+      @api_version = '2018-01-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
