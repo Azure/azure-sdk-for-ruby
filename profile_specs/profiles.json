@@ -416,6 +416,11 @@
                     "data": {
                         "1.0": ["*"]
                     }
+                },
+                "Microsoft.EventGrid": {
+                    "data": {
+                        "2018-01-01": ["*"]
+                    }
                 }
             },
             "output_dir": "azure_sdk/lib"
@@ -1513,6 +1518,20 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_websearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_event_grid": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.EventGrid": {
+                        "data": {
+                            "2018-01-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_event_grid/lib/profiles",
                 "individual_gem_profile": true
             }
         ]

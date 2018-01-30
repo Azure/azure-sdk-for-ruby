@@ -1,4 +1,7 @@
 {
+    "data": [
+        "azure_event_grid"
+    ],
     "management": [
         "azure_mgmt_event_grid"
     ]

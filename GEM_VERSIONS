@@ -14,7 +14,8 @@
         "azure_cognitiveservices_spellcheck": "0.15.2",
         "azure_cognitiveservices_textanalytics": "0.15.2",
         "azure_cognitiveservices_videosearch": "0.15.2",
-        "azure_cognitiveservices_websearch": "0.15.2"
+        "azure_cognitiveservices_websearch": "0.15.2",
+        "azure_event_grid": "0.15.3"
     },
     "management" : {
         "azure_mgmt_analysis_services": "0.15.2",
