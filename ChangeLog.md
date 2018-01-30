@@ -1,3 +1,7 @@
+## 2018.01.30 - Azure ARM release version 0.15.3
+* Releasing 0.15.3 version of azure_mgmt_event_grid gem.Refer [PR #1257](https://github.com/Azure/azure-sdk-for-ruby/pull/1257) for further details.
+* Releasing 0.15.3 version of azure_event_grid(data plane) gem.Refer [PR #1257](https://github.com/Azure/azure-sdk-for-ruby/pull/1257) for further details.
+
 ## 2017.12.19 - Azure ARM release version 0.15.2
 
 * Update azure_mgmt_compute gem to include latest api-versions supporting user assigned identity and ms_rest_azure dependency to 0.10.1
