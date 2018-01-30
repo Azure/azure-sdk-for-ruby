@@ -2,11 +2,11 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module MsRest
+module MsRestAzure
   #
   # Class that provides access to authentication token.
   #
-  class CognitiveServicesCredentials < ServiceClientCredentials
+  class CognitiveServicesCredentials < MsRest::ServiceClientCredentials
 
     private
 
@@ -16,10 +16,11 @@ module MsRest
     public
 
     #
-    # Creates and initialize new instance of the ApplicationTokenProvider class.
+    # Creates and initialize new instance of the CognitiveServicesCredentials class.
     # @param subscription_key [String] subscription key
-    def initialize(subscription_key)    
+    def initialize(subscription_key)
       fail ArgumentError, 'Subscription key cannot be nil' if subscription_key.nil?
+      fail ArgumentError, 'Subscription key must be of type string' if subscription_key.class.to_s != 'String'
       @subscription_key = subscription_key
     end
 

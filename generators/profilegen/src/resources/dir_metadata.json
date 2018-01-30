@@ -130,6 +130,11 @@
       "path": "management/azure_mgmt_event_grid",
       "namespace": "Azure::EventGrid::Mgmt",
       "module_require": "azure_mgmt_event_grid"
+    },
+    "data": {
+      "path": "data/azure_event_grid",
+      "namespace": "Azure::EventGrid",
+      "module_require": "azure_event_grid"
     }
   },
   "Microsoft.EventHub": {

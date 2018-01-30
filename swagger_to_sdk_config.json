@@ -418,11 +418,23 @@
       "generated_relative_base_directory": "2016-04-01",
       "build_dir": "management/azure_mgmt_dns/lib/2016-04-01"
     },
+    "azure_mgmt_event_grid_2018_01_01": {
+      "markdown": "specification/eventgrid/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::EventGrid::Mgmt::V2018_01_01",
+        "package-version": "0.15.3",
+        "package-name": "azure_mgmt_event_grid",
+        "tag": "package-2018-01"
+      },
+      "output_dir": "management/azure_mgmt_event_grid/lib/2018-01-01",
+      "generated_relative_base_directory": "2018-01-01",
+      "build_dir": "management/azure_mgmt_event_grid/lib/2018-01-01"
+    },
     "azure_mgmt_event_grid_2017_09_15_preview": {
       "markdown": "specification/eventgrid/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::EventGrid::Mgmt::V2017_09_15_preview",
-        "package-version": "0.15.2",
+        "package-version": "0.15.3",
         "package-name": "azure_mgmt_event_grid",
         "tag": "package-2017-09-preview"
       },
@@ -434,7 +446,7 @@
       "markdown": "specification/eventgrid/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::EventGrid::Mgmt::V2017_06_15_preview",
-        "package-version": "0.15.2",
+        "package-version": "0.15.3",
         "package-name": "azure_mgmt_event_grid",
         "tag": "package-2017-06-preview"
       },
