@@ -38,6 +38,12 @@ module Azure::Consumption::Mgmt::V2017_11_30
     # @return [UsageDetails] usage_details
     attr_reader :usage_details
 
+    # @return [ReservationsSummaries] reservations_summaries
+    attr_reader :reservations_summaries
+
+    # @return [ReservationsDetails] reservations_details
+    attr_reader :reservations_details
+
     # @return [Operations] operations
     attr_reader :operations
 
@@ -55,6 +61,8 @@ module Azure::Consumption::Mgmt::V2017_11_30
       @credentials = credentials
 
       @usage_details = UsageDetails.new(self)
+      @reservations_summaries = ReservationsSummaries.new(self)
+      @reservations_details = ReservationsDetails.new(self)
       @operations = Operations.new(self)
       @api_version = '2017-11-30'
       @accept_language = 'en-US'
@@ -109,9 +117,6 @@ module Azure::Consumption::Mgmt::V2017_11_30
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -128,7 +133,9 @@ module Azure::Consumption::Mgmt::V2017_11_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_consumption'
-        sdk_information = "#{sdk_information}/0.15.2"
+        if defined? Azure::Consumption::Mgmt::V2017_11_30::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Consumption::Mgmt::V2017_11_30::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
