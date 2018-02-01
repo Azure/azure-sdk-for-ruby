@@ -986,6 +986,107 @@ module Azure::Compute::Mgmt::V2017_12_01
     end
 
     #
+    # Manual platform update domain walk to update virtual machines in a service
+    # fabric virtual machine scale set.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param platform_update_domain [Integer] The platform update domain for which
+    # a manual recovery walk is requested
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RecoveryWalkResponse] operation results.
+    #
+    def force_recovery_service_fabric_platform_update_domain_walk(resource_group_name, vm_scale_set_name, platform_update_domain, custom_headers = nil)
+      response = force_recovery_service_fabric_platform_update_domain_walk_async(resource_group_name, vm_scale_set_name, platform_update_domain, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Manual platform update domain walk to update virtual machines in a service
+    # fabric virtual machine scale set.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param platform_update_domain [Integer] The platform update domain for which
+    # a manual recovery walk is requested
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def force_recovery_service_fabric_platform_update_domain_walk_with_http_info(resource_group_name, vm_scale_set_name, platform_update_domain, custom_headers = nil)
+      force_recovery_service_fabric_platform_update_domain_walk_async(resource_group_name, vm_scale_set_name, platform_update_domain, custom_headers).value!
+    end
+
+    #
+    # Manual platform update domain walk to update virtual machines in a service
+    # fabric virtual machine scale set.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param platform_update_domain [Integer] The platform update domain for which
+    # a manual recovery walk is requested
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def force_recovery_service_fabric_platform_update_domain_walk_async(resource_group_name, vm_scale_set_name, platform_update_domain, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'platform_update_domain is nil' if platform_update_domain.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/forceRecoveryServiceFabricPlatformUpdateDomainWalk'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version,'platformUpdateDomain' => platform_update_domain},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::RecoveryWalkResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Create or update a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -1040,11 +1141,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSet.mapper()
@@ -1157,11 +1258,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdate.mapper()
@@ -1360,11 +1461,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceIDs.mapper()
@@ -1467,11 +1568,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceRequiredIDs.mapper()
@@ -1579,11 +1680,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceIDs.mapper()
@@ -1685,11 +1786,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceIDs.mapper()
@@ -1791,11 +1892,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceIDs.mapper()
@@ -1901,11 +2002,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceRequiredIDs.mapper()
@@ -2010,11 +2111,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceIDs.mapper()
@@ -2119,11 +2220,11 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       request_headers = {}
 
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceIDs.mapper()
