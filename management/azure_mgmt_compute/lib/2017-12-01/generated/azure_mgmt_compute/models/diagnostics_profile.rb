@@ -28,7 +28,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticsProfile',
           type: {
@@ -36,7 +35,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'DiagnosticsProfile',
             model_properties: {
               boot_diagnostics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bootDiagnostics',
                 type: {

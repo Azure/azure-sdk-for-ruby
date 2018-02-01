@@ -17,6 +17,11 @@ module Azure::Compute::Mgmt::V2015_06_15
       # scale sets.
       attr_accessor :value
 
+      # @return [String] The URI to fetch the next page of virtual machine
+      # scale sets. Call ListNext() with this to fetch the next page of virtual
+      # machine scale sets.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -55,7 +60,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetListResult',
           type: {
@@ -63,13 +67,11 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineScaleSetListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetElementType',
                       type: {
@@ -77,6 +79,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                         class_name: 'VirtualMachineScaleSet'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }
