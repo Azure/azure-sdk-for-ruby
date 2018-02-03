@@ -34,7 +34,7 @@ describe VirtualMachineExtensionImages do
   it 'should list virtual machine extension image versions with filters and top' do
     filter = "startswith(name,'1.1')"
     orderby = 'name'
-    result = @client.list_versions_async(@location, @publisher_name, @type, filter, 1, orderby).value!
+    result = @client.list_versions_async(@location, @publisher_name, @type, filter:filter, top:1, orderby:orderby).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array

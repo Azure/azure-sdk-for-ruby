@@ -318,46 +318,46 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Network::Mgmt::V2017_09_01::NetworkManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Network::Mgmt::V2017_09_01::NetworkManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @application_gateways = client_0.application_gateways
-          @application_security_groups = client_0.application_security_groups
-          @available_endpoint_services = client_0.available_endpoint_services
-          @express_route_circuit_authorizations = client_0.express_route_circuit_authorizations
-          @express_route_circuit_peerings = client_0.express_route_circuit_peerings
-          @express_route_circuits = client_0.express_route_circuits
-          @express_route_service_providers = client_0.express_route_service_providers
-          @load_balancers = client_0.load_balancers
-          @load_balancer_backend_address_pools = client_0.load_balancer_backend_address_pools
-          @load_balancer_frontend_ipconfigurations = client_0.load_balancer_frontend_ipconfigurations
-          @inbound_nat_rules = client_0.inbound_nat_rules
-          @load_balancer_load_balancing_rules = client_0.load_balancer_load_balancing_rules
-          @load_balancer_network_interfaces = client_0.load_balancer_network_interfaces
-          @load_balancer_probes = client_0.load_balancer_probes
-          @network_interfaces = client_0.network_interfaces
-          @network_interface_ipconfigurations = client_0.network_interface_ipconfigurations
-          @network_interface_load_balancers = client_0.network_interface_load_balancers
-          @network_security_groups = client_0.network_security_groups
-          @security_rules = client_0.security_rules
-          @default_security_rules = client_0.default_security_rules
-          @network_watchers = client_0.network_watchers
-          @packet_captures = client_0.packet_captures
-          @public_ipaddresses = client_0.public_ipaddresses
-          @route_filters = client_0.route_filters
-          @route_filter_rules = client_0.route_filter_rules
-          @bgp_service_communities = client_0.bgp_service_communities
-          @route_tables = client_0.route_tables
-          @routes = client_0.routes
-          @usages = client_0.usages
-          @virtual_networks = client_0.virtual_networks
-          @subnets = client_0.subnets
-          @virtual_network_peerings = client_0.virtual_network_peerings
-          @virtual_network_gateways = client_0.virtual_network_gateways
-          @virtual_network_gateway_connections = client_0.virtual_network_gateway_connections
-          @local_network_gateways = client_0.local_network_gateways
+          add_telemetry(@client_0)
+          @application_gateways = @client_0.application_gateways
+          @application_security_groups = @client_0.application_security_groups
+          @available_endpoint_services = @client_0.available_endpoint_services
+          @express_route_circuit_authorizations = @client_0.express_route_circuit_authorizations
+          @express_route_circuit_peerings = @client_0.express_route_circuit_peerings
+          @express_route_circuits = @client_0.express_route_circuits
+          @express_route_service_providers = @client_0.express_route_service_providers
+          @load_balancers = @client_0.load_balancers
+          @load_balancer_backend_address_pools = @client_0.load_balancer_backend_address_pools
+          @load_balancer_frontend_ipconfigurations = @client_0.load_balancer_frontend_ipconfigurations
+          @inbound_nat_rules = @client_0.inbound_nat_rules
+          @load_balancer_load_balancing_rules = @client_0.load_balancer_load_balancing_rules
+          @load_balancer_network_interfaces = @client_0.load_balancer_network_interfaces
+          @load_balancer_probes = @client_0.load_balancer_probes
+          @network_interfaces = @client_0.network_interfaces
+          @network_interface_ipconfigurations = @client_0.network_interface_ipconfigurations
+          @network_interface_load_balancers = @client_0.network_interface_load_balancers
+          @network_security_groups = @client_0.network_security_groups
+          @security_rules = @client_0.security_rules
+          @default_security_rules = @client_0.default_security_rules
+          @network_watchers = @client_0.network_watchers
+          @packet_captures = @client_0.packet_captures
+          @public_ipaddresses = @client_0.public_ipaddresses
+          @route_filters = @client_0.route_filters
+          @route_filter_rules = @client_0.route_filter_rules
+          @bgp_service_communities = @client_0.bgp_service_communities
+          @route_tables = @client_0.route_tables
+          @routes = @client_0.routes
+          @usages = @client_0.usages
+          @virtual_networks = @client_0.virtual_networks
+          @subnets = @client_0.subnets
+          @virtual_network_peerings = @client_0.virtual_network_peerings
+          @virtual_network_gateways = @client_0.virtual_network_gateways
+          @virtual_network_gateway_connections = @client_0.virtual_network_gateway_connections
+          @local_network_gateways = @client_0.local_network_gateways
 
           @model_classes = ModelClasses.new
         end
@@ -365,6 +365,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/Network/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

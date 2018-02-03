@@ -276,69 +276,69 @@ module Azure::SQL::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::SQL::Mgmt::V2014_04_01::SqlManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::SQL::Mgmt::V2014_04_01::SqlManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @backup_long_term_retention_policies = client_0.backup_long_term_retention_policies
-        @backup_long_term_retention_vaults = client_0.backup_long_term_retention_vaults
-        @restore_points = client_0.restore_points
-        @recoverable_databases = client_0.recoverable_databases
-        @restorable_dropped_databases = client_0.restorable_dropped_databases
-        @capabilities = client_0.capabilities
-        @server_connection_policies = client_0.server_connection_policies
-        @database_threat_detection_policies = client_0.database_threat_detection_policies
-        @data_masking_policies = client_0.data_masking_policies
-        @data_masking_rules = client_0.data_masking_rules
-        @transparent_data_encryption_configurations = client_0.transparent_data_encryption_configurations
-        @firewall_rules = client_0.firewall_rules
-        @geo_backup_policies = client_0.geo_backup_policies
-        @databases = client_0.databases
-        @elastic_pools = client_0.elastic_pools
-        @queries = client_0.queries
-        @query_statistics = client_0.query_statistics
-        @replication_links = client_0.replication_links
-        @server_azure_adadministrators = client_0.server_azure_adadministrators
-        @server_communication_links = client_0.server_communication_links
-        @service_objectives = client_0.service_objectives
-        @elastic_pool_activities = client_0.elastic_pool_activities
-        @elastic_pool_database_activities = client_0.elastic_pool_database_activities
-        @recommended_elastic_pools = client_0.recommended_elastic_pools
-        @service_tier_advisors = client_0.service_tier_advisors
-        @transparent_data_encryptions = client_0.transparent_data_encryptions
-        @transparent_data_encryption_activities = client_0.transparent_data_encryption_activities
-        @server_table_auditing_policies = client_0.server_table_auditing_policies
-        @database_table_auditing_policies = client_0.database_table_auditing_policies
-        @database_connection_policies = client_0.database_connection_policies
-        @server_usages = client_0.server_usages
-        @database_usages = client_0.database_usages
+        add_telemetry(@client_0)
+        @backup_long_term_retention_policies = @client_0.backup_long_term_retention_policies
+        @backup_long_term_retention_vaults = @client_0.backup_long_term_retention_vaults
+        @restore_points = @client_0.restore_points
+        @recoverable_databases = @client_0.recoverable_databases
+        @restorable_dropped_databases = @client_0.restorable_dropped_databases
+        @capabilities = @client_0.capabilities
+        @server_connection_policies = @client_0.server_connection_policies
+        @database_threat_detection_policies = @client_0.database_threat_detection_policies
+        @data_masking_policies = @client_0.data_masking_policies
+        @data_masking_rules = @client_0.data_masking_rules
+        @transparent_data_encryption_configurations = @client_0.transparent_data_encryption_configurations
+        @firewall_rules = @client_0.firewall_rules
+        @geo_backup_policies = @client_0.geo_backup_policies
+        @databases = @client_0.databases
+        @elastic_pools = @client_0.elastic_pools
+        @queries = @client_0.queries
+        @query_statistics = @client_0.query_statistics
+        @replication_links = @client_0.replication_links
+        @server_azure_adadministrators = @client_0.server_azure_adadministrators
+        @server_communication_links = @client_0.server_communication_links
+        @service_objectives = @client_0.service_objectives
+        @elastic_pool_activities = @client_0.elastic_pool_activities
+        @elastic_pool_database_activities = @client_0.elastic_pool_database_activities
+        @recommended_elastic_pools = @client_0.recommended_elastic_pools
+        @service_tier_advisors = @client_0.service_tier_advisors
+        @transparent_data_encryptions = @client_0.transparent_data_encryptions
+        @transparent_data_encryption_activities = @client_0.transparent_data_encryption_activities
+        @server_table_auditing_policies = @client_0.server_table_auditing_policies
+        @database_table_auditing_policies = @client_0.database_table_auditing_policies
+        @database_connection_policies = @client_0.database_connection_policies
+        @server_usages = @client_0.server_usages
+        @database_usages = @client_0.database_usages
 
-        client_1 = Azure::SQL::Mgmt::V2015_05_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
-        if(client_1.respond_to?(:subscription_id))
-          client_1.subscription_id = configurable.subscription_id
+        @client_1 = Azure::SQL::Mgmt::V2015_05_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_1.respond_to?(:subscription_id))
+          @client_1.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_1)
-        @database_advisors = client_1.database_advisors
-        @database_recommended_actions = client_1.database_recommended_actions
-        @server_advisors = client_1.server_advisors
-        @database_blob_auditing_policies = client_1.database_blob_auditing_policies
-        @encryption_protectors = client_1.encryption_protectors
-        @failover_groups = client_1.failover_groups
-        @operations = client_1.operations
-        @server_keys = client_1.server_keys
-        @servers = client_1.servers
-        @sync_agents = client_1.sync_agents
-        @sync_groups = client_1.sync_groups
-        @sync_members = client_1.sync_members
-        @virtual_network_rules = client_1.virtual_network_rules
+        add_telemetry(@client_1)
+        @database_advisors = @client_1.database_advisors
+        @database_recommended_actions = @client_1.database_recommended_actions
+        @server_advisors = @client_1.server_advisors
+        @database_blob_auditing_policies = @client_1.database_blob_auditing_policies
+        @encryption_protectors = @client_1.encryption_protectors
+        @failover_groups = @client_1.failover_groups
+        @operations = @client_1.operations
+        @server_keys = @client_1.server_keys
+        @servers = @client_1.servers
+        @sync_agents = @client_1.sync_agents
+        @sync_groups = @client_1.sync_groups
+        @sync_members = @client_1.sync_members
+        @virtual_network_rules = @client_1.virtual_network_rules
 
-        client_2 = Azure::SQL::Mgmt::V2017_03_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
-        if(client_2.respond_to?(:subscription_id))
-          client_2.subscription_id = configurable.subscription_id
+        @client_2 = Azure::SQL::Mgmt::V2017_03_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_2.respond_to?(:subscription_id))
+          @client_2.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_2)
-        @database_operations = client_2.database_operations
+        add_telemetry(@client_2)
+        @database_operations = @client_2.database_operations
 
         @model_classes = ModelClasses.new
       end
@@ -346,6 +346,18 @@ module Azure::SQL::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/SQL/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_2.respond_to?method
+          @client_2.send(method, *args)
+        elsif @client_1.respond_to?method
+          @client_1.send(method, *args)
+        elsif @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

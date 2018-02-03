@@ -34,8 +34,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [BackupManagementUsageList] operation results.
     #
-    def list(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
-      response = list_async(vault_name, resource_group_name, filter, skip_token, custom_headers).value!
+    def list(vault_name, resource_group_name, filter:nil, skip_token:nil, custom_headers:nil)
+      response = list_async(vault_name, resource_group_name, filter:filter, skip_token:skip_token, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,8 +52,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
-      list_async(vault_name, resource_group_name, filter, skip_token, custom_headers).value!
+    def list_with_http_info(vault_name, resource_group_name, filter:nil, skip_token:nil, custom_headers:nil)
+      list_async(vault_name, resource_group_name, filter:filter, skip_token:skip_token, custom_headers:custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
+    def list_async(vault_name, resource_group_name, filter:nil, skip_token:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -77,6 +77,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

@@ -131,8 +131,8 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     # @return [OperationList] operation results.
     #
-    def get_available_operations(custom_headers = nil)
-      response = get_available_operations_async(custom_headers).value!
+    def get_available_operations(custom_headers:nil)
+      response = get_available_operations_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -145,8 +145,8 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_available_operations_with_http_info(custom_headers = nil)
-      get_available_operations_async(custom_headers).value!
+    def get_available_operations_with_http_info(custom_headers:nil)
+      get_available_operations_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -158,11 +158,12 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_available_operations_async(custom_headers = nil)
+    def get_available_operations_async(custom_headers:nil)
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

@@ -250,8 +250,8 @@ module Azure::CognitiveServices::WebSearch::V1_0
     #
     # @return [SearchResponse] operation results.
     #
-    def search(query, accept_language = nil, pragma = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, answer_count = nil, country_code = nil, count = nil, freshness = nil, market = 'en-us', offset = nil, promote = nil, response_filter = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      response = search_async(query, accept_language, pragma, user_agent, client_id, client_ip, location, answer_count, country_code, count, freshness, market, offset, promote, response_filter, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def search(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, answer_count:nil, country_code:nil, count:nil, freshness:nil, market:'en-us', offset:nil, promote:nil, response_filter:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      response = search_async(query, accept_language:accept_language, pragma:pragma, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, answer_count:answer_count, country_code:country_code, count:count, freshness:freshness, market:market, offset:offset, promote:promote, response_filter:response_filter, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -483,8 +483,8 @@ module Azure::CognitiveServices::WebSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def search_with_http_info(query, accept_language = nil, pragma = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, answer_count = nil, country_code = nil, count = nil, freshness = nil, market = 'en-us', offset = nil, promote = nil, response_filter = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      search_async(query, accept_language, pragma, user_agent, client_id, client_ip, location, answer_count, country_code, count, freshness, market, offset, promote, response_filter, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def search_with_http_info(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, answer_count:nil, country_code:nil, count:nil, freshness:nil, market:'en-us', offset:nil, promote:nil, response_filter:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      search_async(query, accept_language:accept_language, pragma:pragma, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, answer_count:answer_count, country_code:country_code, count:count, freshness:freshness, market:market, offset:offset, promote:promote, response_filter:response_filter, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
     end
 
     #
@@ -715,12 +715,13 @@ module Azure::CognitiveServices::WebSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def search_async(query, accept_language = nil, pragma = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, answer_count = nil, country_code = nil, count = nil, freshness = nil, market = 'en-us', offset = nil, promote = nil, response_filter = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+    def search_async(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, answer_count:nil, country_code:nil, count:nil, freshness:nil, market:'en-us', offset:nil, promote:nil, response_filter:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

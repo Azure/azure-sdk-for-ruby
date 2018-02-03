@@ -49,8 +49,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Review] operation results.
     #
-    def get_review(team_name, review_id, custom_headers = nil)
-      response = get_review_async(team_name, review_id, custom_headers).value!
+    def get_review(team_name, review_id, custom_headers:nil)
+      response = get_review_async(team_name, review_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -64,8 +64,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_review_with_http_info(team_name, review_id, custom_headers = nil)
-      get_review_async(team_name, review_id, custom_headers).value!
+    def get_review_with_http_info(team_name, review_id, custom_headers:nil)
+      get_review_async(team_name, review_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -78,13 +78,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_review_async(team_name, review_id, custom_headers = nil)
+    def get_review_async(team_name, review_id, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -139,8 +140,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Job] operation results.
     #
-    def get_job_details(team_name, job_id, custom_headers = nil)
-      response = get_job_details_async(team_name, job_id, custom_headers).value!
+    def get_job_details(team_name, job_id, custom_headers:nil)
+      response = get_job_details_async(team_name, job_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -154,8 +155,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_job_details_with_http_info(team_name, job_id, custom_headers = nil)
-      get_job_details_async(team_name, job_id, custom_headers).value!
+    def get_job_details_with_http_info(team_name, job_id, custom_headers:nil)
+      get_job_details_async(team_name, job_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -168,13 +169,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_job_details_async(team_name, job_id, custom_headers = nil)
+    def get_job_details_async(team_name, job_id, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'job_id is nil' if job_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -258,8 +260,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Array] operation results.
     #
-    def create_reviews(url_content_type, team_name, create_review_body, sub_team = nil, custom_headers = nil)
-      response = create_reviews_async(url_content_type, team_name, create_review_body, sub_team, custom_headers).value!
+    def create_reviews(url_content_type, team_name, create_review_body, sub_team:nil, custom_headers:nil)
+      response = create_reviews_async(url_content_type, team_name, create_review_body, sub_team:sub_team, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -302,8 +304,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_reviews_with_http_info(url_content_type, team_name, create_review_body, sub_team = nil, custom_headers = nil)
-      create_reviews_async(url_content_type, team_name, create_review_body, sub_team, custom_headers).value!
+    def create_reviews_with_http_info(url_content_type, team_name, create_review_body, sub_team:nil, custom_headers:nil)
+      create_reviews_async(url_content_type, team_name, create_review_body, sub_team:sub_team, custom_headers:custom_headers).value!
     end
 
     #
@@ -345,7 +347,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_reviews_async(url_content_type, team_name, create_review_body, sub_team = nil, custom_headers = nil)
+    def create_reviews_async(url_content_type, team_name, create_review_body, sub_team:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'url_content_type is nil' if url_content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
@@ -353,7 +355,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -506,8 +507,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [JobId] operation results.
     #
-    def create_job(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint = nil, custom_headers = nil)
-      response = create_job_async(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint, custom_headers).value!
+    def create_job(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint:nil, custom_headers:nil)
+      response = create_job_async(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint:call_back_endpoint, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -578,8 +579,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_job_with_http_info(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint = nil, custom_headers = nil)
-      create_job_async(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint, custom_headers).value!
+    def create_job_with_http_info(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint:nil, custom_headers:nil)
+      create_job_async(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint:call_back_endpoint, custom_headers:custom_headers).value!
     end
 
     #
@@ -649,7 +650,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_job_async(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint = nil, custom_headers = nil)
+    def create_job_async(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
@@ -660,7 +661,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -750,8 +750,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # will be added to the HTTP request.
     #
     #
-    def add_video_frame(team_name, review_id, timescale = nil, custom_headers = nil)
-      response = add_video_frame_async(team_name, review_id, timescale, custom_headers).value!
+    def add_video_frame(team_name, review_id, timescale:nil, custom_headers:nil)
+      response = add_video_frame_async(team_name, review_id, timescale:timescale, custom_headers:custom_headers).value!
       nil
     end
 
@@ -791,8 +791,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_video_frame_with_http_info(team_name, review_id, timescale = nil, custom_headers = nil)
-      add_video_frame_async(team_name, review_id, timescale, custom_headers).value!
+    def add_video_frame_with_http_info(team_name, review_id, timescale:nil, custom_headers:nil)
+      add_video_frame_async(team_name, review_id, timescale:timescale, custom_headers:custom_headers).value!
     end
 
     #
@@ -831,13 +831,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_video_frame_async(team_name, review_id, timescale = nil, custom_headers = nil)
+    def add_video_frame_async(team_name, review_id, timescale:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -912,8 +913,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Frames] operation results.
     #
-    def get_video_frames(team_name, review_id, start_seed = nil, no_of_records = nil, filter = nil, custom_headers = nil)
-      response = get_video_frames_async(team_name, review_id, start_seed, no_of_records, filter, custom_headers).value!
+    def get_video_frames(team_name, review_id, start_seed:nil, no_of_records:nil, filter:nil, custom_headers:nil)
+      response = get_video_frames_async(team_name, review_id, start_seed:start_seed, no_of_records:no_of_records, filter:filter, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -956,8 +957,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_video_frames_with_http_info(team_name, review_id, start_seed = nil, no_of_records = nil, filter = nil, custom_headers = nil)
-      get_video_frames_async(team_name, review_id, start_seed, no_of_records, filter, custom_headers).value!
+    def get_video_frames_with_http_info(team_name, review_id, start_seed:nil, no_of_records:nil, filter:nil, custom_headers:nil)
+      get_video_frames_async(team_name, review_id, start_seed:start_seed, no_of_records:no_of_records, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -999,13 +1000,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_video_frames_async(team_name, review_id, start_seed = nil, no_of_records = nil, filter = nil, custom_headers = nil)
+    def get_video_frames_async(team_name, review_id, start_seed:nil, no_of_records:nil, filter:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1060,8 +1062,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # will be added to the HTTP request.
     #
     #
-    def publish_video_review(team_name, review_id, custom_headers = nil)
-      response = publish_video_review_async(team_name, review_id, custom_headers).value!
+    def publish_video_review(team_name, review_id, custom_headers:nil)
+      response = publish_video_review_async(team_name, review_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1075,8 +1077,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def publish_video_review_with_http_info(team_name, review_id, custom_headers = nil)
-      publish_video_review_async(team_name, review_id, custom_headers).value!
+    def publish_video_review_with_http_info(team_name, review_id, custom_headers:nil)
+      publish_video_review_async(team_name, review_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -1089,13 +1091,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def publish_video_review_async(team_name, review_id, custom_headers = nil)
+    def publish_video_review_async(team_name, review_id, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1145,8 +1148,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # will be added to the HTTP request.
     #
     #
-    def add_video_transcript_moderation_result(content_type, team_name, review_id, transcript_moderation_body, custom_headers = nil)
-      response = add_video_transcript_moderation_result_async(content_type, team_name, review_id, transcript_moderation_body, custom_headers).value!
+    def add_video_transcript_moderation_result(content_type, team_name, review_id, transcript_moderation_body, custom_headers:nil)
+      response = add_video_transcript_moderation_result_async(content_type, team_name, review_id, transcript_moderation_body, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1166,8 +1169,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_video_transcript_moderation_result_with_http_info(content_type, team_name, review_id, transcript_moderation_body, custom_headers = nil)
-      add_video_transcript_moderation_result_async(content_type, team_name, review_id, transcript_moderation_body, custom_headers).value!
+    def add_video_transcript_moderation_result_with_http_info(content_type, team_name, review_id, transcript_moderation_body, custom_headers:nil)
+      add_video_transcript_moderation_result_async(content_type, team_name, review_id, transcript_moderation_body, custom_headers:custom_headers).value!
     end
 
     #
@@ -1186,7 +1189,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_video_transcript_moderation_result_async(content_type, team_name, review_id, transcript_moderation_body, custom_headers = nil)
+    def add_video_transcript_moderation_result_async(content_type, team_name, review_id, transcript_moderation_body, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
@@ -1195,7 +1198,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1266,8 +1268,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # will be added to the HTTP request.
     #
     #
-    def add_video_transcript(team_name, review_id, vttfile, custom_headers = nil)
-      response = add_video_transcript_async(team_name, review_id, vttfile, custom_headers).value!
+    def add_video_transcript(team_name, review_id, vttfile, custom_headers:nil)
+      response = add_video_transcript_async(team_name, review_id, vttfile, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1283,8 +1285,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_video_transcript_with_http_info(team_name, review_id, vttfile, custom_headers = nil)
-      add_video_transcript_async(team_name, review_id, vttfile, custom_headers).value!
+    def add_video_transcript_with_http_info(team_name, review_id, vttfile, custom_headers:nil)
+      add_video_transcript_async(team_name, review_id, vttfile, custom_headers:custom_headers).value!
     end
 
     #
@@ -1299,7 +1301,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_video_transcript_async(team_name, review_id, vttfile, custom_headers = nil)
+    def add_video_transcript_async(team_name, review_id, vttfile, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
@@ -1308,7 +1310,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'text/plain'
 
       # Set Headers
@@ -1398,8 +1399,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Array] operation results.
     #
-    def create_video_reviews(content_type, team_name, create_video_reviews_body, sub_team = nil, custom_headers = nil)
-      response = create_video_reviews_async(content_type, team_name, create_video_reviews_body, sub_team, custom_headers).value!
+    def create_video_reviews(content_type, team_name, create_video_reviews_body, sub_team:nil, custom_headers:nil)
+      response = create_video_reviews_async(content_type, team_name, create_video_reviews_body, sub_team:sub_team, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1442,8 +1443,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_video_reviews_with_http_info(content_type, team_name, create_video_reviews_body, sub_team = nil, custom_headers = nil)
-      create_video_reviews_async(content_type, team_name, create_video_reviews_body, sub_team, custom_headers).value!
+    def create_video_reviews_with_http_info(content_type, team_name, create_video_reviews_body, sub_team:nil, custom_headers:nil)
+      create_video_reviews_async(content_type, team_name, create_video_reviews_body, sub_team:sub_team, custom_headers:custom_headers).value!
     end
 
     #
@@ -1485,7 +1486,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_video_reviews_async(content_type, team_name, create_video_reviews_body, sub_team = nil, custom_headers = nil)
+    def create_video_reviews_async(content_type, team_name, create_video_reviews_body, sub_team:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
@@ -1493,7 +1494,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1596,8 +1596,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # will be added to the HTTP request.
     #
     #
-    def add_video_frame_url(content_type, team_name, review_id, video_frame_body, timescale = nil, custom_headers = nil)
-      response = add_video_frame_url_async(content_type, team_name, review_id, video_frame_body, timescale, custom_headers).value!
+    def add_video_frame_url(content_type, team_name, review_id, video_frame_body, timescale:nil, custom_headers:nil)
+      response = add_video_frame_url_async(content_type, team_name, review_id, video_frame_body, timescale:timescale, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1619,8 +1619,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_video_frame_url_with_http_info(content_type, team_name, review_id, video_frame_body, timescale = nil, custom_headers = nil)
-      add_video_frame_url_async(content_type, team_name, review_id, video_frame_body, timescale, custom_headers).value!
+    def add_video_frame_url_with_http_info(content_type, team_name, review_id, video_frame_body, timescale:nil, custom_headers:nil)
+      add_video_frame_url_async(content_type, team_name, review_id, video_frame_body, timescale:timescale, custom_headers:custom_headers).value!
     end
 
     #
@@ -1641,7 +1641,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_video_frame_url_async(content_type, team_name, review_id, video_frame_body, timescale = nil, custom_headers = nil)
+    def add_video_frame_url_async(content_type, team_name, review_id, video_frame_body, timescale:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
@@ -1650,7 +1650,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1728,8 +1727,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # will be added to the HTTP request.
     #
     #
-    def add_video_frame_stream(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale = nil, custom_headers = nil)
-      response = add_video_frame_stream_async(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale, custom_headers).value!
+    def add_video_frame_stream(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale:nil, custom_headers:nil)
+      response = add_video_frame_stream_async(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale:timescale, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1751,8 +1750,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_video_frame_stream_with_http_info(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale = nil, custom_headers = nil)
-      add_video_frame_stream_async(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale, custom_headers).value!
+    def add_video_frame_stream_with_http_info(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale:nil, custom_headers:nil)
+      add_video_frame_stream_async(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale:timescale, custom_headers:custom_headers).value!
     end
 
     #
@@ -1773,7 +1772,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_video_frame_stream_async(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale = nil, custom_headers = nil)
+    def add_video_frame_stream_async(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
@@ -1783,11 +1782,18 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'multipart/form-data'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['Content-Type'] = content_type unless content_type.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Set Form Data
+      form_data = {}
+      form_data['frameImageZip'] = frame_image_zip.to_s unless frame_image_zip.to_s.nil?
+      form_data['frameMetadata'] = frame_metadata unless frame_metadata.nil?
+
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'
 
       request_url = @base_url || @client.base_url
@@ -1798,6 +1804,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
           path_params: {'teamName' => team_name,'reviewId' => review_id},
           query_params: {'timescale' => timescale},
           headers: request_headers.merge(custom_headers || {}),
+          body: URI.encode_www_form(form_data),
           base_url: request_url
       }
       promise = @client.make_request_async(:post, path_template, options)

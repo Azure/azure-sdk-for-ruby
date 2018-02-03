@@ -34,8 +34,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineImage] operation results.
     #
-    def get(location, publisher_name, offer, skus, version, custom_headers = nil)
-      response = get_async(location, publisher_name, offer, skus, version, custom_headers).value!
+    def get(location, publisher_name, offer, skus, version, custom_headers:nil)
+      response = get_async(location, publisher_name, offer, skus, version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,8 +52,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(location, publisher_name, offer, skus, version, custom_headers = nil)
-      get_async(location, publisher_name, offer, skus, version, custom_headers).value!
+    def get_with_http_info(location, publisher_name, offer, skus, version, custom_headers:nil)
+      get_async(location, publisher_name, offer, skus, version, custom_headers:custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(location, publisher_name, offer, skus, version, custom_headers = nil)
+    def get_async(location, publisher_name, offer, skus, version, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'offer is nil' if offer.nil?
@@ -80,6 +80,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -140,8 +141,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Array] operation results.
     #
-    def list(location, publisher_name, offer, skus, filter = nil, top = nil, orderby = nil, custom_headers = nil)
-      response = list_async(location, publisher_name, offer, skus, filter, top, orderby, custom_headers).value!
+    def list(location, publisher_name, offer, skus, filter:nil, top:nil, orderby:nil, custom_headers:nil)
+      response = list_async(location, publisher_name, offer, skus, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -161,8 +162,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(location, publisher_name, offer, skus, filter = nil, top = nil, orderby = nil, custom_headers = nil)
-      list_async(location, publisher_name, offer, skus, filter, top, orderby, custom_headers).value!
+    def list_with_http_info(location, publisher_name, offer, skus, filter:nil, top:nil, orderby:nil, custom_headers:nil)
+      list_async(location, publisher_name, offer, skus, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
     end
 
     #
@@ -181,7 +182,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(location, publisher_name, offer, skus, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+    def list_async(location, publisher_name, offer, skus, filter:nil, top:nil, orderby:nil, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'offer is nil' if offer.nil?
@@ -191,6 +192,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -262,8 +264,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Array] operation results.
     #
-    def list_offers(location, publisher_name, custom_headers = nil)
-      response = list_offers_async(location, publisher_name, custom_headers).value!
+    def list_offers(location, publisher_name, custom_headers:nil)
+      response = list_offers_async(location, publisher_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -278,8 +280,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_offers_with_http_info(location, publisher_name, custom_headers = nil)
-      list_offers_async(location, publisher_name, custom_headers).value!
+    def list_offers_with_http_info(location, publisher_name, custom_headers:nil)
+      list_offers_async(location, publisher_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -293,7 +295,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_offers_async(location, publisher_name, custom_headers = nil)
+    def list_offers_async(location, publisher_name, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -301,6 +303,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -371,8 +374,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Array] operation results.
     #
-    def list_publishers(location, custom_headers = nil)
-      response = list_publishers_async(location, custom_headers).value!
+    def list_publishers(location, custom_headers:nil)
+      response = list_publishers_async(location, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -386,8 +389,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_publishers_with_http_info(location, custom_headers = nil)
-      list_publishers_async(location, custom_headers).value!
+    def list_publishers_with_http_info(location, custom_headers:nil)
+      list_publishers_async(location, custom_headers:custom_headers).value!
     end
 
     #
@@ -400,13 +403,14 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_publishers_async(location, custom_headers = nil)
+    def list_publishers_async(location, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -479,8 +483,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Array] operation results.
     #
-    def list_skus(location, publisher_name, offer, custom_headers = nil)
-      response = list_skus_async(location, publisher_name, offer, custom_headers).value!
+    def list_skus(location, publisher_name, offer, custom_headers:nil)
+      response = list_skus_async(location, publisher_name, offer, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -496,8 +500,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_skus_with_http_info(location, publisher_name, offer, custom_headers = nil)
-      list_skus_async(location, publisher_name, offer, custom_headers).value!
+    def list_skus_with_http_info(location, publisher_name, offer, custom_headers:nil)
+      list_skus_async(location, publisher_name, offer, custom_headers:custom_headers).value!
     end
 
     #
@@ -512,7 +516,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_skus_async(location, publisher_name, offer, custom_headers = nil)
+    def list_skus_async(location, publisher_name, offer, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'offer is nil' if offer.nil?
@@ -521,6 +525,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

@@ -31,8 +31,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [Array<RedisFirewallRule>] operation results.
     #
-    def list_by_redis_resource(resource_group_name, cache_name, custom_headers = nil)
-      first_page = list_by_redis_resource_as_lazy(resource_group_name, cache_name, custom_headers)
+    def list_by_redis_resource(resource_group_name, cache_name, custom_headers:nil)
+      first_page = list_by_redis_resource_as_lazy(resource_group_name, cache_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -46,8 +46,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_redis_resource_with_http_info(resource_group_name, cache_name, custom_headers = nil)
-      list_by_redis_resource_async(resource_group_name, cache_name, custom_headers).value!
+    def list_by_redis_resource_with_http_info(resource_group_name, cache_name, custom_headers:nil)
+      list_by_redis_resource_async(resource_group_name, cache_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -60,7 +60,7 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_redis_resource_async(resource_group_name, cache_name, custom_headers = nil)
+    def list_by_redis_resource_async(resource_group_name, cache_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -68,6 +68,7 @@ module Azure::Redis::Mgmt::V2017_02_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -125,8 +126,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [RedisFirewallRule] operation results.
     #
-    def create_or_update(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, cache_name, rule_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -143,8 +144,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, cache_name, rule_name, parameters, custom_headers:nil)
+      create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -160,7 +161,7 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'cache_name is nil' if cache_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
@@ -170,7 +171,6 @@ module Azure::Redis::Mgmt::V2017_02_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -244,8 +244,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [RedisFirewallRule] operation results.
     #
-    def get(resource_group_name, cache_name, rule_name, custom_headers = nil)
-      response = get_async(resource_group_name, cache_name, rule_name, custom_headers).value!
+    def get(resource_group_name, cache_name, rule_name, custom_headers:nil)
+      response = get_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -260,8 +260,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, cache_name, rule_name, custom_headers = nil)
-      get_async(resource_group_name, cache_name, rule_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, cache_name, rule_name, custom_headers:nil)
+      get_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -275,7 +275,7 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, cache_name, rule_name, custom_headers = nil)
+    def get_async(resource_group_name, cache_name, rule_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'cache_name is nil' if cache_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
@@ -284,6 +284,7 @@ module Azure::Redis::Mgmt::V2017_02_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -338,8 +339,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, cache_name, rule_name, custom_headers = nil)
-      response = delete_async(resource_group_name, cache_name, rule_name, custom_headers).value!
+    def delete(resource_group_name, cache_name, rule_name, custom_headers:nil)
+      response = delete_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -354,8 +355,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, cache_name, rule_name, custom_headers = nil)
-      delete_async(resource_group_name, cache_name, rule_name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, cache_name, rule_name, custom_headers:nil)
+      delete_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -369,7 +370,7 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, cache_name, rule_name, custom_headers = nil)
+    def delete_async(resource_group_name, cache_name, rule_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'cache_name is nil' if cache_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
@@ -378,6 +379,7 @@ module Azure::Redis::Mgmt::V2017_02_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -422,8 +424,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [RedisFirewallRuleListResult] operation results.
     #
-    def list_by_redis_resource_next(next_page_link, custom_headers = nil)
-      response = list_by_redis_resource_next_async(next_page_link, custom_headers).value!
+    def list_by_redis_resource_next(next_page_link, custom_headers:nil)
+      response = list_by_redis_resource_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -437,8 +439,8 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_redis_resource_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_redis_resource_next_async(next_page_link, custom_headers).value!
+    def list_by_redis_resource_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_redis_resource_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -451,11 +453,12 @@ module Azure::Redis::Mgmt::V2017_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_redis_resource_next_async(next_page_link, custom_headers = nil)
+    def list_by_redis_resource_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -510,12 +513,12 @@ module Azure::Redis::Mgmt::V2017_02_01
     # @return [RedisFirewallRuleListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_redis_resource_as_lazy(resource_group_name, cache_name, custom_headers = nil)
-      response = list_by_redis_resource_async(resource_group_name, cache_name, custom_headers).value!
+    def list_by_redis_resource_as_lazy(resource_group_name, cache_name, custom_headers:nil)
+      response = list_by_redis_resource_async(resource_group_name, cache_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_redis_resource_next_async(next_page_link, custom_headers)
+          list_by_redis_resource_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

@@ -35,8 +35,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Array<GenericResource>] operation results.
     #
-    def list_by_resource_group(resource_group_name, filter = nil, expand = nil, top = nil, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, filter, expand, top, custom_headers)
+    def list_by_resource_group(resource_group_name, filter:nil, expand:nil, top:nil, custom_headers:nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, filter:filter, expand:expand, top:top, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -54,8 +54,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, filter = nil, expand = nil, top = nil, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, filter, expand, top, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, filter:nil, expand:nil, top:nil, custom_headers:nil)
+      list_by_resource_group_async(resource_group_name, filter:filter, expand:expand, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -72,7 +72,7 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, filter = nil, expand = nil, top = nil, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, filter:nil, expand:nil, top:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -82,6 +82,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -141,8 +142,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def move_resources(source_resource_group_name, parameters, custom_headers = nil)
-      response = move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+    def move_resources(source_resource_group_name, parameters, custom_headers:nil)
+      response = move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -156,9 +157,9 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def move_resources_async(source_resource_group_name, parameters, custom_headers = nil)
+    def move_resources_async(source_resource_group_name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_move_resources_async(source_resource_group_name, parameters, custom_headers)
+      promise = begin_move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -190,8 +191,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def validate_move_resources(source_resource_group_name, parameters, custom_headers = nil)
-      response = validate_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+    def validate_move_resources(source_resource_group_name, parameters, custom_headers:nil)
+      response = validate_move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -205,9 +206,9 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def validate_move_resources_async(source_resource_group_name, parameters, custom_headers = nil)
+    def validate_move_resources_async(source_resource_group_name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers)
+      promise = begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -233,8 +234,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Array<GenericResource>] operation results.
     #
-    def list(filter = nil, expand = nil, top = nil, custom_headers = nil)
-      first_page = list_as_lazy(filter, expand, top, custom_headers)
+    def list(filter:nil, expand:nil, top:nil, custom_headers:nil)
+      first_page = list_as_lazy(filter:filter, expand:expand, top:top, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -250,8 +251,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter = nil, expand = nil, top = nil, custom_headers = nil)
-      list_async(filter, expand, top, custom_headers).value!
+    def list_with_http_info(filter:nil, expand:nil, top:nil, custom_headers:nil)
+      list_async(filter:filter, expand:expand, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -266,12 +267,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter = nil, expand = nil, top = nil, custom_headers = nil)
+    def list_async(filter:nil, expand:nil, top:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -333,8 +335,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Boolean] operation results.
     #
-    def check_existence(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
-      response = check_existence_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers).value!
+    def check_existence(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
+      response = check_existence_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -355,8 +357,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_existence_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
-      check_existence_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers).value!
+    def check_existence_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
+      check_existence_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -376,7 +378,7 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_existence_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
+    def check_existence_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -390,6 +392,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -440,8 +443,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
-      response = delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers).value!
+    def delete(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
+      response = delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers).value!
       nil
     end
 
@@ -460,9 +463,9 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
+    def delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers)
+      promise = begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -494,8 +497,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [GenericResource] operation results.
     #
-    def create_or_update(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -516,9 +519,9 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -550,8 +553,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [GenericResource] operation results.
     #
-    def get(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
-      response = get_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers).value!
+    def get(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
+      response = get_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -571,8 +574,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
-      get_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers).value!
+    def get_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
+      get_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -591,7 +594,7 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
+    def get_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -605,6 +608,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -662,8 +666,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Boolean] operation results.
     #
-    def check_existence_by_id(resource_id, api_version, custom_headers = nil)
-      response = check_existence_by_id_async(resource_id, api_version, custom_headers).value!
+    def check_existence_by_id(resource_id, api_version, custom_headers:nil)
+      response = check_existence_by_id_async(resource_id, api_version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -679,8 +683,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_existence_by_id_with_http_info(resource_id, api_version, custom_headers = nil)
-      check_existence_by_id_async(resource_id, api_version, custom_headers).value!
+    def check_existence_by_id_with_http_info(resource_id, api_version, custom_headers:nil)
+      check_existence_by_id_async(resource_id, api_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -695,12 +699,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_existence_by_id_async(resource_id, api_version, custom_headers = nil)
+    def check_existence_by_id_async(resource_id, api_version, custom_headers:nil)
       fail ArgumentError, 'resource_id is nil' if resource_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -746,8 +751,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete_by_id(resource_id, api_version, custom_headers = nil)
-      response = delete_by_id_async(resource_id, api_version, custom_headers).value!
+    def delete_by_id(resource_id, api_version, custom_headers:nil)
+      response = delete_by_id_async(resource_id, api_version, custom_headers:custom_headers).value!
       nil
     end
 
@@ -762,9 +767,9 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_by_id_async(resource_id, api_version, custom_headers = nil)
+    def delete_by_id_async(resource_id, api_version, custom_headers:nil)
       # Send request
-      promise = begin_delete_by_id_async(resource_id, api_version, custom_headers)
+      promise = begin_delete_by_id_async(resource_id, api_version, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -791,8 +796,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [GenericResource] operation results.
     #
-    def create_or_update_by_id(resource_id, api_version, parameters, custom_headers = nil)
-      response = create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers).value!
+    def create_or_update_by_id(resource_id, api_version, parameters, custom_headers:nil)
+      response = create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -808,9 +813,9 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers = nil)
+    def create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers)
+      promise = begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -838,8 +843,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [GenericResource] operation results.
     #
-    def get_by_id(resource_id, api_version, custom_headers = nil)
-      response = get_by_id_async(resource_id, api_version, custom_headers).value!
+    def get_by_id(resource_id, api_version, custom_headers:nil)
+      response = get_by_id_async(resource_id, api_version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -855,8 +860,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_by_id_with_http_info(resource_id, api_version, custom_headers = nil)
-      get_by_id_async(resource_id, api_version, custom_headers).value!
+    def get_by_id_with_http_info(resource_id, api_version, custom_headers:nil)
+      get_by_id_async(resource_id, api_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -871,12 +876,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_by_id_async(resource_id, api_version, custom_headers = nil)
+    def get_by_id_async(resource_id, api_version, custom_headers:nil)
       fail ArgumentError, 'resource_id is nil' if resource_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -937,8 +943,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # will be added to the HTTP request.
     #
     #
-    def begin_move_resources(source_resource_group_name, parameters, custom_headers = nil)
-      response = begin_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+    def begin_move_resources(source_resource_group_name, parameters, custom_headers:nil)
+      response = begin_move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -959,8 +965,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_move_resources_with_http_info(source_resource_group_name, parameters, custom_headers = nil)
-      begin_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+    def begin_move_resources_with_http_info(source_resource_group_name, parameters, custom_headers:nil)
+      begin_move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -980,7 +986,7 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_move_resources_async(source_resource_group_name, parameters, custom_headers = nil)
+    def begin_move_resources_async(source_resource_group_name, parameters, custom_headers:nil)
       fail ArgumentError, 'source_resource_group_name is nil' if source_resource_group_name.nil?
       fail ArgumentError, "'source_resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !source_resource_group_name.nil? && source_resource_group_name.length > 90
       fail ArgumentError, "'source_resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !source_resource_group_name.nil? && source_resource_group_name.length < 1
@@ -991,7 +997,6 @@ module Azure::Resources::Mgmt::V2017_05_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1053,8 +1058,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # will be added to the HTTP request.
     #
     #
-    def begin_validate_move_resources(source_resource_group_name, parameters, custom_headers = nil)
-      response = begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+    def begin_validate_move_resources(source_resource_group_name, parameters, custom_headers:nil)
+      response = begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1078,8 +1083,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_validate_move_resources_with_http_info(source_resource_group_name, parameters, custom_headers = nil)
-      begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+    def begin_validate_move_resources_with_http_info(source_resource_group_name, parameters, custom_headers:nil)
+      begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -1102,7 +1107,7 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers = nil)
+    def begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers:nil)
       fail ArgumentError, 'source_resource_group_name is nil' if source_resource_group_name.nil?
       fail ArgumentError, "'source_resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !source_resource_group_name.nil? && source_resource_group_name.length > 90
       fail ArgumentError, "'source_resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !source_resource_group_name.nil? && source_resource_group_name.length < 1
@@ -1113,7 +1118,6 @@ module Azure::Resources::Mgmt::V2017_05_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1171,8 +1175,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers).value!
+    def begin_delete(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1192,8 +1196,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
-      begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
+      begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -1212,7 +1216,7 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
+    def begin_delete_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1226,6 +1230,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1279,8 +1284,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [GenericResource] operation results.
     #
-    def begin_create_or_update(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers).value!
+    def begin_create_or_update(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1302,8 +1307,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -1324,7 +1329,7 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1339,7 +1344,6 @@ module Azure::Resources::Mgmt::V2017_05_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1414,8 +1418,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     # will be added to the HTTP request.
     #
     #
-    def begin_delete_by_id(resource_id, api_version, custom_headers = nil)
-      response = begin_delete_by_id_async(resource_id, api_version, custom_headers).value!
+    def begin_delete_by_id(resource_id, api_version, custom_headers:nil)
+      response = begin_delete_by_id_async(resource_id, api_version, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1431,8 +1435,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_by_id_with_http_info(resource_id, api_version, custom_headers = nil)
-      begin_delete_by_id_async(resource_id, api_version, custom_headers).value!
+    def begin_delete_by_id_with_http_info(resource_id, api_version, custom_headers:nil)
+      begin_delete_by_id_async(resource_id, api_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -1447,12 +1451,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_by_id_async(resource_id, api_version, custom_headers = nil)
+    def begin_delete_by_id_async(resource_id, api_version, custom_headers:nil)
       fail ArgumentError, 'resource_id is nil' if resource_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1500,8 +1505,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [GenericResource] operation results.
     #
-    def begin_create_or_update_by_id(resource_id, api_version, parameters, custom_headers = nil)
-      response = begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers).value!
+    def begin_create_or_update_by_id(resource_id, api_version, parameters, custom_headers:nil)
+      response = begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1518,8 +1523,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_by_id_with_http_info(resource_id, api_version, parameters, custom_headers = nil)
-      begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers).value!
+    def begin_create_or_update_by_id_with_http_info(resource_id, api_version, parameters, custom_headers:nil)
+      begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -1535,14 +1540,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers = nil)
+    def begin_create_or_update_by_id_async(resource_id, api_version, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_id is nil' if resource_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1615,8 +1619,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [ResourceListResult] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers:nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1630,8 +1634,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1644,11 +1648,12 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1702,8 +1707,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [ResourceListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1717,8 +1722,8 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1731,11 +1736,12 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1794,12 +1800,12 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [ResourceListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, filter = nil, expand = nil, top = nil, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, filter, expand, top, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, filter:nil, expand:nil, top:nil, custom_headers:nil)
+      response = list_by_resource_group_async(resource_group_name, filter:filter, expand:expand, top:top, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -1818,12 +1824,12 @@ module Azure::Resources::Mgmt::V2017_05_10
     # @return [ResourceListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(filter = nil, expand = nil, top = nil, custom_headers = nil)
-      response = list_async(filter, expand, top, custom_headers).value!
+    def list_as_lazy(filter:nil, expand:nil, top:nil, custom_headers:nil)
+      response = list_async(filter:filter, expand:expand, top:top, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

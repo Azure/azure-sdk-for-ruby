@@ -49,8 +49,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [FoundFaces] operation results.
     #
-    def find_faces(cache_image = nil, custom_headers = nil)
-      response = find_faces_async(cache_image, custom_headers).value!
+    def find_faces(cache_image:nil, custom_headers:nil)
+      response = find_faces_async(cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -64,8 +64,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def find_faces_with_http_info(cache_image = nil, custom_headers = nil)
-      find_faces_async(cache_image, custom_headers).value!
+    def find_faces_with_http_info(cache_image:nil, custom_headers:nil)
+      find_faces_async(cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -78,11 +78,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def find_faces_async(cache_image = nil, custom_headers = nil)
+    def find_faces_async(cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -145,8 +146,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [OCR] operation results.
     #
-    def ocrmethod(language, cache_image = nil, enhanced = false, custom_headers = nil)
-      response = ocrmethod_async(language, cache_image, enhanced, custom_headers).value!
+    def ocrmethod(language, cache_image:nil, enhanced:false, custom_headers:nil)
+      response = ocrmethod_async(language, cache_image:cache_image, enhanced:enhanced, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -168,8 +169,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def ocrmethod_with_http_info(language, cache_image = nil, enhanced = false, custom_headers = nil)
-      ocrmethod_async(language, cache_image, enhanced, custom_headers).value!
+    def ocrmethod_with_http_info(language, cache_image:nil, enhanced:false, custom_headers:nil)
+      ocrmethod_async(language, cache_image:cache_image, enhanced:enhanced, custom_headers:custom_headers).value!
     end
 
     #
@@ -190,12 +191,13 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def ocrmethod_async(language, cache_image = nil, enhanced = false, custom_headers = nil)
+    def ocrmethod_async(language, cache_image:nil, enhanced:false, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'language is nil' if language.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -250,8 +252,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Evaluate] operation results.
     #
-    def evaluate_method(cache_image = nil, custom_headers = nil)
-      response = evaluate_method_async(cache_image, custom_headers).value!
+    def evaluate_method(cache_image:nil, custom_headers:nil)
+      response = evaluate_method_async(cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -265,8 +267,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def evaluate_method_with_http_info(cache_image = nil, custom_headers = nil)
-      evaluate_method_async(cache_image, custom_headers).value!
+    def evaluate_method_with_http_info(cache_image:nil, custom_headers:nil)
+      evaluate_method_async(cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -279,11 +281,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def evaluate_method_async(cache_image = nil, custom_headers = nil)
+    def evaluate_method_async(cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -347,8 +350,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MatchResponse] operation results.
     #
-    def match_method(list_id = nil, cache_image = nil, custom_headers = nil)
-      response = match_method_async(list_id, cache_image, custom_headers).value!
+    def match_method(list_id:nil, cache_image:nil, custom_headers:nil)
+      response = match_method_async(list_id:list_id, cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -371,8 +374,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def match_method_with_http_info(list_id = nil, cache_image = nil, custom_headers = nil)
-      match_method_async(list_id, cache_image, custom_headers).value!
+    def match_method_with_http_info(list_id:nil, cache_image:nil, custom_headers:nil)
+      match_method_async(list_id:list_id, cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -394,11 +397,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def match_method_async(list_id = nil, cache_image = nil, custom_headers = nil)
+    def match_method_async(list_id:nil, cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -454,8 +458,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [FoundFaces] operation results.
     #
-    def find_faces_file_input(image_stream, cache_image = nil, custom_headers = nil)
-      response = find_faces_file_input_async(image_stream, cache_image, custom_headers).value!
+    def find_faces_file_input(image_stream, cache_image:nil, custom_headers:nil)
+      response = find_faces_file_input_async(image_stream, cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -470,8 +474,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def find_faces_file_input_with_http_info(image_stream, cache_image = nil, custom_headers = nil)
-      find_faces_file_input_async(image_stream, cache_image, custom_headers).value!
+    def find_faces_file_input_with_http_info(image_stream, cache_image:nil, custom_headers:nil)
+      find_faces_file_input_async(image_stream, cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -485,13 +489,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def find_faces_file_input_async(image_stream, cache_image = nil, custom_headers = nil)
+    def find_faces_file_input_async(image_stream, cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'image/gif'
 
       # Set Headers
@@ -563,8 +566,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [FoundFaces] operation results.
     #
-    def find_faces_url_input(content_type, image_url, cache_image = nil, custom_headers = nil)
-      response = find_faces_url_input_async(content_type, image_url, cache_image, custom_headers).value!
+    def find_faces_url_input(content_type, image_url, cache_image:nil, custom_headers:nil)
+      response = find_faces_url_input_async(content_type, image_url, cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -580,8 +583,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def find_faces_url_input_with_http_info(content_type, image_url, cache_image = nil, custom_headers = nil)
-      find_faces_url_input_async(content_type, image_url, cache_image, custom_headers).value!
+    def find_faces_url_input_with_http_info(content_type, image_url, cache_image:nil, custom_headers:nil)
+      find_faces_url_input_async(content_type, image_url, cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -596,14 +599,13 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def find_faces_url_input_async(content_type, image_url, cache_image = nil, custom_headers = nil)
+    def find_faces_url_input_async(content_type, image_url, cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -677,8 +679,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [OCR] operation results.
     #
-    def ocrurl_input(language, content_type, image_url, cache_image = nil, enhanced = false, custom_headers = nil)
-      response = ocrurl_input_async(language, content_type, image_url, cache_image, enhanced, custom_headers).value!
+    def ocrurl_input(language, content_type, image_url, cache_image:nil, enhanced:false, custom_headers:nil)
+      response = ocrurl_input_async(language, content_type, image_url, cache_image:cache_image, enhanced:enhanced, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -702,8 +704,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def ocrurl_input_with_http_info(language, content_type, image_url, cache_image = nil, enhanced = false, custom_headers = nil)
-      ocrurl_input_async(language, content_type, image_url, cache_image, enhanced, custom_headers).value!
+    def ocrurl_input_with_http_info(language, content_type, image_url, cache_image:nil, enhanced:false, custom_headers:nil)
+      ocrurl_input_async(language, content_type, image_url, cache_image:cache_image, enhanced:enhanced, custom_headers:custom_headers).value!
     end
 
     #
@@ -726,7 +728,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def ocrurl_input_async(language, content_type, image_url, cache_image = nil, enhanced = false, custom_headers = nil)
+    def ocrurl_input_async(language, content_type, image_url, cache_image:nil, enhanced:false, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'language is nil' if language.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
@@ -734,7 +736,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -807,8 +808,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [OCR] operation results.
     #
-    def ocrfile_input(language, image_stream, cache_image = nil, enhanced = false, custom_headers = nil)
-      response = ocrfile_input_async(language, image_stream, cache_image, enhanced, custom_headers).value!
+    def ocrfile_input(language, image_stream, cache_image:nil, enhanced:false, custom_headers:nil)
+      response = ocrfile_input_async(language, image_stream, cache_image:cache_image, enhanced:enhanced, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -831,8 +832,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def ocrfile_input_with_http_info(language, image_stream, cache_image = nil, enhanced = false, custom_headers = nil)
-      ocrfile_input_async(language, image_stream, cache_image, enhanced, custom_headers).value!
+    def ocrfile_input_with_http_info(language, image_stream, cache_image:nil, enhanced:false, custom_headers:nil)
+      ocrfile_input_async(language, image_stream, cache_image:cache_image, enhanced:enhanced, custom_headers:custom_headers).value!
     end
 
     #
@@ -854,14 +855,13 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def ocrfile_input_async(language, image_stream, cache_image = nil, enhanced = false, custom_headers = nil)
+    def ocrfile_input_async(language, image_stream, cache_image:nil, enhanced:false, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'language is nil' if language.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'image/gif'
 
       # Set Headers
@@ -932,8 +932,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Evaluate] operation results.
     #
-    def evaluate_file_input(image_stream, cache_image = nil, custom_headers = nil)
-      response = evaluate_file_input_async(image_stream, cache_image, custom_headers).value!
+    def evaluate_file_input(image_stream, cache_image:nil, custom_headers:nil)
+      response = evaluate_file_input_async(image_stream, cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -948,8 +948,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def evaluate_file_input_with_http_info(image_stream, cache_image = nil, custom_headers = nil)
-      evaluate_file_input_async(image_stream, cache_image, custom_headers).value!
+    def evaluate_file_input_with_http_info(image_stream, cache_image:nil, custom_headers:nil)
+      evaluate_file_input_async(image_stream, cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -963,13 +963,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def evaluate_file_input_async(image_stream, cache_image = nil, custom_headers = nil)
+    def evaluate_file_input_async(image_stream, cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'image/gif'
 
       # Set Headers
@@ -1041,8 +1040,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Evaluate] operation results.
     #
-    def evaluate_url_input(content_type, image_url, cache_image = nil, custom_headers = nil)
-      response = evaluate_url_input_async(content_type, image_url, cache_image, custom_headers).value!
+    def evaluate_url_input(content_type, image_url, cache_image:nil, custom_headers:nil)
+      response = evaluate_url_input_async(content_type, image_url, cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1058,8 +1057,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def evaluate_url_input_with_http_info(content_type, image_url, cache_image = nil, custom_headers = nil)
-      evaluate_url_input_async(content_type, image_url, cache_image, custom_headers).value!
+    def evaluate_url_input_with_http_info(content_type, image_url, cache_image:nil, custom_headers:nil)
+      evaluate_url_input_async(content_type, image_url, cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -1074,14 +1073,13 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def evaluate_url_input_async(content_type, image_url, cache_image = nil, custom_headers = nil)
+    def evaluate_url_input_async(content_type, image_url, cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1156,8 +1154,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MatchResponse] operation results.
     #
-    def match_url_input(content_type, image_url, list_id = nil, cache_image = nil, custom_headers = nil)
-      response = match_url_input_async(content_type, image_url, list_id, cache_image, custom_headers).value!
+    def match_url_input(content_type, image_url, list_id:nil, cache_image:nil, custom_headers:nil)
+      response = match_url_input_async(content_type, image_url, list_id:list_id, cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1182,8 +1180,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def match_url_input_with_http_info(content_type, image_url, list_id = nil, cache_image = nil, custom_headers = nil)
-      match_url_input_async(content_type, image_url, list_id, cache_image, custom_headers).value!
+    def match_url_input_with_http_info(content_type, image_url, list_id:nil, cache_image:nil, custom_headers:nil)
+      match_url_input_async(content_type, image_url, list_id:list_id, cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -1207,14 +1205,13 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def match_url_input_async(content_type, image_url, list_id = nil, cache_image = nil, custom_headers = nil)
+    def match_url_input_async(content_type, image_url, list_id:nil, cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1288,8 +1285,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MatchResponse] operation results.
     #
-    def match_file_input(image_stream, list_id = nil, cache_image = nil, custom_headers = nil)
-      response = match_file_input_async(image_stream, list_id, cache_image, custom_headers).value!
+    def match_file_input(image_stream, list_id:nil, cache_image:nil, custom_headers:nil)
+      response = match_file_input_async(image_stream, list_id:list_id, cache_image:cache_image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1313,8 +1310,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def match_file_input_with_http_info(image_stream, list_id = nil, cache_image = nil, custom_headers = nil)
-      match_file_input_async(image_stream, list_id, cache_image, custom_headers).value!
+    def match_file_input_with_http_info(image_stream, list_id:nil, cache_image:nil, custom_headers:nil)
+      match_file_input_async(image_stream, list_id:list_id, cache_image:cache_image, custom_headers:custom_headers).value!
     end
 
     #
@@ -1337,13 +1334,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def match_file_input_async(image_stream, list_id = nil, cache_image = nil, custom_headers = nil)
+    def match_file_input_async(image_stream, list_id:nil, cache_image:nil, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'image/gif'
 
       # Set Headers

@@ -59,15 +59,15 @@ module Azure::EventGrid::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::EventGrid::Mgmt::V2018_01_01::EventGridManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::EventGrid::Mgmt::V2018_01_01::EventGridManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @event_subscriptions = client_0.event_subscriptions
-        @operations = client_0.operations
-        @topics = client_0.topics
-        @topic_types = client_0.topic_types
+        add_telemetry(@client_0)
+        @event_subscriptions = @client_0.event_subscriptions
+        @operations = @client_0.operations
+        @topics = @client_0.topics
+        @topic_types = @client_0.topic_types
 
         @model_classes = ModelClasses.new
       end
@@ -75,6 +75,14 @@ module Azure::EventGrid::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/EventGrid/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

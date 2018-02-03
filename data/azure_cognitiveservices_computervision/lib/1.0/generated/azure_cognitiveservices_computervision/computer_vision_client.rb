@@ -123,8 +123,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [ListModelsResult] operation results.
     #
-    def list_models(custom_headers = nil)
-      response = list_models_async(custom_headers).value!
+    def list_models(custom_headers:nil)
+      response = list_models_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -140,8 +140,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_models_with_http_info(custom_headers = nil)
-      list_models_async(custom_headers).value!
+    def list_models_with_http_info(custom_headers:nil)
+      list_models_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -156,11 +156,12 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_models_async(custom_headers = nil)
+    def list_models_async(custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -237,8 +238,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [ImageAnalysis] operation results.
     #
-    def analyze_image(url, visual_features = nil, details = nil, language = nil, custom_headers = nil)
-      response = analyze_image_async(url, visual_features, details, language, custom_headers).value!
+    def analyze_image(url, visual_features:nil, details:nil, language:nil, custom_headers:nil)
+      response = analyze_image_async(url, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -275,8 +276,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_with_http_info(url, visual_features = nil, details = nil, language = nil, custom_headers = nil)
-      analyze_image_async(url, visual_features, details, language, custom_headers).value!
+    def analyze_image_with_http_info(url, visual_features:nil, details:nil, language:nil, custom_headers:nil)
+      analyze_image_async(url, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -312,7 +313,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_async(url, visual_features = nil, details = nil, language = nil, custom_headers = nil)
+    def analyze_image_async(url, visual_features:nil, details:nil, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -322,7 +323,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -395,8 +395,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [NOT_IMPLEMENTED] operation results.
     #
-    def generate_thumbnail(width, height, url, smart_cropping = false, custom_headers = nil)
-      response = generate_thumbnail_async(width, height, url, smart_cropping, custom_headers).value!
+    def generate_thumbnail(width, height, url, smart_cropping:false, custom_headers:nil)
+      response = generate_thumbnail_async(width, height, url, smart_cropping:smart_cropping, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -420,8 +420,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generate_thumbnail_with_http_info(width, height, url, smart_cropping = false, custom_headers = nil)
-      generate_thumbnail_async(width, height, url, smart_cropping, custom_headers).value!
+    def generate_thumbnail_with_http_info(width, height, url, smart_cropping:false, custom_headers:nil)
+      generate_thumbnail_async(width, height, url, smart_cropping:smart_cropping, custom_headers:custom_headers).value!
     end
 
     #
@@ -444,7 +444,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generate_thumbnail_async(width, height, url, smart_cropping = false, custom_headers = nil)
+    def generate_thumbnail_async(width, height, url, smart_cropping:false, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'width is nil' if width.nil?
       fail ArgumentError, "'width' should satisfy the constraint - 'InclusiveMaximum': '1023'" if !width.nil? && width > 1023
@@ -460,7 +460,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -543,8 +542,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [OcrResult] operation results.
     #
-    def recognize_printed_text(detect_orientation, url, language = nil, custom_headers = nil)
-      response = recognize_printed_text_async(detect_orientation, url, language, custom_headers).value!
+    def recognize_printed_text(detect_orientation, url, language:nil, custom_headers:nil)
+      response = recognize_printed_text_async(detect_orientation, url, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -571,8 +570,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def recognize_printed_text_with_http_info(detect_orientation, url, language = nil, custom_headers = nil)
-      recognize_printed_text_async(detect_orientation, url, language, custom_headers).value!
+    def recognize_printed_text_with_http_info(detect_orientation, url, language:nil, custom_headers:nil)
+      recognize_printed_text_async(detect_orientation, url, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -598,7 +597,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def recognize_printed_text_async(detect_orientation, url, language = nil, custom_headers = nil)
+    def recognize_printed_text_async(detect_orientation, url, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'detect_orientation is nil' if detect_orientation.nil?
       fail ArgumentError, 'url is nil' if url.nil?
@@ -609,7 +608,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -680,8 +678,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image(url, max_candidates = '1', custom_headers = nil)
-      response = describe_image_async(url, max_candidates, custom_headers).value!
+    def describe_image(url, max_candidates:'1', custom_headers:nil)
+      response = describe_image_async(url, max_candidates:max_candidates, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -703,8 +701,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_with_http_info(url, max_candidates = '1', custom_headers = nil)
-      describe_image_async(url, max_candidates, custom_headers).value!
+    def describe_image_with_http_info(url, max_candidates:'1', custom_headers:nil)
+      describe_image_async(url, max_candidates:max_candidates, custom_headers:custom_headers).value!
     end
 
     #
@@ -725,7 +723,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_async(url, max_candidates = '1', custom_headers = nil)
+    def describe_image_async(url, max_candidates:'1', custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -735,7 +733,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -803,8 +800,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [TagResult] operation results.
     #
-    def tag_image(url, custom_headers = nil)
-      response = tag_image_async(url, custom_headers).value!
+    def tag_image(url, custom_headers:nil)
+      response = tag_image_async(url, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -823,8 +820,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def tag_image_with_http_info(url, custom_headers = nil)
-      tag_image_async(url, custom_headers).value!
+    def tag_image_with_http_info(url, custom_headers:nil)
+      tag_image_async(url, custom_headers:custom_headers).value!
     end
 
     #
@@ -842,7 +839,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def tag_image_async(url, custom_headers = nil)
+    def tag_image_async(url, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -852,7 +849,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -922,8 +918,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [DomainModelResults] operation results.
     #
-    def analyze_image_by_domain(model, url, custom_headers = nil)
-      response = analyze_image_by_domain_async(model, url, custom_headers).value!
+    def analyze_image_by_domain(model, url, custom_headers:nil)
+      response = analyze_image_by_domain_async(model, url, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -945,8 +941,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_by_domain_with_http_info(model, url, custom_headers = nil)
-      analyze_image_by_domain_async(model, url, custom_headers).value!
+    def analyze_image_by_domain_with_http_info(model, url, custom_headers:nil)
+      analyze_image_by_domain_async(model, url, custom_headers:custom_headers).value!
     end
 
     #
@@ -967,7 +963,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_by_domain_async(model, url, custom_headers = nil)
+    def analyze_image_by_domain_async(model, url, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'model is nil' if model.nil?
       fail ArgumentError, 'url is nil' if url.nil?
@@ -978,7 +974,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1045,8 +1040,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # will be added to the HTTP request.
     #
     #
-    def recognize_text(url, detect_handwriting = false, custom_headers = nil)
-      response = recognize_text_async(url, detect_handwriting, custom_headers).value!
+    def recognize_text(url, detect_handwriting:false, custom_headers:nil)
+      response = recognize_text_async(url, detect_handwriting:detect_handwriting, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1065,8 +1060,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def recognize_text_with_http_info(url, detect_handwriting = false, custom_headers = nil)
-      recognize_text_async(url, detect_handwriting, custom_headers).value!
+    def recognize_text_with_http_info(url, detect_handwriting:false, custom_headers:nil)
+      recognize_text_async(url, detect_handwriting:detect_handwriting, custom_headers:custom_headers).value!
     end
 
     #
@@ -1084,7 +1079,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def recognize_text_async(url, detect_handwriting = false, custom_headers = nil)
+    def recognize_text_async(url, detect_handwriting:false, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -1094,7 +1089,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1149,8 +1143,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [TextOperationResult] operation results.
     #
-    def get_text_operation_result(operation_id, custom_headers = nil)
-      response = get_text_operation_result_async(operation_id, custom_headers).value!
+    def get_text_operation_result(operation_id, custom_headers:nil)
+      response = get_text_operation_result_async(operation_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1166,8 +1160,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_text_operation_result_with_http_info(operation_id, custom_headers = nil)
-      get_text_operation_result_async(operation_id, custom_headers).value!
+    def get_text_operation_result_with_http_info(operation_id, custom_headers:nil)
+      get_text_operation_result_async(operation_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -1182,12 +1176,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_text_operation_result_async(operation_id, custom_headers = nil)
+    def get_text_operation_result_async(operation_id, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'operation_id is nil' if operation_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1262,8 +1257,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [ImageAnalysis] operation results.
     #
-    def analyze_image_in_stream(image, visual_features = nil, details = nil, language = nil, custom_headers = nil)
-      response = analyze_image_in_stream_async(image, visual_features, details, language, custom_headers).value!
+    def analyze_image_in_stream(image, visual_features:nil, details:nil, language:nil, custom_headers:nil)
+      response = analyze_image_in_stream_async(image, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1297,8 +1292,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_in_stream_with_http_info(image, visual_features = nil, details = nil, language = nil, custom_headers = nil)
-      analyze_image_in_stream_async(image, visual_features, details, language, custom_headers).value!
+    def analyze_image_in_stream_with_http_info(image, visual_features:nil, details:nil, language:nil, custom_headers:nil)
+      analyze_image_in_stream_async(image, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -1331,13 +1326,12 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_in_stream_async(image, visual_features = nil, details = nil, language = nil, custom_headers = nil)
+    def analyze_image_in_stream_async(image, visual_features:nil, details:nil, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers
@@ -1417,8 +1411,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [NOT_IMPLEMENTED] operation results.
     #
-    def generate_thumbnail_in_stream(width, height, image, smart_cropping = false, custom_headers = nil)
-      response = generate_thumbnail_in_stream_async(width, height, image, smart_cropping, custom_headers).value!
+    def generate_thumbnail_in_stream(width, height, image, smart_cropping:false, custom_headers:nil)
+      response = generate_thumbnail_in_stream_async(width, height, image, smart_cropping:smart_cropping, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1442,8 +1436,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generate_thumbnail_in_stream_with_http_info(width, height, image, smart_cropping = false, custom_headers = nil)
-      generate_thumbnail_in_stream_async(width, height, image, smart_cropping, custom_headers).value!
+    def generate_thumbnail_in_stream_with_http_info(width, height, image, smart_cropping:false, custom_headers:nil)
+      generate_thumbnail_in_stream_async(width, height, image, smart_cropping:smart_cropping, custom_headers:custom_headers).value!
     end
 
     #
@@ -1466,7 +1460,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generate_thumbnail_in_stream_async(width, height, image, smart_cropping = false, custom_headers = nil)
+    def generate_thumbnail_in_stream_async(width, height, image, smart_cropping:false, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'width is nil' if width.nil?
       fail ArgumentError, "'width' should satisfy the constraint - 'InclusiveMaximum': '1023'" if !width.nil? && width > 1023
@@ -1478,7 +1472,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers
@@ -1568,8 +1561,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [OcrResult] operation results.
     #
-    def recognize_printed_text_in_stream(detect_orientation, image, language = nil, custom_headers = nil)
-      response = recognize_printed_text_in_stream_async(detect_orientation, image, language, custom_headers).value!
+    def recognize_printed_text_in_stream(detect_orientation, image, language:nil, custom_headers:nil)
+      response = recognize_printed_text_in_stream_async(detect_orientation, image, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1596,8 +1589,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def recognize_printed_text_in_stream_with_http_info(detect_orientation, image, language = nil, custom_headers = nil)
-      recognize_printed_text_in_stream_async(detect_orientation, image, language, custom_headers).value!
+    def recognize_printed_text_in_stream_with_http_info(detect_orientation, image, language:nil, custom_headers:nil)
+      recognize_printed_text_in_stream_async(detect_orientation, image, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -1623,14 +1616,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def recognize_printed_text_in_stream_async(detect_orientation, image, language = nil, custom_headers = nil)
+    def recognize_printed_text_in_stream_async(detect_orientation, image, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'detect_orientation is nil' if detect_orientation.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers
@@ -1708,8 +1700,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image_in_stream(image, max_candidates = '1', custom_headers = nil)
-      response = describe_image_in_stream_async(image, max_candidates, custom_headers).value!
+    def describe_image_in_stream(image, max_candidates:'1', custom_headers:nil)
+      response = describe_image_in_stream_async(image, max_candidates:max_candidates, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1731,8 +1723,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_in_stream_with_http_info(image, max_candidates = '1', custom_headers = nil)
-      describe_image_in_stream_async(image, max_candidates, custom_headers).value!
+    def describe_image_in_stream_with_http_info(image, max_candidates:'1', custom_headers:nil)
+      describe_image_in_stream_async(image, max_candidates:max_candidates, custom_headers:custom_headers).value!
     end
 
     #
@@ -1753,13 +1745,12 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_in_stream_async(image, max_candidates = '1', custom_headers = nil)
+    def describe_image_in_stream_async(image, max_candidates:'1', custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers
@@ -1834,8 +1825,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [TagResult] operation results.
     #
-    def tag_image_in_stream(image, custom_headers = nil)
-      response = tag_image_in_stream_async(image, custom_headers).value!
+    def tag_image_in_stream(image, custom_headers:nil)
+      response = tag_image_in_stream_async(image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1854,8 +1845,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def tag_image_in_stream_with_http_info(image, custom_headers = nil)
-      tag_image_in_stream_async(image, custom_headers).value!
+    def tag_image_in_stream_with_http_info(image, custom_headers:nil)
+      tag_image_in_stream_async(image, custom_headers:custom_headers).value!
     end
 
     #
@@ -1873,13 +1864,12 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def tag_image_in_stream_async(image, custom_headers = nil)
+    def tag_image_in_stream_async(image, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers
@@ -1955,8 +1945,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [DomainModelResults] operation results.
     #
-    def analyze_image_by_domain_in_stream(model, image, custom_headers = nil)
-      response = analyze_image_by_domain_in_stream_async(model, image, custom_headers).value!
+    def analyze_image_by_domain_in_stream(model, image, custom_headers:nil)
+      response = analyze_image_by_domain_in_stream_async(model, image, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1977,8 +1967,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_by_domain_in_stream_with_http_info(model, image, custom_headers = nil)
-      analyze_image_by_domain_in_stream_async(model, image, custom_headers).value!
+    def analyze_image_by_domain_in_stream_with_http_info(model, image, custom_headers:nil)
+      analyze_image_by_domain_in_stream_async(model, image, custom_headers:custom_headers).value!
     end
 
     #
@@ -1998,14 +1988,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_by_domain_in_stream_async(model, image, custom_headers = nil)
+    def analyze_image_by_domain_in_stream_async(model, image, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'model is nil' if model.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers
@@ -2079,8 +2068,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # will be added to the HTTP request.
     #
     #
-    def recognize_text_in_stream(image, detect_handwriting = false, custom_headers = nil)
-      response = recognize_text_in_stream_async(image, detect_handwriting, custom_headers).value!
+    def recognize_text_in_stream(image, detect_handwriting:false, custom_headers:nil)
+      response = recognize_text_in_stream_async(image, detect_handwriting:detect_handwriting, custom_headers:custom_headers).value!
       nil
     end
 
@@ -2099,8 +2088,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def recognize_text_in_stream_with_http_info(image, detect_handwriting = false, custom_headers = nil)
-      recognize_text_in_stream_async(image, detect_handwriting, custom_headers).value!
+    def recognize_text_in_stream_with_http_info(image, detect_handwriting:false, custom_headers:nil)
+      recognize_text_in_stream_async(image, detect_handwriting:detect_handwriting, custom_headers:custom_headers).value!
     end
 
     #
@@ -2118,13 +2107,12 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def recognize_text_in_stream_async(image, detect_handwriting = false, custom_headers = nil)
+    def recognize_text_in_stream_async(image, detect_handwriting:false, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers

@@ -31,8 +31,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Array<AppServiceCertificateOrder>] operation results.
     #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
+    def list(custom_headers:nil)
+      first_page = list_as_lazy(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -46,8 +46,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_with_http_info(custom_headers:nil)
+      list_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -60,12 +60,13 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_async(custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -121,8 +122,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def validate_purchase_information(app_service_certificate_order, custom_headers = nil)
-      response = validate_purchase_information_async(app_service_certificate_order, custom_headers).value!
+    def validate_purchase_information(app_service_certificate_order, custom_headers:nil)
+      response = validate_purchase_information_async(app_service_certificate_order, custom_headers:custom_headers).value!
       nil
     end
 
@@ -138,8 +139,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_purchase_information_with_http_info(app_service_certificate_order, custom_headers = nil)
-      validate_purchase_information_async(app_service_certificate_order, custom_headers).value!
+    def validate_purchase_information_with_http_info(app_service_certificate_order, custom_headers:nil)
+      validate_purchase_information_async(app_service_certificate_order, custom_headers:custom_headers).value!
     end
 
     #
@@ -154,14 +155,13 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_purchase_information_async(app_service_certificate_order, custom_headers = nil)
+    def validate_purchase_information_async(app_service_certificate_order, custom_headers:nil)
       fail ArgumentError, 'app_service_certificate_order is nil' if app_service_certificate_order.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -216,8 +216,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Array<AppServiceCertificateOrder>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(resource_group_name, custom_headers:nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -233,8 +233,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
+      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -249,7 +249,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -259,6 +259,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -316,8 +317,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateOrder] operation results.
     #
-    def get(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = get_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def get(resource_group_name, certificate_order_name, custom_headers:nil)
+      response = get_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -334,8 +335,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      get_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, certificate_order_name, custom_headers:nil)
+      get_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -351,7 +352,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, certificate_order_name, custom_headers = nil)
+    def get_async(resource_group_name, certificate_order_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -362,6 +363,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -421,8 +423,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateOrder] operation results.
     #
-    def create_or_update(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers).value!
+    def create_or_update(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -438,9 +440,9 @@ module Azure::Web::Mgmt::V2015_08_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers = nil)
+    def create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -468,8 +470,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = delete_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def delete(resource_group_name, certificate_order_name, custom_headers:nil)
+      response = delete_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -486,8 +488,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      delete_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, certificate_order_name, custom_headers:nil)
+      delete_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -503,7 +505,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, certificate_order_name, custom_headers = nil)
+    def delete_async(resource_group_name, certificate_order_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -514,6 +516,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -561,8 +564,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Array<AppServiceCertificateResource>] operation results.
     #
-    def list_certificates(resource_group_name, certificate_order_name, custom_headers = nil)
-      first_page = list_certificates_as_lazy(resource_group_name, certificate_order_name, custom_headers)
+    def list_certificates(resource_group_name, certificate_order_name, custom_headers:nil)
+      first_page = list_certificates_as_lazy(resource_group_name, certificate_order_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -579,8 +582,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_certificates_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      list_certificates_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def list_certificates_with_http_info(resource_group_name, certificate_order_name, custom_headers:nil)
+      list_certificates_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -596,7 +599,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_certificates_async(resource_group_name, certificate_order_name, custom_headers = nil)
+    def list_certificates_async(resource_group_name, certificate_order_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -607,6 +610,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -665,8 +669,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateResource] operation results.
     #
-    def get_certificate(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      response = get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+    def get_certificate(resource_group_name, certificate_order_name, name, custom_headers:nil)
+      response = get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -684,8 +688,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+    def get_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers:nil)
+      get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -702,7 +706,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers = nil)
+    def get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -714,6 +718,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -774,8 +779,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateResource] operation results.
     #
-    def create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
-      response = create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+    def create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:nil)
+      response = create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -792,9 +797,9 @@ module Azure::Web::Mgmt::V2015_08_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+    def create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers)
+      promise = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -823,8 +828,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def delete_certificate(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      response = delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+    def delete_certificate(resource_group_name, certificate_order_name, name, custom_headers:nil)
+      response = delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -842,8 +847,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+    def delete_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers:nil)
+      delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -860,7 +865,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers = nil)
+    def delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -872,6 +877,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -920,8 +926,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def reissue(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers = nil)
-      response = reissue_async(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers).value!
+    def reissue(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers:nil)
+      response = reissue_async(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers:custom_headers).value!
       nil
     end
 
@@ -940,8 +946,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def reissue_with_http_info(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers = nil)
-      reissue_async(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers).value!
+    def reissue_with_http_info(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers:nil)
+      reissue_async(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers:custom_headers).value!
     end
 
     #
@@ -959,7 +965,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def reissue_async(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers = nil)
+    def reissue_async(resource_group_name, certificate_order_name, reissue_certificate_order_request, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -971,7 +977,6 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1028,8 +1033,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def renew(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers = nil)
-      response = renew_async(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers).value!
+    def renew(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers:nil)
+      response = renew_async(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1048,8 +1053,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def renew_with_http_info(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers = nil)
-      renew_async(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers).value!
+    def renew_with_http_info(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers:nil)
+      renew_async(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers:custom_headers).value!
     end
 
     #
@@ -1067,7 +1072,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def renew_async(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers = nil)
+    def renew_async(resource_group_name, certificate_order_name, renew_certificate_order_request, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1079,7 +1084,6 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1134,8 +1138,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def resend_email(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = resend_email_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def resend_email(resource_group_name, certificate_order_name, custom_headers:nil)
+      response = resend_email_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1152,8 +1156,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def resend_email_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      resend_email_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def resend_email_with_http_info(resource_group_name, certificate_order_name, custom_headers:nil)
+      resend_email_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1169,7 +1173,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def resend_email_async(resource_group_name, certificate_order_name, custom_headers = nil)
+    def resend_email_async(resource_group_name, certificate_order_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1180,6 +1184,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1227,8 +1232,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def resend_request_emails(resource_group_name, certificate_order_name, name_identifier, custom_headers = nil)
-      response = resend_request_emails_async(resource_group_name, certificate_order_name, name_identifier, custom_headers).value!
+    def resend_request_emails(resource_group_name, certificate_order_name, name_identifier, custom_headers:nil)
+      response = resend_request_emails_async(resource_group_name, certificate_order_name, name_identifier, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1246,8 +1251,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def resend_request_emails_with_http_info(resource_group_name, certificate_order_name, name_identifier, custom_headers = nil)
-      resend_request_emails_async(resource_group_name, certificate_order_name, name_identifier, custom_headers).value!
+    def resend_request_emails_with_http_info(resource_group_name, certificate_order_name, name_identifier, custom_headers:nil)
+      resend_request_emails_async(resource_group_name, certificate_order_name, name_identifier, custom_headers:custom_headers).value!
     end
 
     #
@@ -1264,7 +1269,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def resend_request_emails_async(resource_group_name, certificate_order_name, name_identifier, custom_headers = nil)
+    def resend_request_emails_async(resource_group_name, certificate_order_name, name_identifier, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1276,7 +1281,6 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1333,8 +1337,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [SiteSeal] operation results.
     #
-    def retrieve_site_seal(resource_group_name, certificate_order_name, site_seal_request, custom_headers = nil)
-      response = retrieve_site_seal_async(resource_group_name, certificate_order_name, site_seal_request, custom_headers).value!
+    def retrieve_site_seal(resource_group_name, certificate_order_name, site_seal_request, custom_headers:nil)
+      response = retrieve_site_seal_async(resource_group_name, certificate_order_name, site_seal_request, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1352,8 +1356,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def retrieve_site_seal_with_http_info(resource_group_name, certificate_order_name, site_seal_request, custom_headers = nil)
-      retrieve_site_seal_async(resource_group_name, certificate_order_name, site_seal_request, custom_headers).value!
+    def retrieve_site_seal_with_http_info(resource_group_name, certificate_order_name, site_seal_request, custom_headers:nil)
+      retrieve_site_seal_async(resource_group_name, certificate_order_name, site_seal_request, custom_headers:custom_headers).value!
     end
 
     #
@@ -1370,7 +1374,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def retrieve_site_seal_async(resource_group_name, certificate_order_name, site_seal_request, custom_headers = nil)
+    def retrieve_site_seal_async(resource_group_name, certificate_order_name, site_seal_request, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1382,7 +1386,6 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1447,8 +1450,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # will be added to the HTTP request.
     #
     #
-    def verify_domain_ownership(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = verify_domain_ownership_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def verify_domain_ownership(resource_group_name, certificate_order_name, custom_headers:nil)
+      response = verify_domain_ownership_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1465,8 +1468,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_domain_ownership_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      verify_domain_ownership_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def verify_domain_ownership_with_http_info(resource_group_name, certificate_order_name, custom_headers:nil)
+      verify_domain_ownership_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1482,7 +1485,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_domain_ownership_async(resource_group_name, certificate_order_name, custom_headers = nil)
+    def verify_domain_ownership_async(resource_group_name, certificate_order_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1493,6 +1496,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1540,8 +1544,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Array] operation results.
     #
-    def retrieve_certificate_actions(resource_group_name, name, custom_headers = nil)
-      response = retrieve_certificate_actions_async(resource_group_name, name, custom_headers).value!
+    def retrieve_certificate_actions(resource_group_name, name, custom_headers:nil)
+      response = retrieve_certificate_actions_async(resource_group_name, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1558,8 +1562,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def retrieve_certificate_actions_with_http_info(resource_group_name, name, custom_headers = nil)
-      retrieve_certificate_actions_async(resource_group_name, name, custom_headers).value!
+    def retrieve_certificate_actions_with_http_info(resource_group_name, name, custom_headers:nil)
+      retrieve_certificate_actions_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1575,7 +1579,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def retrieve_certificate_actions_async(resource_group_name, name, custom_headers = nil)
+    def retrieve_certificate_actions_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1586,6 +1590,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1659,8 +1664,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Array] operation results.
     #
-    def retrieve_certificate_email_history(resource_group_name, name, custom_headers = nil)
-      response = retrieve_certificate_email_history_async(resource_group_name, name, custom_headers).value!
+    def retrieve_certificate_email_history(resource_group_name, name, custom_headers:nil)
+      response = retrieve_certificate_email_history_async(resource_group_name, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1677,8 +1682,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def retrieve_certificate_email_history_with_http_info(resource_group_name, name, custom_headers = nil)
-      retrieve_certificate_email_history_async(resource_group_name, name, custom_headers).value!
+    def retrieve_certificate_email_history_with_http_info(resource_group_name, name, custom_headers:nil)
+      retrieve_certificate_email_history_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1694,7 +1699,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def retrieve_certificate_email_history_async(resource_group_name, name, custom_headers = nil)
+    def retrieve_certificate_email_history_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1705,6 +1710,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1780,8 +1786,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateOrder] operation results.
     #
-    def begin_create_or_update(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers).value!
+    def begin_create_or_update(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1800,8 +1806,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1819,7 +1825,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, certificate_order_name, certificate_distinguished_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1831,7 +1837,6 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1910,8 +1915,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateResource] operation results.
     #
-    def begin_create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
-      response = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+    def begin_create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:nil)
+      response = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1931,8 +1936,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_certificate_with_http_info(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
-      begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+    def begin_create_or_update_certificate_with_http_info(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:nil)
+      begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:custom_headers).value!
     end
 
     #
@@ -1951,7 +1956,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+    def begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1964,7 +1969,6 @@ module Azure::Web::Mgmt::V2015_08_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -2039,8 +2043,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateOrderCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2056,8 +2060,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -2072,11 +2076,12 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2132,8 +2137,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateOrderCollection] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers:nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2149,8 +2154,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -2165,11 +2170,12 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2225,8 +2231,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [AppServiceCertificateCollection] operation results.
     #
-    def list_certificates_next(next_page_link, custom_headers = nil)
-      response = list_certificates_next_async(next_page_link, custom_headers).value!
+    def list_certificates_next(next_page_link, custom_headers:nil)
+      response = list_certificates_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2242,8 +2248,8 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_certificates_next_with_http_info(next_page_link, custom_headers = nil)
-      list_certificates_next_async(next_page_link, custom_headers).value!
+    def list_certificates_next_with_http_info(next_page_link, custom_headers:nil)
+      list_certificates_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -2258,11 +2264,12 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_certificates_next_async(next_page_link, custom_headers = nil)
+    def list_certificates_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2317,12 +2324,12 @@ module Azure::Web::Mgmt::V2015_08_01
     # @return [AppServiceCertificateOrderCollection] which provide lazy access to
     # pages of the response.
     #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_as_lazy(custom_headers:nil)
+      response = list_async(custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -2341,12 +2348,12 @@ module Azure::Web::Mgmt::V2015_08_01
     # @return [AppServiceCertificateOrderCollection] which provide lazy access to
     # pages of the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, custom_headers:nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -2366,12 +2373,12 @@ module Azure::Web::Mgmt::V2015_08_01
     # @return [AppServiceCertificateCollection] which provide lazy access to pages
     # of the response.
     #
-    def list_certificates_as_lazy(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = list_certificates_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def list_certificates_as_lazy(resource_group_name, certificate_order_name, custom_headers:nil)
+      response = list_certificates_async(resource_group_name, certificate_order_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_certificates_next_async(next_page_link, custom_headers)
+          list_certificates_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

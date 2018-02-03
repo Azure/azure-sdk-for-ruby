@@ -36,8 +36,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [ProtectionContainerResource] operation results.
     #
-    def get(vault_name, resource_group_name, fabric_name, container_name, custom_headers = nil)
-      response = get_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers).value!
+    def get(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      response = get_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -56,8 +56,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(vault_name, resource_group_name, fabric_name, container_name, custom_headers = nil)
-      get_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers).value!
+    def get_with_http_info(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      get_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -75,7 +75,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers = nil)
+    def get_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -85,6 +85,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -142,8 +143,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # will be added to the HTTP request.
     #
     #
-    def refresh(vault_name, resource_group_name, fabric_name, custom_headers = nil)
-      response = refresh_async(vault_name, resource_group_name, fabric_name, custom_headers).value!
+    def refresh(vault_name, resource_group_name, fabric_name, custom_headers:nil)
+      response = refresh_async(vault_name, resource_group_name, fabric_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -161,8 +162,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def refresh_with_http_info(vault_name, resource_group_name, fabric_name, custom_headers = nil)
-      refresh_async(vault_name, resource_group_name, fabric_name, custom_headers).value!
+    def refresh_with_http_info(vault_name, resource_group_name, fabric_name, custom_headers:nil)
+      refresh_async(vault_name, resource_group_name, fabric_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -179,7 +180,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def refresh_async(vault_name, resource_group_name, fabric_name, custom_headers = nil)
+    def refresh_async(vault_name, resource_group_name, fabric_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -188,6 +189,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

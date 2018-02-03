@@ -152,8 +152,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [CheckNameAvailabilityOutput] operation results.
     #
-    def check_name_availability(check_name_availability_input, custom_headers = nil)
-      response = check_name_availability_async(check_name_availability_input, custom_headers).value!
+    def check_name_availability(check_name_availability_input, custom_headers:nil)
+      response = check_name_availability_async(check_name_availability_input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -168,8 +168,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(check_name_availability_input, custom_headers = nil)
-      check_name_availability_async(check_name_availability_input, custom_headers).value!
+    def check_name_availability_with_http_info(check_name_availability_input, custom_headers:nil)
+      check_name_availability_async(check_name_availability_input, custom_headers:custom_headers).value!
     end
 
     #
@@ -183,13 +183,12 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(check_name_availability_input, custom_headers = nil)
+    def check_name_availability_async(check_name_availability_input, custom_headers:nil)
       fail ArgumentError, 'check_name_availability_input is nil' if check_name_availability_input.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -253,8 +252,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [ValidateProbeOutput] operation results.
     #
-    def validate_probe(validate_probe_input, custom_headers = nil)
-      response = validate_probe_async(validate_probe_input, custom_headers).value!
+    def validate_probe(validate_probe_input, custom_headers:nil)
+      response = validate_probe_async(validate_probe_input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -270,8 +269,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_probe_with_http_info(validate_probe_input, custom_headers = nil)
-      validate_probe_async(validate_probe_input, custom_headers).value!
+    def validate_probe_with_http_info(validate_probe_input, custom_headers:nil)
+      validate_probe_async(validate_probe_input, custom_headers:custom_headers).value!
     end
 
     #
@@ -286,14 +285,13 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_probe_async(validate_probe_input, custom_headers = nil)
+    def validate_probe_async(validate_probe_input, custom_headers:nil)
       fail ArgumentError, 'validate_probe_input is nil' if validate_probe_input.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

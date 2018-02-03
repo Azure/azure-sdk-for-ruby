@@ -41,16 +41,16 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Authorization::Mgmt::V2015_07_01::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Authorization::Mgmt::V2015_07_01::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @classic_administrators = client_0.classic_administrators
-          @permissions = client_0.permissions
-          @provider_operations_metadata_operations = client_0.provider_operations_metadata_operations
-          @role_assignments = client_0.role_assignments
-          @role_definitions = client_0.role_definitions
+          add_telemetry(@client_0)
+          @classic_administrators = @client_0.classic_administrators
+          @permissions = @client_0.permissions
+          @provider_operations_metadata_operations = @client_0.provider_operations_metadata_operations
+          @role_assignments = @client_0.role_assignments
+          @role_definitions = @client_0.role_definitions
 
           @model_classes = ModelClasses.new
         end
@@ -58,6 +58,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/Authorization/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

@@ -96,38 +96,38 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Monitor::Mgmt::V2015_04_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Monitor::Mgmt::V2015_04_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @autoscale_settings = client_0.autoscale_settings
-          @operations = client_0.operations
+          add_telemetry(@client_0)
+          @autoscale_settings = @client_0.autoscale_settings
+          @operations = @client_0.operations
 
-          client_1 = Azure::Monitor::Mgmt::V2016_03_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
-          if(client_1.respond_to?(:subscription_id))
-            client_1.subscription_id = configurable.subscription_id
+          @client_1 = Azure::Monitor::Mgmt::V2016_03_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_1.respond_to?(:subscription_id))
+            @client_1.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_1)
-          @alert_rule_incidents = client_1.alert_rule_incidents
-          @alert_rules = client_1.alert_rules
-          @log_profiles = client_1.log_profiles
+          add_telemetry(@client_1)
+          @alert_rule_incidents = @client_1.alert_rule_incidents
+          @alert_rules = @client_1.alert_rules
+          @log_profiles = @client_1.log_profiles
 
-          client_2 = Azure::Monitor::Mgmt::V2017_04_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
-          if(client_2.respond_to?(:subscription_id))
-            client_2.subscription_id = configurable.subscription_id
+          @client_2 = Azure::Monitor::Mgmt::V2017_04_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_2.respond_to?(:subscription_id))
+            @client_2.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_2)
-          @action_groups = client_2.action_groups
-          @activity_log_alerts = client_2.activity_log_alerts
+          add_telemetry(@client_2)
+          @action_groups = @client_2.action_groups
+          @activity_log_alerts = @client_2.activity_log_alerts
 
-          client_3 = Azure::Monitor::Mgmt::V2017_05_01_preview::MonitorClient.new(configurable.credentials, base_url, options)
-          if(client_3.respond_to?(:subscription_id))
-            client_3.subscription_id = configurable.subscription_id
+          @client_3 = Azure::Monitor::Mgmt::V2017_05_01_preview::MonitorClient.new(configurable.credentials, base_url, options)
+          if(@client_3.respond_to?(:subscription_id))
+            @client_3.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_3)
-          @diagnostic_settings_category_operations = client_3.diagnostic_settings_category_operations
-          @diagnostic_settings_operations = client_3.diagnostic_settings_operations
+          add_telemetry(@client_3)
+          @diagnostic_settings_category_operations = @client_3.diagnostic_settings_category_operations
+          @diagnostic_settings_operations = @client_3.diagnostic_settings_operations
 
           @model_classes = ModelClasses.new
         end
@@ -135,6 +135,20 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/Monitor/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_3.respond_to?method
+            @client_3.send(method, *args)
+          elsif @client_2.respond_to?method
+            @client_2.send(method, *args)
+          elsif @client_1.respond_to?method
+            @client_1.send(method, *args)
+          elsif @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

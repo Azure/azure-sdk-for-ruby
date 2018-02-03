@@ -77,21 +77,21 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::ServiceBus::Mgmt::V2017_04_01::ServiceBusManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::ServiceBus::Mgmt::V2017_04_01::ServiceBusManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @operations = client_0.operations
-          @namespaces = client_0.namespaces
-          @disaster_recovery_configs = client_0.disaster_recovery_configs
-          @queues = client_0.queues
-          @topics = client_0.topics
-          @subscriptions = client_0.subscriptions
-          @rules = client_0.rules
-          @regions = client_0.regions
-          @premium_messaging_regions_operations = client_0.premium_messaging_regions_operations
-          @event_hubs = client_0.event_hubs
+          add_telemetry(@client_0)
+          @operations = @client_0.operations
+          @namespaces = @client_0.namespaces
+          @disaster_recovery_configs = @client_0.disaster_recovery_configs
+          @queues = @client_0.queues
+          @topics = @client_0.topics
+          @subscriptions = @client_0.subscriptions
+          @rules = @client_0.rules
+          @regions = @client_0.regions
+          @premium_messaging_regions_operations = @client_0.premium_messaging_regions_operations
+          @event_hubs = @client_0.event_hubs
 
           @model_classes = ModelClasses.new
         end
@@ -99,6 +99,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/ServiceBus/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

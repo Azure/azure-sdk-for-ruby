@@ -108,18 +108,18 @@ module Azure::StreamAnalytics::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::StreamAnalytics::Mgmt::V2016_03_01::StreamAnalyticsManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::StreamAnalytics::Mgmt::V2016_03_01::StreamAnalyticsManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @operations = client_0.operations
-        @streaming_jobs = client_0.streaming_jobs
-        @inputs = client_0.inputs
-        @outputs = client_0.outputs
-        @transformations = client_0.transformations
-        @functions = client_0.functions
-        @subscriptions = client_0.subscriptions
+        add_telemetry(@client_0)
+        @operations = @client_0.operations
+        @streaming_jobs = @client_0.streaming_jobs
+        @inputs = @client_0.inputs
+        @outputs = @client_0.outputs
+        @transformations = @client_0.transformations
+        @functions = @client_0.functions
+        @subscriptions = @client_0.subscriptions
 
         @model_classes = ModelClasses.new
       end
@@ -127,6 +127,14 @@ module Azure::StreamAnalytics::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/StreamAnalytics/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

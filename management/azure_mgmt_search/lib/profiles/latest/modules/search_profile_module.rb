@@ -46,14 +46,14 @@ module Azure::Search::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Search::Mgmt::V2015_08_19::SearchManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Search::Mgmt::V2015_08_19::SearchManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @admin_keys = client_0.admin_keys
-        @query_keys = client_0.query_keys
-        @services = client_0.services
+        add_telemetry(@client_0)
+        @admin_keys = @client_0.admin_keys
+        @query_keys = @client_0.query_keys
+        @services = @client_0.services
 
         @model_classes = ModelClasses.new
       end
@@ -61,6 +61,14 @@ module Azure::Search::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/Search/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

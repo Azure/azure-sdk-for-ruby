@@ -272,8 +272,8 @@ module Azure::Network::Mgmt::V2017_09_01
     #
     # @return [DnsNameAvailabilityResult] operation results.
     #
-    def check_dns_name_availability(location, domain_name_label, custom_headers = nil)
-      response = check_dns_name_availability_async(location, domain_name_label, custom_headers).value!
+    def check_dns_name_availability(location, domain_name_label, custom_headers:nil)
+      response = check_dns_name_availability_async(location, domain_name_label, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -289,8 +289,8 @@ module Azure::Network::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_dns_name_availability_with_http_info(location, domain_name_label, custom_headers = nil)
-      check_dns_name_availability_async(location, domain_name_label, custom_headers).value!
+    def check_dns_name_availability_with_http_info(location, domain_name_label, custom_headers:nil)
+      check_dns_name_availability_async(location, domain_name_label, custom_headers:custom_headers).value!
     end
 
     #
@@ -305,7 +305,7 @@ module Azure::Network::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_dns_name_availability_async(location, domain_name_label, custom_headers = nil)
+    def check_dns_name_availability_async(location, domain_name_label, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'domain_name_label is nil' if domain_name_label.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -313,6 +313,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

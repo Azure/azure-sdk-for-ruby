@@ -81,15 +81,15 @@ module Azure::Face::Profiles::Latest
       @base_url = options[:base_url].nil? ? nil:options[:base_url]
       @options = options[:options].nil? ? nil:options[:options]
 
-      client_0 = Azure::CognitiveServices::Face::V1_0::FaceClient.new(configurable.credentials, options)
-      if(client_0.respond_to?(:subscription_id))
-        client_0.subscription_id = configurable.subscription_id
+      @client_0 = Azure::CognitiveServices::Face::V1_0::FaceClient.new(configurable.credentials, options)
+      if(@client_0.respond_to?(:subscription_id))
+        @client_0.subscription_id = configurable.subscription_id
       end
-      add_telemetry(client_0)
-      @face = client_0.face
-      @person = client_0.person
-      @person_group = client_0.person_group
-      @face_list = client_0.face_list
+      add_telemetry(@client_0)
+      @face = @client_0.face
+      @person = @client_0.person
+      @person_group = @client_0.person_group
+      @face_list = @client_0.face_list
 
       @model_classes = ModelClasses.new
     end
@@ -97,6 +97,14 @@ module Azure::Face::Profiles::Latest
     def add_telemetry(client)
       profile_information = 'Profiles/Latest/Face'
       client.add_user_agent_information(profile_information)
+    end
+
+    def method_missing(method, *args)
+      if @client_0.respond_to?method
+        @client_0.send(method, *args)
+      else
+        super
+      end
     end
 
   end

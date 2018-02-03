@@ -214,39 +214,39 @@ module Azure::Compute::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Compute::Mgmt::V2017_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Compute::Mgmt::V2017_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @disks = client_0.disks
-        @snapshots = client_0.snapshots
-        @virtual_machine_run_commands = client_0.virtual_machine_run_commands
+        add_telemetry(@client_0)
+        @disks = @client_0.disks
+        @snapshots = @client_0.snapshots
+        @virtual_machine_run_commands = @client_0.virtual_machine_run_commands
 
-        client_1 = Azure::Compute::Mgmt::V2017_09_01::ComputeManagementClient.new(configurable.credentials, base_url, options)
-        if(client_1.respond_to?(:subscription_id))
-          client_1.subscription_id = configurable.subscription_id
+        @client_1 = Azure::Compute::Mgmt::V2017_09_01::ComputeManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_1.respond_to?(:subscription_id))
+          @client_1.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_1)
-        @resource_skus = client_1.resource_skus
+        add_telemetry(@client_1)
+        @resource_skus = @client_1.resource_skus
 
-        client_2 = Azure::Compute::Mgmt::V2017_12_01::ComputeManagementClient.new(configurable.credentials, base_url, options)
-        if(client_2.respond_to?(:subscription_id))
-          client_2.subscription_id = configurable.subscription_id
+        @client_2 = Azure::Compute::Mgmt::V2017_12_01::ComputeManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_2.respond_to?(:subscription_id))
+          @client_2.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_2)
-        @availability_sets = client_2.availability_sets
-        @virtual_machine_extension_images = client_2.virtual_machine_extension_images
-        @virtual_machine_extensions = client_2.virtual_machine_extensions
-        @virtual_machine_images = client_2.virtual_machine_images
-        @usage_operations = client_2.usage_operations
-        @virtual_machine_sizes = client_2.virtual_machine_sizes
-        @images = client_2.images
-        @virtual_machines = client_2.virtual_machines
-        @virtual_machine_scale_sets = client_2.virtual_machine_scale_sets
-        @virtual_machine_scale_set_extensions = client_2.virtual_machine_scale_set_extensions
-        @virtual_machine_scale_set_rolling_upgrades = client_2.virtual_machine_scale_set_rolling_upgrades
-        @virtual_machine_scale_set_vms = client_2.virtual_machine_scale_set_vms
+        add_telemetry(@client_2)
+        @availability_sets = @client_2.availability_sets
+        @virtual_machine_extension_images = @client_2.virtual_machine_extension_images
+        @virtual_machine_extensions = @client_2.virtual_machine_extensions
+        @virtual_machine_images = @client_2.virtual_machine_images
+        @usage_operations = @client_2.usage_operations
+        @virtual_machine_sizes = @client_2.virtual_machine_sizes
+        @images = @client_2.images
+        @virtual_machines = @client_2.virtual_machines
+        @virtual_machine_scale_sets = @client_2.virtual_machine_scale_sets
+        @virtual_machine_scale_set_extensions = @client_2.virtual_machine_scale_set_extensions
+        @virtual_machine_scale_set_rolling_upgrades = @client_2.virtual_machine_scale_set_rolling_upgrades
+        @virtual_machine_scale_set_vms = @client_2.virtual_machine_scale_set_vms
 
         @model_classes = ModelClasses.new
       end
@@ -254,6 +254,18 @@ module Azure::Compute::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/Compute/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_2.respond_to?method
+          @client_2.send(method, *args)
+        elsif @client_1.respond_to?method
+          @client_1.send(method, *args)
+        elsif @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

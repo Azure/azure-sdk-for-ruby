@@ -42,8 +42,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscription] operation results.
     #
-    def get(scope, event_subscription_name, custom_headers = nil)
-      response = get_async(scope, event_subscription_name, custom_headers).value!
+    def get(scope, event_subscription_name, custom_headers:nil)
+      response = get_async(scope, event_subscription_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -68,8 +68,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(scope, event_subscription_name, custom_headers = nil)
-      get_async(scope, event_subscription_name, custom_headers).value!
+    def get_with_http_info(scope, event_subscription_name, custom_headers:nil)
+      get_async(scope, event_subscription_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -93,13 +93,14 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(scope, event_subscription_name, custom_headers = nil)
+    def get_async(scope, event_subscription_name, custom_headers:nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'event_subscription_name is nil' if event_subscription_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -172,8 +173,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscription] operation results.
     #
-    def create_or_update(scope, event_subscription_name, event_subscription_info, custom_headers = nil)
-      response = create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers).value!
+    def create_or_update(scope, event_subscription_name, event_subscription_info, custom_headers:nil)
+      response = create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -200,9 +201,9 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers = nil)
+    def create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers)
+      promise = begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -237,8 +238,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(scope, event_subscription_name, custom_headers = nil)
-      response = delete_async(scope, event_subscription_name, custom_headers).value!
+    def delete(scope, event_subscription_name, custom_headers:nil)
+      response = delete_async(scope, event_subscription_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -260,9 +261,9 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(scope, event_subscription_name, custom_headers = nil)
+    def delete_async(scope, event_subscription_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(scope, event_subscription_name, custom_headers)
+      promise = begin_delete_async(scope, event_subscription_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -300,8 +301,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscription] operation results.
     #
-    def update(scope, event_subscription_name, event_subscription_update_parameters, custom_headers = nil)
-      response = update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers).value!
+    def update(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:nil)
+      response = update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -326,9 +327,9 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers = nil)
+    def update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:nil)
       # Send request
-      promise = begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers)
+      promise = begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -365,8 +366,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionFullUrl] operation results.
     #
-    def get_full_url(scope, event_subscription_name, custom_headers = nil)
-      response = get_full_url_async(scope, event_subscription_name, custom_headers).value!
+    def get_full_url(scope, event_subscription_name, custom_headers:nil)
+      response = get_full_url_async(scope, event_subscription_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -391,8 +392,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_full_url_with_http_info(scope, event_subscription_name, custom_headers = nil)
-      get_full_url_async(scope, event_subscription_name, custom_headers).value!
+    def get_full_url_with_http_info(scope, event_subscription_name, custom_headers:nil)
+      get_full_url_async(scope, event_subscription_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -416,13 +417,14 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_full_url_async(scope, event_subscription_name, custom_headers = nil)
+    def get_full_url_async(scope, event_subscription_name, custom_headers:nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'event_subscription_name is nil' if event_subscription_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -480,8 +482,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_global_by_subscription(custom_headers = nil)
-      response = list_global_by_subscription_async(custom_headers).value!
+    def list_global_by_subscription(custom_headers:nil)
+      response = list_global_by_subscription_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -497,8 +499,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_global_by_subscription_with_http_info(custom_headers = nil)
-      list_global_by_subscription_async(custom_headers).value!
+    def list_global_by_subscription_with_http_info(custom_headers:nil)
+      list_global_by_subscription_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -513,12 +515,13 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_global_by_subscription_async(custom_headers = nil)
+    def list_global_by_subscription_async(custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -575,8 +578,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_global_by_subscription_for_topic_type(topic_type_name, custom_headers = nil)
-      response = list_global_by_subscription_for_topic_type_async(topic_type_name, custom_headers).value!
+    def list_global_by_subscription_for_topic_type(topic_type_name, custom_headers:nil)
+      response = list_global_by_subscription_for_topic_type_async(topic_type_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -592,8 +595,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_global_by_subscription_for_topic_type_with_http_info(topic_type_name, custom_headers = nil)
-      list_global_by_subscription_for_topic_type_async(topic_type_name, custom_headers).value!
+    def list_global_by_subscription_for_topic_type_with_http_info(topic_type_name, custom_headers:nil)
+      list_global_by_subscription_for_topic_type_async(topic_type_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -608,13 +611,14 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_global_by_subscription_for_topic_type_async(topic_type_name, custom_headers = nil)
+    def list_global_by_subscription_for_topic_type_async(topic_type_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'topic_type_name is nil' if topic_type_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -673,8 +677,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_global_by_resource_group(resource_group_name, custom_headers = nil)
-      response = list_global_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_global_by_resource_group(resource_group_name, custom_headers:nil)
+      response = list_global_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -692,8 +696,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_global_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_global_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_global_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
+      list_global_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -710,13 +714,14 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_global_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_global_by_resource_group_async(resource_group_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -775,8 +780,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_global_by_resource_group_for_topic_type(resource_group_name, topic_type_name, custom_headers = nil)
-      response = list_global_by_resource_group_for_topic_type_async(resource_group_name, topic_type_name, custom_headers).value!
+    def list_global_by_resource_group_for_topic_type(resource_group_name, topic_type_name, custom_headers:nil)
+      response = list_global_by_resource_group_for_topic_type_async(resource_group_name, topic_type_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -794,8 +799,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_global_by_resource_group_for_topic_type_with_http_info(resource_group_name, topic_type_name, custom_headers = nil)
-      list_global_by_resource_group_for_topic_type_async(resource_group_name, topic_type_name, custom_headers).value!
+    def list_global_by_resource_group_for_topic_type_with_http_info(resource_group_name, topic_type_name, custom_headers:nil)
+      list_global_by_resource_group_for_topic_type_async(resource_group_name, topic_type_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -812,7 +817,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_global_by_resource_group_for_topic_type_async(resource_group_name, topic_type_name, custom_headers = nil)
+    def list_global_by_resource_group_for_topic_type_async(resource_group_name, topic_type_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'topic_type_name is nil' if topic_type_name.nil?
@@ -820,6 +825,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -876,8 +882,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_regional_by_subscription(location, custom_headers = nil)
-      response = list_regional_by_subscription_async(location, custom_headers).value!
+    def list_regional_by_subscription(location, custom_headers:nil)
+      response = list_regional_by_subscription_async(location, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -893,8 +899,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_regional_by_subscription_with_http_info(location, custom_headers = nil)
-      list_regional_by_subscription_async(location, custom_headers).value!
+    def list_regional_by_subscription_with_http_info(location, custom_headers:nil)
+      list_regional_by_subscription_async(location, custom_headers:custom_headers).value!
     end
 
     #
@@ -909,13 +915,14 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_regional_by_subscription_async(location, custom_headers = nil)
+    def list_regional_by_subscription_async(location, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -975,8 +982,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_regional_by_resource_group(resource_group_name, location, custom_headers = nil)
-      response = list_regional_by_resource_group_async(resource_group_name, location, custom_headers).value!
+    def list_regional_by_resource_group(resource_group_name, location, custom_headers:nil)
+      response = list_regional_by_resource_group_async(resource_group_name, location, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -995,8 +1002,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_regional_by_resource_group_with_http_info(resource_group_name, location, custom_headers = nil)
-      list_regional_by_resource_group_async(resource_group_name, location, custom_headers).value!
+    def list_regional_by_resource_group_with_http_info(resource_group_name, location, custom_headers:nil)
+      list_regional_by_resource_group_async(resource_group_name, location, custom_headers:custom_headers).value!
     end
 
     #
@@ -1014,7 +1021,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_regional_by_resource_group_async(resource_group_name, location, custom_headers = nil)
+    def list_regional_by_resource_group_async(resource_group_name, location, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'location is nil' if location.nil?
@@ -1022,6 +1029,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1080,8 +1088,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_regional_by_subscription_for_topic_type(location, topic_type_name, custom_headers = nil)
-      response = list_regional_by_subscription_for_topic_type_async(location, topic_type_name, custom_headers).value!
+    def list_regional_by_subscription_for_topic_type(location, topic_type_name, custom_headers:nil)
+      response = list_regional_by_subscription_for_topic_type_async(location, topic_type_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1099,8 +1107,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_regional_by_subscription_for_topic_type_with_http_info(location, topic_type_name, custom_headers = nil)
-      list_regional_by_subscription_for_topic_type_async(location, topic_type_name, custom_headers).value!
+    def list_regional_by_subscription_for_topic_type_with_http_info(location, topic_type_name, custom_headers:nil)
+      list_regional_by_subscription_for_topic_type_async(location, topic_type_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1117,7 +1125,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_regional_by_subscription_for_topic_type_async(location, topic_type_name, custom_headers = nil)
+    def list_regional_by_subscription_for_topic_type_async(location, topic_type_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'topic_type_name is nil' if topic_type_name.nil?
@@ -1125,6 +1133,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1185,8 +1194,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_regional_by_resource_group_for_topic_type(resource_group_name, location, topic_type_name, custom_headers = nil)
-      response = list_regional_by_resource_group_for_topic_type_async(resource_group_name, location, topic_type_name, custom_headers).value!
+    def list_regional_by_resource_group_for_topic_type(resource_group_name, location, topic_type_name, custom_headers:nil)
+      response = list_regional_by_resource_group_for_topic_type_async(resource_group_name, location, topic_type_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1206,8 +1215,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_regional_by_resource_group_for_topic_type_with_http_info(resource_group_name, location, topic_type_name, custom_headers = nil)
-      list_regional_by_resource_group_for_topic_type_async(resource_group_name, location, topic_type_name, custom_headers).value!
+    def list_regional_by_resource_group_for_topic_type_with_http_info(resource_group_name, location, topic_type_name, custom_headers:nil)
+      list_regional_by_resource_group_for_topic_type_async(resource_group_name, location, topic_type_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1226,7 +1235,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_regional_by_resource_group_for_topic_type_async(resource_group_name, location, topic_type_name, custom_headers = nil)
+    def list_regional_by_resource_group_for_topic_type_async(resource_group_name, location, topic_type_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'location is nil' if location.nil?
@@ -1235,6 +1244,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1294,8 +1304,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscriptionsListResult] operation results.
     #
-    def list_by_resource(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers = nil)
-      response = list_by_resource_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers).value!
+    def list_by_resource(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:nil)
+      response = list_by_resource_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1314,8 +1324,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_with_http_info(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers = nil)
-      list_by_resource_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers).value!
+    def list_by_resource_with_http_info(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:nil)
+      list_by_resource_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1333,7 +1343,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers = nil)
+    def list_by_resource_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'provider_namespace is nil' if provider_namespace.nil?
@@ -1343,6 +1353,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1414,8 +1425,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscription] operation results.
     #
-    def begin_create_or_update(scope, event_subscription_name, event_subscription_info, custom_headers = nil)
-      response = begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers).value!
+    def begin_create_or_update(scope, event_subscription_name, event_subscription_info, custom_headers:nil)
+      response = begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1446,8 +1457,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(scope, event_subscription_name, event_subscription_info, custom_headers = nil)
-      begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers).value!
+    def begin_create_or_update_with_http_info(scope, event_subscription_name, event_subscription_info, custom_headers:nil)
+      begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers:custom_headers).value!
     end
 
     #
@@ -1477,7 +1488,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers = nil)
+    def begin_create_or_update_async(scope, event_subscription_name, event_subscription_info, custom_headers:nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'event_subscription_name is nil' if event_subscription_name.nil?
       fail ArgumentError, 'event_subscription_info is nil' if event_subscription_info.nil?
@@ -1485,7 +1496,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1559,8 +1569,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(scope, event_subscription_name, custom_headers = nil)
-      response = begin_delete_async(scope, event_subscription_name, custom_headers).value!
+    def begin_delete(scope, event_subscription_name, custom_headers:nil)
+      response = begin_delete_async(scope, event_subscription_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1585,8 +1595,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(scope, event_subscription_name, custom_headers = nil)
-      begin_delete_async(scope, event_subscription_name, custom_headers).value!
+    def begin_delete_with_http_info(scope, event_subscription_name, custom_headers:nil)
+      begin_delete_async(scope, event_subscription_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1610,13 +1620,14 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(scope, event_subscription_name, custom_headers = nil)
+    def begin_delete_async(scope, event_subscription_name, custom_headers:nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'event_subscription_name is nil' if event_subscription_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1676,8 +1687,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventSubscription] operation results.
     #
-    def begin_update(scope, event_subscription_name, event_subscription_update_parameters, custom_headers = nil)
-      response = begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers).value!
+    def begin_update(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:nil)
+      response = begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1705,8 +1716,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(scope, event_subscription_name, event_subscription_update_parameters, custom_headers = nil)
-      begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers).value!
+    def begin_update_with_http_info(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:nil)
+      begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -1733,7 +1744,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers = nil)
+    def begin_update_async(scope, event_subscription_name, event_subscription_update_parameters, custom_headers:nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'event_subscription_name is nil' if event_subscription_name.nil?
       fail ArgumentError, 'event_subscription_update_parameters is nil' if event_subscription_update_parameters.nil?
@@ -1741,7 +1752,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

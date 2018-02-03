@@ -58,8 +58,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Screen] operation results.
     #
-    def screen_text(language, text_content_type, text_content, autocorrect = false, pii = false, list_id = nil, classify = false, custom_headers = nil)
-      response = screen_text_async(language, text_content_type, text_content, autocorrect, pii, list_id, classify, custom_headers).value!
+    def screen_text(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
+      response = screen_text_async(language, text_content_type, text_content, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -82,8 +82,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def screen_text_with_http_info(language, text_content_type, text_content, autocorrect = false, pii = false, list_id = nil, classify = false, custom_headers = nil)
-      screen_text_async(language, text_content_type, text_content, autocorrect, pii, list_id, classify, custom_headers).value!
+    def screen_text_with_http_info(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
+      screen_text_async(language, text_content_type, text_content, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
     end
 
     #
@@ -105,7 +105,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def screen_text_async(language, text_content_type, text_content, autocorrect = false, pii = false, list_id = nil, classify = false, custom_headers = nil)
+    def screen_text_async(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'language is nil' if language.nil?
       fail ArgumentError, 'text_content_type is nil' if text_content_type.nil?
@@ -113,7 +113,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'text/plain'
 
       # Set Headers
@@ -188,8 +187,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [DetectedLanguage] operation results.
     #
-    def detect_language(text_content_type, text_content, custom_headers = nil)
-      response = detect_language_async(text_content_type, text_content, custom_headers).value!
+    def detect_language(text_content_type, text_content, custom_headers:nil)
+      response = detect_language_async(text_content_type, text_content, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -207,8 +206,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_language_with_http_info(text_content_type, text_content, custom_headers = nil)
-      detect_language_async(text_content_type, text_content, custom_headers).value!
+    def detect_language_with_http_info(text_content_type, text_content, custom_headers:nil)
+      detect_language_async(text_content_type, text_content, custom_headers:custom_headers).value!
     end
 
     #
@@ -225,14 +224,13 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_language_async(text_content_type, text_content, custom_headers = nil)
+    def detect_language_async(text_content_type, text_content, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
       fail ArgumentError, 'text_content_type is nil' if text_content_type.nil?
       fail ArgumentError, 'text_content is nil' if text_content.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'text/plain'
 
       # Set Headers

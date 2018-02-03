@@ -138,28 +138,28 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::CustomerInsights::Mgmt::V2017_04_26::CustomerInsightsManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::CustomerInsights::Mgmt::V2017_04_26::CustomerInsightsManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @operations = client_0.operations
-          @hubs = client_0.hubs
-          @profiles = client_0.profiles
-          @interactions = client_0.interactions
-          @relationships = client_0.relationships
-          @relationship_links = client_0.relationship_links
-          @authorization_policies = client_0.authorization_policies
-          @connectors = client_0.connectors
-          @connector_mappings = client_0.connector_mappings
-          @kpi = client_0.kpi
-          @widget_types = client_0.widget_types
-          @views = client_0.views
-          @links = client_0.links
-          @roles = client_0.roles
-          @role_assignments = client_0.role_assignments
-          @images = client_0.images
-          @predictions = client_0.predictions
+          add_telemetry(@client_0)
+          @operations = @client_0.operations
+          @hubs = @client_0.hubs
+          @profiles = @client_0.profiles
+          @interactions = @client_0.interactions
+          @relationships = @client_0.relationships
+          @relationship_links = @client_0.relationship_links
+          @authorization_policies = @client_0.authorization_policies
+          @connectors = @client_0.connectors
+          @connector_mappings = @client_0.connector_mappings
+          @kpi = @client_0.kpi
+          @widget_types = @client_0.widget_types
+          @views = @client_0.views
+          @links = @client_0.links
+          @roles = @client_0.roles
+          @role_assignments = @client_0.role_assignments
+          @images = @client_0.images
+          @predictions = @client_0.predictions
 
           @model_classes = ModelClasses.new
         end
@@ -167,6 +167,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/CustomerInsights/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

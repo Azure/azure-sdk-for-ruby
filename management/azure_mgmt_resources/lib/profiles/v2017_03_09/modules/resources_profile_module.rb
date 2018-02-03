@@ -81,17 +81,17 @@ module Azure::Resources::Profiles::V2017_03_09
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Resources::Mgmt::V2016_02_01::ResourceManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Resources::Mgmt::V2016_02_01::ResourceManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @deployments = client_0.deployments
-        @providers = client_0.providers
-        @resource_groups = client_0.resource_groups
-        @resources = client_0.resources
-        @tags = client_0.tags
-        @deployment_operations = client_0.deployment_operations
+        add_telemetry(@client_0)
+        @deployments = @client_0.deployments
+        @providers = @client_0.providers
+        @resource_groups = @client_0.resource_groups
+        @resources = @client_0.resources
+        @tags = @client_0.tags
+        @deployment_operations = @client_0.deployment_operations
 
         @model_classes = ModelClasses.new
       end
@@ -99,6 +99,14 @@ module Azure::Resources::Profiles::V2017_03_09
       def add_telemetry(client)
         profile_information = 'Profiles/V2017_03_09/Resources/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

@@ -70,17 +70,17 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Resources::Mgmt::V2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Resources::Mgmt::V2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @deployments = client_0.deployments
-          @providers = client_0.providers
-          @resources = client_0.resources
-          @resource_groups = client_0.resource_groups
-          @tags = client_0.tags
-          @deployment_operations = client_0.deployment_operations
+          add_telemetry(@client_0)
+          @deployments = @client_0.deployments
+          @providers = @client_0.providers
+          @resources = @client_0.resources
+          @resource_groups = @client_0.resource_groups
+          @tags = @client_0.tags
+          @deployment_operations = @client_0.deployment_operations
 
           @model_classes = ModelClasses.new
         end
@@ -88,6 +88,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/Resources/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

@@ -37,8 +37,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [ServerTableAuditingPolicy] operation results.
     #
-    def get(resource_group_name, server_name, custom_headers = nil)
-      response = get_async(resource_group_name, server_name, custom_headers).value!
+    def get(resource_group_name, server_name, custom_headers:nil)
+      response = get_async(resource_group_name, server_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -55,8 +55,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, server_name, custom_headers = nil)
-      get_async(resource_group_name, server_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, server_name, custom_headers:nil)
+      get_async(resource_group_name, server_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -72,7 +72,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, server_name, custom_headers = nil)
+    def get_async(resource_group_name, server_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       table_auditing_policy_name = 'default'
@@ -81,6 +81,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -140,8 +141,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [ServerTableAuditingPolicy] operation results.
     #
-    def create_or_update(resource_group_name, server_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, server_name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, server_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -160,8 +161,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, server_name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, server_name, parameters, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, server_name, parameters, custom_headers:nil)
+      create_or_update_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -179,7 +180,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, server_name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, server_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       table_auditing_policy_name = 'default'
@@ -189,7 +190,6 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -265,8 +265,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [ServerTableAuditingPolicyListResult] operation results.
     #
-    def list_by_server(resource_group_name, server_name, custom_headers = nil)
-      response = list_by_server_async(resource_group_name, server_name, custom_headers).value!
+    def list_by_server(resource_group_name, server_name, custom_headers:nil)
+      response = list_by_server_async(resource_group_name, server_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -283,8 +283,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_server_with_http_info(resource_group_name, server_name, custom_headers = nil)
-      list_by_server_async(resource_group_name, server_name, custom_headers).value!
+    def list_by_server_with_http_info(resource_group_name, server_name, custom_headers:nil)
+      list_by_server_async(resource_group_name, server_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -300,7 +300,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_server_async(resource_group_name, server_name, custom_headers = nil)
+    def list_by_server_async(resource_group_name, server_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -308,6 +308,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

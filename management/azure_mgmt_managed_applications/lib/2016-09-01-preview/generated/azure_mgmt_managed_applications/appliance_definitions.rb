@@ -33,8 +33,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [ApplianceDefinition] operation results.
     #
-    def get(resource_group_name, appliance_definition_name, custom_headers = nil)
-      response = get_async(resource_group_name, appliance_definition_name, custom_headers).value!
+    def get(resource_group_name, appliance_definition_name, custom_headers:nil)
+      response = get_async(resource_group_name, appliance_definition_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, appliance_definition_name, custom_headers = nil)
-      get_async(resource_group_name, appliance_definition_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, appliance_definition_name, custom_headers:nil)
+      get_async(resource_group_name, appliance_definition_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, appliance_definition_name, custom_headers = nil)
+    def get_async(resource_group_name, appliance_definition_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -79,6 +79,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -133,8 +134,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, appliance_definition_name, custom_headers = nil)
-      response = delete_async(resource_group_name, appliance_definition_name, custom_headers).value!
+    def delete(resource_group_name, appliance_definition_name, custom_headers:nil)
+      response = delete_async(resource_group_name, appliance_definition_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -149,9 +150,9 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, appliance_definition_name, custom_headers = nil)
+    def delete_async(resource_group_name, appliance_definition_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, appliance_definition_name, custom_headers)
+      promise = begin_delete_async(resource_group_name, appliance_definition_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -179,8 +180,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [ApplianceDefinition] operation results.
     #
-    def create_or_update(resource_group_name, appliance_definition_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, appliance_definition_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -197,9 +198,9 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -225,8 +226,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Array<ApplianceDefinition>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(resource_group_name, custom_headers:nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -240,8 +241,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
+      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -254,7 +255,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -264,6 +265,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -320,8 +322,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [ApplianceDefinition] operation results.
     #
-    def get_by_id(appliance_definition_id, custom_headers = nil)
-      response = get_by_id_async(appliance_definition_id, custom_headers).value!
+    def get_by_id(appliance_definition_id, custom_headers:nil)
+      response = get_by_id_async(appliance_definition_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -337,8 +339,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_by_id_with_http_info(appliance_definition_id, custom_headers = nil)
-      get_by_id_async(appliance_definition_id, custom_headers).value!
+    def get_by_id_with_http_info(appliance_definition_id, custom_headers:nil)
+      get_by_id_async(appliance_definition_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -353,12 +355,13 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_by_id_async(appliance_definition_id, custom_headers = nil)
+    def get_by_id_async(appliance_definition_id, custom_headers:nil)
       fail ArgumentError, 'appliance_definition_id is nil' if appliance_definition_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -413,8 +416,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete_by_id(appliance_definition_id, custom_headers = nil)
-      response = delete_by_id_async(appliance_definition_id, custom_headers).value!
+    def delete_by_id(appliance_definition_id, custom_headers:nil)
+      response = delete_by_id_async(appliance_definition_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -429,9 +432,9 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_by_id_async(appliance_definition_id, custom_headers = nil)
+    def delete_by_id_async(appliance_definition_id, custom_headers:nil)
       # Send request
-      promise = begin_delete_by_id_async(appliance_definition_id, custom_headers)
+      promise = begin_delete_by_id_async(appliance_definition_id, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -459,8 +462,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [ApplianceDefinition] operation results.
     #
-    def create_or_update_by_id(appliance_definition_id, parameters, custom_headers = nil)
-      response = create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers).value!
+    def create_or_update_by_id(appliance_definition_id, parameters, custom_headers:nil)
+      response = create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -477,9 +480,9 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers = nil)
+    def create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers)
+      promise = begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -506,8 +509,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, appliance_definition_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, appliance_definition_name, custom_headers).value!
+    def begin_delete(resource_group_name, appliance_definition_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, appliance_definition_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -523,8 +526,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, appliance_definition_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, appliance_definition_name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, appliance_definition_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, appliance_definition_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -539,7 +542,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, appliance_definition_name, custom_headers = nil)
+    def begin_delete_async(resource_group_name, appliance_definition_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -552,6 +555,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -600,8 +604,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [ApplianceDefinition] operation results.
     #
-    def begin_create_or_update(resource_group_name, appliance_definition_name, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers).value!
+    def begin_create_or_update(resource_group_name, appliance_definition_name, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -619,8 +623,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, appliance_definition_name, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, appliance_definition_name, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -637,7 +641,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, appliance_definition_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -651,7 +655,6 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -725,8 +728,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # will be added to the HTTP request.
     #
     #
-    def begin_delete_by_id(appliance_definition_id, custom_headers = nil)
-      response = begin_delete_by_id_async(appliance_definition_id, custom_headers).value!
+    def begin_delete_by_id(appliance_definition_id, custom_headers:nil)
+      response = begin_delete_by_id_async(appliance_definition_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -742,8 +745,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_by_id_with_http_info(appliance_definition_id, custom_headers = nil)
-      begin_delete_by_id_async(appliance_definition_id, custom_headers).value!
+    def begin_delete_by_id_with_http_info(appliance_definition_id, custom_headers:nil)
+      begin_delete_by_id_async(appliance_definition_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -758,12 +761,13 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_by_id_async(appliance_definition_id, custom_headers = nil)
+    def begin_delete_by_id_async(appliance_definition_id, custom_headers:nil)
       fail ArgumentError, 'appliance_definition_id is nil' if appliance_definition_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -812,8 +816,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [ApplianceDefinition] operation results.
     #
-    def begin_create_or_update_by_id(appliance_definition_id, parameters, custom_headers = nil)
-      response = begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers).value!
+    def begin_create_or_update_by_id(appliance_definition_id, parameters, custom_headers:nil)
+      response = begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -831,8 +835,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_by_id_with_http_info(appliance_definition_id, parameters, custom_headers = nil)
-      begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers).value!
+    def begin_create_or_update_by_id_with_http_info(appliance_definition_id, parameters, custom_headers:nil)
+      begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -849,14 +853,13 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers = nil)
+    def begin_create_or_update_by_id_async(appliance_definition_id, parameters, custom_headers:nil)
       fail ArgumentError, 'appliance_definition_id is nil' if appliance_definition_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -929,8 +932,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [ApplianceDefinitionListResult] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers:nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -944,8 +947,8 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -958,11 +961,12 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1017,12 +1021,12 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
     # @return [ApplianceDefinitionListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, custom_headers:nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

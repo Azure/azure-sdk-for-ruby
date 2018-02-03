@@ -61,13 +61,13 @@ describe 'Virtual machine and vm extension api' do
   end
 
   it 'should get vm extension' do
-    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, nil).value!
+    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, expand:nil).value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@ext_name)
   end
 
   it 'should get vm extension with expand parameter' do
-    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, 'instanceView').value!
+    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, expand:'instanceView').value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@ext_name)
   end
@@ -122,7 +122,7 @@ describe 'Virtual machine api' do
   end
 
   it 'should get virtual machine with expand parameter' do
-    result = @client.get_async(@resource_group.name, @vm_name, 'instanceView').value!
+    result = @client.get_async(@resource_group.name, @vm_name, expand:'instanceView').value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@vm_name)
   end

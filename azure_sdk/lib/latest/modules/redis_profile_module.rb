@@ -54,16 +54,16 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Redis::Mgmt::V2017_02_01::RedisManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Redis::Mgmt::V2017_02_01::RedisManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @operations = client_0.operations
-          @redis = client_0.redis
-          @firewall_rules = client_0.firewall_rules
-          @patch_schedules = client_0.patch_schedules
-          @redis_linked_server_operations = client_0.redis_linked_server_operations
+          add_telemetry(@client_0)
+          @operations = @client_0.operations
+          @redis = @client_0.redis
+          @firewall_rules = @client_0.firewall_rules
+          @patch_schedules = @client_0.patch_schedules
+          @redis_linked_server_operations = @client_0.redis_linked_server_operations
 
           @model_classes = ModelClasses.new
         end
@@ -71,6 +71,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/Redis/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

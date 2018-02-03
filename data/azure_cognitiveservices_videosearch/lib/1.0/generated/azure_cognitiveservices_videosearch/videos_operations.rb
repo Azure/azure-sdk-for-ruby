@@ -279,8 +279,8 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [Videos] operation results.
     #
-    def search(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, freshness = nil, id = nil, length = nil, market = nil, offset = nil, pricing = nil, resolution = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      response = search_async(query, accept_language, user_agent, client_id, client_ip, location, country_code, count, freshness, id, length, market, offset, pricing, resolution, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def search(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, id:nil, length:nil, market:nil, offset:nil, pricing:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      response = search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, freshness:freshness, id:id, length:length, market:market, offset:offset, pricing:pricing, resolution:resolution, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -536,8 +536,8 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def search_with_http_info(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, freshness = nil, id = nil, length = nil, market = nil, offset = nil, pricing = nil, resolution = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      search_async(query, accept_language, user_agent, client_id, client_ip, location, country_code, count, freshness, id, length, market, offset, pricing, resolution, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def search_with_http_info(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, id:nil, length:nil, market:nil, offset:nil, pricing:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, freshness:freshness, id:id, length:length, market:market, offset:offset, pricing:pricing, resolution:resolution, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
     end
 
     #
@@ -792,12 +792,13 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def search_async(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, freshness = nil, id = nil, length = nil, market = nil, offset = nil, pricing = nil, resolution = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+    def search_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, id:nil, length:nil, market:nil, offset:nil, pricing:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1073,8 +1074,8 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [VideoDetails] operation results.
     #
-    def details(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, id = nil, modules = nil, market = nil, resolution = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      response = details_async(query, accept_language, user_agent, client_id, client_ip, location, country_code, id, modules, market, resolution, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def details(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, id:nil, modules:nil, market:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      response = details_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, id:id, modules:modules, market:market, resolution:resolution, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1305,8 +1306,8 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def details_with_http_info(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, id = nil, modules = nil, market = nil, resolution = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      details_async(query, accept_language, user_agent, client_id, client_ip, location, country_code, id, modules, market, resolution, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def details_with_http_info(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, id:nil, modules:nil, market:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      details_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, id:id, modules:modules, market:market, resolution:resolution, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
     end
 
     #
@@ -1536,12 +1537,13 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def details_async(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, id = nil, modules = nil, market = nil, resolution = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+    def details_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, id:nil, modules:nil, market:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1788,8 +1790,8 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [TrendingVideos] operation results.
     #
-    def trending(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      response = trending_async(accept_language, user_agent, client_id, client_ip, location, country_code, market, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def trending(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      response = trending_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, market:market, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1991,8 +1993,8 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def trending_with_http_info(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
-      trending_async(accept_language, user_agent, client_id, client_ip, location, country_code, market, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
+    def trending_with_http_info(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      trending_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, market:market, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
     end
 
     #
@@ -2193,11 +2195,12 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def trending_async(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+    def trending_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

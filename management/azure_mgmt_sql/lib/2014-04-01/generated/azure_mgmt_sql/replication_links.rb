@@ -38,8 +38,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      response = delete_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def delete(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      response = delete_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -58,8 +58,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      delete_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def delete_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      delete_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -77,7 +77,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
+    def delete_async(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -87,6 +87,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -135,8 +136,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [ReplicationLink] operation results.
     #
-    def get(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      response = get_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def get(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      response = get_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -154,8 +155,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      get_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def get_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      get_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -172,7 +173,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
+    def get_async(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -182,6 +183,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -240,8 +242,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def failover(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      response = failover_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def failover(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      response = failover_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -259,9 +261,9 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def failover_async(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
+    def failover_async(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
       # Send request
-      promise = begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers)
+      promise = begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -289,8 +291,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def failover_allow_data_loss(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      response = failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def failover_allow_data_loss(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      response = failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -308,9 +310,9 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
+    def failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
       # Send request
-      promise = begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers)
+      promise = begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -337,8 +339,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [ReplicationLinkListResult] operation results.
     #
-    def list_by_database(resource_group_name, server_name, database_name, custom_headers = nil)
-      response = list_by_database_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def list_by_database(resource_group_name, server_name, database_name, custom_headers:nil)
+      response = list_by_database_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -355,8 +357,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_database_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
-      list_by_database_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def list_by_database_with_http_info(resource_group_name, server_name, database_name, custom_headers:nil)
+      list_by_database_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -372,7 +374,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_database_async(resource_group_name, server_name, database_name, custom_headers = nil)
+    def list_by_database_async(resource_group_name, server_name, database_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -381,6 +383,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -440,8 +443,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     # will be added to the HTTP request.
     #
     #
-    def begin_failover(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      response = begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def begin_failover(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      response = begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -461,8 +464,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_failover_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def begin_failover_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -481,7 +484,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
+    def begin_failover_async(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -491,6 +494,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -540,8 +544,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     # will be added to the HTTP request.
     #
     #
-    def begin_failover_allow_data_loss(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      response = begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def begin_failover_allow_data_loss(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      response = begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -561,8 +565,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_failover_allow_data_loss_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
-      begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers).value!
+    def begin_failover_allow_data_loss_with_http_info(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
+      begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -581,7 +585,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers = nil)
+    def begin_failover_allow_data_loss_async(resource_group_name, server_name, database_name, link_id, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -591,6 +595,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

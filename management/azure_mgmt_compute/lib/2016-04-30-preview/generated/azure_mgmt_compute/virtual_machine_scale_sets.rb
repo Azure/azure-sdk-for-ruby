@@ -32,8 +32,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineScaleSet] operation results.
     #
-    def create_or_update(resource_group_name, name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -47,9 +47,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, name, parameters, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -75,8 +75,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def delete(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = delete_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def delete(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = delete_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -89,9 +89,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def delete_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers)
+      promise = begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -117,8 +117,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineScaleSet] operation results.
     #
-    def get(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = get_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def get(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = get_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -132,8 +132,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      get_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      get_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -146,7 +146,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def get_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -154,6 +154,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -212,8 +213,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def deallocate(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def deallocate(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -228,9 +229,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       # Send request
-      promise = begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers)
+      promise = begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -258,8 +259,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def delete_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
-      response = delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def delete_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
+      response = delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -274,9 +275,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
+    def delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
       # Send request
-      promise = begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers)
+      promise = begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -302,8 +303,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineScaleSetInstanceView] operation results.
     #
-    def get_instance_view(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = get_instance_view_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def get_instance_view(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = get_instance_view_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -317,8 +318,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_instance_view_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      get_instance_view_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def get_instance_view_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      get_instance_view_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -331,7 +332,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_instance_view_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def get_instance_view_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -339,6 +340,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -392,8 +394,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Array<VirtualMachineScaleSet>] operation results.
     #
-    def list(resource_group_name, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, custom_headers)
+    def list(resource_group_name, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -406,8 +408,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers = nil)
-      list_async(resource_group_name, custom_headers).value!
+    def list_with_http_info(resource_group_name, custom_headers:nil)
+      list_async(resource_group_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -419,13 +421,14 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers = nil)
+    def list_async(resource_group_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -481,8 +484,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Array<VirtualMachineScaleSet>] operation results.
     #
-    def list_all(custom_headers = nil)
-      first_page = list_all_as_lazy(custom_headers)
+    def list_all(custom_headers:nil)
+      first_page = list_all_as_lazy(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -497,8 +500,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_with_http_info(custom_headers = nil)
-      list_all_async(custom_headers).value!
+    def list_all_with_http_info(custom_headers:nil)
+      list_all_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -512,12 +515,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_async(custom_headers = nil)
+    def list_all_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -573,8 +577,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Array<VirtualMachineScaleSetSku>] operation results.
     #
-    def list_skus(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      first_page = list_skus_as_lazy(resource_group_name, vm_scale_set_name, custom_headers)
+    def list_skus(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      first_page = list_skus_as_lazy(resource_group_name, vm_scale_set_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -589,8 +593,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_skus_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      list_skus_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def list_skus_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      list_skus_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -604,7 +608,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_skus_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def list_skus_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -612,6 +616,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -670,8 +675,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def power_off(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def power_off(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -686,9 +691,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       # Send request
-      promise = begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers)
+      promise = begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -716,8 +721,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def restart(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def restart(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -732,9 +737,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       # Send request
-      promise = begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers)
+      promise = begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -762,8 +767,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def start(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = start_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def start(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = start_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -778,9 +783,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def start_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def start_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       # Send request
-      promise = begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers)
+      promise = begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -809,8 +814,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def update_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
-      response = update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def update_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
+      response = update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -825,9 +830,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
+    def update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
       # Send request
-      promise = begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers)
+      promise = begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -854,8 +859,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def reimage(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = reimage_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def reimage(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = reimage_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -868,9 +873,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reimage_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def reimage_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       # Send request
-      promise = begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers)
+      promise = begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -897,8 +902,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def reimage_all(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def reimage_all(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -911,9 +916,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       # Send request
-      promise = begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers)
+      promise = begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -940,8 +945,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineScaleSet] operation results.
     #
-    def begin_create_or_update(resource_group_name, name, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_create_or_update(resource_group_name, name, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -956,8 +961,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, name, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -971,7 +976,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, name, parameters, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -980,7 +985,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1053,8 +1057,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_delete(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def begin_delete(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1068,8 +1072,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1082,7 +1086,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1090,6 +1094,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1148,8 +1153,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_deallocate(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_deallocate(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1167,8 +1172,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_deallocate_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_deallocate_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
     end
 
     #
@@ -1185,7 +1190,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1193,7 +1198,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1258,8 +1262,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_delete_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
-      response = begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_delete_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
+      response = begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1275,8 +1279,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_instances_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
-      begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_delete_instances_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
+      begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers).value!
     end
 
     #
@@ -1291,7 +1295,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
+    def begin_delete_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'vm_instance_ids is nil' if vm_instance_ids.nil?
@@ -1300,7 +1304,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1367,8 +1370,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_power_off(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_power_off(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1386,8 +1389,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_power_off_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_power_off_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
     end
 
     #
@@ -1404,7 +1407,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1412,7 +1415,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1477,8 +1479,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_restart(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_restart(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1494,8 +1496,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_restart_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_restart_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
     end
 
     #
@@ -1510,7 +1512,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1518,7 +1520,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1583,8 +1584,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_start(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      response = begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_start(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      response = begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1600,8 +1601,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_start_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
-      begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_start_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+      begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
     end
 
     #
@@ -1616,7 +1617,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
+    def begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1624,7 +1625,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1690,8 +1690,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_update_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
-      response = begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_update_instances(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
+      response = begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1708,8 +1708,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_instances_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
-      begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers).value!
+    def begin_update_instances_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
+      begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:custom_headers).value!
     end
 
     #
@@ -1725,7 +1725,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers = nil)
+    def begin_update_instances_async(resource_group_name, vm_scale_set_name, vm_instance_ids, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'vm_instance_ids is nil' if vm_instance_ids.nil?
@@ -1734,7 +1734,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1798,8 +1797,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_reimage(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def begin_reimage(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1814,8 +1813,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reimage_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def begin_reimage_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1829,7 +1828,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1837,6 +1836,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1892,8 +1892,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_reimage_all(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def begin_reimage_all(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1908,8 +1908,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reimage_all_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def begin_reimage_all_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1923,7 +1923,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
+    def begin_reimage_all_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1931,6 +1931,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1985,8 +1986,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineScaleSetListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2000,8 +2001,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -2014,11 +2015,12 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2075,8 +2077,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineScaleSetListWithLinkResult] operation results.
     #
-    def list_all_next(next_page_link, custom_headers = nil)
-      response = list_all_next_async(next_page_link, custom_headers).value!
+    def list_all_next(next_page_link, custom_headers:nil)
+      response = list_all_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2093,8 +2095,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_next_with_http_info(next_page_link, custom_headers = nil)
-      list_all_next_async(next_page_link, custom_headers).value!
+    def list_all_next_with_http_info(next_page_link, custom_headers:nil)
+      list_all_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -2110,11 +2112,12 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_next_async(next_page_link, custom_headers = nil)
+    def list_all_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2169,8 +2172,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [VirtualMachineScaleSetListSkusResult] operation results.
     #
-    def list_skus_next(next_page_link, custom_headers = nil)
-      response = list_skus_next_async(next_page_link, custom_headers).value!
+    def list_skus_next(next_page_link, custom_headers:nil)
+      response = list_skus_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2185,8 +2188,8 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_skus_next_with_http_info(next_page_link, custom_headers = nil)
-      list_skus_next_async(next_page_link, custom_headers).value!
+    def list_skus_next_with_http_info(next_page_link, custom_headers:nil)
+      list_skus_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -2200,11 +2203,12 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_skus_next_async(next_page_link, custom_headers = nil)
+    def list_skus_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2258,12 +2262,12 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [VirtualMachineScaleSetListResult] which provide lazy access to pages
     # of the response.
     #
-    def list_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_async(resource_group_name, custom_headers).value!
+    def list_as_lazy(resource_group_name, custom_headers:nil)
+      response = list_async(resource_group_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -2281,12 +2285,12 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [VirtualMachineScaleSetListWithLinkResult] which provide lazy access
     # to pages of the response.
     #
-    def list_all_as_lazy(custom_headers = nil)
-      response = list_all_async(custom_headers).value!
+    def list_all_as_lazy(custom_headers:nil)
+      response = list_all_async(custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_all_next_async(next_page_link, custom_headers)
+          list_all_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -2304,12 +2308,12 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [VirtualMachineScaleSetListSkusResult] which provide lazy access to
     # pages of the response.
     #
-    def list_skus_as_lazy(resource_group_name, vm_scale_set_name, custom_headers = nil)
-      response = list_skus_async(resource_group_name, vm_scale_set_name, custom_headers).value!
+    def list_skus_as_lazy(resource_group_name, vm_scale_set_name, custom_headers:nil)
+      response = list_skus_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_skus_next_async(next_page_link, custom_headers)
+          list_skus_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

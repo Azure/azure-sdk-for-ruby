@@ -119,8 +119,8 @@ module Azure::EventGrid::V2018_01_01
     # will be added to the HTTP request.
     #
     #
-    def publish_events(topic_hostname, events, custom_headers = nil)
-      response = publish_events_async(topic_hostname, events, custom_headers).value!
+    def publish_events(topic_hostname, events, custom_headers:nil)
+      response = publish_events_async(topic_hostname, events, custom_headers:custom_headers).value!
       nil
     end
 
@@ -136,8 +136,8 @@ module Azure::EventGrid::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def publish_events_with_http_info(topic_hostname, events, custom_headers = nil)
-      publish_events_async(topic_hostname, events, custom_headers).value!
+    def publish_events_with_http_info(topic_hostname, events, custom_headers:nil)
+      publish_events_async(topic_hostname, events, custom_headers:custom_headers).value!
     end
 
     #
@@ -152,14 +152,13 @@ module Azure::EventGrid::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def publish_events_async(topic_hostname, events, custom_headers = nil)
+    def publish_events_async(topic_hostname, events, custom_headers:nil)
       fail ArgumentError, 'topic_hostname is nil' if topic_hostname.nil?
       fail ArgumentError, 'events is nil' if events.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

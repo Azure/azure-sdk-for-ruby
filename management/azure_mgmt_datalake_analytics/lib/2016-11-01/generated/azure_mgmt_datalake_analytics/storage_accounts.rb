@@ -37,8 +37,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # will be added to the HTTP request.
     #
     #
-    def add(resource_group_name, account_name, storage_account_name, parameters, custom_headers = nil)
-      response = add_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers).value!
+    def add(resource_group_name, account_name, storage_account_name, parameters, custom_headers:nil)
+      response = add_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -59,8 +59,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_with_http_info(resource_group_name, account_name, storage_account_name, parameters, custom_headers = nil)
-      add_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers).value!
+    def add_with_http_info(resource_group_name, account_name, storage_account_name, parameters, custom_headers:nil)
+      add_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -80,7 +80,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers = nil)
+    def add_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
@@ -90,7 +90,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -149,8 +148,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # will be added to the HTTP request.
     #
     #
-    def update(resource_group_name, account_name, storage_account_name, parameters = nil, custom_headers = nil)
-      response = update_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers).value!
+    def update(resource_group_name, account_name, storage_account_name, parameters:nil, custom_headers:nil)
+      response = update_async(resource_group_name, account_name, storage_account_name, parameters:parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -171,8 +170,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, storage_account_name, parameters = nil, custom_headers = nil)
-      update_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, storage_account_name, parameters:nil, custom_headers:nil)
+      update_async(resource_group_name, account_name, storage_account_name, parameters:parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -192,7 +191,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, storage_account_name, parameters = nil, custom_headers = nil)
+    def update_async(resource_group_name, account_name, storage_account_name, parameters:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
@@ -201,7 +200,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -258,8 +256,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, storage_account_name, custom_headers = nil)
-      response = delete_async(resource_group_name, account_name, storage_account_name, custom_headers).value!
+    def delete(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      response = delete_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -278,8 +276,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers = nil)
-      delete_async(resource_group_name, account_name, storage_account_name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      delete_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -297,7 +295,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, storage_account_name, custom_headers = nil)
+    def delete_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
@@ -306,6 +304,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -355,8 +354,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [StorageAccountInfo] operation results.
     #
-    def get(resource_group_name, account_name, storage_account_name, custom_headers = nil)
-      response = get_async(resource_group_name, account_name, storage_account_name, custom_headers).value!
+    def get(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      response = get_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -375,8 +374,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers = nil)
-      get_async(resource_group_name, account_name, storage_account_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      get_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -394,7 +393,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, storage_account_name, custom_headers = nil)
+    def get_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
@@ -403,6 +402,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -464,8 +464,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [StorageContainer] operation results.
     #
-    def get_storage_container(resource_group_name, account_name, storage_account_name, container_name, custom_headers = nil)
-      response = get_storage_container_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers).value!
+    def get_storage_container(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      response = get_storage_container_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -486,8 +486,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_storage_container_with_http_info(resource_group_name, account_name, storage_account_name, container_name, custom_headers = nil)
-      get_storage_container_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers).value!
+    def get_storage_container_with_http_info(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      get_storage_container_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -507,7 +507,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_storage_container_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers = nil)
+    def get_storage_container_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
@@ -517,6 +517,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -577,8 +578,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Array<StorageContainer>] operation results.
     #
-    def list_storage_containers(resource_group_name, account_name, storage_account_name, custom_headers = nil)
-      first_page = list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers)
+    def list_storage_containers(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      first_page = list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -598,8 +599,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_storage_containers_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers = nil)
-      list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers).value!
+    def list_storage_containers_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -618,7 +619,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers = nil)
+    def list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
@@ -627,6 +628,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -688,8 +690,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Array<SasTokenInfo>] operation results.
     #
-    def list_sas_tokens(resource_group_name, account_name, storage_account_name, container_name, custom_headers = nil)
-      first_page = list_sas_tokens_as_lazy(resource_group_name, account_name, storage_account_name, container_name, custom_headers)
+    def list_sas_tokens(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      first_page = list_sas_tokens_as_lazy(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -710,8 +712,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_sas_tokens_with_http_info(resource_group_name, account_name, storage_account_name, container_name, custom_headers = nil)
-      list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers).value!
+    def list_sas_tokens_with_http_info(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -731,7 +733,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers = nil)
+    def list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
@@ -741,6 +743,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -813,8 +816,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Array<StorageAccountInfo>] operation results.
     #
-    def list_by_account(resource_group_name, account_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
-      first_page = list_by_account_as_lazy(resource_group_name, account_name, filter, top, skip, select, orderby, count, custom_headers)
+    def list_by_account(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
+      first_page = list_by_account_as_lazy(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -846,8 +849,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_account_with_http_info(resource_group_name, account_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
-      list_by_account_async(resource_group_name, account_name, filter, top, skip, select, orderby, count, custom_headers).value!
+    def list_by_account_with_http_info(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
+      list_by_account_async(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers).value!
     end
 
     #
@@ -878,7 +881,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_account_async(resource_group_name, account_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
+    def list_by_account_async(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
@@ -888,6 +891,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -944,8 +948,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [ListStorageContainersResult] operation results.
     #
-    def list_storage_containers_next(next_page_link, custom_headers = nil)
-      response = list_storage_containers_next_async(next_page_link, custom_headers).value!
+    def list_storage_containers_next(next_page_link, custom_headers:nil)
+      response = list_storage_containers_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -961,8 +965,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_storage_containers_next_with_http_info(next_page_link, custom_headers = nil)
-      list_storage_containers_next_async(next_page_link, custom_headers).value!
+    def list_storage_containers_next_with_http_info(next_page_link, custom_headers:nil)
+      list_storage_containers_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -977,11 +981,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_storage_containers_next_async(next_page_link, custom_headers = nil)
+    def list_storage_containers_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1036,8 +1041,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [ListSasTokensResult] operation results.
     #
-    def list_sas_tokens_next(next_page_link, custom_headers = nil)
-      response = list_sas_tokens_next_async(next_page_link, custom_headers).value!
+    def list_sas_tokens_next(next_page_link, custom_headers:nil)
+      response = list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1052,8 +1057,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_sas_tokens_next_with_http_info(next_page_link, custom_headers = nil)
-      list_sas_tokens_next_async(next_page_link, custom_headers).value!
+    def list_sas_tokens_next_with_http_info(next_page_link, custom_headers:nil)
+      list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1067,11 +1072,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_sas_tokens_next_async(next_page_link, custom_headers = nil)
+    def list_sas_tokens_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1128,8 +1134,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [DataLakeAnalyticsAccountListStorageAccountsResult] operation
     # results.
     #
-    def list_by_account_next(next_page_link, custom_headers = nil)
-      response = list_by_account_next_async(next_page_link, custom_headers).value!
+    def list_by_account_next(next_page_link, custom_headers:nil)
+      response = list_by_account_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1145,8 +1151,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_account_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_account_next_async(next_page_link, custom_headers).value!
+    def list_by_account_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_account_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1161,11 +1167,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_account_next_async(next_page_link, custom_headers = nil)
+    def list_by_account_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1226,12 +1233,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [ListStorageContainersResult] which provide lazy access to pages of
     # the response.
     #
-    def list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers = nil)
-      response = list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers).value!
+    def list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      response = list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_storage_containers_next_async(next_page_link, custom_headers)
+          list_storage_containers_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -1255,12 +1262,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [ListSasTokensResult] which provide lazy access to pages of the
     # response.
     #
-    def list_sas_tokens_as_lazy(resource_group_name, account_name, storage_account_name, container_name, custom_headers = nil)
-      response = list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers).value!
+    def list_sas_tokens_as_lazy(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      response = list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_sas_tokens_next_async(next_page_link, custom_headers)
+          list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -1295,12 +1302,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [DataLakeAnalyticsAccountListStorageAccountsResult] which provide
     # lazy access to pages of the response.
     #
-    def list_by_account_as_lazy(resource_group_name, account_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
-      response = list_by_account_async(resource_group_name, account_name, filter, top, skip, select, orderby, count, custom_headers).value!
+    def list_by_account_as_lazy(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
+      response = list_by_account_async(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_account_next_async(next_page_link, custom_headers)
+          list_by_account_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

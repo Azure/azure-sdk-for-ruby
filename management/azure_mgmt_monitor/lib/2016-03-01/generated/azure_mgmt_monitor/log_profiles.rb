@@ -29,8 +29,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def delete(log_profile_name, custom_headers = nil)
-      response = delete_async(log_profile_name, custom_headers).value!
+    def delete(log_profile_name, custom_headers:nil)
+      response = delete_async(log_profile_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -43,8 +43,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(log_profile_name, custom_headers = nil)
-      delete_async(log_profile_name, custom_headers).value!
+    def delete_with_http_info(log_profile_name, custom_headers:nil)
+      delete_async(log_profile_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -56,13 +56,14 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(log_profile_name, custom_headers = nil)
+    def delete_async(log_profile_name, custom_headers:nil)
       fail ArgumentError, 'log_profile_name is nil' if log_profile_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -106,8 +107,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [LogProfileResource] operation results.
     #
-    def get(log_profile_name, custom_headers = nil)
-      response = get_async(log_profile_name, custom_headers).value!
+    def get(log_profile_name, custom_headers:nil)
+      response = get_async(log_profile_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -120,8 +121,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(log_profile_name, custom_headers = nil)
-      get_async(log_profile_name, custom_headers).value!
+    def get_with_http_info(log_profile_name, custom_headers:nil)
+      get_async(log_profile_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -133,13 +134,14 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(log_profile_name, custom_headers = nil)
+    def get_async(log_profile_name, custom_headers:nil)
       fail ArgumentError, 'log_profile_name is nil' if log_profile_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -194,8 +196,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [LogProfileResource] operation results.
     #
-    def create_or_update(log_profile_name, parameters, custom_headers = nil)
-      response = create_or_update_async(log_profile_name, parameters, custom_headers).value!
+    def create_or_update(log_profile_name, parameters, custom_headers:nil)
+      response = create_or_update_async(log_profile_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -209,8 +211,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(log_profile_name, parameters, custom_headers = nil)
-      create_or_update_async(log_profile_name, parameters, custom_headers).value!
+    def create_or_update_with_http_info(log_profile_name, parameters, custom_headers:nil)
+      create_or_update_async(log_profile_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -223,7 +225,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(log_profile_name, parameters, custom_headers = nil)
+    def create_or_update_async(log_profile_name, parameters, custom_headers:nil)
       fail ArgumentError, 'log_profile_name is nil' if log_profile_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -231,7 +233,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -296,8 +297,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [LogProfileResource] operation results.
     #
-    def update(log_profile_name, log_profiles_resource, custom_headers = nil)
-      response = update_async(log_profile_name, log_profiles_resource, custom_headers).value!
+    def update(log_profile_name, log_profiles_resource, custom_headers:nil)
+      response = update_async(log_profile_name, log_profiles_resource, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -313,8 +314,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(log_profile_name, log_profiles_resource, custom_headers = nil)
-      update_async(log_profile_name, log_profiles_resource, custom_headers).value!
+    def update_with_http_info(log_profile_name, log_profiles_resource, custom_headers:nil)
+      update_async(log_profile_name, log_profiles_resource, custom_headers:custom_headers).value!
     end
 
     #
@@ -329,7 +330,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(log_profile_name, log_profiles_resource, custom_headers = nil)
+    def update_async(log_profile_name, log_profiles_resource, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'log_profile_name is nil' if log_profile_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -337,7 +338,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -398,8 +398,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [LogProfileCollection] operation results.
     #
-    def list(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list(custom_headers:nil)
+      response = list_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -411,8 +411,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_with_http_info(custom_headers:nil)
+      list_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -423,12 +423,13 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
