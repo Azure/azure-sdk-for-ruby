@@ -31,8 +31,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [BandwidthSettingList] operation results.
     #
-    def list_by_manager(resource_group_name, manager_name, custom_headers = nil)
-      response = list_by_manager_async(resource_group_name, manager_name, custom_headers).value!
+    def list_by_manager(resource_group_name, manager_name, custom_headers:nil)
+      response = list_by_manager_async(resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_manager_with_http_info(resource_group_name, manager_name, custom_headers = nil)
-      list_by_manager_async(resource_group_name, manager_name, custom_headers).value!
+    def list_by_manager_with_http_info(resource_group_name, manager_name, custom_headers:nil)
+      list_by_manager_async(resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -60,7 +60,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_manager_async(resource_group_name, manager_name, custom_headers = nil)
+    def list_by_manager_async(resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'manager_name is nil' if manager_name.nil?
@@ -70,6 +70,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -126,8 +127,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [BandwidthSetting] operation results.
     #
-    def get(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
-      response = get_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers).value!
+    def get(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
+      response = get_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -143,8 +144,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
-      get_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers).value!
+    def get_with_http_info(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
+      get_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -159,7 +160,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
+    def get_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'bandwidth_setting_name is nil' if bandwidth_setting_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -170,6 +171,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -227,8 +229,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [BandwidthSetting] operation results.
     #
-    def create_or_update(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def create_or_update(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -244,9 +246,9 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers)
+      promise = begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -271,8 +273,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
-      response = delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers).value!
+    def delete(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
+      response = delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -286,9 +288,9 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
+    def delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers)
+      promise = begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -315,8 +317,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [BandwidthSetting] operation results.
     #
-    def begin_create_or_update(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_create_or_update(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -333,8 +335,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_create_or_update_with_http_info(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -350,7 +352,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def begin_create_or_update_async(bandwidth_setting_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'bandwidth_setting_name is nil' if bandwidth_setting_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -362,7 +364,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -425,8 +426,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
-      response = begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers).value!
+    def begin_delete(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
+      response = begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -441,8 +442,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
-      begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers).value!
+    def begin_delete_with_http_info(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
+      begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -456,7 +457,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers = nil)
+    def begin_delete_async(bandwidth_setting_name, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'bandwidth_setting_name is nil' if bandwidth_setting_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -467,6 +468,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

@@ -204,27 +204,27 @@ module Azure::StorSimple8000Series::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::StorSimple8000Series::Mgmt::V2017_06_01::StorSimple8000SeriesManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::StorSimple8000Series::Mgmt::V2017_06_01::StorSimple8000SeriesManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @operations = client_0.operations
-        @managers = client_0.managers
-        @access_control_records = client_0.access_control_records
-        @alerts = client_0.alerts
-        @bandwidth_settings = client_0.bandwidth_settings
-        @cloud_appliances = client_0.cloud_appliances
-        @devices = client_0.devices
-        @device_settings = client_0.device_settings
-        @backup_policies = client_0.backup_policies
-        @backup_schedules = client_0.backup_schedules
-        @backups = client_0.backups
-        @hardware_component_groups = client_0.hardware_component_groups
-        @jobs = client_0.jobs
-        @volume_containers = client_0.volume_containers
-        @volumes = client_0.volumes
-        @storage_account_credentials = client_0.storage_account_credentials
+        add_telemetry(@client_0)
+        @operations = @client_0.operations
+        @managers = @client_0.managers
+        @access_control_records = @client_0.access_control_records
+        @alerts = @client_0.alerts
+        @bandwidth_settings = @client_0.bandwidth_settings
+        @cloud_appliances = @client_0.cloud_appliances
+        @devices = @client_0.devices
+        @device_settings = @client_0.device_settings
+        @backup_policies = @client_0.backup_policies
+        @backup_schedules = @client_0.backup_schedules
+        @backups = @client_0.backups
+        @hardware_component_groups = @client_0.hardware_component_groups
+        @jobs = @client_0.jobs
+        @volume_containers = @client_0.volume_containers
+        @volumes = @client_0.volumes
+        @storage_account_credentials = @client_0.storage_account_credentials
 
         @model_classes = ModelClasses.new
       end
@@ -232,6 +232,14 @@ module Azure::StorSimple8000Series::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/StorSimple8000Series/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

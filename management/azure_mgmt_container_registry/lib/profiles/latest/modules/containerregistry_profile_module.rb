@@ -75,15 +75,15 @@ module Azure::ContainerRegistry::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::ContainerRegistry::Mgmt::V2017_10_01::ContainerRegistryManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::ContainerRegistry::Mgmt::V2017_10_01::ContainerRegistryManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @registries = client_0.registries
-        @operations = client_0.operations
-        @replications = client_0.replications
-        @webhooks = client_0.webhooks
+        add_telemetry(@client_0)
+        @registries = @client_0.registries
+        @operations = @client_0.operations
+        @replications = @client_0.replications
+        @webhooks = @client_0.webhooks
 
         @model_classes = ModelClasses.new
       end
@@ -91,6 +91,14 @@ module Azure::ContainerRegistry::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/ContainerRegistry/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

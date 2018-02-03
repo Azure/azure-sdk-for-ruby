@@ -59,14 +59,14 @@ module Azure::DataLakeStore::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::DataLakeStore::Mgmt::V2016_11_01::DataLakeStoreAccountManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::DataLakeStore::Mgmt::V2016_11_01::DataLakeStoreAccountManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @firewall_rules = client_0.firewall_rules
-        @trusted_id_providers = client_0.trusted_id_providers
-        @account = client_0.account
+        add_telemetry(@client_0)
+        @firewall_rules = @client_0.firewall_rules
+        @trusted_id_providers = @client_0.trusted_id_providers
+        @account = @client_0.account
 
         @model_classes = ModelClasses.new
       end
@@ -74,6 +74,14 @@ module Azure::DataLakeStore::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/DataLakeStore/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

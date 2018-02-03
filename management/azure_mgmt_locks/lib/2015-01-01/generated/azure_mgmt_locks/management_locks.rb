@@ -32,8 +32,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockObject] operation results.
     #
-    def create_or_update_at_resource_group_level(resource_group_name, lock_name, parameters, custom_headers = nil)
-      response = create_or_update_at_resource_group_level_async(resource_group_name, lock_name, parameters, custom_headers).value!
+    def create_or_update_at_resource_group_level(resource_group_name, lock_name, parameters, custom_headers:nil)
+      response = create_or_update_at_resource_group_level_async(resource_group_name, lock_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -48,8 +48,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_at_resource_group_level_with_http_info(resource_group_name, lock_name, parameters, custom_headers = nil)
-      create_or_update_at_resource_group_level_async(resource_group_name, lock_name, parameters, custom_headers).value!
+    def create_or_update_at_resource_group_level_with_http_info(resource_group_name, lock_name, parameters, custom_headers:nil)
+      create_or_update_at_resource_group_level_async(resource_group_name, lock_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -63,7 +63,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_at_resource_group_level_async(resource_group_name, lock_name, parameters, custom_headers = nil)
+    def create_or_update_at_resource_group_level_async(resource_group_name, lock_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -75,7 +75,6 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -147,8 +146,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     # will be added to the HTTP request.
     #
     #
-    def delete_at_resource_group_level(resource_group_name, lock_name, custom_headers = nil)
-      response = delete_at_resource_group_level_async(resource_group_name, lock_name, custom_headers).value!
+    def delete_at_resource_group_level(resource_group_name, lock_name, custom_headers:nil)
+      response = delete_at_resource_group_level_async(resource_group_name, lock_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -162,8 +161,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_at_resource_group_level_with_http_info(resource_group_name, lock_name, custom_headers = nil)
-      delete_at_resource_group_level_async(resource_group_name, lock_name, custom_headers).value!
+    def delete_at_resource_group_level_with_http_info(resource_group_name, lock_name, custom_headers:nil)
+      delete_at_resource_group_level_async(resource_group_name, lock_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -176,7 +175,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_at_resource_group_level_async(resource_group_name, lock_name, custom_headers = nil)
+    def delete_at_resource_group_level_async(resource_group_name, lock_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -187,6 +186,7 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -231,8 +231,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockObject] operation results.
     #
-    def get_at_resource_group_level(resource_group_name, lock_name, custom_headers = nil)
-      response = get_at_resource_group_level_async(resource_group_name, lock_name, custom_headers).value!
+    def get_at_resource_group_level(resource_group_name, lock_name, custom_headers:nil)
+      response = get_at_resource_group_level_async(resource_group_name, lock_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -246,8 +246,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_at_resource_group_level_with_http_info(resource_group_name, lock_name, custom_headers = nil)
-      get_at_resource_group_level_async(resource_group_name, lock_name, custom_headers).value!
+    def get_at_resource_group_level_with_http_info(resource_group_name, lock_name, custom_headers:nil)
+      get_at_resource_group_level_async(resource_group_name, lock_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -260,7 +260,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_at_resource_group_level_async(resource_group_name, lock_name, custom_headers = nil)
+    def get_at_resource_group_level_async(resource_group_name, lock_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -271,6 +271,7 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -332,8 +333,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockObject] operation results.
     #
-    def create_or_update_at_resource_level(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers = nil)
-      response = create_or_update_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers).value!
+    def create_or_update_at_resource_level(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers:nil)
+      response = create_or_update_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -354,8 +355,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_at_resource_level_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers = nil)
-      create_or_update_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers).value!
+    def create_or_update_at_resource_level_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers:nil)
+      create_or_update_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -375,7 +376,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers = nil)
+    def create_or_update_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -391,7 +392,6 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -468,8 +468,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     # will be added to the HTTP request.
     #
     #
-    def delete_at_resource_level(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers = nil)
-      response = delete_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers).value!
+    def delete_at_resource_level(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers:nil)
+      response = delete_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -487,8 +487,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_at_resource_level_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers = nil)
-      delete_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers).value!
+    def delete_at_resource_level_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers:nil)
+      delete_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -505,7 +505,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers = nil)
+    def delete_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -520,6 +520,7 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -565,8 +566,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockObject] operation results.
     #
-    def create_or_update_at_subscription_level(lock_name, parameters, custom_headers = nil)
-      response = create_or_update_at_subscription_level_async(lock_name, parameters, custom_headers).value!
+    def create_or_update_at_subscription_level(lock_name, parameters, custom_headers:nil)
+      response = create_or_update_at_subscription_level_async(lock_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -580,8 +581,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_at_subscription_level_with_http_info(lock_name, parameters, custom_headers = nil)
-      create_or_update_at_subscription_level_async(lock_name, parameters, custom_headers).value!
+    def create_or_update_at_subscription_level_with_http_info(lock_name, parameters, custom_headers:nil)
+      create_or_update_at_subscription_level_async(lock_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -594,7 +595,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_at_subscription_level_async(lock_name, parameters, custom_headers = nil)
+    def create_or_update_at_subscription_level_async(lock_name, parameters, custom_headers:nil)
       fail ArgumentError, 'lock_name is nil' if lock_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -602,7 +603,6 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -673,8 +673,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     # will be added to the HTTP request.
     #
     #
-    def delete_at_subscription_level(lock_name, custom_headers = nil)
-      response = delete_at_subscription_level_async(lock_name, custom_headers).value!
+    def delete_at_subscription_level(lock_name, custom_headers:nil)
+      response = delete_at_subscription_level_async(lock_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -687,8 +687,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_at_subscription_level_with_http_info(lock_name, custom_headers = nil)
-      delete_at_subscription_level_async(lock_name, custom_headers).value!
+    def delete_at_subscription_level_with_http_info(lock_name, custom_headers:nil)
+      delete_at_subscription_level_async(lock_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -700,13 +700,14 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_at_subscription_level_async(lock_name, custom_headers = nil)
+    def delete_at_subscription_level_async(lock_name, custom_headers:nil)
       fail ArgumentError, 'lock_name is nil' if lock_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -750,8 +751,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockObject] operation results.
     #
-    def get(lock_name, custom_headers = nil)
-      response = get_async(lock_name, custom_headers).value!
+    def get(lock_name, custom_headers:nil)
+      response = get_async(lock_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -764,8 +765,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(lock_name, custom_headers = nil)
-      get_async(lock_name, custom_headers).value!
+    def get_with_http_info(lock_name, custom_headers:nil)
+      get_async(lock_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -777,13 +778,14 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(lock_name, custom_headers = nil)
+    def get_async(lock_name, custom_headers:nil)
       fail ArgumentError, 'lock_name is nil' if lock_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -838,8 +840,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Array<ManagementLockObject>] operation results.
     #
-    def list_at_resource_group_level(resource_group_name, filter = nil, custom_headers = nil)
-      first_page = list_at_resource_group_level_as_lazy(resource_group_name, filter, custom_headers)
+    def list_at_resource_group_level(resource_group_name, filter:nil, custom_headers:nil)
+      first_page = list_at_resource_group_level_as_lazy(resource_group_name, filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -853,8 +855,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_resource_group_level_with_http_info(resource_group_name, filter = nil, custom_headers = nil)
-      list_at_resource_group_level_async(resource_group_name, filter, custom_headers).value!
+    def list_at_resource_group_level_with_http_info(resource_group_name, filter:nil, custom_headers:nil)
+      list_at_resource_group_level_async(resource_group_name, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -867,7 +869,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_resource_group_level_async(resource_group_name, filter = nil, custom_headers = nil)
+    def list_at_resource_group_level_async(resource_group_name, filter:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -877,6 +879,7 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -936,8 +939,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Array<ManagementLockObject>] operation results.
     #
-    def list_at_resource_level(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter = nil, custom_headers = nil)
-      first_page = list_at_resource_level_as_lazy(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter, custom_headers)
+    def list_at_resource_level(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:nil, custom_headers:nil)
+      first_page = list_at_resource_level_as_lazy(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -956,8 +959,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_resource_level_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter = nil, custom_headers = nil)
-      list_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter, custom_headers).value!
+    def list_at_resource_level_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:nil, custom_headers:nil)
+      list_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -975,7 +978,7 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter = nil, custom_headers = nil)
+    def list_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -989,6 +992,7 @@ module Azure::Locks::Mgmt::V2015_01_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1043,8 +1047,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Array<ManagementLockObject>] operation results.
     #
-    def list_at_subscription_level(filter = nil, custom_headers = nil)
-      first_page = list_at_subscription_level_as_lazy(filter, custom_headers)
+    def list_at_subscription_level(filter:nil, custom_headers:nil)
+      first_page = list_at_subscription_level_as_lazy(filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -1057,8 +1061,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_subscription_level_with_http_info(filter = nil, custom_headers = nil)
-      list_at_subscription_level_async(filter, custom_headers).value!
+    def list_at_subscription_level_with_http_info(filter:nil, custom_headers:nil)
+      list_at_subscription_level_async(filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -1070,12 +1074,13 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_subscription_level_async(filter = nil, custom_headers = nil)
+    def list_at_subscription_level_async(filter:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1130,8 +1135,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockListResult] operation results.
     #
-    def list_at_resource_group_level_next(next_page_link, custom_headers = nil)
-      response = list_at_resource_group_level_next_async(next_page_link, custom_headers).value!
+    def list_at_resource_group_level_next(next_page_link, custom_headers:nil)
+      response = list_at_resource_group_level_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1145,8 +1150,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_resource_group_level_next_with_http_info(next_page_link, custom_headers = nil)
-      list_at_resource_group_level_next_async(next_page_link, custom_headers).value!
+    def list_at_resource_group_level_next_with_http_info(next_page_link, custom_headers:nil)
+      list_at_resource_group_level_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1159,11 +1164,12 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_resource_group_level_next_async(next_page_link, custom_headers = nil)
+    def list_at_resource_group_level_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1217,8 +1223,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockListResult] operation results.
     #
-    def list_at_resource_level_next(next_page_link, custom_headers = nil)
-      response = list_at_resource_level_next_async(next_page_link, custom_headers).value!
+    def list_at_resource_level_next(next_page_link, custom_headers:nil)
+      response = list_at_resource_level_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1232,8 +1238,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_resource_level_next_with_http_info(next_page_link, custom_headers = nil)
-      list_at_resource_level_next_async(next_page_link, custom_headers).value!
+    def list_at_resource_level_next_with_http_info(next_page_link, custom_headers:nil)
+      list_at_resource_level_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1246,11 +1252,12 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_resource_level_next_async(next_page_link, custom_headers = nil)
+    def list_at_resource_level_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1304,8 +1311,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [ManagementLockListResult] operation results.
     #
-    def list_at_subscription_level_next(next_page_link, custom_headers = nil)
-      response = list_at_subscription_level_next_async(next_page_link, custom_headers).value!
+    def list_at_subscription_level_next(next_page_link, custom_headers:nil)
+      response = list_at_subscription_level_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1319,8 +1326,8 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_subscription_level_next_with_http_info(next_page_link, custom_headers = nil)
-      list_at_subscription_level_next_async(next_page_link, custom_headers).value!
+    def list_at_subscription_level_next_with_http_info(next_page_link, custom_headers:nil)
+      list_at_subscription_level_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1333,11 +1340,12 @@ module Azure::Locks::Mgmt::V2015_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_subscription_level_next_async(next_page_link, custom_headers = nil)
+    def list_at_subscription_level_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1392,12 +1400,12 @@ module Azure::Locks::Mgmt::V2015_01_01
     # @return [ManagementLockListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_at_resource_group_level_as_lazy(resource_group_name, filter = nil, custom_headers = nil)
-      response = list_at_resource_group_level_async(resource_group_name, filter, custom_headers).value!
+    def list_at_resource_group_level_as_lazy(resource_group_name, filter:nil, custom_headers:nil)
+      response = list_at_resource_group_level_async(resource_group_name, filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_at_resource_group_level_next_async(next_page_link, custom_headers)
+          list_at_resource_group_level_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -1419,12 +1427,12 @@ module Azure::Locks::Mgmt::V2015_01_01
     # @return [ManagementLockListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_at_resource_level_as_lazy(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter = nil, custom_headers = nil)
-      response = list_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter, custom_headers).value!
+    def list_at_resource_level_as_lazy(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:nil, custom_headers:nil)
+      response = list_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_at_resource_level_next_async(next_page_link, custom_headers)
+          list_at_resource_level_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -1440,12 +1448,12 @@ module Azure::Locks::Mgmt::V2015_01_01
     # @return [ManagementLockListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_at_subscription_level_as_lazy(filter = nil, custom_headers = nil)
-      response = list_at_subscription_level_async(filter, custom_headers).value!
+    def list_at_subscription_level_as_lazy(filter:nil, custom_headers:nil)
+      response = list_at_subscription_level_async(filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_at_subscription_level_next_async(next_page_link, custom_headers)
+          list_at_subscription_level_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

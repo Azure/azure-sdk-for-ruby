@@ -32,8 +32,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [AlertSettings] operation results.
     #
-    def get_alert_settings(device_name, resource_group_name, manager_name, custom_headers = nil)
-      response = get_alert_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_alert_settings(device_name, resource_group_name, manager_name, custom_headers:nil)
+      response = get_alert_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -48,8 +48,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_alert_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers = nil)
-      get_alert_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_alert_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers:nil)
+      get_alert_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -63,7 +63,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_alert_settings_async(device_name, resource_group_name, manager_name, custom_headers = nil)
+    def get_alert_settings_async(device_name, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -74,6 +74,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -130,8 +131,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [AlertSettings] operation results.
     #
-    def create_or_update_alert_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def create_or_update_alert_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -146,9 +147,9 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers)
+      promise = begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -175,8 +176,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [NetworkSettings] operation results.
     #
-    def get_network_settings(device_name, resource_group_name, manager_name, custom_headers = nil)
-      response = get_network_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_network_settings(device_name, resource_group_name, manager_name, custom_headers:nil)
+      response = get_network_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -191,8 +192,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_network_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers = nil)
-      get_network_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_network_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers:nil)
+      get_network_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -206,7 +207,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_network_settings_async(device_name, resource_group_name, manager_name, custom_headers = nil)
+    def get_network_settings_async(device_name, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -217,6 +218,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -273,8 +275,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [NetworkSettings] operation results.
     #
-    def update_network_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def update_network_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -289,9 +291,9 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       # Send request
-      promise = begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers)
+      promise = begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -318,8 +320,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [SecuritySettings] operation results.
     #
-    def get_security_settings(device_name, resource_group_name, manager_name, custom_headers = nil)
-      response = get_security_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_security_settings(device_name, resource_group_name, manager_name, custom_headers:nil)
+      response = get_security_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -334,8 +336,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_security_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers = nil)
-      get_security_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_security_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers:nil)
+      get_security_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -349,7 +351,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_security_settings_async(device_name, resource_group_name, manager_name, custom_headers = nil)
+    def get_security_settings_async(device_name, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -360,6 +362,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -417,8 +420,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [SecuritySettings] operation results.
     #
-    def update_security_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def update_security_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -434,9 +437,9 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       # Send request
-      promise = begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers)
+      promise = begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -461,8 +464,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def sync_remotemanagement_certificate(device_name, resource_group_name, manager_name, custom_headers = nil)
-      response = sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def sync_remotemanagement_certificate(device_name, resource_group_name, manager_name, custom_headers:nil)
+      response = sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -476,9 +479,9 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers = nil)
+    def sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers:nil)
       # Send request
-      promise = begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers)
+      promise = begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -503,8 +506,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [TimeSettings] operation results.
     #
-    def get_time_settings(device_name, resource_group_name, manager_name, custom_headers = nil)
-      response = get_time_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_time_settings(device_name, resource_group_name, manager_name, custom_headers:nil)
+      response = get_time_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -519,8 +522,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_time_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers = nil)
-      get_time_settings_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def get_time_settings_with_http_info(device_name, resource_group_name, manager_name, custom_headers:nil)
+      get_time_settings_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -534,7 +537,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_time_settings_async(device_name, resource_group_name, manager_name, custom_headers = nil)
+    def get_time_settings_async(device_name, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -545,6 +548,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -601,8 +605,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [TimeSettings] operation results.
     #
-    def create_or_update_time_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def create_or_update_time_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -617,9 +621,9 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers)
+      promise = begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -647,8 +651,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [AlertSettings] operation results.
     #
-    def begin_create_or_update_alert_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_create_or_update_alert_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -664,8 +668,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_alert_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_create_or_update_alert_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -680,7 +684,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def begin_create_or_update_alert_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -692,7 +696,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -757,8 +760,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [NetworkSettings] operation results.
     #
-    def begin_update_network_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_update_network_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -774,8 +777,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_network_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_update_network_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -790,7 +793,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def begin_update_network_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -802,7 +805,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -868,8 +870,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [SecuritySettings] operation results.
     #
-    def begin_update_security_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_update_security_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -886,8 +888,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_security_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_update_security_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -903,7 +905,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def begin_update_security_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -915,7 +917,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -978,8 +979,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     # will be added to the HTTP request.
     #
     #
-    def begin_sync_remotemanagement_certificate(device_name, resource_group_name, manager_name, custom_headers = nil)
-      response = begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def begin_sync_remotemanagement_certificate(device_name, resource_group_name, manager_name, custom_headers:nil)
+      response = begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -994,8 +995,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_sync_remotemanagement_certificate_with_http_info(device_name, resource_group_name, manager_name, custom_headers = nil)
-      begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers).value!
+    def begin_sync_remotemanagement_certificate_with_http_info(device_name, resource_group_name, manager_name, custom_headers:nil)
+      begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1009,7 +1010,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers = nil)
+    def begin_sync_remotemanagement_certificate_async(device_name, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1020,6 +1021,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1066,8 +1068,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [TimeSettings] operation results.
     #
-    def begin_create_or_update_time_settings(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      response = begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_create_or_update_time_settings(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      response = begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1083,8 +1085,8 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_time_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
-      begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers).value!
+    def begin_create_or_update_time_settings_with_http_info(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
+      begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1099,7 +1101,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers = nil)
+    def begin_create_or_update_time_settings_async(device_name, parameters, resource_group_name, manager_name, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1111,7 +1113,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

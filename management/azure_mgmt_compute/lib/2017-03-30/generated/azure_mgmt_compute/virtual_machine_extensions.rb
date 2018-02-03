@@ -35,8 +35,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [VirtualMachineExtension] operation results.
     #
-    def create_or_update(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers).value!
+    def create_or_update(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -53,9 +53,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -83,8 +83,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def delete(resource_group_name, vm_name, vm_extension_name, custom_headers = nil)
-      response = delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers).value!
+    def delete(resource_group_name, vm_name, vm_extension_name, custom_headers:nil)
+      response = delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -99,9 +99,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers = nil)
+    def delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers)
+      promise = begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -130,8 +130,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [VirtualMachineExtension] operation results.
     #
-    def get(resource_group_name, vm_name, vm_extension_name, expand = nil, custom_headers = nil)
-      response = get_async(resource_group_name, vm_name, vm_extension_name, expand, custom_headers).value!
+    def get(resource_group_name, vm_name, vm_extension_name, expand:nil, custom_headers:nil)
+      response = get_async(resource_group_name, vm_name, vm_extension_name, expand:expand, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -148,8 +148,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, vm_name, vm_extension_name, expand = nil, custom_headers = nil)
-      get_async(resource_group_name, vm_name, vm_extension_name, expand, custom_headers).value!
+    def get_with_http_info(resource_group_name, vm_name, vm_extension_name, expand:nil, custom_headers:nil)
+      get_async(resource_group_name, vm_name, vm_extension_name, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
@@ -165,7 +165,7 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, vm_name, vm_extension_name, expand = nil, custom_headers = nil)
+    def get_async(resource_group_name, vm_name, vm_extension_name, expand:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
@@ -174,6 +174,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -232,8 +233,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [VirtualMachineExtension] operation results.
     #
-    def begin_create_or_update(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers).value!
+    def begin_create_or_update(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -251,8 +252,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -269,7 +270,7 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
@@ -279,7 +280,6 @@ module Azure::Compute::Mgmt::V2017_03_30
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -354,8 +354,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_delete(resource_group_name, vm_name, vm_extension_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers).value!
+    def begin_delete(resource_group_name, vm_name, vm_extension_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -371,8 +371,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, vm_name, vm_extension_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, vm_name, vm_extension_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -387,7 +387,7 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers = nil)
+    def begin_delete_async(resource_group_name, vm_name, vm_extension_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
@@ -396,6 +396,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

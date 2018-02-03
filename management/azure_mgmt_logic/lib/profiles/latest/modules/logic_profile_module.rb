@@ -177,24 +177,24 @@ module Azure::Logic::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Logic::Mgmt::V2016_06_01::LogicManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Logic::Mgmt::V2016_06_01::LogicManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @workflows = client_0.workflows
-        @workflow_versions = client_0.workflow_versions
-        @workflow_triggers = client_0.workflow_triggers
-        @workflow_trigger_histories = client_0.workflow_trigger_histories
-        @workflow_runs = client_0.workflow_runs
-        @workflow_run_actions = client_0.workflow_run_actions
-        @integration_accounts = client_0.integration_accounts
-        @schemas = client_0.schemas
-        @maps = client_0.maps
-        @partners = client_0.partners
-        @agreements = client_0.agreements
-        @certificates = client_0.certificates
-        @sessions = client_0.sessions
+        add_telemetry(@client_0)
+        @workflows = @client_0.workflows
+        @workflow_versions = @client_0.workflow_versions
+        @workflow_triggers = @client_0.workflow_triggers
+        @workflow_trigger_histories = @client_0.workflow_trigger_histories
+        @workflow_runs = @client_0.workflow_runs
+        @workflow_run_actions = @client_0.workflow_run_actions
+        @integration_accounts = @client_0.integration_accounts
+        @schemas = @client_0.schemas
+        @maps = @client_0.maps
+        @partners = @client_0.partners
+        @agreements = @client_0.agreements
+        @certificates = @client_0.certificates
+        @sessions = @client_0.sessions
 
         @model_classes = ModelClasses.new
       end
@@ -202,6 +202,14 @@ module Azure::Logic::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/Logic/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

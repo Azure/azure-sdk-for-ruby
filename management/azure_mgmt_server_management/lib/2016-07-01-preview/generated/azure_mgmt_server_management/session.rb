@@ -41,8 +41,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [SessionResource] operation results.
     #
-    def create(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
-      response = create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers).value!
+    def create(resource_group_name, node_name, session, user_name:nil, password:nil, retention_period:nil, credential_data_format:nil, encryption_certificate_thumbprint:nil, custom_headers:nil)
+      response = create_async(resource_group_name, node_name, session, user_name:user_name, password:password, retention_period:retention_period, credential_data_format:credential_data_format, encryption_certificate_thumbprint:encryption_certificate_thumbprint, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -65,9 +65,9 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
+    def create_async(resource_group_name, node_name, session, user_name:nil, password:nil, retention_period:nil, credential_data_format:nil, encryption_certificate_thumbprint:nil, custom_headers:nil)
       # Send request
-      promise = begin_create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers)
+      promise = begin_create_async(resource_group_name, node_name, session, user_name:user_name, password:password, retention_period:retention_period, credential_data_format:credential_data_format, encryption_certificate_thumbprint:encryption_certificate_thumbprint, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -94,8 +94,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, node_name, session, custom_headers = nil)
-      response = delete_async(resource_group_name, node_name, session, custom_headers).value!
+    def delete(resource_group_name, node_name, session, custom_headers:nil)
+      response = delete_async(resource_group_name, node_name, session, custom_headers:custom_headers).value!
       nil
     end
 
@@ -111,8 +111,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, node_name, session, custom_headers = nil)
-      delete_async(resource_group_name, node_name, session, custom_headers).value!
+    def delete_with_http_info(resource_group_name, node_name, session, custom_headers:nil)
+      delete_async(resource_group_name, node_name, session, custom_headers:custom_headers).value!
     end
 
     #
@@ -127,7 +127,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, node_name, session, custom_headers = nil)
+    def delete_async(resource_group_name, node_name, session, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -141,6 +141,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -187,8 +188,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [SessionResource] operation results.
     #
-    def get(resource_group_name, node_name, session, custom_headers = nil)
-      response = get_async(resource_group_name, node_name, session, custom_headers).value!
+    def get(resource_group_name, node_name, session, custom_headers:nil)
+      response = get_async(resource_group_name, node_name, session, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -204,8 +205,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, node_name, session, custom_headers = nil)
-      get_async(resource_group_name, node_name, session, custom_headers).value!
+    def get_with_http_info(resource_group_name, node_name, session, custom_headers:nil)
+      get_async(resource_group_name, node_name, session, custom_headers:custom_headers).value!
     end
 
     #
@@ -220,7 +221,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, node_name, session, custom_headers = nil)
+    def get_async(resource_group_name, node_name, session, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -234,6 +235,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -298,8 +300,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [SessionResource] operation results.
     #
-    def begin_create(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
-      response = begin_create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers).value!
+    def begin_create(resource_group_name, node_name, session, user_name:nil, password:nil, retention_period:nil, credential_data_format:nil, encryption_certificate_thumbprint:nil, custom_headers:nil)
+      response = begin_create_async(resource_group_name, node_name, session, user_name:user_name, password:password, retention_period:retention_period, credential_data_format:credential_data_format, encryption_certificate_thumbprint:encryption_certificate_thumbprint, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -323,8 +325,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
-      begin_create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, node_name, session, user_name:nil, password:nil, retention_period:nil, credential_data_format:nil, encryption_certificate_thumbprint:nil, custom_headers:nil)
+      begin_create_async(resource_group_name, node_name, session, user_name:user_name, password:password, retention_period:retention_period, credential_data_format:credential_data_format, encryption_certificate_thumbprint:encryption_certificate_thumbprint, custom_headers:custom_headers).value!
     end
 
     #
@@ -347,7 +349,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
+    def begin_create_async(resource_group_name, node_name, session, user_name:nil, password:nil, retention_period:nil, credential_data_format:nil, encryption_certificate_thumbprint:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -369,7 +371,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

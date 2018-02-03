@@ -64,26 +64,26 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::RecoveryServices::Mgmt::V2016_06_01::RecoveryServicesClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::RecoveryServices::Mgmt::V2016_06_01::RecoveryServicesClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @vault_certificates = client_0.vault_certificates
-          @registered_identities = client_0.registered_identities
-          @replication_usages = client_0.replication_usages
-          @vaults = client_0.vaults
-          @operations = client_0.operations
-          @vault_extended_info_operations = client_0.vault_extended_info_operations
-          @usages = client_0.usages
+          add_telemetry(@client_0)
+          @vault_certificates = @client_0.vault_certificates
+          @registered_identities = @client_0.registered_identities
+          @replication_usages = @client_0.replication_usages
+          @vaults = @client_0.vaults
+          @operations = @client_0.operations
+          @vault_extended_info_operations = @client_0.vault_extended_info_operations
+          @usages = @client_0.usages
 
-          client_1 = Azure::RecoveryServices::Mgmt::V2016_12_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
-          if(client_1.respond_to?(:subscription_id))
-            client_1.subscription_id = configurable.subscription_id
+          @client_1 = Azure::RecoveryServices::Mgmt::V2016_12_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
+          if(@client_1.respond_to?(:subscription_id))
+            @client_1.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_1)
-          @backup_vault_configs = client_1.backup_vault_configs
-          @backup_storage_configs = client_1.backup_storage_configs
+          add_telemetry(@client_1)
+          @backup_vault_configs = @client_1.backup_vault_configs
+          @backup_storage_configs = @client_1.backup_storage_configs
 
           @model_classes = ModelClasses.new
         end
@@ -91,6 +91,16 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/RecoveryServices/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_1.respond_to?method
+            @client_1.send(method, *args)
+          elsif @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

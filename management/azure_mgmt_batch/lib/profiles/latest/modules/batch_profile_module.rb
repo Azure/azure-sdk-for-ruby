@@ -61,16 +61,16 @@ module Azure::Batch::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Batch::Mgmt::V2017_05_01::BatchManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Batch::Mgmt::V2017_05_01::BatchManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @batch_account_operations = client_0.batch_account_operations
-        @application_package_operations = client_0.application_package_operations
-        @application_operations = client_0.application_operations
-        @location = client_0.location
-        @operations = client_0.operations
+        add_telemetry(@client_0)
+        @batch_account_operations = @client_0.batch_account_operations
+        @application_package_operations = @client_0.application_package_operations
+        @application_operations = @client_0.application_operations
+        @location = @client_0.location
+        @operations = @client_0.operations
 
         @model_classes = ModelClasses.new
       end
@@ -78,6 +78,14 @@ module Azure::Batch::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/Batch/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

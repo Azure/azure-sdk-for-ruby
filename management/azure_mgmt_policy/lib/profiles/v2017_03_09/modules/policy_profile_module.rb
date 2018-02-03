@@ -36,13 +36,13 @@ module Azure::Policy::Profiles::V2017_03_09
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @policy_assignments = client_0.policy_assignments
-        @policy_definitions = client_0.policy_definitions
+        add_telemetry(@client_0)
+        @policy_assignments = @client_0.policy_assignments
+        @policy_definitions = @client_0.policy_definitions
 
         @model_classes = ModelClasses.new
       end
@@ -50,6 +50,14 @@ module Azure::Policy::Profiles::V2017_03_09
       def add_telemetry(client)
         profile_information = 'Profiles/V2017_03_09/Policy/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

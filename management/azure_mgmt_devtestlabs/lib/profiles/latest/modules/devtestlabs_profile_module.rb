@@ -200,32 +200,32 @@ module Azure::DevTestLabs::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::DevTestLabs::Mgmt::V2016_05_15::DevTestLabsClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::DevTestLabs::Mgmt::V2016_05_15::DevTestLabsClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @labs = client_0.labs
-        @global_schedules = client_0.global_schedules
-        @artifact_sources = client_0.artifact_sources
-        @arm_templates = client_0.arm_templates
-        @artifacts = client_0.artifacts
-        @costs = client_0.costs
-        @custom_images = client_0.custom_images
-        @formulas = client_0.formulas
-        @gallery_images = client_0.gallery_images
-        @notification_channels = client_0.notification_channels
-        @policy_sets = client_0.policy_sets
-        @policies = client_0.policies
-        @schedules = client_0.schedules
-        @service_runners = client_0.service_runners
-        @users = client_0.users
-        @disks = client_0.disks
-        @environments = client_0.environments
-        @secrets = client_0.secrets
-        @virtual_machines = client_0.virtual_machines
-        @virtual_machine_schedules = client_0.virtual_machine_schedules
-        @virtual_networks = client_0.virtual_networks
+        add_telemetry(@client_0)
+        @labs = @client_0.labs
+        @global_schedules = @client_0.global_schedules
+        @artifact_sources = @client_0.artifact_sources
+        @arm_templates = @client_0.arm_templates
+        @artifacts = @client_0.artifacts
+        @costs = @client_0.costs
+        @custom_images = @client_0.custom_images
+        @formulas = @client_0.formulas
+        @gallery_images = @client_0.gallery_images
+        @notification_channels = @client_0.notification_channels
+        @policy_sets = @client_0.policy_sets
+        @policies = @client_0.policies
+        @schedules = @client_0.schedules
+        @service_runners = @client_0.service_runners
+        @users = @client_0.users
+        @disks = @client_0.disks
+        @environments = @client_0.environments
+        @secrets = @client_0.secrets
+        @virtual_machines = @client_0.virtual_machines
+        @virtual_machine_schedules = @client_0.virtual_machine_schedules
+        @virtual_networks = @client_0.virtual_networks
 
         @model_classes = ModelClasses.new
       end
@@ -233,6 +233,14 @@ module Azure::DevTestLabs::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/DevTestLabs/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

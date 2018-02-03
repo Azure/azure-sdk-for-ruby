@@ -33,8 +33,8 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     #
     # @return [CheckNameAvailabilityResponse] operation results.
     #
-    def check_availability(resource_group_name, namespace_name, parameters, custom_headers = nil)
-      response = check_availability_async(resource_group_name, namespace_name, parameters, custom_headers).value!
+    def check_availability(resource_group_name, namespace_name, parameters, custom_headers:nil)
+      response = check_availability_async(resource_group_name, namespace_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_availability_with_http_info(resource_group_name, namespace_name, parameters, custom_headers = nil)
-      check_availability_async(resource_group_name, namespace_name, parameters, custom_headers).value!
+    def check_availability_with_http_info(resource_group_name, namespace_name, parameters, custom_headers:nil)
+      check_availability_async(resource_group_name, namespace_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_availability_async(resource_group_name, namespace_name, parameters, custom_headers = nil)
+    def check_availability_async(resource_group_name, namespace_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -75,7 +75,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

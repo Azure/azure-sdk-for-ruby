@@ -50,7 +50,7 @@ describe 'DataLakeAnalyticsClient Account' do
         :testtag3 => :testtag3,
     }
 
-    result = @client.update_async(@resource_group.name, @datalake_analytics_acc_name, analytics_acc_update_parameters).value!
+    result = @client.update_async(@resource_group.name, @datalake_analytics_acc_name, parameters:analytics_acc_update_parameters).value!
     expect(result.body).to be_an_instance_of(Models::DataLakeAnalyticsAccount)
     expect(result.body.name).to eq(@datalake_analytics_acc_name)
     expect(result.body.tags.count).to eq(3)

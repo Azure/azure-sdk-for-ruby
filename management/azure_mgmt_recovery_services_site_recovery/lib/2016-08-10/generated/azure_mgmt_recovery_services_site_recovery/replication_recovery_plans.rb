@@ -32,8 +32,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def reprotect(recovery_plan_name, custom_headers = nil)
-      response = reprotect_async(recovery_plan_name, custom_headers).value!
+    def reprotect(recovery_plan_name, custom_headers:nil)
+      response = reprotect_async(recovery_plan_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -45,9 +45,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reprotect_async(recovery_plan_name, custom_headers = nil)
+    def reprotect_async(recovery_plan_name, custom_headers:nil)
       # Send request
-      promise = begin_reprotect_async(recovery_plan_name, custom_headers)
+      promise = begin_reprotect_async(recovery_plan_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -74,8 +74,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def failover_commit(recovery_plan_name, custom_headers = nil)
-      response = failover_commit_async(recovery_plan_name, custom_headers).value!
+    def failover_commit(recovery_plan_name, custom_headers:nil)
+      response = failover_commit_async(recovery_plan_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -87,9 +87,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def failover_commit_async(recovery_plan_name, custom_headers = nil)
+    def failover_commit_async(recovery_plan_name, custom_headers:nil)
       # Send request
-      promise = begin_failover_commit_async(recovery_plan_name, custom_headers)
+      promise = begin_failover_commit_async(recovery_plan_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -118,8 +118,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def test_failover_cleanup(recovery_plan_name, input, custom_headers = nil)
-      response = test_failover_cleanup_async(recovery_plan_name, input, custom_headers).value!
+    def test_failover_cleanup(recovery_plan_name, input, custom_headers:nil)
+      response = test_failover_cleanup_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -133,9 +133,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def test_failover_cleanup_async(recovery_plan_name, input, custom_headers = nil)
+    def test_failover_cleanup_async(recovery_plan_name, input, custom_headers:nil)
       # Send request
-      promise = begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers)
+      promise = begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -163,8 +163,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def test_failover(recovery_plan_name, input, custom_headers = nil)
-      response = test_failover_async(recovery_plan_name, input, custom_headers).value!
+    def test_failover(recovery_plan_name, input, custom_headers:nil)
+      response = test_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -177,9 +177,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def test_failover_async(recovery_plan_name, input, custom_headers = nil)
+    def test_failover_async(recovery_plan_name, input, custom_headers:nil)
       # Send request
-      promise = begin_test_failover_async(recovery_plan_name, input, custom_headers)
+      promise = begin_test_failover_async(recovery_plan_name, input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -207,8 +207,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def unplanned_failover(recovery_plan_name, input, custom_headers = nil)
-      response = unplanned_failover_async(recovery_plan_name, input, custom_headers).value!
+    def unplanned_failover(recovery_plan_name, input, custom_headers:nil)
+      response = unplanned_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -221,9 +221,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def unplanned_failover_async(recovery_plan_name, input, custom_headers = nil)
+    def unplanned_failover_async(recovery_plan_name, input, custom_headers:nil)
       # Send request
-      promise = begin_unplanned_failover_async(recovery_plan_name, input, custom_headers)
+      promise = begin_unplanned_failover_async(recovery_plan_name, input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -251,8 +251,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def planned_failover(recovery_plan_name, input, custom_headers = nil)
-      response = planned_failover_async(recovery_plan_name, input, custom_headers).value!
+    def planned_failover(recovery_plan_name, input, custom_headers:nil)
+      response = planned_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -265,9 +265,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def planned_failover_async(recovery_plan_name, input, custom_headers = nil)
+    def planned_failover_async(recovery_plan_name, input, custom_headers:nil)
       # Send request
-      promise = begin_planned_failover_async(recovery_plan_name, input, custom_headers)
+      promise = begin_planned_failover_async(recovery_plan_name, input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -294,8 +294,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def get(recovery_plan_name, custom_headers = nil)
-      response = get_async(recovery_plan_name, custom_headers).value!
+    def get(recovery_plan_name, custom_headers:nil)
+      response = get_async(recovery_plan_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -310,8 +310,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(recovery_plan_name, custom_headers = nil)
-      get_async(recovery_plan_name, custom_headers).value!
+    def get_with_http_info(recovery_plan_name, custom_headers:nil)
+      get_async(recovery_plan_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -325,7 +325,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(recovery_plan_name, custom_headers = nil)
+    def get_async(recovery_plan_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -334,6 +334,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -390,8 +391,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def create(recovery_plan_name, input, custom_headers = nil)
-      response = create_async(recovery_plan_name, input, custom_headers).value!
+    def create(recovery_plan_name, input, custom_headers:nil)
+      response = create_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -404,9 +405,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(recovery_plan_name, input, custom_headers = nil)
+    def create_async(recovery_plan_name, input, custom_headers:nil)
       # Send request
-      promise = begin_create_async(recovery_plan_name, input, custom_headers)
+      promise = begin_create_async(recovery_plan_name, input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -431,8 +432,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(recovery_plan_name, custom_headers = nil)
-      response = delete_async(recovery_plan_name, custom_headers).value!
+    def delete(recovery_plan_name, custom_headers:nil)
+      response = delete_async(recovery_plan_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -444,9 +445,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(recovery_plan_name, custom_headers = nil)
+    def delete_async(recovery_plan_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(recovery_plan_name, custom_headers)
+      promise = begin_delete_async(recovery_plan_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -472,8 +473,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def update(recovery_plan_name, input, custom_headers = nil)
-      response = update_async(recovery_plan_name, input, custom_headers).value!
+    def update(recovery_plan_name, input, custom_headers:nil)
+      response = update_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -486,9 +487,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(recovery_plan_name, input, custom_headers = nil)
+    def update_async(recovery_plan_name, input, custom_headers:nil)
       # Send request
-      promise = begin_update_async(recovery_plan_name, input, custom_headers)
+      promise = begin_update_async(recovery_plan_name, input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -514,8 +515,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Array<RecoveryPlan>] operation results.
     #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
+    def list(custom_headers:nil)
+      first_page = list_as_lazy(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -529,8 +530,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_with_http_info(custom_headers:nil)
+      list_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -543,7 +544,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -551,6 +552,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -606,8 +608,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_reprotect(recovery_plan_name, custom_headers = nil)
-      response = begin_reprotect_async(recovery_plan_name, custom_headers).value!
+    def begin_reprotect(recovery_plan_name, custom_headers:nil)
+      response = begin_reprotect_async(recovery_plan_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -622,8 +624,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reprotect_with_http_info(recovery_plan_name, custom_headers = nil)
-      begin_reprotect_async(recovery_plan_name, custom_headers).value!
+    def begin_reprotect_with_http_info(recovery_plan_name, custom_headers:nil)
+      begin_reprotect_async(recovery_plan_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -637,7 +639,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reprotect_async(recovery_plan_name, custom_headers = nil)
+    def begin_reprotect_async(recovery_plan_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -646,6 +648,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -701,8 +704,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_failover_commit(recovery_plan_name, custom_headers = nil)
-      response = begin_failover_commit_async(recovery_plan_name, custom_headers).value!
+    def begin_failover_commit(recovery_plan_name, custom_headers:nil)
+      response = begin_failover_commit_async(recovery_plan_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -717,8 +720,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_failover_commit_with_http_info(recovery_plan_name, custom_headers = nil)
-      begin_failover_commit_async(recovery_plan_name, custom_headers).value!
+    def begin_failover_commit_with_http_info(recovery_plan_name, custom_headers:nil)
+      begin_failover_commit_async(recovery_plan_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -732,7 +735,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_failover_commit_async(recovery_plan_name, custom_headers = nil)
+    def begin_failover_commit_async(recovery_plan_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -741,6 +744,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -798,8 +802,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_test_failover_cleanup(recovery_plan_name, input, custom_headers = nil)
-      response = begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers).value!
+    def begin_test_failover_cleanup(recovery_plan_name, input, custom_headers:nil)
+      response = begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -816,8 +820,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_test_failover_cleanup_with_http_info(recovery_plan_name, input, custom_headers = nil)
-      begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers).value!
+    def begin_test_failover_cleanup_with_http_info(recovery_plan_name, input, custom_headers:nil)
+      begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers:custom_headers).value!
     end
 
     #
@@ -833,7 +837,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers = nil)
+    def begin_test_failover_cleanup_async(recovery_plan_name, input, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -843,7 +847,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -908,8 +911,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_test_failover(recovery_plan_name, input, custom_headers = nil)
-      response = begin_test_failover_async(recovery_plan_name, input, custom_headers).value!
+    def begin_test_failover(recovery_plan_name, input, custom_headers:nil)
+      response = begin_test_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -925,8 +928,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_test_failover_with_http_info(recovery_plan_name, input, custom_headers = nil)
-      begin_test_failover_async(recovery_plan_name, input, custom_headers).value!
+    def begin_test_failover_with_http_info(recovery_plan_name, input, custom_headers:nil)
+      begin_test_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
     end
 
     #
@@ -941,7 +944,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_test_failover_async(recovery_plan_name, input, custom_headers = nil)
+    def begin_test_failover_async(recovery_plan_name, input, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -951,7 +954,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1016,8 +1018,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_unplanned_failover(recovery_plan_name, input, custom_headers = nil)
-      response = begin_unplanned_failover_async(recovery_plan_name, input, custom_headers).value!
+    def begin_unplanned_failover(recovery_plan_name, input, custom_headers:nil)
+      response = begin_unplanned_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1033,8 +1035,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_unplanned_failover_with_http_info(recovery_plan_name, input, custom_headers = nil)
-      begin_unplanned_failover_async(recovery_plan_name, input, custom_headers).value!
+    def begin_unplanned_failover_with_http_info(recovery_plan_name, input, custom_headers:nil)
+      begin_unplanned_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
     end
 
     #
@@ -1049,7 +1051,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_unplanned_failover_async(recovery_plan_name, input, custom_headers = nil)
+    def begin_unplanned_failover_async(recovery_plan_name, input, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1059,7 +1061,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1124,8 +1125,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_planned_failover(recovery_plan_name, input, custom_headers = nil)
-      response = begin_planned_failover_async(recovery_plan_name, input, custom_headers).value!
+    def begin_planned_failover(recovery_plan_name, input, custom_headers:nil)
+      response = begin_planned_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1141,8 +1142,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_planned_failover_with_http_info(recovery_plan_name, input, custom_headers = nil)
-      begin_planned_failover_async(recovery_plan_name, input, custom_headers).value!
+    def begin_planned_failover_with_http_info(recovery_plan_name, input, custom_headers:nil)
+      begin_planned_failover_async(recovery_plan_name, input, custom_headers:custom_headers).value!
     end
 
     #
@@ -1157,7 +1158,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_planned_failover_async(recovery_plan_name, input, custom_headers = nil)
+    def begin_planned_failover_async(recovery_plan_name, input, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1167,7 +1168,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1232,8 +1232,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_create(recovery_plan_name, input, custom_headers = nil)
-      response = begin_create_async(recovery_plan_name, input, custom_headers).value!
+    def begin_create(recovery_plan_name, input, custom_headers:nil)
+      response = begin_create_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1249,8 +1249,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(recovery_plan_name, input, custom_headers = nil)
-      begin_create_async(recovery_plan_name, input, custom_headers).value!
+    def begin_create_with_http_info(recovery_plan_name, input, custom_headers:nil)
+      begin_create_async(recovery_plan_name, input, custom_headers:custom_headers).value!
     end
 
     #
@@ -1265,7 +1265,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(recovery_plan_name, input, custom_headers = nil)
+    def begin_create_async(recovery_plan_name, input, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1275,7 +1275,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1338,8 +1337,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(recovery_plan_name, custom_headers = nil)
-      response = begin_delete_async(recovery_plan_name, custom_headers).value!
+    def begin_delete(recovery_plan_name, custom_headers:nil)
+      response = begin_delete_async(recovery_plan_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1354,8 +1353,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(recovery_plan_name, custom_headers = nil)
-      begin_delete_async(recovery_plan_name, custom_headers).value!
+    def begin_delete_with_http_info(recovery_plan_name, custom_headers:nil)
+      begin_delete_async(recovery_plan_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1369,7 +1368,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(recovery_plan_name, custom_headers = nil)
+    def begin_delete_async(recovery_plan_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1378,6 +1377,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1424,8 +1424,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlan] operation results.
     #
-    def begin_update(recovery_plan_name, input, custom_headers = nil)
-      response = begin_update_async(recovery_plan_name, input, custom_headers).value!
+    def begin_update(recovery_plan_name, input, custom_headers:nil)
+      response = begin_update_async(recovery_plan_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1441,8 +1441,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(recovery_plan_name, input, custom_headers = nil)
-      begin_update_async(recovery_plan_name, input, custom_headers).value!
+    def begin_update_with_http_info(recovery_plan_name, input, custom_headers:nil)
+      begin_update_async(recovery_plan_name, input, custom_headers:custom_headers).value!
     end
 
     #
@@ -1457,7 +1457,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(recovery_plan_name, input, custom_headers = nil)
+    def begin_update_async(recovery_plan_name, input, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1467,7 +1467,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1532,8 +1531,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [RecoveryPlanCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1549,8 +1548,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1565,11 +1564,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1624,12 +1624,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [RecoveryPlanCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_as_lazy(custom_headers:nil)
+      response = list_async(custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

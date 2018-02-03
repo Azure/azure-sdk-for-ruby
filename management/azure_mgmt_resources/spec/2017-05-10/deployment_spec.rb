@@ -89,7 +89,7 @@ describe 'Template Deployments' do
 
   it 'should list filtered results restricted with top parameter' do
     filter = "provisioningState eq 'Running'"
-    result = @client.list_by_resource_group_async(@resource_group.name, filter, 1).value!
+    result = @client.list_by_resource_group_async(@resource_group.name, filter:filter, top:1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 

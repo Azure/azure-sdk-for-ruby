@@ -31,11 +31,11 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::CognitiveServices::TextAnalytics::V2_0::TextAnalyticsClient.new(configurable.credentials, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::CognitiveServices::TextAnalytics::V2_0::TextAnalyticsClient.new(configurable.credentials, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
+        add_telemetry(@client_0)
 
         @model_classes = ModelClasses.new
       end
@@ -43,6 +43,14 @@ module Azure::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/azure_sdk/Latest/TextAnalytics'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
       class ModelClasses

@@ -209,54 +209,54 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @operations = client_0.operations
+          add_telemetry(@client_0)
+          @operations = @client_0.operations
 
-          client_1 = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
-          if(client_1.respond_to?(:subscription_id))
-            client_1.subscription_id = configurable.subscription_id
+          @client_1 = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
+          if(@client_1.respond_to?(:subscription_id))
+            @client_1.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_1)
-          @backup_resource_vault_configs = client_1.backup_resource_vault_configs
-          @backup_engines = client_1.backup_engines
-          @protection_container_refresh_operation_results = client_1.protection_container_refresh_operation_results
-          @protection_containers = client_1.protection_containers
-          @protection_container_operation_results = client_1.protection_container_operation_results
-          @protected_items = client_1.protected_items
-          @backups = client_1.backups
-          @protected_item_operation_results = client_1.protected_item_operation_results
-          @protected_item_operation_statuses = client_1.protected_item_operation_statuses
-          @recovery_points = client_1.recovery_points
-          @item_level_recovery_connections = client_1.item_level_recovery_connections
-          @restores = client_1.restores
-          @job_cancellations = client_1.job_cancellations
-          @job_operation_results = client_1.job_operation_results
-          @export_jobs_operation_results = client_1.export_jobs_operation_results
-          @jobs = client_1.jobs
-          @backup_operation_results = client_1.backup_operation_results
-          @backup_operation_statuses = client_1.backup_operation_statuses
-          @backup_policies = client_1.backup_policies
-          @protection_policies = client_1.protection_policies
-          @protection_policy_operation_results = client_1.protection_policy_operation_results
-          @protection_policy_operation_statuses = client_1.protection_policy_operation_statuses
-          @backup_protectable_items = client_1.backup_protectable_items
-          @backup_protected_items = client_1.backup_protected_items
-          @backup_protection_containers = client_1.backup_protection_containers
-          @security_pins = client_1.security_pins
-          @backup_resource_storage_configs = client_1.backup_resource_storage_configs
-          @backup_usage_summaries = client_1.backup_usage_summaries
+          add_telemetry(@client_1)
+          @backup_resource_vault_configs = @client_1.backup_resource_vault_configs
+          @backup_engines = @client_1.backup_engines
+          @protection_container_refresh_operation_results = @client_1.protection_container_refresh_operation_results
+          @protection_containers = @client_1.protection_containers
+          @protection_container_operation_results = @client_1.protection_container_operation_results
+          @protected_items = @client_1.protected_items
+          @backups = @client_1.backups
+          @protected_item_operation_results = @client_1.protected_item_operation_results
+          @protected_item_operation_statuses = @client_1.protected_item_operation_statuses
+          @recovery_points = @client_1.recovery_points
+          @item_level_recovery_connections = @client_1.item_level_recovery_connections
+          @restores = @client_1.restores
+          @job_cancellations = @client_1.job_cancellations
+          @job_operation_results = @client_1.job_operation_results
+          @export_jobs_operation_results = @client_1.export_jobs_operation_results
+          @jobs = @client_1.jobs
+          @backup_operation_results = @client_1.backup_operation_results
+          @backup_operation_statuses = @client_1.backup_operation_statuses
+          @backup_policies = @client_1.backup_policies
+          @protection_policies = @client_1.protection_policies
+          @protection_policy_operation_results = @client_1.protection_policy_operation_results
+          @protection_policy_operation_statuses = @client_1.protection_policy_operation_statuses
+          @backup_protectable_items = @client_1.backup_protectable_items
+          @backup_protected_items = @client_1.backup_protected_items
+          @backup_protection_containers = @client_1.backup_protection_containers
+          @security_pins = @client_1.security_pins
+          @backup_resource_storage_configs = @client_1.backup_resource_storage_configs
+          @backup_usage_summaries = @client_1.backup_usage_summaries
 
-          client_2 = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
-          if(client_2.respond_to?(:subscription_id))
-            client_2.subscription_id = configurable.subscription_id
+          @client_2 = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
+          if(@client_2.respond_to?(:subscription_id))
+            @client_2.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_2)
-          @backup_jobs = client_2.backup_jobs
-          @job_details = client_2.job_details
+          add_telemetry(@client_2)
+          @backup_jobs = @client_2.backup_jobs
+          @job_details = @client_2.job_details
 
           @model_classes = ModelClasses.new
         end
@@ -264,6 +264,18 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/RecoveryServicesBackup/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_2.respond_to?method
+            @client_2.send(method, *args)
+          elsif @client_1.respond_to?method
+            @client_1.send(method, *args)
+          elsif @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

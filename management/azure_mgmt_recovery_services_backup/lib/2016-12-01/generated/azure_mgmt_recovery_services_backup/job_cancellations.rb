@@ -33,8 +33,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # will be added to the HTTP request.
     #
     #
-    def trigger(vault_name, resource_group_name, job_name, custom_headers = nil)
-      response = trigger_async(vault_name, resource_group_name, job_name, custom_headers).value!
+    def trigger(vault_name, resource_group_name, job_name, custom_headers:nil)
+      response = trigger_async(vault_name, resource_group_name, job_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -51,8 +51,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def trigger_with_http_info(vault_name, resource_group_name, job_name, custom_headers = nil)
-      trigger_async(vault_name, resource_group_name, job_name, custom_headers).value!
+    def trigger_with_http_info(vault_name, resource_group_name, job_name, custom_headers:nil)
+      trigger_async(vault_name, resource_group_name, job_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -68,7 +68,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def trigger_async(vault_name, resource_group_name, job_name, custom_headers = nil)
+    def trigger_async(vault_name, resource_group_name, job_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -77,6 +77,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

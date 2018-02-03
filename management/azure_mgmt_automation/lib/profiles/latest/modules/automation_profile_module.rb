@@ -185,40 +185,40 @@ module Azure::Automation::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Automation::Mgmt::V2015_10_31::AutomationClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Automation::Mgmt::V2015_10_31::AutomationClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @automation_account_operations = client_0.automation_account_operations
-        @operations = client_0.operations
-        @statistics_operations = client_0.statistics_operations
-        @usages = client_0.usages
-        @certificate_operations = client_0.certificate_operations
-        @connection_operations = client_0.connection_operations
-        @connection_type_operations = client_0.connection_type_operations
-        @credential_operations = client_0.credential_operations
-        @dsc_compilation_job_operations = client_0.dsc_compilation_job_operations
-        @dsc_configuration_operations = client_0.dsc_configuration_operations
-        @agent_registration_information = client_0.agent_registration_information
-        @dsc_node_operations = client_0.dsc_node_operations
-        @node_reports = client_0.node_reports
-        @dsc_node_configuration_operations = client_0.dsc_node_configuration_operations
-        @hybrid_runbook_worker_group_operations = client_0.hybrid_runbook_worker_group_operations
-        @job_operations = client_0.job_operations
-        @job_stream_operations = client_0.job_stream_operations
-        @job_schedule_operations = client_0.job_schedule_operations
-        @activity_operations = client_0.activity_operations
-        @module_model_operations = client_0.module_model_operations
-        @object_data_types = client_0.object_data_types
-        @fields = client_0.fields
-        @runbook_draft_operations = client_0.runbook_draft_operations
-        @runbook_operations = client_0.runbook_operations
-        @test_job_streams = client_0.test_job_streams
-        @test_jobs = client_0.test_jobs
-        @schedule_operations = client_0.schedule_operations
-        @variable_operations = client_0.variable_operations
-        @webhook_operations = client_0.webhook_operations
+        add_telemetry(@client_0)
+        @automation_account_operations = @client_0.automation_account_operations
+        @operations = @client_0.operations
+        @statistics_operations = @client_0.statistics_operations
+        @usages = @client_0.usages
+        @certificate_operations = @client_0.certificate_operations
+        @connection_operations = @client_0.connection_operations
+        @connection_type_operations = @client_0.connection_type_operations
+        @credential_operations = @client_0.credential_operations
+        @dsc_compilation_job_operations = @client_0.dsc_compilation_job_operations
+        @dsc_configuration_operations = @client_0.dsc_configuration_operations
+        @agent_registration_information = @client_0.agent_registration_information
+        @dsc_node_operations = @client_0.dsc_node_operations
+        @node_reports = @client_0.node_reports
+        @dsc_node_configuration_operations = @client_0.dsc_node_configuration_operations
+        @hybrid_runbook_worker_group_operations = @client_0.hybrid_runbook_worker_group_operations
+        @job_operations = @client_0.job_operations
+        @job_stream_operations = @client_0.job_stream_operations
+        @job_schedule_operations = @client_0.job_schedule_operations
+        @activity_operations = @client_0.activity_operations
+        @module_model_operations = @client_0.module_model_operations
+        @object_data_types = @client_0.object_data_types
+        @fields = @client_0.fields
+        @runbook_draft_operations = @client_0.runbook_draft_operations
+        @runbook_operations = @client_0.runbook_operations
+        @test_job_streams = @client_0.test_job_streams
+        @test_jobs = @client_0.test_jobs
+        @schedule_operations = @client_0.schedule_operations
+        @variable_operations = @client_0.variable_operations
+        @webhook_operations = @client_0.webhook_operations
 
         @model_classes = ModelClasses.new
       end
@@ -226,6 +226,14 @@ module Azure::Automation::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/Automation/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

@@ -41,13 +41,13 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerInstanceManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerInstanceManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @container_groups = client_0.container_groups
-          @container_logs = client_0.container_logs
+          add_telemetry(@client_0)
+          @container_groups = @client_0.container_groups
+          @container_logs = @client_0.container_logs
 
           @model_classes = ModelClasses.new
         end
@@ -55,6 +55,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/ContainerInstance/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

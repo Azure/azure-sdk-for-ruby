@@ -38,13 +38,13 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::PowerBIEmbeddedManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::PowerBIEmbeddedManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @workspace_collections = client_0.workspace_collections
-          @workspaces = client_0.workspaces
+          add_telemetry(@client_0)
+          @workspace_collections = @client_0.workspace_collections
+          @workspaces = @client_0.workspaces
 
           @model_classes = ModelClasses.new
         end
@@ -52,6 +52,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/PowerBiEmbedded/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

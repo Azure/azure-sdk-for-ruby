@@ -31,8 +31,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Array<ClusterCodeVersionsResult>] operation results.
     #
-    def list(location, custom_headers = nil)
-      first_page = list_as_lazy(location, custom_headers)
+    def list(location, custom_headers:nil)
+      first_page = list_as_lazy(location, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -46,8 +46,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(location, custom_headers = nil)
-      list_async(location, custom_headers).value!
+    def list_with_http_info(location, custom_headers:nil)
+      list_async(location, custom_headers:custom_headers).value!
     end
 
     #
@@ -60,13 +60,14 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(location, custom_headers = nil)
+    def list_async(location, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -123,8 +124,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Array<ClusterCodeVersionsResult>] operation results.
     #
-    def list_by_environment(location, environment, custom_headers = nil)
-      first_page = list_by_environment_as_lazy(location, environment, custom_headers)
+    def list_by_environment(location, environment, custom_headers:nil)
+      first_page = list_by_environment_as_lazy(location, environment, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -140,8 +141,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_environment_with_http_info(location, environment, custom_headers = nil)
-      list_by_environment_async(location, environment, custom_headers).value!
+    def list_by_environment_with_http_info(location, environment, custom_headers:nil)
+      list_by_environment_async(location, environment, custom_headers:custom_headers).value!
     end
 
     #
@@ -156,7 +157,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_environment_async(location, environment, custom_headers = nil)
+    def list_by_environment_async(location, environment, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'environment is nil' if environment.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -164,6 +165,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -221,8 +223,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [ClusterCodeVersionsResult] operation results.
     #
-    def get(location, environment, cluster_version, custom_headers = nil)
-      response = get_async(location, environment, cluster_version, custom_headers).value!
+    def get(location, environment, cluster_version, custom_headers:nil)
+      response = get_async(location, environment, cluster_version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -239,8 +241,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(location, environment, cluster_version, custom_headers = nil)
-      get_async(location, environment, cluster_version, custom_headers).value!
+    def get_with_http_info(location, environment, cluster_version, custom_headers:nil)
+      get_async(location, environment, cluster_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -256,7 +258,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(location, environment, cluster_version, custom_headers = nil)
+    def get_async(location, environment, cluster_version, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'environment is nil' if environment.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -265,6 +267,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -320,8 +323,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Array<ClusterCodeVersionsResult>] operation results.
     #
-    def list_by_version(location, cluster_version, custom_headers = nil)
-      first_page = list_by_version_as_lazy(location, cluster_version, custom_headers)
+    def list_by_version(location, cluster_version, custom_headers:nil)
+      first_page = list_by_version_as_lazy(location, cluster_version, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -336,8 +339,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_version_with_http_info(location, cluster_version, custom_headers = nil)
-      list_by_version_async(location, cluster_version, custom_headers).value!
+    def list_by_version_with_http_info(location, cluster_version, custom_headers:nil)
+      list_by_version_async(location, cluster_version, custom_headers:custom_headers).value!
     end
 
     #
@@ -351,7 +354,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_version_async(location, cluster_version, custom_headers = nil)
+    def list_by_version_async(location, cluster_version, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -359,6 +362,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -413,8 +417,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [ClusterCodeVersionsListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -428,8 +432,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -442,11 +446,12 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -500,8 +505,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [ClusterCodeVersionsListResult] operation results.
     #
-    def list_by_environment_next(next_page_link, custom_headers = nil)
-      response = list_by_environment_next_async(next_page_link, custom_headers).value!
+    def list_by_environment_next(next_page_link, custom_headers:nil)
+      response = list_by_environment_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -515,8 +520,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_environment_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_environment_next_async(next_page_link, custom_headers).value!
+    def list_by_environment_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_environment_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -529,11 +534,12 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_environment_next_async(next_page_link, custom_headers = nil)
+    def list_by_environment_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -587,8 +593,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [ClusterCodeVersionsListResult] operation results.
     #
-    def list_by_version_next(next_page_link, custom_headers = nil)
-      response = list_by_version_next_async(next_page_link, custom_headers).value!
+    def list_by_version_next(next_page_link, custom_headers:nil)
+      response = list_by_version_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -602,8 +608,8 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_version_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_version_next_async(next_page_link, custom_headers).value!
+    def list_by_version_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_version_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -616,11 +622,12 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_version_next_async(next_page_link, custom_headers = nil)
+    def list_by_version_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -675,12 +682,12 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     # @return [ClusterCodeVersionsListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_as_lazy(location, custom_headers = nil)
-      response = list_async(location, custom_headers).value!
+    def list_as_lazy(location, custom_headers:nil)
+      response = list_async(location, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -699,12 +706,12 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     # @return [ClusterCodeVersionsListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_environment_as_lazy(location, environment, custom_headers = nil)
-      response = list_by_environment_async(location, environment, custom_headers).value!
+    def list_by_environment_as_lazy(location, environment, custom_headers:nil)
+      response = list_by_environment_async(location, environment, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_environment_next_async(next_page_link, custom_headers)
+          list_by_environment_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -722,12 +729,12 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
     # @return [ClusterCodeVersionsListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_version_as_lazy(location, cluster_version, custom_headers = nil)
-      response = list_by_version_async(location, cluster_version, custom_headers).value!
+    def list_by_version_as_lazy(location, cluster_version, custom_headers:nil)
+      response = list_by_version_async(location, cluster_version, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_version_next_async(next_page_link, custom_headers)
+          list_by_version_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

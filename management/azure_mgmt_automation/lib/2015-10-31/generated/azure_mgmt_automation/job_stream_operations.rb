@@ -33,8 +33,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [JobStream] operation results.
     #
-    def get(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers = nil)
-      response = get_async(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers).value!
+    def get(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers:nil)
+      response = get_async(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers = nil)
-      get_async(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers).value!
+    def get_with_http_info(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers:nil)
+      get_async(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers = nil)
+    def get_async(resource_group_name, automation_account_name, job_id, job_stream_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
@@ -77,6 +77,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -133,8 +134,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Array<JobStream>] operation results.
     #
-    def list_by_job(resource_group_name, automation_account_name, job_id, filter = nil, custom_headers = nil)
-      first_page = list_by_job_as_lazy(resource_group_name, automation_account_name, job_id, filter, custom_headers)
+    def list_by_job(resource_group_name, automation_account_name, job_id, filter:nil, custom_headers:nil)
+      first_page = list_by_job_as_lazy(resource_group_name, automation_account_name, job_id, filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -150,8 +151,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_job_with_http_info(resource_group_name, automation_account_name, job_id, filter = nil, custom_headers = nil)
-      list_by_job_async(resource_group_name, automation_account_name, job_id, filter, custom_headers).value!
+    def list_by_job_with_http_info(resource_group_name, automation_account_name, job_id, filter:nil, custom_headers:nil)
+      list_by_job_async(resource_group_name, automation_account_name, job_id, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -166,7 +167,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_job_async(resource_group_name, automation_account_name, job_id, filter = nil, custom_headers = nil)
+    def list_by_job_async(resource_group_name, automation_account_name, job_id, filter:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
@@ -176,6 +177,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -230,8 +232,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [JobStreamListResult] operation results.
     #
-    def list_by_job_next(next_page_link, custom_headers = nil)
-      response = list_by_job_next_async(next_page_link, custom_headers).value!
+    def list_by_job_next(next_page_link, custom_headers:nil)
+      response = list_by_job_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -245,8 +247,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_job_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_job_next_async(next_page_link, custom_headers).value!
+    def list_by_job_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_job_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -259,11 +261,12 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_job_next_async(next_page_link, custom_headers = nil)
+    def list_by_job_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -320,12 +323,12 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [JobStreamListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_job_as_lazy(resource_group_name, automation_account_name, job_id, filter = nil, custom_headers = nil)
-      response = list_by_job_async(resource_group_name, automation_account_name, job_id, filter, custom_headers).value!
+    def list_by_job_as_lazy(resource_group_name, automation_account_name, job_id, filter:nil, custom_headers:nil)
+      response = list_by_job_async(resource_group_name, automation_account_name, job_id, filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_job_next_async(next_page_link, custom_headers)
+          list_by_job_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

@@ -128,8 +128,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [KeyPhraseBatchResult] operation results.
     #
-    def key_phrases(input, custom_headers = nil)
-      response = key_phrases_async(input, custom_headers).value!
+    def key_phrases(input, custom_headers:nil)
+      response = key_phrases_async(input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -150,8 +150,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def key_phrases_with_http_info(input, custom_headers = nil)
-      key_phrases_async(input, custom_headers).value!
+    def key_phrases_with_http_info(input, custom_headers:nil)
+      key_phrases_async(input, custom_headers:custom_headers).value!
     end
 
     #
@@ -171,13 +171,12 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def key_phrases_async(input, custom_headers = nil)
+    def key_phrases_async(input, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'input is nil' if input.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -241,8 +240,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [LanguageBatchResult] operation results.
     #
-    def detect_language(input, custom_headers = nil)
-      response = detect_language_async(input, custom_headers).value!
+    def detect_language(input, custom_headers:nil)
+      response = detect_language_async(input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -258,8 +257,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_language_with_http_info(input, custom_headers = nil)
-      detect_language_async(input, custom_headers).value!
+    def detect_language_with_http_info(input, custom_headers:nil)
+      detect_language_async(input, custom_headers:custom_headers).value!
     end
 
     #
@@ -274,13 +273,12 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_language_async(input, custom_headers = nil)
+    def detect_language_async(input, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'input is nil' if input.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -350,8 +348,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [SentimentBatchResult] operation results.
     #
-    def sentiment(input, custom_headers = nil)
-      response = sentiment_async(input, custom_headers).value!
+    def sentiment(input, custom_headers:nil)
+      response = sentiment_async(input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -373,8 +371,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def sentiment_with_http_info(input, custom_headers = nil)
-      sentiment_async(input, custom_headers).value!
+    def sentiment_with_http_info(input, custom_headers:nil)
+      sentiment_async(input, custom_headers:custom_headers).value!
     end
 
     #
@@ -395,13 +393,12 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def sentiment_async(input, custom_headers = nil)
+    def sentiment_async(input, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'input is nil' if input.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

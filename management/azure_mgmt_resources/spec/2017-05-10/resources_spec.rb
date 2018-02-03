@@ -142,7 +142,7 @@ describe 'Resources' do
 
   it 'should list list resources in resource group with tag_name and value filter and top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
-    result = @client.list_by_resource_group_async(@resource_group.name, filter, 1).value!
+    result = @client.list_by_resource_group_async(@resource_group.name, filter:filter, top:1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
@@ -156,7 +156,7 @@ describe 'Resources' do
   it 'should filter resources and work with top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
 
-    result = @client.list_async(filter, 1).value!
+    result = @client.list_async(filter:filter, top:1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 

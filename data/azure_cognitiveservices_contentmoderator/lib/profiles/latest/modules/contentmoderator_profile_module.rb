@@ -93,18 +93,18 @@ module Azure::ContentModerator::Profiles::Latest
       @base_url = options[:base_url].nil? ? nil:options[:base_url]
       @options = options[:options].nil? ? nil:options[:options]
 
-      client_0 = Azure::CognitiveServices::ContentModerator::V1_0::ContentModeratorClient.new(configurable.credentials, options)
-      if(client_0.respond_to?(:subscription_id))
-        client_0.subscription_id = configurable.subscription_id
+      @client_0 = Azure::CognitiveServices::ContentModerator::V1_0::ContentModeratorClient.new(configurable.credentials, options)
+      if(@client_0.respond_to?(:subscription_id))
+        @client_0.subscription_id = configurable.subscription_id
       end
-      add_telemetry(client_0)
-      @image_moderation = client_0.image_moderation
-      @text_moderation = client_0.text_moderation
-      @list_management_image_lists = client_0.list_management_image_lists
-      @list_management_term_lists = client_0.list_management_term_lists
-      @list_management_image = client_0.list_management_image
-      @list_management_term = client_0.list_management_term
-      @reviews = client_0.reviews
+      add_telemetry(@client_0)
+      @image_moderation = @client_0.image_moderation
+      @text_moderation = @client_0.text_moderation
+      @list_management_image_lists = @client_0.list_management_image_lists
+      @list_management_term_lists = @client_0.list_management_term_lists
+      @list_management_image = @client_0.list_management_image
+      @list_management_term = @client_0.list_management_term
+      @reviews = @client_0.reviews
 
       @model_classes = ModelClasses.new
     end
@@ -112,6 +112,14 @@ module Azure::ContentModerator::Profiles::Latest
     def add_telemetry(client)
       profile_information = 'Profiles/Latest/ContentModerator'
       client.add_user_agent_information(profile_information)
+    end
+
+    def method_missing(method, *args)
+      if @client_0.respond_to?method
+        @client_0.send(method, *args)
+      else
+        super
+      end
     end
 
   end

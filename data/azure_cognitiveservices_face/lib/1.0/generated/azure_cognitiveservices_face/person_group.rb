@@ -33,8 +33,8 @@ module Azure::CognitiveServices::Face::V1_0
     # will be added to the HTTP request.
     #
     #
-    def create(person_group_id, name = nil, user_data = nil, custom_headers = nil)
-      response = create_async(person_group_id, name, user_data, custom_headers).value!
+    def create(person_group_id, name:nil, user_data:nil, custom_headers:nil)
+      response = create_async(person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
       nil
     end
 
@@ -51,8 +51,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(person_group_id, name = nil, user_data = nil, custom_headers = nil)
-      create_async(person_group_id, name, user_data, custom_headers).value!
+    def create_with_http_info(person_group_id, name:nil, user_data:nil, custom_headers:nil)
+      create_async(person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
     end
 
     #
@@ -68,7 +68,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(person_group_id, name = nil, user_data = nil, custom_headers = nil)
+    def create_async(person_group_id, name:nil, user_data:nil, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -83,7 +83,6 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -136,8 +135,8 @@ module Azure::CognitiveServices::Face::V1_0
     # will be added to the HTTP request.
     #
     #
-    def delete(person_group_id, custom_headers = nil)
-      response = delete_async(person_group_id, custom_headers).value!
+    def delete(person_group_id, custom_headers:nil)
+      response = delete_async(person_group_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -152,8 +151,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(person_group_id, custom_headers = nil)
-      delete_async(person_group_id, custom_headers).value!
+    def delete_with_http_info(person_group_id, custom_headers:nil)
+      delete_async(person_group_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -167,7 +166,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(person_group_id, custom_headers = nil)
+    def delete_async(person_group_id, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -175,6 +174,7 @@ module Azure::CognitiveServices::Face::V1_0
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -218,8 +218,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [PersonGroupResult] operation results.
     #
-    def get(person_group_id, custom_headers = nil)
-      response = get_async(person_group_id, custom_headers).value!
+    def get(person_group_id, custom_headers:nil)
+      response = get_async(person_group_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -232,8 +232,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(person_group_id, custom_headers = nil)
-      get_async(person_group_id, custom_headers).value!
+    def get_with_http_info(person_group_id, custom_headers:nil)
+      get_async(person_group_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -245,7 +245,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(person_group_id, custom_headers = nil)
+    def get_async(person_group_id, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -253,6 +253,7 @@ module Azure::CognitiveServices::Face::V1_0
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -310,8 +311,8 @@ module Azure::CognitiveServices::Face::V1_0
     # will be added to the HTTP request.
     #
     #
-    def update(person_group_id, name = nil, user_data = nil, custom_headers = nil)
-      response = update_async(person_group_id, name, user_data, custom_headers).value!
+    def update(person_group_id, name:nil, user_data:nil, custom_headers:nil)
+      response = update_async(person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
       nil
     end
 
@@ -329,8 +330,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(person_group_id, name = nil, user_data = nil, custom_headers = nil)
-      update_async(person_group_id, name, user_data, custom_headers).value!
+    def update_with_http_info(person_group_id, name:nil, user_data:nil, custom_headers:nil)
+      update_async(person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
     end
 
     #
@@ -347,7 +348,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(person_group_id, name = nil, user_data = nil, custom_headers = nil)
+    def update_async(person_group_id, name:nil, user_data:nil, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -362,7 +363,6 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -414,8 +414,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [TrainingStatus] operation results.
     #
-    def get_training_status(person_group_id, custom_headers = nil)
-      response = get_training_status_async(person_group_id, custom_headers).value!
+    def get_training_status(person_group_id, custom_headers:nil)
+      response = get_training_status_async(person_group_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -428,8 +428,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_training_status_with_http_info(person_group_id, custom_headers = nil)
-      get_training_status_async(person_group_id, custom_headers).value!
+    def get_training_status_with_http_info(person_group_id, custom_headers:nil)
+      get_training_status_async(person_group_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -441,7 +441,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_training_status_async(person_group_id, custom_headers = nil)
+    def get_training_status_async(person_group_id, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -449,6 +449,7 @@ module Azure::CognitiveServices::Face::V1_0
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -504,8 +505,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def list(start = nil, top = 1000, custom_headers = nil)
-      response = list_async(start, top, custom_headers).value!
+    def list(start:nil, top:1000, custom_headers:nil)
+      response = list_async(start:start, top:top, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -520,8 +521,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(start = nil, top = 1000, custom_headers = nil)
-      list_async(start, top, custom_headers).value!
+    def list_with_http_info(start:nil, top:1000, custom_headers:nil)
+      list_async(start:start, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -535,7 +536,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(start = nil, top = 1000, custom_headers = nil)
+    def list_async(start:nil, top:1000, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, "'start' should satisfy the constraint - 'MaxLength': '64'" if !start.nil? && start.length > 64
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
@@ -543,6 +544,7 @@ module Azure::CognitiveServices::Face::V1_0
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -612,8 +614,8 @@ module Azure::CognitiveServices::Face::V1_0
     # will be added to the HTTP request.
     #
     #
-    def train(person_group_id, custom_headers = nil)
-      response = train_async(person_group_id, custom_headers).value!
+    def train(person_group_id, custom_headers:nil)
+      response = train_async(person_group_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -627,8 +629,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def train_with_http_info(person_group_id, custom_headers = nil)
-      train_async(person_group_id, custom_headers).value!
+    def train_with_http_info(person_group_id, custom_headers:nil)
+      train_async(person_group_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -641,7 +643,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def train_async(person_group_id, custom_headers = nil)
+    def train_async(person_group_id, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -649,6 +651,7 @@ module Azure::CognitiveServices::Face::V1_0
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

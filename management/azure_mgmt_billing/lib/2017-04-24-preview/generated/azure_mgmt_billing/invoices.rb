@@ -47,8 +47,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [Array<Invoice>] operation results.
     #
-    def list(expand = nil, filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
-      first_page = list_as_lazy(expand, filter, skiptoken, top, custom_headers)
+    def list(expand:nil, filter:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      first_page = list_as_lazy(expand:expand, filter:filter, skiptoken:skiptoken, top:top, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -76,8 +76,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(expand = nil, filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
-      list_async(expand, filter, skiptoken, top, custom_headers).value!
+    def list_with_http_info(expand:nil, filter:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      list_async(expand:expand, filter:filter, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -104,7 +104,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(expand = nil, filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
+    def list_async(expand:nil, filter:nil, skiptoken:nil, top:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
@@ -112,6 +112,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -166,8 +167,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [Invoice] operation results.
     #
-    def get(invoice_name, custom_headers = nil)
-      response = get_async(invoice_name, custom_headers).value!
+    def get(invoice_name, custom_headers:nil)
+      response = get_async(invoice_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -181,8 +182,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(invoice_name, custom_headers = nil)
-      get_async(invoice_name, custom_headers).value!
+    def get_with_http_info(invoice_name, custom_headers:nil)
+      get_async(invoice_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -195,13 +196,14 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(invoice_name, custom_headers = nil)
+    def get_async(invoice_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'invoice_name is nil' if invoice_name.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -255,8 +257,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [Invoice] operation results.
     #
-    def get_latest(custom_headers = nil)
-      response = get_latest_async(custom_headers).value!
+    def get_latest(custom_headers:nil)
+      response = get_latest_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -269,8 +271,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_latest_with_http_info(custom_headers = nil)
-      get_latest_async(custom_headers).value!
+    def get_latest_with_http_info(custom_headers:nil)
+      get_latest_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -282,12 +284,13 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_latest_async(custom_headers = nil)
+    def get_latest_async(custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -345,8 +348,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [InvoicesListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -363,8 +366,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -380,11 +383,12 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -453,12 +457,12 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     # @return [InvoicesListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(expand = nil, filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
-      response = list_async(expand, filter, skiptoken, top, custom_headers).value!
+    def list_as_lazy(expand:nil, filter:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      response = list_async(expand:expand, filter:filter, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

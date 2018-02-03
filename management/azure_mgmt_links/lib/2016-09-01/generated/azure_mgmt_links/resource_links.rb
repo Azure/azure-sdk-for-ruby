@@ -38,8 +38,8 @@ module Azure::Links::Mgmt::V2016_09_01
     # will be added to the HTTP request.
     #
     #
-    def delete(link_id, custom_headers = nil)
-      response = delete_async(link_id, custom_headers).value!
+    def delete(link_id, custom_headers:nil)
+      response = delete_async(link_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -56,8 +56,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(link_id, custom_headers = nil)
-      delete_async(link_id, custom_headers).value!
+    def delete_with_http_info(link_id, custom_headers:nil)
+      delete_async(link_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -73,12 +73,13 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(link_id, custom_headers = nil)
+    def delete_async(link_id, custom_headers:nil)
       fail ArgumentError, 'link_id is nil' if link_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -128,8 +129,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [ResourceLink] operation results.
     #
-    def create_or_update(link_id, parameters, custom_headers = nil)
-      response = create_or_update_async(link_id, parameters, custom_headers).value!
+    def create_or_update(link_id, parameters, custom_headers:nil)
+      response = create_or_update_async(link_id, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -148,8 +149,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(link_id, parameters, custom_headers = nil)
-      create_or_update_async(link_id, parameters, custom_headers).value!
+    def create_or_update_with_http_info(link_id, parameters, custom_headers:nil)
+      create_or_update_async(link_id, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -167,14 +168,13 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(link_id, parameters, custom_headers = nil)
+    def create_or_update_async(link_id, parameters, custom_headers:nil)
       fail ArgumentError, 'link_id is nil' if link_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -248,8 +248,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [ResourceLink] operation results.
     #
-    def get(link_id, custom_headers = nil)
-      response = get_async(link_id, custom_headers).value!
+    def get(link_id, custom_headers:nil)
+      response = get_async(link_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -264,8 +264,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(link_id, custom_headers = nil)
-      get_async(link_id, custom_headers).value!
+    def get_with_http_info(link_id, custom_headers:nil)
+      get_async(link_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -279,12 +279,13 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(link_id, custom_headers = nil)
+    def get_async(link_id, custom_headers:nil)
       fail ArgumentError, 'link_id is nil' if link_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -340,8 +341,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Array<ResourceLink>] operation results.
     #
-    def list_at_subscription(filter = nil, custom_headers = nil)
-      first_page = list_at_subscription_as_lazy(filter, custom_headers)
+    def list_at_subscription(filter:nil, custom_headers:nil)
+      first_page = list_at_subscription_as_lazy(filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -356,8 +357,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_subscription_with_http_info(filter = nil, custom_headers = nil)
-      list_at_subscription_async(filter, custom_headers).value!
+    def list_at_subscription_with_http_info(filter:nil, custom_headers:nil)
+      list_at_subscription_async(filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -371,12 +372,13 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_subscription_async(filter = nil, custom_headers = nil)
+    def list_at_subscription_async(filter:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -436,8 +438,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Array<ResourceLink>] operation results.
     #
-    def list_at_source_scope(scope, filter = nil, custom_headers = nil)
-      first_page = list_at_source_scope_as_lazy(scope, filter, custom_headers)
+    def list_at_source_scope(scope, filter:nil, custom_headers:nil)
+      first_page = list_at_source_scope_as_lazy(scope, filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -456,8 +458,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_source_scope_with_http_info(scope, filter = nil, custom_headers = nil)
-      list_at_source_scope_async(scope, filter, custom_headers).value!
+    def list_at_source_scope_with_http_info(scope, filter:nil, custom_headers:nil)
+      list_at_source_scope_async(scope, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -475,12 +477,13 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_source_scope_async(scope, filter = nil, custom_headers = nil)
+    def list_at_source_scope_async(scope, filter:nil, custom_headers:nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -535,8 +538,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [ResourceLinkResult] operation results.
     #
-    def list_at_subscription_next(next_page_link, custom_headers = nil)
-      response = list_at_subscription_next_async(next_page_link, custom_headers).value!
+    def list_at_subscription_next(next_page_link, custom_headers:nil)
+      response = list_at_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -550,8 +553,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_subscription_next_with_http_info(next_page_link, custom_headers = nil)
-      list_at_subscription_next_async(next_page_link, custom_headers).value!
+    def list_at_subscription_next_with_http_info(next_page_link, custom_headers:nil)
+      list_at_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -564,11 +567,12 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_subscription_next_async(next_page_link, custom_headers = nil)
+    def list_at_subscription_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -622,8 +626,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [ResourceLinkResult] operation results.
     #
-    def list_at_source_scope_next(next_page_link, custom_headers = nil)
-      response = list_at_source_scope_next_async(next_page_link, custom_headers).value!
+    def list_at_source_scope_next(next_page_link, custom_headers:nil)
+      response = list_at_source_scope_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -637,8 +641,8 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_at_source_scope_next_with_http_info(next_page_link, custom_headers = nil)
-      list_at_source_scope_next_async(next_page_link, custom_headers).value!
+    def list_at_source_scope_next_with_http_info(next_page_link, custom_headers:nil)
+      list_at_source_scope_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -651,11 +655,12 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_at_source_scope_next_async(next_page_link, custom_headers = nil)
+    def list_at_source_scope_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -711,12 +716,12 @@ module Azure::Links::Mgmt::V2016_09_01
     # @return [ResourceLinkResult] which provide lazy access to pages of the
     # response.
     #
-    def list_at_subscription_as_lazy(filter = nil, custom_headers = nil)
-      response = list_at_subscription_async(filter, custom_headers).value!
+    def list_at_subscription_as_lazy(filter:nil, custom_headers:nil)
+      response = list_at_subscription_async(filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_at_subscription_next_async(next_page_link, custom_headers)
+          list_at_subscription_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -738,12 +743,12 @@ module Azure::Links::Mgmt::V2016_09_01
     # @return [ResourceLinkResult] which provide lazy access to pages of the
     # response.
     #
-    def list_at_source_scope_as_lazy(scope, filter = nil, custom_headers = nil)
-      response = list_at_source_scope_async(scope, filter, custom_headers).value!
+    def list_at_source_scope_as_lazy(scope, filter:nil, custom_headers:nil)
+      response = list_at_source_scope_async(scope, filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_at_source_scope_next_async(next_page_link, custom_headers)
+          list_at_source_scope_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

@@ -37,8 +37,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # @return [CheckSkuAvailabilityResultList] operation results.
     #
-    def list(location, skus, kind, type, custom_headers = nil)
-      response = list_async(location, skus, kind, type, custom_headers).value!
+    def list(location, skus, kind, type, custom_headers:nil)
+      response = list_async(location, skus, kind, type, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -58,8 +58,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(location, skus, kind, type, custom_headers = nil)
-      list_async(location, skus, kind, type, custom_headers).value!
+    def list_with_http_info(location, skus, kind, type, custom_headers:nil)
+      list_async(location, skus, kind, type, custom_headers:custom_headers).value!
     end
 
     #
@@ -78,7 +78,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(location, skus, kind, type, custom_headers = nil)
+    def list_async(location, skus, kind, type, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'location is nil' if location.nil?
@@ -94,7 +94,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers

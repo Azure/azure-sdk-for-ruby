@@ -374,31 +374,31 @@ module Azure::RecoveryServicesSiteRecovery::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::SiteRecoveryManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::SiteRecoveryManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @replication_vault_health = client_0.replication_vault_health
-        @replication_protected_items = client_0.replication_protected_items
-        @replication_network_mappings = client_0.replication_network_mappings
-        @replication_fabrics = client_0.replication_fabrics
-        @replicationv_centers = client_0.replicationv_centers
-        @replication_storage_classification_mappings = client_0.replication_storage_classification_mappings
-        @replication_storage_classifications = client_0.replication_storage_classifications
-        @replication_recovery_services_providers = client_0.replication_recovery_services_providers
-        @recovery_points = client_0.recovery_points
-        @replication_recovery_plans = client_0.replication_recovery_plans
-        @replication_protection_containers = client_0.replication_protection_containers
-        @replication_protection_container_mappings = client_0.replication_protection_container_mappings
-        @replication_protectable_items = client_0.replication_protectable_items
-        @replication_policies = client_0.replication_policies
-        @operations = client_0.operations
-        @replication_networks = client_0.replication_networks
-        @replication_logical_networks = client_0.replication_logical_networks
-        @replication_jobs = client_0.replication_jobs
-        @replication_events = client_0.replication_events
-        @replication_alert_settings = client_0.replication_alert_settings
+        add_telemetry(@client_0)
+        @replication_vault_health = @client_0.replication_vault_health
+        @replication_protected_items = @client_0.replication_protected_items
+        @replication_network_mappings = @client_0.replication_network_mappings
+        @replication_fabrics = @client_0.replication_fabrics
+        @replicationv_centers = @client_0.replicationv_centers
+        @replication_storage_classification_mappings = @client_0.replication_storage_classification_mappings
+        @replication_storage_classifications = @client_0.replication_storage_classifications
+        @replication_recovery_services_providers = @client_0.replication_recovery_services_providers
+        @recovery_points = @client_0.recovery_points
+        @replication_recovery_plans = @client_0.replication_recovery_plans
+        @replication_protection_containers = @client_0.replication_protection_containers
+        @replication_protection_container_mappings = @client_0.replication_protection_container_mappings
+        @replication_protectable_items = @client_0.replication_protectable_items
+        @replication_policies = @client_0.replication_policies
+        @operations = @client_0.operations
+        @replication_networks = @client_0.replication_networks
+        @replication_logical_networks = @client_0.replication_logical_networks
+        @replication_jobs = @client_0.replication_jobs
+        @replication_events = @client_0.replication_events
+        @replication_alert_settings = @client_0.replication_alert_settings
 
         @model_classes = ModelClasses.new
       end
@@ -406,6 +406,14 @@ module Azure::RecoveryServicesSiteRecovery::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/RecoveryServicesSiteRecovery/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

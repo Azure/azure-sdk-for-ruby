@@ -153,29 +153,29 @@ module Azure::Profiles::V2017_03_09
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Network::Mgmt::V2015_06_15::NetworkManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Network::Mgmt::V2015_06_15::NetworkManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @application_gateways = client_0.application_gateways
-          @express_route_circuit_authorizations = client_0.express_route_circuit_authorizations
-          @express_route_circuit_peerings = client_0.express_route_circuit_peerings
-          @express_route_circuits = client_0.express_route_circuits
-          @express_route_service_providers = client_0.express_route_service_providers
-          @load_balancers = client_0.load_balancers
-          @network_interfaces = client_0.network_interfaces
-          @network_security_groups = client_0.network_security_groups
-          @security_rules = client_0.security_rules
-          @public_ipaddresses = client_0.public_ipaddresses
-          @route_tables = client_0.route_tables
-          @routes = client_0.routes
-          @usages = client_0.usages
-          @virtual_networks = client_0.virtual_networks
-          @subnets = client_0.subnets
-          @virtual_network_gateways = client_0.virtual_network_gateways
-          @virtual_network_gateway_connections = client_0.virtual_network_gateway_connections
-          @local_network_gateways = client_0.local_network_gateways
+          add_telemetry(@client_0)
+          @application_gateways = @client_0.application_gateways
+          @express_route_circuit_authorizations = @client_0.express_route_circuit_authorizations
+          @express_route_circuit_peerings = @client_0.express_route_circuit_peerings
+          @express_route_circuits = @client_0.express_route_circuits
+          @express_route_service_providers = @client_0.express_route_service_providers
+          @load_balancers = @client_0.load_balancers
+          @network_interfaces = @client_0.network_interfaces
+          @network_security_groups = @client_0.network_security_groups
+          @security_rules = @client_0.security_rules
+          @public_ipaddresses = @client_0.public_ipaddresses
+          @route_tables = @client_0.route_tables
+          @routes = @client_0.routes
+          @usages = @client_0.usages
+          @virtual_networks = @client_0.virtual_networks
+          @subnets = @client_0.subnets
+          @virtual_network_gateways = @client_0.virtual_network_gateways
+          @virtual_network_gateway_connections = @client_0.virtual_network_gateway_connections
+          @local_network_gateways = @client_0.local_network_gateways
 
           @model_classes = ModelClasses.new
         end
@@ -183,6 +183,14 @@ module Azure::Profiles::V2017_03_09
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/V2017_03_09/Network/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

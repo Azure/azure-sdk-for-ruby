@@ -33,8 +33,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellSessionResources] operation results.
     #
-    def list_session(resource_group_name, node_name, session, custom_headers = nil)
-      response = list_session_async(resource_group_name, node_name, session, custom_headers).value!
+    def list_session(resource_group_name, node_name, session, custom_headers:nil)
+      response = list_session_async(resource_group_name, node_name, session, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_session_with_http_info(resource_group_name, node_name, session, custom_headers = nil)
-      list_session_async(resource_group_name, node_name, session, custom_headers).value!
+    def list_session_with_http_info(resource_group_name, node_name, session, custom_headers:nil)
+      list_session_async(resource_group_name, node_name, session, custom_headers:custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_session_async(resource_group_name, node_name, session, custom_headers = nil)
+    def list_session_async(resource_group_name, node_name, session, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -80,6 +80,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -137,8 +138,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellSessionResource] operation results.
     #
-    def create_session(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      response = create_session_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def create_session(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      response = create_session_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -154,9 +155,9 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_session_async(resource_group_name, node_name, session, pssession, custom_headers = nil)
+    def create_session_async(resource_group_name, node_name, session, pssession, custom_headers:nil)
       # Send request
-      promise = begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers)
+      promise = begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -187,8 +188,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellCommandStatus] operation results.
     #
-    def get_command_status(resource_group_name, node_name, session, pssession, expand = nil, custom_headers = nil)
-      response = get_command_status_async(resource_group_name, node_name, session, pssession, expand, custom_headers).value!
+    def get_command_status(resource_group_name, node_name, session, pssession, expand:nil, custom_headers:nil)
+      response = get_command_status_async(resource_group_name, node_name, session, pssession, expand:expand, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -207,8 +208,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_command_status_with_http_info(resource_group_name, node_name, session, pssession, expand = nil, custom_headers = nil)
-      get_command_status_async(resource_group_name, node_name, session, pssession, expand, custom_headers).value!
+    def get_command_status_with_http_info(resource_group_name, node_name, session, pssession, expand:nil, custom_headers:nil)
+      get_command_status_async(resource_group_name, node_name, session, pssession, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
@@ -226,7 +227,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_command_status_async(resource_group_name, node_name, session, pssession, expand = nil, custom_headers = nil)
+    def get_command_status_async(resource_group_name, node_name, session, pssession, expand:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -241,6 +242,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -298,8 +300,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellCommandResults] operation results.
     #
-    def update_command(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      response = update_command_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def update_command(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      response = update_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -315,9 +317,9 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_command_async(resource_group_name, node_name, session, pssession, custom_headers = nil)
+    def update_command_async(resource_group_name, node_name, session, pssession, custom_headers:nil)
       # Send request
-      promise = begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers)
+      promise = begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -347,8 +349,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellCommandResults] operation results.
     #
-    def invoke_command(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
-      response = invoke_command_async(resource_group_name, node_name, session, pssession, command, custom_headers).value!
+    def invoke_command(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
+      response = invoke_command_async(resource_group_name, node_name, session, pssession, command:command, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -365,9 +367,9 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def invoke_command_async(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
+    def invoke_command_async(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
       # Send request
-      promise = begin_invoke_command_async(resource_group_name, node_name, session, pssession, command, custom_headers)
+      promise = begin_invoke_command_async(resource_group_name, node_name, session, pssession, command:command, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -396,8 +398,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellCommandResults] operation results.
     #
-    def cancel_command(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      response = cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def cancel_command(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      response = cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -413,9 +415,9 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers = nil)
+    def cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers:nil)
       # Send request
-      promise = begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers)
+      promise = begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -445,8 +447,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellTabCompletionResults] operation results.
     #
-    def tab_completion(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
-      response = tab_completion_async(resource_group_name, node_name, session, pssession, command, custom_headers).value!
+    def tab_completion(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
+      response = tab_completion_async(resource_group_name, node_name, session, pssession, command:command, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -464,8 +466,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def tab_completion_with_http_info(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
-      tab_completion_async(resource_group_name, node_name, session, pssession, command, custom_headers).value!
+    def tab_completion_with_http_info(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
+      tab_completion_async(resource_group_name, node_name, session, pssession, command:command, custom_headers:custom_headers).value!
     end
 
     #
@@ -482,7 +484,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def tab_completion_async(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
+    def tab_completion_async(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -501,7 +503,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -567,8 +568,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellSessionResource] operation results.
     #
-    def begin_create_session(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      response = begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def begin_create_session(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      response = begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -585,8 +586,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_session_with_http_info(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def begin_create_session_with_http_info(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
     end
 
     #
@@ -602,7 +603,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers = nil)
+    def begin_create_session_async(resource_group_name, node_name, session, pssession, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -617,6 +618,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -674,8 +676,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellCommandResults] operation results.
     #
-    def begin_update_command(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      response = begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def begin_update_command(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      response = begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -692,8 +694,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_command_with_http_info(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def begin_update_command_with_http_info(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
     end
 
     #
@@ -709,7 +711,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers = nil)
+    def begin_update_command_async(resource_group_name, node_name, session, pssession, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -724,6 +726,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -782,8 +785,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellCommandResults] operation results.
     #
-    def begin_invoke_command(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
-      response = begin_invoke_command_async(resource_group_name, node_name, session, pssession, command, custom_headers).value!
+    def begin_invoke_command(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
+      response = begin_invoke_command_async(resource_group_name, node_name, session, pssession, command:command, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -801,8 +804,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_invoke_command_with_http_info(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
-      begin_invoke_command_async(resource_group_name, node_name, session, pssession, command, custom_headers).value!
+    def begin_invoke_command_with_http_info(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
+      begin_invoke_command_async(resource_group_name, node_name, session, pssession, command:command, custom_headers:custom_headers).value!
     end
 
     #
@@ -819,7 +822,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_invoke_command_async(resource_group_name, node_name, session, pssession, command = nil, custom_headers = nil)
+    def begin_invoke_command_async(resource_group_name, node_name, session, pssession, command:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -838,7 +841,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       end
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -904,8 +906,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [PowerShellCommandResults] operation results.
     #
-    def begin_cancel_command(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      response = begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def begin_cancel_command(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      response = begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -922,8 +924,8 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_cancel_command_with_http_info(resource_group_name, node_name, session, pssession, custom_headers = nil)
-      begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers).value!
+    def begin_cancel_command_with_http_info(resource_group_name, node_name, session, pssession, custom_headers:nil)
+      begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers:custom_headers).value!
     end
 
     #
@@ -939,7 +941,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers = nil)
+    def begin_cancel_command_async(resource_group_name, node_name, session, pssession, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -954,6 +956,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

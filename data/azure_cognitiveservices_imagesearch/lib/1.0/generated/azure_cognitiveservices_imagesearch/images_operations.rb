@@ -335,8 +335,8 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [Images] operation results.
     #
-    def search(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, aspect = nil, color = nil, country_code = nil, count = nil, freshness = nil, height = nil, id = nil, image_content = nil, image_type = nil, license = nil, market = nil, max_file_size = nil, max_height = nil, max_width = nil, min_file_size = nil, min_height = nil, min_width = nil, offset = nil, safe_search = nil, size = nil, set_lang = nil, width = nil, custom_headers = nil)
-      response = search_async(query, accept_language, user_agent, client_id, client_ip, location, aspect, color, country_code, count, freshness, height, id, image_content, image_type, license, market, max_file_size, max_height, max_width, min_file_size, min_height, min_width, offset, safe_search, size, set_lang, width, custom_headers).value!
+    def search(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, aspect:nil, color:nil, country_code:nil, count:nil, freshness:nil, height:nil, id:nil, image_content:nil, image_type:nil, license:nil, market:nil, max_file_size:nil, max_height:nil, max_width:nil, min_file_size:nil, min_height:nil, min_width:nil, offset:nil, safe_search:nil, size:nil, set_lang:nil, width:nil, custom_headers:nil)
+      response = search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, aspect:aspect, color:color, country_code:country_code, count:count, freshness:freshness, height:height, id:id, image_content:image_content, image_type:image_type, license:license, market:market, max_file_size:max_file_size, max_height:max_height, max_width:max_width, min_file_size:min_file_size, min_height:min_height, min_width:min_width, offset:offset, safe_search:safe_search, size:size, set_lang:set_lang, width:width, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -649,8 +649,8 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def search_with_http_info(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, aspect = nil, color = nil, country_code = nil, count = nil, freshness = nil, height = nil, id = nil, image_content = nil, image_type = nil, license = nil, market = nil, max_file_size = nil, max_height = nil, max_width = nil, min_file_size = nil, min_height = nil, min_width = nil, offset = nil, safe_search = nil, size = nil, set_lang = nil, width = nil, custom_headers = nil)
-      search_async(query, accept_language, user_agent, client_id, client_ip, location, aspect, color, country_code, count, freshness, height, id, image_content, image_type, license, market, max_file_size, max_height, max_width, min_file_size, min_height, min_width, offset, safe_search, size, set_lang, width, custom_headers).value!
+    def search_with_http_info(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, aspect:nil, color:nil, country_code:nil, count:nil, freshness:nil, height:nil, id:nil, image_content:nil, image_type:nil, license:nil, market:nil, max_file_size:nil, max_height:nil, max_width:nil, min_file_size:nil, min_height:nil, min_width:nil, offset:nil, safe_search:nil, size:nil, set_lang:nil, width:nil, custom_headers:nil)
+      search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, aspect:aspect, color:color, country_code:country_code, count:count, freshness:freshness, height:height, id:id, image_content:image_content, image_type:image_type, license:license, market:market, max_file_size:max_file_size, max_height:max_height, max_width:max_width, min_file_size:min_file_size, min_height:min_height, min_width:min_width, offset:offset, safe_search:safe_search, size:size, set_lang:set_lang, width:width, custom_headers:custom_headers).value!
     end
 
     #
@@ -962,12 +962,13 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def search_async(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, aspect = nil, color = nil, country_code = nil, count = nil, freshness = nil, height = nil, id = nil, image_content = nil, image_type = nil, license = nil, market = nil, max_file_size = nil, max_height = nil, max_width = nil, min_file_size = nil, min_height = nil, min_width = nil, offset = nil, safe_search = nil, size = nil, set_lang = nil, width = nil, custom_headers = nil)
+    def search_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, aspect:nil, color:nil, country_code:nil, count:nil, freshness:nil, height:nil, id:nil, image_content:nil, image_type:nil, license:nil, market:nil, max_file_size:nil, max_height:nil, max_width:nil, min_file_size:nil, min_height:nil, min_width:nil, offset:nil, safe_search:nil, size:nil, set_lang:nil, width:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1296,8 +1297,8 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [ImageInsights] operation results.
     #
-    def details(query, accept_language = nil, content_type = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, crop_bottom = nil, crop_left = nil, crop_right = nil, crop_top = nil, crop_type = nil, country_code = nil, id = nil, image_url = nil, insights_token = nil, modules = nil, market = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
-      response = details_async(query, accept_language, content_type, user_agent, client_id, client_ip, location, crop_bottom, crop_left, crop_right, crop_top, crop_type, country_code, id, image_url, insights_token, modules, market, safe_search, set_lang, custom_headers).value!
+    def details(query, accept_language:nil, content_type:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, crop_bottom:nil, crop_left:nil, crop_right:nil, crop_top:nil, crop_type:nil, country_code:nil, id:nil, image_url:nil, insights_token:nil, modules:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+      response = details_async(query, accept_language:accept_language, content_type:content_type, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, crop_bottom:crop_bottom, crop_left:crop_left, crop_right:crop_right, crop_top:crop_top, crop_type:crop_type, country_code:country_code, id:id, image_url:image_url, insights_token:insights_token, modules:modules, market:market, safe_search:safe_search, set_lang:set_lang, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1581,8 +1582,8 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def details_with_http_info(query, accept_language = nil, content_type = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, crop_bottom = nil, crop_left = nil, crop_right = nil, crop_top = nil, crop_type = nil, country_code = nil, id = nil, image_url = nil, insights_token = nil, modules = nil, market = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
-      details_async(query, accept_language, content_type, user_agent, client_id, client_ip, location, crop_bottom, crop_left, crop_right, crop_top, crop_type, country_code, id, image_url, insights_token, modules, market, safe_search, set_lang, custom_headers).value!
+    def details_with_http_info(query, accept_language:nil, content_type:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, crop_bottom:nil, crop_left:nil, crop_right:nil, crop_top:nil, crop_type:nil, country_code:nil, id:nil, image_url:nil, insights_token:nil, modules:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+      details_async(query, accept_language:accept_language, content_type:content_type, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, crop_bottom:crop_bottom, crop_left:crop_left, crop_right:crop_right, crop_top:crop_top, crop_type:crop_type, country_code:country_code, id:id, image_url:image_url, insights_token:insights_token, modules:modules, market:market, safe_search:safe_search, set_lang:set_lang, custom_headers:custom_headers).value!
     end
 
     #
@@ -1865,12 +1866,13 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def details_async(query, accept_language = nil, content_type = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, crop_bottom = nil, crop_left = nil, crop_right = nil, crop_top = nil, crop_type = nil, country_code = nil, id = nil, image_url = nil, insights_token = nil, modules = nil, market = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
+    def details_async(query, accept_language:nil, content_type:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, crop_bottom:nil, crop_left:nil, crop_right:nil, crop_top:nil, crop_type:nil, country_code:nil, id:nil, image_url:nil, insights_token:nil, modules:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2099,8 +2101,8 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [TrendingImages] operation results.
     #
-    def trending(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
-      response = trending_async(accept_language, user_agent, client_id, client_ip, location, country_code, market, safe_search, set_lang, custom_headers).value!
+    def trending(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+      response = trending_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, market:market, safe_search:safe_search, set_lang:set_lang, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2283,8 +2285,8 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def trending_with_http_info(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
-      trending_async(accept_language, user_agent, client_id, client_ip, location, country_code, market, safe_search, set_lang, custom_headers).value!
+    def trending_with_http_info(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+      trending_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, market:market, safe_search:safe_search, set_lang:set_lang, custom_headers:custom_headers).value!
     end
 
     #
@@ -2466,11 +2468,12 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def trending_async(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
+    def trending_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

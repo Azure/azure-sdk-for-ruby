@@ -124,20 +124,20 @@ module Azure::Profiles::V2017_03_09
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Compute::Mgmt::V2016_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Compute::Mgmt::V2016_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @availability_sets = client_0.availability_sets
-          @virtual_machine_extension_images = client_0.virtual_machine_extension_images
-          @virtual_machine_extensions = client_0.virtual_machine_extensions
-          @virtual_machine_images = client_0.virtual_machine_images
-          @usage_operations = client_0.usage_operations
-          @virtual_machine_sizes = client_0.virtual_machine_sizes
-          @virtual_machines = client_0.virtual_machines
-          @virtual_machine_scale_sets = client_0.virtual_machine_scale_sets
-          @virtual_machine_scale_set_vms = client_0.virtual_machine_scale_set_vms
+          add_telemetry(@client_0)
+          @availability_sets = @client_0.availability_sets
+          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
+          @virtual_machine_extensions = @client_0.virtual_machine_extensions
+          @virtual_machine_images = @client_0.virtual_machine_images
+          @usage_operations = @client_0.usage_operations
+          @virtual_machine_sizes = @client_0.virtual_machine_sizes
+          @virtual_machines = @client_0.virtual_machines
+          @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
+          @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
 
           @model_classes = ModelClasses.new
         end
@@ -145,6 +145,14 @@ module Azure::Profiles::V2017_03_09
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/V2017_03_09/Compute/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

@@ -58,22 +58,22 @@ module Azure::TrafficManager::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::TrafficManager::Mgmt::V2017_05_01::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::TrafficManager::Mgmt::V2017_05_01::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @endpoints = client_0.endpoints
-        @profiles = client_0.profiles
-        @geographic_hierarchies = client_0.geographic_hierarchies
+        add_telemetry(@client_0)
+        @endpoints = @client_0.endpoints
+        @profiles = @client_0.profiles
+        @geographic_hierarchies = @client_0.geographic_hierarchies
 
-        client_1 = Azure::TrafficManager::Mgmt::V2017_09_01_preview::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
-        if(client_1.respond_to?(:subscription_id))
-          client_1.subscription_id = configurable.subscription_id
+        @client_1 = Azure::TrafficManager::Mgmt::V2017_09_01_preview::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_1.respond_to?(:subscription_id))
+          @client_1.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_1)
-        @heat_map = client_1.heat_map
-        @traffic_manager_user_metrics_keys = client_1.traffic_manager_user_metrics_keys
+        add_telemetry(@client_1)
+        @heat_map = @client_1.heat_map
+        @traffic_manager_user_metrics_keys = @client_1.traffic_manager_user_metrics_keys
 
         @model_classes = ModelClasses.new
       end
@@ -81,6 +81,16 @@ module Azure::TrafficManager::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/TrafficManager/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_1.respond_to?method
+          @client_1.send(method, *args)
+        elsif @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

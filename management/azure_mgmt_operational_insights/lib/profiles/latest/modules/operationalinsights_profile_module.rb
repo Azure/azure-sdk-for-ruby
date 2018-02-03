@@ -74,22 +74,22 @@ module Azure::OperationalInsights::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::OperationalInsights::Mgmt::V2015_03_20::OperationalInsightsManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::OperationalInsights::Mgmt::V2015_03_20::OperationalInsightsManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @storage_insights = client_0.storage_insights
-        @saved_searches = client_0.saved_searches
+        add_telemetry(@client_0)
+        @storage_insights = @client_0.storage_insights
+        @saved_searches = @client_0.saved_searches
 
-        client_1 = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::AzureLogAnalytics.new(configurable.credentials, base_url, options)
-        if(client_1.respond_to?(:subscription_id))
-          client_1.subscription_id = configurable.subscription_id
+        @client_1 = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::AzureLogAnalytics.new(configurable.credentials, base_url, options)
+        if(@client_1.respond_to?(:subscription_id))
+          @client_1.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_1)
-        @linked_services = client_1.linked_services
-        @data_sources = client_1.data_sources
-        @workspaces = client_1.workspaces
+        add_telemetry(@client_1)
+        @linked_services = @client_1.linked_services
+        @data_sources = @client_1.data_sources
+        @workspaces = @client_1.workspaces
 
         @model_classes = ModelClasses.new
       end
@@ -97,6 +97,16 @@ module Azure::OperationalInsights::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/OperationalInsights/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_1.respond_to?method
+          @client_1.send(method, *args)
+        elsif @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

@@ -35,8 +35,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     # will be added to the HTTP request.
     #
     #
-    def activate(resource_group_name, account_name, application_id, version, parameters, custom_headers = nil)
-      response = activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers).value!
+    def activate(resource_group_name, account_name, application_id, version, parameters, custom_headers:nil)
+      response = activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -55,8 +55,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def activate_with_http_info(resource_group_name, account_name, application_id, version, parameters, custom_headers = nil)
-      activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers).value!
+    def activate_with_http_info(resource_group_name, account_name, application_id, version, parameters, custom_headers:nil)
+      activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -74,7 +74,7 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers = nil)
+    def activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -89,7 +89,6 @@ module Azure::Batch::Mgmt::V2017_05_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -145,8 +144,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [ApplicationPackage] operation results.
     #
-    def create(resource_group_name, account_name, application_id, version, custom_headers = nil)
-      response = create_async(resource_group_name, account_name, application_id, version, custom_headers).value!
+    def create(resource_group_name, account_name, application_id, version, custom_headers:nil)
+      response = create_async(resource_group_name, account_name, application_id, version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -163,8 +162,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, account_name, application_id, version, custom_headers = nil)
-      create_async(resource_group_name, account_name, application_id, version, custom_headers).value!
+    def create_with_http_info(resource_group_name, account_name, application_id, version, custom_headers:nil)
+      create_async(resource_group_name, account_name, application_id, version, custom_headers:custom_headers).value!
     end
 
     #
@@ -180,7 +179,7 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
+    def create_async(resource_group_name, account_name, application_id, version, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -194,6 +193,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -250,8 +250,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, application_id, version, custom_headers = nil)
-      response = delete_async(resource_group_name, account_name, application_id, version, custom_headers).value!
+    def delete(resource_group_name, account_name, application_id, version, custom_headers:nil)
+      response = delete_async(resource_group_name, account_name, application_id, version, custom_headers:custom_headers).value!
       nil
     end
 
@@ -268,8 +268,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, application_id, version, custom_headers = nil)
-      delete_async(resource_group_name, account_name, application_id, version, custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, application_id, version, custom_headers:nil)
+      delete_async(resource_group_name, account_name, application_id, version, custom_headers:custom_headers).value!
     end
 
     #
@@ -285,7 +285,7 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
+    def delete_async(resource_group_name, account_name, application_id, version, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -299,6 +299,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -346,8 +347,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [ApplicationPackage] operation results.
     #
-    def get(resource_group_name, account_name, application_id, version, custom_headers = nil)
-      response = get_async(resource_group_name, account_name, application_id, version, custom_headers).value!
+    def get(resource_group_name, account_name, application_id, version, custom_headers:nil)
+      response = get_async(resource_group_name, account_name, application_id, version, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -364,8 +365,8 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, application_id, version, custom_headers = nil)
-      get_async(resource_group_name, account_name, application_id, version, custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, application_id, version, custom_headers:nil)
+      get_async(resource_group_name, account_name, application_id, version, custom_headers:custom_headers).value!
     end
 
     #
@@ -381,7 +382,7 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
+    def get_async(resource_group_name, account_name, application_id, version, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -395,6 +396,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

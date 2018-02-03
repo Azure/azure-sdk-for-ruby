@@ -35,8 +35,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array<AppServicePlan>] operation results.
     #
-    def list(detailed = nil, custom_headers = nil)
-      first_page = list_as_lazy(detailed, custom_headers)
+    def list(detailed:nil, custom_headers:nil)
+      first_page = list_as_lazy(detailed:detailed, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -54,8 +54,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(detailed = nil, custom_headers = nil)
-      list_async(detailed, custom_headers).value!
+    def list_with_http_info(detailed:nil, custom_headers:nil)
+      list_async(detailed:detailed, custom_headers:custom_headers).value!
     end
 
     #
@@ -72,12 +72,13 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(detailed = nil, custom_headers = nil)
+    def list_async(detailed:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -134,8 +135,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array<AppServicePlan>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(resource_group_name, custom_headers:nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -151,8 +152,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
+      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -167,7 +168,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -177,6 +178,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -234,8 +236,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [AppServicePlan] operation results.
     #
-    def get(resource_group_name, name, custom_headers = nil)
-      response = get_async(resource_group_name, name, custom_headers).value!
+    def get(resource_group_name, name, custom_headers:nil)
+      response = get_async(resource_group_name, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -252,8 +254,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, name, custom_headers = nil)
-      get_async(resource_group_name, name, custom_headers).value!
+    def get_with_http_info(resource_group_name, name, custom_headers:nil)
+      get_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -269,7 +271,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, name, custom_headers = nil)
+    def get_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -280,6 +282,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -338,8 +341,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [AppServicePlan] operation results.
     #
-    def create_or_update(resource_group_name, name, app_service_plan, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, name, app_service_plan, custom_headers).value!
+    def create_or_update(resource_group_name, name, app_service_plan, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, name, app_service_plan, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -354,9 +357,9 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, name, app_service_plan, custom_headers = nil)
+    def create_or_update_async(resource_group_name, name, app_service_plan, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -384,8 +387,8 @@ module Azure::Web::Mgmt::V2016_09_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, name, custom_headers = nil)
-      response = delete_async(resource_group_name, name, custom_headers).value!
+    def delete(resource_group_name, name, custom_headers:nil)
+      response = delete_async(resource_group_name, name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -402,8 +405,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, name, custom_headers = nil)
-      delete_async(resource_group_name, name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, name, custom_headers:nil)
+      delete_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -419,7 +422,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, name, custom_headers = nil)
+    def delete_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -430,6 +433,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -477,8 +481,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array] operation results.
     #
-    def list_capabilities(resource_group_name, name, custom_headers = nil)
-      response = list_capabilities_async(resource_group_name, name, custom_headers).value!
+    def list_capabilities(resource_group_name, name, custom_headers:nil)
+      response = list_capabilities_async(resource_group_name, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -495,8 +499,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_capabilities_with_http_info(resource_group_name, name, custom_headers = nil)
-      list_capabilities_async(resource_group_name, name, custom_headers).value!
+    def list_capabilities_with_http_info(resource_group_name, name, custom_headers:nil)
+      list_capabilities_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -512,7 +516,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_capabilities_async(resource_group_name, name, custom_headers = nil)
+    def list_capabilities_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -523,6 +527,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -598,8 +603,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [HybridConnection] operation results.
     #
-    def get_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      response = get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def get_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      response = get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -618,8 +623,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def get_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -637,7 +642,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+    def get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -650,6 +655,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -708,8 +714,8 @@ module Azure::Web::Mgmt::V2016_09_01
     # will be added to the HTTP request.
     #
     #
-    def delete_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      response = delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def delete_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      response = delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -728,8 +734,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def delete_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -747,7 +753,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+    def delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -760,6 +766,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -809,8 +816,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [HybridConnectionKey] operation results.
     #
-    def list_hybrid_connection_keys(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      response = list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def list_hybrid_connection_keys(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      response = list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -829,8 +836,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_hybrid_connection_keys_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def list_hybrid_connection_keys_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -848,7 +855,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+    def list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -861,6 +868,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -920,8 +928,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array<String>] operation results.
     #
-    def list_web_apps_by_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      first_page = list_web_apps_by_hybrid_connection_as_lazy(resource_group_name, name, namespace_name, relay_name, custom_headers)
+    def list_web_apps_by_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      first_page = list_web_apps_by_hybrid_connection_as_lazy(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -940,8 +948,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_web_apps_by_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def list_web_apps_by_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -959,7 +967,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+    def list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -972,6 +980,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1029,8 +1038,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [HybridConnectionLimits] operation results.
     #
-    def get_hybrid_connection_plan_limit(resource_group_name, name, custom_headers = nil)
-      response = get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers).value!
+    def get_hybrid_connection_plan_limit(resource_group_name, name, custom_headers:nil)
+      response = get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1047,8 +1056,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_hybrid_connection_plan_limit_with_http_info(resource_group_name, name, custom_headers = nil)
-      get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers).value!
+    def get_hybrid_connection_plan_limit_with_http_info(resource_group_name, name, custom_headers:nil)
+      get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1064,7 +1073,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers = nil)
+    def get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1075,6 +1084,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1132,8 +1142,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array<HybridConnection>] operation results.
     #
-    def list_hybrid_connections(resource_group_name, name, custom_headers = nil)
-      first_page = list_hybrid_connections_as_lazy(resource_group_name, name, custom_headers)
+    def list_hybrid_connections(resource_group_name, name, custom_headers:nil)
+      first_page = list_hybrid_connections_as_lazy(resource_group_name, name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -1150,8 +1160,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_hybrid_connections_with_http_info(resource_group_name, name, custom_headers = nil)
-      list_hybrid_connections_async(resource_group_name, name, custom_headers).value!
+    def list_hybrid_connections_with_http_info(resource_group_name, name, custom_headers:nil)
+      list_hybrid_connections_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1167,7 +1177,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_hybrid_connections_async(resource_group_name, name, custom_headers = nil)
+    def list_hybrid_connections_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1178,6 +1188,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1237,8 +1248,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array<ResourceMetricDefinition>] operation results.
     #
-    def list_metric_defintions(resource_group_name, name, custom_headers = nil)
-      first_page = list_metric_defintions_as_lazy(resource_group_name, name, custom_headers)
+    def list_metric_defintions(resource_group_name, name, custom_headers:nil)
+      first_page = list_metric_defintions_as_lazy(resource_group_name, name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -1257,8 +1268,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_metric_defintions_with_http_info(resource_group_name, name, custom_headers = nil)
-      list_metric_defintions_async(resource_group_name, name, custom_headers).value!
+    def list_metric_defintions_with_http_info(resource_group_name, name, custom_headers:nil)
+      list_metric_defintions_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1276,7 +1287,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_metric_defintions_async(resource_group_name, name, custom_headers = nil)
+    def list_metric_defintions_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1287,6 +1298,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1350,8 +1362,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array<ResourceMetric>] operation results.
     #
-    def list_metrics(resource_group_name, name, details = nil, filter = nil, custom_headers = nil)
-      first_page = list_metrics_as_lazy(resource_group_name, name, details, filter, custom_headers)
+    def list_metrics(resource_group_name, name, details:nil, filter:nil, custom_headers:nil)
+      first_page = list_metrics_as_lazy(resource_group_name, name, details:details, filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -1374,8 +1386,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_metrics_with_http_info(resource_group_name, name, details = nil, filter = nil, custom_headers = nil)
-      list_metrics_async(resource_group_name, name, details, filter, custom_headers).value!
+    def list_metrics_with_http_info(resource_group_name, name, details:nil, filter:nil, custom_headers:nil)
+      list_metrics_async(resource_group_name, name, details:details, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -1397,7 +1409,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_metrics_async(resource_group_name, name, details = nil, filter = nil, custom_headers = nil)
+    def list_metrics_async(resource_group_name, name, details:nil, filter:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1408,6 +1420,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1469,8 +1482,8 @@ module Azure::Web::Mgmt::V2016_09_01
     # will be added to the HTTP request.
     #
     #
-    def restart_web_apps(resource_group_name, name, soft_restart = nil, custom_headers = nil)
-      response = restart_web_apps_async(resource_group_name, name, soft_restart, custom_headers).value!
+    def restart_web_apps(resource_group_name, name, soft_restart:nil, custom_headers:nil)
+      response = restart_web_apps_async(resource_group_name, name, soft_restart:soft_restart, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1491,8 +1504,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def restart_web_apps_with_http_info(resource_group_name, name, soft_restart = nil, custom_headers = nil)
-      restart_web_apps_async(resource_group_name, name, soft_restart, custom_headers).value!
+    def restart_web_apps_with_http_info(resource_group_name, name, soft_restart:nil, custom_headers:nil)
+      restart_web_apps_async(resource_group_name, name, soft_restart:soft_restart, custom_headers:custom_headers).value!
     end
 
     #
@@ -1512,7 +1525,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def restart_web_apps_async(resource_group_name, name, soft_restart = nil, custom_headers = nil)
+    def restart_web_apps_async(resource_group_name, name, soft_restart:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1523,6 +1536,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1577,8 +1591,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array<Site>] operation results.
     #
-    def list_web_apps(resource_group_name, name, skip_token = nil, filter = nil, top = nil, custom_headers = nil)
-      first_page = list_web_apps_as_lazy(resource_group_name, name, skip_token, filter, top, custom_headers)
+    def list_web_apps(resource_group_name, name, skip_token:nil, filter:nil, top:nil, custom_headers:nil)
+      first_page = list_web_apps_as_lazy(resource_group_name, name, skip_token:skip_token, filter:filter, top:top, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -1602,8 +1616,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_web_apps_with_http_info(resource_group_name, name, skip_token = nil, filter = nil, top = nil, custom_headers = nil)
-      list_web_apps_async(resource_group_name, name, skip_token, filter, top, custom_headers).value!
+    def list_web_apps_with_http_info(resource_group_name, name, skip_token:nil, filter:nil, top:nil, custom_headers:nil)
+      list_web_apps_async(resource_group_name, name, skip_token:skip_token, filter:filter, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -1626,7 +1640,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_web_apps_async(resource_group_name, name, skip_token = nil, filter = nil, top = nil, custom_headers = nil)
+    def list_web_apps_async(resource_group_name, name, skip_token:nil, filter:nil, top:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1637,6 +1651,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1695,8 +1710,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array] operation results.
     #
-    def list_vnets(resource_group_name, name, custom_headers = nil)
-      response = list_vnets_async(resource_group_name, name, custom_headers).value!
+    def list_vnets(resource_group_name, name, custom_headers:nil)
+      response = list_vnets_async(resource_group_name, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1713,8 +1728,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_vnets_with_http_info(resource_group_name, name, custom_headers = nil)
-      list_vnets_async(resource_group_name, name, custom_headers).value!
+    def list_vnets_with_http_info(resource_group_name, name, custom_headers:nil)
+      list_vnets_async(resource_group_name, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1730,7 +1745,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_vnets_async(resource_group_name, name, custom_headers = nil)
+    def list_vnets_async(resource_group_name, name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1741,6 +1756,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1815,8 +1831,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [VnetInfo] operation results.
     #
-    def get_vnet_from_server_farm(resource_group_name, name, vnet_name, custom_headers = nil)
-      response = get_vnet_from_server_farm_async(resource_group_name, name, vnet_name, custom_headers).value!
+    def get_vnet_from_server_farm(resource_group_name, name, vnet_name, custom_headers:nil)
+      response = get_vnet_from_server_farm_async(resource_group_name, name, vnet_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1834,8 +1850,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_vnet_from_server_farm_with_http_info(resource_group_name, name, vnet_name, custom_headers = nil)
-      get_vnet_from_server_farm_async(resource_group_name, name, vnet_name, custom_headers).value!
+    def get_vnet_from_server_farm_with_http_info(resource_group_name, name, vnet_name, custom_headers:nil)
+      get_vnet_from_server_farm_async(resource_group_name, name, vnet_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1852,7 +1868,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_vnet_from_server_farm_async(resource_group_name, name, vnet_name, custom_headers = nil)
+    def get_vnet_from_server_farm_async(resource_group_name, name, vnet_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1864,6 +1880,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1924,8 +1941,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [VnetGateway] operation results.
     #
-    def get_vnet_gateway(resource_group_name, name, vnet_name, gateway_name, custom_headers = nil)
-      response = get_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers).value!
+    def get_vnet_gateway(resource_group_name, name, vnet_name, gateway_name, custom_headers:nil)
+      response = get_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1945,8 +1962,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_vnet_gateway_with_http_info(resource_group_name, name, vnet_name, gateway_name, custom_headers = nil)
-      get_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers).value!
+    def get_vnet_gateway_with_http_info(resource_group_name, name, vnet_name, gateway_name, custom_headers:nil)
+      get_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1965,7 +1982,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers = nil)
+    def get_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1978,6 +1995,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2039,8 +2057,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [VnetGateway] operation results.
     #
-    def update_vnet_gateway(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers = nil)
-      response = update_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers).value!
+    def update_vnet_gateway(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers:nil)
+      response = update_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2061,8 +2079,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_vnet_gateway_with_http_info(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers = nil)
-      update_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers).value!
+    def update_vnet_gateway_with_http_info(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers:nil)
+      update_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers:custom_headers).value!
     end
 
     #
@@ -2082,7 +2100,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers = nil)
+    def update_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2096,7 +2114,6 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -2165,8 +2182,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array] operation results.
     #
-    def list_routes_for_vnet(resource_group_name, name, vnet_name, custom_headers = nil)
-      response = list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers).value!
+    def list_routes_for_vnet(resource_group_name, name, vnet_name, custom_headers:nil)
+      response = list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2186,8 +2203,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_routes_for_vnet_with_http_info(resource_group_name, name, vnet_name, custom_headers = nil)
-      list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers).value!
+    def list_routes_for_vnet_with_http_info(resource_group_name, name, vnet_name, custom_headers:nil)
+      list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -2206,7 +2223,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers = nil)
+    def list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2218,6 +2235,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2293,8 +2311,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Array] operation results.
     #
-    def get_route_for_vnet(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
-      response = get_route_for_vnet_async(resource_group_name, name, vnet_name, route_name, custom_headers).value!
+    def get_route_for_vnet(resource_group_name, name, vnet_name, route_name, custom_headers:nil)
+      response = get_route_for_vnet_async(resource_group_name, name, vnet_name, route_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2313,8 +2331,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_route_for_vnet_with_http_info(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
-      get_route_for_vnet_async(resource_group_name, name, vnet_name, route_name, custom_headers).value!
+    def get_route_for_vnet_with_http_info(resource_group_name, name, vnet_name, route_name, custom_headers:nil)
+      get_route_for_vnet_async(resource_group_name, name, vnet_name, route_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -2332,7 +2350,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_route_for_vnet_async(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
+    def get_route_for_vnet_async(resource_group_name, name, vnet_name, route_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2345,6 +2363,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2421,8 +2440,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [VnetRoute] operation results.
     #
-    def create_or_update_vnet_route(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
-      response = create_or_update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers).value!
+    def create_or_update_vnet_route(resource_group_name, name, vnet_name, route_name, route, custom_headers:nil)
+      response = create_or_update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2442,8 +2461,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_vnet_route_with_http_info(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
-      create_or_update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers).value!
+    def create_or_update_vnet_route_with_http_info(resource_group_name, name, vnet_name, route_name, route, custom_headers:nil)
+      create_or_update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers:custom_headers).value!
     end
 
     #
@@ -2462,7 +2481,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
+    def create_or_update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2476,7 +2495,6 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -2543,8 +2561,8 @@ module Azure::Web::Mgmt::V2016_09_01
     # will be added to the HTTP request.
     #
     #
-    def delete_vnet_route(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
-      response = delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers).value!
+    def delete_vnet_route(resource_group_name, name, vnet_name, route_name, custom_headers:nil)
+      response = delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -2563,8 +2581,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_vnet_route_with_http_info(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
-      delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers).value!
+    def delete_vnet_route_with_http_info(resource_group_name, name, vnet_name, route_name, custom_headers:nil)
+      delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -2582,7 +2600,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
+    def delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2595,6 +2613,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2645,8 +2664,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [VnetRoute] operation results.
     #
-    def update_vnet_route(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
-      response = update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers).value!
+    def update_vnet_route(resource_group_name, name, vnet_name, route_name, route, custom_headers:nil)
+      response = update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2666,8 +2685,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_vnet_route_with_http_info(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
-      update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers).value!
+    def update_vnet_route_with_http_info(resource_group_name, name, vnet_name, route_name, route, custom_headers:nil)
+      update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers:custom_headers).value!
     end
 
     #
@@ -2686,7 +2705,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
+    def update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2700,7 +2719,6 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -2767,8 +2785,8 @@ module Azure::Web::Mgmt::V2016_09_01
     # will be added to the HTTP request.
     #
     #
-    def reboot_worker(resource_group_name, name, worker_name, custom_headers = nil)
-      response = reboot_worker_async(resource_group_name, name, worker_name, custom_headers).value!
+    def reboot_worker(resource_group_name, name, worker_name, custom_headers:nil)
+      response = reboot_worker_async(resource_group_name, name, worker_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -2787,8 +2805,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def reboot_worker_with_http_info(resource_group_name, name, worker_name, custom_headers = nil)
-      reboot_worker_async(resource_group_name, name, worker_name, custom_headers).value!
+    def reboot_worker_with_http_info(resource_group_name, name, worker_name, custom_headers:nil)
+      reboot_worker_async(resource_group_name, name, worker_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -2806,7 +2824,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def reboot_worker_async(resource_group_name, name, worker_name, custom_headers = nil)
+    def reboot_worker_async(resource_group_name, name, worker_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2818,6 +2836,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2866,8 +2885,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [AppServicePlan] operation results.
     #
-    def begin_create_or_update(resource_group_name, name, app_service_plan, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers).value!
+    def begin_create_or_update(resource_group_name, name, app_service_plan, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2885,8 +2904,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, name, app_service_plan, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, name, app_service_plan, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers:custom_headers).value!
     end
 
     #
@@ -2903,7 +2922,7 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -2915,7 +2934,6 @@ module Azure::Web::Mgmt::V2016_09_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -2990,8 +3008,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [AppServicePlanCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3007,8 +3025,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -3023,11 +3041,12 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3083,8 +3102,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [AppServicePlanCollection] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers:nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3100,8 +3119,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -3116,11 +3135,12 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3176,8 +3196,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [ResourceCollection] operation results.
     #
-    def list_web_apps_by_hybrid_connection_next(next_page_link, custom_headers = nil)
-      response = list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers).value!
+    def list_web_apps_by_hybrid_connection_next(next_page_link, custom_headers:nil)
+      response = list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3193,8 +3213,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_web_apps_by_hybrid_connection_next_with_http_info(next_page_link, custom_headers = nil)
-      list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers).value!
+    def list_web_apps_by_hybrid_connection_next_with_http_info(next_page_link, custom_headers:nil)
+      list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -3209,11 +3229,12 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers = nil)
+    def list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3269,8 +3290,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [HybridConnectionCollection] operation results.
     #
-    def list_hybrid_connections_next(next_page_link, custom_headers = nil)
-      response = list_hybrid_connections_next_async(next_page_link, custom_headers).value!
+    def list_hybrid_connections_next(next_page_link, custom_headers:nil)
+      response = list_hybrid_connections_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3286,8 +3307,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_hybrid_connections_next_with_http_info(next_page_link, custom_headers = nil)
-      list_hybrid_connections_next_async(next_page_link, custom_headers).value!
+    def list_hybrid_connections_next_with_http_info(next_page_link, custom_headers:nil)
+      list_hybrid_connections_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -3302,11 +3323,12 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_hybrid_connections_next_async(next_page_link, custom_headers = nil)
+    def list_hybrid_connections_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3364,8 +3386,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [ResourceMetricDefinitionCollection] operation results.
     #
-    def list_metric_defintions_next(next_page_link, custom_headers = nil)
-      response = list_metric_defintions_next_async(next_page_link, custom_headers).value!
+    def list_metric_defintions_next(next_page_link, custom_headers:nil)
+      response = list_metric_defintions_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3383,8 +3405,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_metric_defintions_next_with_http_info(next_page_link, custom_headers = nil)
-      list_metric_defintions_next_async(next_page_link, custom_headers).value!
+    def list_metric_defintions_next_with_http_info(next_page_link, custom_headers:nil)
+      list_metric_defintions_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -3401,11 +3423,12 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_metric_defintions_next_async(next_page_link, custom_headers = nil)
+    def list_metric_defintions_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3461,8 +3484,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [ResourceMetricCollection] operation results.
     #
-    def list_metrics_next(next_page_link, custom_headers = nil)
-      response = list_metrics_next_async(next_page_link, custom_headers).value!
+    def list_metrics_next(next_page_link, custom_headers:nil)
+      response = list_metrics_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3478,8 +3501,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_metrics_next_with_http_info(next_page_link, custom_headers = nil)
-      list_metrics_next_async(next_page_link, custom_headers).value!
+    def list_metrics_next_with_http_info(next_page_link, custom_headers:nil)
+      list_metrics_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -3494,11 +3517,12 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_metrics_next_async(next_page_link, custom_headers = nil)
+    def list_metrics_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3554,8 +3578,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [WebAppCollection] operation results.
     #
-    def list_web_apps_next(next_page_link, custom_headers = nil)
-      response = list_web_apps_next_async(next_page_link, custom_headers).value!
+    def list_web_apps_next(next_page_link, custom_headers:nil)
+      response = list_web_apps_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3571,8 +3595,8 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_web_apps_next_with_http_info(next_page_link, custom_headers = nil)
-      list_web_apps_next_async(next_page_link, custom_headers).value!
+    def list_web_apps_next_with_http_info(next_page_link, custom_headers:nil)
+      list_web_apps_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -3587,11 +3611,12 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_web_apps_next_async(next_page_link, custom_headers = nil)
+    def list_web_apps_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3650,12 +3675,12 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [AppServicePlanCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(detailed = nil, custom_headers = nil)
-      response = list_async(detailed, custom_headers).value!
+    def list_as_lazy(detailed:nil, custom_headers:nil)
+      response = list_async(detailed:detailed, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -3674,12 +3699,12 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [AppServicePlanCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, custom_headers:nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -3701,12 +3726,12 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [ResourceCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_web_apps_by_hybrid_connection_as_lazy(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      response = list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def list_web_apps_by_hybrid_connection_as_lazy(resource_group_name, name, namespace_name, relay_name, custom_headers:nil)
+      response = list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers)
+          list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -3726,12 +3751,12 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [HybridConnectionCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_hybrid_connections_as_lazy(resource_group_name, name, custom_headers = nil)
-      response = list_hybrid_connections_async(resource_group_name, name, custom_headers).value!
+    def list_hybrid_connections_as_lazy(resource_group_name, name, custom_headers:nil)
+      response = list_hybrid_connections_async(resource_group_name, name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_hybrid_connections_next_async(next_page_link, custom_headers)
+          list_hybrid_connections_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -3753,12 +3778,12 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [ResourceMetricDefinitionCollection] which provide lazy access to
     # pages of the response.
     #
-    def list_metric_defintions_as_lazy(resource_group_name, name, custom_headers = nil)
-      response = list_metric_defintions_async(resource_group_name, name, custom_headers).value!
+    def list_metric_defintions_as_lazy(resource_group_name, name, custom_headers:nil)
+      response = list_metric_defintions_async(resource_group_name, name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_metric_defintions_next_async(next_page_link, custom_headers)
+          list_metric_defintions_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -3784,12 +3809,12 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [ResourceMetricCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_metrics_as_lazy(resource_group_name, name, details = nil, filter = nil, custom_headers = nil)
-      response = list_metrics_async(resource_group_name, name, details, filter, custom_headers).value!
+    def list_metrics_as_lazy(resource_group_name, name, details:nil, filter:nil, custom_headers:nil)
+      response = list_metrics_async(resource_group_name, name, details:details, filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_metrics_next_async(next_page_link, custom_headers)
+          list_metrics_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
@@ -3816,12 +3841,12 @@ module Azure::Web::Mgmt::V2016_09_01
     # @return [WebAppCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_web_apps_as_lazy(resource_group_name, name, skip_token = nil, filter = nil, top = nil, custom_headers = nil)
-      response = list_web_apps_async(resource_group_name, name, skip_token, filter, top, custom_headers).value!
+    def list_web_apps_as_lazy(resource_group_name, name, skip_token:nil, filter:nil, top:nil, custom_headers:nil)
+      response = list_web_apps_async(resource_group_name, name, skip_token:skip_token, filter:filter, top:top, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_web_apps_next_async(next_page_link, custom_headers)
+          list_web_apps_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

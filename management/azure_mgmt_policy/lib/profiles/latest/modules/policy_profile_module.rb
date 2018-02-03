@@ -43,20 +43,20 @@ module Azure::Policy::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::Policy::Mgmt::V2016_12_01::PolicyClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::Policy::Mgmt::V2016_12_01::PolicyClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @policy_definitions = client_0.policy_definitions
+        add_telemetry(@client_0)
+        @policy_definitions = @client_0.policy_definitions
 
-        client_1 = Azure::Policy::Mgmt::V2017_06_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
-        if(client_1.respond_to?(:subscription_id))
-          client_1.subscription_id = configurable.subscription_id
+        @client_1 = Azure::Policy::Mgmt::V2017_06_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
+        if(@client_1.respond_to?(:subscription_id))
+          @client_1.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_1)
-        @policy_assignments = client_1.policy_assignments
-        @policy_set_definitions = client_1.policy_set_definitions
+        add_telemetry(@client_1)
+        @policy_assignments = @client_1.policy_assignments
+        @policy_set_definitions = @client_1.policy_set_definitions
 
         @model_classes = ModelClasses.new
       end
@@ -64,6 +64,16 @@ module Azure::Policy::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/Policy/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_1.respond_to?method
+          @client_1.send(method, *args)
+        elsif @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

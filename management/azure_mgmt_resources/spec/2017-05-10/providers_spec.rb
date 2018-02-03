@@ -45,7 +45,7 @@ describe 'Providers' do
   end
 
   it 'should list providers with top restriction parameter' do
-    result = @client.list_async(1).value!
+    result = @client.list_async(top:1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 

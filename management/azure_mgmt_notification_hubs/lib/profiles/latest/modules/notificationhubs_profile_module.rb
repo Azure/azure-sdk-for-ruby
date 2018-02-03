@@ -63,15 +63,15 @@ module Azure::NotificationHubs::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        client_0 = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubsManagementClient.new(configurable.credentials, base_url, options)
-        if(client_0.respond_to?(:subscription_id))
-          client_0.subscription_id = configurable.subscription_id
+        @client_0 = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubsManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_0.respond_to?(:subscription_id))
+          @client_0.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_0)
-        @namespaces = client_0.namespaces
-        @name = client_0.name
-        @notification_hubs = client_0.notification_hubs
-        @hubs = client_0.hubs
+        add_telemetry(@client_0)
+        @namespaces = @client_0.namespaces
+        @name = @client_0.name
+        @notification_hubs = @client_0.notification_hubs
+        @hubs = @client_0.hubs
 
         @model_classes = ModelClasses.new
       end
@@ -79,6 +79,14 @@ module Azure::NotificationHubs::Profiles::Latest
       def add_telemetry(client)
         profile_information = 'Profiles/Latest/NotificationHubs/Mgmt'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        if @client_0.respond_to?method
+          @client_0.send(method, *args)
+        else
+          super
+        end
       end
 
     end

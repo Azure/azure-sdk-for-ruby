@@ -29,17 +29,17 @@ module Azure::Profiles::<%= @profile_name %>
 
         <%- @data_clients_ops_mapper.each_with_index do |(key, value), index| -%>
         <%- if(@base_url_to_be_included) -%>
-        client_<%= index %> = <%= key %>.new(configurable.credentials, base_url, options)
+        @client_<%= index %> = <%= key %>.new(configurable.credentials, base_url, options)
         <%- else -%>
-        client_<%= index %> = <%= key %>.new(configurable.credentials, options)
+        @client_<%= index %> = <%= key %>.new(configurable.credentials, options)
         <%- end -%>
-        if(client_<%= index %>.respond_to?(:subscription_id))
-          client_<%= index %>.subscription_id = configurable.subscription_id
+        if(@client_<%= index %>.respond_to?(:subscription_id))
+          @client_<%= index %>.subscription_id = configurable.subscription_id
         end
-        add_telemetry(client_<%= index %>)
+        add_telemetry(@client_<%= index %>)
         <%- value.each do |operation_type| -%>
         <%- if(operation_type[:operation_name_ruby] != 'DO_NOT_ADD') -%>
-        @<%= operation_type[:operation_name_ruby] %> = client_<%= index %>.<%= operation_type[:operation_name_ruby] %>
+        @<%= operation_type[:operation_name_ruby] %> = @client_<%= index %>.<%= operation_type[:operation_name_ruby] %>
         <%- end -%>
         <%- end -%>
 
@@ -50,6 +50,20 @@ module Azure::Profiles::<%= @profile_name %>
       def add_telemetry(client)
         profile_information = 'Profiles/azure_sdk/<%= @profile_name %>/<%= @module_name %>'
         client.add_user_agent_information(profile_information)
+      end
+
+      def method_missing(method, *args)
+        <%- (@data_clients_ops_mapper.length - 1).downto(0) do |i| -%>
+        <%- if i == (@data_clients_ops_mapper.length - 1) -%>
+        if @client_<%= i %>.respond_to?method
+        <%- else -%>
+        elsif @client_<%= i %>.respond_to?method
+        <%- end -%>
+          @client_<%= i %>.send(method, *args)
+        <%- end -%>
+        else
+          super
+        end
       end
 
       class ModelClasses
@@ -82,14 +96,14 @@ module Azure::Profiles::<%= @profile_name %>
           @configurable, @base_url, @options = configurable, base_url, options
 
           <%- @management_clients_ops_mapper.each_with_index do |(key, value), index| -%>
-          client_<%= index %> = <%= key %>.new(configurable.credentials, base_url, options)
-          if(client_<%= index %>.respond_to?(:subscription_id))
-            client_<%= index %>.subscription_id = configurable.subscription_id
+          @client_<%= index %> = <%= key %>.new(configurable.credentials, base_url, options)
+          if(@client_<%= index %>.respond_to?(:subscription_id))
+            @client_<%= index %>.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_<%= index %>)
+          add_telemetry(@client_<%= index %>)
           <%- value.each do |operation_type| -%>
           <%- if(operation_type[:operation_name_ruby] != 'DO_NOT_ADD') -%>
-          @<%= operation_type[:operation_name_ruby] %> = client_<%= index %>.<%= operation_type[:operation_name_ruby] %>
+          @<%= operation_type[:operation_name_ruby] %> = @client_<%= index %>.<%= operation_type[:operation_name_ruby] %>
           <%- end -%>
           <%- end -%>
 
@@ -100,6 +114,20 @@ module Azure::Profiles::<%= @profile_name %>
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/<%= @profile_name %>/<%= @module_name %>/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          <%- (@management_clients_ops_mapper.length - 1).downto(0) do |i| -%>
+          <%- if i == (@management_clients_ops_mapper.length - 1) -%>
+          if @client_<%= i %>.respond_to?method
+          <%- else -%>
+          elsif @client_<%= i %>.respond_to?method
+          <%- end -%>
+            @client_<%= i %>.send(method, *args)
+          <%- end -%>
+          else
+            super
+          end
         end
 
         class ModelClasses

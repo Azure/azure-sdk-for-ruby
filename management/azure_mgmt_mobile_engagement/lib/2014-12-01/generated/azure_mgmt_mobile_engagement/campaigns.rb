@@ -55,8 +55,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Array<CampaignListResult>] operation results.
     #
-    def list(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, app_collection, app_name, kind, skip, top, filter, orderby, search, custom_headers)
+    def list(resource_group_name, app_collection, app_name, kind, skip:nil, top:nil, filter:nil, orderby:nil, search:nil, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, app_collection, app_name, kind, skip:skip, top:top, filter:filter, orderby:orderby, search:search, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -94,8 +94,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
-      list_async(resource_group_name, app_collection, app_name, kind, skip, top, filter, orderby, search, custom_headers).value!
+    def list_with_http_info(resource_group_name, app_collection, app_name, kind, skip:nil, top:nil, filter:nil, orderby:nil, search:nil, custom_headers:nil)
+      list_async(resource_group_name, app_collection, app_name, kind, skip:skip, top:top, filter:filter, orderby:orderby, search:search, custom_headers:custom_headers).value!
     end
 
     #
@@ -132,7 +132,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
+    def list_async(resource_group_name, app_collection, app_name, kind, skip:nil, top:nil, filter:nil, orderby:nil, search:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -142,6 +142,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -201,8 +202,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignStateResult] operation results.
     #
-    def create(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
-      response = create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
+    def create(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:nil)
+      response = create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -221,8 +222,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
-      create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
+    def create_with_http_info(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:nil)
+      create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -240,7 +241,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
+    def create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -251,7 +252,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -319,8 +319,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignResult] operation results.
     #
-    def get(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
-      response = get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
+    def get(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
+      response = get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -339,8 +339,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
-      get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
+    def get_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
+      get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -358,7 +358,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+    def get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -369,6 +369,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -430,8 +431,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignStateResult] operation results.
     #
-    def update(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers = nil)
-      response = update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers).value!
+    def update(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers:nil)
+      response = update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -452,8 +453,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers = nil)
-      update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers).value!
+    def update_with_http_info(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers:nil)
+      update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -473,7 +474,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers = nil)
+    def update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers:nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -485,7 +486,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -551,8 +551,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     # will be added to the HTTP request.
     #
     #
-    def delete(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
-      response = delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
+    def delete(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
+      response = delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -570,8 +570,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
-      delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
+    def delete_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
+      delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -588,7 +588,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+    def delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -599,6 +599,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -648,8 +649,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignResult] operation results.
     #
-    def get_by_name(resource_group_name, app_collection, app_name, kind, name, custom_headers = nil)
-      response = get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers).value!
+    def get_by_name(resource_group_name, app_collection, app_name, kind, name, custom_headers:nil)
+      response = get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -668,8 +669,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_by_name_with_http_info(resource_group_name, app_collection, app_name, kind, name, custom_headers = nil)
-      get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers).value!
+    def get_by_name_with_http_info(resource_group_name, app_collection, app_name, kind, name, custom_headers:nil)
+      get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers:custom_headers).value!
     end
 
     #
@@ -687,7 +688,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers = nil)
+    def get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -698,6 +699,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -758,8 +760,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignStateResult] operation results.
     #
-    def test_saved(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
-      response = test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
+    def test_saved(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:nil)
+      response = test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -779,8 +781,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def test_saved_with_http_info(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
-      test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
+    def test_saved_with_http_info(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:nil)
+      test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -799,7 +801,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
+    def test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -811,7 +813,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -879,8 +880,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignState] operation results.
     #
-    def test_new(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
-      response = test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
+    def test_new(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:nil)
+      response = test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -899,8 +900,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def test_new_with_http_info(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
-      test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
+    def test_new_with_http_info(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:nil)
+      test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -918,7 +919,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
+    def test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -929,7 +930,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -996,8 +996,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignStateResult] operation results.
     #
-    def activate(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
-      response = activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
+    def activate(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
+      response = activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1015,8 +1015,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def activate_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
-      activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
+    def activate_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
+      activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:custom_headers).value!
     end
 
     #
@@ -1033,7 +1033,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+    def activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -1044,6 +1044,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1102,8 +1103,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignStateResult] operation results.
     #
-    def suspend(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
-      response = suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
+    def suspend(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
+      response = suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1121,8 +1122,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def suspend_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
-      suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
+    def suspend_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
+      suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:custom_headers).value!
     end
 
     #
@@ -1139,7 +1140,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+    def suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -1150,6 +1151,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1211,8 +1213,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignPushResult] operation results.
     #
-    def push(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
-      response = push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
+    def push(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:nil)
+      response = push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1233,8 +1235,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def push_with_http_info(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
-      push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
+    def push_with_http_info(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:nil)
+      push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -1254,7 +1256,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
+    def push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -1266,7 +1268,6 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1333,8 +1334,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignStatisticsResult] operation results.
     #
-    def get_statistics(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
-      response = get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
+    def get_statistics(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
+      response = get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1352,8 +1353,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_statistics_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
-      get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
+    def get_statistics_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
+      get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1370,7 +1371,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+    def get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers:nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1381,6 +1382,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1439,8 +1441,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignStateResult] operation results.
     #
-    def finish(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
-      response = finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
+    def finish(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
+      response = finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1458,8 +1460,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def finish_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
-      finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
+    def finish_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
+      finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:custom_headers).value!
     end
 
     #
@@ -1476,7 +1478,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+    def finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
@@ -1487,6 +1489,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1541,8 +1544,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [CampaignsListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1556,8 +1559,8 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1570,11 +1573,12 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1653,12 +1657,12 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
     # @return [CampaignsListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
-      response = list_async(resource_group_name, app_collection, app_name, kind, skip, top, filter, orderby, search, custom_headers).value!
+    def list_as_lazy(resource_group_name, app_collection, app_name, kind, skip:nil, top:nil, filter:nil, orderby:nil, search:nil, custom_headers:nil)
+      response = list_async(resource_group_name, app_collection, app_name, kind, skip:skip, top:top, filter:filter, orderby:orderby, search:search, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

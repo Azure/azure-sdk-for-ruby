@@ -50,8 +50,6 @@ module MsRestAzure::Common
         instance_variable_set(:"@#{key}", options.fetch(key, default_value))
       end
 
-      fail ArgumentError, 'subscription_id is nil' if self.subscription_id.nil?
-
       if(options[:credentials].nil?)
         # The user has not passed in the credentials. So, the SDK has to
         # build the credentials itself.

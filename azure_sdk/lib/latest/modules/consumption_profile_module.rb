@@ -28,13 +28,13 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          client_0 = Azure::Consumption::Mgmt::V2017_04_24_preview::ConsumptionManagementClient.new(configurable.credentials, base_url, options)
-          if(client_0.respond_to?(:subscription_id))
-            client_0.subscription_id = configurable.subscription_id
+          @client_0 = Azure::Consumption::Mgmt::V2017_04_24_preview::ConsumptionManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_0.respond_to?(:subscription_id))
+            @client_0.subscription_id = configurable.subscription_id
           end
-          add_telemetry(client_0)
-          @usage_details = client_0.usage_details
-          @operations = client_0.operations
+          add_telemetry(@client_0)
+          @usage_details = @client_0.usage_details
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -42,6 +42,14 @@ module Azure::Profiles::Latest
         def add_telemetry(client)
           profile_information = 'Profiles/azure_sdk/Latest/Consumption/Mgmt'
           client.add_user_agent_information(profile_information)
+        end
+
+        def method_missing(method, *args)
+          if @client_0.respond_to?method
+            @client_0.send(method, *args)
+          else
+            super
+          end
         end
 
         class ModelClasses

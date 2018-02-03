@@ -30,8 +30,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def migrate_to_aad(fabric_name, custom_headers = nil)
-      response = migrate_to_aad_async(fabric_name, custom_headers).value!
+    def migrate_to_aad(fabric_name, custom_headers:nil)
+      response = migrate_to_aad_async(fabric_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -43,9 +43,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def migrate_to_aad_async(fabric_name, custom_headers = nil)
+    def migrate_to_aad_async(fabric_name, custom_headers:nil)
       # Send request
-      promise = begin_migrate_to_aad_async(fabric_name, custom_headers)
+      promise = begin_migrate_to_aad_async(fabric_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -71,8 +71,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def renew_certificate(fabric_name, renew_certificate, custom_headers = nil)
-      response = renew_certificate_async(fabric_name, renew_certificate, custom_headers).value!
+    def renew_certificate(fabric_name, renew_certificate, custom_headers:nil)
+      response = renew_certificate_async(fabric_name, renew_certificate, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -85,9 +85,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def renew_certificate_async(fabric_name, renew_certificate, custom_headers = nil)
+    def renew_certificate_async(fabric_name, renew_certificate, custom_headers:nil)
       # Send request
-      promise = begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers)
+      promise = begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -118,8 +118,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def reassociate_gateway(fabric_name, failover_process_server_request, custom_headers = nil)
-      response = reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers).value!
+    def reassociate_gateway(fabric_name, failover_process_server_request, custom_headers:nil)
+      response = reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -134,9 +134,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers = nil)
+    def reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers:nil)
       # Send request
-      promise = begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers)
+      promise = begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -163,8 +163,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def check_consistency(fabric_name, custom_headers = nil)
-      response = check_consistency_async(fabric_name, custom_headers).value!
+    def check_consistency(fabric_name, custom_headers:nil)
+      response = check_consistency_async(fabric_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -176,9 +176,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def check_consistency_async(fabric_name, custom_headers = nil)
+    def check_consistency_async(fabric_name, custom_headers:nil)
       # Send request
-      promise = begin_check_consistency_async(fabric_name, custom_headers)
+      promise = begin_check_consistency_async(fabric_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -203,8 +203,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(fabric_name, custom_headers = nil)
-      response = delete_async(fabric_name, custom_headers).value!
+    def delete(fabric_name, custom_headers:nil)
+      response = delete_async(fabric_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -216,9 +216,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(fabric_name, custom_headers = nil)
+    def delete_async(fabric_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(fabric_name, custom_headers)
+      promise = begin_delete_async(fabric_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -243,8 +243,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def get(fabric_name, custom_headers = nil)
-      response = get_async(fabric_name, custom_headers).value!
+    def get(fabric_name, custom_headers:nil)
+      response = get_async(fabric_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -259,8 +259,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(fabric_name, custom_headers = nil)
-      get_async(fabric_name, custom_headers).value!
+    def get_with_http_info(fabric_name, custom_headers:nil)
+      get_async(fabric_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -274,7 +274,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(fabric_name, custom_headers = nil)
+    def get_async(fabric_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -283,6 +283,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -339,8 +340,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def create(fabric_name, input, custom_headers = nil)
-      response = create_async(fabric_name, input, custom_headers).value!
+    def create(fabric_name, input, custom_headers:nil)
+      response = create_async(fabric_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -353,9 +354,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(fabric_name, input, custom_headers = nil)
+    def create_async(fabric_name, input, custom_headers:nil)
       # Send request
-      promise = begin_create_async(fabric_name, input, custom_headers)
+      promise = begin_create_async(fabric_name, input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -380,8 +381,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def purge(fabric_name, custom_headers = nil)
-      response = purge_async(fabric_name, custom_headers).value!
+    def purge(fabric_name, custom_headers:nil)
+      response = purge_async(fabric_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -393,9 +394,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def purge_async(fabric_name, custom_headers = nil)
+    def purge_async(fabric_name, custom_headers:nil)
       # Send request
-      promise = begin_purge_async(fabric_name, custom_headers)
+      promise = begin_purge_async(fabric_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -419,8 +420,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Array<Fabric>] operation results.
     #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
+    def list(custom_headers:nil)
+      first_page = list_as_lazy(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -434,8 +435,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_with_http_info(custom_headers:nil)
+      list_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -448,7 +449,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -456,6 +457,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -510,8 +512,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # will be added to the HTTP request.
     #
     #
-    def begin_migrate_to_aad(fabric_name, custom_headers = nil)
-      response = begin_migrate_to_aad_async(fabric_name, custom_headers).value!
+    def begin_migrate_to_aad(fabric_name, custom_headers:nil)
+      response = begin_migrate_to_aad_async(fabric_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -526,8 +528,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_migrate_to_aad_with_http_info(fabric_name, custom_headers = nil)
-      begin_migrate_to_aad_async(fabric_name, custom_headers).value!
+    def begin_migrate_to_aad_with_http_info(fabric_name, custom_headers:nil)
+      begin_migrate_to_aad_async(fabric_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -541,7 +543,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_migrate_to_aad_async(fabric_name, custom_headers = nil)
+    def begin_migrate_to_aad_async(fabric_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -550,6 +552,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -596,8 +599,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def begin_renew_certificate(fabric_name, renew_certificate, custom_headers = nil)
-      response = begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers).value!
+    def begin_renew_certificate(fabric_name, renew_certificate, custom_headers:nil)
+      response = begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -613,8 +616,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_renew_certificate_with_http_info(fabric_name, renew_certificate, custom_headers = nil)
-      begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers).value!
+    def begin_renew_certificate_with_http_info(fabric_name, renew_certificate, custom_headers:nil)
+      begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers:custom_headers).value!
     end
 
     #
@@ -629,7 +632,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers = nil)
+    def begin_renew_certificate_async(fabric_name, renew_certificate, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -639,7 +642,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -707,8 +709,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def begin_reassociate_gateway(fabric_name, failover_process_server_request, custom_headers = nil)
-      response = begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers).value!
+    def begin_reassociate_gateway(fabric_name, failover_process_server_request, custom_headers:nil)
+      response = begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -727,8 +729,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reassociate_gateway_with_http_info(fabric_name, failover_process_server_request, custom_headers = nil)
-      begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers).value!
+    def begin_reassociate_gateway_with_http_info(fabric_name, failover_process_server_request, custom_headers:nil)
+      begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers:custom_headers).value!
     end
 
     #
@@ -746,7 +748,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers = nil)
+    def begin_reassociate_gateway_async(fabric_name, failover_process_server_request, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -756,7 +758,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -820,8 +821,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def begin_check_consistency(fabric_name, custom_headers = nil)
-      response = begin_check_consistency_async(fabric_name, custom_headers).value!
+    def begin_check_consistency(fabric_name, custom_headers:nil)
+      response = begin_check_consistency_async(fabric_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -836,8 +837,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_check_consistency_with_http_info(fabric_name, custom_headers = nil)
-      begin_check_consistency_async(fabric_name, custom_headers).value!
+    def begin_check_consistency_with_http_info(fabric_name, custom_headers:nil)
+      begin_check_consistency_async(fabric_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -851,7 +852,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_check_consistency_async(fabric_name, custom_headers = nil)
+    def begin_check_consistency_async(fabric_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -860,6 +861,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -914,8 +916,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(fabric_name, custom_headers = nil)
-      response = begin_delete_async(fabric_name, custom_headers).value!
+    def begin_delete(fabric_name, custom_headers:nil)
+      response = begin_delete_async(fabric_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -930,8 +932,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(fabric_name, custom_headers = nil)
-      begin_delete_async(fabric_name, custom_headers).value!
+    def begin_delete_with_http_info(fabric_name, custom_headers:nil)
+      begin_delete_async(fabric_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -945,7 +947,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(fabric_name, custom_headers = nil)
+    def begin_delete_async(fabric_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -954,6 +956,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1000,8 +1003,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Fabric] operation results.
     #
-    def begin_create(fabric_name, input, custom_headers = nil)
-      response = begin_create_async(fabric_name, input, custom_headers).value!
+    def begin_create(fabric_name, input, custom_headers:nil)
+      response = begin_create_async(fabric_name, input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1017,8 +1020,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(fabric_name, input, custom_headers = nil)
-      begin_create_async(fabric_name, input, custom_headers).value!
+    def begin_create_with_http_info(fabric_name, input, custom_headers:nil)
+      begin_create_async(fabric_name, input, custom_headers:custom_headers).value!
     end
 
     #
@@ -1033,7 +1036,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(fabric_name, input, custom_headers = nil)
+    def begin_create_async(fabric_name, input, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1043,7 +1046,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
@@ -1106,8 +1108,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # will be added to the HTTP request.
     #
     #
-    def begin_purge(fabric_name, custom_headers = nil)
-      response = begin_purge_async(fabric_name, custom_headers).value!
+    def begin_purge(fabric_name, custom_headers:nil)
+      response = begin_purge_async(fabric_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -1122,8 +1124,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_purge_with_http_info(fabric_name, custom_headers = nil)
-      begin_purge_async(fabric_name, custom_headers).value!
+    def begin_purge_with_http_info(fabric_name, custom_headers:nil)
+      begin_purge_async(fabric_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -1137,7 +1139,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_purge_async(fabric_name, custom_headers = nil)
+    def begin_purge_async(fabric_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1146,6 +1148,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1192,8 +1195,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [FabricCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1209,8 +1212,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
@@ -1225,11 +1228,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1284,12 +1288,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [FabricCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_as_lazy(custom_headers:nil)
+      response = list_async(custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

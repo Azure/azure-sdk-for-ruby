@@ -73,17 +73,17 @@ module Azure::GraphRbac::Profiles::Latest
       @base_url = options[:base_url].nil? ? nil:options[:base_url]
       @options = options[:options].nil? ? nil:options[:options]
 
-      client_0 = Azure::GraphRbac::V1_6::GraphRbacClient.new(configurable.credentials, base_url, options)
-      if(client_0.respond_to?(:subscription_id))
-        client_0.subscription_id = configurable.subscription_id
+      @client_0 = Azure::GraphRbac::V1_6::GraphRbacClient.new(configurable.credentials, base_url, options)
+      if(@client_0.respond_to?(:subscription_id))
+        @client_0.subscription_id = configurable.subscription_id
       end
-      add_telemetry(client_0)
-      @objects = client_0.objects
-      @applications = client_0.applications
-      @groups = client_0.groups
-      @service_principals = client_0.service_principals
-      @users = client_0.users
-      @domains = client_0.domains
+      add_telemetry(@client_0)
+      @objects = @client_0.objects
+      @applications = @client_0.applications
+      @groups = @client_0.groups
+      @service_principals = @client_0.service_principals
+      @users = @client_0.users
+      @domains = @client_0.domains
 
       @model_classes = ModelClasses.new
     end
@@ -91,6 +91,14 @@ module Azure::GraphRbac::Profiles::Latest
     def add_telemetry(client)
       profile_information = 'Profiles/Latest/GraphRbac'
       client.add_user_agent_information(profile_information)
+    end
+
+    def method_missing(method, *args)
+      if @client_0.respond_to?method
+        @client_0.send(method, *args)
+      else
+        super
+      end
     end
 
   end

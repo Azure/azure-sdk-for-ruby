@@ -34,7 +34,7 @@ describe 'Deployment Operations' do
   end
 
   it 'should get a list of deployment operation restricted with top parameter' do
-    result = @client.list_async(@resource_group.name, @deployment.name, 1).value!
+    result = @client.list_async(@resource_group.name, @deployment.name, top:1).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
