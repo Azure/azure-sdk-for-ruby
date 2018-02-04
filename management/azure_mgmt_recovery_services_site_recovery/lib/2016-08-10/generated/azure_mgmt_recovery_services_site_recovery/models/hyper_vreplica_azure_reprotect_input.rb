@@ -45,7 +45,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HyperVReplicaAzure',
           type: {
@@ -53,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HyperVReplicaAzureReprotectInput',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -61,7 +59,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               hv_host_vm_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hvHostVmId',
                 type: {
@@ -69,7 +66,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmName',
                 type: {
@@ -77,7 +73,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -85,7 +80,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               v_hdid: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vHDId',
                 type: {
@@ -93,7 +87,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               storage_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -101,7 +94,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               log_storage_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logStorageAccountId',
                 type: {
