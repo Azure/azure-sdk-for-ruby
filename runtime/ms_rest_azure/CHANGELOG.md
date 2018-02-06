@@ -1,3 +1,6 @@
+##2018.02.06 ms_rest_azure version 0.10.3
+* Removed subscription_id check from configurable. Refer [PR# 1261](https://github.com/Azure/azure-sdk-for-ruby/pull/1261) for further details.
+
 ##2018.01.30 ms_rest_azure version 0.10.2
 * Added CognitiveServicesCredentials class for the cognitive services data plane SDK. Refer [PR #1257](https://github.com/Azure/azure-sdk-for-ruby/pull/1257) for further details.
 * Added TopicCredentials class for the event grid data plane SDK. Refer [PR #1257](https://github.com/Azure/azure-sdk-for-ruby/pull/1257) for further details.
