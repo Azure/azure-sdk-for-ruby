@@ -1348,7 +1348,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         }
       }
       request_content = self.serialize(request_mapper,  image)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'analyze'
 
@@ -1488,7 +1487,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         }
       }
       request_content = self.serialize(request_mapper,  image)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'generateThumbnail'
 
@@ -1639,7 +1637,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         }
       }
       request_content = self.serialize(request_mapper,  image)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'ocr'
 
@@ -1767,7 +1764,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         }
       }
       request_content = self.serialize(request_mapper,  image)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'describe'
 
@@ -1886,7 +1882,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         }
       }
       request_content = self.serialize(request_mapper,  image)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'tag'
 
@@ -2011,7 +2006,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         }
       }
       request_content = self.serialize(request_mapper,  image)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'models/{model}/analyze'
 
@@ -2129,7 +2123,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         }
       }
       request_content = self.serialize(request_mapper,  image)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'recognizeText'
 

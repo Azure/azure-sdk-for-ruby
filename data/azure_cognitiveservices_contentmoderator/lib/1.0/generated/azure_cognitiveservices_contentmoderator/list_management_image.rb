@@ -590,7 +590,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
         }
       }
       request_content = @client.serialize(request_mapper,  image_stream)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/images'
 
