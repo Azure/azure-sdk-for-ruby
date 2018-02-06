@@ -478,7 +478,6 @@ module Azure::Automation::Mgmt::V2015_10_31
         }
       }
       request_content = @client.serialize(request_mapper,  runbook_content)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content'
 
