@@ -38,7 +38,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Location',
           type: {
@@ -46,7 +45,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
             class_name: 'Location',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,7 +53,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subscriptionId',
@@ -64,7 +61,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,7 +69,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayName',
@@ -82,7 +77,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               latitude: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'latitude',
@@ -91,7 +85,6 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               longitude: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'longitude',

@@ -29,7 +29,6 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExportTemplateRequest',
           type: {
@@ -37,13 +36,11 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ExportTemplateRequest',
             model_properties: {
               resources: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resources',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -53,7 +50,6 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'options',
                 type: {
