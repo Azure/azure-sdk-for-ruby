@@ -89,7 +89,7 @@ module Azure::Profiles::Latest
         end
 
         def add_telemetry(client)
-          profile_information = 'Profiles/azure_sdk/Latest/RecoveryServices/Mgmt'
+          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/Latest/RecoveryServices/Mgmt"
           client.add_user_agent_information(profile_information)
         end
 
