@@ -23,7 +23,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectionContainerMappingProviderSpecificDetails',
           type: {
@@ -31,7 +30,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProtectionContainerMappingProviderSpecificDetails',
             model_properties: {
               instance_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'instanceType',

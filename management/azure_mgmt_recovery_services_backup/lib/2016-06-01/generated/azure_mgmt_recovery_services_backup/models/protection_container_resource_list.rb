@@ -58,7 +58,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectionContainerResourceList',
           type: {
@@ -66,7 +65,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'ProtectionContainerResourceList',
             model_properties: {
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
@@ -74,13 +72,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProtectionContainerResourceElementType',
                       type: {

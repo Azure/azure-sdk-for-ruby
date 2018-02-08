@@ -34,7 +34,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MabFileFolderProtectedItemExtendedInfo',
           type: {
@@ -42,7 +41,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'MabFileFolderProtectedItemExtendedInfo',
             model_properties: {
               last_refreshed_at: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRefreshedAt',
                 type: {
@@ -50,7 +48,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               oldest_recovery_point: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'oldestRecoveryPoint',
                 type: {
@@ -58,7 +55,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recovery_point_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointCount',
                 type: {

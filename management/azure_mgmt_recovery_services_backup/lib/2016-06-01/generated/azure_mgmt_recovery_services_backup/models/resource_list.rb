@@ -27,7 +27,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceList',
           type: {
@@ -35,7 +34,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'ResourceList',
             model_properties: {
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
