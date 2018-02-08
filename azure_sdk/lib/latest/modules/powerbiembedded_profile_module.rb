@@ -50,7 +50,7 @@ module Azure::Profiles::Latest
         end
 
         def add_telemetry(client)
-          profile_information = 'Profiles/azure_sdk/Latest/PowerBiEmbedded/Mgmt'
+          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/Latest/PowerBiEmbedded/Mgmt"
           client.add_user_agent_information(profile_information)
         end
 
