@@ -22,11 +22,6 @@
     }
   },
   "azure_mgmt_authorization": {
-    "azure_mgmt_autorization_2018_01_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/authorization/resource-manager/readme.md",
-      "namespace": "Azure::Authorization::Mgmt::V2018_01_01_preview",
-      "tag": "package-2018-01-01-preview"
-    },
     "azure_mgmt_autorization_2017_10_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/authorization/resource-manager/readme.md",
       "namespace": "Azure::Authorization::Mgmt::V2017_10_01_preview",

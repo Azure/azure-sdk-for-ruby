@@ -62,7 +62,7 @@
                 },
                 "Microsoft.Authorization": {
                     "management": {
-                        "2018-01-01-preview": ["*"]
+                        "2017-10-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Automation": {
@@ -446,7 +446,7 @@
             "resourceTypes": {
                 "Microsoft.Authorization" : {
                     "management": {
-                        "2018-01-01-preview": ["*"]
+                        "2017-10-01-preview": ["*"]
                     }
                 }
             },
