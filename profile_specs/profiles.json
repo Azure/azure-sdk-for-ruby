@@ -67,7 +67,7 @@
                 },
                 "Microsoft.Automation": {
                     "management": {
-                        "2017-05-15-preview": ["*"]
+                        "2015-10-31": ["*"]
                     }
                 },
                 "Microsoft.Batch": {
@@ -460,7 +460,7 @@
             "resourceTypes": {
                 "Microsoft.Automation" : {
                     "management": {
-                        "2017-05-15-preview": ["*"]
+                        "2015-10-31": ["*"]
                     }
                 }
             },

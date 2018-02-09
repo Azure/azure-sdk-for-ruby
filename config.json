@@ -29,11 +29,6 @@
     }
   },
   "azure_mgmt_automation": {
-    "azure_mgmt_automation_2017_05_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/automation/resource-manager/readme.md",
-      "namespace": "Azure::Automation::Mgmt::V2017_05_15_preview",
-      "tag": "package-2017-05-preview"
-    },
     "azure_mgmt_automation_2015_10_31": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/automation/resource-manager/readme.md",
       "namespace": "Azure::Automation::Mgmt::V2015_10_31",
