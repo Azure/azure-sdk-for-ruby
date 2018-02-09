@@ -82,7 +82,7 @@
                 },
                 "Microsoft.CDN": {
                     "management": {
-                        "2017-10-02": ["*"]
+                        "2017-10-12": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices": {
@@ -502,7 +502,7 @@
             "resourceTypes": {
                 "Microsoft.CDN" : {
                     "management": {
-                        "2017-10-02": ["*"]
+                        "2017-10-12": ["*"]
                     }
                 }
             },

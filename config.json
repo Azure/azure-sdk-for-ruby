@@ -70,9 +70,9 @@
     }
   },
   "azure_mgmt_cdn": {
-    "azure_mgmt_cdn_2017_10_02": {
+    "azure_mgmt_cdn_2017_10_12": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/cdn/resource-manager/readme.md",
-      "namespace": "Azure::CDN::Mgmt::V2017_10_02",
+      "namespace": "Azure::CDN::Mgmt::V2017_10_12",
       "tag": "package-2017-10"
     },
     "azure_mgmt_cdn_2017_04_02": {
