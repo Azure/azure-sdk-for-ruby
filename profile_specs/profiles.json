@@ -295,7 +295,7 @@
                 },
                 "Microsoft.ResourcesManagement": {
                     "management": {
-                        "2018-01-01-preview": ["*"]
+                        "2017-11-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Scheduler": {
@@ -1116,7 +1116,7 @@
             "resourceTypes": {
                 "Microsoft.ResourcesManagement" : {
                     "management": {
-                        "2018-01-01-preview": ["*"]
+                        "2017-11-01-preview": ["*"]
                     }
                 }
             },
