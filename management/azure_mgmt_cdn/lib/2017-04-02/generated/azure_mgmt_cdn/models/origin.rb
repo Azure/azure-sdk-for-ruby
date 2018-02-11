@@ -11,7 +11,7 @@ module Azure::CDN::Mgmt::V2017_04_02
     # cached, they attempt to fetch it from one or more of the configured
     # origins.
     #
-    class Origin < Resource
+    class Origin < TrackedResource
 
       include MsRestAzure
 

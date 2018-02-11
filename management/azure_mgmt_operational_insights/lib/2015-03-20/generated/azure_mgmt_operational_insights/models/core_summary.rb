@@ -35,7 +35,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               status: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Status',
+                serialized_name: 'status',
                 type: {
                   name: 'String'
                 }
@@ -43,7 +43,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               number_of_documents: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'NumberOfDocuments',
+                serialized_name: 'numberOfDocuments',
                 type: {
                   name: 'Number'
                 }

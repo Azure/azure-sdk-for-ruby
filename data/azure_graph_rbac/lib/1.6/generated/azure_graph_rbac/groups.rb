@@ -182,8 +182,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'groupObjectId' => group_object_id,'memberObjectId' => member_object_id},
+          path_params: {'groupObjectId' => group_object_id,'memberObjectId' => member_object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -279,92 +278,13 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'groupObjectId' => group_object_id},
+          path_params: {'groupObjectId' => group_object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
       promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Delete a group from the directory.
-    #
-    # @param group_object_id [String] The object ID of the group to delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def delete(group_object_id, custom_headers:nil)
-      response = delete_async(group_object_id, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # Delete a group from the directory.
-    #
-    # @param group_object_id [String] The object ID of the group to delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(group_object_id, custom_headers:nil)
-      delete_async(group_object_id, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Delete a group from the directory.
-    #
-    # @param group_object_id [String] The object ID of the group to delete.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_async(group_object_id, custom_headers:nil)
-      fail ArgumentError, 'group_object_id is nil' if group_object_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{tenantID}/groups/{groupObjectId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'groupObjectId' => group_object_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -625,8 +545,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -717,8 +636,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -745,6 +663,83 @@ module Azure::GraphRbac::V1_6
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Delete a group from the directory.
+    #
+    # @param object_id [String] The object ID of the group to delete.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete(object_id, custom_headers:nil)
+      response = delete_async(object_id, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Delete a group from the directory.
+    #
+    # @param object_id [String] The object ID of the group to delete.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(object_id, custom_headers:nil)
+      delete_async(object_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Delete a group from the directory.
+    #
+    # @param object_id [String] The object ID of the group to delete.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_async(object_id, custom_headers:nil)
+      fail ArgumentError, 'object_id is nil' if object_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{tenantID}/groups/{objectId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
       end
@@ -825,8 +820,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

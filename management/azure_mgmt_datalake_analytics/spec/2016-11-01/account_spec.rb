@@ -13,7 +13,7 @@ describe 'DataLakeAnalyticsClient Account' do
     @resource_helper = ResourceHelper.new
     @resource_group = @resource_helper.create_resource_group
     @dl_store_acc = @resource_helper.create_datalake_store_account('dlstoreacc')
-    @client = @resource_helper.dla_acc_client.account
+    @client = @resource_helper.dla_acc_client.accounts
 
     @datalake_analytics_acc_name = 'dlanalyticsacc'
   end
@@ -32,7 +32,7 @@ describe 'DataLakeAnalyticsClient Account' do
         :testtag2 => :testtag2,
     }
     analytics_acc.default_data_lake_store_account = @dl_store_acc.name
-    dla_acc_info = Models::DataLakeStoreAccountInfo.new
+    dla_acc_info = Models::DataLakeStoreAccountInformation.new
     dla_acc_info.name = @dl_store_acc.name
 
     analytics_acc.data_lake_store_accounts = [dla_acc_info]
@@ -43,7 +43,7 @@ describe 'DataLakeAnalyticsClient Account' do
     expect(result.body.tags.count).to eq(2)
 
     # Update
-    analytics_acc_update_parameters = Models::DataLakeAnalyticsAccountUpdateParameters.new
+    analytics_acc_update_parameters = Models::UpdateDataLakeAnalyticsAccountParameters.new
     analytics_acc_update_parameters.tags = {
         :testtag1 => :testtag1,
         :testtag2 => :testtag2,

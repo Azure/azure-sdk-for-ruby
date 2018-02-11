@@ -28,7 +28,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [BackupManagementType] Type of backup management for the backup
       # engine. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
-      # 'DPM', 'AzureBackupServer', 'AzureSql'
+      # 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+      # 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
 
       # @return [String] Registration status of the backup engine with the
@@ -59,7 +60,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       attr_accessor :is_azure_backup_agent_upgrade_available
 
       # @return [Boolean] To check if backup engine upgrade available
-      attr_accessor :is_dpmupgrade_available
+      attr_accessor :is_dpm_upgrade_available
 
       # @return [BackupEngineExtendedInfo] Extended info of the backupengine
       attr_accessor :extended_info
@@ -160,10 +161,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'Boolean'
                 }
               },
-              is_dpmupgrade_available: {
+              is_dpm_upgrade_available: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'isDPMUpgradeAvailable',
+                serialized_name: 'isDpmUpgradeAvailable',
                 type: {
                   name: 'Boolean'
                 }

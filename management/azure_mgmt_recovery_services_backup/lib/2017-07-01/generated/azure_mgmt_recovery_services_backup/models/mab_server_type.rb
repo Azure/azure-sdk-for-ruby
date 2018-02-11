@@ -20,6 +20,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       AzureSqlContainer = "AzureSqlContainer"
       Windows = "Windows"
       VCenter = "VCenter"
+      VMAppContainer = "VMAppContainer"
+      SQLAGWorkLoadContainer = "SQLAGWorkLoadContainer"
+      StorageContainer = "StorageContainer"
+      GenericContainer = "GenericContainer"
     end
   end
 end

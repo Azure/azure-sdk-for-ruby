@@ -149,7 +149,15 @@ module Azure::Web::Mgmt::V2016_08_01
                 required: false,
                 serialized_name: 'properties.settings',
                 type: {
-                  name: 'Object'
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
                 }
               }
             }

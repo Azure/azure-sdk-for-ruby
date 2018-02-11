@@ -70,7 +70,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'

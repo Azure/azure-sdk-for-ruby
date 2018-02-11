@@ -6,18 +6,18 @@
 module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   module Models
     #
-    # DataLakeAnalytics Account list information.
+    # Data Lake Analytics account list information.
     #
     class DataLakeAnalyticsAccountListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<DataLakeAnalyticsAccountBasic>] the results of the list
-      # operation
+      # @return [Array<DataLakeAnalyticsAccountBasic>] The results of the list
+      # operation.
       attr_accessor :value
 
-      # @return [String] the link (url) to the next page of results.
+      # @return [String] The link (url) to the next page of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

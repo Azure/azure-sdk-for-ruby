@@ -123,7 +123,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # resourceResourceExtendedInfoDetails
+    # Details of ResourceExtendedInfo
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -141,7 +141,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # resourceResourceExtendedInfoDetails
+    # Details of ResourceExtendedInfo
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -158,7 +158,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # resourceResourceExtendedInfoDetails
+    # Details of ResourceExtendedInfo
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -232,7 +232,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # resourceResourceExtendedInfoDetails
+    # Details of ResourceExtendedInfo
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -250,7 +250,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # resourceResourceExtendedInfoDetails
+    # Details of ResourceExtendedInfo
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -267,7 +267,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # resourceResourceExtendedInfoDetails
+    # Details of ResourceExtendedInfo
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

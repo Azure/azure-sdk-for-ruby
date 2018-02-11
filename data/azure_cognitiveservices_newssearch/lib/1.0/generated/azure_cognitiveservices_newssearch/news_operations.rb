@@ -961,7 +961,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # possible for multiple pages to include some overlap in results. If you do not
     # specify the
     # [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-    # parameter, Bing ignores this paramter.
+    # parameter, Bing ignores this parameter.
     # @param headline_count [Integer] The number of headline articles to return in
     # the response. The default is 12. Specify this parameter only if you do not
     # specify the
@@ -992,7 +992,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # page, increment offset by 20 (for example, 0, 20, 40). It is possible for
     # multiple pages to include some overlap in results. If you do not specify the
     # [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-    # parameter, Bing ignores this paramter.
+    # parameter, Bing ignores this parameter.
     # @param original_image [Boolean] A Boolean value that determines whether the
     # image's contentUrl contains a URL that points to a thumbnail of the original
     # article's image or the image itself. If the article includes an image, and
@@ -1207,7 +1207,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # possible for multiple pages to include some overlap in results. If you do not
     # specify the
     # [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-    # parameter, Bing ignores this paramter.
+    # parameter, Bing ignores this parameter.
     # @param headline_count [Integer] The number of headline articles to return in
     # the response. The default is 12. Specify this parameter only if you do not
     # specify the
@@ -1238,7 +1238,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # page, increment offset by 20 (for example, 0, 20, 40). It is possible for
     # multiple pages to include some overlap in results. If you do not specify the
     # [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-    # parameter, Bing ignores this paramter.
+    # parameter, Bing ignores this parameter.
     # @param original_image [Boolean] A Boolean value that determines whether the
     # image's contentUrl contains a URL that points to a thumbnail of the original
     # article's image or the image itself. If the article includes an image, and
@@ -1452,7 +1452,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # possible for multiple pages to include some overlap in results. If you do not
     # specify the
     # [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-    # parameter, Bing ignores this paramter.
+    # parameter, Bing ignores this parameter.
     # @param headline_count [Integer] The number of headline articles to return in
     # the response. The default is 12. Specify this parameter only if you do not
     # specify the
@@ -1483,7 +1483,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # page, increment offset by 20 (for example, 0, 20, 40). It is possible for
     # multiple pages to include some overlap in results. If you do not specify the
     # [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-    # parameter, Bing ignores this paramter.
+    # parameter, Bing ignores this parameter.
     # @param original_image [Boolean] A Boolean value that determines whether the
     # image's contentUrl contains a URL that points to a thumbnail of the original
     # article's image or the image itself. If the article includes an image, and

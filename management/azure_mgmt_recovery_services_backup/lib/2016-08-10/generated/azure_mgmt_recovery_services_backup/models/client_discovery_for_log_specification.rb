@@ -12,13 +12,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
 
       include MsRestAzure
 
-      # @return [String] Name
+      # @return [String] Name for shoebox log specification.
       attr_accessor :name
 
       # @return [String] Localized display name
       attr_accessor :display_name
 
-      # @return [String] blob duration
+      # @return [String] blob duration of shoebox log specification
       attr_accessor :blob_duration
 
 

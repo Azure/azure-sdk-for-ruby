@@ -18,6 +18,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [String] Gets the name of the credential.
       attr_accessor :name
 
+      # @return [String] Resource type
+      attr_accessor :type
+
       # @return [String] Gets the user name of the credential.
       attr_accessor :user_name
 
@@ -56,7 +59,17 @@ module Azure::Automation::Mgmt::V2015_10_31
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

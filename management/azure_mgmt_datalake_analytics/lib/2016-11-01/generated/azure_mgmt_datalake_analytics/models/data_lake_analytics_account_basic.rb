@@ -13,28 +13,28 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
       include MsRestAzure
 
-      # @return [DataLakeAnalyticsAccountStatus] the provisioning status of the
+      # @return The unique identifier associated with this Data Lake Analytics
+      # account.
+      attr_accessor :account_id
+
+      # @return [DataLakeAnalyticsAccountStatus] The provisioning status of the
       # Data Lake Analytics account. Possible values include: 'Failed',
       # 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',
       # 'Resuming', 'Deleting', 'Deleted', 'Undeleting', 'Canceled'
       attr_accessor :provisioning_state
 
-      # @return [DataLakeAnalyticsAccountState] the state of the Data Lake
+      # @return [DataLakeAnalyticsAccountState] The state of the Data Lake
       # Analytics account. Possible values include: 'Active', 'Suspended'
       attr_accessor :state
 
-      # @return [DateTime] the account creation time.
+      # @return [DateTime] The account creation time.
       attr_accessor :creation_time
 
-      # @return [DateTime] the account last modified time.
+      # @return [DateTime] The account last modified time.
       attr_accessor :last_modified_time
 
-      # @return [String] the full CName endpoint for this account.
+      # @return [String] The full CName endpoint for this account.
       attr_accessor :endpoint
-
-      # @return The unique identifier associated with this Data Lake Analytics
-      # account.
-      attr_accessor :account_id
 
 
       #
@@ -79,7 +79,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -88,6 +89,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               tags: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
@@ -99,6 +101,15 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                         name: 'String'
                       }
                   }
+                }
+              },
+              account_id: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.accountId',
+                type: {
+                  name: 'String'
                 }
               },
               provisioning_state: {
@@ -144,15 +155,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endpoint',
-                type: {
-                  name: 'String'
-                }
-              },
-              account_id: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.accountId',
                 type: {
                   name: 'String'
                 }

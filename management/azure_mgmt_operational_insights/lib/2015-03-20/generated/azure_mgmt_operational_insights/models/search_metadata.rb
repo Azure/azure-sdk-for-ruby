@@ -40,7 +40,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       attr_accessor :last_updated
 
       # @return [String] The ETag of the search results.
-      attr_accessor :etag
+      attr_accessor :e_tag
 
       # @return [Array<SearchSort>] How the results are sorted.
       attr_accessor :sort
@@ -80,7 +80,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               search_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'RequestId',
+                serialized_name: 'requestId',
                 type: {
                   name: 'String'
                 }
@@ -120,7 +120,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               core_summaries: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'CoreSummaries',
+                serialized_name: 'coreSummaries',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -137,7 +137,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               status: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Status',
+                serialized_name: 'status',
                 type: {
                   name: 'String'
                 }
@@ -145,7 +145,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               start_time: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'StartTime',
+                serialized_name: 'startTime',
                 type: {
                   name: 'DateTime'
                 }
@@ -153,15 +153,15 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               last_updated: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'LastUpdated',
+                serialized_name: 'lastUpdated',
                 type: {
                   name: 'DateTime'
                 }
               },
-              etag: {
+              e_tag: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'ETag',
+                serialized_name: 'eTag',
                 type: {
                   name: 'String'
                 }

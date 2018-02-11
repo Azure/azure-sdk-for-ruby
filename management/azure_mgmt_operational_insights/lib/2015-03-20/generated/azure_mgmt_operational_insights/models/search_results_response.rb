@@ -50,7 +50,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               metadata: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: '__metadata',
+                serialized_name: 'metaData',
                 type: {
                   name: 'Composite',
                   class_name: 'SearchMetadata'

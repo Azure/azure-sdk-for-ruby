@@ -7,16 +7,24 @@ require 'azure_event_grid'
 module Azure::EventGrid::Profiles::Latest
 
   module Models
-    ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-    StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
-    ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
-    EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-    ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
-    ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
-    ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
-    ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
     EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
+    StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
     StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+    EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+    ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
+    DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
+    ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+    DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+    ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
+    DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+    ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+    DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+    ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+    DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
+    ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
+    DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+    IotHubDeviceCreatedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
+    IotHubDeviceDeletedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDeletedEventData
   end
 
   #
@@ -63,35 +71,59 @@ module Azure::EventGrid::Profiles::Latest
   end
 
   class ModelClasses
-    def resource_write_cancel_data
-      Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+    def event_grid_event
+      Azure::EventGrid::V2018_01_01::Models::EventGridEvent
     end
     def storage_blob_created_event_data
       Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
     end
-    def resource_delete_success_data
-      Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+    def storage_blob_deleted_event_data
+      Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
     end
     def event_hub_capture_file_created_event_data
       Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
     end
-    def resource_delete_failure_data
-      Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
-    end
     def resource_write_failure_data
       Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
+    end
+    def device_life_cycle_event_properties
+      Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
+    end
+    def resource_delete_success_data
+      Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+    end
+    def device_twin_metadata
+      Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
     end
     def resource_delete_cancel_data
       Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
     end
+    def device_twin_properties
+      Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+    end
+    def resource_write_cancel_data
+      Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+    end
+    def device_twin_info_properties
+      Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+    end
     def resource_write_success_data
       Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
     end
-    def event_grid_event
-      Azure::EventGrid::V2018_01_01::Models::EventGridEvent
+    def device_twin_info_x509_thumbprint
+      Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
     end
-    def storage_blob_deleted_event_data
-      Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+    def resource_delete_failure_data
+      Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
+    end
+    def device_twin_info
+      Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+    end
+    def iot_hub_device_created_event_data
+      Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
+    end
+    def iot_hub_device_deleted_event_data
+      Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDeletedEventData
     end
   end
 end

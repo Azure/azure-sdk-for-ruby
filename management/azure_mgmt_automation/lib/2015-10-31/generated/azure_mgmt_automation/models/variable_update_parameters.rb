@@ -37,7 +37,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             model_properties: {
               name: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

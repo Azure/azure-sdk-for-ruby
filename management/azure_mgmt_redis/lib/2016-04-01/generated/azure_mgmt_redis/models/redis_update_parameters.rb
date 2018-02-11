@@ -139,7 +139,7 @@ module Azure::Redis::Mgmt::V2016_04_01
               tags: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.tags',
+                serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {

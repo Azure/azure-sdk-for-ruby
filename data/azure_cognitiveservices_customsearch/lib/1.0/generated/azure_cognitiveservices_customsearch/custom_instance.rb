@@ -26,6 +26,8 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # The Custom Search API lets you send a search query to Bing and get back web
     # pages found in your custom view of the web.
     #
+    # @param custom_config [Integer] The identifier for the custom search
+    # configuration
     # @param query [String] The user's search query term. The term may not be
     # empty. The term may contain Bing Advanced Operators. For example, to limit
     # results to a specific domain, use the site: operator.
@@ -123,8 +125,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # example, if the client uses VPN). For optimal results, you should include
     # this header and the X-MSEdge-ClientIP header, but at a minimum, you should
     # include this header.
-    # @param custom_config [Integer] The identifier for the custom search
-    # configuration
     # @param country_code [String] A 2-character country code of the country where
     # the results come from. This API supports only the United States market. If
     # you specify this query parameter, it must be set to us. If you set this
@@ -209,8 +209,8 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     #
     # @return [SearchResponse] operation results.
     #
-    def search(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, custom_config:nil, country_code:nil, count:nil, market:'en-us', offset:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      response = search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, custom_config:custom_config, country_code:country_code, count:count, market:market, offset:offset, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def search(custom_config, query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:'en-us', offset:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      response = search_async(custom_config, query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, market:market, offset:offset, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -218,6 +218,8 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # The Custom Search API lets you send a search query to Bing and get back web
     # pages found in your custom view of the web.
     #
+    # @param custom_config [Integer] The identifier for the custom search
+    # configuration
     # @param query [String] The user's search query term. The term may not be
     # empty. The term may contain Bing Advanced Operators. For example, to limit
     # results to a specific domain, use the site: operator.
@@ -315,8 +317,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # example, if the client uses VPN). For optimal results, you should include
     # this header and the X-MSEdge-ClientIP header, but at a minimum, you should
     # include this header.
-    # @param custom_config [Integer] The identifier for the custom search
-    # configuration
     # @param country_code [String] A 2-character country code of the country where
     # the results come from. This API supports only the United States market. If
     # you specify this query parameter, it must be set to us. If you set this
@@ -401,14 +401,16 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def search_with_http_info(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, custom_config:nil, country_code:nil, count:nil, market:'en-us', offset:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, custom_config:custom_config, country_code:country_code, count:count, market:market, offset:offset, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def search_with_http_info(custom_config, query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:'en-us', offset:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      search_async(custom_config, query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, market:market, offset:offset, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
     end
 
     #
     # The Custom Search API lets you send a search query to Bing and get back web
     # pages found in your custom view of the web.
     #
+    # @param custom_config [Integer] The identifier for the custom search
+    # configuration
     # @param query [String] The user's search query term. The term may not be
     # empty. The term may contain Bing Advanced Operators. For example, to limit
     # results to a specific domain, use the site: operator.
@@ -506,8 +508,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # example, if the client uses VPN). For optimal results, you should include
     # this header and the X-MSEdge-ClientIP header, but at a minimum, you should
     # include this header.
-    # @param custom_config [Integer] The identifier for the custom search
-    # configuration
     # @param country_code [String] A 2-character country code of the country where
     # the results come from. This API supports only the United States market. If
     # you specify this query parameter, it must be set to us. If you set this
@@ -592,8 +592,10 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def search_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, custom_config:nil, country_code:nil, count:nil, market:'en-us', offset:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+    def search_async(custom_config, query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:'en-us', offset:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
       x_bing_apis_sdk = 'true'
+      fail ArgumentError, 'custom_config is nil' if custom_config.nil?
+      fail ArgumentError, "'custom_config' should satisfy the constraint - 'InclusiveMinimum': '0'" if !custom_config.nil? && custom_config < 0
       fail ArgumentError, 'query is nil' if query.nil?
 
 

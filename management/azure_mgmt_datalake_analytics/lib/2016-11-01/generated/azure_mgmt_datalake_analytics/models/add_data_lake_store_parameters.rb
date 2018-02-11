@@ -6,13 +6,13 @@
 module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   module Models
     #
-    # Additional Data Lake Store parameters.
+    # The parameters used to add a new Data Lake Store account.
     #
     class AddDataLakeStoreParameters
 
       include MsRestAzure
 
-      # @return [String] the optional suffix for the Data Lake Store account.
+      # @return [String] The optional suffix for the Data Lake Store account.
       attr_accessor :suffix
 
 

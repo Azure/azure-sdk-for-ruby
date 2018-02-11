@@ -15,7 +15,7 @@ module Azure::CognitiveServices::Face::V1_0
     attr_reader :base_url
 
     # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
+    attr_reader :credentials1
 
     # @return [AzureRegions] Supported Azure regions for Cognitive Services
     # endpoints. Possible values include: 'westus', 'westeurope',
@@ -23,6 +23,10 @@ module Azure::CognitiveServices::Face::V1_0
     # 'southcentralus', 'northeurope', 'eastasia', 'australiaeast',
     # 'brazilsouth'
     attr_accessor :azure_region
+
+    # @return Subscription credentials which uniquely identify client
+    # subscription.
+    attr_accessor :credentials
 
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
@@ -38,14 +42,14 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Face] face
     attr_reader :face
 
-    # @return [Person] person
-    attr_reader :person
+    # @return [PersonGroupPerson] person_group_person
+    attr_reader :person_group_person
 
-    # @return [PersonGroup] person_group
-    attr_reader :person_group
+    # @return [PersonGroupOperations] person_group_operations
+    attr_reader :person_group_operations
 
-    # @return [FaceList] face_list
-    attr_reader :face_list
+    # @return [FaceListOperations] face_list_operations
+    attr_reader :face_list_operations
 
     #
     # Creates initializes a new instance of the FaceClient class.
@@ -60,9 +64,9 @@ module Azure::CognitiveServices::Face::V1_0
       @credentials = credentials
 
       @face = Face.new(self)
-      @person = Person.new(self)
-      @person_group = PersonGroup.new(self)
-      @face_list = FaceList.new(self)
+      @person_group_person = PersonGroupPerson.new(self)
+      @person_group_operations = PersonGroupOperations.new(self)
+      @face_list_operations = FaceListOperations.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

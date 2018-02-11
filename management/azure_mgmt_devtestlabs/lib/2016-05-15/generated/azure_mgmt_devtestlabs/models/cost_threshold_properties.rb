@@ -83,7 +83,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
               notification_sent: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'NotificationSent',
+                serialized_name: 'notificationSent',
                 type: {
                   name: 'String'
                 }

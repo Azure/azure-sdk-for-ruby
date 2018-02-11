@@ -12,11 +12,14 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the id of the resource.
+      # @return [String] Gets the id of the resource.
       attr_accessor :id
 
-      # @return [String] Gets or sets the name of the schedule.
+      # @return [String] Gets name of the schedule.
       attr_accessor :name
+
+      # @return [String] Resource type
+      attr_accessor :type
 
       # @return [DateTime] Gets or sets the start time of the schedule.
       attr_accessor :start_time
@@ -79,6 +82,7 @@ module Azure::Automation::Mgmt::V2015_10_31
               id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -87,7 +91,17 @@ module Azure::Automation::Mgmt::V2015_10_31
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

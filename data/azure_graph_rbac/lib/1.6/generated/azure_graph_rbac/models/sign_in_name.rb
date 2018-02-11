@@ -13,6 +13,10 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [String] A string value that can be used to classify user
       # sign-in types in your directory, such as 'emailAddress' or 'userName'.
       attr_accessor :type
@@ -35,6 +39,21 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'SignInName',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               type: {
                 client_side_validation: true,
                 required: false,

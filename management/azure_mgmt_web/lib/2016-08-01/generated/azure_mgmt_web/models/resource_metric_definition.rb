@@ -31,7 +31,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [String] Resource ID.
       attr_accessor :resource_metric_definition_id
 
-      # @return [Hash{String => String}] Properties.
+      # @return [Hash{String => String}] Resource metric definition properties.
       attr_accessor :properties
 
 

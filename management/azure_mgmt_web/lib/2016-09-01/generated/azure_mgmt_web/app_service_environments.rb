@@ -29,7 +29,7 @@ module Azure::Web::Mgmt::V2016_09_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<AppServiceEnvironment>] operation results.
+    # @return [Array<AppServiceEnvironmentResource>] operation results.
     #
     def list(custom_headers:nil)
       first_page = list_as_lazy(custom_headers:custom_headers)
@@ -121,7 +121,7 @@ module Azure::Web::Mgmt::V2016_09_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<AppServiceEnvironment>] operation results.
+    # @return [Array<AppServiceEnvironmentResource>] operation results.
     #
     def list_by_resource_group(resource_group_name, custom_headers:nil)
       first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers:custom_headers)
@@ -411,6 +411,134 @@ module Azure::Web::Mgmt::V2016_09_01
       end
 
       promise
+    end
+
+    #
+    # Create or update an App Service Environment.
+    #
+    # Create or update an App Service Environment.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentPatchResource]
+    # Configuration details of the App Service Environment.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AppServiceEnvironmentResource] operation results.
+    #
+    def update(resource_group_name, name, hosting_environment_envelope, custom_headers:nil)
+      response = update_async(resource_group_name, name, hosting_environment_envelope, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Create or update an App Service Environment.
+    #
+    # Create or update an App Service Environment.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentPatchResource]
+    # Configuration details of the App Service Environment.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, name, hosting_environment_envelope, custom_headers:nil)
+      update_async(resource_group_name, name, hosting_environment_envelope, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Create or update an App Service Environment.
+    #
+    # Create or update an App Service Environment.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentPatchResource]
+    # Configuration details of the App Service Environment.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(resource_group_name, name, hosting_environment_envelope, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'hosting_environment_envelope is nil' if hosting_environment_envelope.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentPatchResource.mapper()
+      request_content = @client.serialize(request_mapper,  hosting_environment_envelope)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
     end
 
     #
@@ -1338,6 +1466,134 @@ module Azure::Web::Mgmt::V2016_09_01
       end
 
       promise
+    end
+
+    #
+    # Create or update a multi-role pool.
+    #
+    # Create or update a multi-role pool.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [WorkerPoolResource] operation results.
+    #
+    def update_multi_role_pool(resource_group_name, name, multi_role_pool_envelope, custom_headers:nil)
+      response = update_multi_role_pool_async(resource_group_name, name, multi_role_pool_envelope, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Create or update a multi-role pool.
+    #
+    # Create or update a multi-role pool.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_multi_role_pool_with_http_info(resource_group_name, name, multi_role_pool_envelope, custom_headers:nil)
+      update_multi_role_pool_async(resource_group_name, name, multi_role_pool_envelope, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Create or update a multi-role pool.
+    #
+    # Create or update a multi-role pool.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_multi_role_pool_async(resource_group_name, name, multi_role_pool_envelope, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'multi_role_pool_envelope is nil' if multi_role_pool_envelope.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolResource.mapper()
+      request_content = @client.serialize(request_mapper,  multi_role_pool_envelope)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
     end
 
     #
@@ -2962,6 +3218,138 @@ module Azure::Web::Mgmt::V2016_09_01
       end
 
       promise
+    end
+
+    #
+    # Create or update a worker pool.
+    #
+    # Create or update a worker pool.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [WorkerPoolResource] operation results.
+    #
+    def update_worker_pool(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers:nil)
+      response = update_worker_pool_async(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Create or update a worker pool.
+    #
+    # Create or update a worker pool.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_worker_pool_with_http_info(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers:nil)
+      update_worker_pool_async(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Create or update a worker pool.
+    #
+    # Create or update a worker pool.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_worker_pool_async(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'worker_pool_name is nil' if worker_pool_name.nil?
+      fail ArgumentError, 'worker_pool_envelope is nil' if worker_pool_envelope.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolResource.mapper()
+      request_content = @client.serialize(request_mapper,  worker_pool_envelope)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
     end
 
     #

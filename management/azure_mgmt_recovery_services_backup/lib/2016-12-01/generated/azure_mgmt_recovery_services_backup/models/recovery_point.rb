@@ -14,6 +14,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureFileShareRecoveryPoint"] = "AzureFileShareRecoveryPoint"
+      @@discriminatorMap["AzureWorkloadRecoveryPoint"] = "AzureWorkloadRecoveryPoint"
+      @@discriminatorMap["AzureWorkloadSQLPointInTimeRecoveryPoint"] = "AzureWorkloadSQLPointInTimeRecoveryPoint"
+      @@discriminatorMap["AzureWorkloadSQLRecoveryPoint"] = "AzureWorkloadSQLRecoveryPoint"
       @@discriminatorMap["GenericRecoveryPoint"] = "GenericRecoveryPoint"
       @@discriminatorMap["IaasVMRecoveryPoint"] = "IaasVMRecoveryPoint"
 

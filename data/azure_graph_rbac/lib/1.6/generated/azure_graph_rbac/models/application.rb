@@ -8,15 +8,16 @@ module Azure::GraphRbac::V1_6
     #
     # Active Directory application information.
     #
-    class Application
+    class Application < DirectoryObject
 
       include MsRestAzure
 
-      # @return [String] The object ID.
-      attr_accessor :object_id
 
-      # @return [String] The object type.
-      attr_accessor :object_type
+      def initialize
+        @objectType = "Application"
+      end
+
+      attr_accessor :objectType
 
       # @return [String] The application ID.
       attr_accessor :app_id
@@ -57,17 +58,42 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'Application',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               object_id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'objectId',
                 type: {
                   name: 'String'
                 }
               },
-              object_type: {
+              deletion_timestamp: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
+                serialized_name: 'deletionTimestamp',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              objectType: {
+                client_side_validation: true,
+                required: true,
                 serialized_name: 'objectType',
                 type: {
                   name: 'String'

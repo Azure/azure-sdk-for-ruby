@@ -45,20 +45,26 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @return [BackupLongTermRetentionVaults] backup_long_term_retention_vaults
     attr_reader :backup_long_term_retention_vaults
 
-    # @return [RestorePoints] restore_points
-    attr_reader :restore_points
-
     # @return [RecoverableDatabases] recoverable_databases
     attr_reader :recoverable_databases
 
     # @return [RestorableDroppedDatabases] restorable_dropped_databases
     attr_reader :restorable_dropped_databases
 
+    # @return [RestorePoints] restore_points
+    attr_reader :restore_points
+
     # @return [Capabilities] capabilities
     attr_reader :capabilities
 
+    # @return [Servers] servers
+    attr_reader :servers
+
     # @return [ServerConnectionPolicies] server_connection_policies
     attr_reader :server_connection_policies
+
+    # @return [Databases] databases
+    attr_reader :databases
 
     # @return [DatabaseThreatDetectionPolicies]
     # database_threat_detection_policies
@@ -74,17 +80,20 @@ module Azure::SQL::Mgmt::V2014_04_01
     # transparent_data_encryption_configurations
     attr_reader :transparent_data_encryption_configurations
 
+    # @return [Extensions] extensions
+    attr_reader :extensions
+
+    # @return [DisasterRecoveryConfigurations] disaster_recovery_configurations
+    attr_reader :disaster_recovery_configurations
+
+    # @return [ElasticPools] elastic_pools
+    attr_reader :elastic_pools
+
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
     # @return [GeoBackupPolicies] geo_backup_policies
     attr_reader :geo_backup_policies
-
-    # @return [Databases] databases
-    attr_reader :databases
-
-    # @return [ElasticPools] elastic_pools
-    attr_reader :elastic_pools
 
     # @return [Operations] operations
     attr_reader :operations
@@ -95,6 +104,9 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @return [QueryStatistics] query_statistics
     attr_reader :query_statistics
 
+    # @return [QueryTexts] query_texts
+    attr_reader :query_texts
+
     # @return [ReplicationLinks] replication_links
     attr_reader :replication_links
 
@@ -103,9 +115,6 @@ module Azure::SQL::Mgmt::V2014_04_01
 
     # @return [ServerCommunicationLinks] server_communication_links
     attr_reader :server_communication_links
-
-    # @return [Servers] servers
-    attr_reader :servers
 
     # @return [ServiceObjectives] service_objectives
     attr_reader :service_objectives
@@ -160,26 +169,29 @@ module Azure::SQL::Mgmt::V2014_04_01
       @database_advisors = DatabaseAdvisors.new(self)
       @backup_long_term_retention_policies = BackupLongTermRetentionPolicies.new(self)
       @backup_long_term_retention_vaults = BackupLongTermRetentionVaults.new(self)
-      @restore_points = RestorePoints.new(self)
       @recoverable_databases = RecoverableDatabases.new(self)
       @restorable_dropped_databases = RestorableDroppedDatabases.new(self)
+      @restore_points = RestorePoints.new(self)
       @capabilities = Capabilities.new(self)
+      @servers = Servers.new(self)
       @server_connection_policies = ServerConnectionPolicies.new(self)
+      @databases = Databases.new(self)
       @database_threat_detection_policies = DatabaseThreatDetectionPolicies.new(self)
       @data_masking_policies = DataMaskingPolicies.new(self)
       @data_masking_rules = DataMaskingRules.new(self)
       @transparent_data_encryption_configurations = TransparentDataEncryptionConfigurations.new(self)
+      @extensions = Extensions.new(self)
+      @disaster_recovery_configurations = DisasterRecoveryConfigurations.new(self)
+      @elastic_pools = ElasticPools.new(self)
       @firewall_rules = FirewallRules.new(self)
       @geo_backup_policies = GeoBackupPolicies.new(self)
-      @databases = Databases.new(self)
-      @elastic_pools = ElasticPools.new(self)
       @operations = Operations.new(self)
       @queries = Queries.new(self)
       @query_statistics = QueryStatistics.new(self)
+      @query_texts = QueryTexts.new(self)
       @replication_links = ReplicationLinks.new(self)
       @server_azure_adadministrators = ServerAzureADAdministrators.new(self)
       @server_communication_links = ServerCommunicationLinks.new(self)
-      @servers = Servers.new(self)
       @service_objectives = ServiceObjectives.new(self)
       @elastic_pool_activities = ElasticPoolActivities.new(self)
       @elastic_pool_database_activities = ElasticPoolDatabaseActivities.new(self)

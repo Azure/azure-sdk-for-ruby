@@ -38,6 +38,10 @@ module Azure::Web::Mgmt::V2015_08_01
     # @return [AppServiceCertificateOrders] app_service_certificate_orders
     attr_reader :app_service_certificate_orders
 
+    # @return [CertificateRegistrationProvider]
+    # certificate_registration_provider
+    attr_reader :certificate_registration_provider
+
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -52,6 +56,7 @@ module Azure::Web::Mgmt::V2015_08_01
       @credentials = credentials
 
       @app_service_certificate_orders = AppServiceCertificateOrders.new(self)
+      @certificate_registration_provider = CertificateRegistrationProvider.new(self)
       @api_version = '2015-08-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

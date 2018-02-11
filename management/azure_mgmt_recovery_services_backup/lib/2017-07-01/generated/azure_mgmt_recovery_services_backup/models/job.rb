@@ -14,6 +14,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["AzureIaaSVMJob"] = "AzureIaaSVMJob"
+      @@discriminatorMap["AzureStorageJob"] = "AzureStorageJob"
+      @@discriminatorMap["AzureWorkloadJob"] = "AzureWorkloadJob"
       @@discriminatorMap["DpmJob"] = "DpmJob"
       @@discriminatorMap["MabJob"] = "MabJob"
 
@@ -29,7 +31,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
       # @return [BackupManagementType] Backup management type to execute the
       # current job. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
-      # 'DPM', 'AzureBackupServer', 'AzureSql'
+      # 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+      # 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
 
       # @return [String] The operation name.

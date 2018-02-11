@@ -15,13 +15,15 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
       # @return [String] Name of the provider for display purposes
       attr_accessor :provider
 
-      # @return [String] Name of the resource type for display purposes
+      # @return [String] ResourceType for which this Operation can be
+      # performed.
       attr_accessor :resource
 
-      # @return [String] Name of the operation for display purposes
+      # @return [String] Operations Name itself.
       attr_accessor :operation
 
-      # @return [String] Description of the operation for display purposes
+      # @return [String] Description of the operation having details of what
+      # operation is about.
       attr_accessor :description
 
 
@@ -41,7 +43,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
               provider: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Provider',
+                serialized_name: 'provider',
                 type: {
                   name: 'String'
                 }
@@ -49,7 +51,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
               resource: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Resource',
+                serialized_name: 'resource',
                 type: {
                   name: 'String'
                 }
@@ -57,7 +59,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
               operation: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Operation',
+                serialized_name: 'operation',
                 type: {
                   name: 'String'
                 }
@@ -65,7 +67,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
               description: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Description',
+                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }

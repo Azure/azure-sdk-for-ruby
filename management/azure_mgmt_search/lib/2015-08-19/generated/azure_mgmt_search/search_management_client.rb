@@ -37,6 +37,9 @@ module Azure::Search::Mgmt::V2015_08_19
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [AdminKeys] admin_keys
     attr_reader :admin_keys
 
@@ -59,6 +62,7 @@ module Azure::Search::Mgmt::V2015_08_19
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @admin_keys = AdminKeys.new(self)
       @query_keys = QueryKeys.new(self)
       @services = Services.new(self)

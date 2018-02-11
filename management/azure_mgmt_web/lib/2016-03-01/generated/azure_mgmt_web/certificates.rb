@@ -534,8 +534,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate, if it
-    # exists already.
+    # @param certificate_envelope [CertificatePatchResource] Details of
+    # certificate, if it exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -554,8 +554,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate, if it
-    # exists already.
+    # @param certificate_envelope [CertificatePatchResource] Details of
+    # certificate, if it exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -573,8 +573,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate, if it
-    # exists already.
+    # @param certificate_envelope [CertificatePatchResource] Details of
+    # certificate, if it exists already.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -599,7 +599,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::Certificate.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CertificatePatchResource.mapper()
       request_content = @client.serialize(request_mapper,  certificate_envelope)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

@@ -17,7 +17,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # operationss.
       attr_accessor :value
 
-      # @return [String] NextLink of the Response.
+      # @return [String] Link to the next chunk of the response
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -68,7 +68,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               value: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Value',
+                serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -85,7 +85,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               next_link: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'NextLink',
+                serialized_name: 'nextLink',
                 type: {
                   name: 'String'
                 }

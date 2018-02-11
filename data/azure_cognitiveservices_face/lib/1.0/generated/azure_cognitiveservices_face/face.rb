@@ -36,7 +36,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Face - Detect and the faceIds will expire 24 hours after the detection call.
     # @param max_num_of_candidates_returned [Integer] The number of top similar
     # faces returned. The valid range is [1, 1000].
-    # @param mode [FaceMatchingMode] Similar face searching mode. It can be
+    # @param mode [FindSimilarMatchMode] Similar face searching mode. It can be
     # "matchPerson" or "matchFace". Possible values include: 'matchPerson',
     # 'matchFace'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -64,7 +64,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Face - Detect and the faceIds will expire 24 hours after the detection call.
     # @param max_num_of_candidates_returned [Integer] The number of top similar
     # faces returned. The valid range is [1, 1000].
-    # @param mode [FaceMatchingMode] Similar face searching mode. It can be
+    # @param mode [FindSimilarMatchMode] Similar face searching mode. It can be
     # "matchPerson" or "matchFace". Possible values include: 'matchPerson',
     # 'matchFace'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -91,7 +91,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Face - Detect and the faceIds will expire 24 hours after the detection call.
     # @param max_num_of_candidates_returned [Integer] The number of top similar
     # faces returned. The valid range is [1, 1000].
-    # @param mode [FaceMatchingMode] Similar face searching mode. It can be
+    # @param mode [FindSimilarMatchMode] Similar face searching mode. It can be
     # "matchPerson" or "matchFace". Possible values include: 'matchPerson',
     # 'matchFace'
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -165,10 +165,10 @@ module Azure::CognitiveServices::Face::V1_0
                 element: {
                     client_side_validation: true,
                     required: false,
-                    serialized_name: 'SimilarFaceResultElementType',
+                    serialized_name: 'SimilarFaceElementType',
                     type: {
                       name: 'Composite',
-                      class_name: 'SimilarFaceResult'
+                      class_name: 'SimilarFace'
                     }
                 }
               }
@@ -193,7 +193,7 @@ module Azure::CognitiveServices::Face::V1_0
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [GroupResponse] operation results.
+    # @return [GroupResult] operation results.
     #
     def group(face_ids, custom_headers:nil)
       response = group_async(face_ids, custom_headers:custom_headers).value!
@@ -273,7 +273,7 @@ module Azure::CognitiveServices::Face::V1_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::Face::V1_0::Models::GroupResponse.mapper()
+            result_mapper = Azure::CognitiveServices::Face::V1_0::Models::GroupResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -289,12 +289,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Identify unknown faces from a person group.
     #
-    # @param person_group_id [String] personGroupId of the target person group,
+    # @param person_group_id [String] PersonGroupId of the target person group,
     # created by PersonGroups.Create
-    # @param face_ids Array of candidate faceId created by Face - Detect.
-    # @param max_num_of_candidates_returned [Integer] The number of top similar
-    # faces returned.
-    # @param confidence_threshold [Float]
+    # @param face_ids Array of query faces faceIds, created by the Face - Detect.
+    # Each of the faces are identified independently. The valid number of faceIds
+    # is between [1, 10].
+    # @param max_num_of_candidates_returned [Integer] The range of
+    # maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
+    # @param confidence_threshold [Float] Confidence threshold of identification,
+    # used to judge whether one face belong to one person. The range of
+    # confidenceThreshold is [0, 1] (default specified by algorithm).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -308,12 +312,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Identify unknown faces from a person group.
     #
-    # @param person_group_id [String] personGroupId of the target person group,
+    # @param person_group_id [String] PersonGroupId of the target person group,
     # created by PersonGroups.Create
-    # @param face_ids Array of candidate faceId created by Face - Detect.
-    # @param max_num_of_candidates_returned [Integer] The number of top similar
-    # faces returned.
-    # @param confidence_threshold [Float]
+    # @param face_ids Array of query faces faceIds, created by the Face - Detect.
+    # Each of the faces are identified independently. The valid number of faceIds
+    # is between [1, 10].
+    # @param max_num_of_candidates_returned [Integer] The range of
+    # maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
+    # @param confidence_threshold [Float] Confidence threshold of identification,
+    # used to judge whether one face belong to one person. The range of
+    # confidenceThreshold is [0, 1] (default specified by algorithm).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -326,12 +334,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Identify unknown faces from a person group.
     #
-    # @param person_group_id [String] personGroupId of the target person group,
+    # @param person_group_id [String] PersonGroupId of the target person group,
     # created by PersonGroups.Create
-    # @param face_ids Array of candidate faceId created by Face - Detect.
-    # @param max_num_of_candidates_returned [Integer] The number of top similar
-    # faces returned.
-    # @param confidence_threshold [Float]
+    # @param face_ids Array of query faces faceIds, created by the Face - Detect.
+    # Each of the faces are identified independently. The valid number of faceIds
+    # is between [1, 10].
+    # @param max_num_of_candidates_returned [Integer] The range of
+    # maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
+    # @param confidence_threshold [Float] Confidence threshold of identification,
+    # used to judge whether one face belong to one person. The range of
+    # confidenceThreshold is [0, 1] (default specified by algorithm).
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -343,8 +355,8 @@ module Azure::CognitiveServices::Face::V1_0
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'face_ids is nil' if face_ids.nil?
-      fail ArgumentError, "'face_ids' should satisfy the constraint - 'MaxItems': '1000'" if !face_ids.nil? && face_ids.length > 1000
-      fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned > 1000
+      fail ArgumentError, "'face_ids' should satisfy the constraint - 'MaxItems': '10'" if !face_ids.nil? && face_ids.length > 10
+      fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMaximum': '5'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned > 5
       fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMinimum': '1'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned < 1
 
       body = IdentifyRequest.new
@@ -403,10 +415,10 @@ module Azure::CognitiveServices::Face::V1_0
                 element: {
                     client_side_validation: true,
                     required: false,
-                    serialized_name: 'IdentifyResultItemElementType',
+                    serialized_name: 'IdentifyResultElementType',
                     type: {
                       name: 'Composite',
-                      class_name: 'IdentifyResultItem'
+                      class_name: 'IdentifyResult'
                     }
                 }
               }
@@ -427,15 +439,15 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify whether two faces belong to a same person or whether one face belongs
     # to a person.
     #
-    # @param face_id1 faceId of the first face, comes from Face - Detect
-    # @param face_id2 faceId of the second face, comes from Face - Detect
+    # @param face_id1 FaceId of the first face, comes from Face - Detect
+    # @param face_id2 FaceId of the second face, comes from Face - Detect
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [VerifyResult] operation results.
     #
-    def verify(face_id1, face_id2, custom_headers:nil)
-      response = verify_async(face_id1, face_id2, custom_headers:custom_headers).value!
+    def verify_face_to_face(face_id1, face_id2, custom_headers:nil)
+      response = verify_face_to_face_async(face_id1, face_id2, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -443,34 +455,34 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify whether two faces belong to a same person or whether one face belongs
     # to a person.
     #
-    # @param face_id1 faceId of the first face, comes from Face - Detect
-    # @param face_id2 faceId of the second face, comes from Face - Detect
+    # @param face_id1 FaceId of the first face, comes from Face - Detect
+    # @param face_id2 FaceId of the second face, comes from Face - Detect
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_with_http_info(face_id1, face_id2, custom_headers:nil)
-      verify_async(face_id1, face_id2, custom_headers:custom_headers).value!
+    def verify_face_to_face_with_http_info(face_id1, face_id2, custom_headers:nil)
+      verify_face_to_face_async(face_id1, face_id2, custom_headers:custom_headers).value!
     end
 
     #
     # Verify whether two faces belong to a same person or whether one face belongs
     # to a person.
     #
-    # @param face_id1 faceId of the first face, comes from Face - Detect
-    # @param face_id2 faceId of the second face, comes from Face - Detect
+    # @param face_id1 FaceId of the first face, comes from Face - Detect
+    # @param face_id2 FaceId of the second face, comes from Face - Detect
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_async(face_id1, face_id2, custom_headers:nil)
+    def verify_face_to_face_async(face_id1, face_id2, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_id1 is nil' if face_id1.nil?
       fail ArgumentError, 'face_id2 is nil' if face_id2.nil?
 
-      body = VerifyRequest.new
+      body = VerifyFaceToFaceRequest.new
       unless face_id1.nil? && face_id2.nil?
         body.face_id1 = face_id1
         body.face_id2 = face_id2
@@ -484,7 +496,7 @@ module Azure::CognitiveServices::Face::V1_0
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::VerifyRequest.mapper()
+      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest.mapper()
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -537,7 +549,7 @@ module Azure::CognitiveServices::Face::V1_0
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
     # operation should return landmarks of the detected faces.
-    # @param return_face_attributes [Array<FaceAttributeTypes>] Analyze and return
+    # @param return_face_attributes [Array<FaceAttributeType>] Analyze and return
     # the one or more specified face attributes in the comma-separated string like
     # "returnFaceAttributes=age,gender". Supported face attributes include age,
     # gender, headPose, smile, facialHair, glasses and emotion. Note that each face
@@ -547,8 +559,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def detect(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      response = detect_async(url, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_url(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
+      response = detect_with_url_async(url, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -561,7 +573,7 @@ module Azure::CognitiveServices::Face::V1_0
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
     # operation should return landmarks of the detected faces.
-    # @param return_face_attributes [Array<FaceAttributeTypes>] Analyze and return
+    # @param return_face_attributes [Array<FaceAttributeType>] Analyze and return
     # the one or more specified face attributes in the comma-separated string like
     # "returnFaceAttributes=age,gender". Supported face attributes include age,
     # gender, headPose, smile, facialHair, glasses and emotion. Note that each face
@@ -571,8 +583,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_with_http_info(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      detect_async(url, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_url_with_http_info(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
+      detect_with_url_async(url, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
     end
 
     #
@@ -584,7 +596,7 @@ module Azure::CognitiveServices::Face::V1_0
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
     # operation should return landmarks of the detected faces.
-    # @param return_face_attributes [Array<FaceAttributeTypes>] Analyze and return
+    # @param return_face_attributes [Array<FaceAttributeType>] Analyze and return
     # the one or more specified face attributes in the comma-separated string like
     # "returnFaceAttributes=age,gender". Supported face attributes include age,
     # gender, headPose, smile, facialHair, glasses and emotion. Note that each face
@@ -594,7 +606,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_async(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
+    def detect_with_url_async(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -676,19 +688,19 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify whether two faces belong to a same person. Compares a face Id with a
     # Person Id
     #
-    # @param face_id faceId the face, comes from Face - Detect
-    # @param person_id Specify a certain person in a person group. personId is
-    # created in Persons.Create.
+    # @param face_id FaceId the face, comes from Face - Detect
     # @param person_group_id [String] Using existing personGroupId and personId for
     # fast loading a specified person. personGroupId is created in Person
     # Groups.Create.
+    # @param person_id Specify a certain person in a person group. personId is
+    # created in Persons.Create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [VerifyResult] operation results.
     #
-    def verify_with_person_group(face_id, person_id, person_group_id, custom_headers:nil)
-      response = verify_with_person_group_async(face_id, person_id, person_group_id, custom_headers:custom_headers).value!
+    def verify_face_to_person(face_id, person_group_id, person_id, custom_headers:nil)
+      response = verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -696,49 +708,49 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify whether two faces belong to a same person. Compares a face Id with a
     # Person Id
     #
-    # @param face_id faceId the face, comes from Face - Detect
-    # @param person_id Specify a certain person in a person group. personId is
-    # created in Persons.Create.
+    # @param face_id FaceId the face, comes from Face - Detect
     # @param person_group_id [String] Using existing personGroupId and personId for
     # fast loading a specified person. personGroupId is created in Person
     # Groups.Create.
+    # @param person_id Specify a certain person in a person group. personId is
+    # created in Persons.Create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_with_person_group_with_http_info(face_id, person_id, person_group_id, custom_headers:nil)
-      verify_with_person_group_async(face_id, person_id, person_group_id, custom_headers:custom_headers).value!
+    def verify_face_to_person_with_http_info(face_id, person_group_id, person_id, custom_headers:nil)
+      verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers:custom_headers).value!
     end
 
     #
     # Verify whether two faces belong to a same person. Compares a face Id with a
     # Person Id
     #
-    # @param face_id faceId the face, comes from Face - Detect
-    # @param person_id Specify a certain person in a person group. personId is
-    # created in Persons.Create.
+    # @param face_id FaceId the face, comes from Face - Detect
     # @param person_group_id [String] Using existing personGroupId and personId for
     # fast loading a specified person. personGroupId is created in Person
     # Groups.Create.
+    # @param person_id Specify a certain person in a person group. personId is
+    # created in Persons.Create.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_with_person_group_async(face_id, person_id, person_group_id, custom_headers:nil)
+    def verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_id is nil' if face_id.nil?
-      fail ArgumentError, 'person_id is nil' if person_id.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'person_id is nil' if person_id.nil?
 
-      body = VerifyPersonGroupRequest.new
-      unless face_id.nil? && person_id.nil? && person_group_id.nil?
+      body = VerifyFaceToPersonRequest.new
+      unless face_id.nil? && person_group_id.nil? && person_id.nil?
         body.face_id = face_id
-        body.person_id = person_id
         body.person_group_id = person_group_id
+        body.person_id = person_id
       end
 
       request_headers = {}
@@ -749,7 +761,7 @@ module Azure::CognitiveServices::Face::V1_0
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::VerifyPersonGroupRequest.mapper()
+      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest.mapper()
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -802,7 +814,7 @@ module Azure::CognitiveServices::Face::V1_0
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
     # operation should return landmarks of the detected faces.
-    # @param return_face_attributes [Array<FaceAttributeTypes>] Analyze and return
+    # @param return_face_attributes [Array<FaceAttributeType>] Analyze and return
     # the one or more specified face attributes in the comma-separated string like
     # "returnFaceAttributes=age,gender". Supported face attributes include age,
     # gender, headPose, smile, facialHair, glasses and emotion. Note that each face
@@ -812,8 +824,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def detect_in_stream(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      response = detect_in_stream_async(image, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_stream(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
+      response = detect_with_stream_async(image, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -826,7 +838,7 @@ module Azure::CognitiveServices::Face::V1_0
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
     # operation should return landmarks of the detected faces.
-    # @param return_face_attributes [Array<FaceAttributeTypes>] Analyze and return
+    # @param return_face_attributes [Array<FaceAttributeType>] Analyze and return
     # the one or more specified face attributes in the comma-separated string like
     # "returnFaceAttributes=age,gender". Supported face attributes include age,
     # gender, headPose, smile, facialHair, glasses and emotion. Note that each face
@@ -836,8 +848,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_in_stream_with_http_info(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      detect_in_stream_async(image, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_stream_with_http_info(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
+      detect_with_stream_async(image, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
     end
 
     #
@@ -849,7 +861,7 @@ module Azure::CognitiveServices::Face::V1_0
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
     # operation should return landmarks of the detected faces.
-    # @param return_face_attributes [Array<FaceAttributeTypes>] Analyze and return
+    # @param return_face_attributes [Array<FaceAttributeType>] Analyze and return
     # the one or more specified face attributes in the comma-separated string like
     # "returnFaceAttributes=age,gender". Supported face attributes include age,
     # gender, headPose, smile, facialHair, glasses and emotion. Note that each face
@@ -859,7 +871,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_in_stream_async(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
+    def detect_with_stream_async(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
       fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 

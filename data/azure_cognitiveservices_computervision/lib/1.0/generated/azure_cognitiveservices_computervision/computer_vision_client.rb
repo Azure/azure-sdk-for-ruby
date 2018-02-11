@@ -15,7 +15,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     attr_reader :base_url
 
     # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
+    attr_reader :credentials1
 
     # @return [AzureRegions] Supported Azure regions for Cognitive Services
     # endpoints. Possible values include: 'westus', 'westeurope',
@@ -23,6 +23,10 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # 'southcentralus', 'northeurope', 'eastasia', 'australiaeast',
     # 'brazilsouth'
     attr_accessor :azure_region
+
+    # @return Subscription credentials which uniquely identify client
+    # subscription.
+    attr_accessor :credentials
 
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language

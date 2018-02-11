@@ -17,6 +17,11 @@ module Azure::Compute::Mgmt::V2015_06_15
       # scale sets VMs.
       attr_accessor :value
 
+      # @return [String] The URI to fetch the next page of virtual machine
+      # scale sets VMs. Call ListNext() with this to fetch the next page of
+      # virtual machine scale sets VMs.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -77,6 +82,14 @@ module Azure::Compute::Mgmt::V2015_06_15
                         class_name: 'VirtualMachineScaleSetVM'
                       }
                   }
+                }
+              },
+              next_link: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

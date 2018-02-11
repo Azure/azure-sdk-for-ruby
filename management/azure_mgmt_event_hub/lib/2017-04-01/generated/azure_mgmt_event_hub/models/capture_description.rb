@@ -17,8 +17,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
       attr_accessor :enabled
 
       # @return [EncodingCaptureDescription] Enumerates the possible values for
-      # the encoding format of capture description. Possible values include:
-      # 'Avro', 'AvroDeflate'
+      # the encoding format of capture description. Note: 'AvroDeflate' will be
+      # deprecated in New API Version. Possible values include: 'Avro',
+      # 'AvroDeflate'
       attr_accessor :encoding
 
       # @return [Integer] The time window allows you to set the frequency with

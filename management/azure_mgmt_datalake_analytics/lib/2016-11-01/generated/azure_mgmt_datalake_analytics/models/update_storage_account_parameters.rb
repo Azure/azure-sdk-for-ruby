@@ -6,18 +6,17 @@
 module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   module Models
     #
-    # Storage account parameters for a storage account being updated in a Data
-    # Lake Analytics account.
+    # The parameters used to update an Azure Storage account.
     #
     class UpdateStorageAccountParameters
 
       include MsRestAzure
 
-      # @return [String] the updated access key associated with this Azure
+      # @return [String] The updated access key associated with this Azure
       # Storage account that will be used to connect to it.
       attr_accessor :access_key
 
-      # @return [String] the optional suffix for the storage account.
+      # @return [String] The optional suffix for the storage account.
       attr_accessor :suffix
 
 

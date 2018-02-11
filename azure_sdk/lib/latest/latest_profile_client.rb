@@ -328,9 +328,11 @@ module Azure::Profiles::Latest
     end
 
     class EventGridAdapter < Azure::Profiles::Latest::EventGrid::EventGridDataClass
+      attr_accessor :mgmt
 
       def initialize(context, base_url, options)
         super(context)
+        @mgmt = Azure::Profiles::Latest::EventGrid::Mgmt::EventGridManagementClass.new(context, base_url, options)
       end
     end
 

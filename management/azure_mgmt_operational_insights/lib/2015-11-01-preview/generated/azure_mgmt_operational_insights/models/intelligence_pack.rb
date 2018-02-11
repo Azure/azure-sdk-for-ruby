@@ -19,6 +19,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       # @return [Boolean] The enabled boolean for the intelligence pack.
       attr_accessor :enabled
 
+      # @return [String] The display name of the intelligence pack.
+      attr_accessor :display_name
+
 
       #
       # Mapper for IntelligencePack class as Ruby Hash.
@@ -47,6 +50,14 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 serialized_name: 'enabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              display_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'displayName',
+                type: {
+                  name: 'String'
                 }
               }
             }

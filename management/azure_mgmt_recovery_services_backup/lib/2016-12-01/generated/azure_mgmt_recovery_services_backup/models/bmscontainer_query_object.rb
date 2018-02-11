@@ -14,17 +14,23 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [BackupManagementType] Backup management type for this
       # container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
-      # 'DPM', 'AzureBackupServer', 'AzureSql'
+      # 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+      # 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
 
       # @return [ContainerType] Type of container for filter. Possible values
       # include: 'Invalid', 'Unknown', 'IaasVMContainer',
       # 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
-      # 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter'
+      # 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
+      # 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
+      # 'GenericContainer'
       attr_accessor :container_type
 
       # @return [String] Backup engine name
       attr_accessor :backup_engine_name
+
+      # @return [String] Fabric name for filter
+      attr_accessor :fabric_name
 
       # @return [String] Status of registration of this container with the
       # Recovery Services Vault.
@@ -67,6 +73,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'backupEngineName',
+                type: {
+                  name: 'String'
+                }
+              },
+              fabric_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'fabricName',
                 type: {
                   name: 'String'
                 }

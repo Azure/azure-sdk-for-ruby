@@ -13,6 +13,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       NotProtected = "NotProtected"
       Protecting = "Protecting"
       Protected = "Protected"
+      ProtectionFailed = "ProtectionFailed"
     end
   end
 end

@@ -6,8 +6,8 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Model object.
-    #
+    # Resource metrics service provided by Microsoft.Insights resource
+    # provider.
     #
     class ServiceSpecification
 

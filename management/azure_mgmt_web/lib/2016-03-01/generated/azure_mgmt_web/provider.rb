@@ -100,6 +100,12 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -111,6 +117,12 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -120,6 +132,12 @@ module Azure::Web::Mgmt::V2016_03_01
       list_operations_async(custom_headers:custom_headers).value!
     end
 
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -256,6 +274,12 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -269,6 +293,12 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -280,6 +310,12 @@ module Azure::Web::Mgmt::V2016_03_01
       list_operations_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -337,6 +373,12 @@ module Azure::Web::Mgmt::V2016_03_01
       promise.execute
     end
 
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
+    #
+    # Gets all available operations for the Microsoft.Web resource provider. Also
+    # exposes resource metric definitions
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

@@ -25,8 +25,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Creates or updates a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [Disk] Disk object supplied in the body of the Put disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -41,8 +42,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [Disk] Disk object supplied in the body of the Put disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -73,8 +75,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Updates (patches) a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [DiskUpdate] Disk object supplied in the body of the Patch disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -89,8 +92,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [DiskUpdate] Disk object supplied in the body of the Patch disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -121,8 +125,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Gets information about a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -137,8 +142,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Gets information about a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -152,8 +158,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Gets information about a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -216,8 +223,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Deletes a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -230,8 +238,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -432,8 +441,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Grants access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get disk access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -448,8 +458,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get disk access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -480,8 +491,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Revokes access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -494,8 +506,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -524,8 +537,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Creates or updates a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [Disk] Disk object supplied in the body of the Put disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -542,8 +556,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Creates or updates a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [Disk] Disk object supplied in the body of the Put disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -559,8 +574,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Creates or updates a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [Disk] Disk object supplied in the body of the Put disk
     # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -643,8 +659,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Updates (patches) a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [DiskUpdate] Disk object supplied in the body of the Patch disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -661,8 +678,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Updates (patches) a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [DiskUpdate] Disk object supplied in the body of the Patch disk
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -678,8 +696,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Updates (patches) a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param disk [DiskUpdate] Disk object supplied in the body of the Patch disk
     # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -762,8 +781,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Deletes a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -778,8 +798,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Deletes a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -793,8 +814,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Deletes a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -857,8 +879,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Grants access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get disk access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -875,8 +898,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Grants access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get disk access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -892,8 +916,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Grants access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get disk access operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -966,8 +991,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Revokes access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -982,8 +1008,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Revokes access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -997,8 +1024,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # Revokes access to a disk.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param disk_name [String] The name of the disk within the given subscription
-    # and resource group.
+    # @param disk_name [String] The name of the managed disk that is being created.
+    # The name can't be changed after the disk is created. Supported characters for
+    # the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

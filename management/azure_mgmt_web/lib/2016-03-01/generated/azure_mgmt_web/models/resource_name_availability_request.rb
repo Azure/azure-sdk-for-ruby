@@ -16,7 +16,9 @@ module Azure::Web::Mgmt::V2016_03_01
       attr_accessor :name
 
       # @return [CheckNameResourceTypes] Resource type used for verification.
-      # Possible values include: 'Site', 'Slot', 'HostingEnvironment'
+      # Possible values include: 'Site', 'Slot', 'HostingEnvironment',
+      # 'PublishingUser', 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots',
+      # 'Microsoft.Web/hostingEnvironments', 'Microsoft.Web/publishingUsers'
       attr_accessor :type
 
       # @return [Boolean] Is fully qualified domain name.

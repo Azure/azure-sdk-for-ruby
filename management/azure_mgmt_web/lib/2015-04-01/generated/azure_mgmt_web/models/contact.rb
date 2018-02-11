@@ -36,7 +36,7 @@ module Azure::Web::Mgmt::V2015_04_01
       # @return [String] Middle name.
       attr_accessor :name_middle
 
-      # @return [String] Organization.
+      # @return [String] Organization contact belongs to.
       attr_accessor :organization
 
       # @return [String] Phone number.

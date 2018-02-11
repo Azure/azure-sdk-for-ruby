@@ -14,10 +14,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       def initialize
-        @protectableObjectType = "AzureBackupServerContainer"
+        @containerType = "AzureBackupServerContainer"
       end
 
-      attr_accessor :protectableObjectType
+      attr_accessor :containerType
 
       # @return [Boolean] Specifies whether the container is re-registrable.
       attr_accessor :can_re_register
@@ -32,7 +32,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       attr_accessor :dpm_agent_version
 
       # @return [Array<String>] List of BackupEngines protecting the container
-      attr_accessor :dpmservers
+      attr_accessor :dpm_servers
 
       # @return [Boolean] To check if upgrade available
       attr_accessor :upgrade_available
@@ -89,19 +89,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'String'
                 }
               },
-              container_type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'containerType',
-                type: {
-                  name: 'String'
-                }
-              },
-              protectableObjectType: {
+              containerType: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'protectableObjectType',
+                serialized_name: 'containerType',
                 type: {
                   name: 'String'
                 }
@@ -138,10 +129,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'String'
                 }
               },
-              dpmservers: {
+              dpm_servers: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'DPMServers',
+                serialized_name: 'dpmServers',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -157,7 +148,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
               upgrade_available: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'UpgradeAvailable',
+                serialized_name: 'upgradeAvailable',
                 type: {
                   name: 'Boolean'
                 }

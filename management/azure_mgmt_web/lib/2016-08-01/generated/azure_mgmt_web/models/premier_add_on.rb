@@ -12,28 +12,28 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
-      # @return [String] SKU.
+      # @return [String] Premier add on SKU.
       attr_accessor :sku
 
-      # @return [String] Product.
+      # @return [String] Premier add on Product.
       attr_accessor :product
 
-      # @return [String] Vendor.
+      # @return [String] Premier add on Vendor.
       attr_accessor :vendor
 
-      # @return [String] Name.
+      # @return [String] Premier add on Name.
       attr_accessor :premier_add_on_name
 
-      # @return [String] Location.
+      # @return [String] Premier add on Location.
       attr_accessor :premier_add_on_location
 
-      # @return [Hash{String => String}] Tags.
+      # @return [Hash{String => String}] Premier add on Tags.
       attr_accessor :premier_add_on_tags
 
-      # @return [String] Marketplace publisher.
+      # @return [String] Premier add on Marketplace publisher.
       attr_accessor :marketplace_publisher
 
-      # @return [String] Marketplace offer.
+      # @return [String] Premier add on Marketplace offer.
       attr_accessor :marketplace_offer
 
 

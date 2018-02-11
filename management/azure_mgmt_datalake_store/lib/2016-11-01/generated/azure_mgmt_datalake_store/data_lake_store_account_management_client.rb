@@ -36,14 +36,20 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Accounts] accounts
+    attr_reader :accounts
+
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
     # @return [TrustedIdProviders] trusted_id_providers
     attr_reader :trusted_id_providers
 
-    # @return [Account] account
-    attr_reader :account
+    # @return [Operations] operations
+    attr_reader :operations
+
+    # @return [Locations] locations
+    attr_reader :locations
 
     #
     # Creates initializes a new instance of the DataLakeStoreAccountManagementClient class.
@@ -58,9 +64,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @accounts = Accounts.new(self)
       @firewall_rules = FirewallRules.new(self)
       @trusted_id_providers = TrustedIdProviders.new(self)
-      @account = Account.new(self)
+      @operations = Operations.new(self)
+      @locations = Locations.new(self)
       @api_version = '2016-11-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

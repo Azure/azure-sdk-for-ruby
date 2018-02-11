@@ -33,6 +33,18 @@ module Azure::Monitor::Mgmt::V2017_04_01
       # part of this action group.
       attr_accessor :webhook_receivers
 
+      # @return [Array<ItsmReceiver>] The list of ITSM receivers that are part
+      # of this action group.
+      attr_accessor :itsm_receivers
+
+      # @return [Array<AzureAppPushReceiver>] The list of AzureAppPush
+      # receivers that are part of this action group.
+      attr_accessor :azure_app_push_receivers
+
+      # @return [Array<AutomationRunbookReceiver>] The list of
+      # AutomationRunbook receivers that are part of this action group.
+      attr_accessor :automation_runbook_receivers
+
 
       #
       # Mapper for ActionGroupResource class as Ruby Hash.
@@ -165,6 +177,57 @@ module Azure::Monitor::Mgmt::V2017_04_01
                       type: {
                         name: 'Composite',
                         class_name: 'WebhookReceiver'
+                      }
+                  }
+                }
+              },
+              itsm_receivers: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.itsmReceivers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ItsmReceiverElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ItsmReceiver'
+                      }
+                  }
+                }
+              },
+              azure_app_push_receivers: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.azureAppPushReceivers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'AzureAppPushReceiverElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AzureAppPushReceiver'
+                      }
+                  }
+                }
+              },
+              automation_runbook_receivers: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.automationRunbookReceivers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'AutomationRunbookReceiverElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AutomationRunbookReceiver'
                       }
                   }
                 }

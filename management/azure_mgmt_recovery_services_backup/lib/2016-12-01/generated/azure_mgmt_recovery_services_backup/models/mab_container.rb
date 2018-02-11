@@ -14,10 +14,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       def initialize
-        @protectableObjectType = "MABWindowsContainer"
+        @containerType = "MABWindowsContainer"
       end
 
-      attr_accessor :protectableObjectType
+      attr_accessor :containerType
 
       # @return [Boolean] Can the container be registered one more time.
       attr_accessor :can_re_register
@@ -34,6 +34,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [MabContainerExtendedInfo] Additional information for this
       # container
       attr_accessor :extended_info
+
+      # @return [Array<MABContainerHealthDetails>] Health details on this mab
+      # container.
+      attr_accessor :mab_container_health_details
+
+      # @return [String] Health state of mab container.
+      attr_accessor :container_health_state
 
 
       #
@@ -81,19 +88,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'String'
                 }
               },
-              container_type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'containerType',
-                type: {
-                  name: 'String'
-                }
-              },
-              protectableObjectType: {
+              containerType: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'protectableObjectType',
+                serialized_name: 'containerType',
                 type: {
                   name: 'String'
                 }
@@ -137,6 +135,31 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 type: {
                   name: 'Composite',
                   class_name: 'MabContainerExtendedInfo'
+                }
+              },
+              mab_container_health_details: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'mabContainerHealthDetails',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'MABContainerHealthDetailsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'MABContainerHealthDetails'
+                      }
+                  }
+                }
+              },
+              container_health_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'containerHealthState',
+                type: {
+                  name: 'String'
                 }
               }
             }

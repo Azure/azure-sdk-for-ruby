@@ -84,6 +84,7 @@ module Azure::Web::Mgmt::V2015_08_01
               next_link: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

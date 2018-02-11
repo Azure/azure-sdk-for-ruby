@@ -6,8 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Model object.
-    #
+    # Meta data about operation used for display in portal.
     #
     class CsmOperationDisplay
 

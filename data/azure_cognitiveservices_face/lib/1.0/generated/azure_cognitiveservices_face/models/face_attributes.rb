@@ -22,38 +22,41 @@ module Azure::CognitiveServices::Face::V1_0
       # @return [Float] Smile intensity, a number between [0,1]
       attr_accessor :smile
 
-      # @return [FacialHairProperties]
+      # @return [FacialHair] Properties describing facial hair attributes.
       attr_accessor :facial_hair
 
-      # @return [GlassesTypes] Glasses type if any of the face. Possible values
+      # @return [GlassesType] Glasses type if any of the face. Possible values
       # include: 'noGlasses', 'readingGlasses', 'sunglasses', 'swimmingGoggles'
       attr_accessor :glasses
 
-      # @return [HeadPoseProperties]
+      # @return [HeadPose] Properties indicating head pose of the face.
       attr_accessor :head_pose
 
-      # @return [EmotionProperties]
+      # @return [Emotion] Properties describing facial emotion in form of
+      # confidence ranging from 0 to 1.
       attr_accessor :emotion
 
-      # @return [HairProperties]
+      # @return [Hair] Properties describing hair attributes.
       attr_accessor :hair
 
-      # @return [MakeupProperties]
+      # @return [Makeup] Properties describing present makeups on a given face.
       attr_accessor :makeup
 
-      # @return [OcclusionProperties]
+      # @return [Occlusion] Properties describing occlusions on a given face.
       attr_accessor :occlusion
 
-      # @return [Array<AccessoryItem>]
+      # @return [Array<Accessory>] Properties describing any accessories on a
+      # given face.
       attr_accessor :accessories
 
-      # @return [BlurProperties]
+      # @return [Blur] Properties describing any presence of blur within the
+      # image.
       attr_accessor :blur
 
-      # @return [ExposureProperties]
+      # @return [Exposure] Properties describing exposure level of the image.
       attr_accessor :exposure
 
-      # @return [NoiseProperties]
+      # @return [Noise] Properties describing noise level of the image.
       attr_accessor :noise
 
 
@@ -91,10 +94,6 @@ module Azure::CognitiveServices::Face::V1_0
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'smile',
-                constraints: {
-                  InclusiveMaximum: 1,
-                  InclusiveMinimum: 0
-                },
                 type: {
                   name: 'Double'
                 }
@@ -105,7 +104,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'facialHair',
                 type: {
                   name: 'Composite',
-                  class_name: 'FacialHairProperties'
+                  class_name: 'FacialHair'
                 }
               },
               glasses: {
@@ -114,7 +113,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'glasses',
                 type: {
                   name: 'Enum',
-                  module: 'GlassesTypes'
+                  module: 'GlassesType'
                 }
               },
               head_pose: {
@@ -123,7 +122,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'headPose',
                 type: {
                   name: 'Composite',
-                  class_name: 'HeadPoseProperties'
+                  class_name: 'HeadPose'
                 }
               },
               emotion: {
@@ -132,7 +131,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'emotion',
                 type: {
                   name: 'Composite',
-                  class_name: 'EmotionProperties'
+                  class_name: 'Emotion'
                 }
               },
               hair: {
@@ -141,7 +140,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'hair',
                 type: {
                   name: 'Composite',
-                  class_name: 'HairProperties'
+                  class_name: 'Hair'
                 }
               },
               makeup: {
@@ -150,7 +149,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'makeup',
                 type: {
                   name: 'Composite',
-                  class_name: 'MakeupProperties'
+                  class_name: 'Makeup'
                 }
               },
               occlusion: {
@@ -159,7 +158,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'occlusion',
                 type: {
                   name: 'Composite',
-                  class_name: 'OcclusionProperties'
+                  class_name: 'Occlusion'
                 }
               },
               accessories: {
@@ -171,10 +170,10 @@ module Azure::CognitiveServices::Face::V1_0
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'AccessoryItemElementType',
+                      serialized_name: 'AccessoryElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'AccessoryItem'
+                        class_name: 'Accessory'
                       }
                   }
                 }
@@ -185,7 +184,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'blur',
                 type: {
                   name: 'Composite',
-                  class_name: 'BlurProperties'
+                  class_name: 'Blur'
                 }
               },
               exposure: {
@@ -194,7 +193,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'exposure',
                 type: {
                   name: 'Composite',
-                  class_name: 'ExposureProperties'
+                  class_name: 'Exposure'
                 }
               },
               noise: {
@@ -203,7 +202,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noise',
                 type: {
                   name: 'Composite',
-                  class_name: 'NoiseProperties'
+                  class_name: 'Noise'
                 }
               }
             }

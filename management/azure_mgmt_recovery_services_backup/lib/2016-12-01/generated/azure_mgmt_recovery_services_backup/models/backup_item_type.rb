@@ -20,6 +20,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       SystemState = "SystemState"
       Client = "Client"
       GenericDataSource = "GenericDataSource"
+      SQLDataBase = "SQLDataBase"
+      AzureFileShare = "AzureFileShare"
     end
   end
 end

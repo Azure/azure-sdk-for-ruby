@@ -14,8 +14,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureStorage"] = "AzureFileShareProtectionPolicy"
       @@discriminatorMap["AzureIaasVM"] = "AzureIaaSVMProtectionPolicy"
       @@discriminatorMap["AzureSql"] = "AzureSqlProtectionPolicy"
+      @@discriminatorMap["AzureWorkload"] = "AzureVmWorkloadProtectionPolicy"
+      @@discriminatorMap["GenericProtectionPolicy"] = "GenericProtectionPolicy"
       @@discriminatorMap["MAB"] = "MabProtectionPolicy"
 
       def initialize

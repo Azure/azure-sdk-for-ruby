@@ -27,8 +27,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param location [String] Resource location.
     # @param skus [Array<SkuName>] The SKU of the resource.
     # @param kind [Kind] The Kind of the resource. Possible values include:
-    # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
-    # 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+    # 'Academic', 'Bing.Autosuggest', 'Bing.Autosuggest.v7', 'Bing.CustomSearch',
+    # 'Bing.Search', 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck',
+    # 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
     # 'Emotion', 'Face', 'LUIS', 'Recommendations', 'SpeakerRecognition', 'Speech',
     # 'SpeechTranslation', 'TextAnalytics', 'TextTranslation', 'WebLM'
     # @param type [String] The Type of the resource.
@@ -48,8 +49,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param location [String] Resource location.
     # @param skus [Array<SkuName>] The SKU of the resource.
     # @param kind [Kind] The Kind of the resource. Possible values include:
-    # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
-    # 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+    # 'Academic', 'Bing.Autosuggest', 'Bing.Autosuggest.v7', 'Bing.CustomSearch',
+    # 'Bing.Search', 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck',
+    # 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
     # 'Emotion', 'Face', 'LUIS', 'Recommendations', 'SpeakerRecognition', 'Speech',
     # 'SpeechTranslation', 'TextAnalytics', 'TextTranslation', 'WebLM'
     # @param type [String] The Type of the resource.
@@ -68,8 +70,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param location [String] Resource location.
     # @param skus [Array<SkuName>] The SKU of the resource.
     # @param kind [Kind] The Kind of the resource. Possible values include:
-    # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
-    # 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+    # 'Academic', 'Bing.Autosuggest', 'Bing.Autosuggest.v7', 'Bing.CustomSearch',
+    # 'Bing.Search', 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck',
+    # 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
     # 'Emotion', 'Face', 'LUIS', 'Recommendations', 'SpeakerRecognition', 'Speech',
     # 'SpeechTranslation', 'TextAnalytics', 'TextTranslation', 'WebLM'
     # @param type [String] The Type of the resource.

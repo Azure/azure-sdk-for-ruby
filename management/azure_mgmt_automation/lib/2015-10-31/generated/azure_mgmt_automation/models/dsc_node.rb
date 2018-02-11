@@ -37,6 +37,10 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [String] Gets or sets the etag of the resource.
       attr_accessor :etag
 
+      # @return [Array<DscNodeExtensionHandlerAssociationProperty>] Gets or
+      # sets the list of extensionHandler properties for a Node.
+      attr_accessor :extension_handler
+
 
       #
       # Mapper for DscNode class as Ruby Hash.
@@ -165,6 +169,23 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'etag',
                 type: {
                   name: 'String'
+                }
+              },
+              extension_handler: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'extensionHandler',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'DscNodeExtensionHandlerAssociationPropertyElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'DscNodeExtensionHandlerAssociationProperty'
+                      }
+                  }
                 }
               }
             }

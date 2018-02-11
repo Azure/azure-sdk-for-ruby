@@ -25,7 +25,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the activity in the module identified by module name and activity
     # name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param activity_name [String] The name of activity.
@@ -34,8 +33,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Activity] operation results.
     #
-    def get(resource_group_name, automation_account_name, module_name, activity_name, custom_headers:nil)
-      response = get_async(resource_group_name, automation_account_name, module_name, activity_name, custom_headers:custom_headers).value!
+    def get(automation_account_name, module_name, activity_name, custom_headers:nil)
+      response = get_async(automation_account_name, module_name, activity_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -43,7 +42,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the activity in the module identified by module name and activity
     # name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param activity_name [String] The name of activity.
@@ -52,15 +50,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, automation_account_name, module_name, activity_name, custom_headers:nil)
-      get_async(resource_group_name, automation_account_name, module_name, activity_name, custom_headers:custom_headers).value!
+    def get_with_http_info(automation_account_name, module_name, activity_name, custom_headers:nil)
+      get_async(automation_account_name, module_name, activity_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve the activity in the module identified by module name and activity
     # name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param activity_name [String] The name of activity.
@@ -69,9 +66,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, automation_account_name, module_name, activity_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def get_async(automation_account_name, module_name, activity_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'module_name is nil' if module_name.nil?
       fail ArgumentError, 'activity_name is nil' if activity_name.nil?
@@ -91,7 +88,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'moduleName' => module_name,'activityName' => activity_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'moduleName' => module_name,'activityName' => activity_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -128,7 +125,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of activities in the module identified by module name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -136,15 +132,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Array<Activity>] operation results.
     #
-    def list_by_module(resource_group_name, automation_account_name, module_name, custom_headers:nil)
-      first_page = list_by_module_as_lazy(resource_group_name, automation_account_name, module_name, custom_headers:custom_headers)
+    def list_by_module(automation_account_name, module_name, custom_headers:nil)
+      first_page = list_by_module_as_lazy(automation_account_name, module_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
     # Retrieve a list of activities in the module identified by module name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -152,14 +147,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_module_with_http_info(resource_group_name, automation_account_name, module_name, custom_headers:nil)
-      list_by_module_async(resource_group_name, automation_account_name, module_name, custom_headers:custom_headers).value!
+    def list_by_module_with_http_info(automation_account_name, module_name, custom_headers:nil)
+      list_by_module_async(automation_account_name, module_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve a list of activities in the module identified by module name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -167,9 +161,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_module_async(resource_group_name, automation_account_name, module_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def list_by_module_async(automation_account_name, module_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'module_name is nil' if module_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -188,7 +182,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'moduleName' => module_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'moduleName' => module_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -313,7 +307,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of activities in the module identified by module name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param module_name [String] The name of module.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -322,8 +315,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [ActivityListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_module_as_lazy(resource_group_name, automation_account_name, module_name, custom_headers:nil)
-      response = list_by_module_async(resource_group_name, automation_account_name, module_name, custom_headers:custom_headers).value!
+    def list_by_module_as_lazy(automation_account_name, module_name, custom_headers:nil)
+      response = list_by_module_async(automation_account_name, module_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

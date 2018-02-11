@@ -12,6 +12,10 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [Boolean] Whether the application is available to other
       # tenants.
       attr_accessor :available_to_other_tenants
@@ -59,6 +63,21 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'ApplicationCreateParameters',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               available_to_other_tenants: {
                 client_side_validation: true,
                 required: true,

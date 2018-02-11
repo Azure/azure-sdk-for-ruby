@@ -17,6 +17,10 @@ module Azure::Compute::Mgmt::V2017_12_01
       # 'None', 'ReadOnly', 'ReadWrite'
       attr_accessor :caching
 
+      # @return [Boolean] Specifies whether writeAccelerator should be enabled
+      # or disabled on the disk.
+      attr_accessor :write_accelerator_enabled
+
       # @return [VirtualHardDisk] The Source User Image VirtualHardDisk. This
       # VirtualHardDisk will be copied before using it to attach to the Virtual
       # Machine. If SourceImage is provided, the destination VirtualHardDisk
@@ -51,6 +55,14 @@ module Azure::Compute::Mgmt::V2017_12_01
                 type: {
                   name: 'Enum',
                   module: 'CachingTypes'
+                }
+              },
+              write_accelerator_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'writeAcceleratorEnabled',
+                type: {
+                  name: 'Boolean'
                 }
               },
               image: {

@@ -113,10 +113,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'Boolean'
                 }
               },
-              is_dpmupgrade_available: {
+              is_dpm_upgrade_available: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'isDPMUpgradeAvailable',
+                serialized_name: 'isDpmUpgradeAvailable',
                 type: {
                   name: 'Boolean'
                 }

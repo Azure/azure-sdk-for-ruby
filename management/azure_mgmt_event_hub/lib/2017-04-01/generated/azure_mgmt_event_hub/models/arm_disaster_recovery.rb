@@ -18,9 +18,13 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # 'Failed'. Possible values include: 'Accepted', 'Succeeded', 'Failed'
       attr_accessor :provisioning_state
 
-      # @return [String] Primary/Secondary eventhub namespace name, which is
-      # part of GEO DR pairning
+      # @return [String] ARM Id of the Primary/Secondary eventhub namespace
+      # name, which is part of GEO DR pairning
       attr_accessor :partner_namespace
+
+      # @return [String] Alternate name specified when alias and namespace
+      # names are same.
+      attr_accessor :alternate_name
 
       # @return [RoleDisasterRecovery] role of namespace in GEO DR - possible
       # values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible
@@ -82,6 +86,14 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partnerNamespace',
+                type: {
+                  name: 'String'
+                }
+              },
+              alternate_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.alternateName',
                 type: {
                   name: 'String'
                 }

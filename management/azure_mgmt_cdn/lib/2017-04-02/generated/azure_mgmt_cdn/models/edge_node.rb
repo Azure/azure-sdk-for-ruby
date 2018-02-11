@@ -9,7 +9,7 @@ module Azure::CDN::Mgmt::V2017_04_02
     # Edgenode is a global Point of Presence (POP) location used to deliver CDN
     # content to end users.
     #
-    class EdgeNode < Resource
+    class EdgeNode < ProxyResource
 
       include MsRestAzure
 
@@ -55,30 +55,6 @@ module Azure::CDN::Mgmt::V2017_04_02
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               ip_address_groups: {

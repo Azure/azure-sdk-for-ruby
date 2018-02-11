@@ -14,8 +14,18 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [BackupManagementType] Backup management type. Possible values
       # include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer',
-      # 'AzureSql'
+      # 'AzureSql', 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
+
+      # @return [WorkloadType] Workload type. Possible values include:
+      # 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange',
+      # 'Sharepoint', 'VMwareVM', 'SystemState', 'Client', 'GenericDataSource',
+      # 'SQLDataBase', 'AzureFileShare'
+      attr_accessor :workload_type
+
+      # @return [String] Full name of the container whose Protectable Objects
+      # should be returned.
+      attr_accessor :container_name
 
       # @return [String] Backup status query parameter.
       attr_accessor :status
@@ -41,6 +51,22 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
+                type: {
+                  name: 'String'
+                }
+              },
+              workload_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'workloadType',
+                type: {
+                  name: 'String'
+                }
+              },
+              container_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'containerName',
                 type: {
                   name: 'String'
                 }

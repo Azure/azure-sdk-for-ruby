@@ -13,6 +13,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["LogSchedulePolicy"] = "LogSchedulePolicy"
       @@discriminatorMap["LongTermSchedulePolicy"] = "LongTermSchedulePolicy"
       @@discriminatorMap["SimpleSchedulePolicy"] = "SimpleSchedulePolicy"
 

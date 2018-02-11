@@ -17,23 +17,29 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       @@discriminatorMap["AzureBackupServerContainer"] = "AzureBackupServerContainer"
       @@discriminatorMap["Microsoft.ClassicCompute/virtualMachines"] = "AzureIaaSClassicComputeVMContainer"
       @@discriminatorMap["Microsoft.Compute/virtualMachines"] = "AzureIaaSComputeVMContainer"
+      @@discriminatorMap["SQLAGWorkLoadContainer"] = "AzureSQLAGWorkloadContainerProtectionContainer"
       @@discriminatorMap["AzureSqlContainer"] = "AzureSqlContainer"
+      @@discriminatorMap["StorageContainer"] = "AzureStorageContainer"
+      @@discriminatorMap["VMAppContainer"] = "AzureVMAppContainerProtectionContainer"
+      @@discriminatorMap["AzureWorkloadContainer"] = "AzureWorkloadContainer"
       @@discriminatorMap["DPMContainer"] = "DpmContainer"
+      @@discriminatorMap["GenericContainer"] = "GenericContainer"
       @@discriminatorMap["IaaSVMContainer"] = "IaaSVMContainer"
       @@discriminatorMap["MABWindowsContainer"] = "MabContainer"
 
       def initialize
-        @protectableObjectType = "ProtectionContainer"
+        @containerType = "ProtectionContainer"
       end
 
-      attr_accessor :protectableObjectType
+      attr_accessor :containerType
 
       # @return [String] Friendly name of the container.
       attr_accessor :friendly_name
 
       # @return [BackupManagementType] Type of backup managemenent for the
       # container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
-      # 'DPM', 'AzureBackupServer', 'AzureSql'
+      # 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+      # 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
 
       # @return [String] Status of registration of the container with the
@@ -42,16 +48,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [String] Status of health of the container.
       attr_accessor :health_status
-
-      # @return [ContainerType] Type of the container. The value of this
-      # property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines
-      # 2. Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines
-      # 3. Windows machines (like MAB, DPM etc) is Windows 4. Azure SQL
-      # instance is AzureSqlContainer. Possible values include: 'Invalid',
-      # 'Unknown', 'IaasVMContainer', 'IaasVMServiceContainer', 'DPMContainer',
-      # 'AzureBackupServerContainer', 'MABContainer', 'Cluster',
-      # 'AzureSqlContainer', 'Windows', 'VCenter'
-      attr_accessor :container_type
 
 
       #
@@ -65,7 +61,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
           serialized_name: 'ProtectionContainer',
           type: {
             name: 'Composite',
-            polymorphic_discriminator: 'protectableObjectType',
+            polymorphic_discriminator: 'containerType',
             uber_parent: 'ProtectionContainer',
             class_name: 'ProtectionContainer',
             model_properties: {
@@ -97,15 +93,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'healthStatus',
-                type: {
-                  name: 'String'
-                }
-              },
-              container_type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'containerType',
                 type: {
                   name: 'String'
                 }

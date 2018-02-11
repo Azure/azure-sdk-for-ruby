@@ -9,7 +9,7 @@ module Azure::CDN::Mgmt::V2017_04_02
     # Friendly domain name mapping to the endpoint hostname that the customer
     # provides for branding purposes, e.g. www.consoto.com.
     #
-    class CustomDomain < Resource
+    class CustomDomain < ProxyResource
 
       include MsRestAzure
 
@@ -85,30 +85,6 @@ module Azure::CDN::Mgmt::V2017_04_02
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               host_name: {

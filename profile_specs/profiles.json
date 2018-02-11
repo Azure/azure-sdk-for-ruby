@@ -57,7 +57,7 @@
             "resourceTypes": {
                 "Microsoft.AnalysisServices": {
                     "management": {
-                        "2017-07-14": ["*"]
+                        "2017-08-01": ["*"]
                     }
                 },
                 "Microsoft.Authorization": {
@@ -72,7 +72,7 @@
                 },
                 "Microsoft.Batch": {
                     "management": {
-                        "2017-05-01": ["*"]
+                        "2017-09-01": ["*"]
                     }
                 },
                 "Microsoft.Billing": {
@@ -82,7 +82,7 @@
                 },
                 "Microsoft.CDN": {
                     "management": {
-                        "2017-04-02": ["*"]
+                        "2017-10-12": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices": {
@@ -104,12 +104,12 @@
                 },
                 "Microsoft.Consumption": {
                     "management": {
-                        "2017-04-24-preview": ["*"]
+                        "2018-01-31": ["*"]
                     }
                 },
                 "Microsoft.ContainerInstance": {
                     "management": {
-                        "2017-08-01-preview": ["*"]
+                        "2018-02-01-preview": ["*"]
                     }
                 },
                 "Microsoft.ContainerRegistry": {
@@ -144,11 +144,14 @@
                 },
                 "Microsoft.Dns": {
                     "management": {
-                        "2016-04-01": ["*"]
+                        "2017-09-01": ["*"]
                     }
                 },
                 "Microsoft.EventGrid": {
                     "management": {
+                        "2018-01-01": ["*"]
+                    },
+                    "data": {
                         "2018-01-01": ["*"]
                     }
                 },
@@ -199,7 +202,7 @@
                 },
                 "Microsoft.ManagedApplications": {
                     "management": {
-                        "2016-09-01-preview": ["*"]
+                        "2017-09-01": ["*"]
                     }
                 },
                 "Microsoft.MarketplaceOrdering": {
@@ -222,7 +225,8 @@
                         "2015-04-01": ["*"],
                         "2016-03-01": ["*"],
                         "2017-04-01": ["*"],
-                        "2017-05-01-preview": ["*"]
+                        "2017-05-01-preview": ["*"],
+                        "2017-11-01-preview": ["*"]
                     }
                 },
                 "Microsoft.ManagedServiceIdentity": {
@@ -232,7 +236,7 @@
                 },
                 "Microsoft.Network": {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-01-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -259,8 +263,7 @@
                 },
                 "Microsoft.RecoveryServices": {
                     "management": {
-                        "2016-06-01": ["*"],
-                        "2016-12-01": ["*"]
+                        "2016-06-01": ["*"]
                     }
                 },
                 "Microsoft.RecoveryServicesBackup": {
@@ -277,7 +280,7 @@
                 },
                 "Microsoft.Redis": {
                     "management": {
-                        "2017-02-01": ["*"]
+                        "2017-10-01": ["*"]
                     }
                 },
                 "Microsoft.Relay": {
@@ -292,7 +295,7 @@
                 },
                 "Microsoft.ResourcesManagement": {
                     "management": {
-                        "2017-08-31-preview": ["*"]
+                        "2017-11-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Scheduler": {
@@ -317,7 +320,7 @@
                 },
                 "Microsoft.ServiceFabric": {
                     "management": {
-                        "2016-09-01": ["*"]
+                        "2017-07-01-preview": ["*"]
                     }
                 },
                 "Microsoft.SQL": {
@@ -416,11 +419,6 @@
                     "data": {
                         "1.0": ["*"]
                     }
-                },
-                "Microsoft.EventGrid": {
-                    "data": {
-                        "2018-01-01": ["*"]
-                    }
                 }
             },
             "output_dir": "azure_sdk/lib"
@@ -434,7 +432,7 @@
             "resourceTypes": {
                 "Microsoft.AnalysisServices": {
                     "management": {
-                        "2017-07-14": ["*"]
+                        "2017-08-01": ["*"]
                     }
                 }
             },
@@ -476,7 +474,7 @@
             "resourceTypes": {
                 "Microsoft.Batch" : {
                     "management": {
-                        "2017-05-01": ["*"]
+                        "2017-09-01": ["*"]
                     }
                 }
             },
@@ -504,7 +502,7 @@
             "resourceTypes": {
                 "Microsoft.CDN" : {
                     "management": {
-                        "2017-04-02": ["*"]
+                        "2017-10-12": ["*"]
                     }
                 }
             },
@@ -574,7 +572,7 @@
             "resourceTypes": {
                 "Microsoft.Consumption" : {
                     "management": {
-                        "2017-11-30": ["*"]
+                        "2018-01-31": ["*"]
                     }
                 }
             },
@@ -588,7 +586,7 @@
             "resourceTypes": {
                 "Microsoft.ContainerInstance" : {
                     "management": {
-                        "2017-08-01-preview": ["*"]
+                        "2018-02-01-preview": ["*"]
                     }
                 }
             },
@@ -686,7 +684,7 @@
             "resourceTypes": {
                 "Microsoft.Dns" : {
                     "management": {
-                        "2016-04-01": ["*"]
+                        "2017-09-01": ["*"]
                     }
                 }
             },
@@ -862,7 +860,7 @@
             "resourceTypes": {
                 "Microsoft.ManagedApplications" : {
                     "management": {
-                        "2016-09-01-preview": ["*"]
+                        "2017-09-01": ["*"]
                     }
                 }
             },
@@ -921,7 +919,8 @@
                         "2015-04-01": ["*"],
                         "2016-03-01": ["*"],
                         "2017-04-01": ["*"],
-                        "2017-05-01-preview": ["*"]
+                        "2017-05-01-preview": ["*"],
+                        "2017-11-01-preview": ["*"]
                     }
                 }
             },
@@ -961,7 +960,7 @@
             "resourceTypes": {
                 "Microsoft.Network" : {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-01-01": ["*"]
                     }
                 }
             },
@@ -1061,8 +1060,7 @@
             "resourceTypes": {
                 "Microsoft.RecoveryServices" : {
                     "management": {
-                        "2016-06-01": ["*"],
-                        "2016-12-01": ["*"]
+                        "2016-06-01": ["*"]
                     }
                 }
             },
@@ -1090,7 +1088,7 @@
             "resourceTypes": {
                 "Microsoft.Redis" : {
                     "management": {
-                        "2017-02-01": ["*"]
+                        "2017-10-01": ["*"]
                     }
                 }
             },
@@ -1118,7 +1116,7 @@
             "resourceTypes": {
                 "Microsoft.ResourcesManagement" : {
                     "management": {
-                        "2017-08-31-preview": ["*"]
+                        "2017-11-01-preview": ["*"]
                     }
                 }
             },
@@ -1214,7 +1212,7 @@
             "resourceTypes": {
                 "Microsoft.ServiceFabric" : {
                     "management": {
-                        "2016-09-01": ["*"]
+                        "2017-07-01-preview": ["*"]
                     }
                 }
             },
@@ -1258,7 +1256,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2015-06-15": ["*"]
+                        "2016-01-01": ["*"]
                     }
                 }
             },

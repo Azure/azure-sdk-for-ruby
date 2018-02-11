@@ -49,6 +49,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 serialized_name: 'authentication',
                 type: {
                   name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'HttpAuthentication',
                   class_name: 'HttpAuthentication'
                 }
               },

@@ -14,6 +14,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [StorageType] Storage type. Possible values include: 'Invalid',
       # 'GeoRedundant', 'LocallyRedundant'
+      attr_accessor :storage_model_type
+
+      # @return [StorageType] Storage type. Possible values include: 'Invalid',
+      # 'GeoRedundant', 'LocallyRedundant'
       attr_accessor :storage_type
 
       # @return [StorageTypeState] Locked or Unlocked. Once a machine is
@@ -39,6 +43,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             name: 'Composite',
             class_name: 'BackupResourceVaultConfig',
             model_properties: {
+              storage_model_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'storageModelType',
+                type: {
+                  name: 'String'
+                }
+              },
               storage_type: {
                 client_side_validation: true,
                 required: false,

@@ -14,7 +14,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [BackupManagementType] Backup management type for the backup
       # engine. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
-      # 'DPM', 'AzureBackupServer', 'AzureSql'
+      # 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+      # 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
 
       # @return [String] Friendly name of the backup engine.

@@ -32,13 +32,15 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # @return [MabServerType] Server type of MAB container. Possible values
       # include: 'Invalid', 'Unknown', 'IaasVMContainer',
       # 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
-      # 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter'
+      # 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
+      # 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
+      # 'GenericContainer'
       attr_accessor :mab_server_type
 
       # @return [WorkloadType] Workload type of backup item. Possible values
       # include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
       # 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-      # 'GenericDataSource'
+      # 'GenericDataSource', 'SQLDataBase', 'AzureFileShare'
       attr_accessor :workload_type
 
       # @return [Array<MabErrorInfo>] The errors.

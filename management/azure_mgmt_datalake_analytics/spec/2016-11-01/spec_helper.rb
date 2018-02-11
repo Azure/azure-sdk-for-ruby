@@ -75,7 +75,7 @@ class ResourceHelper
     dsl_acc = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount.new
     dsl_acc.name = name
     dsl_acc.location = 'East US 2'
-    dls_acc_client.account.create(@@resource_group_name, name, dsl_acc)
+    dls_acc_client.accounts.create(@@resource_group_name, name, dsl_acc)
   end
 
   def create_datalake_analysis_account(analytics_acc_name, store_acc_name)

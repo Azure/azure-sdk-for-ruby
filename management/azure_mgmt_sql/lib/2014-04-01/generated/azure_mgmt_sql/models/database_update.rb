@@ -110,9 +110,11 @@ module Azure::SQL::Mgmt::V2014_04_01
       # createMode is NonReadableSecondary or OnlineSecondary, this value is
       # ignored. To see possible values, query the capabilities API
       # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-      # referred to by operationId: "Capabilities_ListByLocation.". Possible
-      # values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-      # 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
+      # referred to by operationId: "Capabilities_ListByLocation." or use the
+      # Azure CLI command `az sql db list-editions -l westus --query [].name`.
+      # Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+      # 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
+      # 'System2'
       attr_accessor :edition
 
       # @return [String] The max size of the database expressed in bytes. If
@@ -131,7 +133,9 @@ module Azure::SQL::Mgmt::V2014_04_01
       # requestedServiceObjectiveName. To see possible values, query the
       # capabilities API
       # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-      # referred to by operationId: "Capabilities_ListByLocation."
+      # referred to by operationId: "Capabilities_ListByLocation." or use the
+      # Azure CLI command `az sql db list-editions --location <location>
+      # --query [].supportedServiceLevelObjectives[].name` .
       attr_accessor :requested_service_objective_id
 
       # @return [ServiceObjectiveName] The name of the configured service level
@@ -140,15 +144,31 @@ module Azure::SQL::Mgmt::V2014_04_01
       # updated, it will match the value of serviceLevelObjective property. To
       # see possible values, query the capabilities API
       # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-      # referred to by operationId: "Capabilities_ListByLocation.". Possible
-      # values include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2', 'P3',
-      # 'P4', 'P6', 'P11', 'P15', 'System', 'System2', 'ElasticPool'
+      # referred to by operationId: "Capabilities_ListByLocation." or use the
+      # Azure CLI command `az sql db list-editions --location <location>
+      # --query [].supportedServiceLevelObjectives[].name`. Possible values
+      # include: 'System', 'System0', 'System1', 'System2', 'System3',
+      # 'System4', 'System2L', 'System3L', 'System4L', 'Free', 'Basic', 'S0',
+      # 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2', 'P3',
+      # 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100',
+      # 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000', 'DW1200',
+      # 'DW1000c', 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000',
+      # 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c',
+      # 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400',
+      # 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
       attr_accessor :requested_service_objective_name
 
       # @return [ServiceObjectiveName] The current service level objective of
-      # the database. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
-      # 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
-      # 'ElasticPool'
+      # the database. Possible values include: 'System', 'System0', 'System1',
+      # 'System2', 'System3', 'System4', 'System2L', 'System3L', 'System4L',
+      # 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12',
+      # 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4',
+      # 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000',
+      # 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000', 'DW2000c',
+      # 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+      # 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200',
+      # 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500',
+      # 'DS2000', 'ElasticPool'
       attr_accessor :service_level_objective
 
       # @return [String] The status of the database.
@@ -190,6 +210,11 @@ module Azure::SQL::Mgmt::V2014_04_01
       # is ignored. Not supported for DataWarehouse edition. Possible values
       # include: 'AdventureWorksLT'
       attr_accessor :sample_name
+
+      # @return [Boolean] Whether or not this database is zone redundant, which
+      # means the replicas of this database will be spread across multiple
+      # availability zones.
+      attr_accessor :zone_redundant
 
 
       #
@@ -486,6 +511,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 serialized_name: 'properties.sampleName',
                 type: {
                   name: 'String'
+                }
+              },
+              zone_redundant: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.zoneRedundant',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

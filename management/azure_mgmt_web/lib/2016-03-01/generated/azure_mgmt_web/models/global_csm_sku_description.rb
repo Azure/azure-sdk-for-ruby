@@ -18,6 +18,12 @@ module Azure::Web::Mgmt::V2016_03_01
       # @return [String] Service Tier of the resource SKU.
       attr_accessor :tier
 
+      # @return [String] Size specifier of the resource SKU.
+      attr_accessor :size
+
+      # @return [String] Family code of the resource SKU.
+      attr_accessor :family
+
       # @return [SkuCapacity] Min, max, and default scale values of the SKU.
       attr_accessor :capacity
 
@@ -54,6 +60,22 @@ module Azure::Web::Mgmt::V2016_03_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
+                type: {
+                  name: 'String'
+                }
+              },
+              size: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'size',
+                type: {
+                  name: 'String'
+                }
+              },
+              family: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'family',
                 type: {
                   name: 'String'
                 }

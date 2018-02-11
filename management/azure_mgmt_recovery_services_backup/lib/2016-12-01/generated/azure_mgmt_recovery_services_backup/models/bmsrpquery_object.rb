@@ -18,6 +18,15 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [DateTime] Backup copies created before this time.
       attr_accessor :end_date
 
+      # @return [RestorePointQueryType] RestorePoint type. Possible values
+      # include: 'Invalid', 'Full', 'Log', 'Differential',
+      # 'FullAndDifferential', 'All'
+      attr_accessor :restore_point_query_type
+
+      # @return [Boolean] In Get Recovery Point, it tells whether extended
+      # information about recovery point is asked.
+      attr_accessor :extended_info
+
 
       #
       # Mapper for BMSRPQueryObject class as Ruby Hash.
@@ -46,6 +55,22 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 serialized_name: 'endDate',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              restore_point_query_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'restorePointQueryType',
+                type: {
+                  name: 'String'
+                }
+              },
+              extended_info: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'extendedInfo',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

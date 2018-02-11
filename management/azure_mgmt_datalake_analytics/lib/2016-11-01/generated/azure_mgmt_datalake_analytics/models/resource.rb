@@ -6,25 +6,25 @@
 module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   module Models
     #
-    # The Resource model definition.
+    # The resource model definition.
     #
     class Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id
+      # @return [String] The resource identifer.
       attr_accessor :id
 
-      # @return [String] Resource name
+      # @return [String] The resource name.
       attr_accessor :name
 
-      # @return [String] Resource type
+      # @return [String] The resource type.
       attr_accessor :type
 
-      # @return [String] Resource location
+      # @return [String] The resource location.
       attr_accessor :location
 
-      # @return [Hash{String => String}] Resource tags
+      # @return [Hash{String => String}] The resource tags.
       attr_accessor :tags
 
 
@@ -70,7 +70,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -79,6 +80,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               tags: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',

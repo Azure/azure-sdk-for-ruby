@@ -36,20 +36,26 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Accounts] accounts
+    attr_reader :accounts
+
+    # @return [DataLakeStoreAccounts] data_lake_store_accounts
+    attr_reader :data_lake_store_accounts
+
+    # @return [StorageAccounts] storage_accounts
+    attr_reader :storage_accounts
+
     # @return [ComputePolicies] compute_policies
     attr_reader :compute_policies
 
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
-    # @return [StorageAccounts] storage_accounts
-    attr_reader :storage_accounts
+    # @return [Operations] operations
+    attr_reader :operations
 
-    # @return [DataLakeStoreAccounts] data_lake_store_accounts
-    attr_reader :data_lake_store_accounts
-
-    # @return [Account] account
-    attr_reader :account
+    # @return [Locations] locations
+    attr_reader :locations
 
     #
     # Creates initializes a new instance of the DataLakeAnalyticsAccountManagementClient class.
@@ -64,11 +70,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @accounts = Accounts.new(self)
+      @data_lake_store_accounts = DataLakeStoreAccounts.new(self)
+      @storage_accounts = StorageAccounts.new(self)
       @compute_policies = ComputePolicies.new(self)
       @firewall_rules = FirewallRules.new(self)
-      @storage_accounts = StorageAccounts.new(self)
-      @data_lake_store_accounts = DataLakeStoreAccounts.new(self)
-      @account = Account.new(self)
+      @operations = Operations.new(self)
+      @locations = Locations.new(self)
       @api_version = '2016-11-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

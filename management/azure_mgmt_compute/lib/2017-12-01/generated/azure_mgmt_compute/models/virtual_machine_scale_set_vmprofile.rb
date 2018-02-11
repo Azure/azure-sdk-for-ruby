@@ -44,6 +44,11 @@ module Azure::Compute::Mgmt::V2017_12_01
       # <br><br> Minimum api-version: 2015-06-15
       attr_accessor :license_type
 
+      # @return [VirtualMachinePriorityTypes] Specifies the priority for the
+      # virtual machines in the scale set. <br><br>Minimum api-version:
+      # 2017-10-30-preview. Possible values include: 'Regular', 'Low'
+      attr_accessor :priority
+
 
       #
       # Mapper for VirtualMachineScaleSetVMProfile class as Ruby Hash.
@@ -107,6 +112,14 @@ module Azure::Compute::Mgmt::V2017_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'licenseType',
+                type: {
+                  name: 'String'
+                }
+              },
+              priority: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'priority',
                 type: {
                   name: 'String'
                 }

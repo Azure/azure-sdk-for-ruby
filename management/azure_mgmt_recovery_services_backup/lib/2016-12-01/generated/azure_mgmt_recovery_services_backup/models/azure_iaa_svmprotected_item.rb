@@ -43,8 +43,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # item.
       attr_accessor :health_details
 
-      # @return [String] Last backup operation status. Possible values:
-      # Healthy, Unhealthy.
+      # @return [String] Last backup operation status.
       attr_accessor :last_backup_status
 
       # @return [DateTime] Timestamp of the last backup operation on this
@@ -118,6 +117,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 serialized_name: 'lastRecoveryPoint',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              backup_set_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'backupSetName',
+                type: {
+                  name: 'String'
                 }
               },
               protectedItemType: {

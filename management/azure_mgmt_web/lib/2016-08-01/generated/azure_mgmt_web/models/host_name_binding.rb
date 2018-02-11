@@ -12,9 +12,6 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
-      # @return [String] Hostname.
-      attr_accessor :host_name_binding_name
-
       # @return [String] App Service app name.
       attr_accessor :site_name
 
@@ -92,14 +89,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              host_name_binding_name: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.name',
                 type: {
                   name: 'String'
                 }

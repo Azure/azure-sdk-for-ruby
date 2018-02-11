@@ -21,7 +21,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # @return [String] Encryption key thumbprint.
       attr_accessor :encryption_key_thumbprint
 
-      # @return [String] Algorithm.
+      # @return [String] Algorithm for Vault ExtendedInfo
       attr_accessor :algorithm
 
 

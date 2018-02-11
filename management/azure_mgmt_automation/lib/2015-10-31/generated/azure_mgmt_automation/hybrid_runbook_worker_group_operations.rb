@@ -24,7 +24,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] Automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -32,15 +31,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
-      response = delete_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
+    def delete(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
+      response = delete_async(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # Delete a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] Automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -49,14 +47,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
-      delete_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
+      delete_async(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
     end
 
     #
     # Delete a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] Automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -65,9 +62,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def delete_async(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'hybrid_runbook_worker_group_name is nil' if hybrid_runbook_worker_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -86,7 +83,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'hybridRunbookWorkerGroupName' => hybrid_runbook_worker_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'hybridRunbookWorkerGroupName' => hybrid_runbook_worker_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -113,7 +110,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -122,15 +118,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [HybridRunbookWorkerGroup] operation results.
     #
-    def get(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
-      response = get_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
+    def get(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
+      response = get_async(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -139,14 +134,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
-      get_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
+    def get_with_http_info(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
+      get_async(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -155,9 +149,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def get_async(automation_account_name, hybrid_runbook_worker_group_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'hybrid_runbook_worker_group_name is nil' if hybrid_runbook_worker_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -176,7 +170,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'hybridRunbookWorkerGroupName' => hybrid_runbook_worker_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'hybridRunbookWorkerGroupName' => hybrid_runbook_worker_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -213,7 +207,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -224,15 +217,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [HybridRunbookWorkerGroup] operation results.
     #
-    def update(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:nil)
-      response = update_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:custom_headers).value!
+    def update(automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:nil)
+      response = update_async(automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Update a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -243,14 +235,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:nil)
-      update_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:custom_headers).value!
+    def update_with_http_info(automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:nil)
+      update_async(automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
     # Update a hybrid runbook worker group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
@@ -261,9 +252,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def update_async(automation_account_name, hybrid_runbook_worker_group_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'hybrid_runbook_worker_group_name is nil' if hybrid_runbook_worker_group_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -289,7 +280,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'hybridRunbookWorkerGroupName' => hybrid_runbook_worker_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'hybridRunbookWorkerGroupName' => hybrid_runbook_worker_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -327,45 +318,42 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of hybrid runbook worker groups.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<HybridRunbookWorkerGroup>] operation results.
     #
-    def list_by_automation_account(resource_group_name, automation_account_name, custom_headers:nil)
-      first_page = list_by_automation_account_as_lazy(resource_group_name, automation_account_name, custom_headers:custom_headers)
+    def list_by_automation_account(automation_account_name, custom_headers:nil)
+      first_page = list_by_automation_account_as_lazy(automation_account_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
     # Retrieve a list of hybrid runbook worker groups.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_automation_account_with_http_info(resource_group_name, automation_account_name, custom_headers:nil)
-      list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers:custom_headers).value!
+    def list_by_automation_account_with_http_info(automation_account_name, custom_headers:nil)
+      list_by_automation_account_async(automation_account_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve a list of hybrid runbook worker groups.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def list_by_automation_account_async(automation_account_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -383,7 +371,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -508,7 +496,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of hybrid runbook worker groups.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -516,8 +503,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [HybridRunbookWorkerGroupsListResult] which provide lazy access to
     # pages of the response.
     #
-    def list_by_automation_account_as_lazy(resource_group_name, automation_account_name, custom_headers:nil)
-      response = list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers:custom_headers).value!
+    def list_by_automation_account_as_lazy(automation_account_name, custom_headers:nil)
+      response = list_by_automation_account_async(automation_account_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

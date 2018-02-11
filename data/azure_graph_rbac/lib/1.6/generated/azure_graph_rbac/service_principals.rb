@@ -259,8 +259,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -338,8 +337,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -361,6 +359,106 @@ module Azure::GraphRbac::V1_6
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::GraphRbac::V1_6::Models::ServicePrincipal.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Directory objects that are owners of this service principal.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param object_id [String] The object ID of the service principal for which to
+    # get owners.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DirectoryObjectListResult] operation results.
+    #
+    def list_owners(object_id, custom_headers:nil)
+      response = list_owners_async(object_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Directory objects that are owners of this service principal.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param object_id [String] The object ID of the service principal for which to
+    # get owners.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_owners_with_http_info(object_id, custom_headers:nil)
+      list_owners_async(object_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Directory objects that are owners of this service principal.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param object_id [String] The object ID of the service principal for which to
+    # get owners.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_owners_async(object_id, custom_headers:nil)
+      fail ArgumentError, 'object_id is nil' if object_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{tenantID}/servicePrincipals/{objectId}/owners'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -430,8 +528,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -534,8 +631,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -614,8 +710,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -715,8 +810,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          skip_encoding_path_params: {'objectId' => object_id},
+          path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

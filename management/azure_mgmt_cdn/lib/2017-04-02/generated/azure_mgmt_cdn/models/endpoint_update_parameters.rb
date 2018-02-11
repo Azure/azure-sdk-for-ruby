@@ -15,8 +15,11 @@ module Azure::CDN::Mgmt::V2017_04_02
       # @return [Hash{String => String}] Endpoint tags.
       attr_accessor :tags
 
-      # @return [String] The host header CDN sends along with content requests
-      # to origin. The default value is the host name of the origin.
+      # @return [String] The host header value sent to the origin with each
+      # request. If you leave this blank, the request hostname determines this
+      # value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud
+      # Services require this host header value to match the origin hostname by
+      # default.
       attr_accessor :origin_host_header
 
       # @return [String] A directory path on the origin that CDN can use to

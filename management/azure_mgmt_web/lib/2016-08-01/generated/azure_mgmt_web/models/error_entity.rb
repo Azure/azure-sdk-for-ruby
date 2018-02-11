@@ -12,12 +12,6 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
-      # @return [String] Basic error code.
-      attr_accessor :code
-
-      # @return [String] Any details of the error.
-      attr_accessor :message
-
       # @return [String] Type of error.
       attr_accessor :extended_code
 
@@ -29,6 +23,12 @@ module Azure::Web::Mgmt::V2016_08_01
 
       # @return [Array<ErrorEntity>] Inner errors.
       attr_accessor :inner_errors
+
+      # @return [String] Basic error code.
+      attr_accessor :code
+
+      # @return [String] Any details of the error.
+      attr_accessor :message
 
 
       #
@@ -44,22 +44,6 @@ module Azure::Web::Mgmt::V2016_08_01
             name: 'Composite',
             class_name: 'ErrorEntity',
             model_properties: {
-              code: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'code',
-                type: {
-                  name: 'String'
-                }
-              },
-              message: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'message',
-                type: {
-                  name: 'String'
-                }
-              },
               extended_code: {
                 client_side_validation: true,
                 required: false,
@@ -107,6 +91,22 @@ module Azure::Web::Mgmt::V2016_08_01
                         class_name: 'ErrorEntity'
                       }
                   }
+                }
+              },
+              code: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'code',
+                type: {
+                  name: 'String'
+                }
+              },
+              message: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'message',
+                type: {
+                  name: 'String'
                 }
               }
             }

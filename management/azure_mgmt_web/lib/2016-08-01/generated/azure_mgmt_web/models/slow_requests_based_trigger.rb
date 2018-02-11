@@ -15,7 +15,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [String] Time taken.
       attr_accessor :time_taken
 
-      # @return [Integer] Count.
+      # @return [Integer] Request Count.
       attr_accessor :count
 
       # @return [String] Time interval.

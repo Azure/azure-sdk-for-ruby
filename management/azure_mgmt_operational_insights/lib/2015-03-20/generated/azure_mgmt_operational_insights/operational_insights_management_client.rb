@@ -45,6 +45,9 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     # @return [SavedSearches] saved_searches
     attr_reader :saved_searches
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     #
     # Creates initializes a new instance of the OperationalInsightsManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -61,6 +64,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       @storage_insights = StorageInsights.new(self)
       @workspaces = Workspaces.new(self)
       @saved_searches = SavedSearches.new(self)
+      @operations = Operations.new(self)
       @api_version = '2015-03-20'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

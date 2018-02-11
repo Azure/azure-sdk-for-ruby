@@ -22,7 +22,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     attr_reader :client
 
     #
-    # Upload a certificate for a resource.
+    # Uploads a certificate for a resource.
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
@@ -41,7 +41,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     end
 
     #
-    # Upload a certificate for a resource.
+    # Uploads a certificate for a resource.
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
@@ -59,7 +59,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     end
 
     #
-    # Upload a certificate for a resource.
+    # Uploads a certificate for a resource.
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.

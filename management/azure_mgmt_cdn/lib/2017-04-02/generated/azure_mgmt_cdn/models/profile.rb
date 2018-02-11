@@ -9,7 +9,7 @@ module Azure::CDN::Mgmt::V2017_04_02
     # CDN profile is a logical grouping of endpoints that share the same
     # settings, such as CDN provider and pricing tier.
     #
-    class Profile < Resource
+    class Profile < TrackedResource
 
       include MsRestAzure
 

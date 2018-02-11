@@ -74,6 +74,12 @@ module Azure::Compute::Mgmt::V2017_12_01
     # @return [VirtualMachineScaleSetVMs] virtual_machine_scale_set_vms
     attr_reader :virtual_machine_scale_set_vms
 
+    # @return [LogAnalytics] log_analytics
+    attr_reader :log_analytics
+
+    # @return [VirtualMachineRunCommands] virtual_machine_run_commands
+    attr_reader :virtual_machine_run_commands
+
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -99,6 +105,8 @@ module Azure::Compute::Mgmt::V2017_12_01
       @virtual_machine_scale_set_extensions = VirtualMachineScaleSetExtensions.new(self)
       @virtual_machine_scale_set_rolling_upgrades = VirtualMachineScaleSetRollingUpgrades.new(self)
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
+      @log_analytics = LogAnalytics.new(self)
+      @virtual_machine_run_commands = VirtualMachineRunCommands.new(self)
       @api_version = '2017-12-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

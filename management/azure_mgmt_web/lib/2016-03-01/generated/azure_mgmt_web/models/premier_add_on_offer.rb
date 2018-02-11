@@ -12,23 +12,23 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
-      # @return [String] SKU.
+      # @return [String] Premier add on SKU.
       attr_accessor :sku
 
-      # @return [String] Product.
+      # @return [String] Premier add on offer Product.
       attr_accessor :product
 
-      # @return [String] Vendor.
+      # @return [String] Premier add on offer Vendor.
       attr_accessor :vendor
 
-      # @return [String] Name.
+      # @return [String] Premier add on offer Name.
       attr_accessor :premier_add_on_offer_name
 
       # @return [Boolean] <code>true</code> if promotion code is required;
       # otherwise, <code>false</code>.
       attr_accessor :promo_code_required
 
-      # @return [Integer] Quota.
+      # @return [Integer] Premier add on offer Quota.
       attr_accessor :quota
 
       # @return [AppServicePlanRestrictions] App Service plans this offer is
