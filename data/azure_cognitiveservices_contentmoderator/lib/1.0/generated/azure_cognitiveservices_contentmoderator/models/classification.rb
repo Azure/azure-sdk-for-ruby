@@ -12,14 +12,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
       include MsRestAzure
 
-      # @return [Float] The adult score.
-      attr_accessor :adult_score
+      # @return [Score]
+      attr_accessor :category1
 
-      # @return [Float] The racy score.
-      attr_accessor :racy_score
+      # @return [Score]
+      attr_accessor :category2
 
-      # @return [Float] The offensive score.
-      attr_accessor :offensive_score
+      # @return [Score]
+      attr_accessor :category3
 
       # @return [Boolean] The review recommended flag.
       attr_accessor :review_recommended
@@ -38,28 +38,31 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             name: 'Composite',
             class_name: 'Classification',
             model_properties: {
-              adult_score: {
+              category1: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'AdultScore',
+                serialized_name: 'Category1',
                 type: {
-                  name: 'Double'
+                  name: 'Composite',
+                  class_name: 'Score'
                 }
               },
-              racy_score: {
+              category2: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'RacyScore',
+                serialized_name: 'Category2',
                 type: {
-                  name: 'Double'
+                  name: 'Composite',
+                  class_name: 'Score'
                 }
               },
-              offensive_score: {
+              category3: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'OffensiveScore',
+                serialized_name: 'Category3',
                 type: {
-                  name: 'Double'
+                  name: 'Composite',
+                  class_name: 'Score'
                 }
               },
               review_recommended: {

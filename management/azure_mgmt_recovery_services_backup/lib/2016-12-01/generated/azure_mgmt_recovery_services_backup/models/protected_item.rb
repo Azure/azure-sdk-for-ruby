@@ -13,11 +13,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureFileShareProtectedItem"] = "AzureFileshareProtectedItem"
       @@discriminatorMap["Microsoft.ClassicCompute/virtualMachines"] = "AzureIaaSClassicComputeVMProtectedItem"
       @@discriminatorMap["Microsoft.Compute/virtualMachines"] = "AzureIaaSComputeVMProtectedItem"
       @@discriminatorMap["AzureIaaSVMProtectedItem"] = "AzureIaaSVMProtectedItem"
       @@discriminatorMap["Microsoft.Sql/servers/databases"] = "AzureSqlProtectedItem"
+      @@discriminatorMap["AzureVmWorkloadSQLDatabase"] = "AzureVmWorkloadSQLDatabaseProtectedItem"
       @@discriminatorMap["DPMProtectedItem"] = "DPMProtectedItem"
+      @@discriminatorMap["GenericProtectedItem"] = "GenericProtectedItem"
       @@discriminatorMap["MabFileFolderProtectedItem"] = "MabFileFolderProtectedItem"
 
       def initialize
@@ -28,13 +31,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [BackupManagementType] Type of backup managemenent for the
       # backed up item. Possible values include: 'Invalid', 'AzureIaasVM',
-      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
+      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+      # 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
 
       # @return [DataSourceType] Type of workload this item represents.
       # Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
       # 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-      # 'GenericDataSource'
+      # 'GenericDataSource', 'SQLDataBase', 'AzureFileShare'
       attr_accessor :workload_type
 
       # @return [String] Unique name of container
@@ -50,6 +54,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [DateTime] Timestamp when the last (latest) backup copy was
       # created for this backup item.
       attr_accessor :last_recovery_point
+
+      # @return [String] Name of the backup set the backup item belongs to
+      attr_accessor :backup_set_name
 
 
       #
@@ -113,6 +120,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 serialized_name: 'lastRecoveryPoint',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              backup_set_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'backupSetName',
+                type: {
+                  name: 'String'
                 }
               }
             }

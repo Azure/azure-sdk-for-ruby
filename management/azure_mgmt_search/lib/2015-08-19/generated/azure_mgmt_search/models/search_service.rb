@@ -68,7 +68,8 @@ module Azure::Search::Mgmt::V2015_08_19
       attr_accessor :provisioning_state
 
       # @return [Sku] The SKU of the Search Service, which determines price
-      # tier and capacity limits.
+      # tier and capacity limits. This property is required when creating a new
+      # Search Service.
       attr_accessor :sku
 
 
@@ -114,7 +115,7 @@ module Azure::Search::Mgmt::V2015_08_19
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -203,7 +204,7 @@ module Azure::Search::Mgmt::V2015_08_19
               },
               sku: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'sku',
                 type: {
                   name: 'Composite',

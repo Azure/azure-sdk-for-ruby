@@ -34,11 +34,35 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [ProtectionIntentOperations] protection_intent_operations
+    attr_reader :protection_intent_operations
+
+    # @return [BackupStatus] backup_status
+    attr_reader :backup_status
+
+    # @return [FeatureSupport] feature_support
+    attr_reader :feature_support
+
     # @return [BackupJobs] backup_jobs
     attr_reader :backup_jobs
 
     # @return [JobDetails] job_details
     attr_reader :job_details
+
+    # @return [ExportJobsOperationResults] export_jobs_operation_results
+    attr_reader :export_jobs_operation_results
+
+    # @return [Jobs] jobs
+    attr_reader :jobs
+
+    # @return [BackupPolicies] backup_policies
+    attr_reader :backup_policies
+
+    # @return [BackupProtectedItems] backup_protected_items
+    attr_reader :backup_protected_items
+
+    # @return [BackupUsageSummaries] backup_usage_summaries
+    attr_reader :backup_usage_summaries
 
     #
     # Creates initializes a new instance of the RecoveryServicesBackupClient class.
@@ -53,8 +77,16 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @protection_intent_operations = ProtectionIntentOperations.new(self)
+      @backup_status = BackupStatus.new(self)
+      @feature_support = FeatureSupport.new(self)
       @backup_jobs = BackupJobs.new(self)
       @job_details = JobDetails.new(self)
+      @export_jobs_operation_results = ExportJobsOperationResults.new(self)
+      @jobs = Jobs.new(self)
+      @backup_policies = BackupPolicies.new(self)
+      @backup_protected_items = BackupProtectedItems.new(self)
+      @backup_usage_summaries = BackupUsageSummaries.new(self)
       @api_version = '2017-07-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

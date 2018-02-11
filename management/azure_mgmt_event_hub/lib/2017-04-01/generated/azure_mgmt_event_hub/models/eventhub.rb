@@ -119,7 +119,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 required: false,
                 serialized_name: 'properties.messageRetentionInDays',
                 constraints: {
-                  InclusiveMaximum: 7,
                   InclusiveMinimum: 1
                 },
                 type: {
@@ -131,7 +130,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 required: false,
                 serialized_name: 'properties.partitionCount',
                 constraints: {
-                  InclusiveMaximum: 32,
                   InclusiveMinimum: 1
                 },
                 type: {

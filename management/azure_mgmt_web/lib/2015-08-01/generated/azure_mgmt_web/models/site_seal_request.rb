@@ -12,10 +12,11 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
-      # @return [Boolean] Theme
+      # @return [Boolean] If <code>true</code> use the light color theme for
+      # site seal; otherwise, use the default color theme.
       attr_accessor :light_theme
 
-      # @return [String] Locale
+      # @return [String] Locale of site seal.
       attr_accessor :locale
 
 

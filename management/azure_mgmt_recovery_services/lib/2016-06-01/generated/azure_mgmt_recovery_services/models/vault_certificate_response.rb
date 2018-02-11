@@ -13,13 +13,15 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] Resource name associated with the resource.
       attr_accessor :name
 
-      # @return [String]
+      # @return [String] Resource type represents the complete path of the form
+      # Namespace/ResourceType/ResourceType/...
       attr_accessor :type
 
-      # @return [String]
+      # @return [String] Resource Id represents the complete path to the
+      # resource.
       attr_accessor :id
 
       # @return [ResourceCertificateDetails]
@@ -42,6 +44,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -50,6 +53,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               type: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -58,6 +62,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

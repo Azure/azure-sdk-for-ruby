@@ -90,6 +90,132 @@ module Azure::Search::Mgmt::V2015_08_19
     end
 
     #
+    # Updates an existing Search service in the given resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service to
+    # update.
+    # @param service [SearchService] The definition of the Search service to
+    # update.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SearchService] operation results.
+    #
+    def update(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
+      response = update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates an existing Search service in the given resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service to
+    # update.
+    # @param service [SearchService] The definition of the Search service to
+    # update.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
+      update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Updates an existing Search service in the given resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service to
+    # update.
+    # @param service [SearchService] The definition of the Search service to
+    # update.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
+      fail ArgumentError, 'service is nil' if service.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+      client_request_id = nil
+      unless search_management_request_options.nil?
+        client_request_id = search_management_request_options.clientRequestId
+      end
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Search::Mgmt::V2015_08_19::Models::SearchService.mapper()
+      request_content = @client.serialize(request_mapper,  service)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'searchServiceName' => search_service_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Search::Mgmt::V2015_08_19::Models::SearchService.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets the Search service with the given name in the given resource group.
     #
     # @param resource_group_name [String] The name of the resource group within the

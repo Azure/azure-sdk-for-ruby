@@ -87,9 +87,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'accessPolicies',
-                constraints: {
-                  MaxItems: 16
-                },
                 type: {
                   name: 'Sequence',
                   element: {
@@ -106,6 +103,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
               vault_uri: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'vaultUri',
                 type: {
                   name: 'String'

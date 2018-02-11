@@ -22,7 +22,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       attr_accessor :properties
 
       # @return [String] The location of the resource group. It cannot be
-      # changed after the resource group has been created. It muct be one of
+      # changed after the resource group has been created. It must be one of
       # the supported Azure locations.
       attr_accessor :location
 

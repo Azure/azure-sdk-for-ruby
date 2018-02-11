@@ -25,6 +25,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # for every service call.
     attr_accessor :subscription_id
 
+    # @return [String] The resource group name.
+    attr_accessor :resource_group_name
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 

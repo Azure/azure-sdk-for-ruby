@@ -40,7 +40,7 @@ class ResourceHelper
 
   def dls_acc_client
     if @dls_acc_client.nil?
-      @dls_acc_client = Account::DataLakeStoreAccountManagementClient.new(@credentials)
+      @dls_acc_client = Accounts::DataLakeStoreAccountManagementClient.new(@credentials)
       @dls_acc_client.subscription_id = @subscription_id
       @dls_acc_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
     end

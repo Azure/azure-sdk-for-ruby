@@ -18,7 +18,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [BackupItemType] Type of backup items associated with this
       # container. Possible values include: 'Invalid', 'VM', 'FileFolder',
       # 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM',
-      # 'SystemState', 'Client', 'GenericDataSource'
+      # 'SystemState', 'Client', 'GenericDataSource', 'SQLDataBase',
+      # 'AzureFileShare'
       attr_accessor :backup_item_type
 
       # @return [Array<String>] List of backup items associated with this

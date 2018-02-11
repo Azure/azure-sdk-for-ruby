@@ -15,7 +15,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     attr_reader :base_url
 
     # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
+    attr_reader :credentials1
 
     # @return [AzureRegionBaseUrl] Supported Azure regions for Content
     # Moderator endpoints. Possible values include:
@@ -33,6 +33,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # 'brazilsouth.api.cognitive.microsoft.com',
     # 'contentmoderatortest.azure-api.net'
     attr_accessor :base_url
+
+    # @return Subscription credentials which uniquely identify client
+    # subscription.
+    attr_accessor :credentials
 
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language

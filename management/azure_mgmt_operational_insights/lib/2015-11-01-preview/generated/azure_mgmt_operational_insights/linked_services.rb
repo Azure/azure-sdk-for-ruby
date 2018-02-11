@@ -5,7 +5,7 @@
 
 module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
   #
-  # Azure Log Analytics API reference
+  # Operational Insights Client
   #
   class LinkedServices
     include MsRestAzure
@@ -18,7 +18,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       @client = client
     end
 
-    # @return [AzureLogAnalytics] reference to the AzureLogAnalytics
+    # @return [OperationalInsightsManagementClient] reference to the OperationalInsightsManagementClient
     attr_reader :client
 
     #

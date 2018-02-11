@@ -14,8 +14,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureFileShare"] = "AzureFileShareProtectableItem"
       @@discriminatorMap["Microsoft.ClassicCompute/virtualMachines"] = "AzureIaaSClassicComputeVMProtectableItem"
       @@discriminatorMap["Microsoft.Compute/virtualMachines"] = "AzureIaaSComputeVMProtectableItem"
+      @@discriminatorMap["AzureVmWorkloadProtectableItem"] = "AzureVmWorkloadProtectableItem"
+      @@discriminatorMap["SQLAvailabilityGroupContainer"] = "AzureVmWorkloadSQLAvailabilityGroupProtectableItem"
+      @@discriminatorMap["SQLDataBase"] = "AzureVmWorkloadSQLDatabaseProtectableItem"
+      @@discriminatorMap["SQLInstance"] = "AzureVmWorkloadSQLInstanceProtectableItem"
       @@discriminatorMap["IaaSVMProtectableItem"] = "IaaSVMProtectableItem"
 
       def initialize
@@ -27,11 +32,15 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [String] Type of backup managemenent to backup an item.
       attr_accessor :backup_management_type
 
+      # @return [String] Type of workload for the backup management
+      attr_accessor :workload_type
+
       # @return [String] Friendly name of the backup item.
       attr_accessor :friendly_name
 
       # @return [ProtectionStatus] State of the back up item. Possible values
-      # include: 'Invalid', 'NotProtected', 'Protecting', 'Protected'
+      # include: 'Invalid', 'NotProtected', 'Protecting', 'Protected',
+      # 'ProtectionFailed'
       attr_accessor :protection_state
 
 
@@ -54,6 +63,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
+                type: {
+                  name: 'String'
+                }
+              },
+              workload_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'workloadType',
                 type: {
                   name: 'String'
                 }

@@ -18,7 +18,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [String] Validation key.
       attr_accessor :validation_key
 
-      # @return [String] Decryption.
+      # @return [String] Algorithm used for decryption.
       attr_accessor :decryption
 
       # @return [String] Decryption key.

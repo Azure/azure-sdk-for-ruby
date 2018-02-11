@@ -24,7 +24,8 @@ module Azure::Search::Mgmt::V2015_08_19
 
       # @return [String] The geographic location of the resource. This must be
       # one of the supported and registered Azure Geo Regions (for example,
-      # West US, East US, Southeast Asia, and so forth).
+      # West US, East US, Southeast Asia, and so forth). This property is
+      # required when creating a new resource.
       attr_accessor :location
 
       # @return [Hash{String => String}] Tags to help categorize the resource
@@ -74,7 +75,7 @@ module Azure::Search::Mgmt::V2015_08_19
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'

@@ -8,20 +8,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     #
     # Azure Storage blob container information.
     #
-    class StorageContainer
+    class StorageContainer < SubResource
 
       include MsRestAzure
 
-      # @return [String] the unique identifier of the blob container.
-      attr_accessor :id
-
-      # @return [String] the name of the blob container.
-      attr_accessor :name
-
-      # @return [String] the type of the blob container.
-      attr_accessor :type
-
-      # @return [DateTime] the last modified time of the blob container.
+      # @return [DateTime] The last modified time of the blob container.
       attr_accessor :last_modified_time
 
 

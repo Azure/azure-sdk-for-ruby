@@ -146,6 +146,9 @@ module Azure::Web::Mgmt::V2016_09_01
       # behavior of the App Service Environment.
       attr_accessor :cluster_settings
 
+      # @return [Array<String>] User added ip ranges to whitelist on ASE db
+      attr_accessor :user_whitelisted_ip_ranges
+
 
       #
       # Mapper for AppServiceEnvironmentResource class as Ruby Hash.
@@ -561,6 +564,22 @@ module Azure::Web::Mgmt::V2016_09_01
                       type: {
                         name: 'Composite',
                         class_name: 'NameValuePair'
+                      }
+                  }
+                }
+              },
+              user_whitelisted_ip_ranges: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.userWhitelistedIpRanges',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }

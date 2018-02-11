@@ -22,39 +22,39 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
     attr_reader :client
 
     #
-    # Get the subscription-level key used for Realtime User Metrics collection.
+    # Get the subscription-level key used for Real User Metrics collection.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TrafficManagerUserMetricsKeyModel] operation results.
     #
-    def get_default(custom_headers:nil)
-      response = get_default_async(custom_headers:custom_headers).value!
+    def get(custom_headers:nil)
+      response = get_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get the subscription-level key used for Realtime User Metrics collection.
+    # Get the subscription-level key used for Real User Metrics collection.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_default_with_http_info(custom_headers:nil)
-      get_default_async(custom_headers:custom_headers).value!
+    def get_with_http_info(custom_headers:nil)
+      get_async(custom_headers:custom_headers).value!
     end
 
     #
-    # Get the subscription-level key used for Realtime User Metrics collection.
+    # Get the subscription-level key used for Real User Metrics collection.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_default_async(custom_headers:nil)
+    def get_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -65,7 +65,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys'
 
       request_url = @base_url || @client.base_url
 
@@ -82,7 +82,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 204
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -106,7 +106,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
     end
 
     #
-    # Create or update a subscription-level key used for Realtime User Metrics
+    # Create or update a subscription-level key used for Real User Metrics
     # collection.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -120,7 +120,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
     end
 
     #
-    # Create or update a subscription-level key used for Realtime User Metrics
+    # Create or update a subscription-level key used for Real User Metrics
     # collection.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -133,7 +133,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
     end
 
     #
-    # Create or update a subscription-level key used for Realtime User Metrics
+    # Create or update a subscription-level key used for Real User Metrics
     # collection.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -152,7 +152,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys'
 
       request_url = @base_url || @client.base_url
 
@@ -193,7 +193,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
     end
 
     #
-    # Delete a subscription-level key used for Realtime User Metrics collection.
+    # Delete a subscription-level key used for Real User Metrics collection.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -206,7 +206,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
     end
 
     #
-    # Delete a subscription-level key used for Realtime User Metrics collection.
+    # Delete a subscription-level key used for Real User Metrics collection.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -218,7 +218,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
     end
 
     #
-    # Delete a subscription-level key used for Realtime User Metrics collection.
+    # Delete a subscription-level key used for Real User Metrics collection.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -236,7 +236,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys'
 
       request_url = @base_url || @client.base_url
 

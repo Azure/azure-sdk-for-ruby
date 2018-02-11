@@ -16,7 +16,7 @@ module Azure::Web::Mgmt::V2016_09_01
       # include: 'Permit', 'Deny'
       attr_accessor :action
 
-      # @return [String] Description.
+      # @return [String] Description of network access control entry.
       attr_accessor :description
 
       # @return [Integer] Order of precedence.

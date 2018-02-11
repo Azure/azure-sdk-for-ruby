@@ -6,7 +6,7 @@
 module Azure::CDN::Mgmt::V2017_04_02
   module Models
     #
-    # The Resource definition.
+    # The core properties of ARM resources
     #
     class Resource
 
@@ -20,12 +20,6 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       # @return [String] Resource type.
       attr_accessor :type
-
-      # @return [String] Resource location.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Resource tags.
-      attr_accessor :tags
 
 
       #
@@ -66,30 +60,6 @@ module Azure::CDN::Mgmt::V2017_04_02
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

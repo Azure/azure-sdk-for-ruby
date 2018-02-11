@@ -19,7 +19,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
       # @return [BackupManagementType] Type of backup managmenent for the job.
       # Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
-      # 'AzureBackupServer', 'AzureSql'
+      # 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+      # 'DefaultBackup'
       attr_accessor :backup_management_type
 
       # @return [JobOperationType] Type of operation. Possible values include:

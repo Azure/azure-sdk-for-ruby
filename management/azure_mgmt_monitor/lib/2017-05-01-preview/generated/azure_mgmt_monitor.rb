@@ -22,7 +22,7 @@ require 'ms_rest_azure'
 module Azure::Monitor::Mgmt::V2017_05_01_preview
   autoload :DiagnosticSettingsCategoryOperations,               '2017-05-01-preview/generated/azure_mgmt_monitor/diagnostic_settings_category_operations.rb'
   autoload :DiagnosticSettingsOperations,                       '2017-05-01-preview/generated/azure_mgmt_monitor/diagnostic_settings_operations.rb'
-  autoload :MonitorClient,                                      '2017-05-01-preview/generated/azure_mgmt_monitor/monitor_client.rb'
+  autoload :MonitorManagementClient,                            '2017-05-01-preview/generated/azure_mgmt_monitor/monitor_management_client.rb'
 
   module Models
     autoload :RetentionPolicy,                                    '2017-05-01-preview/generated/azure_mgmt_monitor/models/retention_policy.rb'

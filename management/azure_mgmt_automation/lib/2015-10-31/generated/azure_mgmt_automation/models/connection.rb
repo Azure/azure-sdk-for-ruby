@@ -18,6 +18,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [String] Gets the name of the connection.
       attr_accessor :name
 
+      # @return [String] Resource type
+      attr_accessor :type
+
       # @return [ConnectionTypeAssociationProperty] Gets or sets the
       # connectionType of the connection.
       attr_accessor :connection_type
@@ -63,6 +66,15 @@ module Azure::Automation::Mgmt::V2015_10_31
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

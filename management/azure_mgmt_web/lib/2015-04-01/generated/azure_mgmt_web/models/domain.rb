@@ -358,7 +358,6 @@ module Azure::Web::Mgmt::V2015_04_01
               auth_code: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.authCode',
                 type: {
                   name: 'String'

@@ -12,6 +12,10 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [String] application Id
       attr_accessor :app_id
 
@@ -39,6 +43,21 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'ServicePrincipalCreateParameters',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               app_id: {
                 client_side_validation: true,
                 required: true,

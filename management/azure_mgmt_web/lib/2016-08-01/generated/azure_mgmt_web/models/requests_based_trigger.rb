@@ -12,7 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
-      # @return [Integer] Count.
+      # @return [Integer] Request Count.
       attr_accessor :count
 
       # @return [String] Time interval.

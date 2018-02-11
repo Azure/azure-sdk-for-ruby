@@ -13,10 +13,10 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<Vault>] Gets or sets the list of vaults.
+      # @return [Array<Vault>] The list of vaults.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of vaults.
+      # @return [String] The URL to get the next set of vaults.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

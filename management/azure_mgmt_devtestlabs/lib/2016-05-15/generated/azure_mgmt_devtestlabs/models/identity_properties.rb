@@ -6,7 +6,7 @@
 module Azure::DevTestLabs::Mgmt::V2016_05_15
   module Models
     #
-    # IdentityProperties
+    # Properties of a managed identity
     #
     class IdentityProperties
 

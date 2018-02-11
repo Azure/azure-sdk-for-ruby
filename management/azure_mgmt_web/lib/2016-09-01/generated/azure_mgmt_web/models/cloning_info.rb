@@ -12,8 +12,8 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
-      # @return [String] Correlation ID of cloning operation. This ID ties
-      # multiple cloning operations
+      # @return Correlation ID of cloning operation. This ID ties multiple
+      # cloning operations
       # together to use the same snapshot.
       attr_accessor :correlation_id
 

@@ -31,7 +31,7 @@ module Azure::CognitiveServices::Face::V1_0
       # range is [1, 1000]. Default value: 20 .
       attr_accessor :max_num_of_candidates_returned
 
-      # @return [FaceMatchingMode] Similar face searching mode. It can be
+      # @return [FindSimilarMatchMode] Similar face searching mode. It can be
       # "matchPerson" or "matchFace". Possible values include: 'matchPerson',
       # 'matchFace'. Default value: 'matchPerson' .
       attr_accessor :mode
@@ -109,7 +109,7 @@ module Azure::CognitiveServices::Face::V1_0
                 default_value: 'matchPerson',
                 type: {
                   name: 'Enum',
-                  module: 'FaceMatchingMode'
+                  module: 'FindSimilarMatchMode'
                 }
               }
             }

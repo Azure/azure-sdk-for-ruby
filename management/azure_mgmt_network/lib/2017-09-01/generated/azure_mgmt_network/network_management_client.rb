@@ -107,6 +107,9 @@ module Azure::Network::Mgmt::V2017_09_01
     # @return [PacketCaptures] packet_captures
     attr_reader :packet_captures
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [PublicIPAddresses] public_ipaddresses
     attr_reader :public_ipaddresses
 
@@ -182,6 +185,7 @@ module Azure::Network::Mgmt::V2017_09_01
       @default_security_rules = DefaultSecurityRules.new(self)
       @network_watchers = NetworkWatchers.new(self)
       @packet_captures = PacketCaptures.new(self)
+      @operations = Operations.new(self)
       @public_ipaddresses = PublicIPAddresses.new(self)
       @route_filters = RouteFilters.new(self)
       @route_filter_rules = RouteFilterRules.new(self)

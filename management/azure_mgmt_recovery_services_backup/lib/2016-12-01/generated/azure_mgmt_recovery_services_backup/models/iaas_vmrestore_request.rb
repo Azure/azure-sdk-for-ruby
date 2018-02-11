@@ -74,7 +74,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # as it was at the time of backup.
       attr_accessor :create_new_cloud_service
 
-      # @return [Boolean]
+      # @return [Boolean] Original SA Option
       attr_accessor :original_storage_account_option
 
       # @return [EncryptionDetails] Details needed if the VM was encrypted at

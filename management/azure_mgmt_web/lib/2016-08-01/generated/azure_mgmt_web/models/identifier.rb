@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_08_01
   module Models
     #
-    # Identifier.
+    # A domain specific resource identifier.
     #
     class Identifier < ProxyOnlyResource
 

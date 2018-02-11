@@ -13,85 +13,85 @@ module Azure::CognitiveServices::Face::V1_0
 
       include MsRestAzure
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :pupil_left
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :pupil_right
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :nose_tip
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :mouth_left
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :mouth_right
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eyebrow_left_outer
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eyebrow_left_inner
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_left_outer
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_left_top
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_left_bottom
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_left_inner
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eyebrow_right_inner
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eyebrow_right_outer
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_right_inner
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_right_top
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_right_bottom
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :eye_right_outer
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :nose_root_left
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :nose_root_right
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :nose_left_alar_top
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :nose_right_alar_top
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :nose_left_alar_out_tip
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :nose_right_alar_out_tip
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :upper_lip_top
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :upper_lip_bottom
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :under_lip_top
 
-      # @return [Position]
+      # @return [Coordinate]
       attr_accessor :under_lip_bottom
 
 
@@ -114,7 +114,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'pupilLeft',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               pupil_right: {
@@ -123,7 +123,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'pupilRight',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               nose_tip: {
@@ -132,7 +132,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noseTip',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               mouth_left: {
@@ -141,7 +141,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'mouthLeft',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               mouth_right: {
@@ -150,7 +150,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'mouthRight',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eyebrow_left_outer: {
@@ -159,7 +159,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyebrowLeftOuter',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eyebrow_left_inner: {
@@ -168,7 +168,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyebrowLeftInner',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_left_outer: {
@@ -177,7 +177,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeLeftOuter',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_left_top: {
@@ -186,7 +186,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeLeftTop',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_left_bottom: {
@@ -195,7 +195,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeLeftBottom',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_left_inner: {
@@ -204,7 +204,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeLeftInner',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eyebrow_right_inner: {
@@ -213,7 +213,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyebrowRightInner',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eyebrow_right_outer: {
@@ -222,7 +222,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyebrowRightOuter',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_right_inner: {
@@ -231,7 +231,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeRightInner',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_right_top: {
@@ -240,7 +240,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeRightTop',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_right_bottom: {
@@ -249,7 +249,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeRightBottom',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               eye_right_outer: {
@@ -258,7 +258,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'eyeRightOuter',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               nose_root_left: {
@@ -267,7 +267,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noseRootLeft',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               nose_root_right: {
@@ -276,7 +276,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noseRootRight',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               nose_left_alar_top: {
@@ -285,7 +285,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noseLeftAlarTop',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               nose_right_alar_top: {
@@ -294,7 +294,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noseRightAlarTop',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               nose_left_alar_out_tip: {
@@ -303,7 +303,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noseLeftAlarOutTip',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               nose_right_alar_out_tip: {
@@ -312,7 +312,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'noseRightAlarOutTip',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               upper_lip_top: {
@@ -321,7 +321,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'upperLipTop',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               upper_lip_bottom: {
@@ -330,7 +330,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'upperLipBottom',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               under_lip_top: {
@@ -339,7 +339,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'underLipTop',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               },
               under_lip_bottom: {
@@ -348,7 +348,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'underLipBottom',
                 type: {
                   name: 'Composite',
-                  class_name: 'Position'
+                  class_name: 'Coordinate'
                 }
               }
             }

@@ -15,10 +15,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       def initialize
-        @protectableObjectType = "Microsoft.Compute/virtualMachines"
+        @containerType = "Microsoft.Compute/virtualMachines"
       end
 
-      attr_accessor :protectableObjectType
+      attr_accessor :containerType
 
 
       #
@@ -66,19 +66,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'String'
                 }
               },
-              container_type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'containerType',
-                type: {
-                  name: 'String'
-                }
-              },
-              protectableObjectType: {
+              containerType: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'protectableObjectType',
+                serialized_name: 'containerType',
                 type: {
                   name: 'String'
                 }

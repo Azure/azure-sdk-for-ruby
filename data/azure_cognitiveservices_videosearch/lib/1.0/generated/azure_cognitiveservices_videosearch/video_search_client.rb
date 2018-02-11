@@ -15,7 +15,11 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     attr_accessor :base_url
 
     # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
+    attr_reader :credentials1
+
+    # @return Subscription credentials which uniquely identify client
+    # subscription.
+    attr_accessor :credentials
 
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language

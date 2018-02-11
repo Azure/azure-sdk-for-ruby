@@ -16,8 +16,8 @@ module Azure::Web::Mgmt::V2016_03_01
       # @return [DateTime] Timestamp when this instance was created.
       attr_accessor :creation_time
 
-      # @return [String] A GUID value that each recommendation object is
-      # associated with.
+      # @return A GUID value that each recommendation object is associated
+      # with.
       attr_accessor :recommendation_id
 
       # @return [String] Full ARM resource ID string that this recommendation

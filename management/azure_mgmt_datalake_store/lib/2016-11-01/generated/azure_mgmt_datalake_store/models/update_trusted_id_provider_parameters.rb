@@ -6,13 +6,13 @@
 module Azure::DataLakeStore::Mgmt::V2016_11_01
   module Models
     #
-    # Data Lake Store Trusted Identity Provider update parameters
+    # The parameters used to update a trusted identity provider.
     #
     class UpdateTrustedIdProviderParameters
 
       include MsRestAzure
 
-      # @return [String] The URL of this trusted identity provider
+      # @return [String] The URL of this trusted identity provider.
       attr_accessor :id_provider
 
 

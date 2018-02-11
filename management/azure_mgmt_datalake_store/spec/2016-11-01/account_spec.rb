@@ -12,7 +12,7 @@ describe 'DataLakeStoreClient Account' do
   before(:each) do
     @resource_helper = ResourceHelper.new
     @resource_group = @resource_helper.create_resource_group
-    @client = @resource_helper.dls_acc_client.account
+    @client = @resource_helper.dls_acc_client.accounts
 
     @datalake_acc_name = 'dlsacc'
   end

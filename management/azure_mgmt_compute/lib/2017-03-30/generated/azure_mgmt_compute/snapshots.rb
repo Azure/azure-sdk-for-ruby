@@ -25,8 +25,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Creates or updates a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [Snapshot] Snapshot object supplied in the body of the Put
     # disk operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -41,8 +42,9 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [Snapshot] Snapshot object supplied in the body of the Put
     # disk operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -73,8 +75,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Updates (patches) a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [SnapshotUpdate] Snapshot object supplied in the body of the
     # Patch snapshot operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -89,8 +92,9 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [SnapshotUpdate] Snapshot object supplied in the body of the
     # Patch snapshot operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -121,8 +125,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Gets information about a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -137,8 +142,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Gets information about a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -152,8 +158,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Gets information about a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -216,8 +223,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Deletes a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -230,8 +238,9 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -432,8 +441,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Grants access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get snapshot access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -448,8 +458,9 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get snapshot access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -480,8 +491,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Revokes access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -494,8 +506,9 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -524,8 +537,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Creates or updates a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [Snapshot] Snapshot object supplied in the body of the Put
     # disk operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -542,8 +556,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Creates or updates a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [Snapshot] Snapshot object supplied in the body of the Put
     # disk operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -559,8 +574,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Creates or updates a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [Snapshot] Snapshot object supplied in the body of the Put
     # disk operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -643,8 +659,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Updates (patches) a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [SnapshotUpdate] Snapshot object supplied in the body of the
     # Patch snapshot operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -661,8 +678,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Updates (patches) a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [SnapshotUpdate] Snapshot object supplied in the body of the
     # Patch snapshot operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -678,8 +696,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Updates (patches) a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param snapshot [SnapshotUpdate] Snapshot object supplied in the body of the
     # Patch snapshot operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -762,8 +781,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Deletes a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -778,8 +798,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Deletes a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -793,8 +814,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Deletes a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -857,8 +879,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Grants access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get snapshot access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -875,8 +898,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Grants access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get snapshot access operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -892,8 +916,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Grants access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param grant_access_data [GrantAccessData] Access data object supplied in the
     # body of the get snapshot access operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -966,8 +991,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Revokes access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -982,8 +1008,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Revokes access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -997,8 +1024,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # Revokes access to a snapshot.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param snapshot_name [String] The name of the snapshot within the given
-    # subscription and resource group.
+    # @param snapshot_name [String] The name of the snapshot that is being created.
+    # The name can't be changed after the snapshot is created. Supported characters
+    # for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

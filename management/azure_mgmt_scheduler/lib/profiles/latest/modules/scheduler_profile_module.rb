@@ -46,7 +46,6 @@ module Azure::Scheduler::Profiles::Latest
       JobCollectionState = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionState
       RecurrenceFrequency = Azure::Scheduler::Mgmt::V2016_03_01::Models::RecurrenceFrequency
       JobActionType = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobActionType
-      HttpAuthenticationType = Azure::Scheduler::Mgmt::V2016_03_01::Models::HttpAuthenticationType
       RetryType = Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryType
       DayOfWeek = Azure::Scheduler::Mgmt::V2016_03_01::Models::DayOfWeek
       JobScheduleDay = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobScheduleDay
@@ -210,9 +209,6 @@ module Azure::Scheduler::Profiles::Latest
       end
       def job_action_type
         Azure::Scheduler::Mgmt::V2016_03_01::Models::JobActionType
-      end
-      def http_authentication_type
-        Azure::Scheduler::Mgmt::V2016_03_01::Models::HttpAuthenticationType
       end
       def retry_type
         Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryType

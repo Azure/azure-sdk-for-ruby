@@ -13,6 +13,10 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [String] This must be specified if you are using a federated
       # domain for the user's userPrincipalName (UPN) property when creating a
       # new user account. It is used to associate an on-premises Active
@@ -50,6 +54,21 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'UserBase',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               immutable_id: {
                 client_side_validation: true,
                 required: false,

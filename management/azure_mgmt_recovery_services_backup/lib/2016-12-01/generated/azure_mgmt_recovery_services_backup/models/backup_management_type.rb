@@ -15,6 +15,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       DPM = "DPM"
       AzureBackupServer = "AzureBackupServer"
       AzureSql = "AzureSql"
+      AzureStorage = "AzureStorage"
+      AzureWorkload = "AzureWorkload"
+      DefaultBackup = "DefaultBackup"
     end
   end
 end

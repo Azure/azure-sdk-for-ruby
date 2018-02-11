@@ -61,7 +61,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       attr_accessor :enable_partitioning
 
       # @return [Boolean] Value that indicates whether partitioning is enabled
-      # or disabled.
+      # or disabled. NOTE: This property is unsupported, and may be deprecated.
       attr_accessor :enable_subscription_partitioning
 
       # @return [Boolean] Whether messages should be filtered before

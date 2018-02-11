@@ -23,6 +23,10 @@ module Azure::Automation::Mgmt::V2015_10_31
       # configuration of the node.
       attr_accessor :configuration
 
+      # @return [Boolean] If a new build version of NodeConfiguration is
+      # required.
+      attr_accessor :new_node_configuration_build_version_required
+
 
       #
       # Mapper for DscNodeConfigurationCreateOrUpdateParameters class as Ruby
@@ -62,6 +66,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                 type: {
                   name: 'Composite',
                   class_name: 'DscConfigurationAssociationProperty'
+                }
+              },
+              new_node_configuration_build_version_required: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'newNodeConfigurationBuildVersionRequired',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

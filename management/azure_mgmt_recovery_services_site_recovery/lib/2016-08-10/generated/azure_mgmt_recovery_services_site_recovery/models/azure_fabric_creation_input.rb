@@ -14,7 +14,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       def initialize
-        @instanceType = "A2A"
+        @instanceType = "Azure"
       end
 
       attr_accessor :instanceType
@@ -31,7 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'A2A',
+          serialized_name: 'Azure',
           type: {
             name: 'Composite',
             class_name: 'AzureFabricCreationInput',

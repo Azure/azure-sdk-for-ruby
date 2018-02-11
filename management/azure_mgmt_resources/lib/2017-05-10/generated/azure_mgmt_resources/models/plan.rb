@@ -24,6 +24,9 @@ module Azure::Resources::Mgmt::V2017_05_10
       # @return [String] The promotion code.
       attr_accessor :promotion_code
 
+      # @return [String] The plan's version.
+      attr_accessor :version
+
 
       #
       # Mapper for Plan class as Ruby Hash.
@@ -66,6 +69,14 @@ module Azure::Resources::Mgmt::V2017_05_10
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'promotionCode',
+                type: {
+                  name: 'String'
+                }
+              },
+              version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'version',
                 type: {
                   name: 'String'
                 }

@@ -8,7 +8,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # Certificate order action.
     #
-    class CertificateOrderAction < Resource
+    class CertificateOrderAction < ProxyOnlyResource
 
       include MsRestAzure
 
@@ -64,14 +64,6 @@ module Azure::Web::Mgmt::V2015_08_01
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 client_side_validation: true,
                 required: false,
@@ -79,22 +71,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               certificate_order_action_type: {

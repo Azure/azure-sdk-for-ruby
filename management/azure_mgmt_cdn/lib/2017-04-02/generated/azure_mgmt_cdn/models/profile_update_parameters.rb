@@ -31,7 +31,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             model_properties: {
               tags: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',

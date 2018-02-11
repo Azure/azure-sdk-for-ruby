@@ -25,372 +25,6 @@ module Azure::SQL::Mgmt::V2014_04_01
     attr_reader :client
 
     #
-    # Imports a bacpac into a new database.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param parameters [ImportRequest] The required parameters for importing a
-    # Bacpac into a database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ImportExportResponse] operation results.
-    #
-    def import(resource_group_name, server_name, parameters, custom_headers:nil)
-      response = import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param parameters [ImportRequest] The required parameters for importing a
-    # Bacpac into a database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def import_async(resource_group_name, server_name, parameters, custom_headers:nil)
-      # Send request
-      promise = begin_import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Creates an import operation that imports a bacpac into an existing database.
-    # The existing database must be empty.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequest] The required parameters for
-    # importing a Bacpac into a database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ImportExportResponse] operation results.
-    #
-    def create_import_operation(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      response = create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequest] The required parameters for
-    # importing a Bacpac into a database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      # Send request
-      promise = begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Exports a database to a bacpac.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequest] The required parameters for exporting a
-    # database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ImportExportResponse] operation results.
-    #
-    def export(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      response = export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequest] The required parameters for exporting a
-    # database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def export_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      # Send request
-      promise = begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Returns database metrics.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database.
-    # @param filter [String] An OData filter expression that describes a subset of
-    # metrics to return.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MetricListResult] operation results.
-    #
-    def list_metrics(resource_group_name, server_name, database_name, filter, custom_headers:nil)
-      response = list_metrics_async(resource_group_name, server_name, database_name, filter, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Returns database metrics.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database.
-    # @param filter [String] An OData filter expression that describes a subset of
-    # metrics to return.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_metrics_with_http_info(resource_group_name, server_name, database_name, filter, custom_headers:nil)
-      list_metrics_async(resource_group_name, server_name, database_name, filter, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Returns database metrics.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database.
-    # @param filter [String] An OData filter expression that describes a subset of
-    # metrics to return.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_metrics_async(resource_group_name, server_name, database_name, filter, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-      fail ArgumentError, 'filter is nil' if filter.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/metrics'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::MetricListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Returns database metric definitions.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MetricDefinitionListResult] operation results.
-    #
-    def list_metric_definitions(resource_group_name, server_name, database_name, custom_headers:nil)
-      response = list_metric_definitions_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Returns database metric definitions.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_metric_definitions_with_http_info(resource_group_name, server_name, database_name, custom_headers:nil)
-      list_metric_definitions_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Returns database metric definitions.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_metric_definitions_async(resource_group_name, server_name, database_name, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/metricDefinitions'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinitionListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # Pauses a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
@@ -1341,13 +975,11 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [ImportExportResponse] operation results.
     #
-    def begin_import(resource_group_name, server_name, parameters, custom_headers:nil)
-      response = begin_import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
+    def import(resource_group_name, server_name, parameters, custom_headers:nil)
+      response = import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
-    #
-    # Imports a bacpac into a new database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -1358,32 +990,193 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
-    def begin_import_with_http_info(resource_group_name, server_name, parameters, custom_headers:nil)
-      begin_import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
+    def import_async(resource_group_name, server_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
     end
 
     #
-    # Imports a bacpac into a new database.
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param parameters [ImportRequest] The required parameters for importing a
-    # Bacpac into a database.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def create_import_operation(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      response = create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Exports a database to a bacpac.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be exported.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def export(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      response = export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be exported.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def export_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Returns database metrics.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param filter [String] An OData filter expression that describes a subset of
+    # metrics to return.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MetricListResult] operation results.
+    #
+    def list_metrics(resource_group_name, server_name, database_name, filter, custom_headers:nil)
+      response = list_metrics_async(resource_group_name, server_name, database_name, filter, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns database metrics.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param filter [String] An OData filter expression that describes a subset of
+    # metrics to return.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_metrics_with_http_info(resource_group_name, server_name, database_name, filter, custom_headers:nil)
+      list_metrics_async(resource_group_name, server_name, database_name, filter, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns database metrics.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param filter [String] An OData filter expression that describes a subset of
+    # metrics to return.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_import_async(resource_group_name, server_name, parameters, custom_headers:nil)
+    def list_metrics_async(resource_group_name, server_name, database_name, filter, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'filter is nil' if filter.nil?
 
 
       request_headers = {}
@@ -1392,31 +1185,24 @@ module Azure::SQL::Mgmt::V2014_04_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportRequest.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/metrics'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1426,7 +1212,7 @@ module Azure::SQL::Mgmt::V2014_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::MetricListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1440,70 +1226,59 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Creates an import operation that imports a bacpac into an existing database.
-    # The existing database must be empty.
+    # Returns database metric definitions.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequest] The required parameters for
-    # importing a Bacpac into a database.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ImportExportResponse] operation results.
+    # @return [MetricDefinitionListResult] operation results.
     #
-    def begin_create_import_operation(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      response = begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+    def list_metric_definitions(resource_group_name, server_name, database_name, custom_headers:nil)
+      response = list_metric_definitions_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates an import operation that imports a bacpac into an existing database.
-    # The existing database must be empty.
+    # Returns database metric definitions.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequest] The required parameters for
-    # importing a Bacpac into a database.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_import_operation_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+    def list_metric_definitions_with_http_info(resource_group_name, server_name, database_name, custom_headers:nil)
+      list_metric_definitions_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Creates an import operation that imports a bacpac into an existing database.
-    # The existing database must be empty.
+    # Returns database metric definitions.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequest] The required parameters for
-    # importing a Bacpac into a database.
+    # @param database_name [String] The name of the database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+    def list_metric_definitions_async(resource_group_name, server_name, database_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
-      extension_name = 'import'
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -1512,129 +1287,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExtensionRequest.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'extensionName' => extension_name},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 201 || status_code == 202
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Exports a database to a bacpac.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequest] The required parameters for exporting a
-    # database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ImportExportResponse] operation results.
-    #
-    def begin_export(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      response = begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Exports a database to a bacpac.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequest] The required parameters for exporting a
-    # database.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_export_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Exports a database to a bacpac.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequest] The required parameters for exporting a
-    # database.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ExportRequest.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/metricDefinitions'
 
       request_url = @base_url || @client.base_url
 
@@ -1642,17 +1295,16 @@ module Azure::SQL::Mgmt::V2014_04_01
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
           query_params: {'api-version' => @client.api_version},
-          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1662,7 +1314,7 @@ module Azure::SQL::Mgmt::V2014_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinitionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2090,6 +1742,354 @@ module Azure::SQL::Mgmt::V2014_04_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::Database.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def begin_import(resource_group_name, server_name, parameters, custom_headers:nil)
+      response = begin_import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_import_with_http_info(resource_group_name, server_name, parameters, custom_headers:nil)
+      begin_import_async(resource_group_name, server_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_import_async(resource_group_name, server_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def begin_create_import_operation(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      response = begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_import_operation_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      extension_name = 'import'
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExtensionRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'extensionName' => extension_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Exports a database to a bacpac.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be exported.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def begin_export(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      response = begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Exports a database to a bacpac.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be exported.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_export_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Exports a database to a bacpac.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be exported.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ExportRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

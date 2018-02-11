@@ -6,17 +6,17 @@
 module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   module Models
     #
-    # Data Lake Analytics firewall rule information
+    # Data Lake Analytics firewall rule information.
     #
-    class FirewallRule < OptionalSubResource
+    class FirewallRule < SubResource
 
       include MsRestAzure
 
-      # @return [String] the start IP address for the firewall rule. This can
+      # @return [String] The start IP address for the firewall rule. This can
       # be either ipv4 or ipv6. Start and End should be in the same protocol.
       attr_accessor :start_ip_address
 
-      # @return [String] the end IP address for the firewall rule. This can be
+      # @return [String] The end IP address for the firewall rule. This can be
       # either ipv4 or ipv6. Start and End should be in the same protocol.
       attr_accessor :end_ip_address
 
@@ -46,6 +46,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -62,7 +63,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               },
               start_ip_address: {
                 client_side_validation: true,
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'properties.startIpAddress',
                 type: {
                   name: 'String'
@@ -70,7 +72,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               },
               end_ip_address: {
                 client_side_validation: true,
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'properties.endIpAddress',
                 type: {
                   name: 'String'

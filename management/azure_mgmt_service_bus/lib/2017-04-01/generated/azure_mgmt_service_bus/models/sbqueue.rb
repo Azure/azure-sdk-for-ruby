@@ -88,6 +88,12 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       # writing it to persistent storage.
       attr_accessor :enable_express
 
+      # @return [String] Queue/Topic name to forward the messages
+      attr_accessor :forward_to
+
+      # @return [String] Queue/Topic name to forward the Dead Letter message
+      attr_accessor :forward_dead_lettered_messages_to
+
 
       #
       # Mapper for SBQueue class as Ruby Hash.
@@ -279,6 +285,22 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 serialized_name: 'properties.enableExpress',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              forward_to: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.forwardTo',
+                type: {
+                  name: 'String'
+                }
+              },
+              forward_dead_lettered_messages_to: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.forwardDeadLetteredMessagesTo',
+                type: {
+                  name: 'String'
                 }
               }
             }

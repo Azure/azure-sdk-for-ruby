@@ -58,7 +58,7 @@ module Azure::CognitiveServices::Face::V1_0
               },
               created: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'createdDateTime',
                 type: {
                   name: 'DateTime'

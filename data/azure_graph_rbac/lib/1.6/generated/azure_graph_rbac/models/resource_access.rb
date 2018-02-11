@@ -14,6 +14,10 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [String] The unique identifier for one of the OAuth2Permission
       # or AppRole instances that the resource application exposes.
       attr_accessor :id
@@ -36,6 +40,21 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'ResourceAccess',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               id: {
                 client_side_validation: true,
                 required: true,

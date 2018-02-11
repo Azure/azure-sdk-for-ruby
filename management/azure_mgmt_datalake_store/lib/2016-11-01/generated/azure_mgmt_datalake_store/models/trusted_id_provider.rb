@@ -6,13 +6,13 @@
 module Azure::DataLakeStore::Mgmt::V2016_11_01
   module Models
     #
-    # Data Lake Store Trusted Identity Provider information
+    # Data Lake Store trusted identity provider information.
     #
     class TrustedIdProvider < SubResource
 
       include MsRestAzure
 
-      # @return [String] The URL of this trusted identity provider
+      # @return [String] The URL of this trusted identity provider.
       attr_accessor :id_provider
 
 
@@ -41,6 +41,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -57,7 +58,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
               },
               id_provider: {
                 client_side_validation: true,
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'properties.idProvider',
                 type: {
                   name: 'String'

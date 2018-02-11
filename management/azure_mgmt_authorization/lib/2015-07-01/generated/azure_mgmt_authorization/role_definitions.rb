@@ -313,96 +313,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
     end
 
     #
-    # Gets a role definition by ID.
-    #
-    # @param role_definition_id [String] The fully qualified role definition ID to
-    # get.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RoleDefinition] operation results.
-    #
-    def get_by_id(role_definition_id, custom_headers:nil)
-      response = get_by_id_async(role_definition_id, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets a role definition by ID.
-    #
-    # @param role_definition_id [String] The fully qualified role definition ID to
-    # get.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_by_id_with_http_info(role_definition_id, custom_headers:nil)
-      get_by_id_async(role_definition_id, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets a role definition by ID.
-    #
-    # @param role_definition_id [String] The fully qualified role definition ID to
-    # get.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_by_id_async(role_definition_id, custom_headers:nil)
-      fail ArgumentError, 'role_definition_id is nil' if role_definition_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{roleDefinitionId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'roleDefinitionId' => role_definition_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # Get all role definitions that are applicable at scope and above.
     #
     # @param scope [String] The scope of the role definition.
@@ -483,6 +393,108 @@ module Azure::Authorization::Mgmt::V2015_07_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a role definition by ID.
+    #
+    # @param role_definition_id [String] The fully qualified role definition ID.
+    # Use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+    # for subscription level role definitions, or
+    # /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+    # tenant level role definitions.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RoleDefinition] operation results.
+    #
+    def get_by_id(role_definition_id, custom_headers:nil)
+      response = get_by_id_async(role_definition_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a role definition by ID.
+    #
+    # @param role_definition_id [String] The fully qualified role definition ID.
+    # Use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+    # for subscription level role definitions, or
+    # /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+    # tenant level role definitions.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_by_id_with_http_info(role_definition_id, custom_headers:nil)
+      get_by_id_async(role_definition_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets a role definition by ID.
+    #
+    # @param role_definition_id [String] The fully qualified role definition ID.
+    # Use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+    # for subscription level role definitions, or
+    # /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+    # tenant level role definitions.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_by_id_async(role_definition_id, custom_headers:nil)
+      fail ArgumentError, 'role_definition_id is nil' if role_definition_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{roleDefinitionId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'roleDefinitionId' => role_definition_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

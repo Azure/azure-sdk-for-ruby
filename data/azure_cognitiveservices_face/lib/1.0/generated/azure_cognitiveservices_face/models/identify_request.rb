@@ -12,18 +12,22 @@ module Azure::CognitiveServices::Face::V1_0
 
       include MsRestAzure
 
-      # @return [String] personGroupId of the target person group, created by
+      # @return [String] PersonGroupId of the target person group, created by
       # PersonGroups.Create
       attr_accessor :person_group_id
 
-      # @return Array of candidate faceId created by Face - Detect.
+      # @return Array of query faces faceIds, created by the Face - Detect.
+      # Each of the faces are identified independently. The valid number of
+      # faceIds is between [1, 10].
       attr_accessor :face_ids
 
-      # @return [Integer] The number of top similar faces returned. Default
-      # value: 1 .
+      # @return [Integer] The range of maxNumOfCandidatesReturned is between 1
+      # and 5 (default is 1). Default value: 1 .
       attr_accessor :max_num_of_candidates_returned
 
-      # @return [Float]
+      # @return [Float] Confidence threshold of identification, used to judge
+      # whether one face belong to one person. The range of confidenceThreshold
+      # is [0, 1] (default specified by algorithm).
       attr_accessor :confidence_threshold
 
 
@@ -57,7 +61,7 @@ module Azure::CognitiveServices::Face::V1_0
                 required: true,
                 serialized_name: 'faceIds',
                 constraints: {
-                  MaxItems: 1000
+                  MaxItems: 10
                 },
                 type: {
                   name: 'Sequence',
@@ -77,7 +81,7 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'maxNumOfCandidatesReturned',
                 default_value: 1,
                 constraints: {
-                  InclusiveMaximum: 1000,
+                  InclusiveMaximum: 5,
                   InclusiveMinimum: 1
                 },
                 type: {

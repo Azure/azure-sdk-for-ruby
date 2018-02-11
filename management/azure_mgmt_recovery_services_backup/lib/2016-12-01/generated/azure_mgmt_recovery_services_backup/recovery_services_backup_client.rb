@@ -44,8 +44,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # protection_container_refresh_operation_results
     attr_reader :protection_container_refresh_operation_results
 
+    # @return [ProtectableContainers] protectable_containers
+    attr_reader :protectable_containers
+
     # @return [ProtectionContainers] protection_containers
     attr_reader :protection_containers
+
+    # @return [BackupWorkloadItems] backup_workload_items
+    attr_reader :backup_workload_items
 
     # @return [ProtectionContainerOperationResults]
     # protection_container_operation_results
@@ -79,20 +85,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @return [JobOperationResults] job_operation_results
     attr_reader :job_operation_results
 
-    # @return [ExportJobsOperationResults] export_jobs_operation_results
-    attr_reader :export_jobs_operation_results
-
-    # @return [Jobs] jobs
-    attr_reader :jobs
-
     # @return [BackupOperationResults] backup_operation_results
     attr_reader :backup_operation_results
 
     # @return [BackupOperationStatuses] backup_operation_statuses
     attr_reader :backup_operation_statuses
-
-    # @return [BackupPolicies] backup_policies
-    attr_reader :backup_policies
 
     # @return [ProtectionPolicies] protection_policies
     attr_reader :protection_policies
@@ -108,9 +105,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @return [BackupProtectableItems] backup_protectable_items
     attr_reader :backup_protectable_items
 
-    # @return [BackupProtectedItems] backup_protected_items
-    attr_reader :backup_protected_items
-
     # @return [BackupProtectionContainers] backup_protection_containers
     attr_reader :backup_protection_containers
 
@@ -119,9 +113,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     # @return [BackupResourceStorageConfigs] backup_resource_storage_configs
     attr_reader :backup_resource_storage_configs
-
-    # @return [BackupUsageSummaries] backup_usage_summaries
-    attr_reader :backup_usage_summaries
 
     #
     # Creates initializes a new instance of the RecoveryServicesBackupClient class.
@@ -139,7 +130,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       @backup_resource_vault_configs = BackupResourceVaultConfigs.new(self)
       @backup_engines = BackupEngines.new(self)
       @protection_container_refresh_operation_results = ProtectionContainerRefreshOperationResults.new(self)
+      @protectable_containers = ProtectableContainers.new(self)
       @protection_containers = ProtectionContainers.new(self)
+      @backup_workload_items = BackupWorkloadItems.new(self)
       @protection_container_operation_results = ProtectionContainerOperationResults.new(self)
       @protected_items = ProtectedItems.new(self)
       @backups = Backups.new(self)
@@ -150,20 +143,15 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       @restores = Restores.new(self)
       @job_cancellations = JobCancellations.new(self)
       @job_operation_results = JobOperationResults.new(self)
-      @export_jobs_operation_results = ExportJobsOperationResults.new(self)
-      @jobs = Jobs.new(self)
       @backup_operation_results = BackupOperationResults.new(self)
       @backup_operation_statuses = BackupOperationStatuses.new(self)
-      @backup_policies = BackupPolicies.new(self)
       @protection_policies = ProtectionPolicies.new(self)
       @protection_policy_operation_results = ProtectionPolicyOperationResults.new(self)
       @protection_policy_operation_statuses = ProtectionPolicyOperationStatuses.new(self)
       @backup_protectable_items = BackupProtectableItems.new(self)
-      @backup_protected_items = BackupProtectedItems.new(self)
       @backup_protection_containers = BackupProtectionContainers.new(self)
       @security_pins = SecurityPINs.new(self)
       @backup_resource_storage_configs = BackupResourceStorageConfigs.new(self)
-      @backup_usage_summaries = BackupUsageSummaries.new(self)
       @api_version = '2016-12-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

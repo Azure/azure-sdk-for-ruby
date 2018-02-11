@@ -35,6 +35,9 @@ module Azure::Web::Mgmt::V2015_04_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [DomainRegistrationProvider] domain_registration_provider
+    attr_reader :domain_registration_provider
+
     # @return [Domains] domains
     attr_reader :domains
 
@@ -54,6 +57,7 @@ module Azure::Web::Mgmt::V2015_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @domain_registration_provider = DomainRegistrationProvider.new(self)
       @domains = Domains.new(self)
       @top_level_domains = TopLevelDomains.new(self)
       @api_version = '2015-04-01'

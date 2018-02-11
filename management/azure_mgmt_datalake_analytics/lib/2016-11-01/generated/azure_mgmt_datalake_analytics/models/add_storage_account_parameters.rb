@@ -6,18 +6,17 @@
 module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   module Models
     #
-    # Storage account parameters for a storage account being added to a Data
-    # Lake Analytics account.
+    # The parameters used to add a new Azure Storage account.
     #
     class AddStorageAccountParameters
 
       include MsRestAzure
 
-      # @return [String] the access key associated with this Azure Storage
+      # @return [String] The access key associated with this Azure Storage
       # account that will be used to connect to it.
       attr_accessor :access_key
 
-      # @return [String] the optional suffix for the storage account.
+      # @return [String] The optional suffix for the storage account.
       attr_accessor :suffix
 
 

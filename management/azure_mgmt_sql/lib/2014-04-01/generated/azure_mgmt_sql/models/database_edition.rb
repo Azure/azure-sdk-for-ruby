@@ -14,6 +14,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       Basic = "Basic"
       Standard = "Standard"
       Premium = "Premium"
+      PremiumRS = "PremiumRS"
       Free = "Free"
       Stretch = "Stretch"
       DataWarehouse = "DataWarehouse"

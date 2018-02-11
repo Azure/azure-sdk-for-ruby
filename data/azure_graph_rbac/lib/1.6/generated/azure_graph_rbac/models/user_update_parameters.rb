@@ -42,6 +42,21 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'UserUpdateParameters',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               immutable_id: {
                 client_side_validation: true,
                 required: false,

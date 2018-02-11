@@ -42,7 +42,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       # @return [Boolean] Is the session to recover items from this backup copy
       # still active.
-      attr_accessor :is_instant_ilrsession_active
+      attr_accessor :is_instant_ilr_session_active
 
       # @return [Array<RecoveryPointTierInformation>] Recovery point tier
       # information.
@@ -128,10 +128,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   class_name: 'KeyAndSecretDetails'
                 }
               },
-              is_instant_ilrsession_active: {
+              is_instant_ilr_session_active: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'isInstantILRSessionActive',
+                serialized_name: 'isInstantIlrSessionActive',
                 type: {
                   name: 'Boolean'
                 }

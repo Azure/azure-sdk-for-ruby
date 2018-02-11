@@ -24,7 +24,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the content of runbook draft identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -32,15 +31,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [NOT_IMPLEMENTED] operation results.
     #
-    def get_content(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      response = get_content_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def get_content(automation_account_name, runbook_name, custom_headers:nil)
+      response = get_content_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve the content of runbook draft identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -48,14 +46,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_content_with_http_info(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      get_content_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def get_content_with_http_info(automation_account_name, runbook_name, custom_headers:nil)
+      get_content_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve the content of runbook draft identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -63,9 +60,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_content_async(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def get_content_async(automation_account_name, runbook_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'runbook_name is nil' if runbook_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -84,7 +81,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -128,20 +125,18 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Updates the runbook draft with runbookStream as its content.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def create_or_update(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers).value!
+    def create_or_update(automation_account_name, runbook_name, runbook_content, custom_headers:nil)
+      response = create_or_update_async(automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers).value!
       nil
     end
 
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content The runbook draft content.
@@ -151,9 +146,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:nil)
+    def create_or_update_async(automation_account_name, runbook_name, runbook_content, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -170,7 +165,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the runbook draft identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -178,15 +172,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [RunbookDraft] operation results.
     #
-    def get(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      response = get_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def get(automation_account_name, runbook_name, custom_headers:nil)
+      response = get_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve the runbook draft identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -194,14 +187,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      get_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def get_with_http_info(automation_account_name, runbook_name, custom_headers:nil)
+      get_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve the runbook draft identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -209,9 +201,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def get_async(automation_account_name, runbook_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'runbook_name is nil' if runbook_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -230,7 +222,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -267,7 +259,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Publish runbook draft.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
@@ -276,13 +267,12 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Runbook] operation results.
     #
-    def publish(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      response = publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def publish(automation_account_name, runbook_name, custom_headers:nil)
+      response = publish_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
@@ -292,9 +282,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
+    def publish_async(automation_account_name, runbook_name, custom_headers:nil)
       # Send request
-      promise = begin_publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers)
+      promise = begin_publish_async(automation_account_name, runbook_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -313,7 +303,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the runbook identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -321,15 +310,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [RunbookDraftUndoEditResult] operation results.
     #
-    def undo_edit(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      response = undo_edit_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def undo_edit(automation_account_name, runbook_name, custom_headers:nil)
+      response = undo_edit_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve the runbook identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -337,14 +325,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def undo_edit_with_http_info(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      undo_edit_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def undo_edit_with_http_info(automation_account_name, runbook_name, custom_headers:nil)
+      undo_edit_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve the runbook identified by runbook name.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -352,9 +339,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def undo_edit_async(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def undo_edit_async(automation_account_name, runbook_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'runbook_name is nil' if runbook_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -373,7 +360,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -410,7 +397,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Updates the runbook draft with runbookStream as its content.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content The runbook draft content.
@@ -418,15 +404,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     # will be added to the HTTP request.
     #
     #
-    def begin_create_or_update(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers).value!
+    def begin_create_or_update(automation_account_name, runbook_name, runbook_content, custom_headers:nil)
+      response = begin_create_or_update_async(automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # Updates the runbook draft with runbookStream as its content.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content The runbook draft content.
@@ -435,14 +420,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(automation_account_name, runbook_name, runbook_content, custom_headers:nil)
+      begin_create_or_update_async(automation_account_name, runbook_name, runbook_content, custom_headers:custom_headers).value!
     end
 
     #
     # Updates the runbook draft with runbookStream as its content.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content The runbook draft content.
@@ -451,9 +435,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, automation_account_name, runbook_name, runbook_content, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def begin_create_or_update_async(automation_account_name, runbook_name, runbook_content, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'runbook_name is nil' if runbook_name.nil?
       fail ArgumentError, 'runbook_content is nil' if runbook_content.nil?
@@ -485,7 +469,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -513,7 +497,6 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Publish runbook draft.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
@@ -522,15 +505,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Runbook] operation results.
     #
-    def begin_publish(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      response = begin_publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def begin_publish(automation_account_name, runbook_name, custom_headers:nil)
+      response = begin_publish_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Publish runbook draft.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
@@ -539,14 +521,13 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_publish_with_http_info(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      begin_publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers:custom_headers).value!
+    def begin_publish_with_http_info(automation_account_name, runbook_name, custom_headers:nil)
+      begin_publish_async(automation_account_name, runbook_name, custom_headers:custom_headers).value!
     end
 
     #
     # Publish runbook draft.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param automation_account_name [String] The automation account name.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
@@ -555,9 +536,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def begin_publish_async(automation_account_name, runbook_name, custom_headers:nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'runbook_name is nil' if runbook_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -576,7 +557,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'runbookName' => runbook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

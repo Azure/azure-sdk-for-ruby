@@ -16,13 +16,13 @@ module Azure::Profiles::Latest
       module Models
         TrafficManagerNameAvailability = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerNameAvailability
         Region = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Region
-        ProfileListResult = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
         CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-        MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
         DnsConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
+        MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
+        ProfileListResult = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
         Endpoint = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Endpoint
-        TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
         Profile = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Profile
+        TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
         EndpointStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
         EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
         ProfileMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileMonitorStatus
@@ -88,26 +88,26 @@ module Azure::Profiles::Latest
           def region
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::Region
           end
-          def profile_list_result
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
-          end
           def check_traffic_manager_relative_dns_name_availability_parameters
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-          end
-          def monitor_config
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
           end
           def dns_config
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
           end
+          def monitor_config
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
+          end
+          def profile_list_result
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
+          end
           def endpoint
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::Endpoint
           end
-          def traffic_manager_geographic_hierarchy
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
-          end
           def profile
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::Profile
+          end
+          def traffic_manager_geographic_hierarchy
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
           end
           def endpoint_status
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus

@@ -94,8 +94,14 @@ module Azure::Web::Mgmt::V2016_08_01
       attr_accessor :host_names_disabled
 
       # @return [String] List of IP addresses that the app uses for outbound
-      # connections (e.g. database access). Read-only.
+      # connections (e.g. database access). Includes VIPs from tenants that
+      # site can be hosted with current settings. Read-only.
       attr_accessor :outbound_ip_addresses
+
+      # @return [String] List of IP addresses that the app uses for outbound
+      # connections (e.g. database access). Includes VIPs from all tenants.
+      # Read-only.
+      attr_accessor :possible_outbound_ip_addresses
 
       # @return [Integer] Size of the function container.
       attr_accessor :container_size
@@ -134,6 +140,14 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [SlotSwapStatus] Status of the last deployment slot swap
       # operation.
       attr_accessor :slot_swap_status
+
+      # @return [Boolean] HttpsOnly: configures a web site to accept only https
+      # requests. Issues redirect for
+      # http requests
+      attr_accessor :https_only
+
+      # @return [ManagedServiceIdentity]
+      attr_accessor :identity
 
 
       #
@@ -417,6 +431,15 @@ module Azure::Web::Mgmt::V2016_08_01
                   name: 'String'
                 }
               },
+              possible_outbound_ip_addresses: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.possibleOutboundIpAddresses',
+                type: {
+                  name: 'String'
+                }
+              },
               container_size: {
                 client_side_validation: true,
                 required: false,
@@ -504,6 +527,23 @@ module Azure::Web::Mgmt::V2016_08_01
                 type: {
                   name: 'Composite',
                   class_name: 'SlotSwapStatus'
+                }
+              },
+              https_only: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.httpsOnly',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ManagedServiceIdentity'
                 }
               }
             }

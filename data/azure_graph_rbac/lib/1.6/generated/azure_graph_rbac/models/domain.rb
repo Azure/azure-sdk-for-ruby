@@ -12,6 +12,10 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      # @return Unmatched properties from the message are deserialized this
+      # collection
+      attr_accessor :additional_properties
+
       # @return [String] the type of the authentication into the domain.
       attr_accessor :authentication_type
 
@@ -38,6 +42,21 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'Domain',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               authentication_type: {
                 client_side_validation: true,
                 required: false,

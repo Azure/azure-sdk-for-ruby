@@ -6,19 +6,19 @@
 module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   module Models
     #
-    # The Sub Resource model definition.
+    # The resource model definition for a nested resource.
     #
     class SubResource
 
       include MsRestAzure
 
-      # @return [String] Resource Id
+      # @return [String] The resource identifier.
       attr_accessor :id
 
-      # @return [String] Resource name
+      # @return [String] The resource name.
       attr_accessor :name
 
-      # @return [String] Resource type
+      # @return [String] The resource type.
       attr_accessor :type
 
 
@@ -46,7 +46,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
               },
               name: {
                 client_side_validation: true,
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

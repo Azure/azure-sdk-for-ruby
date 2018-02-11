@@ -122,12 +122,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
+    # @param parameters [BackupResourceConfigResource] Vault storage config request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def update(vault_name, resource_group_name, custom_headers:nil)
-      response = update_async(vault_name, resource_group_name, custom_headers:custom_headers).value!
+    def update(vault_name, resource_group_name, parameters, custom_headers:nil)
+      response = update_async(vault_name, resource_group_name, parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -137,13 +138,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
+    # @param parameters [BackupResourceConfigResource] Vault storage config request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(vault_name, resource_group_name, custom_headers:nil)
-      update_async(vault_name, resource_group_name, custom_headers:custom_headers).value!
+    def update_with_http_info(vault_name, resource_group_name, parameters, custom_headers:nil)
+      update_async(vault_name, resource_group_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -152,16 +154,18 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
+    # @param parameters [BackupResourceConfigResource] Vault storage config request
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(vault_name, resource_group_name, custom_headers:nil)
+    def update_async(vault_name, resource_group_name, parameters, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -170,6 +174,12 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupResourceConfigResource.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig'
 
       request_url = @base_url || @client.base_url
@@ -178,6 +188,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

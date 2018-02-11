@@ -95,7 +95,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',
-                  polymorphic_discriminator: 'protectableObjectType',
+                  polymorphic_discriminator: 'containerType',
                   uber_parent: 'ProtectionContainer',
                   class_name: 'ProtectionContainer'
                 }

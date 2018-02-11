@@ -131,6 +131,334 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
+    # Registers the container with Recovery Services vault.
+    # This is an asynchronous operation. To track the operation status, use
+    # location header to call get latest status of the operation.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Fabric name associated with the container.
+    # @param container_name [String] Name of the container to be registered.
+    # @param parameters [ProtectionContainerResource] Request body for operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ProtectionContainerResource] operation results.
+    #
+    def register(vault_name, resource_group_name, fabric_name, container_name, parameters, custom_headers:nil)
+      response = register_async(vault_name, resource_group_name, fabric_name, container_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Registers the container with Recovery Services vault.
+    # This is an asynchronous operation. To track the operation status, use
+    # location header to call get latest status of the operation.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Fabric name associated with the container.
+    # @param container_name [String] Name of the container to be registered.
+    # @param parameters [ProtectionContainerResource] Request body for operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def register_with_http_info(vault_name, resource_group_name, fabric_name, container_name, parameters, custom_headers:nil)
+      register_async(vault_name, resource_group_name, fabric_name, container_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Registers the container with Recovery Services vault.
+    # This is an asynchronous operation. To track the operation status, use
+    # location header to call get latest status of the operation.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Fabric name associated with the container.
+    # @param container_name [String] Name of the container to be registered.
+    # @param parameters [ProtectionContainerResource] Request body for operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def register_async(vault_name, resource_group_name, fabric_name, container_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'fabric_name is nil' if fabric_name.nil?
+      fail ArgumentError, 'container_name is nil' if container_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ProtectionContainerResource.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'fabricName' => fabric_name,'containerName' => container_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ProtectionContainerResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Unregisters the given container from your Recovery Services Vault.
+    # This is an asynchronous operation. To determine whether the backend service
+    # has finished processing the request, call Get Container Operation Result API.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Name of the fabric where the container belongs.
+    # @param container_name [String] Name of the container which needs to be
+    # unregistered from the Recovery Services Vault.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def unregister(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      response = unregister_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Unregisters the given container from your Recovery Services Vault.
+    # This is an asynchronous operation. To determine whether the backend service
+    # has finished processing the request, call Get Container Operation Result API.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Name of the fabric where the container belongs.
+    # @param container_name [String] Name of the container which needs to be
+    # unregistered from the Recovery Services Vault.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def unregister_with_http_info(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      unregister_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Unregisters the given container from your Recovery Services Vault.
+    # This is an asynchronous operation. To determine whether the backend service
+    # has finished processing the request, call Get Container Operation Result API.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Name of the fabric where the container belongs.
+    # @param container_name [String] Name of the container which needs to be
+    # unregistered from the Recovery Services Vault.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def unregister_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'fabric_name is nil' if fabric_name.nil?
+      fail ArgumentError, 'container_name is nil' if container_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'fabricName' => fabric_name,'containerName' => container_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Inquires all the protectable item in the given container that can be
+    # protected.
+    #
+    # Inquires all the protectable items that are protectable under the given
+    # container.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Fabric Name associated with the container.
+    # @param container_name [String] Name of the container in which inquiry needs
+    # to be triggered.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def inquire(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      response = inquire_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Inquires all the protectable item in the given container that can be
+    # protected.
+    #
+    # Inquires all the protectable items that are protectable under the given
+    # container.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Fabric Name associated with the container.
+    # @param container_name [String] Name of the container in which inquiry needs
+    # to be triggered.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def inquire_with_http_info(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      inquire_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Inquires all the protectable item in the given container that can be
+    # protected.
+    #
+    # Inquires all the protectable items that are protectable under the given
+    # container.
+    #
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param fabric_name [String] Fabric Name associated with the container.
+    # @param container_name [String] Name of the container in which inquiry needs
+    # to be triggered.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def inquire_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'fabric_name is nil' if fabric_name.nil?
+      fail ArgumentError, 'container_name is nil' if container_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'fabricName' => fabric_name,'containerName' => container_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Discovers all the containers in the subscription that can be backed up to
     # Recovery Services Vault. This is an asynchronous operation. To know the
     # status of the operation, call GetRefreshOperationResult API.
@@ -139,12 +467,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param fabric_name [String] Fabric name associated the container.
+    # @param filter [String] OData filter options.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def refresh(vault_name, resource_group_name, fabric_name, custom_headers:nil)
-      response = refresh_async(vault_name, resource_group_name, fabric_name, custom_headers:custom_headers).value!
+    def refresh(vault_name, resource_group_name, fabric_name, filter:nil, custom_headers:nil)
+      response = refresh_async(vault_name, resource_group_name, fabric_name, filter:filter, custom_headers:custom_headers).value!
       nil
     end
 
@@ -157,13 +486,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param fabric_name [String] Fabric name associated the container.
+    # @param filter [String] OData filter options.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def refresh_with_http_info(vault_name, resource_group_name, fabric_name, custom_headers:nil)
-      refresh_async(vault_name, resource_group_name, fabric_name, custom_headers:custom_headers).value!
+    def refresh_with_http_info(vault_name, resource_group_name, fabric_name, filter:nil, custom_headers:nil)
+      refresh_async(vault_name, resource_group_name, fabric_name, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
@@ -175,12 +505,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param fabric_name [String] Fabric name associated the container.
+    # @param filter [String] OData filter options.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def refresh_async(vault_name, resource_group_name, fabric_name, custom_headers:nil)
+    def refresh_async(vault_name, resource_group_name, fabric_name, filter:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -201,7 +532,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'fabricName' => fabric_name},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

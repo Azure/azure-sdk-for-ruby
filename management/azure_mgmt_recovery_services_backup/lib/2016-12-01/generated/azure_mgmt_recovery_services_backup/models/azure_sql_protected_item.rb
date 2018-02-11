@@ -94,6 +94,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'DateTime'
                 }
               },
+              backup_set_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'backupSetName',
+                type: {
+                  name: 'String'
+                }
+              },
               protectedItemType: {
                 client_side_validation: true,
                 required: true,

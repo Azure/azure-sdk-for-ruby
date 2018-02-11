@@ -35,7 +35,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               name: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'Name',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -43,7 +43,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               value: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'Value',
+                serialized_name: 'value',
                 type: {
                   name: 'String'
                 }

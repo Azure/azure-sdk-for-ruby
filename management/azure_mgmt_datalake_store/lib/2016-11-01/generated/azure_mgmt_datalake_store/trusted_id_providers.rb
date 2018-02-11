@@ -22,18 +22,111 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     attr_reader :client
 
     #
+    # Lists the Data Lake Store trusted identity providers within the specified
+    # Data Lake Store account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<TrustedIdProvider>] operation results.
+    #
+    def list_by_account(resource_group_name, account_name, custom_headers:nil)
+      first_page = list_by_account_as_lazy(resource_group_name, account_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists the Data Lake Store trusted identity providers within the specified
+    # Data Lake Store account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_account_with_http_info(resource_group_name, account_name, custom_headers:nil)
+      list_by_account_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Lists the Data Lake Store trusted identity providers within the specified
+    # Data Lake Store account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_account_async(resource_group_name, account_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Creates or updates the specified trusted identity provider. During update,
     # the trusted identity provider with the specified name will be replaced with
     # this new provider
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider. This is used for differentiation of providers in the account.
-    # @param parameters [TrustedIdProvider] Parameters supplied to create or
-    # replace the trusted identity provider.
+    # @param parameters [CreateOrUpdateTrustedIdProviderParameters] Parameters
+    # supplied to create or replace the trusted identity provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -49,14 +142,12 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # the trusted identity provider with the specified name will be replaced with
     # this new provider
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider. This is used for differentiation of providers in the account.
-    # @param parameters [TrustedIdProvider] Parameters supplied to create or
-    # replace the trusted identity provider.
+    # @param parameters [CreateOrUpdateTrustedIdProviderParameters] Parameters
+    # supplied to create or replace the trusted identity provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -71,26 +162,24 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # the trusted identity provider with the specified name will be replaced with
     # this new provider
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider. This is used for differentiation of providers in the account.
-    # @param parameters [TrustedIdProvider] Parameters supplied to create or
-    # replace the trusted identity provider.
+    # @param parameters [CreateOrUpdateTrustedIdProviderParameters] Parameters
+    # supplied to create or replace the trusted identity provider.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_or_update_async(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -101,7 +190,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider.mapper()
+      request_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateTrustedIdProviderParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -111,7 +200,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -147,12 +236,109 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     end
 
     #
+    # Gets the specified Data Lake Store trusted identity provider.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
+    # @param trusted_id_provider_name [String] The name of the trusted identity
+    # provider to retrieve.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [TrustedIdProvider] operation results.
+    #
+    def get(resource_group_name, account_name, trusted_id_provider_name, custom_headers:nil)
+      response = get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the specified Data Lake Store trusted identity provider.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
+    # @param trusted_id_provider_name [String] The name of the trusted identity
+    # provider to retrieve.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(resource_group_name, account_name, trusted_id_provider_name, custom_headers:nil)
+      get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the specified Data Lake Store trusted identity provider.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
+    # @param trusted_id_provider_name [String] The name of the trusted identity
+    # provider to retrieve.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Updates the specified trusted identity provider.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider. This is used for differentiation of providers in the account.
     # @param parameters [UpdateTrustedIdProviderParameters] Parameters supplied to
@@ -170,10 +356,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     #
     # Updates the specified trusted identity provider.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider. This is used for differentiation of providers in the account.
     # @param parameters [UpdateTrustedIdProviderParameters] Parameters supplied to
@@ -190,10 +374,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     #
     # Updates the specified trusted identity provider.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider. This is used for differentiation of providers in the account.
     # @param parameters [UpdateTrustedIdProviderParameters] Parameters supplied to
@@ -204,11 +386,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_async(resource_group_name, account_name, trusted_id_provider_name, parameters:nil, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -229,7 +411,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -268,10 +450,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # Deletes the specified trusted identity provider from the specified Data Lake
     # Store account
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to delete the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -287,10 +467,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # Deletes the specified trusted identity provider from the specified Data Lake
     # Store account
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to delete the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -306,10 +484,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # Deletes the specified trusted identity provider from the specified Data Lake
     # Store account
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to delete the trusted identity provider.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param trusted_id_provider_name [String] The name of the trusted identity
     # provider to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -318,11 +494,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -337,7 +513,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -362,212 +538,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     end
 
     #
-    # Gets the specified Data Lake Store trusted identity provider.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to retrieve.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [TrustedIdProvider] operation results.
-    #
-    def get(resource_group_name, account_name, trusted_id_provider_name, custom_headers:nil)
-      response = get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the specified Data Lake Store trusted identity provider.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to retrieve.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_with_http_info(resource_group_name, account_name, trusted_id_provider_name, custom_headers:nil)
-      get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets the specified Data Lake Store trusted identity provider.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to retrieve.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<TrustedIdProvider>] operation results.
-    #
-    def list_by_account(resource_group_name, account_name, custom_headers:nil)
-      first_page = list_by_account_as_lazy(resource_group_name, account_name, custom_headers:custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_account_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      list_by_account_async(resource_group_name, account_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_account_async(resource_group_name, account_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreTrustedIdProviderListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # Lists the Data Lake Store trusted identity providers within the specified
     # Data Lake Store account.
     #
@@ -576,7 +546,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeStoreTrustedIdProviderListResult] operation results.
+    # @return [TrustedIdProviderListResult] operation results.
     #
     def list_by_account_next(next_page_link, custom_headers:nil)
       response = list_by_account_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -645,7 +615,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreTrustedIdProviderListResult.mapper()
+            result_mapper = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -662,15 +632,13 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # Lists the Data Lake Store trusted identity providers within the specified
     # Data Lake Store account.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Store account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeStoreTrustedIdProviderListResult] which provide lazy access
-    # to pages of the response.
+    # @return [TrustedIdProviderListResult] which provide lazy access to pages of
+    # the response.
     #
     def list_by_account_as_lazy(resource_group_name, account_name, custom_headers:nil)
       response = list_by_account_async(resource_group_name, account_name, custom_headers:custom_headers).value!

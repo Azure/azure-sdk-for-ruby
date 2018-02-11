@@ -14,6 +14,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureFileShareBackupRequest"] = "AzureFileShareBackupRequest"
+      @@discriminatorMap["AzureWorkloadBackupRequest"] = "AzureWorkloadBackupRequest"
       @@discriminatorMap["IaasVMBackupRequest"] = "IaasVMBackupRequest"
 
       def initialize

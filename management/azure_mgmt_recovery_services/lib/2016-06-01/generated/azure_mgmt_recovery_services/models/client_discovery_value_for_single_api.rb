@@ -12,7 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
-      # @return [String] Name of the operation
+      # @return [String] Name of the Operation.
       attr_accessor :name
 
       # @return [ClientDiscoveryDisplay] Contains the localized display
@@ -23,7 +23,8 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # display of the operation in the RBAC UX and the audit logs UX
       attr_accessor :origin
 
-      # @return [ClientDiscoveryForProperties] Properties
+      # @return [ClientDiscoveryForProperties] ShoeBox properties for the given
+      # operation.
       attr_accessor :properties
 
 
@@ -43,7 +44,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Name',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -51,7 +52,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               display: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Display',
+                serialized_name: 'display',
                 type: {
                   name: 'Composite',
                   class_name: 'ClientDiscoveryDisplay'
@@ -60,7 +61,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               origin: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Origin',
+                serialized_name: 'origin',
                 type: {
                   name: 'String'
                 }
@@ -68,7 +69,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
               properties: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Properties',
+                serialized_name: 'properties',
                 type: {
                   name: 'Composite',
                   class_name: 'ClientDiscoveryForProperties'

@@ -30,7 +30,8 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [Float] Value count.
       attr_accessor :count
 
-      # @return [Array<ResourceMetricProperty>] Properties.
+      # @return [Array<ResourceMetricProperty>] Resource metric properties
+      # collection.
       attr_accessor :properties
 
 

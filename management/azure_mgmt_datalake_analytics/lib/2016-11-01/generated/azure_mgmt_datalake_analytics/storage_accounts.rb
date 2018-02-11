@@ -22,13 +22,153 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     attr_reader :client
 
     #
+    # Gets the first page of Azure Storage accounts, if any, linked to the
+    # specified Data Lake Analytics account. The response includes a link to the
+    # next page, if any.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param filter [String] The OData filter. Optional.
+    # @param top [Integer] The number of items to return. Optional.
+    # @param skip [Integer] The number of items to skip over before returning
+    # elements. Optional.
+    # @param select [String] OData Select statement. Limits the properties on each
+    # entry to just those requested, e.g.
+    # Categories?$select=CategoryName,Description. Optional.
+    # @param orderby [String] OrderBy clause. One or more comma-separated
+    # expressions with an optional "asc" (the default) or "desc" depending on the
+    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
+    # desc. Optional.
+    # @param count [Boolean] The Boolean value of true or false to request a count
+    # of the matching resources included with the resources in the response, e.g.
+    # Categories?$count=true. Optional.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<StorageAccountInformation>] operation results.
+    #
+    def list_by_account(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
+      first_page = list_by_account_as_lazy(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets the first page of Azure Storage accounts, if any, linked to the
+    # specified Data Lake Analytics account. The response includes a link to the
+    # next page, if any.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param filter [String] The OData filter. Optional.
+    # @param top [Integer] The number of items to return. Optional.
+    # @param skip [Integer] The number of items to skip over before returning
+    # elements. Optional.
+    # @param select [String] OData Select statement. Limits the properties on each
+    # entry to just those requested, e.g.
+    # Categories?$select=CategoryName,Description. Optional.
+    # @param orderby [String] OrderBy clause. One or more comma-separated
+    # expressions with an optional "asc" (the default) or "desc" depending on the
+    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
+    # desc. Optional.
+    # @param count [Boolean] The Boolean value of true or false to request a count
+    # of the matching resources included with the resources in the response, e.g.
+    # Categories?$count=true. Optional.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_account_with_http_info(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
+      list_by_account_async(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the first page of Azure Storage accounts, if any, linked to the
+    # specified Data Lake Analytics account. The response includes a link to the
+    # next page, if any.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param filter [String] The OData filter. Optional.
+    # @param top [Integer] The number of items to return. Optional.
+    # @param skip [Integer] The number of items to skip over before returning
+    # elements. Optional.
+    # @param select [String] OData Select statement. Limits the properties on each
+    # entry to just those requested, e.g.
+    # Categories?$select=CategoryName,Description. Optional.
+    # @param orderby [String] OrderBy clause. One or more comma-separated
+    # expressions with an optional "asc" (the default) or "desc" depending on the
+    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
+    # desc. Optional.
+    # @param count [Boolean] The Boolean value of true or false to request a count
+    # of the matching resources included with the resources in the response, e.g.
+    # Categories?$count=true. Optional.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_account_async(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '1'" if !skip.nil? && skip < 1
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
+          query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'$select' => select,'$orderby' => orderby,'$count' => count,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageAccountInformationListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Updates the specified Data Lake Analytics account to add an Azure Storage
     # account.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account to
-    # which to add the Azure Storage account.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure Storage account to
     # add
     # @param parameters [AddStorageAccountParameters] The parameters containing the
@@ -46,10 +186,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Updates the specified Data Lake Analytics account to add an Azure Storage
     # account.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account to
-    # which to add the Azure Storage account.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure Storage account to
     # add
     # @param parameters [AddStorageAccountParameters] The parameters containing the
@@ -67,10 +205,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Updates the specified Data Lake Analytics account to add an Azure Storage
     # account.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account to
-    # which to add the Azure Storage account.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure Storage account to
     # add
     # @param parameters [AddStorageAccountParameters] The parameters containing the
@@ -81,12 +217,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_async(resource_group_name, account_name, storage_account_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -101,13 +237,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -133,13 +269,113 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     end
 
     #
+    # Gets the specified Azure Storage account linked to the given Data Lake
+    # Analytics account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure Storage account
+    # for which to retrieve the details.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [StorageAccountInformation] operation results.
+    #
+    def get(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      response = get_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the specified Azure Storage account linked to the given Data Lake
+    # Analytics account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure Storage account
+    # for which to retrieve the details.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      get_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the specified Azure Storage account linked to the given Data Lake
+    # Analytics account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure Storage account
+    # for which to retrieve the details.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageAccountInformation.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Updates the Data Lake Analytics account to replace Azure Storage blob account
     # details, such as the access key and/or suffix.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account to
-    # modify storage accounts in
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The Azure Storage account to modify
     # @param parameters [UpdateStorageAccountParameters] The parameters containing
     # the access key and suffix to update the storage account with, if any. Passing
@@ -157,10 +393,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Updates the Data Lake Analytics account to replace Azure Storage blob account
     # details, such as the access key and/or suffix.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account to
-    # modify storage accounts in
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The Azure Storage account to modify
     # @param parameters [UpdateStorageAccountParameters] The parameters containing
     # the access key and suffix to update the storage account with, if any. Passing
@@ -178,10 +412,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Updates the Data Lake Analytics account to replace Azure Storage blob account
     # details, such as the access key and/or suffix.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account to
-    # modify storage accounts in
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The Azure Storage account to modify
     # @param parameters [UpdateStorageAccountParameters] The parameters containing
     # the access key and suffix to update the storage account with, if any. Passing
@@ -192,11 +424,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_async(resource_group_name, account_name, storage_account_name, parameters:nil, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -211,13 +443,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -246,10 +478,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Updates the specified Data Lake Analytics account to remove an Azure Storage
     # account.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which to remove the Azure Storage account.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure Storage account to
     # remove
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -265,10 +495,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Updates the specified Data Lake Analytics account to remove an Azure Storage
     # account.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which to remove the Azure Storage account.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure Storage account to
     # remove
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -284,10 +512,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Updates the specified Data Lake Analytics account to remove an Azure Storage
     # account.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which to remove the Azure Storage account.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure Storage account to
     # remove
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -296,11 +522,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -309,13 +535,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -340,65 +566,62 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     end
 
     #
-    # Gets the specified Azure Storage account linked to the given Data Lake
-    # Analytics account.
+    # Lists the Azure Storage containers, if any, associated with the specified
+    # Data Lake Analytics and Azure Storage account combination. The response
+    # includes a link to the next page of results, if any.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which to retrieve Azure storage account details.
-    # @param storage_account_name [String] The name of the Azure Storage account
-    # for which to retrieve the details.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure storage account
+    # from which to list blob containers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [StorageAccountInfo] operation results.
+    # @return [Array<StorageContainer>] operation results.
     #
-    def get(resource_group_name, account_name, storage_account_name, custom_headers:nil)
-      response = get_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+    def list_storage_containers(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      first_page = list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Gets the specified Azure Storage account linked to the given Data Lake
-    # Analytics account.
+    # Lists the Azure Storage containers, if any, associated with the specified
+    # Data Lake Analytics and Azure Storage account combination. The response
+    # includes a link to the next page of results, if any.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which to retrieve Azure storage account details.
-    # @param storage_account_name [String] The name of the Azure Storage account
-    # for which to retrieve the details.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure storage account
+    # from which to list blob containers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers:nil)
-      get_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
+    def list_storage_containers_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Gets the specified Azure Storage account linked to the given Data Lake
-    # Analytics account.
+    # Lists the Azure Storage containers, if any, associated with the specified
+    # Data Lake Analytics and Azure Storage account combination. The response
+    # includes a link to the next page of results, if any.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which to retrieve Azure storage account details.
-    # @param storage_account_name [String] The name of the Azure Storage account
-    # for which to retrieve the details.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure storage account
+    # from which to list blob containers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+    def list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -407,13 +630,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -434,7 +657,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageAccountInfo.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageContainerListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -451,10 +674,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Gets the specified Azure Storage container associated with the given Data
     # Lake Analytics and Azure Storage accounts.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to retrieve blob container.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure storage account
     # from which to retrieve the blob container.
     # @param container_name [String] The name of the Azure storage container to
@@ -473,10 +694,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Gets the specified Azure Storage container associated with the given Data
     # Lake Analytics and Azure Storage accounts.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to retrieve blob container.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure storage account
     # from which to retrieve the blob container.
     # @param container_name [String] The name of the Azure storage container to
@@ -494,10 +713,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Gets the specified Azure Storage container associated with the given Data
     # Lake Analytics and Azure Storage accounts.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to retrieve blob container.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure storage account
     # from which to retrieve the blob container.
     # @param container_name [String] The name of the Azure storage container to
@@ -508,12 +725,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_storage_container_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
       fail ArgumentError, 'container_name is nil' if container_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -522,13 +739,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}/Containers/{containerName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers/{containerName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'containerName' => container_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'containerName' => container_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -563,124 +780,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     end
 
     #
-    # Lists the Azure Storage containers, if any, associated with the specified
-    # Data Lake Analytics and Azure Storage account combination. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage blob containers.
-    # @param storage_account_name [String] The name of the Azure storage account
-    # from which to list blob containers.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<StorageContainer>] operation results.
-    #
-    def list_storage_containers(resource_group_name, account_name, storage_account_name, custom_headers:nil)
-      first_page = list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Lists the Azure Storage containers, if any, associated with the specified
-    # Data Lake Analytics and Azure Storage account combination. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage blob containers.
-    # @param storage_account_name [String] The name of the Azure storage account
-    # from which to list blob containers.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_storage_containers_with_http_info(resource_group_name, account_name, storage_account_name, custom_headers:nil)
-      list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Lists the Azure Storage containers, if any, associated with the specified
-    # Data Lake Analytics and Azure Storage account combination. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage blob containers.
-    # @param storage_account_name [String] The name of the Azure storage account
-    # from which to list blob containers.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}/Containers'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListStorageContainersResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # Gets the SAS token associated with the specified Data Lake Analytics and
     # Azure Storage account and container combination.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which an Azure Storage account's SAS token is being requested.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure storage account
     # for which the SAS token is being requested.
     # @param container_name [String] The name of the Azure storage container for
@@ -688,7 +792,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<SasTokenInfo>] operation results.
+    # @return [Array<SasTokenInformation>] operation results.
     #
     def list_sas_tokens(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
       first_page = list_sas_tokens_as_lazy(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers)
@@ -699,10 +803,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Gets the SAS token associated with the specified Data Lake Analytics and
     # Azure Storage account and container combination.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which an Azure Storage account's SAS token is being requested.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure storage account
     # for which the SAS token is being requested.
     # @param container_name [String] The name of the Azure storage container for
@@ -720,10 +822,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Gets the SAS token associated with the specified Data Lake Analytics and
     # Azure Storage account and container combination.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which an Azure Storage account's SAS token is being requested.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param storage_account_name [String] The name of the Azure storage account
     # for which the SAS token is being requested.
     # @param container_name [String] The name of the Azure storage container for
@@ -734,12 +834,12 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
       fail ArgumentError, 'container_name is nil' if container_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -748,13 +848,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}/Containers/{containerName}/listSasTokens'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers/{containerName}/listSasTokens'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'containerName' => container_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'storageAccountName' => storage_account_name,'containerName' => container_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -775,340 +875,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListSasTokensResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the first page of Azure Storage accounts, if any, linked to the
-    # specified Data Lake Analytics account. The response includes a link to the
-    # next page, if any.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage accounts.
-    # @param filter [String] The OData filter. Optional.
-    # @param top [Integer] The number of items to return. Optional.
-    # @param skip [Integer] The number of items to skip over before returning
-    # elements. Optional.
-    # @param select [String] OData Select statement. Limits the properties on each
-    # entry to just those requested, e.g.
-    # Categories?$select=CategoryName,Description. Optional.
-    # @param orderby [String] OrderBy clause. One or more comma-separated
-    # expressions with an optional "asc" (the default) or "desc" depending on the
-    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
-    # desc. Optional.
-    # @param count [Boolean] The Boolean value of true or false to request a count
-    # of the matching resources included with the resources in the response, e.g.
-    # Categories?$count=true. Optional.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<StorageAccountInfo>] operation results.
-    #
-    def list_by_account(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
-      first_page = list_by_account_as_lazy(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Gets the first page of Azure Storage accounts, if any, linked to the
-    # specified Data Lake Analytics account. The response includes a link to the
-    # next page, if any.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage accounts.
-    # @param filter [String] The OData filter. Optional.
-    # @param top [Integer] The number of items to return. Optional.
-    # @param skip [Integer] The number of items to skip over before returning
-    # elements. Optional.
-    # @param select [String] OData Select statement. Limits the properties on each
-    # entry to just those requested, e.g.
-    # Categories?$select=CategoryName,Description. Optional.
-    # @param orderby [String] OrderBy clause. One or more comma-separated
-    # expressions with an optional "asc" (the default) or "desc" depending on the
-    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
-    # desc. Optional.
-    # @param count [Boolean] The Boolean value of true or false to request a count
-    # of the matching resources included with the resources in the response, e.g.
-    # Categories?$count=true. Optional.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_account_with_http_info(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
-      list_by_account_async(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets the first page of Azure Storage accounts, if any, linked to the
-    # specified Data Lake Analytics account. The response includes a link to the
-    # next page, if any.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage accounts.
-    # @param filter [String] The OData filter. Optional.
-    # @param top [Integer] The number of items to return. Optional.
-    # @param skip [Integer] The number of items to skip over before returning
-    # elements. Optional.
-    # @param select [String] OData Select statement. Limits the properties on each
-    # entry to just those requested, e.g.
-    # Categories?$select=CategoryName,Description. Optional.
-    # @param orderby [String] OrderBy clause. One or more comma-separated
-    # expressions with an optional "asc" (the default) or "desc" depending on the
-    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
-    # desc. Optional.
-    # @param count [Boolean] The Boolean value of true or false to request a count
-    # of the matching resources included with the resources in the response, e.g.
-    # Categories?$count=true. Optional.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_account_async(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
-      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '1'" if !skip.nil? && skip < 1
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'$select' => select,'$orderby' => orderby,'$count' => count,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the Azure Storage containers, if any, associated with the specified
-    # Data Lake Analytics and Azure Storage account combination. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ListStorageContainersResult] operation results.
-    #
-    def list_storage_containers_next(next_page_link, custom_headers:nil)
-      response = list_storage_containers_next_async(next_page_link, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists the Azure Storage containers, if any, associated with the specified
-    # Data Lake Analytics and Azure Storage account combination. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_storage_containers_next_with_http_info(next_page_link, custom_headers:nil)
-      list_storage_containers_next_async(next_page_link, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Lists the Azure Storage containers, if any, associated with the specified
-    # Data Lake Analytics and Azure Storage account combination. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_storage_containers_next_async(next_page_link, custom_headers:nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListStorageContainersResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the SAS token associated with the specified Data Lake Analytics and
-    # Azure Storage account and container combination.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ListSasTokensResult] operation results.
-    #
-    def list_sas_tokens_next(next_page_link, custom_headers:nil)
-      response = list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the SAS token associated with the specified Data Lake Analytics and
-    # Azure Storage account and container combination.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_sas_tokens_next_with_http_info(next_page_link, custom_headers:nil)
-      list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets the SAS token associated with the specified Data Lake Analytics and
-    # Azure Storage account and container combination.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_sas_tokens_next_async(next_page_link, custom_headers:nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListSasTokensResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SasTokenInformationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1131,8 +898,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeAnalyticsAccountListStorageAccountsResult] operation
-    # results.
+    # @return [StorageAccountInformationListResult] operation results.
     #
     def list_by_account_next(next_page_link, custom_headers:nil)
       response = list_by_account_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -1203,7 +969,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageAccountInformationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1221,56 +987,184 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # Data Lake Analytics and Azure Storage account combination. The response
     # includes a link to the next page of results, if any.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage blob containers.
-    # @param storage_account_name [String] The name of the Azure storage account
-    # from which to list blob containers.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ListStorageContainersResult] which provide lazy access to pages of
-    # the response.
+    # @return [StorageContainerListResult] operation results.
     #
-    def list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers:nil)
-      response = list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_storage_containers_next_async(next_page_link, custom_headers:custom_headers)
+    def list_storage_containers_next(next_page_link, custom_headers:nil)
+      response = list_storage_containers_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists the Azure Storage containers, if any, associated with the specified
+    # Data Lake Analytics and Azure Storage account combination. The response
+    # includes a link to the next page of results, if any.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_storage_containers_next_with_http_info(next_page_link, custom_headers:nil)
+      list_storage_containers_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Lists the Azure Storage containers, if any, associated with the specified
+    # Data Lake Analytics and Azure Storage account combination. The response
+    # includes a link to the next page of results, if any.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_storage_containers_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
-        page
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageContainerListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
+
+      promise.execute
     end
 
     #
     # Gets the SAS token associated with the specified Data Lake Analytics and
     # Azure Storage account and container combination.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account from
-    # which an Azure Storage account's SAS token is being requested.
-    # @param storage_account_name [String] The name of the Azure storage account
-    # for which the SAS token is being requested.
-    # @param container_name [String] The name of the Azure storage container for
-    # which the SAS token is being requested.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ListSasTokensResult] which provide lazy access to pages of the
-    # response.
+    # @return [SasTokenInformationListResult] operation results.
     #
-    def list_sas_tokens_as_lazy(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
-      response = list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers)
+    def list_sas_tokens_next(next_page_link, custom_headers:nil)
+      response = list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the SAS token associated with the specified Data Lake Analytics and
+    # Azure Storage account and container combination.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_sas_tokens_next_with_http_info(next_page_link, custom_headers:nil)
+      list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the SAS token associated with the specified Data Lake Analytics and
+    # Azure Storage account and container combination.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_sas_tokens_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
-        page
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SasTokenInformationListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
+
+      promise.execute
     end
 
     #
@@ -1278,10 +1172,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # specified Data Lake Analytics account. The response includes a link to the
     # next page, if any.
     #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Analytics account.
-    # @param account_name [String] The name of the Data Lake Analytics account for
-    # which to list Azure Storage accounts.
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
     # @param filter [String] The OData filter. Optional.
     # @param top [Integer] The number of items to return. Optional.
     # @param skip [Integer] The number of items to skip over before returning
@@ -1299,8 +1191,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeAnalyticsAccountListStorageAccountsResult] which provide
-    # lazy access to pages of the response.
+    # @return [StorageAccountInformationListResult] which provide lazy access to
+    # pages of the response.
     #
     def list_by_account_as_lazy(resource_group_name, account_name, filter:nil, top:nil, skip:nil, select:nil, orderby:nil, count:nil, custom_headers:nil)
       response = list_by_account_async(resource_group_name, account_name, filter:filter, top:top, skip:skip, select:select, orderby:orderby, count:count, custom_headers:custom_headers).value!
@@ -1308,6 +1200,59 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_by_account_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Lists the Azure Storage containers, if any, associated with the specified
+    # Data Lake Analytics and Azure Storage account combination. The response
+    # includes a link to the next page of results, if any.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure storage account
+    # from which to list blob containers.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [StorageContainerListResult] which provide lazy access to pages of
+    # the response.
+    #
+    def list_storage_containers_as_lazy(resource_group_name, account_name, storage_account_name, custom_headers:nil)
+      response = list_storage_containers_async(resource_group_name, account_name, storage_account_name, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_storage_containers_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Gets the SAS token associated with the specified Data Lake Analytics and
+    # Azure Storage account and container combination.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group.
+    # @param account_name [String] The name of the Data Lake Analytics account.
+    # @param storage_account_name [String] The name of the Azure storage account
+    # for which the SAS token is being requested.
+    # @param container_name [String] The name of the Azure storage container for
+    # which the SAS token is being requested.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SasTokenInformationListResult] which provide lazy access to pages of
+    # the response.
+    #
+    def list_sas_tokens_as_lazy(resource_group_name, account_name, storage_account_name, container_name, custom_headers:nil)
+      response = list_sas_tokens_async(resource_group_name, account_name, storage_account_name, container_name, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_sas_tokens_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

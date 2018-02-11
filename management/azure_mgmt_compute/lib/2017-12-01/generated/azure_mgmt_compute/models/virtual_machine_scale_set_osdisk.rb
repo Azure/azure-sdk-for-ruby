@@ -22,6 +22,10 @@ module Azure::Compute::Mgmt::V2017_12_01
       # 'ReadWrite'
       attr_accessor :caching
 
+      # @return [Boolean] Specifies whether writeAccelerator should be enabled
+      # or disabled on the disk.
+      attr_accessor :write_accelerator_enabled
+
       # @return [DiskCreateOptionTypes] Specifies how the virtual machines in
       # the scale set should be created.<br><br> The only allowed value is:
       # **FromImage** \u2013 This value is used when you are using an image to
@@ -79,6 +83,14 @@ module Azure::Compute::Mgmt::V2017_12_01
                 type: {
                   name: 'Enum',
                   module: 'CachingTypes'
+                }
+              },
+              write_accelerator_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'writeAcceleratorEnabled',
+                type: {
+                  name: 'Boolean'
                 }
               },
               create_option: {
