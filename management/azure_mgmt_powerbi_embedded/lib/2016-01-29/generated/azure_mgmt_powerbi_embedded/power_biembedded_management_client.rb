@@ -214,7 +214,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_powerbi_embedded'
-        sdk_information = "#{sdk_information}/0.15.2"
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end
