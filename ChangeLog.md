@@ -19,6 +19,7 @@
 * Introduced named parameters in azure_sdk_for_ruby. If there are optional parameters in an API, then such parameters must be called using the named parameters.
 * Updated Latest profiles to point to the Latest versions of the services. 
 * Updated SDKs with all the changes after commit [7aa3a5247895ba34d6cfec73e036bb66dc907d20](https://github.com/Azure/azure-rest-api-specs/tree/7aa3a5247895ba34d6cfec73e036bb66dc907d20) to commit [68a0d93b00f335894fd00b83bbdc8dd27e68b034](https://github.com/Azure/azure-rest-api-specs/tree/68a0d93b00f335894fd00b83bbdc8dd27e68b034)
+* Update azure_storage dependency from 0.14.0.preview to 0.15.0.preview. 
 
 ## 2018.01.30 - Azure ARM release version 0.15.3
 * Releasing 0.15.3 version of azure_mgmt_event_grid gem.Refer [PR #1257](https://github.com/Azure/azure-sdk-for-ruby/pull/1257) for further details.
