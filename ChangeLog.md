@@ -1,3 +1,25 @@
+## 2018.02.12 - Azure Ruby SDK Release 0.16.0
+* Regened all azure_* sdks using [Autorest.2.0.4250](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.3.0.20](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of version 0.16.0
+* Introduced Data Plane SDKs with this release. The following data plane SDKs have been introduced:
+  - [azure_cognitiveservices_computervision](https://rubygems.org/gems/azure_cognitiveservices_computervision)
+  - [azure_cognitiveservices_face](https://rubygems.org/gems/azure_cognitiveservices_face)
+  - [azure_cognitiveservices_textanalytics](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+  - [azure_graph_rbac](https://rubygems.org/gems/azure_graph_rbac)
+  - [azure_cognitiveservices_contentmoderator](https://rubygems.org/gems/azure_cognitiveservices_contentmoderator)
+  - [azure_cognitiveservices_imagesearch](https://rubygems.org/gems/azure_cognitiveservices_imagesearch)
+  - [azure_cognitiveservices_videosearch](https://rubygems.org/gems/azure_cognitiveservices_videosearch)
+  - [azure_cognitiveservices_customsearch](https://rubygems.org/gems/azure_cognitiveservices_customsearch)
+  - [azure_cognitiveservices_newssearch](https://rubygems.org/gems/azure_cognitiveservices_newssearch)
+  - [azure_cognitiveservices_websearch](https://rubygems.org/gems/azure_cognitiveservices_websearch)
+  - [azure_cognitiveservices_entitysearch](https://rubygems.org/gems/azure_cognitiveservices_entitysearch)
+  - [azure_cognitiveservices_spellcheck](https://rubygems.org/gems/azure_cognitiveservices_spellcheck)
+  - [azure_event_grid](https://rubygems.org/gems/azure_event_grid)
+* Moved [azure_mgmt_graph](https://rubygems.org/gems/azure_mgmt_graph) to data plane SDK [azure_graph_rbac](https://rubygems.org/gems/azure_graph_rbac)
+* In the rollup gem, changed namespace from Azure::Profiles::Latest::Mgmt to Azure::Profiles::Latest, since the rollup profiles will include management and data plane SDKs.
+* Introduced named parameters in azure_sdk_for_ruby. If there are optional parameters in an API, then such parameters must be called using the named parameters.
+* Updated Latest profiles to point to the Latest versions of the services. 
+* Updated SDKs with all the changes after commit [7aa3a5247895ba34d6cfec73e036bb66dc907d20](https://github.com/Azure/azure-rest-api-specs/tree/7aa3a5247895ba34d6cfec73e036bb66dc907d20) to commit [68a0d93b00f335894fd00b83bbdc8dd27e68b034](https://github.com/Azure/azure-rest-api-specs/tree/68a0d93b00f335894fd00b83bbdc8dd27e68b034)
+
 ## 2018.01.30 - Azure ARM release version 0.15.3
 * Releasing 0.15.3 version of azure_mgmt_event_grid gem.Refer [PR #1257](https://github.com/Azure/azure-sdk-for-ruby/pull/1257) for further details.
 * Releasing 0.15.3 version of azure_event_grid(data plane) gem.Refer [PR #1257](https://github.com/Azure/azure-sdk-for-ruby/pull/1257) for further details.
