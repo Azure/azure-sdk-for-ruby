@@ -137,7 +137,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_grid'
-        sdk_information = "#{sdk_information}/0.15.3"
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end
