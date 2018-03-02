@@ -183,7 +183,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_stor_simple8000_series'
-        sdk_information = "#{sdk_information}/0.15.2"
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end

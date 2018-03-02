@@ -6,7 +6,9 @@
     "autorest_options": {
       "ruby": "",
       "azure-arm": true,
-      "use": "@microsoft.azure/autorest.ruby@3.0.20"
+      "use": "@microsoft.azure/autorest.ruby@3.0.20",
+      "multiapi": "",
+      "sdkrel:ruby-sdks-folder": "."
     }
   },
   "projects": {
