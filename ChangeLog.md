@@ -1,3 +1,9 @@
+## 2018.03.15 - Azure Ruby SDK Release
+* Added versions "2017-10-01" & "2018-03-01-preview" to azure_mgmt_dns gem. 
+* Regenerated azure_mgmt_dns SDK and individual profiles and incremented its version to 0.16.1
+* Updated azure_sdk rollup profile to use "2018-03-01-preview" version of management plane DNS service.
+* Regenerated azure_sdk rollup gem and incremented its version to 0.16.2.
+
 ## 2018.02.12 - Azure Ruby SDK Release 0.16.0
 * Regened all azure_* sdks using [Autorest.2.0.4250](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.3.0.20](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of version 0.16.0
 * Introduced Data Plane SDKs with this release. The following data plane SDKs have been introduced:

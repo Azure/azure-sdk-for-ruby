@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Dns::Mgmt::V2017_09_01
+module Azure::Dns::Mgmt::V2017_10_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -56,7 +56,7 @@ module Azure::Dns::Mgmt::V2017_09_01
 
       @record_sets = RecordSets.new(self)
       @zones = Zones.new(self)
-      @api_version = '2017-09-01'
+      @api_version = '2017-10-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
