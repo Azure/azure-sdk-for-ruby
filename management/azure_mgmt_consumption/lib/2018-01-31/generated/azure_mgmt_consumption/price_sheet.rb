@@ -33,13 +33,15 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # returned a partial result. If a previous response contains a nextLink
     # element, the value of the nextLink element will include a skiptoken parameter
     # that specifies a starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the top N
+    # results.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PriceSheetResult] operation results.
     #
-    def get(expand:nil, skiptoken:nil, custom_headers:nil)
-      response = get_async(expand:expand, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def get(expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      response = get_async(expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -54,13 +56,15 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # returned a partial result. If a previous response contains a nextLink
     # element, the value of the nextLink element will include a skiptoken parameter
     # that specifies a starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the top N
+    # results.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(expand:nil, skiptoken:nil, custom_headers:nil)
-      get_async(expand:expand, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def get_with_http_info(expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      get_async(expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -74,12 +78,16 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # returned a partial result. If a previous response contains a nextLink
     # element, the value of the nextLink element will include a skiptoken parameter
     # that specifies a starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the top N
+    # results.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(expand:nil, skiptoken:nil, custom_headers:nil)
+    def get_async(expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -97,7 +105,7 @@ module Azure::Consumption::Mgmt::V2018_01_31
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'$expand' => expand,'$skiptoken' => skiptoken,'api-version' => @client.api_version},
+          query_params: {'$expand' => expand,'$skiptoken' => skiptoken,'$top' => top,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -142,13 +150,15 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # returned a partial result. If a previous response contains a nextLink
     # element, the value of the nextLink element will include a skiptoken parameter
     # that specifies a starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the top N
+    # results.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PriceSheetResult] operation results.
     #
-    def get_by_billing_period(billing_period_name, expand:nil, skiptoken:nil, custom_headers:nil)
-      response = get_by_billing_period_async(billing_period_name, expand:expand, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def get_by_billing_period(billing_period_name, expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      response = get_by_billing_period_async(billing_period_name, expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -164,13 +174,15 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # returned a partial result. If a previous response contains a nextLink
     # element, the value of the nextLink element will include a skiptoken parameter
     # that specifies a starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the top N
+    # results.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_by_billing_period_with_http_info(billing_period_name, expand:nil, skiptoken:nil, custom_headers:nil)
-      get_by_billing_period_async(billing_period_name, expand:expand, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def get_by_billing_period_with_http_info(billing_period_name, expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      get_by_billing_period_async(billing_period_name, expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -185,12 +197,16 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # returned a partial result. If a previous response contains a nextLink
     # element, the value of the nextLink element will include a skiptoken parameter
     # that specifies a starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the top N
+    # results.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_by_billing_period_async(billing_period_name, expand:nil, skiptoken:nil, custom_headers:nil)
+    def get_by_billing_period_async(billing_period_name, expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'billing_period_name is nil' if billing_period_name.nil?
@@ -209,7 +225,7 @@ module Azure::Consumption::Mgmt::V2018_01_31
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'billingPeriodName' => billing_period_name},
-          query_params: {'$expand' => expand,'$skiptoken' => skiptoken,'api-version' => @client.api_version},
+          query_params: {'$expand' => expand,'$skiptoken' => skiptoken,'$top' => top,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
