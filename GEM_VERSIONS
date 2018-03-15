@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.16.1"
+        "azure_sdk": "0.16.2"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.16.0",
@@ -35,7 +35,7 @@
         "azure_mgmt_datalake_analytics": "0.16.0",
         "azure_mgmt_datalake_store": "0.16.0",
         "azure_mgmt_devtestlabs": "0.16.0",
-        "azure_mgmt_dns": "0.16.0",
+        "azure_mgmt_dns": "0.16.1",
         "azure_mgmt_event_grid": "0.16.0",
         "azure_mgmt_event_hub": "0.16.0",
         "azure_mgmt_features": "0.16.0",
