@@ -144,7 +144,7 @@
                 },
                 "Microsoft.Dns": {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.EventGrid": {
@@ -684,7 +684,7 @@
             "resourceTypes": {
                 "Microsoft.Dns" : {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 }
             },
