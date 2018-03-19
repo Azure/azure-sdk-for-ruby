@@ -6,6 +6,13 @@
       "module_require": "azure_mgmt_analysis_services"
     }
   },
+  "Microsoft.ApiManagement": {
+    "management": {
+      "path": "management/azure_mgmt_api_management",
+      "namespace": "Azure::ApiManagement::Mgmt",
+      "module_require": "azure_mgmt_api_management"
+    }
+  },
   "Microsoft.Authorization": {
     "management": {
       "path": "management/azure_mgmt_authorization",
