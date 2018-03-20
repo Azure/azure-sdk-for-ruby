@@ -60,6 +60,11 @@
                         "2017-08-01": ["*"]
                     }
                 },
+                "Microsoft.ApiManagement": {
+                    "management": {
+                        "2018-01-01": ["*"]
+                    }
+                },
                 "Microsoft.Authorization": {
                     "management": {
                         "2015-07-01": ["*"]
@@ -437,6 +442,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_analysis_services/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_api_management": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ApiManagement": {
+                    "management": {
+                        "2018-01-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_api_management/lib/profiles",
             "individual_gem_profile": true
         }
         ],

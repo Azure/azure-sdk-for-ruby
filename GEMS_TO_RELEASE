@@ -1,4 +1,4 @@
 {
     "rollup": ["azure_sdk"],
-    "management": ["azure_mgmt_dns"]
+    "management": ["azure_mgmt_api_management"]
 }

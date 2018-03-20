@@ -1,3 +1,7 @@
+## 2018.03.19 - Azure Ruby SDK Release
+* Released a new gem 'azure_mgmt_api_management' - 0.16.0. 
+* Updated azure_sdk - 0.16.3, rollup profile to use '2018-01-01' version of azure_mgmt_api_management
+
 ## 2018.03.15 - Azure Ruby SDK Release
 * Added versions "2017-10-01" & "2018-03-01-preview" to azure_mgmt_dns gem. 
 * Regenerated azure_mgmt_dns SDK and individual profiles and incremented its version to 0.16.1

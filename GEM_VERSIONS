@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.16.2"
+        "azure_sdk": "0.16.3"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.16.0",
@@ -19,6 +19,7 @@
     },
     "management" : {
         "azure_mgmt_analysis_services": "0.16.0",
+        "azure_mgmt_api_management": "0.16.0",
         "azure_mgmt_authorization": "0.16.0",
         "azure_mgmt_automation": "0.16.0",
         "azure_mgmt_batch": "0.16.0",
