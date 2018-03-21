@@ -1,3 +1,6 @@
+## 2018.03.21 - Azure Ruby SDK Release
+* Released 0.16.1 version of 'azure_mgmt_api_management' to handle a minor fix.
+
 ## 2018.03.19 - Azure Ruby SDK Release
 * Released a new gem 'azure_mgmt_api_management' - 0.16.0. 
 * Updated azure_sdk - 0.16.3, rollup profile to use '2018-01-01' version of azure_mgmt_api_management

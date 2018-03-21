@@ -19,7 +19,7 @@
     },
     "management" : {
         "azure_mgmt_analysis_services": "0.16.0",
-        "azure_mgmt_api_management": "0.16.0",
+        "azure_mgmt_api_management": "0.16.1",
         "azure_mgmt_authorization": "0.16.0",
         "azure_mgmt_automation": "0.16.0",
         "azure_mgmt_batch": "0.16.0",
