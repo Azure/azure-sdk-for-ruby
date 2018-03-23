@@ -1,4 +1,4 @@
-**NOTE**
+## NOTE
 As of March 23, 2018 installing azure_sdk is reporting error as:
 
 ```
@@ -37,9 +37,6 @@ gem 'azure_sdk'
 ```
 
 An [issue](https://github.com/rubygems/rubygems/issues/2245) has been created to track this issue. Any updates on this will be updated here.
-
-**NOTE**: With 0.15.0 version of Azure SDK, significant changes (Multiple API versions & Profiles) have been introduced.
-The details are available [here](#azure-multiple-api-versions--profiles)
 
 # Microsoft Azure SDK for Ruby - Resource Management (preview)
 [![Build Status](https://api.travis-ci.org/Azure/azure-sdk-for-ruby.svg?branch=master)](https://api.travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
