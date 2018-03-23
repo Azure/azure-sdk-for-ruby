@@ -1,3 +1,42 @@
+**NOTE**
+As of March 23, 2018 installing azure_sdk is reporting error as:
+
+```
+$gem install azure_sdk 
+ERROR:  Error installing azure_sdk:
+	azure_sdk requires azure_mgmt_api_management (~> 0.16.0)
+```
+
+Also, ```bundle install``` command also reports error as:
+
+```
+$ bundle install
+...........
+...........
+Using azure_mgmt_storage 0.16.0
+Using azure_mgmt_stream_analytics 0.16.0
+Using azure_mgmt_subscriptions 0.16.0
+Using azure_mgmt_traffic_manager 0.16.0
+Using azure_mgmt_web 0.16.0
+Fetching azure_sdk 0.16.3
+Downloading azure_sdk-0.16.3 revealed dependencies not in the API or the lockfile (azure_mgmt_api_management (~> 0.16.0)).
+Either installing with `--full-index` or running `bundle update azure_sdk` should fix the problem.
+
+In Gemfile:
+  azure_sdk
+```
+
+**Temporary Fix**
+In order to fix this issue, you could update your Gemfile as:
+
+```
+source 'https://rubygems.org'
+
+gem `azure_mgmt_api_management`
+gem 'azure_sdk'
+```
+
+An [issue](https://github.com/rubygems/rubygems/issues/2245) has been created to track this issue. Any updates on this will be updated here.
 
 **NOTE**: With 0.15.0 version of Azure SDK, significant changes (Multiple API versions & Profiles) have been introduced.
 The details are available [here](#azure-multiple-api-versions--profiles)
