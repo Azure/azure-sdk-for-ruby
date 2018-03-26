@@ -44,8 +44,7 @@ module Azure::Compute::Mgmt::V2017_12_01
                 required: false,
                 serialized_name: 'storageAccountType',
                 type: {
-                  name: 'Enum',
-                  module: 'StorageAccountTypes'
+                  name: 'String'
                 }
               }
             }

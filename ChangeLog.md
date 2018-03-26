@@ -1,3 +1,7 @@
+## 2018.03.26 - Azure Ruby SDK Release
+* Released 0.17.0 version of 'azure_mgmt_compute'. This version consists of all changes up to the commit [48f795](https://github.com/Azure/azure-rest-api-specs/tree/48f795ee901742ed7c2ac5d4773a812695d2baac).
+* Released 0.17.0 version of 'azure_sdk' which points to the latest updates in the 'azure_mgmt_compute'.
+
 ## 2018.03.21 - Azure Ruby SDK Release
 * Released 0.16.1 version of 'azure_mgmt_api_management' to handle a minor fix.
 
