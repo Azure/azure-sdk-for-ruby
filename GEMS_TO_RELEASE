@@ -1,4 +1,4 @@
 {
     "rollup": ["azure_sdk"],
-    "management": ["azure_mgmt_compute"]
+    "management": ["azure_mgmt_authorization"]
 }

@@ -1,4 +1,8 @@
 ## 2018.03.26 - Azure Ruby SDK Release
+* Released 0.16.1 version of 'azure_mgmt_authorization'. This version consists of new versions such as 2018-01-01(preview), 2017-10-01(preview), etc. 
+* Released 0.17.1 version of 'azure_sdk' which points to the latest updates in 'azure_mgmt_authorization'.
+
+## 2018.03.26 - Azure Ruby SDK Release
 * Released 0.17.0 version of 'azure_mgmt_compute'. This version consists of all changes up to the commit [48f795](https://github.com/Azure/azure-rest-api-specs/tree/48f795ee901742ed7c2ac5d4773a812695d2baac).
 * Released 0.17.0 version of 'azure_sdk' which points to the latest updates in the 'azure_mgmt_compute'.
 
