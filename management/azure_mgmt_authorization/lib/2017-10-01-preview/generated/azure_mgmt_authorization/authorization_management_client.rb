@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2015_07_01
+module Azure::Authorization::Mgmt::V2017_10_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -34,21 +34,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [ClassicAdministrators] classic_administrators
-    attr_reader :classic_administrators
-
-    # @return [Permissions] permissions
-    attr_reader :permissions
-
-    # @return [ProviderOperationsMetadataOperations]
-    # provider_operations_metadata_operations
-    attr_reader :provider_operations_metadata_operations
-
     # @return [RoleAssignments] role_assignments
     attr_reader :role_assignments
-
-    # @return [RoleDefinitions] role_definitions
-    attr_reader :role_definitions
 
     #
     # Creates initializes a new instance of the AuthorizationManagementClient class.
@@ -63,12 +50,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @classic_administrators = ClassicAdministrators.new(self)
-      @permissions = Permissions.new(self)
-      @provider_operations_metadata_operations = ProviderOperationsMetadataOperations.new(self)
       @role_assignments = RoleAssignments.new(self)
-      @role_definitions = RoleDefinitions.new(self)
-      @api_version = '2015-07-01'
+      @api_version = '2017-10-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
