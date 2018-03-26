@@ -97,8 +97,7 @@ module Azure::Compute::Mgmt::V2017_12_01
                 required: true,
                 serialized_name: 'createOption',
                 type: {
-                  name: 'Enum',
-                  module: 'DiskCreateOptionTypes'
+                  name: 'String'
                 }
               },
               disk_size_gb: {

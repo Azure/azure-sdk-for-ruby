@@ -36,6 +36,9 @@ module Azure::Compute::Mgmt::V2017_12_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [AvailabilitySets] availability_sets
     attr_reader :availability_sets
 
@@ -93,6 +96,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @availability_sets = AvailabilitySets.new(self)
       @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
@@ -179,7 +183,7 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

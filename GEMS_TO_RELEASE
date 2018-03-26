@@ -1,3 +1,4 @@
 {
-    "management": ["azure_mgmt_api_management"]
+    "rollup": ["azure_sdk"],
+    "management": ["azure_mgmt_compute"]
 }
