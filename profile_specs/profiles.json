@@ -67,7 +67,8 @@
                 },
                 "Microsoft.Authorization": {
                     "management": {
-                        "2015-07-01": ["*"]
+                        "2015-06-01": ["*"],
+                        "2018-01-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Automation": {
@@ -465,7 +466,8 @@
             "resourceTypes": {
                 "Microsoft.Authorization" : {
                     "management": {
-                        "2015-07-01": ["*"]
+                        "2015-06-01": ["*"],
+                        "2018-01-01-preview": ["*"]
                     }
                 }
             },
