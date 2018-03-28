@@ -136,7 +136,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_authorization'
-        sdk_information = "#{sdk_information}/0.16.1"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end
