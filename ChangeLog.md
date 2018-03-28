@@ -1,3 +1,11 @@
+## 2018.03.28 - Azure Ruby SDK Release
+* Released 0.17.0 version of 'azure_mgmt_api_management' gem. This change includes:
+  - Changed namespace 'Azure::ApiManagement::Mgmt::V2018_01_01' to 'Azure::ApiManagement::Mgmt::V2018_01_01_preview'
+* Released 0.17.0 version of 'azure_mgmt_authorization' gem. This change includes:
+  - Changes namespace 'Azure::Authorization::Mgmt::V2015_06_01' to 'Azure::Authorization::Mgmt::V2015_06_01_preview'
+  - Introduced '2015-06-01-preview' version of authorization service. 
+* Released 0.17.2 version of 'azure_sdk' which includes the changes to 'azure_mgmt_api_management' & 'azure_mgmt_authorization' gems.  
+
 ## 2018.03.26 - Azure Ruby SDK Release
 * Released 0.16.1 version of 'azure_mgmt_authorization'. This version consists of new versions such as 2018-01-01(preview), 2017-10-01(preview), etc. 
 * Released 0.17.1 version of 'azure_sdk' which points to the latest updates in 'azure_mgmt_authorization'.
