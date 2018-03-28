@@ -62,12 +62,12 @@
                 },
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-01-01": ["*"]
+                        "2018-01-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Authorization": {
                     "management": {
-                        "2015-06-01": ["*"],
+                        "2015-06-01-preview": ["*"],
                         "2018-01-01-preview": ["*"]
                     }
                 },
@@ -452,7 +452,7 @@
             "resourceTypes": {
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-01-01": ["*"]
+                        "2018-01-01-preview": ["*"]
                     }
                 }
             },
@@ -466,7 +466,7 @@
             "resourceTypes": {
                 "Microsoft.Authorization" : {
                     "management": {
-                        "2015-06-01": ["*"],
+                        "2015-06-01-preview": ["*"],
                         "2018-01-01-preview": ["*"]
                     }
                 }

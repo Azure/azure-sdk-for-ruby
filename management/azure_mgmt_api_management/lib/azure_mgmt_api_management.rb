@@ -4,5 +4,5 @@
 
 require '2016-07-07/generated/azure_mgmt_api_management'
 require '2016-10-10/generated/azure_mgmt_api_management'
-require '2018-01-01/generated/azure_mgmt_api_management'
+require '2018-01-01-preview/generated/azure_mgmt_api_management'
 require 'profiles/latest/apimanagement_latest_profile_client'

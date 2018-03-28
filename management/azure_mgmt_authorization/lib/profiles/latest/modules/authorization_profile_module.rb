@@ -6,15 +6,15 @@ require 'azure_mgmt_authorization'
 
 module Azure::Authorization::Profiles::Latest
   module Mgmt
-    ClassicAdministrators = Azure::Authorization::Mgmt::V2015_06_01::ClassicAdministrators
+    ClassicAdministrators = Azure::Authorization::Mgmt::V2015_06_01_preview::ClassicAdministrators
     ProviderOperationsMetadataOperations = Azure::Authorization::Mgmt::V2018_01_01_preview::ProviderOperationsMetadataOperations
     Permissions = Azure::Authorization::Mgmt::V2018_01_01_preview::Permissions
     RoleAssignments = Azure::Authorization::Mgmt::V2018_01_01_preview::RoleAssignments
     RoleDefinitions = Azure::Authorization::Mgmt::V2018_01_01_preview::RoleDefinitions
 
     module Models
-      ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01::Models::ClassicAdministratorListResult
-      ClassicAdministrator = Azure::Authorization::Mgmt::V2015_06_01::Models::ClassicAdministrator
+      ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
+      ClassicAdministrator = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
       RoleDefinitionFilter = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
       RoleDefinition = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
       ResourceType = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
@@ -49,7 +49,7 @@ module Azure::Authorization::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::Authorization::Mgmt::V2015_06_01::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::Authorization::Mgmt::V2015_06_01_preview::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
@@ -88,10 +88,10 @@ module Azure::Authorization::Profiles::Latest
 
     class ModelClasses
       def classic_administrator_list_result
-        Azure::Authorization::Mgmt::V2015_06_01::Models::ClassicAdministratorListResult
+        Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       end
       def classic_administrator
-        Azure::Authorization::Mgmt::V2015_06_01::Models::ClassicAdministrator
+        Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
       end
       def role_definition_filter
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
