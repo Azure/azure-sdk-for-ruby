@@ -9,7 +9,6 @@ module MsRestAzure
 
   describe MSITokenProvider do
     it 'should throw error if nil data is passed into constructor' do
-      expect { MSITokenProvider.new(nil) }.to raise_error(ArgumentError)
       expect { MSITokenProvider.new(50431,nil) }.to raise_error(ArgumentError)
     end
 
