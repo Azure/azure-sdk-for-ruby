@@ -1,3 +1,6 @@
+##2018.04.04 ms_rest_azure version 0.10.4
+* Added IMDS Support for MSI Token Provider class. Refer [PR #1282](https://github.com/Azure/azure-sdk-for-ruby/pull/1282) for further details. 
+
 ##2018.02.06 ms_rest_azure version 0.10.3
 * Removed subscription_id check from configurable. Refer [PR# 1261](https://github.com/Azure/azure-sdk-for-ruby/pull/1261) for further details.
 
