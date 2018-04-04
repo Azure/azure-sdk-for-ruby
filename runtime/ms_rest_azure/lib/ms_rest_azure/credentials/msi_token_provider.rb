@@ -115,6 +115,7 @@ module MsRestAzure
       while retry_value <= max_retry
         response = connection.get do |request|
           request.headers['Metadata'] = 'true'
+          request.headers['User-Agent'] = "Azure-SDK-For-Ruby/ms_rest_azure/#{MsRestAzure::VERSION}"
         end
 
         if response.status == 429
