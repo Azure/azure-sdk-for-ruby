@@ -41,7 +41,7 @@ spec.add_runtime_dependency 'ms_rest_azure', '~> 0.10.0'
 ```
 Don't forget to correct the version.
 
-# Utilizing MSI(Managed Service Identity) Token Provider
+# Utilizing MSI(Managed Service Identity) Token Provider 
 
 MSI support has been enabled in `ms_rest_azure` version `0.9.0`. Below code snippet demonstrates how to use MSITokenProvider with default port `50342`:  
 
@@ -49,6 +49,12 @@ MSI support has been enabled in `ms_rest_azure` version `0.9.0`. Below code snip
 provider = MsRestAzure::MSITokenProvider.new()
 credentials = MsRest::TokenCredentials.new(provider)
 ```
+
+**Note**:  As of 04/04/2018, there are 2 supported ways to get MSI Token. 
+ 1. Using the extension installed locally and accessing http://localhost:50342/oauth2/token to get the MSI Token
+ 2. Accessing the http://169.254.169.254/metadata/identity/oauth2/token to get the MSI Token (default)
+
+Usually, you do not have to worry about the way you get the MSI token. If you would like to access the token specifically using the first approach, then set the environment variable 'MSI_VM' to true.
 
 # Utilizing Telemetry Extension in your SDK
 
