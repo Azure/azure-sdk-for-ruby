@@ -94,9 +94,9 @@ module MsRestAzure
 
     def acquire_token_from_imds_with_retry
       token_acquire_url = IMDS_TOKEN_ACQUIRE_URL.dup + "?" + append_header('resource', ERB::Util.url_encode(@settings.token_audience)) + '&' + append_header('api-version', '2018-02-01')
-      token_acquire_url = (token_acquire_url + '&' + append_header('client_id', @client_id)) unless @client_id.nil?
-      token_acquire_url = (token_acquire_url + '&' + append_header('object_id', @object_id)) unless @object_id.nil?
-      token_acquire_url = (token_acquire_url + '&' + append_header('msi_res_id', @msi_res_id)) unless @msi_res_id.nil?
+      token_acquire_url = (token_acquire_url + '&' + append_header('client_id', ERB::Util.url_encode(@client_id))) unless @client_id.nil?
+      token_acquire_url = (token_acquire_url + '&' + append_header('object_id', ERB::Util.url_encode(@object_id))) unless @object_id.nil?
+      token_acquire_url = (token_acquire_url + '&' + append_header('msi_res_id', ERB::Util.url_encode(@msi_res_id))) unless @msi_res_id.nil?
       url = URI.parse(token_acquire_url)
 
       connection = Faraday.new(:url => url, :ssl => MsRest.ssl_options) do |builder|
