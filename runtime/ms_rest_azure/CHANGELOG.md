@@ -1,3 +1,6 @@
+##2018.04.16 ms_rest_azure version 0.10.6
+* Added encoding of client id, object id and msi_id in the MSI Token provider class. Refer[PR #1288](https://github.com/Azure/azure-sdk-for-ruby/pull/1288) for further details.
+
 ##2018.04.16 ms_rest_azure version 0.10.5
 * Added new error codes for IMDS Support for MSI Token Provider class. Refer [PR #1286](https://github.com/Azure/azure-sdk-for-ruby/pull/1286) and [Issue #1285](https://github.com/Azure/azure-sdk-for-ruby/issues/1285) for further details.
 
