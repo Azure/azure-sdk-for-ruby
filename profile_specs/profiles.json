@@ -218,7 +218,7 @@
                 },
                 "Microsoft.MediaServices": {
                     "management": {
-                        "2015-10-01": ["*"]
+                        "2018-03-30-preview": ["*"]
                     }
                 },
                 "Microsoft.MobileEngagement": {
@@ -909,7 +909,7 @@
             "resourceTypes": {
                 "Microsoft.MediaServices" : {
                     "management": {
-                        "2015-10-01": ["*"]
+                        "2018-03-30-preview": ["*"]
                     }
                 }
             },
