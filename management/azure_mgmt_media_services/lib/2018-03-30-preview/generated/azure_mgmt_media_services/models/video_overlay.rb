@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.VideoOverlay"
+        @odatatype = "#Microsoft.Media.VideoOverlay"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Rectangle] The location in the input video where the overlay
       # is applied.
@@ -93,7 +93,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'Double'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

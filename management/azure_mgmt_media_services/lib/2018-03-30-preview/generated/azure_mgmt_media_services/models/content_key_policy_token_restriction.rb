@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.ContentKeyPolicyTokenRestriction"
+        @odatatype = "#Microsoft.Media.ContentKeyPolicyTokenRestriction"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [String] The token issuer.
       attr_accessor :issuer
@@ -59,7 +59,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             name: 'Composite',
             class_name: 'ContentKeyPolicyTokenRestriction',
             model_properties: {
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

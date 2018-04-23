@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.BuiltInStandardEncoderPreset"
+        @odatatype = "#Microsoft.Media.BuiltInStandardEncoderPreset"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [EncoderNamedPreset] The built-in preset to be used for
       # encoding videos. Possible values include: 'AdaptiveStreaming',
@@ -40,7 +40,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             name: 'Composite',
             class_name: 'BuiltInStandardEncoderPreset',
             model_properties: {
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

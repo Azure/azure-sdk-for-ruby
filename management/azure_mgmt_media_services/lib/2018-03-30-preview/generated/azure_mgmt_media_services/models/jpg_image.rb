@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.JpgImage"
+        @odatatype = "#Microsoft.Media.JpgImage"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Array<JpgLayer>] A collection of output JPEG image layers to
       # be produced by the encoder.
@@ -46,7 +46,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'String'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

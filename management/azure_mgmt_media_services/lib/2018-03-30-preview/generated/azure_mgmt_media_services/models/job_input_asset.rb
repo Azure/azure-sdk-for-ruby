@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.JobInputAsset"
+        @odatatype = "#Microsoft.Media.JobInputAsset"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [String] The name of the input Asset.
       attr_accessor :asset_name
@@ -44,7 +44,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'String'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

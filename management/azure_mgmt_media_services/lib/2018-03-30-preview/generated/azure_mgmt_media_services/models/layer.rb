@@ -22,10 +22,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.PngLayer"] = "PngLayer"
 
       def initialize
-        @@odatatype = "Layer"
+        @odatatype = "Layer"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [String] The width of the output video for this layer. The
       # value can be absolute (in pixels) or relative (in percentage). For

@@ -16,10 +16,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.JobOutputAsset"] = "JobOutputAsset"
 
       def initialize
-        @@odatatype = "JobOutput"
+        @odatatype = "JobOutput"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [JobError] If the JobOutput is in the Error state, it contains
       # the details of the error.

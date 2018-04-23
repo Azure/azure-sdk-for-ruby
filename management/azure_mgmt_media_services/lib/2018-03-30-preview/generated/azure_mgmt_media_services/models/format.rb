@@ -21,10 +21,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.TransportStreamFormat"] = "TransportStreamFormat"
 
       def initialize
-        @@odatatype = "Format"
+        @odatatype = "Format"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [String] The pattern of the file names for the generated output
       # files. The following macros are supported in the file name: {Basename}

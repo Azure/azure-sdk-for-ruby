@@ -19,10 +19,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.ContentKeyPolicyX509CertificateTokenKey"] = "ContentKeyPolicyX509CertificateTokenKey"
 
       def initialize
-        @@odatatype = "ContentKeyPolicyRestrictionTokenKey"
+        @odatatype = "ContentKeyPolicyRestrictionTokenKey"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
 
       #

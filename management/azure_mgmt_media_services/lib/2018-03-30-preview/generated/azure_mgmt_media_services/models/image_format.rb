@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.ImageFormat"
+        @odatatype = "#Microsoft.Media.ImageFormat"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
 
       #
@@ -41,7 +41,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'String'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

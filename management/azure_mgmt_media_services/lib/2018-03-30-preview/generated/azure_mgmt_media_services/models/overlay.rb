@@ -17,10 +17,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.VideoOverlay"] = "VideoOverlay"
 
       def initialize
-        @@odatatype = "Overlay"
+        @odatatype = "Overlay"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [String] The label of the job input which is to be used as an
       # overlay. The Input must specify exactly one file. You can specify an

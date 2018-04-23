@@ -21,10 +21,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration"] = "ContentKeyPolicyFairPlayConfiguration"
 
       def initialize
-        @@odatatype = "ContentKeyPolicyConfiguration"
+        @odatatype = "ContentKeyPolicyConfiguration"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
 
       #

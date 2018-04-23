@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration"
+        @odatatype = "#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Array<Integer>] The key that must be used as FairPlay ASk.
       attr_accessor :ask
@@ -53,7 +53,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             name: 'Composite',
             class_name: 'ContentKeyPolicyFairPlayConfiguration',
             model_properties: {
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

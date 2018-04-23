@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.VideoAnalyzerPreset"
+        @odatatype = "#Microsoft.Media.VideoAnalyzerPreset"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Boolean] Whether to only extract audio insights when
       # processing a video file.
@@ -38,7 +38,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             name: 'Composite',
             class_name: 'VideoAnalyzerPreset',
             model_properties: {
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

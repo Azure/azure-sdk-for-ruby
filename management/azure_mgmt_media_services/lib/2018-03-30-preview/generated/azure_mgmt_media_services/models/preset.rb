@@ -20,10 +20,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.VideoAnalyzerPreset"] = "VideoAnalyzerPreset"
 
       def initialize
-        @@odatatype = "Preset"
+        @odatatype = "Preset"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
 
       #

@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.AudioOverlay"
+        @odatatype = "#Microsoft.Media.AudioOverlay"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
 
       #
@@ -81,7 +81,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'Double'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

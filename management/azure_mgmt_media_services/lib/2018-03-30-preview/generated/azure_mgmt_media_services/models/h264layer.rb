@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.H264Layer"
+        @odatatype = "#Microsoft.Media.H264Layer"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [H264VideoProfile] Which profile of the H.264 standard should
       # be used when encoding this layer. Default is Auto. Possible values
@@ -84,7 +84,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'String'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

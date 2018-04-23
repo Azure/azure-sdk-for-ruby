@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.ContentKeyPolicyPlayReadyConfiguration"
+        @odatatype = "#Microsoft.Media.ContentKeyPolicyPlayReadyConfiguration"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Array<ContentKeyPolicyPlayReadyLicense>] The PlayReady
       # licenses.
@@ -40,7 +40,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             name: 'Composite',
             class_name: 'ContentKeyPolicyPlayReadyConfiguration',
             model_properties: {
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

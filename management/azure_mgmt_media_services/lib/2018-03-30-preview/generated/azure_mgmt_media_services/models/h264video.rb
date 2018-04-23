@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.H264Video"
+        @odatatype = "#Microsoft.Media.H264Video"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Boolean] Whether or not the encoder should insert key frames
       # at scene changes. If not specified, the default is false. This flag
@@ -56,7 +56,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'String'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.ContentKeyPolicySymmetricTokenKey"
+        @odatatype = "#Microsoft.Media.ContentKeyPolicySymmetricTokenKey"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Array<Integer>] The key value of the key
       attr_accessor :key_value
@@ -36,7 +36,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             name: 'Composite',
             class_name: 'ContentKeyPolicySymmetricTokenKey',
             model_properties: {
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',

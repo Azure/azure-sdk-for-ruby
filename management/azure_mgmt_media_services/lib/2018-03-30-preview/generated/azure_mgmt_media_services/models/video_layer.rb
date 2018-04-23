@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @@odatatype = "#Microsoft.Media.VideoLayer"
+        @odatatype = "#Microsoft.Media.VideoLayer"
       end
 
-      attr_accessor :@odatatype
+      attr_accessor :odatatype
 
       # @return [Integer] The average bitrate in bits per second at which to
       # encode the input video when generating this layer. This is a required
@@ -91,7 +91,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                   name: 'String'
                 }
               },
-              @odatatype: {
+              odatatype: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: '@odata\\.type',
