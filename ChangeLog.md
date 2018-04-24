@@ -1,3 +1,7 @@
+## 2018.04.23 - Azure Ruby SDK Release
+* Released 0.16.1 version of 'azure_mgmt_media_services' gem which includes the latest '2018-03-30-preview' version.
+* Released 0.17.3 version of 'azure_sdk' which points to the latest '2018-03-30-preview' version of 'azure_mgmt_media_services'.
+
 ## 2018.03.28 - Azure Ruby SDK Release
 * Released 0.17.0 version of 'azure_mgmt_api_management' gem. This change includes:
   - Changed namespace 'Azure::ApiManagement::Mgmt::V2018_01_01' to 'Azure::ApiManagement::Mgmt::V2018_01_01_preview'
