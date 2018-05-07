@@ -346,6 +346,11 @@
     }
   },
   "azure_mgmt_event_grid": {
+    "azure_mgmt_event_grid_2018_05_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b3958fed2c2b12a3318233c3b43cee48cc5893d4/specification/eventgrid/resource-manager/readme.md",
+      "namespace": "Azure::EventGrid::Mgmt::V2018_05_01_preview",
+      "tag": "package-2018-05-preview"
+    },
     "azure_mgmt_event_grid_2018_01_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2018_01_01",
