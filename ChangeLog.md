@@ -1,3 +1,8 @@
+## 2018.05.07 - Azure Ruby SDK Release
+* Released 0.16.0 version of azure_mgmt_signalr
+* Released 0.16.1 version of azure_mgmt_event_grid. This includes the latest 2018-05-01-preview version. The latest individual profile also points to the new version.
+* Released 0.17.4 version of azure_sdk rollup gem. This includes the new signalr profile and changes to the event grid profile.
+
 ## 2018.04.23 - Azure Ruby SDK Release
 * Released 0.16.1 version of 'azure_mgmt_media_services' gem which includes the latest '2018-03-30-preview' version.
 * Released 0.17.3 version of 'azure_sdk' which points to the latest '2018-03-30-preview' version of 'azure_mgmt_media_services'.

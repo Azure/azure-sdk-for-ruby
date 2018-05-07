@@ -155,7 +155,7 @@
                 },
                 "Microsoft.EventGrid": {
                     "management": {
-                        "2018-01-01": ["*"]
+                        "2018-05-01-preview": ["*"]
                     },
                     "data": {
                         "2018-01-01": ["*"]
@@ -327,6 +327,11 @@
                 "Microsoft.ServiceFabric": {
                     "management": {
                         "2017-07-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.Signalr": {
+                    "management": {
+                        "2018-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.SQL": {
@@ -719,7 +724,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2018-01-01": ["*"]
+                        "2018-05-01-preview": ["*"]
                     }
                 }
             },
@@ -1238,6 +1243,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_service_fabric/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_signalr": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Signalr": {
+                    "management": {
+                        "2018-03-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_signalr/lib/profiles",
             "individual_gem_profile": true
         }
         ],
