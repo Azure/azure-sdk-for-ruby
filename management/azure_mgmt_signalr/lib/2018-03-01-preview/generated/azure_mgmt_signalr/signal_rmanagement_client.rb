@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventGrid::Mgmt::V2018_01_01
+module Azure::Signalr::Mgmt::V2018_03_01_preview
   #
   # A service client - single point of access to the REST API.
   #
-  class EventGridManagementClient < MsRestAzure::AzureServiceClient
+  class SignalRManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -17,13 +17,13 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Subscription credentials that uniquely identify a
+    # @return [String] Client Api Version.
+    attr_reader :api_version
+
+    # @return [String] Gets subscription Id which uniquely identify the
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
-
-    # @return [String] Version of the API to be used with the client request.
-    attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
@@ -36,20 +36,14 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [EventSubscriptions] event_subscriptions
-    attr_reader :event_subscriptions
-
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [Topics] topics
-    attr_reader :topics
-
-    # @return [TopicTypes] topic_types
-    attr_reader :topic_types
+    # @return [SignalR] signal_r
+    attr_reader :signal_r
 
     #
-    # Creates initializes a new instance of the EventGridManagementClient class.
+    # Creates initializes a new instance of the SignalRManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -61,11 +55,9 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @event_subscriptions = EventSubscriptions.new(self)
       @operations = Operations.new(self)
-      @topics = Topics.new(self)
-      @topic_types = TopicTypes.new(self)
-      @api_version = '2018-01-01'
+      @signal_r = SignalR.new(self)
+      @api_version = '2018-03-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -136,8 +128,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # Adds telemetry information.
     #
     def add_telemetry
-        sdk_information = 'azure_mgmt_event_grid'
-        sdk_information = "#{sdk_information}/0.16.1"
+        sdk_information = 'azure_mgmt_signalr'
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end

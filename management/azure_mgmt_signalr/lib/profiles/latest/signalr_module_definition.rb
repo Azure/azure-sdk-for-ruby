@@ -2,6 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure
-  VERSION = '0.17.4'
-end
+module Azure end
+module Azure::Signalr end
+module Azure::Signalr::Profiles end
+module Azure::Signalr::Profiles::Latest end

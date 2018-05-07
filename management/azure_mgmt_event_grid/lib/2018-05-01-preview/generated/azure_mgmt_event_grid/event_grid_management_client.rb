@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventGrid::Mgmt::V2018_01_01
+module Azure::EventGrid::Mgmt::V2018_05_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -65,7 +65,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       @operations = Operations.new(self)
       @topics = Topics.new(self)
       @topic_types = TopicTypes.new(self)
-      @api_version = '2018-01-01'
+      @api_version = '2018-05-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -137,7 +137,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_grid'
-        sdk_information = "#{sdk_information}/0.16.1"
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end
