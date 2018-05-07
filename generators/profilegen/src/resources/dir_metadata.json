@@ -375,6 +375,13 @@
       "module_require": "azure_mgmt_service_fabric"
     }
   },
+  "Microsoft.Signalr": {
+    "management": {
+      "path": "management/azure_mgmt_signalr",
+      "namespace": "Azure::Signalr::Mgmt",
+      "module_require": "azure_mgmt_signalr"
+    }
+  },
   "Microsoft.SQL": {
     "management": {
       "path": "management/azure_mgmt_sql",
