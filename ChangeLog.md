@@ -1,3 +1,6 @@
+## 2018.05.08 - Azure Ruby SDK Release
+* Released 0.16.1 version of azure_mgmt_signalr. Minor Bugfix to include the profile files.
+
 ## 2018.05.07 - Azure Ruby SDK Release
 * Released 0.16.0 version of azure_mgmt_signalr
 * Released 0.16.1 version of azure_mgmt_event_grid. This includes the latest 2018-05-01-preview version. The latest individual profile also points to the new version.
