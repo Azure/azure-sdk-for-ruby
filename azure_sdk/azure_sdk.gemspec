@@ -8,7 +8,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'azure_sdk/version'
 require 'json'
 
-gem_versions = JSON.parse(File.read(File.expand_path('../../GEM_VERSIONS', __FILE__)).strip)
+gem_versions = JSON.parse(File.read(File.expand_path("#{__dir__}/../config/GEM_VERSIONS", __FILE__)).strip)
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_sdk'
