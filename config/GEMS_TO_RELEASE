@@ -1,4 +1,3 @@
 {
-    "rollup": ["azure_sdk"],
-    "management": ["azure_mgmt_signalr", "azure_mgmt_event_grid"]
+    "management": ["azure_mgmt_signalr"]
 }
