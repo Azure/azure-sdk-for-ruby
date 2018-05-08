@@ -1,16 +1,13 @@
 /azure_sdk/ @sarangan12 @bsiegel
+/config/ @sarangan12 @bsiegel
 /data/ @sarangan12 @bsiegel
 /generators/ @sarangan12 @bsiegel
 /management/ @sarangan12 @bsiegel
-/profile_specs/ @sarangan12 @bsiegel
 /runtime/ @sarangan12 @bsiegel
 /scripts/ @sarangan12 @bsiegel
 .env_sample @sarangan12 @bsiegel
 .travis.yml @sarangan12 @bsiegel
-config.json @sarangan12 @bsiegel
-GEM_VERSIONS @sarangan12 @bsiegel
 Gemfile @sarangan12 @bsiegel
-GEMS_TO_RELEASE @sarangan12 @bsiegel
 Rakefile @sarangan12 @bsiegel
 README.md @sarangan12 @bsiegel
 vcr_helper.rb @sarangan12 @bsiegel

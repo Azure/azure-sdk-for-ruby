@@ -122,8 +122,12 @@ require 'os'
 require 'json'
 require 'fileutils'
 
-gem_versions = JSON.parse(File.read(File.expand_path('../GEM_VERSIONS', __FILE__)).strip)
-gems_to_release = JSON.parse(File.read(File.expand_path('../GEMS_TO_RELEASE', __FILE__)).strip)
+def get_config_files_folder
+  "#{__dir__}/config"
+end
+
+gem_versions = JSON.parse(File.read(File.expand_path("#{get_config_files_folder}/GEM_VERSIONS", __FILE__)).strip)
+gems_to_release = JSON.parse(File.read(File.expand_path("#{get_config_files_folder}/GEMS_TO_RELEASE", __FILE__)).strip)
 GEMS_TO_IGNORE = %w{azure_mgmt_graph}
 REGEN_EXCLUDES = ['azure_sdk']
 
@@ -306,7 +310,7 @@ namespace :arm do
     Dir.chdir(__dir__)
     # Sample Command
     # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=profiles.json --mode=rollup --key=azure_sdk
-    command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=rollup --key=azure_sdk --sdk_path=#{__dir__}"
+    command = "#{get_base_profile_generation_cmd} --dir_metadata=#{get_config_files_folder}/dir_metadata.json --profile=#{get_config_files_folder}/profiles.json --mode=rollup --key=azure_sdk --sdk_path=#{__dir__}"
     execute_and_stream(command)
   end
 
@@ -324,7 +328,7 @@ namespace :arm do
 
       # Sample Command
       # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json --mode=management --key=azure_mgmt_authorization
-      command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=#{mode} --key=#{gem} --sdk_path=#{__dir__}"
+      command = "#{get_base_profile_generation_cmd} --dir_metadata=#{get_config_files_folder}/dir_metadata.json --profile=#{get_config_files_folder}/profiles.json --mode=#{mode} --key=#{gem} --sdk_path=#{__dir__}"
       execute_and_stream(command)
     end
   end
@@ -416,10 +420,6 @@ def get_base_profile_generation_cmd
   "bundle exec ruby #{__dir__}/generators/profilegen/src/profile_generator_client.rb"
 end
 
-def get_profile_spec_files_folder
-  "#{__dir__}/profile_specs"
-end
-
 def execute_and_stream(cmd)
   puts "running: #{cmd}"
   execute(cmd)
@@ -439,7 +439,7 @@ def execute(cmd)
 end
 
 def get_config_file
-  config_file = File.read(File.expand_path('../config.json', __FILE__))
+  config_file = File.read(File.expand_path("#{get_config_files_folder}/config.json", __FILE__))
   JSON.parse(config_file)
 end
 
