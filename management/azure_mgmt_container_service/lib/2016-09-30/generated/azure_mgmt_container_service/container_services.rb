@@ -18,7 +18,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       @client = client
     end
 
-    # @return [ComputeManagementClient] reference to the ComputeManagementClient
+    # @return [ContainerServiceClient] reference to the ContainerServiceClient
     attr_reader :client
 
     #

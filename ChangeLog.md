@@ -1,3 +1,7 @@
+## 2018.05.09 - Azure Ruby SDK Release
+* Released 0.17.0 version of azure_mgmt_container_service. Bug fix to change ComputeServiceClient to ContainerServiceClient in versions 2016-09-30 & 2017-01-31. 
+* Released 0.17.5 version of azure_sdk rollup gem. The changes include the Bug fix for the container service. 
+
 ## 2018.05.08 - Azure Ruby SDK Release
 * Released 0.16.1 version of azure_mgmt_signalr. Minor Bugfix to include the profile files.
 

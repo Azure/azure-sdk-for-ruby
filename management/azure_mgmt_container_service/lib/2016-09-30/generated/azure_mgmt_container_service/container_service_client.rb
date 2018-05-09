@@ -7,7 +7,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
   #
   # A service client - single point of access to the REST API.
   #
-  class ComputeManagementClient < MsRestAzure::AzureServiceClient
+  class ContainerServiceClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -40,7 +40,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
     attr_reader :container_services
 
     #
-    # Creates initializes a new instance of the ComputeManagementClient class.
+    # Creates initializes a new instance of the ContainerServiceClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -125,7 +125,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_service'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end
