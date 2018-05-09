@@ -1,4 +1,3 @@
 {
-    "rollup": ["azure_sdk"],
-    "management": ["azure_mgmt_signalr"]
+    "management": ["azure_mgmt_container_service"]
 }
