@@ -46,7 +46,7 @@ module Azure::ContainerService::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::ContainerService::Mgmt::V2017_01_31::ComputeManagementClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::ContainerService::Mgmt::V2017_01_31::ContainerServiceClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
