@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # AvailabilitySets
+  # Compute Client
   #
   class AvailabilitySets
     include MsRestAzure

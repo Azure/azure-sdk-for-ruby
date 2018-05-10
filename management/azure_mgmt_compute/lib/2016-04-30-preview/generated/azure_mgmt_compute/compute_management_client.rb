@@ -45,6 +45,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     # @return [VirtualMachineExtensions] virtual_machine_extensions
     attr_reader :virtual_machine_extensions
 
+    # @return [VirtualMachines] virtual_machines
+    attr_reader :virtual_machines
+
     # @return [VirtualMachineImages] virtual_machine_images
     attr_reader :virtual_machine_images
 
@@ -56,9 +59,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
     # @return [Images] images
     attr_reader :images
-
-    # @return [VirtualMachines] virtual_machines
-    attr_reader :virtual_machines
 
     # @return [VirtualMachineScaleSets] virtual_machine_scale_sets
     attr_reader :virtual_machine_scale_sets
@@ -88,11 +88,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       @availability_sets = AvailabilitySets.new(self)
       @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
+      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_images = VirtualMachineImages.new(self)
       @usage_operations = UsageOperations.new(self)
       @virtual_machine_sizes = VirtualMachineSizes.new(self)
       @images = Images.new(self)
-      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
       @disks = Disks.new(self)

@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # UsageOperations
+  # Compute Client
   #
   class UsageOperations
     include MsRestAzure

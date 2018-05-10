@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # VirtualMachineRunCommands
+  # Compute Client
   #
   class VirtualMachineRunCommands
     include MsRestAzure

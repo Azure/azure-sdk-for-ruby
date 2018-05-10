@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2017_12_01
   module Models
     #
-    # Describes a Virtual Machine.
+    # Describes a Virtual Machine Update.
     #
     class VirtualMachineUpdate < UpdateResource
 

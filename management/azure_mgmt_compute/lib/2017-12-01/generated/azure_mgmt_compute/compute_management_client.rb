@@ -48,6 +48,9 @@ module Azure::Compute::Mgmt::V2017_12_01
     # @return [VirtualMachineExtensions] virtual_machine_extensions
     attr_reader :virtual_machine_extensions
 
+    # @return [VirtualMachines] virtual_machines
+    attr_reader :virtual_machines
+
     # @return [VirtualMachineImages] virtual_machine_images
     attr_reader :virtual_machine_images
 
@@ -59,9 +62,6 @@ module Azure::Compute::Mgmt::V2017_12_01
 
     # @return [Images] images
     attr_reader :images
-
-    # @return [VirtualMachines] virtual_machines
-    attr_reader :virtual_machines
 
     # @return [VirtualMachineScaleSets] virtual_machine_scale_sets
     attr_reader :virtual_machine_scale_sets
@@ -100,11 +100,11 @@ module Azure::Compute::Mgmt::V2017_12_01
       @availability_sets = AvailabilitySets.new(self)
       @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
+      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_images = VirtualMachineImages.new(self)
       @usage_operations = UsageOperations.new(self)
       @virtual_machine_sizes = VirtualMachineSizes.new(self)
       @images = Images.new(self)
-      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_extensions = VirtualMachineScaleSetExtensions.new(self)
       @virtual_machine_scale_set_rolling_upgrades = VirtualMachineScaleSetRollingUpgrades.new(self)

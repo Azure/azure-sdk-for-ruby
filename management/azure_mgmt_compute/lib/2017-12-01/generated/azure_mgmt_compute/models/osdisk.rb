@@ -51,13 +51,13 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       # @return [DiskCreateOptionTypes] Specifies how the virtual machine
       # should be created.<br><br> Possible values are:<br><br> **Attach**
-      # \u2013 This value is used when you are using a specialized disk to
-      # create the virtual machine.<br><br> **FromImage** \u2013 This value is
-      # used when you are using an image to create the virtual machine. If you
-      # are using a platform image, you also use the imageReference element
-      # described above. If you are using a marketplace image, you  also use
-      # the plan element previously described. Possible values include:
-      # 'FromImage', 'Empty', 'Attach'
+      # This value is used when you are using a specialized disk to create the
+      # virtual machine.<br><br> **FromImage**  This value is used when you are
+      # using an image to create the virtual machine. If you are using a
+      # platform image, you also use the imageReference element described
+      # above. If you are using a marketplace image, you  also use the plan
+      # element previously described. Possible values include: 'FromImage',
+      # 'Empty', 'Attach'
       attr_accessor :create_option
 
       # @return [Integer] Specifies the size of an empty data disk in
