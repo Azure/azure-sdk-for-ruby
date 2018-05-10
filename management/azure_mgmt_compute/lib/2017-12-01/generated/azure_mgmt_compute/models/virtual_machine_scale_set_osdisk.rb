@@ -28,9 +28,9 @@ module Azure::Compute::Mgmt::V2017_12_01
 
       # @return [DiskCreateOptionTypes] Specifies how the virtual machines in
       # the scale set should be created.<br><br> The only allowed value is:
-      # **FromImage** \u2013 This value is used when you are using an image to
-      # create the virtual machine. If you are using a platform image, you also
-      # use the imageReference element described above. If you are using a
+      # **FromImage**  This value is used when you are using an image to create
+      # the virtual machine. If you are using a platform image, you also use
+      # the imageReference element described above. If you are using a
       # marketplace image, you  also use the plan element previously described.
       # Possible values include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option

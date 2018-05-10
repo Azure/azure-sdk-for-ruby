@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # VirtualMachineExtensionImages
+  # Compute Client
   #
   class VirtualMachineExtensionImages
     include MsRestAzure

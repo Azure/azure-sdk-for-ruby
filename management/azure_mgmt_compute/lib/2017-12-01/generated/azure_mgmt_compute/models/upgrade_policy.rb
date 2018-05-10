@@ -30,6 +30,10 @@ module Azure::Compute::Mgmt::V2017_12_01
       # image becomes available.
       attr_accessor :automatic_osupgrade
 
+      # @return [AutoOSUpgradePolicy] Configuration parameters used for
+      # performing automatic OS Upgrade.
+      attr_accessor :auto_osupgrade_policy
+
 
       #
       # Mapper for UpgradePolicy class as Ruby Hash.
@@ -68,6 +72,15 @@ module Azure::Compute::Mgmt::V2017_12_01
                 serialized_name: 'automaticOSUpgrade',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              auto_osupgrade_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'autoOSUpgradePolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AutoOSUpgradePolicy'
                 }
               }
             }

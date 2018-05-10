@@ -6,9 +6,7 @@
 module Azure::Compute::Mgmt::V2017_12_01
   module Models
     #
-    # The source user image virtual hard disk. The virtual hard disk will be
-    # copied before being attached to the virtual machine. If SourceImage is
-    # provided, the destination virtual hard drive must not exist.
+    # The source user image virtual hard disk. Only tags may be updated.
     #
     class ImageUpdate < UpdateResource
 

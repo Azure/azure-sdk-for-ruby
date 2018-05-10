@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # Disks
+  # Compute Client
   #
   class Disks
     include MsRestAzure

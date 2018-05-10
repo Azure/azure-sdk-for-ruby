@@ -9,41 +9,42 @@ module Azure::Compute::Profiles::V2017_03_09
     AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
     VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensionImages
     VirtualMachineExtensions = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensions
+    VirtualMachines = Azure::Compute::Mgmt::V2016_03_30::VirtualMachines
     VirtualMachineImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineImages
     UsageOperations = Azure::Compute::Mgmt::V2016_03_30::UsageOperations
     VirtualMachineSizes = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineSizes
-    VirtualMachines = Azure::Compute::Mgmt::V2016_03_30::VirtualMachines
     VirtualMachineScaleSets = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSets
     VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSetVMs
 
     module Models
       DiagnosticsProfile = Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile
-      VirtualMachineExtensionHandlerInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
-      SubResource = Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
-      VirtualMachineAgentInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineAgentInstanceView
-      AvailabilitySetListResult = Azure::Compute::Mgmt::V2016_03_30::Models::AvailabilitySetListResult
-      DiskInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::DiskInstanceView
-      VirtualMachineSizeListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineSizeListResult
-      BootDiagnosticsInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnosticsInstanceView
-      BootDiagnostics = Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnostics
-      VirtualMachineExtensionInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionInstanceView
       InstanceViewStatus = Azure::Compute::Mgmt::V2016_03_30::Models::InstanceViewStatus
-      PurchasePlan = Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan
-      OSDiskImage = Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
-      DataDiskImage = Azure::Compute::Mgmt::V2016_03_30::Models::DataDiskImage
-      VirtualMachineScaleSetSku = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSku
-      UsageName = Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
+      VirtualMachineExtensionHandlerInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
+      VaultCertificate = Azure::Compute::Mgmt::V2016_03_30::Models::VaultCertificate
+      VaultSecretGroup = Azure::Compute::Mgmt::V2016_03_30::Models::VaultSecretGroup
       VirtualMachineSize = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineSize
-      ListUsagesResult = Azure::Compute::Mgmt::V2016_03_30::Models::ListUsagesResult
-      VirtualMachineScaleSetSkuCapacity = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSkuCapacity
+      OSProfile = Azure::Compute::Mgmt::V2016_03_30::Models::OSProfile
+      InnerError = Azure::Compute::Mgmt::V2016_03_30::Models::InnerError
+      VirtualMachineExtensionInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionInstanceView
+      NetworkProfile = Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
       Resource = Azure::Compute::Mgmt::V2016_03_30::Models::Resource
+      BootDiagnostics = Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnostics
+      PurchasePlan = Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan
+      SubResource = Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
+      DataDiskImage = Azure::Compute::Mgmt::V2016_03_30::Models::DataDiskImage
+      ApiErrorBase = Azure::Compute::Mgmt::V2016_03_30::Models::ApiErrorBase
+      UsageName = Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
+      VirtualMachineAgentInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineAgentInstanceView
+      ListUsagesResult = Azure::Compute::Mgmt::V2016_03_30::Models::ListUsagesResult
+      DiskInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::DiskInstanceView
       ApiError = Azure::Compute::Mgmt::V2016_03_30::Models::ApiError
+      BootDiagnosticsInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnosticsInstanceView
       HardwareProfile = Azure::Compute::Mgmt::V2016_03_30::Models::HardwareProfile
       VirtualMachineIdentity = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineIdentity
       KeyVaultSecretReference = Azure::Compute::Mgmt::V2016_03_30::Models::KeyVaultSecretReference
       VirtualMachineInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineInstanceView
       DiskEncryptionSettings = Azure::Compute::Mgmt::V2016_03_30::Models::DiskEncryptionSettings
-      InnerError = Azure::Compute::Mgmt::V2016_03_30::Models::InnerError
+      VirtualMachineScaleSetVMListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMListResult
       OSDisk = Azure::Compute::Mgmt::V2016_03_30::Models::OSDisk
       VirtualMachineListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineListResult
       StorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::StorageProfile
@@ -54,26 +55,27 @@ module Azure::Compute::Profiles::V2017_03_09
       VirtualMachineScaleSetIdentity = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetIdentity
       SshConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::SshConfiguration
       VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetOSProfile
-      VaultCertificate = Azure::Compute::Mgmt::V2016_03_30::Models::VaultCertificate
+      AvailabilitySetListResult = Azure::Compute::Mgmt::V2016_03_30::Models::AvailabilitySetListResult
       VirtualMachineScaleSetOSDisk = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetOSDisk
-      OSProfile = Azure::Compute::Mgmt::V2016_03_30::Models::OSProfile
-      VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetStorageProfile
-      NetworkProfile = Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
-      ApiEntityReference = Azure::Compute::Mgmt::V2016_03_30::Models::ApiEntityReference
       OperationStatusResponse = Azure::Compute::Mgmt::V2016_03_30::Models::OperationStatusResponse
-      ApiErrorBase = Azure::Compute::Mgmt::V2016_03_30::Models::ApiErrorBase
+      VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetStorageProfile
+      VirtualMachineExtensionsListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionsListResult
+      ApiEntityReference = Azure::Compute::Mgmt::V2016_03_30::Models::ApiEntityReference
+      ComputeLongRunningOperationProperties = Azure::Compute::Mgmt::V2016_03_30::Models::ComputeLongRunningOperationProperties
+      VirtualMachineScaleSetVMInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMInstanceView
       VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineCaptureParameters
-      VirtualMachineScaleSetVMListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMListResult
+      VirtualMachineScaleSetListSkusResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListSkusResult
       ImageReference = Azure::Compute::Mgmt::V2016_03_30::Models::ImageReference
       VirtualMachineScaleSetNetworkProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetNetworkProfile
       VirtualHardDisk = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualHardDisk
-      VirtualMachineScaleSetVMInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMInstanceView
+      VirtualMachineScaleSetSku = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSku
       AdditionalUnattendContent = Azure::Compute::Mgmt::V2016_03_30::Models::AdditionalUnattendContent
       VirtualMachineScaleSetExtensionProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetExtensionProfile
       SshPublicKey = Azure::Compute::Mgmt::V2016_03_30::Models::SshPublicKey
       VirtualMachineScaleSetVMProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMProfile
-      VaultSecretGroup = Azure::Compute::Mgmt::V2016_03_30::Models::VaultSecretGroup
-      VirtualMachineScaleSetListSkusResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListSkusResult
+      VirtualMachineSizeListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineSizeListResult
+      VirtualMachineScaleSetSkuCapacity = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSkuCapacity
+      OSDiskImage = Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
       VirtualMachineScaleSetVMInstanceIDs = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMInstanceIDs
       Plan = Azure::Compute::Mgmt::V2016_03_30::Models::Plan
       VirtualMachineScaleSetVMInstanceRequiredIDs = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMInstanceRequiredIDs
@@ -87,12 +89,13 @@ module Azure::Compute::Profiles::V2017_03_09
       VirtualMachineScaleSetInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetInstanceView
       KeyVaultKeyReference = Azure::Compute::Mgmt::V2016_03_30::Models::KeyVaultKeyReference
       VirtualMachineScaleSetListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListResult
-      ComputeLongRunningOperationProperties = Azure::Compute::Mgmt::V2016_03_30::Models::ComputeLongRunningOperationProperties
+      UpdateResource = Azure::Compute::Mgmt::V2016_03_30::Models::UpdateResource
       VirtualMachineScaleSetListWithLinkResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListWithLinkResult
       AvailabilitySet = Azure::Compute::Mgmt::V2016_03_30::Models::AvailabilitySet
       VirtualMachineExtensionImage = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionImage
       VirtualMachineImageResource = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineImageResource
       VirtualMachineExtension = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtension
+      VirtualMachineExtensionUpdate = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionUpdate
       VirtualMachineImage = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineImage
       VirtualMachineCaptureResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineCaptureResult
       NetworkInterfaceReference = Azure::Compute::Mgmt::V2016_03_30::Models::NetworkInterfaceReference
@@ -121,7 +124,7 @@ module Azure::Compute::Profiles::V2017_03_09
     # ComputeManagementClass
     #
     class ComputeManagementClass
-      attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :virtual_machines, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :configurable, :base_url, :options, :model_classes
+      attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -144,10 +147,10 @@ module Azure::Compute::Profiles::V2017_03_09
         @availability_sets = @client_0.availability_sets
         @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
         @virtual_machine_extensions = @client_0.virtual_machine_extensions
+        @virtual_machines = @client_0.virtual_machines
         @virtual_machine_images = @client_0.virtual_machine_images
         @usage_operations = @client_0.usage_operations
         @virtual_machine_sizes = @client_0.virtual_machine_sizes
-        @virtual_machines = @client_0.virtual_machines
         @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
         @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
 
@@ -173,65 +176,68 @@ module Azure::Compute::Profiles::V2017_03_09
       def diagnostics_profile
         Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile
       end
-      def virtual_machine_extension_handler_instance_view
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
-      end
-      def sub_resource
-        Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
-      end
-      def virtual_machine_agent_instance_view
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineAgentInstanceView
-      end
-      def availability_set_list_result
-        Azure::Compute::Mgmt::V2016_03_30::Models::AvailabilitySetListResult
-      end
-      def disk_instance_view
-        Azure::Compute::Mgmt::V2016_03_30::Models::DiskInstanceView
-      end
-      def virtual_machine_size_list_result
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineSizeListResult
-      end
-      def boot_diagnostics_instance_view
-        Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnosticsInstanceView
-      end
-      def boot_diagnostics
-        Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnostics
-      end
-      def virtual_machine_extension_instance_view
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionInstanceView
-      end
       def instance_view_status
         Azure::Compute::Mgmt::V2016_03_30::Models::InstanceViewStatus
       end
-      def purchase_plan
-        Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan
+      def virtual_machine_extension_handler_instance_view
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
       end
-      def osdisk_image
-        Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
+      def vault_certificate
+        Azure::Compute::Mgmt::V2016_03_30::Models::VaultCertificate
       end
-      def data_disk_image
-        Azure::Compute::Mgmt::V2016_03_30::Models::DataDiskImage
-      end
-      def virtual_machine_scale_set_sku
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSku
-      end
-      def usage_name
-        Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
+      def vault_secret_group
+        Azure::Compute::Mgmt::V2016_03_30::Models::VaultSecretGroup
       end
       def virtual_machine_size
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineSize
       end
-      def list_usages_result
-        Azure::Compute::Mgmt::V2016_03_30::Models::ListUsagesResult
+      def osprofile
+        Azure::Compute::Mgmt::V2016_03_30::Models::OSProfile
       end
-      def virtual_machine_scale_set_sku_capacity
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSkuCapacity
+      def inner_error
+        Azure::Compute::Mgmt::V2016_03_30::Models::InnerError
+      end
+      def virtual_machine_extension_instance_view
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionInstanceView
+      end
+      def network_profile
+        Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
       end
       def resource
         Azure::Compute::Mgmt::V2016_03_30::Models::Resource
       end
+      def boot_diagnostics
+        Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnostics
+      end
+      def purchase_plan
+        Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan
+      end
+      def sub_resource
+        Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
+      end
+      def data_disk_image
+        Azure::Compute::Mgmt::V2016_03_30::Models::DataDiskImage
+      end
+      def api_error_base
+        Azure::Compute::Mgmt::V2016_03_30::Models::ApiErrorBase
+      end
+      def usage_name
+        Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
+      end
+      def virtual_machine_agent_instance_view
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineAgentInstanceView
+      end
+      def list_usages_result
+        Azure::Compute::Mgmt::V2016_03_30::Models::ListUsagesResult
+      end
+      def disk_instance_view
+        Azure::Compute::Mgmt::V2016_03_30::Models::DiskInstanceView
+      end
       def api_error
         Azure::Compute::Mgmt::V2016_03_30::Models::ApiError
+      end
+      def boot_diagnostics_instance_view
+        Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnosticsInstanceView
       end
       def hardware_profile
         Azure::Compute::Mgmt::V2016_03_30::Models::HardwareProfile
@@ -248,8 +254,8 @@ module Azure::Compute::Profiles::V2017_03_09
       def disk_encryption_settings
         Azure::Compute::Mgmt::V2016_03_30::Models::DiskEncryptionSettings
       end
-      def inner_error
-        Azure::Compute::Mgmt::V2016_03_30::Models::InnerError
+      def virtual_machine_scale_set_vmlist_result
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMListResult
       end
       def osdisk
         Azure::Compute::Mgmt::V2016_03_30::Models::OSDisk
@@ -281,35 +287,35 @@ module Azure::Compute::Profiles::V2017_03_09
       def virtual_machine_scale_set_osprofile
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetOSProfile
       end
-      def vault_certificate
-        Azure::Compute::Mgmt::V2016_03_30::Models::VaultCertificate
+      def availability_set_list_result
+        Azure::Compute::Mgmt::V2016_03_30::Models::AvailabilitySetListResult
       end
       def virtual_machine_scale_set_osdisk
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetOSDisk
       end
-      def osprofile
-        Azure::Compute::Mgmt::V2016_03_30::Models::OSProfile
+      def operation_status_response
+        Azure::Compute::Mgmt::V2016_03_30::Models::OperationStatusResponse
       end
       def virtual_machine_scale_set_storage_profile
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetStorageProfile
       end
-      def network_profile
-        Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
+      def virtual_machine_extensions_list_result
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionsListResult
       end
       def api_entity_reference
         Azure::Compute::Mgmt::V2016_03_30::Models::ApiEntityReference
       end
-      def operation_status_response
-        Azure::Compute::Mgmt::V2016_03_30::Models::OperationStatusResponse
+      def compute_long_running_operation_properties
+        Azure::Compute::Mgmt::V2016_03_30::Models::ComputeLongRunningOperationProperties
       end
-      def api_error_base
-        Azure::Compute::Mgmt::V2016_03_30::Models::ApiErrorBase
+      def virtual_machine_scale_set_vminstance_view
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMInstanceView
       end
       def virtual_machine_capture_parameters
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineCaptureParameters
       end
-      def virtual_machine_scale_set_vmlist_result
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMListResult
+      def virtual_machine_scale_set_list_skus_result
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListSkusResult
       end
       def image_reference
         Azure::Compute::Mgmt::V2016_03_30::Models::ImageReference
@@ -320,8 +326,8 @@ module Azure::Compute::Profiles::V2017_03_09
       def virtual_hard_disk
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualHardDisk
       end
-      def virtual_machine_scale_set_vminstance_view
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMInstanceView
+      def virtual_machine_scale_set_sku
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSku
       end
       def additional_unattend_content
         Azure::Compute::Mgmt::V2016_03_30::Models::AdditionalUnattendContent
@@ -335,11 +341,14 @@ module Azure::Compute::Profiles::V2017_03_09
       def virtual_machine_scale_set_vmprofile
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMProfile
       end
-      def vault_secret_group
-        Azure::Compute::Mgmt::V2016_03_30::Models::VaultSecretGroup
+      def virtual_machine_size_list_result
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineSizeListResult
       end
-      def virtual_machine_scale_set_list_skus_result
-        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListSkusResult
+      def virtual_machine_scale_set_sku_capacity
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetSkuCapacity
+      end
+      def osdisk_image
+        Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
       end
       def virtual_machine_scale_set_vminstance_ids
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMInstanceIDs
@@ -380,8 +389,8 @@ module Azure::Compute::Profiles::V2017_03_09
       def virtual_machine_scale_set_list_result
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListResult
       end
-      def compute_long_running_operation_properties
-        Azure::Compute::Mgmt::V2016_03_30::Models::ComputeLongRunningOperationProperties
+      def update_resource
+        Azure::Compute::Mgmt::V2016_03_30::Models::UpdateResource
       end
       def virtual_machine_scale_set_list_with_link_result
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetListWithLinkResult
@@ -397,6 +406,9 @@ module Azure::Compute::Profiles::V2017_03_09
       end
       def virtual_machine_extension
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtension
+      end
+      def virtual_machine_extension_update
+        Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionUpdate
       end
       def virtual_machine_image
         Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineImage

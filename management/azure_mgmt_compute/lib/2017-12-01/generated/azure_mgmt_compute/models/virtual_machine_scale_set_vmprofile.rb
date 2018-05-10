@@ -49,6 +49,12 @@ module Azure::Compute::Mgmt::V2017_12_01
       # 2017-10-30-preview. Possible values include: 'Regular', 'Low'
       attr_accessor :priority
 
+      # @return [VirtualMachineEvictionPolicyTypes] Specifies the eviction
+      # policy for virtual machines in a low priority scale set.
+      # <br><br>Minimum api-version: 2017-10-30-preview. Possible values
+      # include: 'Deallocate', 'Delete'
+      attr_accessor :eviction_policy
+
 
       #
       # Mapper for VirtualMachineScaleSetVMProfile class as Ruby Hash.
@@ -120,6 +126,14 @@ module Azure::Compute::Mgmt::V2017_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'priority',
+                type: {
+                  name: 'String'
+                }
+              },
+              eviction_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'evictionPolicy',
                 type: {
                   name: 'String'
                 }

@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # VirtualMachineScaleSetRollingUpgrades
+  # Compute Client
   #
   class VirtualMachineScaleSetRollingUpgrades
     include MsRestAzure

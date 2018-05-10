@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # Snapshots
+  # Compute Client
   #
   class Snapshots
     include MsRestAzure
