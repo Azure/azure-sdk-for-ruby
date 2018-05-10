@@ -1,3 +1,7 @@
+## 2018.05.10 - Azure Ruby SDK Release
+* Released 0.17.1 version of azure_mgmt_compute gem. This includes the new version 2018-04-01 and patch operations to existing versions.
+* Released 0.17.6 version of azure_sdk which includes changes to compute profile that includes new versions and patch operations.
+
 ## 2018.05.09 - Azure Ruby SDK Release
 * Released 0.17.0 version of azure_mgmt_container_service. Bug fix to change ComputeServiceClient to ContainerServiceClient in versions 2016-09-30 & 2017-01-31. 
 * Released 0.17.5 version of azure_sdk rollup gem. The changes include the Bug fix for the container service. 
