@@ -1,3 +1,4 @@
 {
-    "management": ["azure_mgmt_container_service"]
+    "rollup": ["azure_sdk"],
+    "management": ["azure_mgmt_compute"]
 }

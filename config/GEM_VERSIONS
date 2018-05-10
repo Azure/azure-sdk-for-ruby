@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.17.5"
+        "azure_sdk": "0.17.6"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.16.0",
@@ -27,7 +27,7 @@
         "azure_mgmt_cdn": "0.16.0",
         "azure_mgmt_cognitive_services": "0.16.0",
         "azure_mgmt_commerce": "0.16.0",
-        "azure_mgmt_compute": "0.17.0",
+        "azure_mgmt_compute": "0.17.1",
         "azure_mgmt_consumption": "0.16.0",
         "azure_mgmt_container_instance": "0.16.0",
         "azure_mgmt_container_registry": "0.16.0",
