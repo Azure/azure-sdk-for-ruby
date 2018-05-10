@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Storage::Mgmt::V2016_01_01
+module Azure::Storage::Mgmt::V2018_02_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,12 +17,10 @@ module Azure::Storage::Mgmt::V2016_01_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
-    # the Microsoft Azure subscription. The subscription ID forms part of the
-    # URI for every service call.
+    # @return [String] The ID of the target subscription.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -36,11 +34,20 @@ module Azure::Storage::Mgmt::V2016_01_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
+    # @return [Skus] skus
+    attr_reader :skus
+
     # @return [StorageAccounts] storage_accounts
     attr_reader :storage_accounts
 
     # @return [UsageOperations] usage_operations
     attr_reader :usage_operations
+
+    # @return [BlobContainers] blob_containers
+    attr_reader :blob_containers
 
     #
     # Creates initializes a new instance of the StorageManagementClient class.
@@ -55,9 +62,12 @@ module Azure::Storage::Mgmt::V2016_01_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
+      @skus = Skus.new(self)
       @storage_accounts = StorageAccounts.new(self)
       @usage_operations = UsageOperations.new(self)
-      @api_version = '2016-01-01'
+      @blob_containers = BlobContainers.new(self)
+      @api_version = '2018-02-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -129,7 +139,7 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_storage'
-        sdk_information = "#{sdk_information}/0.16.1"
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end
