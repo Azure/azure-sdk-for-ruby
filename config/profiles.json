@@ -348,7 +348,7 @@
                 },
                 "Microsoft.Storage": {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2018-02-01": ["*"]
                     }
                 },
                 "Microsoft.StreamAnalytics": {
@@ -1308,7 +1308,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2018-02-01": ["*"]
                     }
                 }
             },

@@ -1,3 +1,7 @@
+## 2018.05.11 - Azure Ruby SDK Release
+* Released 0.16.1 version of azure_mgmt_storage gem. This includes the new version 2018-02-01.
+* Released 0.17.7 version of azure_sdk  rollup gem. This includes reference to the new version of azure_mgmt_storage.
+
 ## 2018.05.10 - Azure Ruby SDK Release
 * Released 0.17.1 version of azure_mgmt_compute gem. This includes the new version 2018-04-01 and patch operations to existing versions.
 * Released 0.17.6 version of azure_sdk which includes changes to compute profile that includes new versions and patch operations.
