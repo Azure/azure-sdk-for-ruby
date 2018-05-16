@@ -122,6 +122,7 @@ module MsRestAzure
           puts slots.inspect
           wait = slots[0..retry_value].sample
           wait = wait < 1 ? 3 : wait
+          wait = (response.status == 410 && wait < 70) ? 70 : wait
           sleep(wait)
           retry_value += 1
         elsif response.status != 200
