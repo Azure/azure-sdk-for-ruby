@@ -30,7 +30,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Recurrence',
           type: {
@@ -38,7 +37,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'Recurrence',
             model_properties: {
               frequency: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'frequency',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               schedule: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'schedule',
                 type: {

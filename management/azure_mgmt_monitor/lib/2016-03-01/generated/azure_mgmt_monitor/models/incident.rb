@@ -37,7 +37,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Incident',
           type: {
@@ -45,7 +44,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'Incident',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,7 +52,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               rule_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'ruleName',
@@ -63,7 +60,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               is_active: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isActive',
@@ -72,7 +68,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               activated_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'activatedTime',
@@ -81,7 +76,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               resolved_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resolvedTime',
