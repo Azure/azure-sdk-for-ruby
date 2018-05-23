@@ -34,7 +34,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatusResponse',
           type: {
@@ -42,7 +41,6 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'OperationStatusResponse',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,7 +49,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -60,7 +57,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -69,7 +65,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -78,7 +73,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',
