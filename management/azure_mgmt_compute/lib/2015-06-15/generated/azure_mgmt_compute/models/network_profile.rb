@@ -24,7 +24,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkProfile',
           type: {
@@ -32,13 +31,11 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'NetworkProfile',
             model_properties: {
               network_interfaces: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaces',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkInterfaceReferenceElementType',
                       type: {

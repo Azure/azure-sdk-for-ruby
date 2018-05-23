@@ -63,7 +63,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetListOSUpgradeHistory',
           type: {
@@ -71,13 +70,11 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineScaleSetListOSUpgradeHistory',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UpgradeOperationHistoricalStatusInfoElementType',
                       type: {
@@ -88,7 +85,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
