@@ -38,8 +38,8 @@ module Azure::Consumption::Mgmt::V2017_11_30
     #
     # @return [ReservationSummariesListResult] operation results.
     #
-    def list(scope, grain, filter:nil, custom_headers:nil)
-      response = list_async(scope, grain, filter:filter, custom_headers:custom_headers).value!
+    def list(scope, grain, filter = nil, custom_headers = nil)
+      response = list_async(scope, grain, filter, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -59,8 +59,8 @@ module Azure::Consumption::Mgmt::V2017_11_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(scope, grain, filter:nil, custom_headers:nil)
-      list_async(scope, grain, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(scope, grain, filter = nil, custom_headers = nil)
+      list_async(scope, grain, filter, custom_headers).value!
     end
 
     #
@@ -79,14 +79,13 @@ module Azure::Consumption::Mgmt::V2017_11_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(scope, grain, filter:nil, custom_headers:nil)
+    def list_async(scope, grain, filter = nil, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'grain is nil' if grain.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
