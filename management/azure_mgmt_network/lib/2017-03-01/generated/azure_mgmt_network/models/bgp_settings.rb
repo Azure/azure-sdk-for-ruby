@@ -30,7 +30,6 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BgpSettings',
           type: {
@@ -38,7 +37,6 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'BgpSettings',
             model_properties: {
               asn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'asn',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               bgp_peering_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bgpPeeringAddress',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               peer_weight: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'peerWeight',
                 type: {
