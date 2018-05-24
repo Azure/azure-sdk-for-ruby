@@ -45,6 +45,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # test job.
       attr_accessor :parameters
 
+      # @return [Integer] The activity-level tracing options of the runbook.
+      attr_accessor :log_activity_trace
+
 
       #
       # Mapper for TestJob class as Ruby Hash.
@@ -52,7 +55,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TestJob',
           type: {
@@ -60,7 +62,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'TestJob',
             model_properties: {
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'creationTime',
                 type: {
@@ -68,7 +69,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -76,7 +76,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               status_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusDetails',
                 type: {
@@ -84,7 +83,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               run_on: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'runOn',
                 type: {
@@ -92,7 +90,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -100,7 +97,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -108,7 +104,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               exception: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exception',
                 type: {
@@ -116,7 +111,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastModifiedTime',
                 type: {
@@ -124,7 +118,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_status_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastStatusModifiedTime',
                 type: {
@@ -132,19 +125,24 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
                       }
                   }
+                }
+              },
+              log_activity_trace: {
+                required: false,
+                serialized_name: 'logActivityTrace',
+                type: {
+                  name: 'Number'
                 }
               }
             }

@@ -50,7 +50,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscReportResource',
           type: {
@@ -58,7 +57,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscReportResource',
             model_properties: {
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -66,7 +64,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               source_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceInfo',
                 type: {
@@ -74,13 +71,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               depends_on: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dependsOn',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DscReportResourceNavigationElementType',
                       type: {
@@ -91,7 +86,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               module_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'moduleName',
                 type: {
@@ -99,7 +93,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               module_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'moduleVersion',
                 type: {
@@ -107,7 +100,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               resource_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceName',
                 type: {
@@ -115,7 +107,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
@@ -123,7 +114,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -131,7 +121,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               duration_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'durationInSeconds',
                 type: {
@@ -139,7 +128,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               start_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startDate',
                 type: {
