@@ -6,41 +6,32 @@
 module Azure::OperationalInsights::Mgmt::V2015_03_20
   module Models
     #
-    # Details for a search error.
+    # Response containing status for a specific purge operation.
     #
-    class SearchError
+    class WorkspacePurgeStatusResponse
 
       include MsRestAzure
 
-      # @return [String] The error type.
-      attr_accessor :type
-
-      # @return [String] The error message.
-      attr_accessor :message
+      # @return [PurgeState] Status of the operation represented by the
+      # requested Id. Possible values include: 'Pending', 'Completed'
+      attr_accessor :status
 
 
       #
-      # Mapper for SearchError class as Ruby Hash.
+      # Mapper for WorkspacePurgeStatusResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SearchError',
+          serialized_name: 'WorkspacePurgeStatusResponse',
           type: {
             name: 'Composite',
-            class_name: 'SearchError',
+            class_name: 'WorkspacePurgeStatusResponse',
             model_properties: {
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              message: {
-                required: false,
-                serialized_name: 'message',
+              status: {
+                required: true,
+                serialized_name: 'status',
                 type: {
                   name: 'String'
                 }
