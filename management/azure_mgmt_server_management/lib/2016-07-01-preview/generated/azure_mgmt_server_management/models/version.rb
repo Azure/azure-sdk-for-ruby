@@ -37,7 +37,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Version',
           type: {
@@ -45,7 +44,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'Version',
             model_properties: {
               major: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'major',
                 type: {
@@ -53,7 +51,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               minor: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minor',
                 type: {
@@ -61,7 +58,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               build: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'build',
                 type: {
@@ -69,7 +65,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               revision: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'revision',
                 type: {
@@ -77,7 +72,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               major_revision: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'majorRevision',
                 type: {
@@ -85,7 +79,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               minor_revision: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minorRevision',
                 type: {
