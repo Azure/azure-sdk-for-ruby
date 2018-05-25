@@ -35,7 +35,6 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DnsConfig',
           type: {
@@ -43,7 +42,6 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'DnsConfig',
             model_properties: {
               relative_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativeName',
                 type: {
@@ -51,7 +49,6 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               fqdn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fqdn',
                 type: {
@@ -59,7 +56,6 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               ttl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ttl',
                 type: {
