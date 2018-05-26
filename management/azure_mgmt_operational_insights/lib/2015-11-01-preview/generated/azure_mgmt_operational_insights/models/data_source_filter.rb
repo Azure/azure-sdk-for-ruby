@@ -27,7 +27,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataSourceFilter',
           type: {
@@ -35,7 +34,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'DataSourceFilter',
             model_properties: {
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
