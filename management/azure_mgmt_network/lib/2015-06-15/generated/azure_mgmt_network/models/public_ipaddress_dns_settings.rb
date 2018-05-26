@@ -37,7 +37,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PublicIPAddressDnsSettings',
           type: {
@@ -45,7 +44,6 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'PublicIPAddressDnsSettings',
             model_properties: {
               domain_name_label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'domainNameLabel',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               fqdn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fqdn',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               reverse_fqdn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reverseFqdn',
                 type: {

@@ -35,7 +35,6 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitPeeringConfig',
           type: {
@@ -43,13 +42,11 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ExpressRouteCircuitPeeringConfig',
             model_properties: {
               advertised_public_prefixes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'advertisedPublicPrefixes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -59,7 +56,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               advertised_public_prefixes_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'advertisedPublicPrefixesState',
                 type: {
@@ -67,7 +63,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               customer_asn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customerASN',
                 type: {
@@ -75,7 +70,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               routing_registry_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'routingRegistryName',
                 type: {
