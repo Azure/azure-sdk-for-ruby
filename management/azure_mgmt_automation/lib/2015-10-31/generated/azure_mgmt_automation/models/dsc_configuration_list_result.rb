@@ -20,6 +20,10 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [String] Gets or sets the next link.
       attr_accessor :next_link
 
+      # @return [Integer] Gets the total number of configurations matching
+      # filter criteria.
+      attr_accessor :total_count
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -58,7 +62,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscConfigurationListResult',
           type: {
@@ -66,13 +69,11 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscConfigurationListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DscConfigurationElementType',
                       type: {
@@ -83,11 +84,17 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'
+                }
+              },
+              total_count: {
+                required: false,
+                serialized_name: 'totalCount',
+                type: {
+                  name: 'Number'
                 }
               }
             }

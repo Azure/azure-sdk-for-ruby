@@ -17,7 +17,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       attr_accessor :occurrence
 
       # @return [ScheduleDay] Day of the occurrence. Must be one of monday,
-      # tuesday, wednesday,thursday, friday, saturday, sunday. Possible values
+      # tuesday, wednesday, thursday, friday, saturday, sunday. Possible values
       # include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
       # 'Saturday', 'Sunday'
       attr_accessor :day
@@ -29,7 +29,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdvancedScheduleMonthlyOccurrence',
           type: {
@@ -37,7 +36,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AdvancedScheduleMonthlyOccurrence',
             model_properties: {
               occurrence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'occurrence',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               day: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'day',
                 type: {

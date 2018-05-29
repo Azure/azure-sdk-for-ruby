@@ -42,7 +42,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobStream',
           type: {
@@ -50,7 +49,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'JobStream',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -58,7 +56,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               job_stream_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.jobStreamId',
                 type: {
@@ -66,7 +63,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.time',
                 type: {
@@ -74,7 +70,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               stream_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.streamType',
                 type: {
@@ -82,7 +77,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               stream_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.streamText',
                 type: {
@@ -90,7 +84,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               summary: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.summary',
                 type: {
@@ -98,13 +91,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.value',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
