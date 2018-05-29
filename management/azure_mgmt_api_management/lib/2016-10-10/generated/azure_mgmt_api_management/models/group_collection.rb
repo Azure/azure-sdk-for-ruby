@@ -60,7 +60,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupCollection',
           type: {
@@ -68,13 +67,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'GroupCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GroupContractElementType',
                       type: {
@@ -85,7 +82,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -93,7 +89,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
