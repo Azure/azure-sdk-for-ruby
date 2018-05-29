@@ -43,7 +43,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'X12FramingSettings',
           type: {
@@ -51,7 +50,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12FramingSettings',
             model_properties: {
               data_element_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dataElementSeparator',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               component_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'componentSeparator',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               replace_separators_in_payload: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'replaceSeparatorsInPayload',
                 type: {
@@ -75,7 +71,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               replace_character: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'replaceCharacter',
                 type: {
@@ -83,7 +78,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminator',
                 type: {
@@ -91,7 +85,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               character_set: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'characterSet',
                 type: {
@@ -100,7 +93,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator_suffix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminatorSuffix',
                 type: {

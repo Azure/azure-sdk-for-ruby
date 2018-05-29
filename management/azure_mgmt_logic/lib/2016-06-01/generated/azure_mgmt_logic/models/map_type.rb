@@ -11,6 +11,9 @@ module Azure::Logic::Mgmt::V2016_06_01
     module MapType
       NotSpecified = "NotSpecified"
       Xslt = "Xslt"
+      Xslt20 = "Xslt20"
+      Xslt30 = "Xslt30"
+      Liquid = "Liquid"
     end
   end
 end

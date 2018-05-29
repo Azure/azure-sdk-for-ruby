@@ -22,7 +22,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Correlation',
           type: {
@@ -30,7 +29,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'Correlation',
             model_properties: {
               client_tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientTrackingId',
                 type: {
