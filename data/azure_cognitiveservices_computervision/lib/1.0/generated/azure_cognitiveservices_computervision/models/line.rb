@@ -29,7 +29,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Line',
           type: {
@@ -37,13 +36,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'Line',
             model_properties: {
               bounding_box: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'boundingBox',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NumberElementType',
                       type: {
@@ -53,7 +50,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'text',
                 type: {
@@ -61,13 +57,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               words: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'words',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WordElementType',
                       type: {

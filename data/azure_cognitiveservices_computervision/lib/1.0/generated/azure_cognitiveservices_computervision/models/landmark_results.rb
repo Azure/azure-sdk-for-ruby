@@ -6,19 +6,14 @@
 module Azure::CognitiveServices::ComputerVision::V1_0
   module Models
     #
-    # A collection of content tags, along with a list of captions sorted by
-    # confidence level, and image metadata.
+    # List of landmarks recognized in the image.
     #
-    class ImageDescriptionDetails
+    class LandmarkResults
 
       include MsRestAzure
 
-      # @return [Array<String>] A collection of image tags.
-      attr_accessor :tags
-
-      # @return [Array<ImageCaption>] A list of captions, sorted by confidence
-      # level.
-      attr_accessor :captions
+      # @return [Array<LandmarkResultsLandmarksItem>]
+      attr_accessor :landmarks
 
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
@@ -28,42 +23,28 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
 
       #
-      # Mapper for ImageDescriptionDetails class as Ruby Hash.
+      # Mapper for LandmarkResults class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ImageDescriptionDetails',
+          serialized_name: 'LandmarkResults',
           type: {
             name: 'Composite',
-            class_name: 'ImageDescriptionDetails',
+            class_name: 'LandmarkResults',
             model_properties: {
-              tags: {
+              landmarks: {
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'landmarks',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              captions: {
-                required: false,
-                serialized_name: 'captions',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'ImageCaptionElementType',
+                      serialized_name: 'LandmarkResultsLandmarksItemElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ImageCaption'
+                        class_name: 'LandmarkResultsLandmarksItem'
                       }
                   }
                 }
