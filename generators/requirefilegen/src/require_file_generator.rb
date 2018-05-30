@@ -131,9 +131,10 @@ class RequireFileGenerator
 
   def post_processing_requires
     if(@requires.length > 1)
-      if(@requires[0].start_with?'profiles/')
-        @requires << @requires[0]
-        @requires.shift
+      @requires.each_with_index do |require, index|
+        if(@requires[index].start_with?'profiles/')
+          @requires << @requires.delete_at(index)
+        end
       end
     end
   end
