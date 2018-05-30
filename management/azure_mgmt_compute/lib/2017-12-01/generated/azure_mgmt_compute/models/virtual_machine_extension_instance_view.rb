@@ -35,7 +35,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtensionInstanceView',
           type: {
@@ -43,7 +42,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineExtensionInstanceView',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               type_handler_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'typeHandlerVersion',
                 type: {
@@ -67,13 +63,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               substatuses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'substatuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
@@ -84,13 +78,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               statuses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {

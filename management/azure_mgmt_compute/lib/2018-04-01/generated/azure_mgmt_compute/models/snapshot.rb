@@ -49,7 +49,6 @@ module Azure::Compute::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Snapshot',
           type: {
@@ -57,7 +56,6 @@ module Azure::Compute::Mgmt::V2018_04_01
             class_name: 'Snapshot',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -66,7 +64,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -75,7 +72,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -84,7 +80,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -92,13 +87,11 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,7 +101,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               managed_by: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'managedBy',
@@ -117,7 +109,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -126,7 +117,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               time_created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.timeCreated',
@@ -135,7 +125,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osType',
                 type: {
@@ -144,7 +133,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               creation_data: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.creationData',
                 type: {
@@ -153,7 +141,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskSizeGB',
                 type: {
@@ -161,7 +148,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               encryption_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionSettings',
                 type: {
@@ -170,7 +156,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
