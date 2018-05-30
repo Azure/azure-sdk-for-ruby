@@ -3,17 +3,17 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2018_01_01_preview
+module Azure::Authorization::Mgmt::V2015_06_01_preview
   module Models
     #
-    # Role assignment list operation result.
+    # ClassicAdministrator list result information.
     #
-    class RoleAssignmentListResult
+    class ClassicAdministratorListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<RoleAssignment>] Role assignment list.
+      # @return [Array<ClassicAdministrator>] An array of administrators.
       attr_accessor :value
 
       # @return [String] The URL to use for getting the next set of results.
@@ -25,7 +25,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<RoleAssignment>] operation results.
+      # @return [Array<ClassicAdministrator>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +40,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       #
       # Gets the next page of results.
       #
-      # @return [RoleAssignmentListResult] with next page content.
+      # @return [ClassicAdministratorListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,16 +52,16 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       end
 
       #
-      # Mapper for RoleAssignmentListResult class as Ruby Hash.
+      # Mapper for ClassicAdministratorListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RoleAssignmentListResult',
+          serialized_name: 'ClassicAdministratorListResult',
           type: {
             name: 'Composite',
-            class_name: 'RoleAssignmentListResult',
+            class_name: 'ClassicAdministratorListResult',
             model_properties: {
               value: {
                 required: false,
@@ -70,10 +70,10 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'RoleAssignmentElementType',
+                      serialized_name: 'ClassicAdministratorElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'RoleAssignment'
+                        class_name: 'ClassicAdministrator'
                       }
                   }
                 }

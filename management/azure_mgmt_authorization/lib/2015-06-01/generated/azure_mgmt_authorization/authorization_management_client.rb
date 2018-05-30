@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2017_10_01_preview
+module Azure::Authorization::Mgmt::V2015_06_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -34,8 +34,8 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [RoleAssignments] role_assignments
-    attr_reader :role_assignments
+    # @return [ClassicAdministrators] classic_administrators
+    attr_reader :classic_administrators
 
     #
     # Creates initializes a new instance of the AuthorizationManagementClient class.
@@ -50,8 +50,8 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @role_assignments = RoleAssignments.new(self)
-      @api_version = '2017-10-01-preview'
+      @classic_administrators = ClassicAdministrators.new(self)
+      @api_version = '2015-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -120,8 +120,8 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_authorization'
-        if defined? Azure::Authorization::Mgmt::V2017_10_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::Authorization::Mgmt::V2017_10_01_preview::VERSION}"
+        if defined? Azure::Authorization::Mgmt::V2015_06_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Authorization::Mgmt::V2015_06_01_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

@@ -3,7 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure end
-module Azure::Authorization end
-module Azure::Authorization::Mgmt end
-module Azure::Authorization::Mgmt::V2015_07_01_preview end
+module Azure::Authorization::Mgmt::V2018_01_01_preview
+    VERSION = '0.17.0'
+end

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2018_01_01_preview
+module Azure::Authorization::Mgmt::V2015_06_01_preview
   #
   # Role based access control provides you a way to apply granular level policy
   # administration down to individual resources or resource groups. These
@@ -11,11 +11,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
   # role definition describes the set of actions that can be performed on
   # resources. A role assignment grants access to Azure Active Directory users.
   #
-  class ProviderOperationsMetadataOperations
+  class ClassicAdministrators
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the ProviderOperationsMetadataOperations class.
+    # Creates and initializes a new instance of the ClassicAdministrators class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -26,135 +26,44 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     attr_reader :client
 
     #
-    # Gets provider operations metadata for the specified resource provider.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param resource_provider_namespace [String] The namespace of the resource
-    # provider.
-    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProviderOperationsMetadata] operation results.
+    # @return [Array<ClassicAdministrator>] operation results.
     #
-    def get(resource_provider_namespace, expand = 'resourceTypes', custom_headers = nil)
-      response = get_async(resource_provider_namespace, expand, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets provider operations metadata for the specified resource provider.
-    #
-    # @param resource_provider_namespace [String] The namespace of the resource
-    # provider.
-    # @param expand [String] Specifies whether to expand the values.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_with_http_info(resource_provider_namespace, expand = 'resourceTypes', custom_headers = nil)
-      get_async(resource_provider_namespace, expand, custom_headers).value!
-    end
-
-    #
-    # Gets provider operations metadata for the specified resource provider.
-    #
-    # @param resource_provider_namespace [String] The namespace of the resource
-    # provider.
-    # @param expand [String] Specifies whether to expand the values.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_async(resource_provider_namespace, expand = 'resourceTypes', custom_headers = nil)
-      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Authorization/providerOperations/{resourceProviderNamespace}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceProviderNamespace' => resource_provider_namespace},
-          query_params: {'api-version' => @client.api_version,'$expand' => expand},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadata.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets provider operations metadata for all resource providers.
-    #
-    # @param expand [String] Specifies whether to expand the values.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<ProviderOperationsMetadata>] operation results.
-    #
-    def list(expand = 'resourceTypes', custom_headers = nil)
-      first_page = list_as_lazy(expand, custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Gets provider operations metadata for all resource providers.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(expand = 'resourceTypes', custom_headers = nil)
-      list_async(expand, custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
-    # Gets provider operations metadata for all resource providers.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param expand [String] Specifies whether to expand the values.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(expand = 'resourceTypes', custom_headers = nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -162,13 +71,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Authorization/providerOperations'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Authorization/classicAdministrators'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'api-version' => @client.api_version,'$expand' => expand},
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -188,7 +98,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -202,14 +112,15 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets provider operations metadata for all resource providers.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProviderOperationsMetadataListResult] operation results.
+    # @return [ClassicAdministratorListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -217,7 +128,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets provider operations metadata for all resource providers.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -231,7 +143,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets provider operations metadata for all resource providers.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -275,7 +188,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -289,17 +202,17 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets provider operations metadata for all resource providers.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProviderOperationsMetadataListResult] which provide lazy access to
-    # pages of the response.
+    # @return [ClassicAdministratorListResult] which provide lazy access to pages
+    # of the response.
     #
-    def list_as_lazy(expand = 'resourceTypes', custom_headers = nil)
-      response = list_async(expand, custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

@@ -3,43 +3,45 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2015_07_01
+module Azure::Authorization::Mgmt::V2015_06_01_preview
   module Models
     #
-    # Role Assignments
+    # Classic Administrators
     #
-    class RoleAssignment
+    class ClassicAdministrator
 
       include MsRestAzure
 
-      # @return [String] The role assignment ID.
+      # @return [String] The ID of the administrator.
       attr_accessor :id
 
-      # @return [String] The role assignment name.
+      # @return [String] The name of the administrator.
       attr_accessor :name
 
-      # @return [String] The role assignment type.
+      # @return [String] The type of the administrator.
       attr_accessor :type
 
-      # @return [RoleAssignmentPropertiesWithScope] Role assignment properties.
-      attr_accessor :properties
+      # @return [String] The email address of the administrator.
+      attr_accessor :email_address
+
+      # @return [String] The role of the administrator.
+      attr_accessor :role
 
 
       #
-      # Mapper for RoleAssignment class as Ruby Hash.
+      # Mapper for ClassicAdministrator class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RoleAssignment',
+          serialized_name: 'ClassicAdministrator',
           type: {
             name: 'Composite',
-            class_name: 'RoleAssignment',
+            class_name: 'ClassicAdministrator',
             model_properties: {
               id: {
                 required: false,
-                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -47,7 +49,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -55,18 +56,23 @@ module Azure::Authorization::Mgmt::V2015_07_01
               },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              properties: {
+              email_address: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.emailAddress',
                 type: {
-                  name: 'Composite',
-                  class_name: 'RoleAssignmentPropertiesWithScope'
+                  name: 'String'
+                }
+              },
+              role: {
+                required: false,
+                serialized_name: 'properties.role',
+                type: {
+                  name: 'String'
                 }
               }
             }
