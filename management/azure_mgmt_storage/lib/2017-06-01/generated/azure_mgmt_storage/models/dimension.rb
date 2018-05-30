@@ -25,7 +25,6 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Dimension',
           type: {
@@ -33,7 +32,6 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'Dimension',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
