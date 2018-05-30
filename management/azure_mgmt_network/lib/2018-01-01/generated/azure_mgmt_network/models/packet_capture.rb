@@ -12,6 +12,15 @@ module Azure::Network::Mgmt::V2018_01_01
 
       include MsRestAzure
 
+      # @return [String] Name of the packet capture.
+      attr_accessor :name
+
+      # @return [String] ID of the packet capture.
+      attr_accessor :id
+
+      # @return [String] Packet capture type.
+      attr_accessor :type
+
       # @return [String] The ID of the targeted resource, only VM is currently
       # supported.
       attr_accessor :target
@@ -41,15 +50,37 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCapture',
           type: {
             name: 'Composite',
             class_name: 'PacketCapture',
             model_properties: {
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
               target: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.target',
                 type: {
@@ -57,7 +88,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               bytes_to_capture_per_packet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bytesToCapturePerPacket',
                 default_value: 0,
@@ -66,7 +96,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               total_bytes_per_session: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.totalBytesPerSession',
                 default_value: 1073741824,
@@ -75,7 +104,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               time_limit_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeLimitInSeconds',
                 default_value: 18000,
@@ -84,7 +112,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               storage_location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageLocation',
                 type: {
@@ -93,13 +120,11 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               filters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PacketCaptureFilterElementType',
                       type: {

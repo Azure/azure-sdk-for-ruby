@@ -5,10 +5,7 @@
 
 module Azure::Network::Mgmt::V2017_10_01
   #
-  # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage your
-  # network resources. The API has entities that capture the relationship
-  # between an end user and the Microsoft Azure Networks service.
+  # Network Client
   #
   class RouteTables
     include MsRestAzure
@@ -32,8 +29,8 @@ module Azure::Network::Mgmt::V2017_10_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, route_table_name, custom_headers:nil)
-      response = delete_async(resource_group_name, route_table_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, route_table_name, custom_headers = nil)
+      response = delete_async(resource_group_name, route_table_name, custom_headers).value!
       nil
     end
 
@@ -46,9 +43,9 @@ module Azure::Network::Mgmt::V2017_10_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, route_table_name, custom_headers:nil)
+    def delete_async(resource_group_name, route_table_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, route_table_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, route_table_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -73,8 +70,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [RouteTable] operation results.
     #
-    def get(resource_group_name, route_table_name, expand:nil, custom_headers:nil)
-      response = get_async(resource_group_name, route_table_name, expand:expand, custom_headers:custom_headers).value!
+    def get(resource_group_name, route_table_name, expand = nil, custom_headers = nil)
+      response = get_async(resource_group_name, route_table_name, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -89,8 +86,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, route_table_name, expand:nil, custom_headers:nil)
-      get_async(resource_group_name, route_table_name, expand:expand, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, route_table_name, expand = nil, custom_headers = nil)
+      get_async(resource_group_name, route_table_name, expand, custom_headers).value!
     end
 
     #
@@ -104,7 +101,7 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, route_table_name, expand:nil, custom_headers:nil)
+    def get_async(resource_group_name, route_table_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -112,7 +109,6 @@ module Azure::Network::Mgmt::V2017_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -169,8 +165,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [RouteTable] operation results.
     #
-    def create_or_update(resource_group_name, route_table_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, route_table_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -185,9 +181,9 @@ module Azure::Network::Mgmt::V2017_10_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -215,8 +211,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [RouteTable] operation results.
     #
-    def update_tags(resource_group_name, route_table_name, parameters, custom_headers:nil)
-      response = update_tags_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers).value!
+    def update_tags(resource_group_name, route_table_name, parameters, custom_headers = nil)
+      response = update_tags_async(resource_group_name, route_table_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -231,9 +227,9 @@ module Azure::Network::Mgmt::V2017_10_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_tags_async(resource_group_name, route_table_name, parameters, custom_headers:nil)
+    def update_tags_async(resource_group_name, route_table_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers)
+      promise = begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -258,8 +254,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Array<RouteTable>] operation results.
     #
-    def list(resource_group_name, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, custom_headers:custom_headers)
+    def list(resource_group_name, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -272,8 +268,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers:nil)
-      list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, custom_headers = nil)
+      list_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -285,14 +281,13 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers:nil)
+    def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -345,8 +340,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Array<RouteTable>] operation results.
     #
-    def list_all(custom_headers:nil)
-      first_page = list_all_as_lazy(custom_headers:custom_headers)
+    def list_all(custom_headers = nil)
+      first_page = list_all_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -358,8 +353,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_with_http_info(custom_headers:nil)
-      list_all_async(custom_headers:custom_headers).value!
+    def list_all_with_http_info(custom_headers = nil)
+      list_all_async(custom_headers).value!
     end
 
     #
@@ -370,13 +365,12 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_async(custom_headers:nil)
+    def list_all_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -430,8 +424,8 @@ module Azure::Network::Mgmt::V2017_10_01
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, route_table_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, route_table_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, route_table_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, route_table_name, custom_headers).value!
       nil
     end
 
@@ -445,8 +439,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, route_table_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, route_table_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, route_table_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, route_table_name, custom_headers).value!
     end
 
     #
@@ -459,7 +453,7 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, route_table_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, route_table_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -467,7 +461,6 @@ module Azure::Network::Mgmt::V2017_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -514,8 +507,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [RouteTable] operation results.
     #
-    def begin_create_or_update(resource_group_name, route_table_name, parameters, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, route_table_name, parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -531,8 +524,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, route_table_name, parameters, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, route_table_name, parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers).value!
     end
 
     #
@@ -547,7 +540,7 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, route_table_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -556,11 +549,12 @@ module Azure::Network::Mgmt::V2017_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2017_10_01::Models::RouteTable.mapper()
@@ -630,8 +624,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [RouteTable] operation results.
     #
-    def begin_update_tags(resource_group_name, route_table_name, parameters, custom_headers:nil)
-      response = begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers).value!
+    def begin_update_tags(resource_group_name, route_table_name, parameters, custom_headers = nil)
+      response = begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -647,8 +641,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_tags_with_http_info(resource_group_name, route_table_name, parameters, custom_headers:nil)
-      begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers:custom_headers).value!
+    def begin_update_tags_with_http_info(resource_group_name, route_table_name, parameters, custom_headers = nil)
+      begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers).value!
     end
 
     #
@@ -663,7 +657,7 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers:nil)
+    def begin_update_tags_async(resource_group_name, route_table_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -672,11 +666,12 @@ module Azure::Network::Mgmt::V2017_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2017_10_01::Models::TagsObject.mapper()
@@ -734,8 +729,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [RouteTableListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -749,8 +744,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -763,12 +758,11 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -822,8 +816,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [RouteTableListResult] operation results.
     #
-    def list_all_next(next_page_link, custom_headers:nil)
-      response = list_all_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_next(next_page_link, custom_headers = nil)
+      response = list_all_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -837,8 +831,8 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_next_with_http_info(next_page_link, custom_headers:nil)
-      list_all_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_next_with_http_info(next_page_link, custom_headers = nil)
+      list_all_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -851,12 +845,11 @@ module Azure::Network::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_next_async(next_page_link, custom_headers:nil)
+    def list_all_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -910,12 +903,12 @@ module Azure::Network::Mgmt::V2017_10_01
     # @return [RouteTableListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(resource_group_name, custom_headers:nil)
-      response = list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, custom_headers = nil)
+      response = list_async(resource_group_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -930,12 +923,12 @@ module Azure::Network::Mgmt::V2017_10_01
     # @return [RouteTableListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_all_as_lazy(custom_headers:nil)
-      response = list_all_async(custom_headers:custom_headers).value!
+    def list_all_as_lazy(custom_headers = nil)
+      response = list_all_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_all_next_async(next_page_link, custom_headers:custom_headers)
+          list_all_next_async(next_page_link, custom_headers)
         end
         page
       end
