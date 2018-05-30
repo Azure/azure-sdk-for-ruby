@@ -43,7 +43,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleDefinition',
           type: {
@@ -51,7 +50,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
             class_name: 'RoleDefinition',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,7 +58,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -69,7 +66,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,7 +74,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               role_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.roleName',
                 type: {
@@ -86,7 +81,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -94,7 +88,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               role_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.type',
                 type: {
@@ -102,13 +95,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               permissions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.permissions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PermissionElementType',
                       type: {
@@ -119,13 +110,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               assignable_scopes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.assignableScopes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
