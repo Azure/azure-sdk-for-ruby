@@ -23,7 +23,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PasswordCredentialListResult',
           type: {
@@ -31,13 +30,11 @@ module Azure::GraphRbac::V1_6
             class_name: 'PasswordCredentialListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PasswordCredentialElementType',
                       type: {
