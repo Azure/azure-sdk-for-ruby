@@ -131,11 +131,17 @@ class RequireFileGenerator
 
   def post_processing_requires
     if(@requires.length > 1)
+      requires_sdk_array = []
+      requires_profile_array = []
       @requires.each_with_index do |require, index|
         if(@requires[index].start_with?'profiles/')
-          @requires << @requires.delete_at(index)
+          requires_profile_array << @requires[index]
+        else
+          requires_sdk_array << @requires[index]
         end
       end
+
+      @requires = requires_sdk_array + requires_profile_array
     end
   end
 
