@@ -8,7 +8,7 @@ module Azure::Compute::Mgmt::V2018_04_01
     #
     # Disk update resource.
     #
-    class DiskUpdate < ResourceUpdate
+    class DiskUpdate
 
       include MsRestAzure
 
@@ -26,6 +26,12 @@ module Azure::Compute::Mgmt::V2018_04_01
       # @return [EncryptionSettings] Encryption settings for disk or snapshot
       attr_accessor :encryption_settings
 
+      # @return [Hash{String => String}] Resource tags
+      attr_accessor :tags
+
+      # @return [DiskSku]
+      attr_accessor :sku
+
 
       #
       # Mapper for DiskUpdate class as Ruby Hash.
@@ -39,28 +45,6 @@ module Azure::Compute::Mgmt::V2018_04_01
             name: 'Composite',
             class_name: 'DiskUpdate',
             model_properties: {
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              sku: {
-                required: false,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'DiskSku'
-                }
-              },
               os_type: {
                 required: false,
                 serialized_name: 'properties.osType',
@@ -82,6 +66,28 @@ module Azure::Compute::Mgmt::V2018_04_01
                 type: {
                   name: 'Composite',
                   class_name: 'EncryptionSettings'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DiskSku'
                 }
               }
             }
