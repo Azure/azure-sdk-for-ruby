@@ -54,7 +54,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceWriteSuccessData',
           type: {
@@ -62,7 +61,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'ResourceWriteSuccessData',
             model_properties: {
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
                 type: {
@@ -70,7 +68,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -78,7 +75,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               resource_group: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroup',
                 type: {
@@ -86,7 +82,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               resource_provider: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceProvider',
                 type: {
@@ -94,7 +89,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               resource_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceUri',
                 type: {
@@ -102,7 +96,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               operation_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operationName',
                 type: {
@@ -110,7 +103,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -118,7 +110,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               authorization: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorization',
                 type: {
@@ -126,7 +117,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               claims: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'claims',
                 type: {
@@ -134,7 +124,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               correlation_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'correlationId',
                 type: {
@@ -142,7 +131,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               http_request: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'httpRequest',
                 type: {

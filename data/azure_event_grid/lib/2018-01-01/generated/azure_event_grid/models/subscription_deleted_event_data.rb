@@ -6,32 +6,34 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Metadata information for the properties JSON document.
+    # Schema of the Data property of an EventGridEvent for a
+    # Microsoft.EventGrid.SubscriptionDeletedEvent.
     #
-    class DeviceTwinMetadata
+    class SubscriptionDeletedEventData
 
       include MsRestAzure
 
-      # @return [String] The ISO8601 timestamp of the last time the properties
-      # were updated.
-      attr_accessor :last_updated
+      # @return [String] The Azure resource ID of the deleted event
+      # subscription.
+      attr_accessor :event_subscription_id
 
 
       #
-      # Mapper for DeviceTwinMetadata class as Ruby Hash.
+      # Mapper for SubscriptionDeletedEventData class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DeviceTwinMetadata',
+          serialized_name: 'SubscriptionDeletedEventData',
           type: {
             name: 'Composite',
-            class_name: 'DeviceTwinMetadata',
+            class_name: 'SubscriptionDeletedEventData',
             model_properties: {
-              last_updated: {
+              event_subscription_id: {
                 required: false,
-                serialized_name: 'lastUpdated',
+                read_only: true,
+                serialized_name: 'eventSubscriptionId',
                 type: {
                   name: 'String'
                 }
