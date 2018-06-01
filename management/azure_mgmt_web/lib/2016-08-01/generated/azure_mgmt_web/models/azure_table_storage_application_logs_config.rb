@@ -27,7 +27,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AzureTableStorageApplicationLogsConfig',
           type: {
@@ -35,7 +34,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'AzureTableStorageApplicationLogsConfig',
             model_properties: {
               level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               sas_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sasUrl',
                 type: {
