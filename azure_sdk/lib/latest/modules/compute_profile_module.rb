@@ -27,22 +27,23 @@ module Azure::Profiles::Latest
       VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_12_01::VirtualMachineRunCommands
 
       module Models
+        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2018_04_01::Models::KeyVaultAndKeyReference
         EncryptionSettings = Azure::Compute::Mgmt::V2018_04_01::Models::EncryptionSettings
-        DiskSku = Azure::Compute::Mgmt::V2018_04_01::Models::DiskSku
-        DiskUpdate = Azure::Compute::Mgmt::V2018_04_01::Models::DiskUpdate
+        ResourceUpdate = Azure::Compute::Mgmt::V2018_04_01::Models::ResourceUpdate
         CreationData = Azure::Compute::Mgmt::V2018_04_01::Models::CreationData
-        DiskList = Azure::Compute::Mgmt::V2018_04_01::Models::DiskList
+        SnapshotList = Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotList
         KeyVaultAndSecretReference = Azure::Compute::Mgmt::V2018_04_01::Models::KeyVaultAndSecretReference
+        DiskList = Azure::Compute::Mgmt::V2018_04_01::Models::DiskList
+        ImageDiskReference = Azure::Compute::Mgmt::V2018_04_01::Models::ImageDiskReference
         SnapshotSku = Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotSku
+        DiskSku = Azure::Compute::Mgmt::V2018_04_01::Models::DiskSku
         GrantAccessData = Azure::Compute::Mgmt::V2018_04_01::Models::GrantAccessData
         SourceVault = Azure::Compute::Mgmt::V2018_04_01::Models::SourceVault
         AccessUri = Azure::Compute::Mgmt::V2018_04_01::Models::AccessUri
-        ImageDiskReference = Azure::Compute::Mgmt::V2018_04_01::Models::ImageDiskReference
-        SnapshotList = Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotList
-        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2018_04_01::Models::KeyVaultAndKeyReference
-        SnapshotUpdate = Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotUpdate
         Disk = Azure::Compute::Mgmt::V2018_04_01::Models::Disk
+        DiskUpdate = Azure::Compute::Mgmt::V2018_04_01::Models::DiskUpdate
         Snapshot = Azure::Compute::Mgmt::V2018_04_01::Models::Snapshot
+        SnapshotUpdate = Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotUpdate
         DiskCreateOption = Azure::Compute::Mgmt::V2018_04_01::Models::DiskCreateOption
         SnapshotStorageAccountTypes = Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotStorageAccountTypes
         AccessLevel = Azure::Compute::Mgmt::V2018_04_01::Models::AccessLevel
@@ -286,26 +287,35 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def key_vault_and_key_reference
+            Azure::Compute::Mgmt::V2018_04_01::Models::KeyVaultAndKeyReference
+          end
           def encryption_settings
             Azure::Compute::Mgmt::V2018_04_01::Models::EncryptionSettings
           end
-          def disk_sku
-            Azure::Compute::Mgmt::V2018_04_01::Models::DiskSku
-          end
-          def disk_update
-            Azure::Compute::Mgmt::V2018_04_01::Models::DiskUpdate
+          def resource_update
+            Azure::Compute::Mgmt::V2018_04_01::Models::ResourceUpdate
           end
           def creation_data
             Azure::Compute::Mgmt::V2018_04_01::Models::CreationData
           end
-          def disk_list
-            Azure::Compute::Mgmt::V2018_04_01::Models::DiskList
+          def snapshot_list
+            Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotList
           end
           def key_vault_and_secret_reference
             Azure::Compute::Mgmt::V2018_04_01::Models::KeyVaultAndSecretReference
           end
+          def disk_list
+            Azure::Compute::Mgmt::V2018_04_01::Models::DiskList
+          end
+          def image_disk_reference
+            Azure::Compute::Mgmt::V2018_04_01::Models::ImageDiskReference
+          end
           def snapshot_sku
             Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotSku
+          end
+          def disk_sku
+            Azure::Compute::Mgmt::V2018_04_01::Models::DiskSku
           end
           def grant_access_data
             Azure::Compute::Mgmt::V2018_04_01::Models::GrantAccessData
@@ -316,23 +326,17 @@ module Azure::Profiles::Latest
           def access_uri
             Azure::Compute::Mgmt::V2018_04_01::Models::AccessUri
           end
-          def image_disk_reference
-            Azure::Compute::Mgmt::V2018_04_01::Models::ImageDiskReference
-          end
-          def snapshot_list
-            Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotList
-          end
-          def key_vault_and_key_reference
-            Azure::Compute::Mgmt::V2018_04_01::Models::KeyVaultAndKeyReference
-          end
-          def snapshot_update
-            Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotUpdate
-          end
           def disk
             Azure::Compute::Mgmt::V2018_04_01::Models::Disk
           end
+          def disk_update
+            Azure::Compute::Mgmt::V2018_04_01::Models::DiskUpdate
+          end
           def snapshot
             Azure::Compute::Mgmt::V2018_04_01::Models::Snapshot
+          end
+          def snapshot_update
+            Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotUpdate
           end
           def disk_create_option
             Azure::Compute::Mgmt::V2018_04_01::Models::DiskCreateOption
