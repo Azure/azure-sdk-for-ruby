@@ -35,7 +35,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Domain',
           type: {
@@ -43,12 +42,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'Domain',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -58,7 +55,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               authentication_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'authenticationType',
@@ -67,7 +63,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               is_default: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isDefault',
@@ -76,7 +71,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               is_verified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isVerified',
@@ -85,7 +79,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
