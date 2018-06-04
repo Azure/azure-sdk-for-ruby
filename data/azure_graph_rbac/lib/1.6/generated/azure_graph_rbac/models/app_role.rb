@@ -21,7 +21,8 @@ module Azure::GraphRbac::V1_6
       attr_accessor :additional_properties
 
       # @return [Array<String>] Specifies whether this app role definition can
-      # be assigned to users and groups, to other applications, or to both.
+      # be assigned to users and groups by setting to "User", or to other
+      # applications by setting to "Application", or to both.
       attr_accessor :allowed_member_types
 
       # @return [String] Permission help text that appears in the admin app
@@ -29,10 +30,12 @@ module Azure::GraphRbac::V1_6
       attr_accessor :description
 
       # @return [String] Display name for the permission that appears in the
-      # admin consent and app assignment experiences.
+      # admin consent and app assignment experiences. For example, "Read Only"
+      # or "Admin".
       attr_accessor :display_name
 
-      # @return [String] Unique role identifier inside the appRoles collection.
+      # @return [String] Unique role identifier inside the appRoles collection,
+      # such as "c20e145e-5459-4a6c-a074-b942bbd4cfe1".
       attr_accessor :id
 
       # @return [Boolean] When creating or updating a role definition, this
@@ -41,7 +44,8 @@ module Azure::GraphRbac::V1_6
       attr_accessor :is_enabled
 
       # @return [String] Specifies the value of the roles claim that the
-      # application should expect in the authentication and access tokens.
+      # application should expect in the authentication and access tokens, such
+      # as "ReadOnly" or "Admin".
       attr_accessor :value
 
 
