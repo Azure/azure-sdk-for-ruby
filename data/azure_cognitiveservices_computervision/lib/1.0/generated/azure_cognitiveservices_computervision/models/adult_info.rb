@@ -35,7 +35,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdultInfo',
           type: {
@@ -43,7 +42,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'AdultInfo',
             model_properties: {
               is_adult_content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isAdultContent',
                 type: {
@@ -51,7 +49,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               is_racy_content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isRacyContent',
                 type: {
@@ -59,7 +56,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               adult_score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adultScore',
                 type: {
@@ -67,7 +63,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               racy_score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'racyScore',
                 type: {
