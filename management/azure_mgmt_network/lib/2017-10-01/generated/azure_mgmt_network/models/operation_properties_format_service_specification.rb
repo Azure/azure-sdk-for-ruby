@@ -26,7 +26,6 @@ module Azure::Network::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationPropertiesFormat_serviceSpecification',
           type: {
@@ -34,13 +33,11 @@ module Azure::Network::Mgmt::V2017_10_01
             class_name: 'OperationPropertiesFormatServiceSpecification',
             model_properties: {
               metric_specifications: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricSpecificationElementType',
                       type: {
@@ -51,13 +48,11 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               log_specifications: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LogSpecificationElementType',
                       type: {
