@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.17.8"
+        "azure_sdk": "0.17.9"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.16.0",
@@ -56,6 +56,7 @@
         "azure_mgmt_notification_hubs": "0.16.0",
         "azure_mgmt_operational_insights": "0.16.0",
         "azure_mgmt_policy": "0.16.0",
+        "azure_mgmt_policy_insights": "0.16.0",
         "azure_mgmt_powerbi_embedded": "0.16.0",
         "azure_mgmt_recovery_services": "0.16.0",
         "azure_mgmt_recovery_services_backup": "0.16.0",

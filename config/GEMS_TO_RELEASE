@@ -1,4 +1,4 @@
 {
     "rollup": ["azure_sdk"],
-    "management": ["azure_mgmt_storage"]
+    "management": ["azure_mgmt_policy_insights"]
 }
