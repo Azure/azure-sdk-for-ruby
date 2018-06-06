@@ -1,4 +1,4 @@
-## 2018.06.01 - Azure Ruby SDK Release
+## 2018.06.06 - Azure Ruby SDK Release
 * Released 0.16.0 version of azure_mgmt_policy_insights gem.
 * Released 0.17.9 version of azure_sdk  rollup gem. This includes reference to the new azure_mgmt_policy_insights gem.
 
