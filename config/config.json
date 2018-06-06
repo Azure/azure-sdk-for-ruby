@@ -753,6 +753,28 @@
       "tag": "package-policy-2015-10"
     }
   },
+  "azure_mgmt_policy_insights": {
+    "azure_mgmt_policy_insights_2017_08_09_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ac44797c70e148c2e7e3b08ad188840fb7071354/specification/policyinsights/resource-manager/readme.md",
+      "namespace": "Azure::PolicyInsights::Mgmt::V2017_08_09_preview",
+      "tag": "package-2017-08"
+    },
+    "azure_mgmt_policy_insights_2017_10_17_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ac44797c70e148c2e7e3b08ad188840fb7071354/specification/policyinsights/resource-manager/readme.md",
+      "namespace": "Azure::PolicyInsights::Mgmt::V2017_10_17_preview",
+      "tag": "package-2017-10"
+    },
+    "azure_mgmt_policy_insights_2017_12_12_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ac44797c70e148c2e7e3b08ad188840fb7071354/specification/policyinsights/resource-manager/readme.md",
+      "namespace": "Azure::PolicyInsights::Mgmt::V2017_12_12_preview",
+      "tag": "package-2017-12"
+    },
+    "azure_mgmt_policy_insights_2018_04_04": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ac44797c70e148c2e7e3b08ad188840fb7071354/specification/policyinsights/resource-manager/readme.md",
+      "namespace": "Azure::PolicyInsights::Mgmt::V2018_04_04",
+      "tag": "package-2018-04"
+    }
+  },
   "azure_mgmt_powerbi_embedded": {
     "azure_mgmt_powerbi_embedded_2016_01_29": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/powerbiembedded/resource-manager/readme.md",

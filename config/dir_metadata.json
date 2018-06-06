@@ -284,6 +284,13 @@
       "module_require": "azure_mgmt_policy"
     }
   },
+  "Microsoft.PolicyInsights": {
+    "management": {
+      "path": "management/azure_mgmt_policy_insights",
+      "namespace": "Azure::PolicyInsights::Mgmt",
+      "module_require": "azure_mgmt_policy_insights"
+    }
+  },
   "Microsoft.PowerBiEmbedded": {
     "management": {
       "path": "management/azure_mgmt_powerbi_embedded",

@@ -262,6 +262,11 @@
                         "2017-06-01-preview": ["*"]
                     }
                 },
+                "Microsoft.PolicyInsights": {
+                    "management": {
+                        "2018-04-04": ["*"]
+                    }
+                },
                 "Microsoft.PowerBiEmbedded": {
                     "management": {
                         "2016-01-29": ["*"]
@@ -1047,6 +1052,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_policy/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_policy_insights": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.PolicyInsights": {
+                    "management": {
+                        "2018-04-04": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_policy_insights/lib/profiles",
             "individual_gem_profile": true
         }
         ],
