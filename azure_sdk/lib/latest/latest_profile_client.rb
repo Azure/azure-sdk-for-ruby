@@ -42,6 +42,7 @@ require 'latest/modules/network_profile_module'
 require 'latest/modules/notificationhubs_profile_module'
 require 'latest/modules/operationalinsights_profile_module'
 require 'latest/modules/policy_profile_module'
+require 'latest/modules/policyinsights_profile_module'
 require 'latest/modules/powerbiembedded_profile_module'
 require 'latest/modules/recoveryservices_profile_module'
 require 'latest/modules/recoveryservicesbackup_profile_module'
@@ -82,7 +83,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :mobile_engagement, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :server_management, :service_bus, :service_fabric, :signalr, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :entity_search, :face, :image_search, :news_search, :spell_check, :text_analytics, :video_search, :web_search
+    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :mobile_engagement, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :server_management, :service_bus, :service_fabric, :signalr, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :entity_search, :face, :image_search, :news_search, :spell_check, :text_analytics, :video_search, :web_search
 
     #
     # Initializes a new instance of the Client class.
@@ -153,6 +154,7 @@ module Azure::Profiles::Latest
       @notification_hubs = NotificationHubsAdapter.new(self, base_url, sdk_options)
       @operational_insights = OperationalInsightsAdapter.new(self, base_url, sdk_options)
       @policy = PolicyAdapter.new(self, base_url, sdk_options)
+      @policy_insights = PolicyInsightsAdapter.new(self, base_url, sdk_options)
       @power_bi_embedded = PowerBiEmbeddedAdapter.new(self, base_url, sdk_options)
       @recovery_services = RecoveryServicesAdapter.new(self, base_url, sdk_options)
       @recovery_services_backup = RecoveryServicesBackupAdapter.new(self, base_url, sdk_options)
@@ -496,6 +498,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Policy::Mgmt::PolicyManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class PolicyInsightsAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::PolicyInsights::Mgmt::PolicyInsightsManagementClass.new(context, base_url, options)
       end
     end
 
