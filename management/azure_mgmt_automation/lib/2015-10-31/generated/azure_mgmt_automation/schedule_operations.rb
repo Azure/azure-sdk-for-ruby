@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleCreateOrUpdateParameters] The parameters supplied
     # to the create or update schedule operation.
@@ -43,7 +43,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleCreateOrUpdateParameters] The parameters supplied
     # to the create or update schedule operation.
@@ -60,7 +60,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleCreateOrUpdateParameters] The parameters supplied
     # to the create or update schedule operation.
@@ -136,7 +136,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleUpdateParameters] The parameters supplied to the
     # update schedule operation.
@@ -154,7 +154,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleUpdateParameters] The parameters supplied to the
     # update schedule operation.
@@ -171,7 +171,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleUpdateParameters] The parameters supplied to the
     # update schedule operation.
@@ -247,7 +247,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -263,7 +263,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -278,7 +278,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -342,7 +342,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -357,7 +357,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -372,7 +372,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -426,7 +426,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -441,7 +441,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -455,7 +455,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -604,7 +604,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

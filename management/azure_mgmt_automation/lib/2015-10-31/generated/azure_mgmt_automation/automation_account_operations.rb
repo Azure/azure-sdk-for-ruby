@@ -24,8 +24,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountUpdateParameters] Parameters supplied to
     # the update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -41,8 +41,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountUpdateParameters] Parameters supplied to
     # the update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -57,8 +57,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountUpdateParameters] Parameters supplied to
     # the update automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -131,9 +131,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create or update automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Parameters supplied to the create or
-    # update automation account.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountCreateOrUpdateParameters] Parameters
     # supplied to the create or update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -149,9 +148,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create or update automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Parameters supplied to the create or
-    # update automation account.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountCreateOrUpdateParameters] Parameters
     # supplied to the create or update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -166,9 +164,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create or update automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Parameters supplied to the create or
-    # update automation account.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountCreateOrUpdateParameters] Parameters
     # supplied to the create or update automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -251,8 +248,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -265,8 +262,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -279,8 +276,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -331,8 +328,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Get information about an Automation Account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -346,8 +343,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Get information about an Automation Account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -360,8 +357,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Get information about an Automation Account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -422,41 +419,45 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<AutomationAccount>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(resource_group_name, automation_account_name, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, automation_account_name, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, automation_account_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, automation_account_name, custom_headers).value!
     end
 
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, automation_account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -472,7 +473,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -778,15 +779,16 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AutomationAccountListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, automation_account_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, automation_account_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
