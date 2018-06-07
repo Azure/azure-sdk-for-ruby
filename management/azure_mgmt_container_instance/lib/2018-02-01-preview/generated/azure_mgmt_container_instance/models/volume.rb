@@ -34,7 +34,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Volume',
           type: {
@@ -42,7 +41,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
             class_name: 'Volume',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -50,7 +48,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               azure_file: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureFile',
                 type: {
@@ -59,7 +56,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               empty_dir: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'emptyDir',
                 type: {
@@ -67,13 +63,11 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secret',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -83,7 +77,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               git_repo: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gitRepo',
                 type: {

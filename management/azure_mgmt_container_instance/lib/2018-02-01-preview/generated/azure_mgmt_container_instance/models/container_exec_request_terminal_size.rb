@@ -3,46 +3,46 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
+module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
   module Models
     #
-    # The resource limits.
+    # The size of the terminal.
     #
-    class ResourceLimits
+    class ContainerExecRequestTerminalSize
 
       include MsRestAzure
 
-      # @return [Float] The memory limit in GB of this container instance.
-      attr_accessor :memory_in_gb
+      # @return [Integer] The row size of the terminal
+      attr_accessor :rows
 
-      # @return [Float] The CPU limit of this container instance.
-      attr_accessor :cpu
+      # @return [Integer] The column size of the terminal
+      attr_accessor :cols
 
 
       #
-      # Mapper for ResourceLimits class as Ruby Hash.
+      # Mapper for ContainerExecRequestTerminalSize class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ResourceLimits',
+          serialized_name: 'ContainerExecRequest_terminalSize',
           type: {
             name: 'Composite',
-            class_name: 'ResourceLimits',
+            class_name: 'ContainerExecRequestTerminalSize',
             model_properties: {
-              memory_in_gb: {
+              rows: {
                 required: false,
-                serialized_name: 'memoryInGB',
+                serialized_name: 'rows',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               },
-              cpu: {
+              cols: {
                 required: false,
-                serialized_name: 'cpu',
+                serialized_name: 'cols',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               }
             }

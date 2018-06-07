@@ -3,46 +3,44 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
+module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
   module Models
     #
-    # The name object of the resource
+    # The information for the container exec command.
     #
-    class UsageName
+    class ContainerExecResponse
 
       include MsRestAzure
 
-      # @return [String] The name of the resource
-      attr_accessor :value
+      # @return [String] The uri for the exec websocket.
+      attr_accessor :web_socket_uri
 
-      # @return [String] The localized name of the resource
-      attr_accessor :localized_value
+      # @return [String] The password to start the exec command.
+      attr_accessor :password
 
 
       #
-      # Mapper for UsageName class as Ruby Hash.
+      # Mapper for ContainerExecResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Usage_name',
+          serialized_name: 'ContainerExecResponse',
           type: {
             name: 'Composite',
-            class_name: 'UsageName',
+            class_name: 'ContainerExecResponse',
             model_properties: {
-              value: {
+              web_socket_uri: {
                 required: false,
-                read_only: true,
-                serialized_name: 'value',
+                serialized_name: 'webSocketUri',
                 type: {
                   name: 'String'
                 }
               },
-              localized_value: {
+              password: {
                 required: false,
-                read_only: true,
-                serialized_name: 'localizedValue',
+                serialized_name: 'password',
                 type: {
                   name: 'String'
                 }
