@@ -6,8 +6,7 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # The resource model definition for a ARM proxy resource. It will have
-    # everything other than required location and tags
+    # ARM proxy resource.
     #
     class ProxyResource < Resource
 

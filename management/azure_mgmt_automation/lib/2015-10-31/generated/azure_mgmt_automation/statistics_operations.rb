@@ -24,8 +24,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the statistics for the account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -40,8 +40,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the statistics for the account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -55,8 +55,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the statistics for the account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

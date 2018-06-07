@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -41,7 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -56,7 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -126,7 +126,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -141,7 +141,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -178,7 +178,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -194,7 +194,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -209,7 +209,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -273,7 +273,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -288,7 +288,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -325,7 +325,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Undo draft edit to last known published state identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -341,7 +341,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Undo draft edit to last known published state identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -356,7 +356,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Undo draft edit to last known published state identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -420,7 +420,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -437,7 +437,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -453,7 +453,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param runbook_content [String] The runbook draft content.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -540,7 +540,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -557,7 +557,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -573,7 +573,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
