@@ -28,7 +28,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SiteLimits',
           type: {
@@ -36,7 +35,6 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'SiteLimits',
             model_properties: {
               max_percentage_cpu: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxPercentageCpu',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               max_memory_in_mb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxMemoryInMb',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               max_disk_size_in_mb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDiskSizeInMb',
                 type: {
