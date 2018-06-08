@@ -1,3 +1,6 @@
+##2018.06.08 ms_rest_azure version 0.10.8
+* Added case insensitive comparison to Operation status.
+
 ##2018.05.16 ms_rest_azure version 0.10.7
 * Added new error code 410 for IMDS Support for MSI Token Provider class.
 
