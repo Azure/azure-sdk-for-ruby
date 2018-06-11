@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       Default = "Default"
       Copy = "Copy"
       Secondary = "Secondary"
+      OnlineSecondary = "OnlineSecondary"
       PointInTimeRestore = "PointInTimeRestore"
       Restore = "Restore"
       Recovery = "Recovery"

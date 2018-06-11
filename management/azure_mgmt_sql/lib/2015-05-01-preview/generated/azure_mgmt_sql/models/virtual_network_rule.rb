@@ -31,7 +31,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkRule',
           type: {
@@ -39,7 +38,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'VirtualNetworkRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +54,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,7 +62,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               virtual_network_subnet_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.virtualNetworkSubnetId',
                 type: {
@@ -74,7 +69,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               ignore_missing_vnet_service_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ignoreMissingVnetServiceEndpoint',
                 type: {
@@ -82,7 +76,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',

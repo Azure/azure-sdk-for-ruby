@@ -47,11 +47,21 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # @return [DatabaseBlobAuditingPolicies] database_blob_auditing_policies
     attr_reader :database_blob_auditing_policies
 
+    # @return [DatabaseAutomaticTuningOperations]
+    # database_automatic_tuning_operations
+    attr_reader :database_automatic_tuning_operations
+
     # @return [EncryptionProtectors] encryption_protectors
     attr_reader :encryption_protectors
 
     # @return [FailoverGroups] failover_groups
     attr_reader :failover_groups
+
+    # @return [FirewallRules] firewall_rules
+    attr_reader :firewall_rules
+
+    # @return [ManagedInstances] managed_instances
+    attr_reader :managed_instances
 
     # @return [Operations] operations
     attr_reader :operations
@@ -94,8 +104,11 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       @database_recommended_actions = DatabaseRecommendedActions.new(self)
       @server_advisors = ServerAdvisors.new(self)
       @database_blob_auditing_policies = DatabaseBlobAuditingPolicies.new(self)
+      @database_automatic_tuning_operations = DatabaseAutomaticTuningOperations.new(self)
       @encryption_protectors = EncryptionProtectors.new(self)
       @failover_groups = FailoverGroups.new(self)
+      @firewall_rules = FirewallRules.new(self)
+      @managed_instances = ManagedInstances.new(self)
       @operations = Operations.new(self)
       @server_keys = ServerKeys.new(self)
       @servers = Servers.new(self)
@@ -157,9 +170,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -176,7 +186,9 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::SQL::Mgmt::V2015_05_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::SQL::Mgmt::V2015_05_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
