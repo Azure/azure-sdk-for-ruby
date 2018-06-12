@@ -6,14 +6,15 @@
 module Azure::Network::Mgmt::V2018_01_01
   module Models
     #
-    # Parameters that define a resource to query flow log status.
+    # Parameters that define a resource to query flow log and traffic analytics
+    # (optional) status.
     #
     class FlowLogStatusParameters
 
       include MsRestAzure
 
-      # @return [String] The target resource where getting the flow logging
-      # status.
+      # @return [String] The target resource where getting the flow logging and
+      # traffic analytics (optional) status.
       attr_accessor :target_resource_id
 
 
@@ -23,7 +24,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FlowLogStatusParameters',
           type: {
@@ -31,7 +31,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'FlowLogStatusParameters',
             model_properties: {
               target_resource_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
