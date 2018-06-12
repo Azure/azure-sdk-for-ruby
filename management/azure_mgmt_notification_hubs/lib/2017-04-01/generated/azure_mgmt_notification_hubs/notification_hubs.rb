@@ -541,13 +541,13 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
-    # @param parameters [String] The shared access authorization rule.
+    # @param parameters [String] Debug send message payload
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DebugSendResponse] operation results.
     #
-    def debug_send(resource_group_name, namespace_name, notification_hub_name, parameters, custom_headers = nil)
+    def debug_send(resource_group_name, namespace_name, notification_hub_name, parameters = nil, custom_headers = nil)
       response = debug_send_async(resource_group_name, namespace_name, notification_hub_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
@@ -558,13 +558,13 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
-    # @param parameters [String] The shared access authorization rule.
+    # @param parameters [String] Debug send message payload
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def debug_send_with_http_info(resource_group_name, namespace_name, notification_hub_name, parameters, custom_headers = nil)
+    def debug_send_with_http_info(resource_group_name, namespace_name, notification_hub_name, parameters = nil, custom_headers = nil)
       debug_send_async(resource_group_name, namespace_name, notification_hub_name, parameters, custom_headers).value!
     end
 
@@ -574,17 +574,16 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
-    # @param parameters [String] The shared access authorization rule.
+    # @param parameters [String] Debug send message payload
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def debug_send_async(resource_group_name, namespace_name, notification_hub_name, parameters, custom_headers = nil)
+    def debug_send_async(resource_group_name, namespace_name, notification_hub_name, parameters = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'notification_hub_name is nil' if notification_hub_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -599,7 +598,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       # Serialize Request
       request_mapper = {
-        required: true,
+        required: false,
         serialized_name: 'parameters',
         type: {
           name: 'String'
