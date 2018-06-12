@@ -31,7 +31,6 @@ module Azure::Dns::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SrvRecord',
           type: {
@@ -39,7 +38,6 @@ module Azure::Dns::Mgmt::V2017_09_01
             class_name: 'SrvRecord',
             model_properties: {
               priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'priority',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Dns::Mgmt::V2017_09_01
                 }
               },
               weight: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'weight',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Dns::Mgmt::V2017_09_01
                 }
               },
               port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Dns::Mgmt::V2017_09_01
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
