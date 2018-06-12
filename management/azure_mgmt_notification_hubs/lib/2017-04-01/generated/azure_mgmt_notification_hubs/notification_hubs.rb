@@ -586,6 +586,8 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'notification_hub_name is nil' if notification_hub_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -613,7 +615,8 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'notificationHubName' => notification_hub_name},
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'notificationHubName' => notification_hub_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
