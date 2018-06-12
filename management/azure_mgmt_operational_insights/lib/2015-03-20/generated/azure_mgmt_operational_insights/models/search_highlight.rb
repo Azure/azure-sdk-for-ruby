@@ -25,7 +25,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SearchHighlight',
           type: {
@@ -33,7 +32,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchHighlight',
             model_properties: {
               pre: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pre',
                 type: {
@@ -41,7 +39,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               post: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'post',
                 type: {

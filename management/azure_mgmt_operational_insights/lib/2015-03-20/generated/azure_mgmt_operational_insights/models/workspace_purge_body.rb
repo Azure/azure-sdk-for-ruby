@@ -6,50 +6,50 @@
 module Azure::OperationalInsights::Mgmt::V2015_03_20
   module Models
     #
-    # The get schema operation response.
+    # Describes the body of a purge request for an App Insights Workspace
     #
-    class SearchGetSchemaResponse
+    class WorkspacePurgeBody
 
       include MsRestAzure
 
-      # @return [SearchMetadata] The metadata from search results.
-      attr_accessor :metadata
+      # @return [String] Table from which to purge data.
+      attr_accessor :table
 
-      # @return [Array<SearchSchemaValue>] The array of result values.
-      attr_accessor :value
+      # @return [Array<WorkspacePurgeBodyFilters>] The set of columns and
+      # filters (queries) to run over them to purge the resulting data.
+      attr_accessor :filters
 
 
       #
-      # Mapper for SearchGetSchemaResponse class as Ruby Hash.
+      # Mapper for WorkspacePurgeBody class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SearchGetSchemaResponse',
+          serialized_name: 'WorkspacePurgeBody',
           type: {
             name: 'Composite',
-            class_name: 'SearchGetSchemaResponse',
+            class_name: 'WorkspacePurgeBody',
             model_properties: {
-              metadata: {
-                required: false,
-                serialized_name: 'metadata',
+              table: {
+                required: true,
+                serialized_name: 'table',
                 type: {
-                  name: 'Composite',
-                  class_name: 'SearchMetadata'
+                  name: 'String'
                 }
               },
-              value: {
-                required: false,
-                serialized_name: 'value',
+              filters: {
+                required: true,
+                serialized_name: 'filters',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SearchSchemaValueElementType',
+                      serialized_name: 'WorkspacePurgeBodyFiltersElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SearchSchemaValue'
+                        class_name: 'WorkspacePurgeBodyFilters'
                       }
                   }
                 }
