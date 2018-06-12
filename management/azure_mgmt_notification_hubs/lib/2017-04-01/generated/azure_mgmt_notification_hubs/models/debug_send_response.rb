@@ -18,7 +18,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       # @return [Float] send failure
       attr_accessor :failure
 
-      # @return [String] actual failure description
+      # @return actual failure description
       attr_accessor :results
 
 
@@ -105,7 +105,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 required: false,
                 serialized_name: 'properties.results',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               }
             }
