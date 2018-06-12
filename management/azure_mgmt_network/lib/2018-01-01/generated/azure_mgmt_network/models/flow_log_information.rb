@@ -6,7 +6,8 @@
 module Azure::Network::Mgmt::V2018_01_01
   module Models
     #
-    # Information on the configuration of flow log.
+    # Information on the configuration of flow log and traffic analytics
+    # (optional).
     #
     class FlowLogInformation
 
@@ -25,6 +26,9 @@ module Azure::Network::Mgmt::V2018_01_01
       # @return [RetentionPolicyParameters]
       attr_accessor :retention_policy
 
+      # @return [TrafficAnalyticsConfigurationProperties]
+      attr_accessor :network_watcher_flow_analytics_configuration
+
 
       #
       # Mapper for FlowLogInformation class as Ruby Hash.
@@ -32,7 +36,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FlowLogInformation',
           type: {
@@ -40,7 +43,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'FlowLogInformation',
             model_properties: {
               target_resource_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
@@ -48,7 +50,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               storage_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageId',
                 type: {
@@ -56,7 +57,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.enabled',
                 type: {
@@ -64,12 +64,19 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               retention_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionPolicy',
                 type: {
                   name: 'Composite',
                   class_name: 'RetentionPolicyParameters'
+                }
+              },
+              network_watcher_flow_analytics_configuration: {
+                required: true,
+                serialized_name: 'flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'TrafficAnalyticsConfigurationProperties'
                 }
               }
             }

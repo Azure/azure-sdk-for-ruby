@@ -28,7 +28,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendHealthHttpSettings',
           type: {
@@ -36,7 +35,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ApplicationGatewayBackendHealthHttpSettings',
             model_properties: {
               backend_http_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backendHttpSettings',
                 type: {
@@ -45,13 +43,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               servers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'servers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayBackendHealthServerElementType',
                       type: {

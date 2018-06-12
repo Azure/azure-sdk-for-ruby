@@ -5,10 +5,7 @@
 
 module Azure::Network::Mgmt::V2017_03_30
   #
-  # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage your
-  # network resources. The API has entities that capture the relationship
-  # between an end user and the Microsoft Azure Networks service.
+  # Network Client
   #
   class NetworkInterfaces
     include MsRestAzure
@@ -37,8 +34,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Array<NetworkInterface>] operation results.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers)
+    def list_virtual_machine_scale_set_vmnetwork_interfaces(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
+      first_page = list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers)
       first_page.get_all_items
     end
 
@@ -55,8 +52,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
+      list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers).value!
     end
 
     #
@@ -72,7 +69,7 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
@@ -81,7 +78,6 @@ module Azure::Network::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -137,8 +133,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Array<NetworkInterface>] operation results.
     #
-    def list_virtual_machine_scale_set_network_interfaces(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers)
+    def list_virtual_machine_scale_set_network_interfaces(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
+      first_page = list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -153,8 +149,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_network_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
+      list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers).value!
     end
 
     #
@@ -168,7 +164,7 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
+    def list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       api_version = '2017-03-30'
@@ -176,7 +172,6 @@ module Azure::Network::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -235,8 +230,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [NetworkInterface] operation results.
     #
-    def get_virtual_machine_scale_set_network_interface(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      response = get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
+    def get_virtual_machine_scale_set_network_interface(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand = nil, custom_headers = nil)
+      response = get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -254,8 +249,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_virtual_machine_scale_set_network_interface_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
+    def get_virtual_machine_scale_set_network_interface_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand = nil, custom_headers = nil)
+      get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand, custom_headers).value!
     end
 
     #
@@ -272,7 +267,7 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
+    def get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
@@ -282,7 +277,6 @@ module Azure::Network::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -342,8 +336,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Array<NetworkInterfaceIPConfiguration>] operation results.
     #
-    def list_virtual_machine_scale_set_ip_configurations(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_ip_configurations_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers)
+    def list_virtual_machine_scale_set_ip_configurations(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand = nil, custom_headers = nil)
+      first_page = list_virtual_machine_scale_set_ip_configurations_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand, custom_headers)
       first_page.get_all_items
     end
 
@@ -362,8 +356,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_ip_configurations_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_ip_configurations_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand = nil, custom_headers = nil)
+      list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand, custom_headers).value!
     end
 
     #
@@ -381,7 +375,7 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
+    def list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
@@ -391,7 +385,6 @@ module Azure::Network::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -452,8 +445,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [NetworkInterfaceIPConfiguration] operation results.
     #
-    def get_virtual_machine_scale_set_ip_configuration(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:nil, custom_headers:nil)
-      response = get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:expand, custom_headers:custom_headers).value!
+    def get_virtual_machine_scale_set_ip_configuration(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand = nil, custom_headers = nil)
+      response = get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -473,8 +466,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_virtual_machine_scale_set_ip_configuration_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:nil, custom_headers:nil)
-      get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:expand, custom_headers:custom_headers).value!
+    def get_virtual_machine_scale_set_ip_configuration_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand = nil, custom_headers = nil)
+      get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand, custom_headers).value!
     end
 
     #
@@ -493,7 +486,7 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:nil, custom_headers:nil)
+    def get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
@@ -504,7 +497,6 @@ module Azure::Network::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -560,8 +552,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_next(next_page_link, custom_headers = nil)
+      response = list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -576,8 +568,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_with_http_info(next_page_link, custom_headers = nil)
+      list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -591,12 +583,11 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:nil)
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -650,8 +641,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_next(next_page_link, custom_headers = nil)
+      response = list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -665,8 +656,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_next_with_http_info(next_page_link, custom_headers = nil)
+      list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -679,12 +670,11 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:nil)
+    def list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -739,8 +729,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [NetworkInterfaceIPConfigurationListResult] operation results.
     #
-    def list_virtual_machine_scale_set_ip_configurations_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_ip_configurations_next(next_page_link, custom_headers = nil)
+      response = list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -755,8 +745,8 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_ip_configurations_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_ip_configurations_next_with_http_info(next_page_link, custom_headers = nil)
+      list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -770,12 +760,11 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:nil)
+    def list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -833,12 +822,12 @@ module Azure::Network::Mgmt::V2017_03_30
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      response = list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
+      response = list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers)
+          list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -856,12 +845,12 @@ module Azure::Network::Mgmt::V2017_03_30
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      response = list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
+      response = list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers)
+          list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -883,12 +872,12 @@ module Azure::Network::Mgmt::V2017_03_30
     # @return [NetworkInterfaceIPConfigurationListResult] which provide lazy access
     # to pages of the response.
     #
-    def list_virtual_machine_scale_set_ip_configurations_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      response = list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_ip_configurations_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand = nil, custom_headers = nil)
+      response = list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:custom_headers)
+          list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers)
         end
         page
       end
