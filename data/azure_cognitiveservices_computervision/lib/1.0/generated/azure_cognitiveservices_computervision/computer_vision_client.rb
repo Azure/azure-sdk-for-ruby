@@ -230,8 +230,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # image.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -267,8 +268,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # image.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -303,8 +305,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # image.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -670,8 +673,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -697,8 +701,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -723,8 +728,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -805,8 +811,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param url [String] Publicly reachable URL of an image
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -829,8 +836,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param url [String] Publicly reachable URL of an image
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -852,8 +860,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param url [String] Publicly reachable URL of an image
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -936,8 +945,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param url [String] Publicly reachable URL of an image
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -962,8 +972,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param url [String] Publicly reachable URL of an image
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -987,8 +998,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param url [String] Publicly reachable URL of an image
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1282,8 +1294,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # Possible values include: 'Celebrities', 'Landmarks'
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1316,8 +1329,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # Possible values include: 'Celebrities', 'Landmarks'
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1349,8 +1363,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # Possible values include: 'Celebrities', 'Landmarks'
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1722,8 +1737,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1749,8 +1765,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1775,8 +1792,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1859,8 +1877,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1883,8 +1902,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1906,8 +1926,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1992,8 +2013,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2018,8 +2040,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2043,8 +2066,9 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.ja - Japanese pt - Portuguese zh - Simplified
-    # Chinese. Possible values include: 'en', 'ja', 'pt', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
