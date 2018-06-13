@@ -71,7 +71,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ElasticPoolDatabaseActivity',
           type: {
@@ -79,7 +78,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ElasticPoolDatabaseActivity',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -88,7 +86,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -97,7 +94,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -106,7 +102,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -114,7 +109,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseName',
@@ -123,7 +117,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endTime',
@@ -132,7 +125,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               error_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorCode',
@@ -141,7 +133,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               error_message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorMessage',
@@ -150,7 +141,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               error_severity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorSeverity',
@@ -159,7 +149,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operation',
@@ -168,7 +157,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operationId',
@@ -177,7 +165,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               percent_complete: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.percentComplete',
@@ -186,7 +173,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_elastic_pool_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedElasticPoolName',
@@ -195,7 +181,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               current_elastic_pool_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentElasticPoolName',
@@ -204,7 +189,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               current_service_objective: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentServiceObjective',
@@ -213,7 +197,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_service_objective: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedServiceObjective',
@@ -222,7 +205,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverName',
@@ -231,7 +213,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -240,7 +221,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',

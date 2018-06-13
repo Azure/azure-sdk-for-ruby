@@ -19,7 +19,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
 
-      # @return [ImageMetadata] Image metadata
+      # @return [ImageMetadata]
       attr_accessor :metadata
 
 
@@ -29,7 +29,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TagResult',
           type: {
@@ -37,13 +36,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'TagResult',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ImageTagElementType',
                       type: {
@@ -54,7 +51,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {
@@ -62,7 +58,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {

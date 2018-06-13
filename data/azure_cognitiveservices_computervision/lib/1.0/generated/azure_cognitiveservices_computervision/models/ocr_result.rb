@@ -13,7 +13,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
       include MsRestAzure
 
-      # @return [OcrResult]
+      # @return [String] The BCP-47 language code of the text in the image.
       attr_accessor :language
 
       # @return [Float] The angle, in degrees, of the detected text with
@@ -46,7 +46,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OcrResult',
           type: {
@@ -54,16 +53,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'OcrResult',
             model_properties: {
               language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'language',
                 type: {
-                  name: 'Composite',
-                  class_name: 'OcrResult'
+                  name: 'String'
                 }
               },
               text_angle: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'textAngle',
                 type: {
@@ -71,7 +67,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               orientation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'orientation',
                 type: {
@@ -79,13 +74,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               regions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'regions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OcrRegionElementType',
                       type: {

@@ -13,14 +13,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
       include MsRestAzure
 
-      # @return [Array<CelebritiesModel>] An array of possible celebritied
-      # identified in the image.
-      attr_accessor :celebrities
+      # @return Model-specific response
+      attr_accessor :result
 
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
 
-      # @return [ImageMetadata] Additional image metadata
+      # @return [ImageMetadata]
       attr_accessor :metadata
 
 
@@ -30,32 +29,20 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DomainModelResults',
           type: {
             name: 'Composite',
             class_name: 'DomainModelResults',
             model_properties: {
-              celebrities: {
-                client_side_validation: true,
+              result: {
                 required: false,
-                serialized_name: 'result.celebrities',
+                serialized_name: 'result',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'CelebritiesModelElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'CelebritiesModel'
-                      }
-                  }
+                  name: 'Object'
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {
@@ -63,7 +50,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {

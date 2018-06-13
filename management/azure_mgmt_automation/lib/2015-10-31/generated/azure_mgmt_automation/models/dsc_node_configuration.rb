@@ -8,12 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the dsc node configuration.
     #
-    class DscNodeConfiguration
+    class DscNodeConfiguration < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets or sets the node configuration name.
-      attr_accessor :name
 
       # @return [DateTime] Gets or sets the last modified time.
       attr_accessor :last_modified_time
@@ -25,9 +22,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       # configuration of the node.
       attr_accessor :configuration
 
-      # @return [String] Gets or sets the id of the resource.
-      attr_accessor :id
-
 
       #
       # Mapper for DscNodeConfiguration class as Ruby Hash.
@@ -35,23 +29,37 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscNodeConfiguration',
           type: {
             name: 'Composite',
             class_name: 'DscNodeConfiguration',
             model_properties: {
-              name: {
-                client_side_validation: true,
+              id: {
                 required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastModifiedTime',
                 type: {
@@ -59,7 +67,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'creationTime',
                 type: {
@@ -67,20 +74,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'configuration',
                 type: {
                   name: 'Composite',
                   class_name: 'DscConfigurationAssociationProperty'
-                }
-              },
-              id: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
                 }
               }
             }

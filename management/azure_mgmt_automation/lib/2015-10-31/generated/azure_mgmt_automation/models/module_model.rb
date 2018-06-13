@@ -8,7 +8,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the module type.
     #
-    class ModuleModel < Resource
+    class ModuleModel < TrackedResource
 
       include MsRestAzure
 
@@ -58,7 +58,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Module',
           type: {
@@ -66,7 +65,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ModuleModel',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -75,7 +73,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -84,7 +81,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -92,22 +88,12 @@ module Azure::Automation::Mgmt::V2015_10_31
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -116,8 +102,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                   }
                 }
               },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               is_global: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isGlobal',
                 type: {
@@ -125,7 +117,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.version',
                 type: {
@@ -133,7 +124,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               size_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sizeInBytes',
                 type: {
@@ -141,7 +131,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               activity_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.activityCount',
                 type: {
@@ -149,7 +138,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -158,7 +146,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               content_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contentLink',
                 type: {
@@ -167,7 +154,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.error',
                 type: {
@@ -176,7 +162,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -184,7 +169,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -192,7 +176,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -200,7 +183,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
