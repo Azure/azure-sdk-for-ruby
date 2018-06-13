@@ -26,7 +26,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BudgetTimePeriod',
           type: {
@@ -34,7 +33,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
             class_name: 'BudgetTimePeriod',
             model_properties: {
               start_date: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'startDate',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               end_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endDate',
                 type: {

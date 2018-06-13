@@ -27,7 +27,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceTwinProperties',
           type: {
@@ -35,7 +34,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'DeviceTwinProperties',
             model_properties: {
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
@@ -44,7 +42,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {

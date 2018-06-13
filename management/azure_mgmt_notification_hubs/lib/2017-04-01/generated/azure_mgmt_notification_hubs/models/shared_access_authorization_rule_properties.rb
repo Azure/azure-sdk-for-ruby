@@ -15,6 +15,32 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 
+      # @return [String] A base64-encoded 256-bit primary key for signing and
+      # validating the SAS token.
+      attr_accessor :primary_key
+
+      # @return [String] A base64-encoded 256-bit primary key for signing and
+      # validating the SAS token.
+      attr_accessor :secondary_key
+
+      # @return [String] A string that describes the authorization rule.
+      attr_accessor :key_name
+
+      # @return [String] A string that describes the claim type
+      attr_accessor :claim_type
+
+      # @return [String] A string that describes the claim value
+      attr_accessor :claim_value
+
+      # @return [String] The last modified time for this rule
+      attr_accessor :modified_time
+
+      # @return [String] The created time for this rule
+      attr_accessor :created_time
+
+      # @return [Integer] The revision number for the rule
+      attr_accessor :revision
+
 
       #
       # Mapper for SharedAccessAuthorizationRuleProperties class as Ruby Hash.
@@ -22,7 +48,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SharedAccessAuthorizationRuleProperties',
           type: {
@@ -30,13 +55,11 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'SharedAccessAuthorizationRuleProperties',
             model_properties: {
               rights: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rights',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessRightsElementType',
                       type: {
@@ -44,6 +67,70 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                         module: 'AccessRights'
                       }
                   }
+                }
+              },
+              primary_key: {
+                required: false,
+                read_only: true,
+                serialized_name: 'primaryKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              secondary_key: {
+                required: false,
+                read_only: true,
+                serialized_name: 'secondaryKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              key_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'keyName',
+                type: {
+                  name: 'String'
+                }
+              },
+              claim_type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'claimType',
+                type: {
+                  name: 'String'
+                }
+              },
+              claim_value: {
+                required: false,
+                read_only: true,
+                serialized_name: 'claimValue',
+                type: {
+                  name: 'String'
+                }
+              },
+              modified_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'modifiedTime',
+                type: {
+                  name: 'String'
+                }
+              },
+              created_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'createdTime',
+                type: {
+                  name: 'String'
+                }
+              },
+              revision: {
+                required: false,
+                read_only: true,
+                serialized_name: 'revision',
+                type: {
+                  name: 'Number'
                 }
               }
             }

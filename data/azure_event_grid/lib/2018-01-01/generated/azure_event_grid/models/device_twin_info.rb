@@ -61,7 +61,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceTwinInfo',
           type: {
@@ -69,7 +68,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'DeviceTwinInfo',
             model_properties: {
               authentication_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authenticationType',
                 type: {
@@ -77,7 +75,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               cloud_to_device_message_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloudToDeviceMessageCount',
                 type: {
@@ -85,7 +82,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               connection_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionState',
                 type: {
@@ -93,7 +89,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               device_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceId',
                 type: {
@@ -101,7 +96,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -109,7 +103,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               last_activity_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastActivityTime',
                 type: {
@@ -117,7 +110,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -126,7 +118,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -134,7 +125,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               status_update_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusUpdateTime',
                 type: {
@@ -142,7 +132,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {
@@ -150,7 +139,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               x509thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'x509Thumbprint',
                 type: {

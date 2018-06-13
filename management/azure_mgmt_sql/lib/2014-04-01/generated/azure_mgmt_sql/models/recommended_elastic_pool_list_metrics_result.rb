@@ -24,7 +24,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedElasticPoolListMetricsResult',
           type: {
@@ -32,13 +31,11 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'RecommendedElasticPoolListMetricsResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedElasticPoolMetricElementType',
                       type: {
