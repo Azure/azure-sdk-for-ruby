@@ -96,9 +96,6 @@ module Azure::EventGrid::V2018_01_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -119,8 +116,8 @@ module Azure::EventGrid::V2018_01_01
     # will be added to the HTTP request.
     #
     #
-    def publish_events(topic_hostname, events, custom_headers:nil)
-      response = publish_events_async(topic_hostname, events, custom_headers:custom_headers).value!
+    def publish_events(topic_hostname, events, custom_headers = nil)
+      response = publish_events_async(topic_hostname, events, custom_headers).value!
       nil
     end
 
@@ -136,8 +133,8 @@ module Azure::EventGrid::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def publish_events_with_http_info(topic_hostname, events, custom_headers:nil)
-      publish_events_async(topic_hostname, events, custom_headers:custom_headers).value!
+    def publish_events_with_http_info(topic_hostname, events, custom_headers = nil)
+      publish_events_async(topic_hostname, events, custom_headers).value!
     end
 
     #
@@ -152,28 +149,27 @@ module Azure::EventGrid::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def publish_events_async(topic_hostname, events, custom_headers:nil)
+    def publish_events_async(topic_hostname, events, custom_headers = nil)
       fail ArgumentError, 'topic_hostname is nil' if topic_hostname.nil?
       fail ArgumentError, 'events is nil' if events.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Serialize Request
       request_mapper = {
-        client_side_validation: true,
         required: true,
         serialized_name: 'events',
         type: {
           name: 'Sequence',
           element: {
-              client_side_validation: true,
               required: false,
               serialized_name: 'EventGridEventElementType',
               type: {
@@ -224,7 +220,9 @@ module Azure::EventGrid::V2018_01_01
     #
     def add_telemetry
         sdk_information = 'azure_event_grid'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::EventGrid::V2018_01_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::EventGrid::V2018_01_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
