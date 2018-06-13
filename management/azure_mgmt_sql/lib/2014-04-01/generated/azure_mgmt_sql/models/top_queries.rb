@@ -52,7 +52,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TopQueries',
           type: {
@@ -60,7 +59,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'TopQueries',
             model_properties: {
               aggregation_function: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'aggregationFunction',
@@ -70,7 +68,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               execution_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'executionType',
@@ -80,7 +77,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               interval_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'intervalType',
@@ -89,7 +85,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               number_of_top_queries: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'numberOfTopQueries',
@@ -98,7 +93,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               observation_start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'observationStartTime',
@@ -107,7 +101,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               observation_end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'observationEndTime',
@@ -116,7 +109,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               observed_metric: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'observedMetric',
@@ -126,14 +118,12 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               queries: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queries',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryStatisticElementType',
                       type: {

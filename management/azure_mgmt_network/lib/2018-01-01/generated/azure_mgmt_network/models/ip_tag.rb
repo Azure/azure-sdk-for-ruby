@@ -26,7 +26,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IpTag',
           type: {
@@ -34,7 +33,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'IpTag',
             model_properties: {
               ip_tag_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipTagType',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tag',
                 type: {

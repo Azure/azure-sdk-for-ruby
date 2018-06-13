@@ -31,7 +31,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServerAutomaticTuning',
           type: {
@@ -39,7 +38,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ServerAutomaticTuning',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +54,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,7 +62,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               desired_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.desiredState',
                 type: {
@@ -75,7 +70,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               actual_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.actualState',
@@ -85,13 +79,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.options',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AutomaticTuningServerOptionsElementType',
                       type: {

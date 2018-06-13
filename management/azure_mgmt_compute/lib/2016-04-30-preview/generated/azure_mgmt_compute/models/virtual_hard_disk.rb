@@ -22,7 +22,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualHardDisk',
           type: {
@@ -30,7 +29,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualHardDisk',
             model_properties: {
               uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {

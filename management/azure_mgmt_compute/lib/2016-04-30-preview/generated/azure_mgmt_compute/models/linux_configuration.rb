@@ -33,7 +33,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LinuxConfiguration',
           type: {
@@ -41,7 +40,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'LinuxConfiguration',
             model_properties: {
               disable_password_authentication: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'disablePasswordAuthentication',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               ssh: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ssh',
                 type: {

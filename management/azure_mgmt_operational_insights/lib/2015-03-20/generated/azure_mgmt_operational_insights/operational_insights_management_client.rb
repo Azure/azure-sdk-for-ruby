@@ -25,6 +25,14 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     # @return [String] Client Api Version.
     attr_reader :api_version
 
+    # @return [WorkspacePurgeBody] Describes the body of a request to purge
+    # data in a single table of an Log Analytics Workspace
+    attr_accessor :body
+
+    # @return [String] In a purge status request, this is the Id of the
+    # operation the status of which is returned.
+    attr_accessor :purge_id
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -118,9 +126,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -137,7 +142,9 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_operational_insights'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::OperationalInsights::Mgmt::V2015_03_20::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::OperationalInsights::Mgmt::V2015_03_20::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

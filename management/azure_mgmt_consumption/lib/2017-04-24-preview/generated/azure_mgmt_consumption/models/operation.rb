@@ -25,7 +25,6 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -33,7 +32,6 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -42,7 +40,6 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
