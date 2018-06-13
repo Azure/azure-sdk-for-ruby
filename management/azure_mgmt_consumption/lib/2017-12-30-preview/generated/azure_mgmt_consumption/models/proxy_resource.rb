@@ -33,7 +33,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProxyResource',
           type: {
@@ -41,7 +40,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
             class_name: 'ProxyResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -50,7 +48,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -59,7 +56,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -68,7 +64,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               e_tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {

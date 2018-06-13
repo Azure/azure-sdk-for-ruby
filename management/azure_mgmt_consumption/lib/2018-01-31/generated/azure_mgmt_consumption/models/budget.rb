@@ -51,7 +51,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Budget',
           type: {
@@ -59,7 +58,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
             class_name: 'Budget',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,7 +66,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -77,7 +74,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -86,7 +82,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               e_tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {
@@ -94,7 +89,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               category: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.category',
                 type: {
@@ -102,7 +96,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               amount: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.amount',
                 type: {
@@ -110,7 +103,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               time_grain: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.timeGrain',
                 type: {
@@ -118,7 +110,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               time_period: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.timePeriod',
                 type: {
@@ -127,7 +118,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               filters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filters',
                 type: {
@@ -136,7 +126,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               current_spend: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentSpend',
@@ -146,13 +135,11 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               notifications: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notifications',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NotificationElementType',
                       type: {
