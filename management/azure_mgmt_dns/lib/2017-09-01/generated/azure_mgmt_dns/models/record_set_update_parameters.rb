@@ -23,7 +23,6 @@ module Azure::Dns::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecordSetUpdateParameters',
           type: {
@@ -31,7 +30,6 @@ module Azure::Dns::Mgmt::V2017_09_01
             class_name: 'RecordSetUpdateParameters',
             model_properties: {
               record_set: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'RecordSet',
                 type: {
