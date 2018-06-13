@@ -364,14 +364,17 @@ end
 
 Rake::Task['arm:regen_rollup_profile'].enhance do
   Rake::Task['arm:regen_rollup_require_files'].invoke
+  Rake::Task['arm:regen_rollup_require_files'].reenable
 end
 
 Rake::Task['arm:regen_individual_profiles'].enhance do |_, args|
   Rake::Task['arm:regen_individual_require_files'].invoke(args[:gem_name])
+  Rake::Task['arm:regen_individual_require_files'].reenable
 end
 
 Rake::Task['arm:regen_sdk_versions'].enhance do |_, args|
   Rake::Task['arm:regen_individual_require_files'].invoke(args[:gem_name])
+  Rake::Task['arm:regen_individual_require_files'].reenable
 end
 
 task :default => :spec

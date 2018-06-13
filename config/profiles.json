@@ -262,6 +262,11 @@
                         "2017-06-01-preview": ["*"]
                     }
                 },
+                "Microsoft.PolicyInsights": {
+                    "management": {
+                        "2018-04-04": ["*"]
+                    }
+                },
                 "Microsoft.PowerBiEmbedded": {
                     "management": {
                         "2016-01-29": ["*"]
@@ -348,7 +353,7 @@
                 },
                 "Microsoft.Storage": {
                     "management": {
-                        "2018-02-01": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.StreamAnalytics": {
@@ -1050,6 +1055,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_policy_insights": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.PolicyInsights": {
+                    "management": {
+                        "2018-04-04": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_policy_insights/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_powerbi_embedded": [
         {
             "name": "Latest",
@@ -1308,7 +1327,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2018-02-01": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 }
             },

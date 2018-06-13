@@ -1,3 +1,11 @@
+## 2018.06.06 - Azure Ruby SDK Release
+* Released 0.16.0 version of azure_mgmt_policy_insights gem.
+* Released 0.17.9 version of azure_sdk  rollup gem. This includes reference to the new azure_mgmt_policy_insights gem.
+
+## 2018.05.31 - Azure Ruby SDK Release
+* Released 0.16.2 version of azure_mgmt_storage gem. This includes the new version 2018-03-01-preview.
+* Released 0.17.8 version of azure_sdk  rollup gem. This includes reference to the new version of azure_mgmt_storage.
+
 ## 2018.05.11 - Azure Ruby SDK Release
 * Released 0.16.1 version of azure_mgmt_storage gem. This includes the new version 2018-02-01.
 * Released 0.17.7 version of azure_sdk  rollup gem. This includes reference to the new version of azure_mgmt_storage.
