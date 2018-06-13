@@ -50,7 +50,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SavedSearch',
           type: {
@@ -58,7 +57,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SavedSearch',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -67,7 +65,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -76,7 +73,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -85,7 +81,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               e_tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {
@@ -93,7 +88,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               category: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.category',
                 type: {
@@ -101,7 +95,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -109,7 +102,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               query: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.query',
                 type: {
@@ -117,7 +109,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.version',
                 constraints: {
@@ -129,13 +120,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tags',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TagElementType',
                       type: {
