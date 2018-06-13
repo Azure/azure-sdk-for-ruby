@@ -541,7 +541,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
-    # @param parameters [String] Debug send message payload
+    # @param parameters Debug send parameters
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -558,7 +558,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
-    # @param parameters [String] Debug send message payload
+    # @param parameters Debug send parameters
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -574,7 +574,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
-    # @param parameters [String] Debug send message payload
+    # @param parameters Debug send parameters
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -601,7 +601,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
         required: false,
         serialized_name: 'parameters',
         type: {
-          name: 'String'
+          name: 'Object'
         }
       }
       request_content = @client.serialize(request_mapper,  parameters)
