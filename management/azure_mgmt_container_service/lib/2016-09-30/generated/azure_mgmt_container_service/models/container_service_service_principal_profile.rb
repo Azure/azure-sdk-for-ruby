@@ -27,7 +27,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceServicePrincipalProfile',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
             class_name: 'ContainerServiceServicePrincipalProfile',
             model_properties: {
               client_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'clientId',
                 type: {
@@ -43,7 +41,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               secret: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'secret',
                 type: {
