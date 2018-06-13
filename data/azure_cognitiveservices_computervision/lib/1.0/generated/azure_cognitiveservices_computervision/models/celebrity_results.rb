@@ -6,19 +6,14 @@
 module Azure::CognitiveServices::ComputerVision::V1_0
   module Models
     #
-    # A collection of content tags, along with a list of captions sorted by
-    # confidence level, and image metadata.
+    # List of celebrities recognized in the image.
     #
-    class ImageDescriptionDetails
+    class CelebrityResults
 
       include MsRestAzure
 
-      # @return [Array<String>] A collection of image tags.
-      attr_accessor :tags
-
-      # @return [Array<ImageCaption>] A list of captions, sorted by confidence
-      # level.
-      attr_accessor :captions
+      # @return [Array<CelebritiesModel>]
+      attr_accessor :celebrities
 
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
@@ -28,42 +23,28 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
 
       #
-      # Mapper for ImageDescriptionDetails class as Ruby Hash.
+      # Mapper for CelebrityResults class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ImageDescriptionDetails',
+          serialized_name: 'CelebrityResults',
           type: {
             name: 'Composite',
-            class_name: 'ImageDescriptionDetails',
+            class_name: 'CelebrityResults',
             model_properties: {
-              tags: {
+              celebrities: {
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'celebrities',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              captions: {
-                required: false,
-                serialized_name: 'captions',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'ImageCaptionElementType',
+                      serialized_name: 'CelebritiesModelElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ImageCaption'
+                        class_name: 'CelebritiesModel'
                       }
                   }
                 }

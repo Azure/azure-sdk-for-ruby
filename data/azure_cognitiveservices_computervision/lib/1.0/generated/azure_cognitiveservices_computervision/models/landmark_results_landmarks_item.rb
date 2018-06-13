@@ -6,30 +6,30 @@
 module Azure::CognitiveServices::ComputerVision::V1_0
   module Models
     #
-    # An object describing supported model by name and categories.
+    # A landmark recognized in the image
     #
-    class ModelDescription
+    class LandmarkResultsLandmarksItem
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] Name of the landmark.
       attr_accessor :name
 
-      # @return [Array<String>]
-      attr_accessor :categories
+      # @return [Float] Confidence level for the landmark recognition.
+      attr_accessor :confidence
 
 
       #
-      # Mapper for ModelDescription class as Ruby Hash.
+      # Mapper for LandmarkResultsLandmarksItem class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ModelDescription',
+          serialized_name: 'LandmarkResults_landmarksItem',
           type: {
             name: 'Composite',
-            class_name: 'ModelDescription',
+            class_name: 'LandmarkResultsLandmarksItem',
             model_properties: {
               name: {
                 required: false,
@@ -38,18 +38,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                   name: 'String'
                 }
               },
-              categories: {
+              confidence: {
                 required: false,
-                serialized_name: 'categories',
+                serialized_name: 'confidence',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'Double'
                 }
               }
             }
