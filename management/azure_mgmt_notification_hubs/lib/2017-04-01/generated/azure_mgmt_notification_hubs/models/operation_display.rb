@@ -6,51 +6,55 @@
 module Azure::NotificationHubs::Mgmt::V2017_04_01
   module Models
     #
-    # Description of a NotificationHub AdmCredential.
+    # The object that represents the operation.
     #
-    class AdmCredential
+    class OperationDisplay
 
       include MsRestAzure
 
-      # @return [String] The client identifier.
-      attr_accessor :client_id
+      # @return [String] Service provider: Microsoft.NotificationHubs
+      attr_accessor :provider
 
-      # @return [String] The credential secret access key.
-      attr_accessor :client_secret
+      # @return [String] Resource on which the operation is performed: Invoice,
+      # etc.
+      attr_accessor :resource
 
-      # @return [String] The URL of the authorization token.
-      attr_accessor :auth_token_url
+      # @return [String] Operation type: Read, write, delete, etc.
+      attr_accessor :operation
 
 
       #
-      # Mapper for AdmCredential class as Ruby Hash.
+      # Mapper for OperationDisplay class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AdmCredential',
+          serialized_name: 'Operation_display',
           type: {
             name: 'Composite',
-            class_name: 'AdmCredential',
+            class_name: 'OperationDisplay',
             model_properties: {
-              client_id: {
+              provider: {
                 required: false,
-                serialized_name: 'properties.clientId',
+                read_only: true,
+                serialized_name: 'provider',
                 type: {
                   name: 'String'
                 }
               },
-              client_secret: {
+              resource: {
                 required: false,
-                serialized_name: 'properties.clientSecret',
+                read_only: true,
+                serialized_name: 'resource',
                 type: {
                   name: 'String'
                 }
               },
-              auth_token_url: {
+              operation: {
                 required: false,
-                serialized_name: 'properties.authTokenUrl',
+                read_only: true,
+                serialized_name: 'operation',
                 type: {
                   name: 'String'
                 }

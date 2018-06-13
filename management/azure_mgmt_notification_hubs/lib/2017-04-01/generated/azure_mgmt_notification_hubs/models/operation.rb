@@ -6,43 +6,45 @@
 module Azure::NotificationHubs::Mgmt::V2017_04_01
   module Models
     #
-    # Description of a NotificationHub GcmCredential.
+    # A NotificationHubs REST API operation
     #
-    class GcmCredential
+    class Operation
 
       include MsRestAzure
 
-      # @return [String] The GCM endpoint.
-      attr_accessor :gcm_endpoint
+      # @return [String] Operation name: {provider}/{resource}/{operation}
+      attr_accessor :name
 
-      # @return [String] The Google API key.
-      attr_accessor :google_api_key
+      # @return [OperationDisplay] The object that represents the operation.
+      attr_accessor :display
 
 
       #
-      # Mapper for GcmCredential class as Ruby Hash.
+      # Mapper for Operation class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'GcmCredential',
+          serialized_name: 'Operation',
           type: {
             name: 'Composite',
-            class_name: 'GcmCredential',
+            class_name: 'Operation',
             model_properties: {
-              gcm_endpoint: {
+              name: {
                 required: false,
-                serialized_name: 'properties.gcmEndpoint',
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              google_api_key: {
+              display: {
                 required: false,
-                serialized_name: 'properties.googleApiKey',
+                serialized_name: 'display',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'OperationDisplay'
                 }
               }
             }

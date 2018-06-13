@@ -6,11 +6,21 @@
 module Azure::NotificationHubs::Mgmt::V2017_04_01
   module Models
     #
-    # Description of a NotificationHub PNS Credentials.
+    # Parameters supplied to the patch NotificationHub operation.
     #
-    class PnsCredentialsResource < Resource
+    class NotificationHubPatchParameters < Resource
 
       include MsRestAzure
+
+      # @return [String] The NotificationHub name.
+      attr_accessor :notification_hub_patch_parameters_name
+
+      # @return [String] The RegistrationTtl of the created NotificationHub
+      attr_accessor :registration_ttl
+
+      # @return [Array<SharedAccessAuthorizationRuleProperties>] The
+      # AuthorizationRules of the created NotificationHub
+      attr_accessor :authorization_rules
 
       # @return [ApnsCredential] The ApnsCredential of the created
       # NotificationHub
@@ -38,16 +48,16 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
 
       #
-      # Mapper for PnsCredentialsResource class as Ruby Hash.
+      # Mapper for NotificationHubPatchParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PnsCredentialsResource',
+          serialized_name: 'NotificationHubPatchParameters',
           type: {
             name: 'Composite',
-            class_name: 'PnsCredentialsResource',
+            class_name: 'NotificationHubPatchParameters',
             model_properties: {
               id: {
                 required: false,
@@ -100,6 +110,35 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              notification_hub_patch_parameters_name: {
+                required: false,
+                serialized_name: 'properties.name',
+                type: {
+                  name: 'String'
+                }
+              },
+              registration_ttl: {
+                required: false,
+                serialized_name: 'properties.registrationTtl',
+                type: {
+                  name: 'String'
+                }
+              },
+              authorization_rules: {
+                required: false,
+                serialized_name: 'properties.authorizationRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SharedAccessAuthorizationRulePropertiesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SharedAccessAuthorizationRuleProperties'
+                      }
+                  }
                 }
               },
               apns_credential: {
