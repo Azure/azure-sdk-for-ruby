@@ -31,7 +31,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PowerShellCommandResults',
           type: {
@@ -39,13 +38,11 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'PowerShellCommandResults',
             model_properties: {
               results: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'results',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PowerShellCommandResultElementType',
                       type: {
@@ -56,7 +53,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               pssession: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pssession',
                 type: {
@@ -64,7 +60,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               command: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'command',
                 type: {
@@ -72,7 +67,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               completed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'completed',
                 type: {
