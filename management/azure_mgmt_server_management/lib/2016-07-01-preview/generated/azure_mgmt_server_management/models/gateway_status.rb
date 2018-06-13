@@ -88,7 +88,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayStatus',
           type: {
@@ -96,7 +95,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'GatewayStatus',
             model_properties: {
               available_memory_mbyte: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableMemoryMByte',
                 type: {
@@ -104,7 +102,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               gateway_cpu_utilization_percent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gatewayCpuUtilizationPercent',
                 constraints: {
@@ -116,7 +113,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               total_cpu_utilization_percent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalCpuUtilizationPercent',
                 type: {
@@ -124,7 +120,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               gateway_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gatewayVersion',
                 type: {
@@ -132,7 +127,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               friendly_os_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyOsName',
                 type: {
@@ -140,7 +134,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               installed_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'installedDate',
                 type: {
@@ -148,7 +141,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               logical_processor_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logicalProcessorCount',
                 type: {
@@ -156,7 +148,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -164,7 +155,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               gateway_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gatewayId',
                 type: {
@@ -172,7 +162,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               gateway_working_set_mbyte: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gatewayWorkingSetMByte',
                 type: {
@@ -180,7 +169,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               status_updated: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusUpdated',
                 type: {
@@ -188,7 +176,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               group_policy_error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupPolicyError',
                 type: {
@@ -196,7 +183,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               allow_gateway_group_policy_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowGatewayGroupPolicyStatus',
                 type: {
@@ -204,7 +190,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               require_mfa_group_policy_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requireMfaGroupPolicyStatus',
                 type: {
@@ -212,7 +197,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               encryption_certificate_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionCertificateThumbprint',
                 type: {
@@ -220,7 +204,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               secondary_encryption_certificate_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryEncryptionCertificateThumbprint',
                 type: {
@@ -228,7 +211,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               encryption_jwk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionJwk',
                 type: {
@@ -237,7 +219,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               secondary_encryption_jwk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryEncryptionJwk',
                 type: {
@@ -246,7 +227,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               active_message_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'activeMessageCount',
                 type: {
@@ -254,7 +234,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               latest_published_msi_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'latestPublishedMsiVersion',
                 type: {
@@ -262,7 +241,6 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               published_time_utc: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'publishedTimeUtc',
                 type: {
