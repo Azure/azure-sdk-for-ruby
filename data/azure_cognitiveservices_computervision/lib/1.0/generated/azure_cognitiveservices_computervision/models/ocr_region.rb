@@ -31,7 +31,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OcrRegion',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'OcrRegion',
             model_properties: {
               bounding_box: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'boundingBox',
                 type: {
@@ -47,13 +45,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               lines: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lines',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OcrLineElementType',
                       type: {

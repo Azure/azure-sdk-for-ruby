@@ -33,8 +33,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [LocationCapabilities] operation results.
     #
-    def list_by_location(location_id, custom_headers:nil)
-      response = list_by_location_async(location_id, custom_headers:custom_headers).value!
+    def list_by_location(location_id, custom_headers = nil)
+      response = list_by_location_async(location_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -47,8 +47,8 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_location_with_http_info(location_id, custom_headers:nil)
-      list_by_location_async(location_id, custom_headers:custom_headers).value!
+    def list_by_location_with_http_info(location_id, custom_headers = nil)
+      list_by_location_async(location_id, custom_headers).value!
     end
 
     #
@@ -60,14 +60,13 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_location_async(location_id, custom_headers:nil)
+    def list_by_location_async(location_id, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'location_id is nil' if location_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

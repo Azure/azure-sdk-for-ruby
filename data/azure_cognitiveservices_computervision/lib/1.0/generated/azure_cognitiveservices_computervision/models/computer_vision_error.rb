@@ -34,7 +34,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ComputerVisionError',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'ComputerVisionError',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -51,7 +49,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {
@@ -59,7 +56,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {

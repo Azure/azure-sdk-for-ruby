@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageCaption',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'ImageCaption',
             model_properties: {
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'text',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               confidence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'confidence',
                 type: {

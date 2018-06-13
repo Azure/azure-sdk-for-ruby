@@ -28,7 +28,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageMetadata',
           type: {
@@ -36,7 +35,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'ImageMetadata',
             model_properties: {
               width: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'width',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'height',
                 type: {
@@ -52,7 +49,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               format: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'format',
                 type: {

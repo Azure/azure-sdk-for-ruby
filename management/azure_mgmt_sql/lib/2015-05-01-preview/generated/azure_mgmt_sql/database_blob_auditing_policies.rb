@@ -31,15 +31,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # audit policy is defined.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DatabaseBlobAuditingPolicy] operation results.
     #
-    def get(resource_group_name, server_name, database_name, custom_headers:nil)
-      response = get_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = get_async(resource_group_name, server_name, database_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,15 +49,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # audit policy is defined.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, server_name, database_name, custom_headers:nil)
-      get_async(resource_group_name, server_name, database_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
+      get_async(resource_group_name, server_name, database_name, custom_headers).value!
     end
 
     #
@@ -68,14 +66,13 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # audit policy is defined.
+    # @param database_name [String] The name of the database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, server_name, database_name, custom_headers:nil)
+    def get_async(resource_group_name, server_name, database_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
@@ -85,7 +82,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -137,8 +133,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # auditing policy will be defined.
+    # @param database_name [String] The name of the database.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -146,8 +141,8 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     #
     # @return [DatabaseBlobAuditingPolicy] operation results.
     #
-    def create_or_update(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -158,8 +153,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # auditing policy will be defined.
+    # @param database_name [String] The name of the database.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -167,8 +161,8 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, server_name, database_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
     end
 
     #
@@ -178,8 +172,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # auditing policy will be defined.
+    # @param database_name [String] The name of the database.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -187,7 +180,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, server_name, database_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
@@ -198,11 +191,12 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::DatabaseBlobAuditingPolicy.mapper()

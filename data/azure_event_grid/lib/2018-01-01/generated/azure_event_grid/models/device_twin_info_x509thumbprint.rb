@@ -28,7 +28,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceTwinInfo_x509Thumbprint',
           type: {
@@ -36,7 +35,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'DeviceTwinInfoX509Thumbprint',
             model_properties: {
               primary_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryThumbprint',
                 type: {
@@ -44,7 +42,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               secondary_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryThumbprint',
                 type: {

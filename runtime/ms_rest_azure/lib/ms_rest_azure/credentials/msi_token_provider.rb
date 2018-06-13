@@ -118,12 +118,16 @@ module MsRestAzure
           request.headers['User-Agent'] = "Azure-SDK-For-Ruby/ms_rest_azure/#{MsRestAzure::VERSION}"
         end
 
-        if response.status == 429 || response.status == 404 || (response.status > 499 && response.status < 600)
+        if response.status == 410 || response.status == 429 || response.status == 404 || (response.status > 499 && response.status < 600)
           puts slots.inspect
           wait = slots[0..retry_value].sample
           wait = wait < 1 ? 3 : wait
-          sleep(wait)
+          wait = (response.status == 410 && wait < 70) ? 70 : wait
           retry_value += 1
+          if (retry_value > max_retry)
+            break
+          end
+          sleep(wait)
         elsif response.status != 200
           fail AzureOperationError, "Couldn't acquire access token from Managed Service Identity, please verify your tenant id, port and settings"
         else

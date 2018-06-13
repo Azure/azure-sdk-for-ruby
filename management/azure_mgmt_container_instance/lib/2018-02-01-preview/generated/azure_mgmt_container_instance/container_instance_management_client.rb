@@ -48,6 +48,9 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
     # @return [ContainerLogs] container_logs
     attr_reader :container_logs
 
+    # @return [StartContainer] start_container
+    attr_reader :start_container
+
     #
     # Creates initializes a new instance of the ContainerInstanceManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -65,6 +68,7 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       @operations = Operations.new(self)
       @container_group_usage = ContainerGroupUsage.new(self)
       @container_logs = ContainerLogs.new(self)
+      @start_container = StartContainer.new(self)
       @api_version = '2018-02-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -118,9 +122,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -137,7 +138,9 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_instance'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::ContainerInstance::Mgmt::V2018_02_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ContainerInstance::Mgmt::V2018_02_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

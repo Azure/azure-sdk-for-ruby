@@ -33,7 +33,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateOSProfile',
           type: {
@@ -41,7 +40,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetUpdateOSProfile',
             model_properties: {
               custom_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customData',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               windows_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'windowsConfiguration',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               linux_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'linuxConfiguration',
                 type: {
@@ -67,13 +63,11 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               secrets: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secrets',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultSecretGroupElementType',
                       type: {

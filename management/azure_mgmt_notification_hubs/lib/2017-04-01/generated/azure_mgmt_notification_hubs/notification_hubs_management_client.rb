@@ -36,17 +36,14 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
-    # @return [Name] name
-    attr_reader :name
-
     # @return [NotificationHubs] notification_hubs
     attr_reader :notification_hubs
-
-    # @return [Hubs] hubs
-    attr_reader :hubs
 
     #
     # Creates initializes a new instance of the NotificationHubsManagementClient class.
@@ -61,10 +58,9 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
-      @name = Name.new(self)
       @notification_hubs = NotificationHubs.new(self)
-      @hubs = Hubs.new(self)
       @api_version = '2017-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -118,9 +114,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -137,7 +130,9 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_notification_hubs'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::NotificationHubs::Mgmt::V2017_04_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::NotificationHubs::Mgmt::V2017_04_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

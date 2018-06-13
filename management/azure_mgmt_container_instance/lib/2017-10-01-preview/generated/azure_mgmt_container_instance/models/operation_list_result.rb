@@ -23,7 +23,6 @@ module Azure::ContainerInstance::Mgmt::V2017_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationListResult',
           type: {
@@ -31,13 +30,11 @@ module Azure::ContainerInstance::Mgmt::V2017_10_01_preview
             class_name: 'OperationListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationElementType',
                       type: {

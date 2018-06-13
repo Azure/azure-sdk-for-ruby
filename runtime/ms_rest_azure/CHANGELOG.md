@@ -1,3 +1,9 @@
+##2018.06.08 ms_rest_azure version 0.10.8
+* Added case insensitive comparison to Operation status.
+
+##2018.05.16 ms_rest_azure version 0.10.7
+* Added new error code 410 for IMDS Support for MSI Token Provider class.
+
 ##2018.04.16 ms_rest_azure version 0.10.6
 * Added encoding of client id, object id and msi_id in the MSI Token provider class. Refer[PR #1288](https://github.com/Azure/azure-sdk-for-ruby/pull/1288) for further details.
 
