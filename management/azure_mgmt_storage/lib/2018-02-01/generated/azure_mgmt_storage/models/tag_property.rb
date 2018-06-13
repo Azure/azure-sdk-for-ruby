@@ -36,7 +36,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TagProperty',
           type: {
@@ -44,7 +43,6 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'TagProperty',
             model_properties: {
               tag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tag',
@@ -53,7 +51,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -62,7 +59,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               object_identifier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectIdentifier',
@@ -71,7 +67,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -80,7 +75,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               upn: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'upn',
