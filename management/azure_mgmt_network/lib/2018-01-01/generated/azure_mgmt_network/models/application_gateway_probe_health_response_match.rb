@@ -28,7 +28,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayProbeHealthResponseMatch',
           type: {
@@ -36,7 +35,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'ApplicationGatewayProbeHealthResponseMatch',
             model_properties: {
               body: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'body',
                 type: {
@@ -44,13 +42,11 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               status_codes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCodes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

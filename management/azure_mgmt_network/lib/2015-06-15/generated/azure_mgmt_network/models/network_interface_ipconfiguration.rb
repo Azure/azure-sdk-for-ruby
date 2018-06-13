@@ -31,6 +31,10 @@ module Azure::Network::Mgmt::V2015_06_15
       # @return [Subnet]
       attr_accessor :subnet
 
+      # @return [Boolean] Gets whether this is a primary customer address on
+      # the network interface.
+      attr_accessor :primary
+
       # @return [PublicIPAddress]
       attr_accessor :public_ipaddress
 
@@ -52,7 +56,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceIPConfiguration',
           type: {
@@ -60,7 +63,6 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'NetworkInterfaceIPConfiguration',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -68,13 +70,11 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               load_balancer_backend_address_pools: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerBackendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BackendAddressPoolElementType',
                       type: {
@@ -85,13 +85,11 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               load_balancer_inbound_nat_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerInboundNatRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InboundNatRuleElementType',
                       type: {
@@ -102,7 +100,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               private_ipaddress: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAddress',
                 type: {
@@ -110,7 +107,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               private_ipallocation_method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAllocationMethod',
                 type: {
@@ -118,7 +114,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -126,8 +121,14 @@ module Azure::Network::Mgmt::V2015_06_15
                   class_name: 'Subnet'
                 }
               },
+              primary: {
+                required: false,
+                serialized_name: 'properties.primary',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               public_ipaddress: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicIPAddress',
                 type: {
@@ -136,7 +137,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -144,7 +144,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -152,7 +151,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

@@ -5,10 +5,7 @@
 
 module Azure::Network::Mgmt::V2017_03_01
   #
-  # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage your
-  # network resources. The API has entities that capture the relationship
-  # between an end user and the Microsoft Azure Networks service.
+  # Network Client
   #
   class VirtualNetworkGateways
     include MsRestAzure
@@ -37,8 +34,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [VirtualNetworkGateway] operation results.
     #
-    def create_or_update(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -54,9 +51,9 @@ module Azure::Network::Mgmt::V2017_03_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -83,8 +80,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [VirtualNetworkGateway] operation results.
     #
-    def get(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      response = get_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = get_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -99,8 +96,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      get_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      get_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
     end
 
     #
@@ -114,7 +111,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
+    def get_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -122,7 +119,6 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -176,8 +172,8 @@ module Azure::Network::Mgmt::V2017_03_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      response = delete_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = delete_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
       nil
     end
 
@@ -191,9 +187,9 @@ module Azure::Network::Mgmt::V2017_03_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
+    def delete_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -216,8 +212,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Array<VirtualNetworkGateway>] operation results.
     #
-    def list(resource_group_name, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, custom_headers:custom_headers)
+    def list(resource_group_name, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -230,8 +226,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers:nil)
-      list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, custom_headers = nil)
+      list_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -243,14 +239,13 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers:nil)
+    def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -309,8 +304,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [VirtualNetworkGateway] operation results.
     #
-    def reset(resource_group_name, virtual_network_gateway_name, gateway_vip:nil, custom_headers:nil)
-      response = reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip:gateway_vip, custom_headers:custom_headers).value!
+    def reset(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
+      response = reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -326,9 +321,9 @@ module Azure::Network::Mgmt::V2017_03_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip:nil, custom_headers:nil)
+    def reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
       # Send request
-      promise = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip:gateway_vip, custom_headers:custom_headers)
+      promise = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -358,8 +353,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [String] operation results.
     #
-    def generatevpnclientpackage(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
-      response = generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:custom_headers).value!
+    def generatevpnclientpackage(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+      response = generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -377,8 +372,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generatevpnclientpackage_with_http_info(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
-      generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:custom_headers).value!
+    def generatevpnclientpackage_with_http_info(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+      generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
     end
 
     #
@@ -395,7 +390,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
+    def generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -404,11 +399,12 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2017_03_01::Models::VpnClientParameters.mapper()
@@ -444,7 +440,6 @@ module Azure::Network::Mgmt::V2017_03_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -475,8 +470,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [BgpPeerStatusListResult] operation results.
     #
-    def get_bgp_peer_status(resource_group_name, virtual_network_gateway_name, peer:nil, custom_headers:nil)
-      response = get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer:peer, custom_headers:custom_headers).value!
+    def get_bgp_peer_status(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      response = get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -491,9 +486,9 @@ module Azure::Network::Mgmt::V2017_03_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer:nil, custom_headers:nil)
+    def get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
       # Send request
-      promise = begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer:peer, custom_headers:custom_headers)
+      promise = begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -521,8 +516,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [GatewayRouteListResult] operation results.
     #
-    def get_learned_routes(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      response = get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def get_learned_routes(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -536,9 +531,9 @@ module Azure::Network::Mgmt::V2017_03_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
+    def get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers)
+      promise = begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -567,8 +562,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [GatewayRouteListResult] operation results.
     #
-    def get_advertised_routes(resource_group_name, virtual_network_gateway_name, peer, custom_headers:nil)
-      response = get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers:custom_headers).value!
+    def get_advertised_routes(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      response = get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -583,9 +578,9 @@ module Azure::Network::Mgmt::V2017_03_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers:nil)
+    def get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
       # Send request
-      promise = begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers:custom_headers)
+      promise = begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -614,8 +609,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [VirtualNetworkGateway] operation results.
     #
-    def begin_create_or_update(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -632,8 +627,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
     end
 
     #
@@ -649,7 +644,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -658,11 +653,12 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2017_03_01::Models::VirtualNetworkGateway.mapper()
@@ -730,8 +726,8 @@ module Azure::Network::Mgmt::V2017_03_01
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
       nil
     end
 
@@ -746,8 +742,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
     end
 
     #
@@ -761,7 +757,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -769,7 +765,6 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -818,8 +813,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [VirtualNetworkGateway] operation results.
     #
-    def begin_reset(resource_group_name, virtual_network_gateway_name, gateway_vip:nil, custom_headers:nil)
-      response = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip:gateway_vip, custom_headers:custom_headers).value!
+    def begin_reset(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
+      response = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -837,8 +832,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reset_with_http_info(resource_group_name, virtual_network_gateway_name, gateway_vip:nil, custom_headers:nil)
-      begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip:gateway_vip, custom_headers:custom_headers).value!
+    def begin_reset_with_http_info(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
+      begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
     end
 
     #
@@ -855,7 +850,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip:nil, custom_headers:nil)
+    def begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -863,7 +858,6 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -920,8 +914,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [BgpPeerStatusListResult] operation results.
     #
-    def begin_get_bgp_peer_status(resource_group_name, virtual_network_gateway_name, peer:nil, custom_headers:nil)
-      response = begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer:peer, custom_headers:custom_headers).value!
+    def begin_get_bgp_peer_status(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      response = begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -937,8 +931,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_bgp_peer_status_with_http_info(resource_group_name, virtual_network_gateway_name, peer:nil, custom_headers:nil)
-      begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer:peer, custom_headers:custom_headers).value!
+    def begin_get_bgp_peer_status_with_http_info(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
     end
 
     #
@@ -953,7 +947,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer:nil, custom_headers:nil)
+    def begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -961,7 +955,6 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1018,8 +1011,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [GatewayRouteListResult] operation results.
     #
-    def begin_get_learned_routes(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      response = begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def begin_get_learned_routes(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1035,8 +1028,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_learned_routes_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
-      begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers:custom_headers).value!
+    def begin_get_learned_routes_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
     end
 
     #
@@ -1051,7 +1044,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers:nil)
+    def begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1059,7 +1052,6 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1117,8 +1109,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [GatewayRouteListResult] operation results.
     #
-    def begin_get_advertised_routes(resource_group_name, virtual_network_gateway_name, peer, custom_headers:nil)
-      response = begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers:custom_headers).value!
+    def begin_get_advertised_routes(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      response = begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1135,8 +1127,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_advertised_routes_with_http_info(resource_group_name, virtual_network_gateway_name, peer, custom_headers:nil)
-      begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers:custom_headers).value!
+    def begin_get_advertised_routes_with_http_info(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
     end
 
     #
@@ -1152,7 +1144,7 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers:nil)
+    def begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'peer is nil' if peer.nil?
@@ -1161,7 +1153,6 @@ module Azure::Network::Mgmt::V2017_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1216,8 +1207,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [VirtualNetworkGatewayListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1231,8 +1222,8 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1245,12 +1236,11 @@ module Azure::Network::Mgmt::V2017_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1304,12 +1294,12 @@ module Azure::Network::Mgmt::V2017_03_01
     # @return [VirtualNetworkGatewayListResult] which provide lazy access to pages
     # of the response.
     #
-    def list_as_lazy(resource_group_name, custom_headers:nil)
-      response = list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, custom_headers = nil)
+      response = list_async(resource_group_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

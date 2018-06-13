@@ -42,7 +42,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivityInformation',
           type: {
@@ -50,14 +49,12 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'ConnectivityInformation',
             model_properties: {
               hops: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'hops',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectivityHopElementType',
                       type: {
@@ -68,7 +65,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               connection_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'connectionStatus',
@@ -77,7 +73,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               avg_latency_in_ms: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'avgLatencyInMs',
@@ -86,7 +81,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               min_latency_in_ms: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'minLatencyInMs',
@@ -95,7 +89,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               max_latency_in_ms: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maxLatencyInMs',
@@ -104,7 +97,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               probes_sent: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'probesSent',
@@ -113,7 +105,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               probes_failed: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'probesFailed',
