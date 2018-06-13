@@ -6,44 +6,44 @@
 module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
   module Models
     #
-    # The port exposed on the container instance.
+    # The start container exec request.
     #
-    class ContainerPort
+    class ContainerExecRequest
 
       include MsRestAzure
 
-      # @return [ContainerNetworkProtocol] The protocol associated with the
-      # port. Possible values include: 'TCP', 'UDP'
-      attr_accessor :protocol
+      # @return [String] The command to be executed.
+      attr_accessor :command
 
-      # @return [Integer] The port number exposed within the container group.
-      attr_accessor :port
+      # @return [ContainerExecRequestTerminalSize] The size of the terminal.
+      attr_accessor :terminal_size
 
 
       #
-      # Mapper for ContainerPort class as Ruby Hash.
+      # Mapper for ContainerExecRequest class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ContainerPort',
+          serialized_name: 'ContainerExecRequest',
           type: {
             name: 'Composite',
-            class_name: 'ContainerPort',
+            class_name: 'ContainerExecRequest',
             model_properties: {
-              protocol: {
+              command: {
                 required: false,
-                serialized_name: 'protocol',
+                serialized_name: 'command',
                 type: {
                   name: 'String'
                 }
               },
-              port: {
-                required: true,
-                serialized_name: 'port',
+              terminal_size: {
+                required: false,
+                serialized_name: 'terminalSize',
                 type: {
-                  name: 'Number'
+                  name: 'Composite',
+                  class_name: 'ContainerExecRequestTerminalSize'
                 }
               }
             }
