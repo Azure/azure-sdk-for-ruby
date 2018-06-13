@@ -35,14 +35,77 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [ExtendedDatabaseBlobAuditingPolicies]
+    # extended_database_blob_auditing_policies
+    attr_reader :extended_database_blob_auditing_policies
+
+    # @return [ExtendedServerBlobAuditingPolicies]
+    # extended_server_blob_auditing_policies
+    attr_reader :extended_server_blob_auditing_policies
+
+    # @return [ServerBlobAuditingPolicies] server_blob_auditing_policies
+    attr_reader :server_blob_auditing_policies
+
+    # @return [DatabaseBlobAuditingPolicies] database_blob_auditing_policies
+    attr_reader :database_blob_auditing_policies
+
     # @return [DatabaseOperations] database_operations
     attr_reader :database_operations
 
     # @return [Databases] databases
     attr_reader :databases
 
-    # @return [DatabaseRestorePoints] database_restore_points
-    attr_reader :database_restore_points
+    # @return [DatabaseVulnerabilityAssessmentRuleBaselines]
+    # database_vulnerability_assessment_rule_baselines
+    attr_reader :database_vulnerability_assessment_rule_baselines
+
+    # @return [DatabaseVulnerabilityAssessments]
+    # database_vulnerability_assessments
+    attr_reader :database_vulnerability_assessments
+
+    # @return [DataWarehouseUserActivitiesOperations]
+    # data_warehouse_user_activities_operations
+    attr_reader :data_warehouse_user_activities_operations
+
+    # @return [JobAgents] job_agents
+    attr_reader :job_agents
+
+    # @return [JobCredentials] job_credentials
+    attr_reader :job_credentials
+
+    # @return [JobExecutions] job_executions
+    attr_reader :job_executions
+
+    # @return [Jobs] jobs
+    attr_reader :jobs
+
+    # @return [JobStepExecutions] job_step_executions
+    attr_reader :job_step_executions
+
+    # @return [JobSteps] job_steps
+    attr_reader :job_steps
+
+    # @return [JobTargetExecutions] job_target_executions
+    attr_reader :job_target_executions
+
+    # @return [JobTargetGroups] job_target_groups
+    attr_reader :job_target_groups
+
+    # @return [JobVersions] job_versions
+    attr_reader :job_versions
+
+    # @return [LongTermRetentionBackups] long_term_retention_backups
+    attr_reader :long_term_retention_backups
+
+    # @return [BackupLongTermRetentionPolicies]
+    # backup_long_term_retention_policies
+    attr_reader :backup_long_term_retention_policies
+
+    # @return [ManagedDatabases] managed_databases
+    attr_reader :managed_databases
+
+    # @return [RestorePoints] restore_points
+    attr_reader :restore_points
 
     # @return [ServerAutomaticTuningOperations]
     # server_automatic_tuning_operations
@@ -64,9 +127,28 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @extended_database_blob_auditing_policies = ExtendedDatabaseBlobAuditingPolicies.new(self)
+      @extended_server_blob_auditing_policies = ExtendedServerBlobAuditingPolicies.new(self)
+      @server_blob_auditing_policies = ServerBlobAuditingPolicies.new(self)
+      @database_blob_auditing_policies = DatabaseBlobAuditingPolicies.new(self)
       @database_operations = DatabaseOperations.new(self)
       @databases = Databases.new(self)
-      @database_restore_points = DatabaseRestorePoints.new(self)
+      @database_vulnerability_assessment_rule_baselines = DatabaseVulnerabilityAssessmentRuleBaselines.new(self)
+      @database_vulnerability_assessments = DatabaseVulnerabilityAssessments.new(self)
+      @data_warehouse_user_activities_operations = DataWarehouseUserActivitiesOperations.new(self)
+      @job_agents = JobAgents.new(self)
+      @job_credentials = JobCredentials.new(self)
+      @job_executions = JobExecutions.new(self)
+      @jobs = Jobs.new(self)
+      @job_step_executions = JobStepExecutions.new(self)
+      @job_steps = JobSteps.new(self)
+      @job_target_executions = JobTargetExecutions.new(self)
+      @job_target_groups = JobTargetGroups.new(self)
+      @job_versions = JobVersions.new(self)
+      @long_term_retention_backups = LongTermRetentionBackups.new(self)
+      @backup_long_term_retention_policies = BackupLongTermRetentionPolicies.new(self)
+      @managed_databases = ManagedDatabases.new(self)
+      @restore_points = RestorePoints.new(self)
       @server_automatic_tuning_operations = ServerAutomaticTuningOperations.new(self)
       @server_dns_aliases = ServerDnsAliases.new(self)
       @api_version = '2017-03-01-preview'
@@ -122,9 +204,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -141,7 +220,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::SQL::Mgmt::V2017_03_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::SQL::Mgmt::V2017_03_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
