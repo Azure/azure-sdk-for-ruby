@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageType',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'ImageType',
             model_properties: {
               clip_art_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clipArtType',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               line_drawing_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lineDrawingType',
                 type: {

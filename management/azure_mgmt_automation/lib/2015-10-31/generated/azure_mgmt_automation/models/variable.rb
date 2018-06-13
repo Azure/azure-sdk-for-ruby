@@ -8,18 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the varible.
     #
-    class Variable
+    class Variable < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets the id of the resource.
-      attr_accessor :id
-
-      # @return [String] Gets the name of the variable.
-      attr_accessor :name
-
-      # @return [String] Resource type
-      attr_accessor :type
 
       # @return [String] Gets or sets the value of the variable.
       attr_accessor :value
@@ -43,7 +34,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Variable',
           type: {
@@ -51,7 +41,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Variable',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,7 +49,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -69,7 +57,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,7 +65,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.value',
                 type: {
@@ -86,7 +72,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_encrypted: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isEncrypted',
                 type: {
@@ -94,7 +79,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -102,7 +86,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -110,7 +93,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

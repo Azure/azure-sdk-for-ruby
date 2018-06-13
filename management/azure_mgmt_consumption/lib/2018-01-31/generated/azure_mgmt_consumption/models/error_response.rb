@@ -23,7 +23,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -31,7 +30,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
             class_name: 'ErrorResponse',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

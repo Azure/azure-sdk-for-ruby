@@ -6,26 +6,20 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # The Resource definition.
+    # The core properties of ARM resources
     #
     class Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id
+      # @return [String] Fully qualified resource Id for the resource
       attr_accessor :id
 
-      # @return [String] Resource name
+      # @return [String] The name of the resource
       attr_accessor :name
 
-      # @return [String] Resource type
+      # @return [String] The type of the resource.
       attr_accessor :type
-
-      # @return [String] Resource location
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Resource tags
-      attr_accessor :tags
 
 
       #
@@ -34,7 +28,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -42,7 +35,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Resource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,7 +43,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,36 +51,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

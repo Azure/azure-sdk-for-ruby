@@ -8,7 +8,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the dsc node type.
     #
-    class DscNode < Resource
+    class DscNode < ProxyResource
 
       include MsRestAzure
 
@@ -48,7 +48,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscNode',
           type: {
@@ -56,7 +55,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscNode',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,7 +63,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -74,7 +71,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,32 +78,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               last_seen: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastSeen',
                 type: {
@@ -115,7 +86,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               registration_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationTime',
                 type: {
@@ -123,7 +93,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ip',
                 type: {
@@ -131,7 +100,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountId',
                 type: {
@@ -139,7 +107,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               node_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nodeConfiguration',
                 type: {
@@ -148,7 +115,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -156,7 +122,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               node_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nodeId',
                 type: {
@@ -164,7 +129,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -172,13 +136,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               extension_handler: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensionHandler',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DscNodeExtensionHandlerAssociationPropertyElementType',
                       type: {

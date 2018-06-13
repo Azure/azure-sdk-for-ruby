@@ -33,7 +33,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HybridRunbookWorkerGroup',
           type: {
@@ -41,7 +40,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'HybridRunbookWorkerGroup',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -57,13 +54,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               hybrid_runbook_workers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hybridRunbookWorkers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HybridRunbookWorkerElementType',
                       type: {
@@ -74,7 +69,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               credential: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'credential',
                 type: {

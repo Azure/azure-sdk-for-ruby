@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ModelDescription',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ComputerVision::V1_0
             class_name: 'ModelDescription',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,13 +39,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 }
               },
               categories: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'categories',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

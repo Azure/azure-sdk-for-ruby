@@ -16,7 +16,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [ContentSource] Gets or sets the source.
       attr_accessor :source
 
-      # @return [String] Gets or sets the type of the parameter.
+      # @return [String] Name of the node configuration.
       attr_accessor :name
 
       # @return [DscConfigurationAssociationProperty] Gets or sets the
@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       # @return [Boolean] If a new build version of NodeConfiguration is
       # required.
-      attr_accessor :new_node_configuration_build_version_required
+      attr_accessor :increment_node_configuration_build
 
 
       #
@@ -35,7 +35,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DscNodeConfigurationCreateOrUpdateParameters',
           type: {
@@ -43,7 +42,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscNodeConfigurationCreateOrUpdateParameters',
             model_properties: {
               source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {
@@ -52,7 +50,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -60,7 +57,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               configuration: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'configuration',
                 type: {
@@ -68,10 +64,9 @@ module Azure::Automation::Mgmt::V2015_10_31
                   class_name: 'DscConfigurationAssociationProperty'
                 }
               },
-              new_node_configuration_build_version_required: {
-                client_side_validation: true,
+              increment_node_configuration_build: {
                 required: false,
-                serialized_name: 'newNodeConfigurationBuildVersionRequired',
+                serialized_name: 'incrementNodeConfigurationBuild',
                 type: {
                   name: 'Boolean'
                 }
