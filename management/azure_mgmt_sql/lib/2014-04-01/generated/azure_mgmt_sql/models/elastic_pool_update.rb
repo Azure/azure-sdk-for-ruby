@@ -52,7 +52,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ElasticPoolUpdate',
           type: {
@@ -60,7 +59,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ElasticPoolUpdate',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -69,7 +67,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -78,7 +75,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -87,13 +83,11 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -103,7 +97,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               creation_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationDate',
@@ -112,7 +105,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -121,7 +113,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               edition: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.edition',
                 type: {
@@ -129,7 +120,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               dtu: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dtu',
                 type: {
@@ -137,7 +127,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_dtu_max: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databaseDtuMax',
                 type: {
@@ -145,7 +134,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_dtu_min: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databaseDtuMin',
                 type: {
@@ -153,7 +141,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_mb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageMB',
                 type: {
@@ -161,7 +148,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               zone_redundant: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.zoneRedundant',
                 type: {
