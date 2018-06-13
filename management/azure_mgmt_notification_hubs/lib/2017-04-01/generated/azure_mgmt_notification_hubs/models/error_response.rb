@@ -6,41 +6,42 @@
 module Azure::NotificationHubs::Mgmt::V2017_04_01
   module Models
     #
-    # Description of a NotificationHub GcmCredential.
+    # Error reponse indicates NotificationHubs service is not able to process
+    # the incoming request. The reason is provided in the error message.
     #
-    class GcmCredential
+    class ErrorResponse
 
       include MsRestAzure
 
-      # @return [String] The GCM endpoint.
-      attr_accessor :gcm_endpoint
+      # @return [String] Error code.
+      attr_accessor :code
 
-      # @return [String] The Google API key.
-      attr_accessor :google_api_key
+      # @return [String] Error message indicating why the operation failed.
+      attr_accessor :message
 
 
       #
-      # Mapper for GcmCredential class as Ruby Hash.
+      # Mapper for ErrorResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'GcmCredential',
+          serialized_name: 'ErrorResponse',
           type: {
             name: 'Composite',
-            class_name: 'GcmCredential',
+            class_name: 'ErrorResponse',
             model_properties: {
-              gcm_endpoint: {
+              code: {
                 required: false,
-                serialized_name: 'properties.gcmEndpoint',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              google_api_key: {
+              message: {
                 required: false,
-                serialized_name: 'properties.googleApiKey',
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }

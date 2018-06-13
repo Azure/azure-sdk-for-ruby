@@ -6,19 +6,20 @@
 module Azure::NotificationHubs::Mgmt::V2017_04_01
   module Models
     #
-    # The response of the List Namespace operation.
+    # Result of the request to list NotificationHubs operations. It contains a
+    # list of operations and a URL link to get the next set of results.
     #
-    class SharedAccessAuthorizationRuleListResult
+    class OperationListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<SharedAccessAuthorizationRuleResource>] Result of the
-      # List AuthorizationRules operation.
+      # @return [Array<Operation>] List of NotificationHubs operations
+      # supported by the Microsoft.NotificationHubs resource provider.
       attr_accessor :value
 
-      # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of AuthorizationRules
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -27,8 +28,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<SharedAccessAuthorizationRuleResource>] operation
-      # results.
+      # @return [Array<Operation>] operation results.
       #
       def get_all_items
         items = @value
@@ -43,8 +43,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       # Gets the next page of results.
       #
-      # @return [SharedAccessAuthorizationRuleListResult] with next page
-      # content.
+      # @return [OperationListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -56,34 +55,36 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       end
 
       #
-      # Mapper for SharedAccessAuthorizationRuleListResult class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SharedAccessAuthorizationRuleListResult',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'SharedAccessAuthorizationRuleListResult',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SharedAccessAuthorizationRuleResourceElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SharedAccessAuthorizationRuleResource'
+                        class_name: 'Operation'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

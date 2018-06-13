@@ -6,47 +6,33 @@
 module Azure::NotificationHubs::Mgmt::V2017_04_01
   module Models
     #
-    # Parameters supplied to the Check Name Availability for Namespace and
-    # NotificationHubs.
+    # Description of a NotificationHub Resource.
     #
-    class CheckAvailabilityParameters
+    class DebugSendResponse < Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id
-      attr_accessor :id
+      # @return [Float] successful send
+      attr_accessor :success
 
-      # @return [String] Resource name
-      attr_accessor :name
+      # @return [Float] send failure
+      attr_accessor :failure
 
-      # @return [String] Resource type
-      attr_accessor :type
-
-      # @return [String] Resource location
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Resource tags
-      attr_accessor :tags
-
-      # @return [Sku] The sku of the created namespace
-      attr_accessor :sku
-
-      # @return [Boolean] True if the name is available and can be used to
-      # create new Namespace/NotificationHub. Otherwise false.
-      attr_accessor :is_availiable
+      # @return actual failure description
+      attr_accessor :results
 
 
       #
-      # Mapper for CheckAvailabilityParameters class as Ruby Hash.
+      # Mapper for DebugSendResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CheckAvailabilityParameters',
+          serialized_name: 'DebugSendResponse',
           type: {
             name: 'Composite',
-            class_name: 'CheckAvailabilityParameters',
+            class_name: 'DebugSendResponse',
             model_properties: {
               id: {
                 required: false,
@@ -57,7 +43,8 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               name: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -100,11 +87,25 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                   class_name: 'Sku'
                 }
               },
-              is_availiable: {
+              success: {
                 required: false,
-                serialized_name: 'isAvailiable',
+                serialized_name: 'properties.success',
                 type: {
-                  name: 'Boolean'
+                  name: 'Double'
+                }
+              },
+              failure: {
+                required: false,
+                serialized_name: 'properties.failure',
+                type: {
+                  name: 'Double'
+                }
+              },
+              results: {
+                required: false,
+                serialized_name: 'properties.results',
+                type: {
+                  name: 'Object'
                 }
               }
             }
