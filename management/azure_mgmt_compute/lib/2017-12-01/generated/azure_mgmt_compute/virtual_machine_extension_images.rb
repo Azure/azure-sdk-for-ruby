@@ -33,8 +33,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [VirtualMachineExtensionImage] operation results.
     #
-    def get(location, publisher_name, type, version, custom_headers:nil)
-      response = get_async(location, publisher_name, type, version, custom_headers:custom_headers).value!
+    def get(location, publisher_name, type, version, custom_headers = nil)
+      response = get_async(location, publisher_name, type, version, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(location, publisher_name, type, version, custom_headers:nil)
-      get_async(location, publisher_name, type, version, custom_headers:custom_headers).value!
+    def get_with_http_info(location, publisher_name, type, version, custom_headers = nil)
+      get_async(location, publisher_name, type, version, custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(location, publisher_name, type, version, custom_headers:nil)
+    def get_async(location, publisher_name, type, version, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
@@ -76,7 +76,6 @@ module Azure::Compute::Mgmt::V2017_12_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -131,8 +130,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [Array] operation results.
     #
-    def list_types(location, publisher_name, custom_headers:nil)
-      response = list_types_async(location, publisher_name, custom_headers:custom_headers).value!
+    def list_types(location, publisher_name, custom_headers = nil)
+      response = list_types_async(location, publisher_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -146,8 +145,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_types_with_http_info(location, publisher_name, custom_headers:nil)
-      list_types_async(location, publisher_name, custom_headers:custom_headers).value!
+    def list_types_with_http_info(location, publisher_name, custom_headers = nil)
+      list_types_async(location, publisher_name, custom_headers).value!
     end
 
     #
@@ -160,7 +159,7 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_types_async(location, publisher_name, custom_headers:nil)
+    def list_types_async(location, publisher_name, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -168,7 +167,6 @@ module Azure::Compute::Mgmt::V2017_12_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -201,13 +199,11 @@ module Azure::Compute::Mgmt::V2017_12_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VirtualMachineExtensionImageElementType',
                     type: {
@@ -243,8 +239,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [Array] operation results.
     #
-    def list_versions(location, publisher_name, type, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      response = list_versions_async(location, publisher_name, type, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_versions(location, publisher_name, type, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      response = list_versions_async(location, publisher_name, type, filter, top, orderby, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -262,8 +258,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_versions_with_http_info(location, publisher_name, type, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      list_versions_async(location, publisher_name, type, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_versions_with_http_info(location, publisher_name, type, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      list_versions_async(location, publisher_name, type, filter, top, orderby, custom_headers).value!
     end
 
     #
@@ -280,7 +276,7 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_versions_async(location, publisher_name, type, filter:nil, top:nil, orderby:nil, custom_headers:nil)
+    def list_versions_async(location, publisher_name, type, filter = nil, top = nil, orderby = nil, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
@@ -289,7 +285,6 @@ module Azure::Compute::Mgmt::V2017_12_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -322,13 +317,11 @@ module Azure::Compute::Mgmt::V2017_12_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VirtualMachineExtensionImageElementType',
                     type: {

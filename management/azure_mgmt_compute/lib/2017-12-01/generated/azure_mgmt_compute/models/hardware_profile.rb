@@ -80,7 +80,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HardwareProfile',
           type: {
@@ -88,7 +87,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'HardwareProfile',
             model_properties: {
               vm_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmSize',
                 type: {

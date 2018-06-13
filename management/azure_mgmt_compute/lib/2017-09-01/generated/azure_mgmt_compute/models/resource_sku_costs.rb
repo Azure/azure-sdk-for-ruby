@@ -29,7 +29,6 @@ module Azure::Compute::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuCosts',
           type: {
@@ -37,7 +36,6 @@ module Azure::Compute::Mgmt::V2017_09_01
             class_name: 'ResourceSkuCosts',
             model_properties: {
               meter_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterID',
@@ -46,7 +44,6 @@ module Azure::Compute::Mgmt::V2017_09_01
                 }
               },
               quantity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'quantity',
@@ -55,7 +52,6 @@ module Azure::Compute::Mgmt::V2017_09_01
                 }
               },
               extended_unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'extendedUnit',

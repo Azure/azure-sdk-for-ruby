@@ -31,8 +31,8 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # @return [VirtualMachineSizeListResult] operation results.
     #
-    def list(location, custom_headers:nil)
-      response = list_async(location, custom_headers:custom_headers).value!
+    def list(location, custom_headers = nil)
+      response = list_async(location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(location, custom_headers:nil)
-      list_async(location, custom_headers:custom_headers).value!
+    def list_with_http_info(location, custom_headers = nil)
+      list_async(location, custom_headers).value!
     end
 
     #
@@ -60,15 +60,13 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(location, custom_headers:nil)
+    def list_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, "'location' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !location.nil? && location.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
