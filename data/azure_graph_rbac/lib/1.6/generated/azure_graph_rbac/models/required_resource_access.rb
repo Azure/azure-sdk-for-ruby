@@ -38,7 +38,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RequiredResourceAccess',
           type: {
@@ -46,12 +45,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'RequiredResourceAccess',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -61,13 +58,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               resource_access: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'resourceAccess',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceAccessElementType',
                       type: {
@@ -78,7 +73,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               resource_app_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceAppId',
                 type: {
