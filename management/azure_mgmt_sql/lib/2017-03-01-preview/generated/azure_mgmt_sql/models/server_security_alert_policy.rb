@@ -12,9 +12,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
       include MsRestAzure
 
-      # @return [SecurityAlertState] Specifies the state of the policy, whether
-      # it is enabled or disabled. Possible values include: 'Enabled',
-      # 'Disabled'
+      # @return [SecurityAlertPolicyState] Specifies the state of the policy,
+      # whether it is enabled or disabled. Possible values include: 'New',
+      # 'Enabled', 'Disabled'
       attr_accessor :state
 
       # @return [Array<String>] Specifies an array of alerts that are disabled.
@@ -85,7 +85,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 serialized_name: 'properties.state',
                 type: {
                   name: 'Enum',
-                  module: 'SecurityAlertState'
+                  module: 'SecurityAlertPolicyState'
                 }
               },
               disabled_alerts: {
