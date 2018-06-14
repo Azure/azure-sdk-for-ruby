@@ -114,6 +114,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [ServerDnsAliases] server_dns_aliases
     attr_reader :server_dns_aliases
 
+    # @return [ServerSecurityAlertPolicies] server_security_alert_policies
+    attr_reader :server_security_alert_policies
+
     #
     # Creates initializes a new instance of the SqlManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -151,6 +154,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       @restore_points = RestorePoints.new(self)
       @server_automatic_tuning_operations = ServerAutomaticTuningOperations.new(self)
       @server_dns_aliases = ServerDnsAliases.new(self)
+      @server_security_alert_policies = ServerSecurityAlertPolicies.new(self)
       @api_version = '2017-03-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
