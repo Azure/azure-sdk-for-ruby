@@ -484,8 +484,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # @return [WorkspacePurgeStatusResponse] operation results.
     #
-    def purge_status(resource_group_name, workspace_name, custom_headers = nil)
-      response = purge_status_async(resource_group_name, workspace_name, custom_headers).value!
+    def get_purge_status(resource_group_name, workspace_name, custom_headers = nil)
+      response = get_purge_status_async(resource_group_name, workspace_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -500,8 +500,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def purge_status_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
-      purge_status_async(resource_group_name, workspace_name, custom_headers).value!
+    def get_purge_status_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
+      get_purge_status_async(resource_group_name, workspace_name, custom_headers).value!
     end
 
     #
@@ -515,7 +515,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def purge_status_async(resource_group_name, workspace_name, custom_headers = nil)
+    def get_purge_status_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
