@@ -16,6 +16,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # identified.
       attr_accessor :celebrities
 
+      # @return [Array<LandmarksModel>] An array of landmarks if any
+      # identified.
+      attr_accessor :landmarks
+
 
       #
       # Mapper for CategoryDetail class as Ruby Hash.
@@ -40,6 +44,21 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                       type: {
                         name: 'Composite',
                         class_name: 'CelebritiesModel'
+                      }
+                  }
+                }
+              },
+              landmarks: {
+                required: false,
+                serialized_name: 'landmarks',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'LandmarksModelElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'LandmarksModel'
                       }
                   }
                 }

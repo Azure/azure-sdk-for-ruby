@@ -12,7 +12,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [Array<LandmarkResultsLandmarksItem>]
+      # @return [Array<LandmarksModel>]
       attr_accessor :landmarks
 
       # @return [String] Id of the REST API request.
@@ -41,10 +41,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'LandmarkResultsLandmarksItemElementType',
+                      serialized_name: 'LandmarksModelElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'LandmarkResultsLandmarksItem'
+                        class_name: 'LandmarksModel'
                       }
                   }
                 }

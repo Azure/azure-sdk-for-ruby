@@ -70,14 +70,14 @@ module Azure::CognitiveServices::ComputerVision::V2_0
               },
               request_id: {
                 required: false,
-                serialized_name: 'description.requestId',
+                serialized_name: 'requestId',
                 type: {
                   name: 'String'
                 }
               },
               metadata: {
                 required: false,
-                serialized_name: 'description.metadata',
+                serialized_name: 'metadata',
                 type: {
                   name: 'Composite',
                   class_name: 'ImageMetadata'

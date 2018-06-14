@@ -20,12 +20,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # level.
       attr_accessor :captions
 
-      # @return [String] Id of the REST API request.
-      attr_accessor :request_id
-
-      # @return [ImageMetadata]
-      attr_accessor :metadata
-
 
       #
       # Mapper for ImageDescriptionDetails class as Ruby Hash.
@@ -66,21 +60,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                         class_name: 'ImageCaption'
                       }
                   }
-                }
-              },
-              request_id: {
-                required: false,
-                serialized_name: 'requestId',
-                type: {
-                  name: 'String'
-                }
-              },
-              metadata: {
-                required: false,
-                serialized_name: 'metadata',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ImageMetadata'
                 }
               }
             }
