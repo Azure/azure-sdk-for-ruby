@@ -33,8 +33,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the
-    # transparent data encryption applies.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -54,8 +53,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the
-    # transparent data encryption applies.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -74,8 +72,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the
-    # transparent data encryption applies.
+    # @param database_name [String] The name of the database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
