@@ -27,7 +27,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
             class_name: 'Sku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -43,7 +41,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',

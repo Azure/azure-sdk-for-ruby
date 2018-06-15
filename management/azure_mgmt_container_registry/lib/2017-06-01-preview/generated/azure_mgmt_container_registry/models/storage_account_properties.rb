@@ -23,7 +23,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountProperties',
           type: {
@@ -31,7 +30,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'StorageAccountProperties',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
