@@ -36,7 +36,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OpenidConnectProviderUpdateContract',
           type: {
@@ -44,7 +43,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'OpenidConnectProviderUpdateContract',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -55,7 +53,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -63,7 +60,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               metadata_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadataEndpoint',
                 type: {
@@ -71,7 +67,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               client_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientId',
                 type: {
@@ -79,7 +74,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               client_secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientSecret',
                 type: {

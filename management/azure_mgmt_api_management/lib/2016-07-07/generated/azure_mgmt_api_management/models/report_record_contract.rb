@@ -105,7 +105,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ReportRecordContract',
           type: {
@@ -113,7 +112,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ReportRecordContract',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -121,7 +119,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timestamp',
                 type: {
@@ -129,7 +126,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {
@@ -137,7 +133,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               country: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'country',
                 type: {
@@ -145,7 +140,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               region: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'region',
                 type: {
@@ -153,7 +147,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               zip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'zip',
                 type: {
@@ -161,7 +154,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               user_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'userId',
@@ -170,7 +162,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               product_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'productId',
@@ -179,7 +170,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               api_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiId',
                 type: {
@@ -187,7 +177,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operationId',
                 type: {
@@ -195,7 +184,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               api_region: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiRegion',
                 type: {
@@ -203,7 +191,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -211,7 +198,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               call_count_success: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'callCountSuccess',
                 type: {
@@ -219,7 +205,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               call_count_blocked: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'callCountBlocked',
                 type: {
@@ -227,7 +212,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               call_count_failed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'callCountFailed',
                 type: {
@@ -235,7 +219,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               call_count_other: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'callCountOther',
                 type: {
@@ -243,7 +226,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               call_count_total: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'callCountTotal',
                 type: {
@@ -251,7 +233,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               bandwidth: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bandwidth',
                 type: {
@@ -259,7 +240,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               cache_hit_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cacheHitCount',
                 type: {
@@ -267,7 +247,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               cache_miss_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cacheMissCount',
                 type: {
@@ -275,7 +254,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               api_time_avg: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiTimeAvg',
                 type: {
@@ -283,7 +261,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               api_time_min: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiTimeMin',
                 type: {
@@ -291,7 +268,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               api_time_max: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiTimeMax',
                 type: {
@@ -299,7 +275,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               service_time_avg: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceTimeAvg',
                 type: {
@@ -307,7 +282,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               service_time_min: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceTimeMin',
                 type: {
@@ -315,7 +289,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               service_time_max: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceTimeMax',
                 type: {
