@@ -20,16 +20,22 @@ require '2016-09-01/generated/azure_mgmt_monitor/module_definition'
 require 'ms_rest_azure'
 
 module Azure::Monitor::Mgmt::V2016_09_01
+  autoload :Metrics,                                            '2016-09-01/generated/azure_mgmt_monitor/metrics.rb'
   autoload :ServiceDiagnosticSettingsOperations,                '2016-09-01/generated/azure_mgmt_monitor/service_diagnostic_settings_operations.rb'
   autoload :MonitorClient,                                      '2016-09-01/generated/azure_mgmt_monitor/monitor_client.rb'
 
   module Models
-    autoload :LogSettings,                                        '2016-09-01/generated/azure_mgmt_monitor/models/log_settings.rb'
     autoload :Resource,                                           '2016-09-01/generated/azure_mgmt_monitor/models/resource.rb'
-    autoload :MetricSettings,                                     '2016-09-01/generated/azure_mgmt_monitor/models/metric_settings.rb'
-    autoload :ServiceDiagnosticSettingsResourcePatch,             '2016-09-01/generated/azure_mgmt_monitor/models/service_diagnostic_settings_resource_patch.rb'
     autoload :RetentionPolicy,                                    '2016-09-01/generated/azure_mgmt_monitor/models/retention_policy.rb'
+    autoload :MetricValue,                                        '2016-09-01/generated/azure_mgmt_monitor/models/metric_value.rb'
+    autoload :MetricSettings,                                     '2016-09-01/generated/azure_mgmt_monitor/models/metric_settings.rb'
+    autoload :MetricCollection,                                   '2016-09-01/generated/azure_mgmt_monitor/models/metric_collection.rb'
+    autoload :LogSettings,                                        '2016-09-01/generated/azure_mgmt_monitor/models/log_settings.rb'
+    autoload :LocalizableString,                                  '2016-09-01/generated/azure_mgmt_monitor/models/localizable_string.rb'
+    autoload :Metric,                                             '2016-09-01/generated/azure_mgmt_monitor/models/metric.rb'
     autoload :ErrorResponse,                                      '2016-09-01/generated/azure_mgmt_monitor/models/error_response.rb'
+    autoload :ServiceDiagnosticSettingsResourcePatch,             '2016-09-01/generated/azure_mgmt_monitor/models/service_diagnostic_settings_resource_patch.rb'
     autoload :ServiceDiagnosticSettingsResource,                  '2016-09-01/generated/azure_mgmt_monitor/models/service_diagnostic_settings_resource.rb'
+    autoload :Unit,                                               '2016-09-01/generated/azure_mgmt_monitor/models/unit.rb'
   end
 end

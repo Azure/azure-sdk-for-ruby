@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2016_09_01
   #
-  # ServiceDiagnosticSettingsOperations
+  # Monitor Management Client
   #
   class ServiceDiagnosticSettingsOperations
     include MsRestAzure
@@ -77,7 +77,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceUri' => resource_uri},
+          skip_encoding_path_params: {'resourceUri' => resource_uri},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -180,7 +180,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceUri' => resource_uri},
+          skip_encoding_path_params: {'resourceUri' => resource_uri},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -290,7 +290,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceUri' => resource_uri},
+          skip_encoding_path_params: {'resourceUri' => resource_uri},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

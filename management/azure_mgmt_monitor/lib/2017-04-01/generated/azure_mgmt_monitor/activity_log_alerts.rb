@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2017_04_01
   #
-  # ActivityLogAlerts
+  # Monitor Management Client
   #
   class ActivityLogAlerts
     include MsRestAzure
