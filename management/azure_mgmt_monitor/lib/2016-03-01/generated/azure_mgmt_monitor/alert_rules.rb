@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2016_03_01
   #
-  # AlertRules
+  # Monitor Management Client
   #
   class AlertRules
     include MsRestAzure
