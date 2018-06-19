@@ -9,12 +9,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # Represents a recommendation rule that the recommendation engine can
     # perform.
     #
-    class RecommendationRule
+    class RecommendationRule < ProxyOnlyResource
 
       include MsRestAzure
 
       # @return [String] Unique name of the rule.
-      attr_accessor :name
+      attr_accessor :recommendation_rule_name
 
       # @return [String] UI friendly name of the rule.
       attr_accessor :display_name
@@ -71,87 +71,107 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendationRule',
           type: {
             name: 'Composite',
             class_name: 'RecommendationRule',
             model_properties: {
-              name: {
-                client_side_validation: true,
+              id: {
                 required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              display_name: {
-                client_side_validation: true,
+              kind: {
                 required: false,
-                serialized_name: 'displayName',
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              recommendation_rule_name: {
+                required: false,
+                serialized_name: 'properties.name',
+                type: {
+                  name: 'String'
+                }
+              },
+              display_name: {
+                required: false,
+                serialized_name: 'properties.displayName',
                 type: {
                   name: 'String'
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'message',
+                serialized_name: 'properties.message',
                 type: {
                   name: 'String'
                 }
               },
               recommendation_id: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'recommendationId',
+                serialized_name: 'properties.recommendationId',
                 type: {
                   name: 'String'
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'description',
+                serialized_name: 'properties.description',
                 type: {
                   name: 'String'
                 }
               },
               action_name: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'actionName',
+                serialized_name: 'properties.actionName',
                 type: {
                   name: 'String'
                 }
               },
               level: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'level',
+                serialized_name: 'properties.level',
                 type: {
                   name: 'Enum',
                   module: 'NotificationLevel'
                 }
               },
               channels: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'channels',
+                serialized_name: 'properties.channels',
                 type: {
                   name: 'Enum',
                   module: 'Channels'
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'properties.tags',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -161,33 +181,29 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               is_dynamic: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'isDynamic',
+                serialized_name: 'properties.isDynamic',
                 type: {
                   name: 'Boolean'
                 }
               },
               extension_name: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'extensionName',
+                serialized_name: 'properties.extensionName',
                 type: {
                   name: 'String'
                 }
               },
               blade_name: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'bladeName',
+                serialized_name: 'properties.bladeName',
                 type: {
                   name: 'String'
                 }
               },
               forward_link: {
-                client_side_validation: true,
                 required: false,
-                serialized_name: 'forwardLink',
+                serialized_name: 'properties.forwardLink',
                 type: {
                   name: 'String'
                 }

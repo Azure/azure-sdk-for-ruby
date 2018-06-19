@@ -6,9 +6,9 @@ require 'azure_mgmt_web'
 
 module Azure::Web::Profiles::Latest
   module Mgmt
-    DomainRegistrationProvider = Azure::Web::Mgmt::V2015_04_01::DomainRegistrationProvider
     Domains = Azure::Web::Mgmt::V2015_04_01::Domains
     TopLevelDomains = Azure::Web::Mgmt::V2015_04_01::TopLevelDomains
+    DomainRegistrationProvider = Azure::Web::Mgmt::V2015_04_01::DomainRegistrationProvider
     AppServiceCertificateOrders = Azure::Web::Mgmt::V2015_08_01::AppServiceCertificateOrders
     CertificateRegistrationProvider = Azure::Web::Mgmt::V2015_08_01::CertificateRegistrationProvider
     Certificates = Azure::Web::Mgmt::V2016_03_01::Certificates
@@ -16,6 +16,8 @@ module Azure::Web::Profiles::Latest
     Diagnostics = Azure::Web::Mgmt::V2016_03_01::Diagnostics
     Provider = Azure::Web::Mgmt::V2016_03_01::Provider
     Recommendations = Azure::Web::Mgmt::V2016_03_01::Recommendations
+    ResourceHealthMetadataOperations = Azure::Web::Mgmt::V2016_03_01::ResourceHealthMetadataOperations
+    BillingMeters = Azure::Web::Mgmt::V2016_03_01::BillingMeters
     WebApps = Azure::Web::Mgmt::V2016_08_01::WebApps
     AppServiceEnvironments = Azure::Web::Mgmt::V2016_09_01::AppServiceEnvironments
     AppServicePlans = Azure::Web::Mgmt::V2016_09_01::AppServicePlans
@@ -30,12 +32,12 @@ module Azure::Web::Profiles::Latest
       NameIdentifierCollection = Azure::Web::Mgmt::V2015_04_01::Models::NameIdentifierCollection
       Address = Azure::Web::Mgmt::V2015_04_01::Models::Address
       HostName = Azure::Web::Mgmt::V2015_04_01::Models::HostName
-      TopLevelDomainCollection = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection
-      DomainCollection = Azure::Web::Mgmt::V2015_04_01::Models::DomainCollection
       TldLegalAgreement = Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreement
-      ErrorResponse = Azure::Web::Mgmt::V2015_04_01::Models::ErrorResponse
-      TopLevelDomainAgreementOption = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainAgreementOption
+      DomainCollection = Azure::Web::Mgmt::V2015_04_01::Models::DomainCollection
       TldLegalAgreementCollection = Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreementCollection
+      ErrorResponse = Azure::Web::Mgmt::V2015_04_01::Models::ErrorResponse
+      TopLevelDomainCollection = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection
+      TopLevelDomainAgreementOption = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainAgreementOption
       Domain = Azure::Web::Mgmt::V2015_04_01::Models::Domain
       DomainOwnershipIdentifier = Azure::Web::Mgmt::V2015_04_01::Models::DomainOwnershipIdentifier
       DomainPatchResource = Azure::Web::Mgmt::V2015_04_01::Models::DomainPatchResource
@@ -60,52 +62,71 @@ module Azure::Web::Profiles::Latest
       CertificateProductType = Azure::Web::Mgmt::V2015_08_01::Models::CertificateProductType
       CertificateOrderStatus = Azure::Web::Mgmt::V2015_08_01::Models::CertificateOrderStatus
       CertificateOrderActionType = Azure::Web::Mgmt::V2015_08_01::Models::CertificateOrderActionType
-      MetricAvailability = Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
-      MetricSpecification = Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
-      HostingEnvironmentDeploymentInfo = Azure::Web::Mgmt::V2016_03_01::Models::HostingEnvironmentDeploymentInfo
+      DefaultErrorResponseErrorDetailsItem = Azure::Web::Mgmt::V2016_03_01::Models::DefaultErrorResponseErrorDetailsItem
+      DefaultErrorResponseError = Azure::Web::Mgmt::V2016_03_01::Models::DefaultErrorResponseError
       CertificateCollection = Azure::Web::Mgmt::V2016_03_01::Models::CertificateCollection
-      ValidateResponse = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
-      ValidateRequest = Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest
-      ResourceNameAvailabilityRequest = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest
-      PremierAddOnOfferCollection = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection
-      AppServiceEnvironment = Azure::Web::Mgmt::V2016_03_01::Models::AppServiceEnvironment
-      GeoRegionCollection = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
+      DefaultErrorResponse = Azure::Web::Mgmt::V2016_03_01::Models::DefaultErrorResponse
       CsmOperationDisplay = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDisplay
       Dimension = Azure::Web::Mgmt::V2016_03_01::Models::Dimension
-      CsmMoveResourceEnvelope = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope
+      ValidateResponse = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
+      MetricAvailability = Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
+      MetricSpecification = Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
       ServiceSpecification = Azure::Web::Mgmt::V2016_03_01::Models::ServiceSpecification
+      SourceControlCollection = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection
       CsmOperationDescriptionProperties = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDescriptionProperties
+      ResourceNameAvailabilityRequest = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest
       CsmOperationDescription = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDescription
+      PremierAddOnOfferCollection = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection
       CsmOperationCollection = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationCollection
+      ApplicationStack = Azure::Web::Mgmt::V2016_03_01::Models::ApplicationStack
+      StackMajorVersion = Azure::Web::Mgmt::V2016_03_01::Models::StackMajorVersion
       DeploymentLocations = Azure::Web::Mgmt::V2016_03_01::Models::DeploymentLocations
       NameIdentifier = Azure::Web::Mgmt::V2016_03_01::Models::NameIdentifier
-      SourceControlCollection = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection
       GlobalCsmSkuDescription = Azure::Web::Mgmt::V2016_03_01::Models::GlobalCsmSkuDescription
+      GeoRegionCollection = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
       DeletedSite = Azure::Web::Mgmt::V2016_03_01::Models::DeletedSite
       DeletedWebAppCollection = Azure::Web::Mgmt::V2016_03_01::Models::DeletedWebAppCollection
+      ValidateResponseError = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponseError
       Solution = Azure::Web::Mgmt::V2016_03_01::Models::Solution
       DetectorAbnormalTimePeriod = Azure::Web::Mgmt::V2016_03_01::Models::DetectorAbnormalTimePeriod
-      ValidateResponseError = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponseError
-      AbnormalTimePeriod = Azure::Web::Mgmt::V2016_03_01::Models::AbnormalTimePeriod
       ResourceNameAvailability = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailability
-      RecommendationRule = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationRule
+      AbnormalTimePeriod = Azure::Web::Mgmt::V2016_03_01::Models::AbnormalTimePeriod
+      HostingEnvironmentDeploymentInfo = Azure::Web::Mgmt::V2016_03_01::Models::HostingEnvironmentDeploymentInfo
       DiagnosticMetricSample = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticMetricSample
       DiagnosticMetricSet = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticMetricSet
       DataSource = Azure::Web::Mgmt::V2016_03_01::Models::DataSource
       ResponseMetaData = Azure::Web::Mgmt::V2016_03_01::Models::ResponseMetaData
       AnalysisData = Azure::Web::Mgmt::V2016_03_01::Models::AnalysisData
-      Recommendation = Azure::Web::Mgmt::V2016_03_01::Models::Recommendation
+      CsmMoveResourceEnvelope = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope
+      DataTableResponseColumn = Azure::Web::Mgmt::V2016_03_01::Models::DataTableResponseColumn
+      AppServiceEnvironment = Azure::Web::Mgmt::V2016_03_01::Models::AppServiceEnvironment
+      DataTableResponseObject = Azure::Web::Mgmt::V2016_03_01::Models::DataTableResponseObject
+      ValidateRequest = Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest
+      DetectorInfo = Azure::Web::Mgmt::V2016_03_01::Models::DetectorInfo
+      Rendering = Azure::Web::Mgmt::V2016_03_01::Models::Rendering
+      DiagnosticData = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticData
+      BillingMeterCollection = Azure::Web::Mgmt::V2016_03_01::Models::BillingMeterCollection
+      DetectorResponseCollection = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection
+      ResourceHealthMetadataCollection = Azure::Web::Mgmt::V2016_03_01::Models::ResourceHealthMetadataCollection
       SkuInfos = Azure::Web::Mgmt::V2016_03_01::Models::SkuInfos
-      DiagnosticDetectorCollection = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorCollection
       DiagnosticAnalysisCollection = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticAnalysisCollection
+      RecommendationCollection = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection
       DiagnosticCategoryCollection = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticCategoryCollection
+      DiagnosticDetectorCollection = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorCollection
+      ApplicationStackCollection = Azure::Web::Mgmt::V2016_03_01::Models::ApplicationStackCollection
+      StackMinorVersion = Azure::Web::Mgmt::V2016_03_01::Models::StackMinorVersion
       Certificate = Azure::Web::Mgmt::V2016_03_01::Models::Certificate
       CertificatePatchResource = Azure::Web::Mgmt::V2016_03_01::Models::CertificatePatchResource
       DetectorDefinition = Azure::Web::Mgmt::V2016_03_01::Models::DetectorDefinition
       AnalysisDefinition = Azure::Web::Mgmt::V2016_03_01::Models::AnalysisDefinition
+      DetectorResponse = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponse
       DiagnosticAnalysis = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticAnalysis
       DiagnosticCategory = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticCategory
       DiagnosticDetectorResponse = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorResponse
+      Recommendation = Azure::Web::Mgmt::V2016_03_01::Models::Recommendation
+      RecommendationRule = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationRule
+      ResourceHealthMetadata = Azure::Web::Mgmt::V2016_03_01::Models::ResourceHealthMetadata
+      BillingMeter = Azure::Web::Mgmt::V2016_03_01::Models::BillingMeter
       GeoRegion = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegion
       PremierAddOnOffer = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOffer
       SourceControl = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl
@@ -115,6 +136,7 @@ module Azure::Web::Profiles::Latest
       KeyVaultSecretStatus = Azure::Web::Mgmt::V2016_03_01::Models::KeyVaultSecretStatus
       IssueType = Azure::Web::Mgmt::V2016_03_01::Models::IssueType
       SolutionType = Azure::Web::Mgmt::V2016_03_01::Models::SolutionType
+      RenderingType = Azure::Web::Mgmt::V2016_03_01::Models::RenderingType
       ResourceScopeType = Azure::Web::Mgmt::V2016_03_01::Models::ResourceScopeType
       NotificationLevel = Azure::Web::Mgmt::V2016_03_01::Models::NotificationLevel
       Channels = Azure::Web::Mgmt::V2016_03_01::Models::Channels
@@ -312,11 +334,13 @@ module Azure::Web::Profiles::Latest
       WorkerSizeOptions = Azure::Web::Mgmt::V2016_09_01::Models::WorkerSizeOptions
       AccessControlEntryAction = Azure::Web::Mgmt::V2016_09_01::Models::AccessControlEntryAction
       RouteType = Azure::Web::Mgmt::V2016_09_01::Models::RouteType
+      ManagedServiceIdentityType = Azure::Web::Mgmt::V2016_09_01::Models::ManagedServiceIdentityType
       AutoHealActionType = Azure::Web::Mgmt::V2016_09_01::Models::AutoHealActionType
       ConnectionStringType = Azure::Web::Mgmt::V2016_09_01::Models::ConnectionStringType
       ScmType = Azure::Web::Mgmt::V2016_09_01::Models::ScmType
       ManagedPipelineMode = Azure::Web::Mgmt::V2016_09_01::Models::ManagedPipelineMode
       SiteLoadBalancing = Azure::Web::Mgmt::V2016_09_01::Models::SiteLoadBalancing
+      SupportedTlsVersions = Azure::Web::Mgmt::V2016_09_01::Models::SupportedTlsVersions
       SslState = Azure::Web::Mgmt::V2016_09_01::Models::SslState
       HostType = Azure::Web::Mgmt::V2016_09_01::Models::HostType
       UsageState = Azure::Web::Mgmt::V2016_09_01::Models::UsageState
@@ -329,7 +353,7 @@ module Azure::Web::Profiles::Latest
     # WebManagementClass
     #
     class WebManagementClass
-      attr_reader :domain_registration_provider, :domains, :top_level_domains, :app_service_certificate_orders, :certificate_registration_provider, :certificates, :deleted_web_apps, :diagnostics, :provider, :recommendations, :web_apps, :app_service_environments, :app_service_plans, :configurable, :base_url, :options, :model_classes
+      attr_reader :domains, :top_level_domains, :domain_registration_provider, :app_service_certificate_orders, :certificate_registration_provider, :certificates, :deleted_web_apps, :diagnostics, :provider, :recommendations, :resource_health_metadata_operations, :billing_meters, :web_apps, :app_service_environments, :app_service_plans, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -349,9 +373,9 @@ module Azure::Web::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @domain_registration_provider = @client_0.domain_registration_provider
         @domains = @client_0.domains
         @top_level_domains = @client_0.top_level_domains
+        @domain_registration_provider = @client_0.domain_registration_provider
 
         @client_1 = Azure::Web::Mgmt::V2015_08_01::WebSiteManagementClient.new(configurable.credentials, base_url, options)
         if(@client_1.respond_to?(:subscription_id))
@@ -371,6 +395,8 @@ module Azure::Web::Profiles::Latest
         @diagnostics = @client_2.diagnostics
         @provider = @client_2.provider
         @recommendations = @client_2.recommendations
+        @resource_health_metadata_operations = @client_2.resource_health_metadata_operations
+        @billing_meters = @client_2.billing_meters
 
         @client_3 = Azure::Web::Mgmt::V2016_08_01::WebSiteManagementClient.new(configurable.credentials, base_url, options)
         if(@client_3.respond_to?(:subscription_id))
@@ -441,23 +467,23 @@ module Azure::Web::Profiles::Latest
       def host_name
         Azure::Web::Mgmt::V2015_04_01::Models::HostName
       end
-      def top_level_domain_collection
-        Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection
+      def tld_legal_agreement
+        Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreement
       end
       def domain_collection
         Azure::Web::Mgmt::V2015_04_01::Models::DomainCollection
       end
-      def tld_legal_agreement
-        Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreement
+      def tld_legal_agreement_collection
+        Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreementCollection
       end
       def error_response
         Azure::Web::Mgmt::V2015_04_01::Models::ErrorResponse
       end
+      def top_level_domain_collection
+        Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection
+      end
       def top_level_domain_agreement_option
         Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainAgreementOption
-      end
-      def tld_legal_agreement_collection
-        Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreementCollection
       end
       def domain
         Azure::Web::Mgmt::V2015_04_01::Models::Domain
@@ -531,35 +557,17 @@ module Azure::Web::Profiles::Latest
       def certificate_order_action_type
         Azure::Web::Mgmt::V2015_08_01::Models::CertificateOrderActionType
       end
-      def metric_availability
-        Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
+      def default_error_response_error_details_item
+        Azure::Web::Mgmt::V2016_03_01::Models::DefaultErrorResponseErrorDetailsItem
       end
-      def metric_specification
-        Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
-      end
-      def hosting_environment_deployment_info
-        Azure::Web::Mgmt::V2016_03_01::Models::HostingEnvironmentDeploymentInfo
+      def default_error_response_error
+        Azure::Web::Mgmt::V2016_03_01::Models::DefaultErrorResponseError
       end
       def certificate_collection
         Azure::Web::Mgmt::V2016_03_01::Models::CertificateCollection
       end
-      def validate_response
-        Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
-      end
-      def validate_request
-        Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest
-      end
-      def resource_name_availability_request
-        Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest
-      end
-      def premier_add_on_offer_collection
-        Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection
-      end
-      def app_service_environment
-        Azure::Web::Mgmt::V2016_03_01::Models::AppServiceEnvironment
-      end
-      def geo_region_collection
-        Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
+      def default_error_response
+        Azure::Web::Mgmt::V2016_03_01::Models::DefaultErrorResponse
       end
       def csm_operation_display
         Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDisplay
@@ -567,20 +575,41 @@ module Azure::Web::Profiles::Latest
       def dimension
         Azure::Web::Mgmt::V2016_03_01::Models::Dimension
       end
-      def csm_move_resource_envelope
-        Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope
+      def validate_response
+        Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
+      end
+      def metric_availability
+        Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
+      end
+      def metric_specification
+        Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
       end
       def service_specification
         Azure::Web::Mgmt::V2016_03_01::Models::ServiceSpecification
       end
+      def source_control_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection
+      end
       def csm_operation_description_properties
         Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDescriptionProperties
+      end
+      def resource_name_availability_request
+        Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest
       end
       def csm_operation_description
         Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDescription
       end
+      def premier_add_on_offer_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection
+      end
       def csm_operation_collection
         Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationCollection
+      end
+      def application_stack
+        Azure::Web::Mgmt::V2016_03_01::Models::ApplicationStack
+      end
+      def stack_major_version
+        Azure::Web::Mgmt::V2016_03_01::Models::StackMajorVersion
       end
       def deployment_locations
         Azure::Web::Mgmt::V2016_03_01::Models::DeploymentLocations
@@ -588,11 +617,11 @@ module Azure::Web::Profiles::Latest
       def name_identifier
         Azure::Web::Mgmt::V2016_03_01::Models::NameIdentifier
       end
-      def source_control_collection
-        Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection
-      end
       def global_csm_sku_description
         Azure::Web::Mgmt::V2016_03_01::Models::GlobalCsmSkuDescription
+      end
+      def geo_region_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
       end
       def deleted_site
         Azure::Web::Mgmt::V2016_03_01::Models::DeletedSite
@@ -600,23 +629,23 @@ module Azure::Web::Profiles::Latest
       def deleted_web_app_collection
         Azure::Web::Mgmt::V2016_03_01::Models::DeletedWebAppCollection
       end
+      def validate_response_error
+        Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponseError
+      end
       def solution
         Azure::Web::Mgmt::V2016_03_01::Models::Solution
       end
       def detector_abnormal_time_period
         Azure::Web::Mgmt::V2016_03_01::Models::DetectorAbnormalTimePeriod
       end
-      def validate_response_error
-        Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponseError
+      def resource_name_availability
+        Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailability
       end
       def abnormal_time_period
         Azure::Web::Mgmt::V2016_03_01::Models::AbnormalTimePeriod
       end
-      def resource_name_availability
-        Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailability
-      end
-      def recommendation_rule
-        Azure::Web::Mgmt::V2016_03_01::Models::RecommendationRule
+      def hosting_environment_deployment_info
+        Azure::Web::Mgmt::V2016_03_01::Models::HostingEnvironmentDeploymentInfo
       end
       def diagnostic_metric_sample
         Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticMetricSample
@@ -633,20 +662,59 @@ module Azure::Web::Profiles::Latest
       def analysis_data
         Azure::Web::Mgmt::V2016_03_01::Models::AnalysisData
       end
-      def recommendation
-        Azure::Web::Mgmt::V2016_03_01::Models::Recommendation
+      def csm_move_resource_envelope
+        Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope
+      end
+      def data_table_response_column
+        Azure::Web::Mgmt::V2016_03_01::Models::DataTableResponseColumn
+      end
+      def app_service_environment
+        Azure::Web::Mgmt::V2016_03_01::Models::AppServiceEnvironment
+      end
+      def data_table_response_object
+        Azure::Web::Mgmt::V2016_03_01::Models::DataTableResponseObject
+      end
+      def validate_request
+        Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest
+      end
+      def detector_info
+        Azure::Web::Mgmt::V2016_03_01::Models::DetectorInfo
+      end
+      def rendering
+        Azure::Web::Mgmt::V2016_03_01::Models::Rendering
+      end
+      def diagnostic_data
+        Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticData
+      end
+      def billing_meter_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::BillingMeterCollection
+      end
+      def detector_response_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection
+      end
+      def resource_health_metadata_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::ResourceHealthMetadataCollection
       end
       def sku_infos
         Azure::Web::Mgmt::V2016_03_01::Models::SkuInfos
       end
-      def diagnostic_detector_collection
-        Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorCollection
-      end
       def diagnostic_analysis_collection
         Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticAnalysisCollection
       end
+      def recommendation_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection
+      end
       def diagnostic_category_collection
         Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticCategoryCollection
+      end
+      def diagnostic_detector_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorCollection
+      end
+      def application_stack_collection
+        Azure::Web::Mgmt::V2016_03_01::Models::ApplicationStackCollection
+      end
+      def stack_minor_version
+        Azure::Web::Mgmt::V2016_03_01::Models::StackMinorVersion
       end
       def certificate
         Azure::Web::Mgmt::V2016_03_01::Models::Certificate
@@ -660,6 +728,9 @@ module Azure::Web::Profiles::Latest
       def analysis_definition
         Azure::Web::Mgmt::V2016_03_01::Models::AnalysisDefinition
       end
+      def detector_response
+        Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponse
+      end
       def diagnostic_analysis
         Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticAnalysis
       end
@@ -668,6 +739,18 @@ module Azure::Web::Profiles::Latest
       end
       def diagnostic_detector_response
         Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorResponse
+      end
+      def recommendation
+        Azure::Web::Mgmt::V2016_03_01::Models::Recommendation
+      end
+      def recommendation_rule
+        Azure::Web::Mgmt::V2016_03_01::Models::RecommendationRule
+      end
+      def resource_health_metadata
+        Azure::Web::Mgmt::V2016_03_01::Models::ResourceHealthMetadata
+      end
+      def billing_meter
+        Azure::Web::Mgmt::V2016_03_01::Models::BillingMeter
       end
       def geo_region
         Azure::Web::Mgmt::V2016_03_01::Models::GeoRegion
@@ -695,6 +778,9 @@ module Azure::Web::Profiles::Latest
       end
       def solution_type
         Azure::Web::Mgmt::V2016_03_01::Models::SolutionType
+      end
+      def rendering_type
+        Azure::Web::Mgmt::V2016_03_01::Models::RenderingType
       end
       def resource_scope_type
         Azure::Web::Mgmt::V2016_03_01::Models::ResourceScopeType
@@ -1287,6 +1373,9 @@ module Azure::Web::Profiles::Latest
       def route_type
         Azure::Web::Mgmt::V2016_09_01::Models::RouteType
       end
+      def managed_service_identity_type
+        Azure::Web::Mgmt::V2016_09_01::Models::ManagedServiceIdentityType
+      end
       def auto_heal_action_type
         Azure::Web::Mgmt::V2016_09_01::Models::AutoHealActionType
       end
@@ -1301,6 +1390,9 @@ module Azure::Web::Profiles::Latest
       end
       def site_load_balancing
         Azure::Web::Mgmt::V2016_09_01::Models::SiteLoadBalancing
+      end
+      def supported_tls_versions
+        Azure::Web::Mgmt::V2016_09_01::Models::SupportedTlsVersions
       end
       def ssl_state
         Azure::Web::Mgmt::V2016_09_01::Models::SslState
