@@ -32,7 +32,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryUsage',
           type: {
@@ -40,7 +39,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'RegistryUsage',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +46,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'limit',
                 type: {
@@ -56,7 +53,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentValue',
                 type: {
@@ -64,7 +60,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {

@@ -22,7 +22,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ReplicationUpdateParameters',
           type: {
@@ -30,13 +29,11 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'ReplicationUpdateParameters',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
