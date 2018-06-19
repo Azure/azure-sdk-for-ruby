@@ -30,8 +30,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Array<IntegrationAccount>] operation results.
     #
-    def list_by_subscription(top:nil, custom_headers:nil)
-      first_page = list_by_subscription_as_lazy(top:top, custom_headers:custom_headers)
+    def list_by_subscription(top = nil, custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(top, custom_headers)
       first_page.get_all_items
     end
 
@@ -44,8 +44,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(top:nil, custom_headers:nil)
-      list_by_subscription_async(top:top, custom_headers:custom_headers).value!
+    def list_by_subscription_with_http_info(top = nil, custom_headers = nil)
+      list_by_subscription_async(top, custom_headers).value!
     end
 
     #
@@ -57,13 +57,12 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(top:nil, custom_headers:nil)
+    def list_by_subscription_async(top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -118,8 +117,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Array<IntegrationAccount>] operation results.
     #
-    def list_by_resource_group(resource_group_name, top:nil, custom_headers:nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, top:top, custom_headers:custom_headers)
+    def list_by_resource_group(resource_group_name, top = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, top, custom_headers)
       first_page.get_all_items
     end
 
@@ -133,8 +132,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, top:nil, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, top:top, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, top = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, top, custom_headers).value!
     end
 
     #
@@ -147,14 +146,13 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, top:nil, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -209,8 +207,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [IntegrationAccount] operation results.
     #
-    def get(resource_group_name, integration_account_name, custom_headers:nil)
-      response = get_async(resource_group_name, integration_account_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, integration_account_name, custom_headers = nil)
+      response = get_async(resource_group_name, integration_account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -224,8 +222,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, integration_account_name, custom_headers:nil)
-      get_async(resource_group_name, integration_account_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, integration_account_name, custom_headers = nil)
+      get_async(resource_group_name, integration_account_name, custom_headers).value!
     end
 
     #
@@ -238,7 +236,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, integration_account_name, custom_headers:nil)
+    def get_async(resource_group_name, integration_account_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
@@ -246,7 +244,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -302,8 +299,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [IntegrationAccount] operation results.
     #
-    def create_or_update(resource_group_name, integration_account_name, integration_account, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -318,8 +315,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, integration_account_name, integration_account, custom_headers:nil)
-      create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
     end
 
     #
@@ -333,7 +330,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers:nil)
+    def create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
@@ -342,11 +339,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccount.mapper()
@@ -415,8 +413,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [IntegrationAccount] operation results.
     #
-    def update(resource_group_name, integration_account_name, integration_account, custom_headers:nil)
-      response = update_async(resource_group_name, integration_account_name, integration_account, custom_headers:custom_headers).value!
+    def update(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      response = update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -431,8 +429,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, integration_account_name, integration_account, custom_headers:nil)
-      update_async(resource_group_name, integration_account_name, integration_account, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
     end
 
     #
@@ -446,7 +444,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, integration_account_name, integration_account, custom_headers:nil)
+    def update_async(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
@@ -455,11 +453,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccount.mapper()
@@ -516,8 +515,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, integration_account_name, custom_headers:nil)
-      response = delete_async(resource_group_name, integration_account_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, integration_account_name, custom_headers = nil)
+      response = delete_async(resource_group_name, integration_account_name, custom_headers).value!
       nil
     end
 
@@ -531,8 +530,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, integration_account_name, custom_headers:nil)
-      delete_async(resource_group_name, integration_account_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, integration_account_name, custom_headers = nil)
+      delete_async(resource_group_name, integration_account_name, custom_headers).value!
     end
 
     #
@@ -545,7 +544,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, integration_account_name, custom_headers:nil)
+    def delete_async(resource_group_name, integration_account_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
@@ -553,7 +552,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -599,8 +597,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [CallbackUrl] operation results.
     #
-    def get_callback_url(resource_group_name, integration_account_name, parameters, custom_headers:nil)
-      response = get_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers:custom_headers).value!
+    def get_callback_url(resource_group_name, integration_account_name, parameters, custom_headers = nil)
+      response = get_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -615,8 +613,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_callback_url_with_http_info(resource_group_name, integration_account_name, parameters, custom_headers:nil)
-      get_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers:custom_headers).value!
+    def get_callback_url_with_http_info(resource_group_name, integration_account_name, parameters, custom_headers = nil)
+      get_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers).value!
     end
 
     #
@@ -630,7 +628,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers:nil)
+    def get_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
@@ -639,11 +637,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters.mapper()
@@ -692,6 +691,313 @@ module Azure::Logic::Mgmt::V2016_06_01
     end
 
     #
+    # Gets the integration account's Key Vault keys.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param list_key_vault_keys [ListKeyVaultKeysDefinition] The key vault
+    # parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [KeyVaultKeyCollection] operation results.
+    #
+    def list_key_vault_keys(resource_group_name, integration_account_name, list_key_vault_keys, custom_headers = nil)
+      response = list_key_vault_keys_async(resource_group_name, integration_account_name, list_key_vault_keys, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the integration account's Key Vault keys.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param list_key_vault_keys [ListKeyVaultKeysDefinition] The key vault
+    # parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_key_vault_keys_with_http_info(resource_group_name, integration_account_name, list_key_vault_keys, custom_headers = nil)
+      list_key_vault_keys_async(resource_group_name, integration_account_name, list_key_vault_keys, custom_headers).value!
+    end
+
+    #
+    # Gets the integration account's Key Vault keys.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param list_key_vault_keys [ListKeyVaultKeysDefinition] The key vault
+    # parameters.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_key_vault_keys_async(resource_group_name, integration_account_name, list_key_vault_keys, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'list_key_vault_keys is nil' if list_key_vault_keys.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::ListKeyVaultKeysDefinition.mapper()
+      request_content = @client.serialize(request_mapper,  list_key_vault_keys)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/listKeyVaultKeys'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Logs the integration account's tracking events.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param log_tracking_events [TrackingEventsDefinition] The callback URL
+    # parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def log_tracking_events(resource_group_name, integration_account_name, log_tracking_events, custom_headers = nil)
+      response = log_tracking_events_async(resource_group_name, integration_account_name, log_tracking_events, custom_headers).value!
+      nil
+    end
+
+    #
+    # Logs the integration account's tracking events.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param log_tracking_events [TrackingEventsDefinition] The callback URL
+    # parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def log_tracking_events_with_http_info(resource_group_name, integration_account_name, log_tracking_events, custom_headers = nil)
+      log_tracking_events_async(resource_group_name, integration_account_name, log_tracking_events, custom_headers).value!
+    end
+
+    #
+    # Logs the integration account's tracking events.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param log_tracking_events [TrackingEventsDefinition] The callback URL
+    # parameters.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def log_tracking_events_async(resource_group_name, integration_account_name, log_tracking_events, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'log_tracking_events is nil' if log_tracking_events.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingEventsDefinition.mapper()
+      request_content = @client.serialize(request_mapper,  log_tracking_events)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/logTrackingEvents'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Regenerates the integration account access key.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param regenerate_access_key [RegenerateActionParameter] The access key type.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IntegrationAccount] operation results.
+    #
+    def regenerate_access_key(resource_group_name, integration_account_name, regenerate_access_key, custom_headers = nil)
+      response = regenerate_access_key_async(resource_group_name, integration_account_name, regenerate_access_key, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Regenerates the integration account access key.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param regenerate_access_key [RegenerateActionParameter] The access key type.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def regenerate_access_key_with_http_info(resource_group_name, integration_account_name, regenerate_access_key, custom_headers = nil)
+      regenerate_access_key_async(resource_group_name, integration_account_name, regenerate_access_key, custom_headers).value!
+    end
+
+    #
+    # Regenerates the integration account access key.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param regenerate_access_key [RegenerateActionParameter] The access key type.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def regenerate_access_key_async(resource_group_name, integration_account_name, regenerate_access_key, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'regenerate_access_key is nil' if regenerate_access_key.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::RegenerateActionParameter.mapper()
+      request_content = @client.serialize(request_mapper,  regenerate_access_key)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/regenerateAccessKey'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets a list of integration accounts by subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -701,8 +1007,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [IntegrationAccountListResult] operation results.
     #
-    def list_by_subscription_next(next_page_link, custom_headers:nil)
-      response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -716,8 +1022,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -730,12 +1036,11 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_next_async(next_page_link, custom_headers:nil)
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -789,8 +1094,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [IntegrationAccountListResult] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers:nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -804,8 +1109,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -818,12 +1123,11 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -877,12 +1181,12 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @return [IntegrationAccountListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_subscription_as_lazy(top:nil, custom_headers:nil)
-      response = list_by_subscription_async(top:top, custom_headers:custom_headers).value!
+    def list_by_subscription_as_lazy(top = nil, custom_headers = nil)
+      response = list_by_subscription_async(top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -899,12 +1203,12 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @return [IntegrationAccountListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, top:nil, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, top:top, custom_headers:custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, top = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
