@@ -13,7 +13,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       include MsRestAzure
 
       # @return [PurgeState] Status of the operation represented by the
-      # requested Id. Possible values include: 'Pending', 'Completed'
+      # requested Id. Possible values include: 'pending', 'completed'
       attr_accessor :status
 
 

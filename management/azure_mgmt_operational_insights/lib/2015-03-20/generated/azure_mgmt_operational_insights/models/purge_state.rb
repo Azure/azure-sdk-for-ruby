@@ -9,8 +9,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     # Defines values for PurgeState
     #
     module PurgeState
-      Pending = "Pending"
-      Completed = "Completed"
+      Pending = "pending"
+      Completed = "completed"
     end
   end
 end
