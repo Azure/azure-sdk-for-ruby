@@ -6,8 +6,8 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # Error reponse indicates Logic service is not able to process the incoming
-    # request. The error property contains the error details.
+    # Error response indicates Logic service is not able to process the
+    # incoming request. The error property contains the error details.
     #
     class ErrorResponse
 
@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -31,7 +30,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'ErrorResponse',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

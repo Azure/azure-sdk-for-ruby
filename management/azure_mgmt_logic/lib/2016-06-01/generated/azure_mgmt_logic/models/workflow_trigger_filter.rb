@@ -24,7 +24,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerFilter',
           type: {
@@ -32,7 +31,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowTriggerFilter',
             model_properties: {
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
