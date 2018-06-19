@@ -46,7 +46,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactValidationOverride',
           type: {
@@ -54,7 +53,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactValidationOverride',
             model_properties: {
               message_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageId',
                 type: {
@@ -62,7 +60,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enforce_character_set: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enforceCharacterSet',
                 type: {
@@ -70,7 +67,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               validate_edi_types: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'validateEdiTypes',
                 type: {
@@ -78,7 +74,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               validate_xsd_types: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'validateXsdTypes',
                 type: {
@@ -86,7 +81,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               allow_leading_and_trailing_spaces_and_zeroes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'allowLeadingAndTrailingSpacesAndZeroes',
                 type: {
@@ -94,7 +88,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               trailing_separator_policy: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'trailingSeparatorPolicy',
                 type: {
@@ -103,7 +96,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               trim_leading_and_trailing_spaces_and_zeroes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'trimLeadingAndTrailingSpacesAndZeroes',
                 type: {
