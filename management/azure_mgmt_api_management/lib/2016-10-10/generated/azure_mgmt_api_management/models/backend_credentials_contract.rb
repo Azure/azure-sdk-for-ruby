@@ -28,7 +28,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackendCredentialsContract',
           type: {
@@ -36,7 +35,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'BackendCredentialsContract',
             model_properties: {
               scheme: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'scheme',
                 constraints: {
@@ -48,7 +46,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               parameter: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'parameter',
                 constraints: {
@@ -60,7 +57,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               certificate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificate',
                 constraints: {
@@ -69,7 +65,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -79,19 +74,16 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               query: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'query',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -103,19 +95,16 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               header: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'header',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
