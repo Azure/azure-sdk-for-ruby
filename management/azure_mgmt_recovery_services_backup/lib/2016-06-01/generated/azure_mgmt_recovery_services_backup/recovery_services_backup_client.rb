@@ -197,9 +197,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -216,7 +213,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_recovery_services_backup'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

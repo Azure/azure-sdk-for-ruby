@@ -28,7 +28,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BMSBackupEngineQueryObject',
           type: {
@@ -36,7 +35,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'BMSBackupEngineQueryObject',
             model_properties: {
               backup_management_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
