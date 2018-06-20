@@ -83,6 +83,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
 
   module Models
     autoload :ApiManagementServiceListResult,                     '2018-01-01/generated/azure_mgmt_api_management/models/api_management_service_list_result.rb'
+    autoload :ErrorFieldContract,                                 '2018-01-01/generated/azure_mgmt_api_management/models/error_field_contract.rb'
     autoload :ApiManagementServiceGetSsoTokenResult,              '2018-01-01/generated/azure_mgmt_api_management/models/api_management_service_get_sso_token_result.rb'
     autoload :ErrorResponse,                                      '2018-01-01/generated/azure_mgmt_api_management/models/error_response.rb'
     autoload :ApiManagementServiceCheckNameAvailabilityParameters, '2018-01-01/generated/azure_mgmt_api_management/models/api_management_service_check_name_availability_parameters.rb'
@@ -117,7 +118,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     autoload :ResponseContract,                                   '2018-01-01/generated/azure_mgmt_api_management/models/response_contract.rb'
     autoload :TagDescriptionCollection,                           '2018-01-01/generated/azure_mgmt_api_management/models/tag_description_collection.rb'
     autoload :OperationUpdateContract,                            '2018-01-01/generated/azure_mgmt_api_management/models/operation_update_contract.rb'
-    autoload :ErrorFieldContract,                                 '2018-01-01/generated/azure_mgmt_api_management/models/error_field_contract.rb'
+    autoload :ErrorResponseBody,                                  '2018-01-01/generated/azure_mgmt_api_management/models/error_response_body.rb'
     autoload :SchemaCollection,                                   '2018-01-01/generated/azure_mgmt_api_management/models/schema_collection.rb'
     autoload :UserUpdateParameters,                               '2018-01-01/generated/azure_mgmt_api_management/models/user_update_parameters.rb'
     autoload :PropertyCollection,                                 '2018-01-01/generated/azure_mgmt_api_management/models/property_collection.rb'

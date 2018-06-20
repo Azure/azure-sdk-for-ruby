@@ -34,7 +34,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       # @return [String] Optional result info.
       attr_accessor :result_info
 
-      # @return [ErrorResponse] Error Body Contract
+      # @return [ErrorResponseBody] Error Body Contract
       attr_accessor :error
 
       # @return [Array<OperationResultLogItemContract>] This property if only
@@ -97,7 +97,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
                 serialized_name: 'error',
                 type: {
                   name: 'Composite',
-                  class_name: 'ErrorResponse'
+                  class_name: 'ErrorResponseBody'
                 }
               },
               action_log: {
