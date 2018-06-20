@@ -61,6 +61,7 @@ gem 'azure_mgmt_resources',                 path: 'management/azure_mgmt_resourc
 gem 'azure_mgmt_resources_management',      path: 'management/azure_mgmt_resources_management'
 gem 'azure_mgmt_scheduler',                 path: 'management/azure_mgmt_scheduler'
 gem 'azure_mgmt_search',                    path: 'management/azure_mgmt_search'
+gem 'azure_mgmt_security',                  path: 'management/azure_mgmt_security'
 gem 'azure_mgmt_server_management',         path: 'management/azure_mgmt_server_management'
 gem 'azure_mgmt_service_bus',               path: 'management/azure_mgmt_service_bus'
 gem 'azure_mgmt_service_fabric',            path: 'management/azure_mgmt_service_fabric'

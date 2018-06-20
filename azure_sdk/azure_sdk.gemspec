@@ -89,6 +89,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_resources_management', "~>#{gem_versions['management']['azure_mgmt_resources_management']}"
   spec.add_runtime_dependency 'azure_mgmt_scheduler', "~>#{gem_versions['management']['azure_mgmt_scheduler']}"
   spec.add_runtime_dependency 'azure_mgmt_search', "~>#{gem_versions['management']['azure_mgmt_search']}"
+  spec.add_runtime_dependency 'azure_mgmt_security', "~>#{gem_versions['management']['azure_mgmt_security']}"
   spec.add_runtime_dependency 'azure_mgmt_server_management', "~>#{gem_versions['management']['azure_mgmt_server_management']}"
   spec.add_runtime_dependency 'azure_mgmt_service_bus', "~>#{gem_versions['management']['azure_mgmt_service_bus']}"
   spec.add_runtime_dependency 'azure_mgmt_service_fabric', "~>#{gem_versions['management']['azure_mgmt_service_fabric']}"
