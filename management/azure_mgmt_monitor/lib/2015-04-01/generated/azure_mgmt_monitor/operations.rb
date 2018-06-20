@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2015_04_01
   #
-  # Operations
+  # Monitor Management Client
   #
   class Operations
     include MsRestAzure

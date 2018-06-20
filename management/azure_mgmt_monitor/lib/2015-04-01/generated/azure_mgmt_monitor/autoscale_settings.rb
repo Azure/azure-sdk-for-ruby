@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2015_04_01
   #
-  # AutoscaleSettings
+  # Monitor Management Client
   #
   class AutoscaleSettings
     include MsRestAzure
