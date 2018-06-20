@@ -179,6 +179,13 @@
       "module_require": "azure_mgmt_insights"
     }
   },
+  "Microsoft.IotCentral": {
+    "management": {
+      "path": "management/azure_mgmt_iot_central",
+      "namespace": "Azure::IotCentral::Mgmt",
+      "module_require": "azure_mgmt_iot_central"
+    }
+  },
   "Microsoft.IotHub": {
     "management": {
       "path": "management/azure_mgmt_iot_hub",

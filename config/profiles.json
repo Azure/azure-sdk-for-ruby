@@ -181,6 +181,11 @@
                         "1.6": ["*"]
                     }
                 },
+                "Microsoft.IotCentral": {
+                    "management": {
+                        "2017-07-01-privatepreview": ["*"]
+                    }
+                },
                 "Microsoft.IotHub": {
                     "management": {
                         "2017-07-01": ["*"]
@@ -804,6 +809,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_features/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_iot_central": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.IotCentral": {
+                    "management": {
+                        "2017-07-01-privatepreview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_iot_central/lib/profiles",
             "individual_gem_profile": true
         }
         ],
