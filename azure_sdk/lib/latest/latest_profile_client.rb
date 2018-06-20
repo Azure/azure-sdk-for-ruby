@@ -20,12 +20,14 @@ require 'latest/modules/containerservice_profile_module'
 require 'latest/modules/customerinsights_profile_module'
 require 'latest/modules/datalakeanalytics_profile_module'
 require 'latest/modules/datalakestore_profile_module'
+require 'latest/modules/devspaces_profile_module'
 require 'latest/modules/devtestlabs_profile_module'
 require 'latest/modules/dns_profile_module'
 require 'latest/modules/eventgrid_profile_module'
 require 'latest/modules/eventhub_profile_module'
 require 'latest/modules/features_profile_module'
 require 'latest/modules/graphrbac_profile_module'
+require 'latest/modules/iotcentral_profile_module'
 require 'latest/modules/iothub_profile_module'
 require 'latest/modules/keyvault_profile_module'
 require 'latest/modules/links_profile_module'
@@ -84,7 +86,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :mobile_engagement, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :server_management, :service_bus, :service_fabric, :signalr, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :entity_search, :face, :image_search, :news_search, :spell_check, :text_analytics, :video_search, :web_search
+    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_spaces, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_central, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :mobile_engagement, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :server_management, :service_bus, :service_fabric, :signalr, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :entity_search, :face, :image_search, :news_search, :spell_check, :text_analytics, :video_search, :web_search
 
     #
     # Initializes a new instance of the Client class.
@@ -133,12 +135,14 @@ module Azure::Profiles::Latest
       @customer_insights = CustomerInsightsAdapter.new(self, base_url, sdk_options)
       @data_lake_analytics = DataLakeAnalyticsAdapter.new(self, base_url, sdk_options)
       @data_lake_store = DataLakeStoreAdapter.new(self, base_url, sdk_options)
+      @dev_spaces = DevSpacesAdapter.new(self, base_url, sdk_options)
       @dev_test_labs = DevTestLabsAdapter.new(self, base_url, sdk_options)
       @dns = DnsAdapter.new(self, base_url, sdk_options)
       @event_grid = EventGridAdapter.new(self, base_url, sdk_options)
       @event_hub = EventHubAdapter.new(self, base_url, sdk_options)
       @features = FeaturesAdapter.new(self, base_url, sdk_options)
       @graph_rbac = GraphRbacAdapter.new(self, base_url, sdk_options)
+      @iot_central = IotCentralAdapter.new(self, base_url, sdk_options)
       @iot_hub = IotHubAdapter.new(self, base_url, sdk_options)
       @key_vault = KeyVaultAdapter.new(self, base_url, sdk_options)
       @links = LinksAdapter.new(self, base_url, sdk_options)
@@ -327,6 +331,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class DevSpacesAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::DevSpaces::Mgmt::DevSpacesManagementClass.new(context, base_url, options)
+      end
+    end
+
     class DevTestLabsAdapter
       attr_accessor :mgmt
 
@@ -372,6 +384,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         super(context)
+      end
+    end
+
+    class IotCentralAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::IotCentral::Mgmt::IotCentralManagementClass.new(context, base_url, options)
       end
     end
 
