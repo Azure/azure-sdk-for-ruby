@@ -14,7 +14,7 @@ require_relative 'defs/module_definition_def'
 # Class to generate the profile
 #
 class ProfileGenerator
-  CLIENTS_WITH_NO_BASE_URL = %w{ComputerVisionDataClass ContentModeratorDataClass FaceDataClass TextAnalyticsDataClass EventGridDataClass}
+  CLIENTS_WITH_NO_BASE_URL = %w{ComputerVisionDataClass ContentModeratorDataClass FaceDataClass TextAnalyticsDataClass EventGridDataClass KeyVaultDataClass}
 
   #
   # Constructor for the profile generator.
