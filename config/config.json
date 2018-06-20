@@ -901,6 +901,15 @@
       "tag": "package-2015-08"
     }
   },
+  "azure_mgmt_security": {
+    "azure_mgmt_security_2017_08_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/555cfa70276c824ca18c1e41072e7c0562cbadc3/specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/security.json"
+      ],
+      "namespace": "Azure::Security::Mgmt::V2017_08_01_preview",
+      "title": "SecurityManagementClient"
+    }
+  },
   "azure_mgmt_server_management": {
     "azure_mgmt_server_management_2016_07_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/servermanagement/resource-manager/readme.md",

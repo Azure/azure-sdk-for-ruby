@@ -319,6 +319,11 @@
                         "2015-08-19": ["*"]
                     }
                 },
+                "Microsoft.Security": {
+                    "management": {
+                        "2017-08-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.ServerManagement": {
                     "management": {
                         "2016-07-01-preview": ["*"]
@@ -1220,6 +1225,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_search/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_security": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Security": {
+                    "management": {
+                        "2017-08-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_security/lib/profiles",
             "individual_gem_profile": true
         }
         ],

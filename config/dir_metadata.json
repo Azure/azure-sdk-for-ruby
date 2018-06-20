@@ -361,6 +361,13 @@
       "module_require": "azure_mgmt_search"
     }
   },
+  "Microsoft.Security": {
+    "management": {
+      "path": "management/azure_mgmt_security",
+      "namespace": "Azure::Security::Mgmt",
+      "module_require": "azure_mgmt_security"
+    }
+  },
   "Microsoft.ServerManagement": {
     "management": {
       "path": "management/azure_mgmt_server_management",
