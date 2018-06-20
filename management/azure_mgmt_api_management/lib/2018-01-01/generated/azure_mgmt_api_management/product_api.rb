@@ -175,8 +175,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -195,8 +196,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -214,8 +216,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -273,8 +276,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -292,8 +296,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -310,8 +315,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -388,8 +394,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -406,8 +413,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -424,8 +432,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
