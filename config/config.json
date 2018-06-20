@@ -319,6 +319,13 @@
       "tag": "package-2015-10-preview"
     }
   },
+  "azure_mgmt_dev_spaces":{
+    "azure_mgmt_dev_spaces_2018_06_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80cbb435e41327d75b1467f68865231706c090fe/specification/devspaces/resource-manager/readme.md",
+      "namespace": "Azure::DevSpaces::Mgmt::V2018_06_01_preview",
+      "tag": "package-2018-06-01-preview"
+    }
+  },
   "azure_mgmt_devtestlabs": {
     "azure_mgmt_devtestlabs_2016_05_15": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/devtestlabs/resource-manager/readme.md",
@@ -395,6 +402,13 @@
       "namespace": "Azure::GraphRbac::V1_6",
       "title": "GraphRbacClient",
       "tag": "1.6"
+    }
+  },
+  "azure_mgmt_iot_central":{
+    "azure_mgmt_iot_central_2017_07_01_privatepreview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80cbb435e41327d75b1467f68865231706c090fe/specification/iotcentral/resource-manager/readme.md",
+      "namespace": "Azure::IotCentral::Mgmt::V2017_07_01_privatepreview",
+      "tag": "package-2017-07-01-privatepreview"
     }
   },
   "azure_mgmt_iot_hub": {
@@ -907,6 +921,15 @@
       "tag": "package-2015-08"
     }
   },
+  "azure_mgmt_security": {
+    "azure_mgmt_security_2017_08_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/555cfa70276c824ca18c1e41072e7c0562cbadc3/specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/security.json"
+      ],
+      "namespace": "Azure::Security::Mgmt::V2017_08_01_preview",
+      "title": "SecurityManagementClient"
+    }
+  },
   "azure_mgmt_server_management": {
     "azure_mgmt_server_management_2016_07_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/servermanagement/resource-manager/readme.md",
@@ -1200,6 +1223,23 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/eventgrid/data-plane/readme.md",
       "namespace": "Azure::EventGrid::V2018_01_01",
       "tag": "package-2018-01"
+    }
+  },
+  "azure_key_vault":{
+    "azure_key_vault_2016_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/456a0e937655073bdd60df2736f0d8d555fd1f75/specification/keyvault/data-plane/readme.md",
+      "namespace": "Azure::KeyVault::V2016_10_01",
+      "tag": "package-2016-10"
+    },
+    "azure_key_vault_2015_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/456a0e937655073bdd60df2736f0d8d555fd1f75/specification/keyvault/data-plane/readme.md",
+      "namespace": "Azure::KeyVault::V2015_06_01",
+      "tag": "package-2015-06"
+    },
+    "azure_key_vault_7_0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/456a0e937655073bdd60df2736f0d8d555fd1f75/specification/keyvault/data-plane/readme.md",
+      "namespace": "Azure::KeyVault::V7_0_preview",
+      "tag": "package-7.0-preview"
     }
   }
 }

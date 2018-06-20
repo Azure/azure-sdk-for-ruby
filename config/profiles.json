@@ -143,6 +143,11 @@
                         "2016-11-01": ["*"]
                     }
                 },
+                "Microsoft.DevSpaces": {
+                    "management": {
+                        "2018-06-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.DevTestLabs": {
                     "management": {
                         "2016-05-15": ["*"]
@@ -176,6 +181,11 @@
                         "1.6": ["*"]
                     }
                 },
+                "Microsoft.IotCentral": {
+                    "management": {
+                        "2017-07-01-privatepreview": ["*"]
+                    }
+                },
                 "Microsoft.IotHub": {
                     "management": {
                         "2017-07-01": ["*"]
@@ -183,6 +193,9 @@
                 },
                 "Microsoft.KeyVault": {
                     "management": {
+                        "2016-10-01": ["*"]
+                    },
+                    "data": {
                         "2016-10-01": ["*"]
                     }
                 },
@@ -320,6 +333,11 @@
                 "Microsoft.Search": {
                     "management": {
                         "2015-08-19": ["*"]
+                    }
+                },
+                "Microsoft.Security": {
+                    "management": {
+                        "2017-08-01-preview": ["*"]
                     }
                 },
                 "Microsoft.ServerManagement": {
@@ -698,6 +716,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_dev_spaces": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DevSpaces": {
+                        "management": {
+                            "2018-06-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_dev_spaces/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_devtestlabs": [
         {
             "name": "Latest",
@@ -777,6 +809,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_features/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_iot_central": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.IotCentral": {
+                    "management": {
+                        "2017-07-01-privatepreview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_iot_central/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1226,6 +1272,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_security": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Security": {
+                    "management": {
+                        "2017-08-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_security/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_server_management": [
         {
             "name": "Latest",
@@ -1592,6 +1652,20 @@
                     }
                 },
                 "output_dir": "data/azure_event_grid/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_key_vault": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.KeyVault" : {
+                        "data": {
+                            "2016-10-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_key_vault/lib/profiles",
                 "individual_gem_profile": true
             }
         ]

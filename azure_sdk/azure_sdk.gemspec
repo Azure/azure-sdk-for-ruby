@@ -57,11 +57,13 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_customer_insights', "~>#{gem_versions['management']['azure_mgmt_customer_insights']}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_analytics', "~>#{gem_versions['management']['azure_mgmt_datalake_analytics']}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_store', "~>#{gem_versions['management']['azure_mgmt_datalake_store']}"
+  spec.add_runtime_dependency 'azure_mgmt_dev_spaces', "~>#{gem_versions['management']['azure_mgmt_dev_spaces']}"
   spec.add_runtime_dependency 'azure_mgmt_devtestlabs', "~>#{gem_versions['management']['azure_mgmt_devtestlabs']}"
   spec.add_runtime_dependency 'azure_mgmt_dns', "~>#{gem_versions['management']['azure_mgmt_dns']}"
   spec.add_runtime_dependency 'azure_mgmt_event_grid', "~>#{gem_versions['management']['azure_mgmt_event_grid']}"
   spec.add_runtime_dependency 'azure_mgmt_event_hub', "~>#{gem_versions['management']['azure_mgmt_event_hub']}"
   spec.add_runtime_dependency 'azure_mgmt_features', "~>#{gem_versions['management']['azure_mgmt_features']}"
+  spec.add_runtime_dependency 'azure_mgmt_iot_central', "~>#{gem_versions['management']['azure_mgmt_iot_central']}"
   spec.add_runtime_dependency 'azure_mgmt_iot_hub', "~>#{gem_versions['management']['azure_mgmt_iot_hub']}"
   spec.add_runtime_dependency 'azure_mgmt_key_vault', "~>#{gem_versions['management']['azure_mgmt_key_vault']}"
   spec.add_runtime_dependency 'azure_mgmt_links', "~>#{gem_versions['management']['azure_mgmt_links']}"
@@ -89,6 +91,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_resources_management', "~>#{gem_versions['management']['azure_mgmt_resources_management']}"
   spec.add_runtime_dependency 'azure_mgmt_scheduler', "~>#{gem_versions['management']['azure_mgmt_scheduler']}"
   spec.add_runtime_dependency 'azure_mgmt_search', "~>#{gem_versions['management']['azure_mgmt_search']}"
+  spec.add_runtime_dependency 'azure_mgmt_security', "~>#{gem_versions['management']['azure_mgmt_security']}"
   spec.add_runtime_dependency 'azure_mgmt_server_management', "~>#{gem_versions['management']['azure_mgmt_server_management']}"
   spec.add_runtime_dependency 'azure_mgmt_service_bus', "~>#{gem_versions['management']['azure_mgmt_service_bus']}"
   spec.add_runtime_dependency 'azure_mgmt_service_fabric', "~>#{gem_versions['management']['azure_mgmt_service_fabric']}"
@@ -112,5 +115,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_cognitiveservices_videosearch', "~>#{gem_versions['data']['azure_cognitiveservices_videosearch']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_websearch', "~>#{gem_versions['data']['azure_cognitiveservices_websearch']}"
   spec.add_runtime_dependency 'azure_event_grid', "~>#{gem_versions['data']['azure_event_grid']}"
+  spec.add_runtime_dependency 'azure_key_vault', "~>#{gem_versions['data']['azure_key_vault']}"
   spec.add_runtime_dependency 'azure-storage', '~>0.14.0.preview'
 end
