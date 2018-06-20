@@ -143,6 +143,11 @@
                         "2016-11-01": ["*"]
                     }
                 },
+                "Microsoft.DevSpaces": {
+                    "management": {
+                        "2018-06-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.DevTestLabs": {
                     "management": {
                         "2016-05-15": ["*"]
@@ -705,6 +710,20 @@
             "output_dir": "management/azure_mgmt_datalake_store/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_dev_spaces": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DevSpaces": {
+                        "management": {
+                            "2018-06-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_dev_spaces/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_devtestlabs": [
         {

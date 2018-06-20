@@ -29,6 +29,7 @@ gem 'azure_mgmt_container_service',         path: 'management/azure_mgmt_contain
 gem 'azure_mgmt_customer_insights',         path: 'management/azure_mgmt_customer_insights'
 gem 'azure_mgmt_datalake_analytics',        path: 'management/azure_mgmt_datalake_analytics'
 gem 'azure_mgmt_datalake_store',            path: 'management/azure_mgmt_datalake_store'
+gem 'azure_mgmt_dev_spaces',                path: 'management/azure_mgmt_dev_spaces'
 gem 'azure_mgmt_devtestlabs',               path: 'management/azure_mgmt_devtestlabs'
 gem 'azure_mgmt_dns',                       path: 'management/azure_mgmt_dns'
 gem 'azure_mgmt_event_grid',                path: 'management/azure_mgmt_event_grid'

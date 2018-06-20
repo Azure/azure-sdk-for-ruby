@@ -1,5 +1,5 @@
 {
     "rollup": ["azure_sdk"],
-    "management": ["azure_mgmt_security"],
+    "management": ["azure_mgmt_security", "azure_mgmt_dev_spaces"],
     "data": ["azure_key_vault"]
 }

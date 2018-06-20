@@ -57,6 +57,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_customer_insights', "~>#{gem_versions['management']['azure_mgmt_customer_insights']}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_analytics', "~>#{gem_versions['management']['azure_mgmt_datalake_analytics']}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_store', "~>#{gem_versions['management']['azure_mgmt_datalake_store']}"
+  spec.add_runtime_dependency 'azure_mgmt_dev_spaces', "~>#{gem_versions['management']['azure_mgmt_dev_spaces']}"
   spec.add_runtime_dependency 'azure_mgmt_devtestlabs', "~>#{gem_versions['management']['azure_mgmt_devtestlabs']}"
   spec.add_runtime_dependency 'azure_mgmt_dns', "~>#{gem_versions['management']['azure_mgmt_dns']}"
   spec.add_runtime_dependency 'azure_mgmt_event_grid', "~>#{gem_versions['management']['azure_mgmt_event_grid']}"

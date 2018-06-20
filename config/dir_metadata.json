@@ -118,6 +118,13 @@
       "module_require": "azure_mgmt_datalake_store"
     }
   },
+  "Microsoft.DevSpaces": {
+    "management": {
+      "path": "management/azure_mgmt_dev_spaces",
+      "namespace": "Azure::DevSpaces::Mgmt",
+      "module_require": "azure_mgmt_dev_spaces"
+    }
+  },
   "Microsoft.DevTestLabs": {
     "management": {
       "path": "management/azure_mgmt_devtestlabs",

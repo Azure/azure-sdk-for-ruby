@@ -319,6 +319,13 @@
       "tag": "package-2015-10-preview"
     }
   },
+  "azure_mgmt_dev_spaces":{
+    "azure_mgmt_dev_spaces_2018_06_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80cbb435e41327d75b1467f68865231706c090fe/specification/devspaces/resource-manager/readme.md",
+      "namespace": "Azure::DevSpaces::Mgmt::V2018_06_01_preview",
+      "tag": "package-2018-06-01-preview"
+    }
+  },
   "azure_mgmt_devtestlabs": {
     "azure_mgmt_devtestlabs_2016_05_15": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/devtestlabs/resource-manager/readme.md",
