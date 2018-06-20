@@ -184,6 +184,9 @@
                 "Microsoft.KeyVault": {
                     "management": {
                         "2016-10-01": ["*"]
+                    },
+                    "data": {
+                        "2016-10-01": ["*"]
                     }
                 },
                 "Microsoft.Links": {
@@ -1611,6 +1614,20 @@
                     }
                 },
                 "output_dir": "data/azure_event_grid/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_key_vault": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.KeyVault" : {
+                        "data": {
+                            "2016-10-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_key_vault/lib/profiles",
                 "individual_gem_profile": true
             }
         ]

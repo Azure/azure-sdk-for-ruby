@@ -15,7 +15,8 @@
         "azure_cognitiveservices_videosearch": "0.16.0",
         "azure_cognitiveservices_websearch": "0.16.0",
         "azure_event_grid": "0.16.0",
-        "azure_graph_rbac": "0.16.0"
+        "azure_graph_rbac": "0.16.0",
+        "azure_key_vault": "0.16.0"
     },
     "management" : {
         "azure_mgmt_analysis_services": "0.16.0",

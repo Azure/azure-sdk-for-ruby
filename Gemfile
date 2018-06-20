@@ -86,4 +86,5 @@ gem 'azure_cognitiveservices_textanalytics',    path: 'data/azure_cognitiveservi
 gem 'azure_cognitiveservices_videosearch',      path: 'data/azure_cognitiveservices_videosearch'
 gem 'azure_cognitiveservices_websearch',        path: 'data/azure_cognitiveservices_websearch'
 gem 'azure_event_grid',                         path: 'data/azure_event_grid'
+gem 'azure_key_vault',                          path: 'data/azure_key_vault'
 gem 'azure_sdk',                            path: 'azure_sdk'
