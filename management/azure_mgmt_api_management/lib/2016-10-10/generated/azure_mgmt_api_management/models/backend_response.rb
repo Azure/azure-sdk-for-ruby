@@ -21,7 +21,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackendResponse',
           type: {
@@ -29,7 +28,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'BackendResponse',
             model_properties: {
               certificate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificate',
                 constraints: {
@@ -38,7 +36,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -48,19 +45,16 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               query: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'query',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -72,19 +66,16 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               header: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'header',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -96,7 +87,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 constraints: {
@@ -108,7 +98,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -116,7 +105,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {
@@ -124,7 +112,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 constraints: {
@@ -136,7 +123,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 constraints: {
@@ -148,7 +134,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 constraints: {
@@ -160,7 +145,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               skip_certificate_chain_validation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.skipCertificateChainValidation',
                 default_value: false,
@@ -169,7 +153,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               skip_certificate_name_validation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.skipCertificateNameValidation',
                 default_value: false,
@@ -178,7 +161,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -187,7 +169,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocol',
                 type: {

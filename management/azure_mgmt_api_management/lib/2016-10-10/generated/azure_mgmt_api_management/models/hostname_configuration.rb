@@ -29,7 +29,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HostnameConfiguration',
           type: {
@@ -37,7 +36,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'HostnameConfiguration',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -46,7 +44,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               hostname: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'hostname',
                 type: {
@@ -54,7 +51,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               certificate: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'certificate',
                 type: {
