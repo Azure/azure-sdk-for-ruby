@@ -383,10 +383,11 @@ module Azure::Profiles::Latest
       end
     end
 
-    class KeyVaultAdapter
+    class KeyVaultAdapter < Azure::Profiles::Latest::KeyVault::KeyVaultDataClass
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
+        super(context)
         @mgmt = Azure::Profiles::Latest::KeyVault::Mgmt::KeyVaultManagementClass.new(context, base_url, options)
       end
     end
