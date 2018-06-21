@@ -34,7 +34,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultAccessPolicyParameters',
           type: {
@@ -42,7 +41,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'VaultAccessPolicyParameters',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,7 +49,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,7 +57,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,7 +65,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -78,7 +73,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {
