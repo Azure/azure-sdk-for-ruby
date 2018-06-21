@@ -33,7 +33,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatusJobExtendedInfo',
           type: {
@@ -41,7 +40,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'OperationStatusJobExtendedInfo',
             model_properties: {
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -49,7 +47,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               job_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobId',
                 type: {
