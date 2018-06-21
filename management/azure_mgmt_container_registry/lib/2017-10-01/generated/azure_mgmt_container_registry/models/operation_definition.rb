@@ -12,12 +12,20 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      # @return [String] The origin information of the container registry
+      # operation.
+      attr_accessor :origin
+
       # @return [String] Operation name: {provider}/{resource}/{operation}.
       attr_accessor :name
 
       # @return [OperationDisplayDefinition] The display information for the
       # container registry operation.
       attr_accessor :display
+
+      # @return [OperationServiceSpecificationDefinition] The definition of
+      # Azure Monitoring service.
+      attr_accessor :service_specification
 
 
       #
@@ -32,6 +40,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             name: 'Composite',
             class_name: 'OperationDefinition',
             model_properties: {
+              origin: {
+                required: false,
+                serialized_name: 'origin',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 serialized_name: 'name',
@@ -45,6 +60,14 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 type: {
                   name: 'Composite',
                   class_name: 'OperationDisplayDefinition'
+                }
+              },
+              service_specification: {
+                required: false,
+                serialized_name: 'properties.serviceSpecification',
+                type: {
+                  name: 'Composite',
+                  class_name: 'OperationServiceSpecificationDefinition'
                 }
               }
             }

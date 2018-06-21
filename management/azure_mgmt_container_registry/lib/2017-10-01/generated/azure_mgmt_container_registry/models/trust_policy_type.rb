@@ -6,12 +6,10 @@
 module Azure::ContainerRegistry::Mgmt::V2017_10_01
   module Models
     #
-    # Defines values for WebhookAction
+    # Defines values for TrustPolicyType
     #
-    module WebhookAction
-      Push = "push"
-      Delete = "delete"
-      Quarantine = "quarantine"
+    module TrustPolicyType
+      Notary = "Notary"
     end
   end
 end
