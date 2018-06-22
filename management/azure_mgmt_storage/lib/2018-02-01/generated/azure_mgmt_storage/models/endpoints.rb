@@ -6,8 +6,8 @@
 module Azure::Storage::Mgmt::V2018_02_01
   module Models
     #
-    # The URIs that are used to perform a retrieval of a public blob, queue, or
-    # table object.
+    # The URIs that are used to perform a retrieval of a public blob, queue,
+    # table, web or dfs object.
     #
     class Endpoints
 
@@ -24,6 +24,12 @@ module Azure::Storage::Mgmt::V2018_02_01
 
       # @return [String] Gets the file endpoint.
       attr_accessor :file
+
+      # @return [String] Gets the web endpoint.
+      attr_accessor :web
+
+      # @return [String] Gets the dfs endpoint.
+      attr_accessor :dfs
 
 
       #
@@ -66,6 +72,22 @@ module Azure::Storage::Mgmt::V2018_02_01
                 required: false,
                 read_only: true,
                 serialized_name: 'file',
+                type: {
+                  name: 'String'
+                }
+              },
+              web: {
+                required: false,
+                read_only: true,
+                serialized_name: 'web',
+                type: {
+                  name: 'String'
+                }
+              },
+              dfs: {
+                required: false,
+                read_only: true,
+                serialized_name: 'dfs',
                 type: {
                   name: 'String'
                 }
