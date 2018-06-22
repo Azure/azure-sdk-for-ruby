@@ -51,6 +51,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # @return [ConsumerGroups] consumer_groups
     attr_reader :consumer_groups
 
+    # @return [Regions] regions
+    attr_reader :regions
+
     #
     # Creates initializes a new instance of the EventHubManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -69,6 +72,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
       @event_hubs = EventHubs.new(self)
       @consumer_groups = ConsumerGroups.new(self)
+      @regions = Regions.new(self)
       @api_version = '2017-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -122,9 +126,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -141,7 +142,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_hub'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::EventHub::Mgmt::V2017_04_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::EventHub::Mgmt::V2017_04_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
