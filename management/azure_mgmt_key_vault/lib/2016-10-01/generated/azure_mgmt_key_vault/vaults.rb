@@ -437,7 +437,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     end
 
     #
-    # Update access policies in a key vault in the specified subscription.
+    # Update access policies on a key vault in the specified subscription.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
@@ -457,7 +457,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     end
 
     #
-    # Update access policies in a key vault in the specified subscription.
+    # Update access policies on a key vault in the specified subscription.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
@@ -476,7 +476,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     end
 
     #
-    # Update access policies in a key vault in the specified subscription.
+    # Update access policies on a key vault in the specified subscription.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
