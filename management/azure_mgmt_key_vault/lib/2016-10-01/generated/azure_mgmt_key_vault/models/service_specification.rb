@@ -22,7 +22,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceSpecification',
           type: {
@@ -30,13 +29,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'ServiceSpecification',
             model_properties: {
               log_specifications: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LogSpecificationElementType',
                       type: {
