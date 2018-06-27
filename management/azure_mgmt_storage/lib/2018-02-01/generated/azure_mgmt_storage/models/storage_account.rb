@@ -88,6 +88,10 @@ module Azure::Storage::Mgmt::V2018_02_01
       # @return [NetworkRuleSet] Network rule set
       attr_accessor :network_rule_set
 
+      # @return [Boolean] Account HierarchicalNamespace enabled if sets to
+      # true. Default value: false .
+      attr_accessor :is_hns_enabled
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -315,6 +319,15 @@ module Azure::Storage::Mgmt::V2018_02_01
                 type: {
                   name: 'Composite',
                   class_name: 'NetworkRuleSet'
+                }
+              },
+              is_hns_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.isHnsEnabled',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
