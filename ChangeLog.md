@@ -1,3 +1,6 @@
+## 2018.06.27 - Azure Ruby SDK Release
+* Released 0.16.3 version of azure_mgmt_storage gem. This includes new features: HDFS & Static Website.
+
 ## 2018.06.20 - Azure Ruby SDK Release
 * Released 0.16.0 version of azure_mgmt_security gem. This includes the 2017-08-01-preview version.
 * Released 0.16.0 version of azure_key_vault data plane gem.
