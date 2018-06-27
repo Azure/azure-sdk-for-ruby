@@ -6,18 +6,18 @@
 module Azure::ServiceBus::Mgmt::V2017_04_01
   module Models
     #
-    # The response of the List Namespace operation.
+    # The result of the List migrationConfigurations operation.
     #
-    class SBNamespaceListResult
+    class MigrationConfigListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<SBNamespace>] Result of the List Namespace operation.
+      # @return [Array<MigrationConfigProperties>] List of Migration Configs
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of Namespaces.
+      # contains incomplete list of migrationConfigurations
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -26,7 +26,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<SBNamespace>] operation results.
+      # @return [Array<MigrationConfigProperties>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +41,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       # Gets the next page of results.
       #
-      # @return [SBNamespaceListResult] with next page content.
+      # @return [MigrationConfigListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,16 +53,16 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       end
 
       #
-      # Mapper for SBNamespaceListResult class as Ruby Hash.
+      # Mapper for MigrationConfigListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SBNamespaceListResult',
+          serialized_name: 'MigrationConfigListResult',
           type: {
             name: 'Composite',
-            class_name: 'SBNamespaceListResult',
+            class_name: 'MigrationConfigListResult',
             model_properties: {
               value: {
                 required: false,
@@ -71,16 +71,17 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SBNamespaceElementType',
+                      serialized_name: 'MigrationConfigPropertiesElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SBNamespace'
+                        class_name: 'MigrationConfigProperties'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'
