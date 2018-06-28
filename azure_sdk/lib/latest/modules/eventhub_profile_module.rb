@@ -12,31 +12,36 @@ module Azure::Profiles::Latest
       DisasterRecoveryConfigs = Azure::EventHub::Mgmt::V2017_04_01::DisasterRecoveryConfigs
       EventHubs = Azure::EventHub::Mgmt::V2017_04_01::EventHubs
       ConsumerGroups = Azure::EventHub::Mgmt::V2017_04_01::ConsumerGroups
+      Regions = Azure::EventHub::Mgmt::V2017_04_01::Regions
 
       module Models
+        MessagingRegionsProperties = Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegionsProperties
         CaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
-        Destination = Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
         Resource = Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
-        Operation = Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
         ErrorResponse = Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
-        OperationListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
-        EventHubListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
-        AccessKeys = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
         ArmDisasterRecoveryListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
-        Sku = Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+        EventHubListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
+        MessagingRegionsListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegionsListResult
+        AccessKeys = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
         ConsumerGroupListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
-        AuthorizationRuleListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
+        Destination = Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
         CheckNameAvailabilityParameter = Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
         EHNamespaceListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
         CheckNameAvailabilityResult = Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
         RegenerateAccessKeyParameters = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         OperationDisplay = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
+        AuthorizationRuleListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
+        Operation = Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
+        Sku = Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+        OperationListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
         TrackedResource = Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
         EHNamespace = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
         AuthorizationRule = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
         Eventhub = Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
         ConsumerGroup = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
         ArmDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+        MessagingRegions = Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegions
+        MessagingPlan = Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingPlan
         SkuName = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
         SkuTier = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
         AccessRights = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
@@ -49,7 +54,7 @@ module Azure::Profiles::Latest
       end
 
       class EventHubManagementClass
-        attr_reader :operations, :namespaces, :disaster_recovery_configs, :event_hubs, :consumer_groups, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :namespaces, :disaster_recovery_configs, :event_hubs, :consumer_groups, :regions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -64,6 +69,7 @@ module Azure::Profiles::Latest
           @disaster_recovery_configs = @client_0.disaster_recovery_configs
           @event_hubs = @client_0.event_hubs
           @consumer_groups = @client_0.consumer_groups
+          @regions = @client_0.regions
 
           @model_classes = ModelClasses.new
         end
@@ -82,41 +88,35 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def messaging_regions_properties
+            Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegionsProperties
+          end
           def capture_description
             Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
-          end
-          def destination
-            Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
           end
           def resource
             Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
           end
-          def operation
-            Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
-          end
           def error_response
             Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
-          end
-          def operation_list_result
-            Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
-          end
-          def event_hub_list_result
-            Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
-          end
-          def access_keys
-            Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
           end
           def arm_disaster_recovery_list_result
             Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
           end
-          def sku
-            Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+          def event_hub_list_result
+            Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
+          end
+          def messaging_regions_list_result
+            Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegionsListResult
+          end
+          def access_keys
+            Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
           end
           def consumer_group_list_result
             Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
           end
-          def authorization_rule_list_result
-            Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
+          def destination
+            Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
           end
           def check_name_availability_parameter
             Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
@@ -132,6 +132,18 @@ module Azure::Profiles::Latest
           end
           def operation_display
             Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
+          end
+          def authorization_rule_list_result
+            Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
+          end
+          def operation
+            Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
+          end
+          def sku
+            Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+          end
+          def operation_list_result
+            Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
           end
           def tracked_resource
             Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
@@ -150,6 +162,12 @@ module Azure::Profiles::Latest
           end
           def arm_disaster_recovery
             Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+          end
+          def messaging_regions
+            Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegions
+          end
+          def messaging_plan
+            Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingPlan
           end
           def sku_name
             Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName

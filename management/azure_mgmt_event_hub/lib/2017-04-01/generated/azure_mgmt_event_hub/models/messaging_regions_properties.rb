@@ -3,48 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventHub::Mgmt::V2015_08_01
+module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # A Event Hub REST API operation
+    # Model object.
     #
-    class Operation
+    #
+    class MessagingRegionsProperties
 
       include MsRestAzure
 
-      # @return [String] Operation name: {provider}/{resource}/{operation}
-      attr_accessor :name
+      # @return [String] Region code
+      attr_accessor :code
 
-      # @return [OperationDisplay] The object that represents the operation.
-      attr_accessor :display
+      # @return [String] Full name of the region
+      attr_accessor :full_name
 
 
       #
-      # Mapper for Operation class as Ruby Hash.
+      # Mapper for MessagingRegionsProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Operation',
+          serialized_name: 'MessagingRegions_properties',
           type: {
             name: 'Composite',
-            class_name: 'Operation',
+            class_name: 'MessagingRegionsProperties',
             model_properties: {
-              name: {
+              code: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              display: {
+              full_name: {
                 required: false,
-                serialized_name: 'display',
+                read_only: true,
+                serialized_name: 'fullName',
                 type: {
-                  name: 'Composite',
-                  class_name: 'OperationDisplay'
+                  name: 'String'
                 }
               }
             }
