@@ -23,7 +23,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceSpecification',
           type: {
@@ -31,13 +30,11 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'ServiceSpecification',
             model_properties: {
               metric_specifications: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricSpecificationElementType',
                       type: {
