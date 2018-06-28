@@ -16,6 +16,11 @@ module Azure::Compute::Mgmt::V2017_03_30
       # @return [Array<AvailabilitySet>] The list of availability sets
       attr_accessor :value
 
+      # @return [String] The URI to fetch the next page of AvailabilitySets.
+      # Call ListNext() with this URI to fetch the next page of
+      # AvailabilitySets.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -61,7 +66,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'AvailabilitySetListResult',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
@@ -73,6 +78,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                         class_name: 'AvailabilitySet'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }
