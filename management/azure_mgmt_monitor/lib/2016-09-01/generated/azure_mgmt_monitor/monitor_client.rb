@@ -31,6 +31,9 @@ module Azure::Monitor::Mgmt::V2016_09_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Metrics] metrics
+    attr_reader :metrics
+
     # @return [ServiceDiagnosticSettingsOperations]
     # service_diagnostic_settings_operations
     attr_reader :service_diagnostic_settings_operations
@@ -48,6 +51,7 @@ module Azure::Monitor::Mgmt::V2016_09_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @metrics = Metrics.new(self)
       @service_diagnostic_settings_operations = ServiceDiagnosticSettingsOperations.new(self)
       @api_version = '2016-09-01'
       @accept_language = 'en-US'
@@ -102,9 +106,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -121,7 +122,9 @@ module Azure::Monitor::Mgmt::V2016_09_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::Monitor::Mgmt::V2016_09_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Monitor::Mgmt::V2016_09_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
