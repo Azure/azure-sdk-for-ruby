@@ -60,10 +60,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       # partitioned across multiple message brokers is enabled.
       attr_accessor :enable_partitioning
 
-      # @return [Boolean] Value that indicates whether partitioning is enabled
-      # or disabled. NOTE: This property is unsupported, and may be deprecated.
-      attr_accessor :enable_subscription_partitioning
-
       # @return [Boolean] Whether messages should be filtered before
       # publishing.
       attr_accessor :filtering_messages_before_publishing
@@ -109,7 +105,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TopicCreateOrUpdateParameters',
           type: {
@@ -117,7 +112,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
             class_name: 'TopicCreateOrUpdateParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -125,7 +119,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -133,7 +126,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               accessed_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.accessedAt',
@@ -142,7 +134,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               auto_delete_on_idle: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
@@ -150,7 +141,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               entity_availability_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.entityAvailabilityStatus',
                 type: {
@@ -159,7 +149,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               created_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -168,7 +157,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               count_details: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.countDetails',
@@ -178,7 +166,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               default_message_time_to_live: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultMessageTimeToLive',
                 type: {
@@ -186,7 +173,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               duplicate_detection_history_time_window: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.duplicateDetectionHistoryTimeWindow',
                 type: {
@@ -194,7 +180,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               enable_batched_operations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableBatchedOperations',
                 type: {
@@ -202,7 +187,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               enable_express: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableExpress',
                 type: {
@@ -210,23 +194,13 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               enable_partitioning: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enablePartitioning',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_subscription_partitioning: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.enableSubscriptionPartitioning',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               filtering_messages_before_publishing: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filteringMessagesBeforePublishing',
                 type: {
@@ -234,7 +208,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               is_anonymous_accessible: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isAnonymousAccessible',
                 type: {
@@ -242,7 +215,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               is_express: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isExpress',
                 type: {
@@ -250,7 +222,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               max_size_in_megabytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxSizeInMegabytes',
                 type: {
@@ -258,7 +229,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               requires_duplicate_detection: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requiresDuplicateDetection',
                 type: {
@@ -266,7 +236,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               size_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.sizeInBytes',
@@ -275,7 +244,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -284,7 +252,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               subscription_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subscriptionCount',
@@ -293,7 +260,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               support_ordering: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.supportOrdering',
                 type: {
@@ -301,7 +267,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               updated_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
