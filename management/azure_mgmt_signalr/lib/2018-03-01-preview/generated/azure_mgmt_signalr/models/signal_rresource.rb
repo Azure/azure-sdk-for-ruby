@@ -48,7 +48,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SignalRResource',
           type: {
@@ -56,7 +55,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'SignalRResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,7 +63,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -74,7 +71,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -83,7 +79,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -91,13 +86,11 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -107,7 +100,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -116,7 +108,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               host_name_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostNamePrefix',
                 type: {
@@ -124,7 +115,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -133,7 +123,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               external_ip: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.externalIP',
@@ -142,7 +131,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               host_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hostName',
@@ -151,7 +139,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               public_port: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.publicPort',
@@ -160,7 +147,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               server_port: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverPort',

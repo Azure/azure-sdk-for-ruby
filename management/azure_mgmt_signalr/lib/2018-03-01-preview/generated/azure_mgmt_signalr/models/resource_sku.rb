@@ -16,8 +16,9 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # number code, such as A0 or P3.  Required (if sku is specified)
       attr_accessor :name
 
-      # @return [SignalRSkuTier] The tier of this particular SKU. Optional.
-      # Possible values include: 'Free', 'Basic', 'Premium'
+      # @return [SignalRSkuTier] Optional tier of this particular SKU. `Basic`
+      # is deprecated, use `Standard` instead for Basic tier. Possible values
+      # include: 'Free', 'Basic', 'Standard', 'Premium'
       attr_accessor :tier
 
       # @return [String] Optional, string. When the name field is the
@@ -42,7 +43,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSku',
           type: {
@@ -50,7 +50,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'ResourceSku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -58,7 +57,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -66,7 +64,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -74,7 +71,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               family: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'family',
                 type: {
@@ -82,7 +78,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               capacity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {
