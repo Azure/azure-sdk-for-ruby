@@ -10,6 +10,7 @@ module Azure::Profiles::Latest
       Operations = Azure::ServiceBus::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::ServiceBus::Mgmt::V2017_04_01::Namespaces
       DisasterRecoveryConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::DisasterRecoveryConfigs
+      MigrationConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::MigrationConfigs
       Queues = Azure::ServiceBus::Mgmt::V2017_04_01::Queues
       Topics = Azure::ServiceBus::Mgmt::V2017_04_01::Topics
       Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
@@ -19,33 +20,34 @@ module Azure::Profiles::Latest
       EventHubs = Azure::ServiceBus::Mgmt::V2017_04_01::EventHubs
 
       module Models
-        CheckNameAvailabilityResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
+        OperationDisplay = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
         SBQueueListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBQueueListResult
-        Resource = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Resource
-        PremiumMessagingRegionsListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult
-        SBSku = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSku
+        Destination = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Destination
         SBTopicListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopicListResult
-        SBNamespaceListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
-        PremiumMessagingRegionsProperties = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsProperties
-        CaptureDescription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CaptureDescription
+        MigrationConfigListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::MigrationConfigListResult
+        PremiumMessagingRegionsListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult
+        ArmDisasterRecoveryListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
         SBSubscriptionListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscriptionListResult
-        AuthorizationRuleProperties = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AuthorizationRuleProperties
+        SBAuthorizationRuleListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult
         CheckNameAvailability = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
+        AccessKeys = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AccessKeys
+        CheckNameAvailabilityResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
+        MessageCountDetails = Azure::ServiceBus::Mgmt::V2017_04_01::Models::MessageCountDetails
+        PremiumMessagingRegionsProperties = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsProperties
+        Resource = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Resource
+        Operation = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Operation
+        SBNamespaceListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
+        OperationListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationListResult
+        AuthorizationRuleProperties = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AuthorizationRuleProperties
+        ErrorResponse = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ErrorResponse
+        CaptureDescription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CaptureDescription
+        Action = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
+        EventHubListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::EventHubListResult
+        SqlFilter = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
+        SBSku = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSku
+        CorrelationFilter = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CorrelationFilter
         RegenerateAccessKeyParameters = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         RuleListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult
-        Destination = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Destination
-        OperationDisplay = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
-        ArmDisasterRecoveryListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
-        Operation = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Operation
-        SBAuthorizationRuleListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult
-        OperationListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationListResult
-        MessageCountDetails = Azure::ServiceBus::Mgmt::V2017_04_01::Models::MessageCountDetails
-        ErrorResponse = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ErrorResponse
-        EventHubListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::EventHubListResult
-        Action = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
-        SqlFilter = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
-        AccessKeys = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AccessKeys
-        CorrelationFilter = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CorrelationFilter
         TrackedResource = Azure::ServiceBus::Mgmt::V2017_04_01::Models::TrackedResource
         ResourceNamespacePatch = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
         SBNamespace = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespace
@@ -59,6 +61,7 @@ module Azure::Profiles::Latest
         PremiumMessagingRegions = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
         Eventhub = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Eventhub
         ArmDisasterRecovery = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+        MigrationConfigProperties = Azure::ServiceBus::Mgmt::V2017_04_01::Models::MigrationConfigProperties
         SkuName = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName
         SkuTier = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuTier
         AccessRights = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AccessRights
@@ -72,7 +75,7 @@ module Azure::Profiles::Latest
       end
 
       class ServiceBusManagementClass
-        attr_reader :operations, :namespaces, :disaster_recovery_configs, :queues, :topics, :subscriptions, :rules, :regions, :premium_messaging_regions_operations, :event_hubs, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :namespaces, :disaster_recovery_configs, :migration_configs, :queues, :topics, :subscriptions, :rules, :regions, :premium_messaging_regions_operations, :event_hubs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -85,6 +88,7 @@ module Azure::Profiles::Latest
           @operations = @client_0.operations
           @namespaces = @client_0.namespaces
           @disaster_recovery_configs = @client_0.disaster_recovery_configs
+          @migration_configs = @client_0.migration_configs
           @queues = @client_0.queues
           @topics = @client_0.topics
           @subscriptions = @client_0.subscriptions
@@ -110,86 +114,89 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def check_name_availability_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
+          def operation_display
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
           end
           def sbqueue_list_result
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBQueueListResult
           end
-          def resource
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Resource
-          end
-          def premium_messaging_regions_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult
-          end
-          def sbsku
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSku
+          def destination
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Destination
           end
           def sbtopic_list_result
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopicListResult
           end
-          def sbnamespace_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
+          def migration_config_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::MigrationConfigListResult
           end
-          def premium_messaging_regions_properties
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsProperties
+          def premium_messaging_regions_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult
           end
-          def capture_description
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CaptureDescription
+          def arm_disaster_recovery_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
           end
           def sbsubscription_list_result
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscriptionListResult
           end
-          def authorization_rule_properties
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::AuthorizationRuleProperties
+          def sbauthorization_rule_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult
           end
           def check_name_availability
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
+          end
+          def access_keys
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::AccessKeys
+          end
+          def check_name_availability_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
+          end
+          def message_count_details
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::MessageCountDetails
+          end
+          def premium_messaging_regions_properties
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsProperties
+          end
+          def resource
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Resource
+          end
+          def operation
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Operation
+          end
+          def sbnamespace_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
+          end
+          def operation_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationListResult
+          end
+          def authorization_rule_properties
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::AuthorizationRuleProperties
+          end
+          def error_response
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::ErrorResponse
+          end
+          def capture_description
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CaptureDescription
+          end
+          def action
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
+          end
+          def event_hub_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::EventHubListResult
+          end
+          def sql_filter
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
+          end
+          def sbsku
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSku
+          end
+          def correlation_filter
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CorrelationFilter
           end
           def regenerate_access_key_parameters
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
           end
           def rule_list_result
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult
-          end
-          def destination
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Destination
-          end
-          def operation_display
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
-          end
-          def arm_disaster_recovery_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
-          end
-          def operation
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Operation
-          end
-          def sbauthorization_rule_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult
-          end
-          def operation_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationListResult
-          end
-          def message_count_details
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::MessageCountDetails
-          end
-          def error_response
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::ErrorResponse
-          end
-          def event_hub_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::EventHubListResult
-          end
-          def action
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
-          end
-          def sql_filter
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
-          end
-          def access_keys
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::AccessKeys
-          end
-          def correlation_filter
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CorrelationFilter
           end
           def tracked_resource
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::TrackedResource
@@ -229,6 +236,9 @@ module Azure::Profiles::Latest
           end
           def arm_disaster_recovery
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+          end
+          def migration_config_properties
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::MigrationConfigProperties
           end
           def sku_name
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName

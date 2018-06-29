@@ -45,6 +45,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # @return [DisasterRecoveryConfigs] disaster_recovery_configs
     attr_reader :disaster_recovery_configs
 
+    # @return [MigrationConfigs] migration_configs
+    attr_reader :migration_configs
+
     # @return [Queues] queues
     attr_reader :queues
 
@@ -83,6 +86,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
       @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
+      @migration_configs = MigrationConfigs.new(self)
       @queues = Queues.new(self)
       @topics = Topics.new(self)
       @subscriptions = Subscriptions.new(self)
@@ -143,9 +147,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -162,7 +163,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_service_bus'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::ServiceBus::Mgmt::V2017_04_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ServiceBus::Mgmt::V2017_04_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

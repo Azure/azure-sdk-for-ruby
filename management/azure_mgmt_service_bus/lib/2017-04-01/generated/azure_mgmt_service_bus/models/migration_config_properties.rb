@@ -6,46 +6,37 @@
 module Azure::ServiceBus::Mgmt::V2017_04_01
   module Models
     #
-    # Single item in List or Get Alias(Disaster Recovery configuration)
-    # operation
+    # Single item in List or Get Migration Config operation
     #
-    class ArmDisasterRecovery < Resource
+    class MigrationConfigProperties < Resource
 
       include MsRestAzure
 
-      # @return [ProvisioningStateDR] Provisioning state of the Alias(Disaster
-      # Recovery configuration) - possible values 'Accepted' or 'Succeeded' or
-      # 'Failed'. Possible values include: 'Accepted', 'Succeeded', 'Failed'
+      # @return [String] Provisioning state of Migration Configuration
       attr_accessor :provisioning_state
 
       # @return [Integer] Number of entities pending to be replicated.
       attr_accessor :pending_replication_operations_count
 
-      # @return [String] ARM Id of the Primary/Secondary eventhub namespace
-      # name, which is part of GEO DR pairning
-      attr_accessor :partner_namespace
+      # @return [String] Existing premium Namespace ARM Id name which has no
+      # entities, will be used for migration
+      attr_accessor :target_namespace
 
-      # @return [String] Primary/Secondary eventhub namespace name, which is
-      # part of GEO DR pairning
-      attr_accessor :alternate_name
-
-      # @return [RoleDisasterRecovery] role of namespace in GEO DR - possible
-      # values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible
-      # values include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
-      attr_accessor :role
+      # @return [String] Name to access Standard Namespace after migration
+      attr_accessor :post_migration_name
 
 
       #
-      # Mapper for ArmDisasterRecovery class as Ruby Hash.
+      # Mapper for MigrationConfigProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ArmDisasterRecovery',
+          serialized_name: 'MigrationConfigProperties',
           type: {
             name: 'Composite',
-            class_name: 'ArmDisasterRecovery',
+            class_name: 'MigrationConfigProperties',
             model_properties: {
               id: {
                 required: false,
@@ -76,8 +67,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Enum',
-                  module: 'ProvisioningStateDR'
+                  name: 'String'
                 }
               },
               pending_replication_operations_count: {
@@ -88,27 +78,18 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                   name: 'Number'
                 }
               },
-              partner_namespace: {
+              target_namespace: {
                 required: false,
-                serialized_name: 'properties.partnerNamespace',
+                serialized_name: 'properties.targetNamespace',
                 type: {
                   name: 'String'
                 }
               },
-              alternate_name: {
+              post_migration_name: {
                 required: false,
-                serialized_name: 'properties.alternateName',
+                serialized_name: 'properties.postMigrationName',
                 type: {
                   name: 'String'
-                }
-              },
-              role: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.role',
-                type: {
-                  name: 'Enum',
-                  module: 'RoleDisasterRecovery'
                 }
               }
             }

@@ -28,13 +28,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<SBSubscription>] operation results.
     #
-    def list_by_topic(resource_group_name, namespace_name, topic_name, custom_headers:nil)
-      first_page = list_by_topic_as_lazy(resource_group_name, namespace_name, topic_name, custom_headers:custom_headers)
+    def list_by_topic(resource_group_name, namespace_name, topic_name, skip = nil, top = nil, custom_headers = nil)
+      first_page = list_by_topic_as_lazy(resource_group_name, namespace_name, topic_name, skip, top, custom_headers)
       first_page.get_all_items
     end
 
@@ -45,13 +51,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_topic_with_http_info(resource_group_name, namespace_name, topic_name, custom_headers:nil)
-      list_by_topic_async(resource_group_name, namespace_name, topic_name, custom_headers:custom_headers).value!
+    def list_by_topic_with_http_info(resource_group_name, namespace_name, topic_name, skip = nil, top = nil, custom_headers = nil)
+      list_by_topic_async(resource_group_name, namespace_name, topic_name, skip, top, custom_headers).value!
     end
 
     #
@@ -61,26 +73,26 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_topic_async(resource_group_name, namespace_name, topic_name, custom_headers:nil)
+    def list_by_topic_async(resource_group_name, namespace_name, topic_name, skip = nil, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
-      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -92,7 +104,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'topicName' => topic_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$skip' => skip,'$top' => top},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -140,8 +152,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [SBSubscription] operation results.
     #
-    def create_or_update(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -160,8 +172,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers).value!
     end
 
     #
@@ -179,29 +191,23 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
-      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
-      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
-      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscription.mapper()
@@ -261,8 +267,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
-      response = delete_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
+      response = delete_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers).value!
       nil
     end
 
@@ -279,8 +285,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
-      delete_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
+      delete_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers).value!
     end
 
     #
@@ -296,24 +302,16 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
+    def delete_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
-      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
-      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
-      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -361,8 +359,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [SBSubscription] operation results.
     #
-    def get(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
-      response = get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
+      response = get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -379,8 +377,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
-      get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
+      get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers).value!
     end
 
     #
@@ -396,24 +394,16 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
+    def get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
-      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
-      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
-      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -468,8 +458,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [SBSubscriptionListResult] operation results.
     #
-    def list_by_topic_next(next_page_link, custom_headers:nil)
-      response = list_by_topic_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_topic_next(next_page_link, custom_headers = nil)
+      response = list_by_topic_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -483,8 +473,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_topic_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_topic_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_topic_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_topic_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -497,12 +487,11 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_topic_next_async(next_page_link, custom_headers:nil)
+    def list_by_topic_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -553,18 +542,24 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SBSubscriptionListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_topic_as_lazy(resource_group_name, namespace_name, topic_name, custom_headers:nil)
-      response = list_by_topic_async(resource_group_name, namespace_name, topic_name, custom_headers:custom_headers).value!
+    def list_by_topic_as_lazy(resource_group_name, namespace_name, topic_name, skip = nil, top = nil, custom_headers = nil)
+      response = list_by_topic_async(resource_group_name, namespace_name, topic_name, skip, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_topic_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_topic_next_async(next_page_link, custom_headers)
         end
         page
       end
