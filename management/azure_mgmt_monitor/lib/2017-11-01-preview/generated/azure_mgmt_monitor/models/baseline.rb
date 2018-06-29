@@ -29,7 +29,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Baseline',
           type: {
@@ -37,7 +36,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
             class_name: 'Baseline',
             model_properties: {
               sensitivity: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sensitivity',
                 type: {
@@ -46,13 +44,11 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               low_thresholds: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lowThresholds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FloatElementType',
                       type: {
@@ -62,13 +58,11 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               high_thresholds: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'highThresholds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FloatElementType',
                       type: {
