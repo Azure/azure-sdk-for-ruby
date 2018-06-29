@@ -106,7 +106,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
               pending_replication_operations_count: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.pendingReplicationOperationsCount ',
+                serialized_name: 'properties.pendingReplicationOperationsCount',
                 type: {
                   name: 'Number'
                 }
