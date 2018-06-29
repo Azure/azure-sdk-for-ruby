@@ -6,36 +6,27 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # Single item in List or Get Consumer group operation
+    # Messaging Region
     #
-    class ConsumerGroup < Resource
+    class MessagingRegions < TrackedResource
 
       include MsRestAzure
 
-      # @return [DateTime] Exact time the message was created.
-      attr_accessor :created_at
-
-      # @return [DateTime] The exact time the message was updated.
-      attr_accessor :updated_at
-
-      # @return [String] Usermetadata is a placeholder to store user-defined
-      # string data with maximum length 1024. e.g. it can be used to store
-      # descriptive data, such as list of teams and their contact information
-      # also user-defined configuration settings can be stored.
-      attr_accessor :user_metadata
+      # @return [MessagingRegionsProperties]
+      attr_accessor :properties
 
 
       #
-      # Mapper for ConsumerGroup class as Ruby Hash.
+      # Mapper for MessagingRegions class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ConsumerGroup',
+          serialized_name: 'MessagingRegions',
           type: {
             name: 'Composite',
-            class_name: 'ConsumerGroup',
+            class_name: 'MessagingRegions',
             model_properties: {
               id: {
                 required: false,
@@ -61,27 +52,33 @@ module Azure::EventHub::Mgmt::V2017_04_01
                   name: 'String'
                 }
               },
-              created_at: {
+              location: {
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.createdAt',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              updated_at: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.updatedAt',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              user_metadata: {
-                required: false,
-                serialized_name: 'properties.userMetadata',
+                serialized_name: 'location',
                 type: {
                   name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'MessagingRegionsProperties'
                 }
               }
             }
