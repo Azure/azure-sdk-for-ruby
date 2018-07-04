@@ -19,7 +19,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
-      # @return [NetworkOperationStatus] Status of the AzureAsuncOperation.
+      # @return [NetworkOperationStatus] Status of the AzureAsyncOperation.
       # Possible values include: 'InProgress', 'Succeeded', 'Failed'
       attr_accessor :status
 
