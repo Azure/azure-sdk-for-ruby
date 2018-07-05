@@ -22,7 +22,6 @@ module Azure::Dns::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ZoneUpdate',
           type: {
@@ -30,13 +29,11 @@ module Azure::Dns::Mgmt::V2017_10_01
             class_name: 'ZoneUpdate',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
