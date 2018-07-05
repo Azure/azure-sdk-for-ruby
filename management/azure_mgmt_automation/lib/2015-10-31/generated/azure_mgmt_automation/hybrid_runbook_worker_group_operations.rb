@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] Automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -41,7 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] Automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -57,7 +57,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] Automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -112,7 +112,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -129,7 +129,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -145,7 +145,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -210,7 +210,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param parameters [HybridRunbookWorkerGroupUpdateParameters] The hybrid
@@ -229,7 +229,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param parameters [HybridRunbookWorkerGroupUpdateParameters] The hybrid
@@ -247,7 +247,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a hybrid runbook worker group.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param hybrid_runbook_worker_group_name [String] The hybrid runbook worker
     # group name
     # @param parameters [HybridRunbookWorkerGroupUpdateParameters] The hybrid
@@ -324,7 +324,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of hybrid runbook worker groups.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -340,7 +340,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of hybrid runbook worker groups.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -355,7 +355,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of hybrid runbook worker groups.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -505,7 +505,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of hybrid runbook worker groups.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

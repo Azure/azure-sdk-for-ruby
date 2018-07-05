@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleCreateOrUpdateParameters] The parameters supplied
     # to the create or update schedule operation.
@@ -43,7 +43,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleCreateOrUpdateParameters] The parameters supplied
     # to the create or update schedule operation.
@@ -60,7 +60,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleCreateOrUpdateParameters] The parameters supplied
     # to the create or update schedule operation.
@@ -109,7 +109,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201 || status_code == 409
+        unless status_code == 201 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -117,6 +117,16 @@ module Azure::Automation::Mgmt::V2015_10_31
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::Schedule.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::Schedule.mapper()
@@ -136,7 +146,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleUpdateParameters] The parameters supplied to the
     # update schedule operation.
@@ -154,7 +164,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleUpdateParameters] The parameters supplied to the
     # update schedule operation.
@@ -171,7 +181,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param parameters [ScheduleUpdateParameters] The parameters supplied to the
     # update schedule operation.
@@ -247,7 +257,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -263,7 +273,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -278,7 +288,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -342,7 +352,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -357,7 +367,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -372,7 +382,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the schedule identified by schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param schedule_name [String] The schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -409,7 +419,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -426,7 +436,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -441,7 +451,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -455,7 +465,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -604,7 +614,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

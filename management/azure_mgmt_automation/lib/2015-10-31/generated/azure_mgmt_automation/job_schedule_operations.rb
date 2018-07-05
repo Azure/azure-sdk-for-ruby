@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the job schedule identified by job schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -40,7 +40,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the job schedule identified by job schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -55,7 +55,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the job schedule identified by job schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -109,7 +109,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the job schedule identified by job schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -125,7 +125,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the job schedule identified by job schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -140,7 +140,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the job schedule identified by job schedule name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -204,7 +204,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a job schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param parameters [JobScheduleCreateParameters] The parameters supplied to
     # the create job schedule operation.
@@ -222,7 +222,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a job schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param parameters [JobScheduleCreateParameters] The parameters supplied to
     # the create job schedule operation.
@@ -239,7 +239,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a job schedule.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param parameters [JobScheduleCreateParameters] The parameters supplied to
     # the create job schedule operation.
@@ -315,7 +315,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of job schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -331,7 +331,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of job schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -346,7 +346,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of job schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -496,7 +496,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of job schedules.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

@@ -60,9 +60,16 @@ module Azure::Automation::Mgmt::V2015_10_31
       # job.
       attr_accessor :parameters
 
-      # @return [JobProvisioningStateProperty] The provisioning state of a
-      # resource.
+      # @return [JobProvisioningState] The provisioning state of a resource.
+      # Possible values include: 'Failed', 'Succeeded', 'Suspended',
+      # 'Processing'
       attr_accessor :provisioning_state
+
+      # @return [String] Gets or sets the id of job schedule.
+      attr_accessor :job_schedule_id
+
+      # @return [ScheduleAssociationProperty] Gets or sets the runbook.
+      attr_accessor :schedule
 
 
       #
@@ -187,8 +194,22 @@ module Azure::Automation::Mgmt::V2015_10_31
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
+                  name: 'String'
+                }
+              },
+              job_schedule_id: {
+                required: false,
+                serialized_name: 'properties.jobScheduleId',
+                type: {
+                  name: 'String'
+                }
+              },
+              schedule: {
+                required: false,
+                serialized_name: 'properties.schedule',
+                type: {
                   name: 'Composite',
-                  class_name: 'JobProvisioningStateProperty'
+                  class_name: 'ScheduleAssociationProperty'
                 }
               }
             }

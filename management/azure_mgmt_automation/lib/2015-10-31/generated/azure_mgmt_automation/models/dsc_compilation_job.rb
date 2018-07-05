@@ -25,8 +25,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [DateTime] Gets the creation time of the job.
       attr_accessor :creation_time
 
-      # @return [JobProvisioningStateProperty] The current provisioning state
-      # of the job.
+      # @return [JobProvisioningState] The current provisioning state of the
+      # job. Possible values include: 'Failed', 'Succeeded', 'Suspended',
+      # 'Processing'
       attr_accessor :provisioning_state
 
       # @return [String] Gets or sets the runOn which specifies the group name
@@ -134,8 +135,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Composite',
-                  class_name: 'JobProvisioningStateProperty'
+                  name: 'String'
                 }
               },
               run_on: {

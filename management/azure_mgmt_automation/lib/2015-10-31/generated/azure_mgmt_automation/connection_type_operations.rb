@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the connectiontype.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The name of connectiontype.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -40,7 +40,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the connectiontype.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The name of connectiontype.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -55,7 +55,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the connectiontype.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The name of connectiontype.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -109,7 +109,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the connectiontype identified by connectiontype name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The name of connectiontype.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -125,7 +125,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the connectiontype identified by connectiontype name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The name of connectiontype.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -140,7 +140,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the connectiontype identified by connectiontype name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The name of connectiontype.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -204,7 +204,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a connectiontype.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The parameters supplied to the create or
     # update connectiontype operation.
     # @param parameters [ConnectionTypeCreateOrUpdateParameters] The parameters
@@ -223,7 +223,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a connectiontype.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The parameters supplied to the create or
     # update connectiontype operation.
     # @param parameters [ConnectionTypeCreateOrUpdateParameters] The parameters
@@ -241,7 +241,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a connectiontype.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The parameters supplied to the create or
     # update connectiontype operation.
     # @param parameters [ConnectionTypeCreateOrUpdateParameters] The parameters
@@ -291,7 +291,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201 || status_code == 409
+        unless status_code == 201
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -299,16 +299,6 @@ module Azure::Automation::Mgmt::V2015_10_31
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionType.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 409
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionType.mapper()
@@ -328,7 +318,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connectiontypes.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -343,7 +333,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connectiontypes.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -357,7 +347,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connectiontypes.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -506,7 +496,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connectiontypes.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

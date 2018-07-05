@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Generates a Uri for use in creating a webhook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,7 +40,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Generates a Uri for use in creating a webhook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -54,7 +54,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Generates a Uri for use in creating a webhook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -122,7 +122,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the webhook by name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -137,7 +137,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the webhook by name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -152,7 +152,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the webhook by name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -206,7 +206,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -222,7 +222,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -237,7 +237,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -301,7 +301,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookCreateOrUpdateParameters] The create or update
     # parameters for webhook.
@@ -319,7 +319,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookCreateOrUpdateParameters] The create or update
     # parameters for webhook.
@@ -336,7 +336,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookCreateOrUpdateParameters] The create or update
     # parameters for webhook.
@@ -422,7 +422,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookUpdateParameters] The update parameters for
     # webhook.
@@ -440,7 +440,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookUpdateParameters] The update parameters for
     # webhook.
@@ -457,7 +457,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the webhook identified by webhook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookUpdateParameters] The update parameters for
     # webhook.
@@ -533,7 +533,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of webhooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -549,7 +549,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of webhooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -564,7 +564,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of webhooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -714,7 +714,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of webhooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
