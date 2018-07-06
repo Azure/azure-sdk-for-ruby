@@ -26,8 +26,7 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
 
       # @return [EventDeliverySchema] The event delivery schema for the event
       # subscription. Possible values include: 'EventGridSchema',
-      # 'InputEventSchema', 'CloudEventV01Schema'. Default value:
-      # 'EventGridSchema' .
+      # 'InputEventSchema', 'CloudEventV01Schema'
       attr_accessor :event_delivery_schema
 
       # @return [RetryPolicy] The retry policy for events. This can be used to
@@ -46,7 +45,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionUpdateParameters',
           type: {
@@ -54,7 +52,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'EventSubscriptionUpdateParameters',
             model_properties: {
               destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'destination',
                 type: {
@@ -65,7 +62,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               filter: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filter',
                 type: {
@@ -74,13 +70,11 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               labels: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'labels',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -90,16 +84,13 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               event_delivery_schema: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventDeliverySchema',
-                default_value: 'EventGridSchema',
                 type: {
                   name: 'String'
                 }
               },
               retry_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryPolicy',
                 type: {
@@ -108,7 +99,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               dead_letter_destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deadLetterDestination',
                 type: {

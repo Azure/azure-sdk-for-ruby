@@ -30,7 +30,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventHub',
           type: {
@@ -38,7 +37,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
             class_name: 'EventHubEventSubscriptionDestination',
             model_properties: {
               endpointType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointType',
                 type: {
@@ -46,7 +44,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceId',
                 type: {
