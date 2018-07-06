@@ -30,7 +30,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SpellCheck',
           type: {
@@ -38,7 +37,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
             class_name: 'SpellCheck',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,13 +52,11 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               flagged_tokens: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'flaggedTokens',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SpellingFlaggedTokenElementType',
                       type: {

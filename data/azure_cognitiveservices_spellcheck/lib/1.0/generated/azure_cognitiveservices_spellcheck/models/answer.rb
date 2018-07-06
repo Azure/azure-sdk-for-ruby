@@ -27,7 +27,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Answer',
           type: {
@@ -35,7 +34,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
             class_name: 'Answer',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -43,7 +41,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
