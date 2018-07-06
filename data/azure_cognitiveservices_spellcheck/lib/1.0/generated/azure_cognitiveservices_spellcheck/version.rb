@@ -4,13 +4,5 @@
 # regenerated.
 
 module Azure::CognitiveServices::SpellCheck::V1_0
-  module Models
-    #
-    # Defines values for Mode
-    #
-    module Mode
-      Proof = "proof"
-      Spell = "spell"
-    end
-  end
+    VERSION = '0.16.0'
 end

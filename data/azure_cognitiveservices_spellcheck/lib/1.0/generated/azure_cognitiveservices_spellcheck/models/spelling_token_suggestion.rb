@@ -29,7 +29,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Spelling/TokenSuggestion',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
             class_name: 'SpellingTokenSuggestion',
             model_properties: {
               suggestion: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'suggestion',
                 type: {
@@ -45,7 +43,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               score: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'score',
@@ -54,7 +51,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               ping_url_suffix: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'pingUrlSuffix',

@@ -36,7 +36,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Spelling/FlaggedToken',
           type: {
@@ -44,7 +43,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
             class_name: 'SpellingFlaggedToken',
             model_properties: {
               offset: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'offset',
                 type: {
@@ -52,7 +50,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               token: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'token',
                 type: {
@@ -60,7 +57,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 default_value: 'UnknownToken',
@@ -69,14 +65,12 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               suggestions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'suggestions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SpellingTokenSuggestionElementType',
                       type: {
@@ -87,7 +81,6 @@ module Azure::CognitiveServices::SpellCheck::V1_0
                 }
               },
               ping_url_suffix: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'pingUrlSuffix',
