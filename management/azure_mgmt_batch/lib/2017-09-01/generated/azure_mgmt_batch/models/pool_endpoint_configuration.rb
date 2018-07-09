@@ -27,7 +27,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PoolEndpointConfiguration',
           type: {
@@ -35,13 +34,11 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'PoolEndpointConfiguration',
             model_properties: {
               inbound_nat_pools: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'inboundNatPools',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InboundNatPoolElementType',
                       type: {
