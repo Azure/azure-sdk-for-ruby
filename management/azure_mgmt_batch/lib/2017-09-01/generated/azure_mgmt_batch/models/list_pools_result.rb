@@ -57,7 +57,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ListPoolsResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'ListPoolsResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PoolElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

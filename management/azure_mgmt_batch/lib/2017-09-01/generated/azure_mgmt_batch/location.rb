@@ -32,8 +32,8 @@ module Azure::Batch::Mgmt::V2017_09_01
     #
     # @return [BatchLocationQuota] operation results.
     #
-    def get_quotas(location_name, custom_headers:nil)
-      response = get_quotas_async(location_name, custom_headers:custom_headers).value!
+    def get_quotas(location_name, custom_headers = nil)
+      response = get_quotas_async(location_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -48,8 +48,8 @@ module Azure::Batch::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_quotas_with_http_info(location_name, custom_headers:nil)
-      get_quotas_async(location_name, custom_headers:custom_headers).value!
+    def get_quotas_with_http_info(location_name, custom_headers = nil)
+      get_quotas_async(location_name, custom_headers).value!
     end
 
     #
@@ -63,14 +63,13 @@ module Azure::Batch::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_quotas_async(location_name, custom_headers:nil)
+    def get_quotas_async(location_name, custom_headers = nil)
       fail ArgumentError, 'location_name is nil' if location_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -126,8 +125,8 @@ module Azure::Batch::Mgmt::V2017_09_01
     #
     # @return [CheckNameAvailabilityResult] operation results.
     #
-    def check_name_availability(location_name, parameters, custom_headers:nil)
-      response = check_name_availability_async(location_name, parameters, custom_headers:custom_headers).value!
+    def check_name_availability(location_name, parameters, custom_headers = nil)
+      response = check_name_availability_async(location_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -142,8 +141,8 @@ module Azure::Batch::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(location_name, parameters, custom_headers:nil)
-      check_name_availability_async(location_name, parameters, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(location_name, parameters, custom_headers = nil)
+      check_name_availability_async(location_name, parameters, custom_headers).value!
     end
 
     #
@@ -157,7 +156,7 @@ module Azure::Batch::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(location_name, parameters, custom_headers:nil)
+    def check_name_availability_async(location_name, parameters, custom_headers = nil)
       fail ArgumentError, 'location_name is nil' if location_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -165,11 +164,12 @@ module Azure::Batch::Mgmt::V2017_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters.mapper()
