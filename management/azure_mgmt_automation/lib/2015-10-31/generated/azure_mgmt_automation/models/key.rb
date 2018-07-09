@@ -13,11 +13,11 @@ module Azure::Automation::Mgmt::V2015_10_31
       include MsRestAzure
 
       # @return [AutomationKeyName] Automation key name. Possible values
-      # include: 'primary', 'secondary'
+      # include: 'Primary', 'Secondary'
       attr_accessor :key_name
 
       # @return [AutomationKeyPermissions] Automation key permissions. Possible
-      # values include: 'Full'
+      # values include: 'Read', 'Full'
       attr_accessor :permissions
 
       # @return [String] Value of the Automation Key used for registration.
@@ -38,21 +38,24 @@ module Azure::Automation::Mgmt::V2015_10_31
             model_properties: {
               key_name: {
                 required: false,
-                serialized_name: 'keyName',
+                read_only: true,
+                serialized_name: 'KeyName',
                 type: {
                   name: 'String'
                 }
               },
               permissions: {
                 required: false,
-                serialized_name: 'permissions',
+                read_only: true,
+                serialized_name: 'Permissions',
                 type: {
                   name: 'String'
                 }
               },
               value: {
                 required: false,
-                serialized_name: 'value',
+                read_only: true,
+                serialized_name: 'Value',
                 type: {
                   name: 'String'
                 }
