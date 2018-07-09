@@ -23,7 +23,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BatchLocationQuota',
           type: {
@@ -31,7 +30,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'BatchLocationQuota',
             model_properties: {
               account_quota: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'accountQuota',

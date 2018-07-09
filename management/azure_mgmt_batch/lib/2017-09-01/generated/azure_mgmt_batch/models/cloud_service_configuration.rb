@@ -43,7 +43,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CloudServiceConfiguration',
           type: {
@@ -51,7 +50,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'CloudServiceConfiguration',
             model_properties: {
               os_family: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'osFamily',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               target_osversion: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetOSVersion',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               current_osversion: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentOSVersion',
                 type: {
