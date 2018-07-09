@@ -70,7 +70,6 @@ module Azure::Network::Profiles::V2017_03_09
       VirtualNetworkGatewaySku = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewaySku
       AzureAsyncOperationResult = Azure::Network::Mgmt::V2015_06_15::Models::AzureAsyncOperationResult
       RouteListResult = Azure::Network::Mgmt::V2015_06_15::Models::RouteListResult
-      Error = Azure::Network::Mgmt::V2015_06_15::Models::Error
       SubnetListResult = Azure::Network::Mgmt::V2015_06_15::Models::SubnetListResult
       ExpressRouteServiceProviderListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProviderListResult
       VpnClientParameters = Azure::Network::Mgmt::V2015_06_15::Models::VpnClientParameters
@@ -128,6 +127,7 @@ module Azure::Network::Profiles::V2017_03_09
       ApplicationGatewayRequestRoutingRuleType = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayRequestRoutingRuleType
       ApplicationGatewayOperationalState = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayOperationalState
       AuthorizationUseStatus = Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationUseStatus
+      Error = Azure::Network::Mgmt::V2015_06_15::Models::Error
       ExpressRouteCircuitPeeringAdvertisedPublicPrefixState = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
       ExpressRouteCircuitPeeringType = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringType
       ExpressRouteCircuitPeeringState = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringState
@@ -340,9 +340,6 @@ module Azure::Network::Profiles::V2017_03_09
       def route_list_result
         Azure::Network::Mgmt::V2015_06_15::Models::RouteListResult
       end
-      def error
-        Azure::Network::Mgmt::V2015_06_15::Models::Error
-      end
       def subnet_list_result
         Azure::Network::Mgmt::V2015_06_15::Models::SubnetListResult
       end
@@ -513,6 +510,9 @@ module Azure::Network::Profiles::V2017_03_09
       end
       def authorization_use_status
         Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationUseStatus
+      end
+      def error
+        Azure::Network::Mgmt::V2015_06_15::Models::Error
       end
       def express_route_circuit_peering_advertised_public_prefix_state
         Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
