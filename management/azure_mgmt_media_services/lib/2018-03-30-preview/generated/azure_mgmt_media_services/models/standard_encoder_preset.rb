@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.StandardEncoderPreset"
+        @@odatatype = "#Microsoft.Media.StandardEncoderPreset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Filters] One or more filtering operations that are applied to
       # the input media before encoding.
@@ -39,15 +39,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.StandardEncoderPreset',
           type: {
             name: 'Composite',
             class_name: 'StandardEncoderPreset',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -55,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               filters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filters',
                 type: {
@@ -64,13 +61,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               codecs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'codecs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CodecElementType',
                       type: {
@@ -83,13 +78,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               formats: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'formats',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FormatElementType',
                       type: {
