@@ -40,7 +40,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticMetricSet',
           type: {
@@ -48,7 +47,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DiagnosticMetricSet',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -80,7 +75,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               time_grain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -88,13 +82,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               values: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiagnosticMetricSampleElementType',
                       type: {

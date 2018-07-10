@@ -35,14 +35,14 @@ module Azure::Web::Mgmt::V2015_04_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [DomainRegistrationProvider] domain_registration_provider
-    attr_reader :domain_registration_provider
-
     # @return [Domains] domains
     attr_reader :domains
 
     # @return [TopLevelDomains] top_level_domains
     attr_reader :top_level_domains
+
+    # @return [DomainRegistrationProvider] domain_registration_provider
+    attr_reader :domain_registration_provider
 
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
@@ -57,9 +57,9 @@ module Azure::Web::Mgmt::V2015_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @domain_registration_provider = DomainRegistrationProvider.new(self)
       @domains = Domains.new(self)
       @top_level_domains = TopLevelDomains.new(self)
+      @domain_registration_provider = DomainRegistrationProvider.new(self)
       @api_version = '2015-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -113,9 +113,6 @@ module Azure::Web::Mgmt::V2015_04_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -132,7 +129,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::Web::Mgmt::V2015_04_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Web::Mgmt::V2015_04_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
