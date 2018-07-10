@@ -28,7 +28,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventType',
           type: {
@@ -36,7 +35,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'EventType',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -45,7 +43,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,7 +51,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,7 +59,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -71,7 +66,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -79,7 +73,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               schema_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.schemaUrl',
                 type: {

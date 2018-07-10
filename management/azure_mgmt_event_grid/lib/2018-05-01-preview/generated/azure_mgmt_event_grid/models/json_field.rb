@@ -26,7 +26,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JsonField',
           type: {
@@ -34,7 +33,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'JsonField',
             model_properties: {
               source_field: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceField',
                 type: {
