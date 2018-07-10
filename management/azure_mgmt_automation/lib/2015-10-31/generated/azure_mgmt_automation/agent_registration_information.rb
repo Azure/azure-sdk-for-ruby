@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the automation agent registration information.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,7 +40,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the automation agent registration information.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -54,7 +54,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the automation agent registration information.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -116,7 +116,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Regenerate a primary or secondary agent registration key
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AgentRegistrationRegenerateKeyParameter] The name of the
     # agent registration key to be regenerated
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -133,7 +133,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Regenerate a primary or secondary agent registration key
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AgentRegistrationRegenerateKeyParameter] The name of the
     # agent registration key to be regenerated
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -149,7 +149,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Regenerate a primary or secondary agent registration key
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AgentRegistrationRegenerateKeyParameter] The name of the
     # agent registration key to be regenerated
     # @param [Hash{String => String}] A hash of custom headers that will be added
