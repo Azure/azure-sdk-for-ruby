@@ -23,7 +23,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrackSelection',
           type: {
@@ -31,13 +30,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'TrackSelection',
             model_properties: {
               track_selections: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'trackSelections',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackPropertyConditionElementType',
                       type: {
