@@ -34,7 +34,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageBlob',
           type: {
@@ -42,7 +41,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'StorageBlobDeadLetterDestination',
             model_properties: {
               endpointType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointType',
                 type: {
@@ -50,7 +48,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceId',
                 type: {
@@ -58,7 +55,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               blob_container_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.blobContainerName',
                 type: {
