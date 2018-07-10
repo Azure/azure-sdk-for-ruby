@@ -23,7 +23,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Hls',
           type: {
@@ -31,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'Hls',
             model_properties: {
               fragments_per_ts_segment: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fragmentsPerTsSegment',
                 type: {

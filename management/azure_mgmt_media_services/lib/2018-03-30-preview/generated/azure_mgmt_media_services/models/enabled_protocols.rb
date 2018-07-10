@@ -31,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EnabledProtocols',
           type: {
@@ -39,7 +38,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'EnabledProtocols',
             model_properties: {
               download: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'download',
                 type: {
@@ -47,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               dash: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dash',
                 type: {
@@ -55,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               hls: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'hls',
                 type: {
@@ -63,7 +59,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               smooth_streaming: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'smoothStreaming',
                 type: {
