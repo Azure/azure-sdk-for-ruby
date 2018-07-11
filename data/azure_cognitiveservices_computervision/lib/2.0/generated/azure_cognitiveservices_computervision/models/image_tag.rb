@@ -18,6 +18,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # @return [Float] The level of confidence the service has in the caption
       attr_accessor :confidence
 
+      # @return [String] Optional categorization for the tag
+      attr_accessor :hint
+
 
       #
       # Mapper for ImageTag class as Ruby Hash.
@@ -43,6 +46,13 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 serialized_name: 'confidence',
                 type: {
                   name: 'Double'
+                }
+              },
+              hint: {
+                required: false,
+                serialized_name: 'hint',
+                type: {
+                  name: 'String'
                 }
               }
             }
