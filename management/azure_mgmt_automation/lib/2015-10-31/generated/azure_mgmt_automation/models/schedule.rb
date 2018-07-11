@@ -8,18 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the schedule.
     #
-    class Schedule
+    class Schedule < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets the id of the resource.
-      attr_accessor :id
-
-      # @return [String] Gets name of the schedule.
-      attr_accessor :name
-
-      # @return [String] Resource type
-      attr_accessor :type
 
       # @return [DateTime] Gets or sets the start time of the schedule.
       attr_accessor :start_time

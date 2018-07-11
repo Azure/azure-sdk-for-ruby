@@ -6,31 +6,32 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # The schedule property associated with the entity.
+    # Definition of the activity parameter validation set.
     #
-    class ScheduleAssociationProperty
+    class ActivityParameterValidationSet
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the name of the Schedule.
-      attr_accessor :name
+      # @return [String] Gets or sets the name of the activity parameter
+      # validation set member.
+      attr_accessor :member_value
 
 
       #
-      # Mapper for ScheduleAssociationProperty class as Ruby Hash.
+      # Mapper for ActivityParameterValidationSet class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ScheduleAssociationProperty',
+          serialized_name: 'ActivityParameterValidationSet',
           type: {
             name: 'Composite',
-            class_name: 'ScheduleAssociationProperty',
+            class_name: 'ActivityParameterValidationSet',
             model_properties: {
-              name: {
+              member_value: {
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'memberValue',
                 type: {
                   name: 'String'
                 }

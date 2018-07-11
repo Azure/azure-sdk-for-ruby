@@ -9,8 +9,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Defines values for AutomationKeyName
     #
     module AutomationKeyName
-      Primary = "primary"
-      Secondary = "secondary"
+      Primary = "Primary"
+      Secondary = "Secondary"
     end
   end
 end
