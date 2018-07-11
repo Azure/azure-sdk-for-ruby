@@ -68,6 +68,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     # @return [BackupUsageSummaries] backup_usage_summaries
     attr_reader :backup_usage_summaries
 
+    # @return [Validate] validate
+    attr_reader :validate
+
     #
     # Creates initializes a new instance of the RecoveryServicesBackupClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -91,6 +94,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       @backup_policies = BackupPolicies.new(self)
       @backup_protected_items = BackupProtectedItems.new(self)
       @backup_usage_summaries = BackupUsageSummaries.new(self)
+      @validate = Validate.new(self)
       @api_version = '2017-07-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

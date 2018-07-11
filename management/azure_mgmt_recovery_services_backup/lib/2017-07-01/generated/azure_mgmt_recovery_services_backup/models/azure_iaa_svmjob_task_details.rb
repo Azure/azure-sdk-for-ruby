@@ -37,6 +37,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # @return [Float] Progress of the task.
       attr_accessor :progress_percentage
 
+      # @return [String] Details about execution of the task.
+      # eg: number of bytes transfered etc
+      attr_accessor :task_execution_details
+
 
       #
       # Mapper for AzureIaaSVMJobTaskDetails class as Ruby Hash.
@@ -97,6 +101,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 serialized_name: 'progressPercentage',
                 type: {
                   name: 'Double'
+                }
+              },
+              task_execution_details: {
+                required: false,
+                serialized_name: 'taskExecutionDetails',
+                type: {
+                  name: 'String'
                 }
               }
             }

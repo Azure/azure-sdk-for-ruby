@@ -30,8 +30,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       attr_accessor :recommendation
 
       # @return [String] Specifies the product specific container name. E.g.
-      # iaasvmcontainer;iaasvmcontainer;rgname;vmname. This is required for
-      # portal
+      # iaasvmcontainer;iaasvmcontainer;rgname;vmname. This is required
+      # for portal
       attr_accessor :container_name
 
       # @return [String] Specifies the product specific ds name. E.g.

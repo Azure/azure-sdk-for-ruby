@@ -136,7 +136,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # Registers the container with Recovery Services vault.
     # This is an asynchronous operation. To track the operation status, use
-    # location header to call get latest status of the operation.
+    # location header to call get latest status of
+    # the operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -157,7 +158,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # Registers the container with Recovery Services vault.
     # This is an asynchronous operation. To track the operation status, use
-    # location header to call get latest status of the operation.
+    # location header to call get latest status of
+    # the operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -177,7 +179,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # Registers the container with Recovery Services vault.
     # This is an asynchronous operation. To track the operation status, use
-    # location header to call get latest status of the operation.
+    # location header to call get latest status of
+    # the operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -255,9 +258,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Unregisters the given container from your Recovery Services Vault.
-    # This is an asynchronous operation. To determine whether the backend service
-    # has finished processing the request, call Get Container Operation Result API.
+    # Unregisters the given container from your Recovery Services Vault. This is an
+    # asynchronous operation. To determine
+    # whether the backend service has finished processing the request, call Get
+    # Container Operation Result API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -275,9 +279,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Unregisters the given container from your Recovery Services Vault.
-    # This is an asynchronous operation. To determine whether the backend service
-    # has finished processing the request, call Get Container Operation Result API.
+    # Unregisters the given container from your Recovery Services Vault. This is an
+    # asynchronous operation. To determine
+    # whether the backend service has finished processing the request, call Get
+    # Container Operation Result API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -295,9 +300,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Unregisters the given container from your Recovery Services Vault.
-    # This is an asynchronous operation. To determine whether the backend service
-    # has finished processing the request, call Get Container Operation Result API.
+    # Unregisters the given container from your Recovery Services Vault. This is an
+    # asynchronous operation. To determine
+    # whether the backend service has finished processing the request, call Get
+    # Container Operation Result API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -465,8 +471,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Discovers all the containers in the subscription that can be backed up to
-    # Recovery Services Vault. This is an asynchronous operation. To know the
-    # status of the operation, call GetRefreshOperationResult API.
+    # Recovery Services Vault. This is an
+    # asynchronous operation. To know the status of the operation, call
+    # GetRefreshOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -484,8 +491,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Discovers all the containers in the subscription that can be backed up to
-    # Recovery Services Vault. This is an asynchronous operation. To know the
-    # status of the operation, call GetRefreshOperationResult API.
+    # Recovery Services Vault. This is an
+    # asynchronous operation. To know the status of the operation, call
+    # GetRefreshOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -503,8 +511,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Discovers all the containers in the subscription that can be backed up to
-    # Recovery Services Vault. This is an asynchronous operation. To know the
-    # status of the operation, call GetRefreshOperationResult API.
+    # Recovery Services Vault. This is an
+    # asynchronous operation. To know the status of the operation, call
+    # GetRefreshOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

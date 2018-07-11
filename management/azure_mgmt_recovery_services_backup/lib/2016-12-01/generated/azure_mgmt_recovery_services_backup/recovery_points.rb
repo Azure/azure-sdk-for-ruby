@@ -142,8 +142,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the information of the backed up data identified using
-    # RecoveryPointID. This is an asynchronous operation. To know the status of the
-    # operation, call the GetProtectedItemOperationResult API.
+    # RecoveryPointID. This is an asynchronous operation.
+    # To know the status of the operation, call the GetProtectedItemOperationResult
+    # API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -166,8 +167,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the information of the backed up data identified using
-    # RecoveryPointID. This is an asynchronous operation. To know the status of the
-    # operation, call the GetProtectedItemOperationResult API.
+    # RecoveryPointID. This is an asynchronous operation.
+    # To know the status of the operation, call the GetProtectedItemOperationResult
+    # API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -189,8 +191,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the information of the backed up data identified using
-    # RecoveryPointID. This is an asynchronous operation. To know the status of the
-    # operation, call the GetProtectedItemOperationResult API.
+    # RecoveryPointID. This is an asynchronous operation.
+    # To know the status of the operation, call the GetProtectedItemOperationResult
+    # API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

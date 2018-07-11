@@ -16,8 +16,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
-      # @return [String] Host Os Name in case of Stand Alone and
-      # Cluster Name in case of distributed container.
+      # @return [String] Host Os Name in case of Stand Alone and Cluster Name
+      # in case of distributed container.
       attr_accessor :host_server_name
 
       # @return [InquiryInfo] Inquiry Status for the container.

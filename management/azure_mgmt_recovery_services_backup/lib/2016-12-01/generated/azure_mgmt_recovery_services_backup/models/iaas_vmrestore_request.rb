@@ -56,9 +56,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       attr_accessor :virtual_network_id
 
       # @return [String] Subnet ID, is the subnet ID associated with the to be
-      # restored VM. For Classic VMs it would be {VnetID}/Subnet/{SubnetName}
-      # and, for the Azure Resource Manager VMs it would be ARM resource ID
-      # used to represent the subnet.
+      # restored VM. For Classic VMs it would be
+      # {VnetID}/Subnet/{SubnetName} and, for the Azure Resource Manager VMs it
+      # would be ARM resource ID used to represent
+      # the subnet.
       attr_accessor :subnet_id
 
       # @return [String] Fully qualified ARM ID of the domain name to be
@@ -74,8 +75,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       attr_accessor :affinity_group
 
       # @return [Boolean] Should a new cloud service be created while restoring
-      # the VM. If this is false, VM will be restored to the same cloud service
-      # as it was at the time of backup.
+      # the VM. If this is false, VM will be restored to the same
+      # cloud service as it was at the time of backup.
       attr_accessor :create_new_cloud_service
 
       # @return [Boolean] Original Storage Account Option

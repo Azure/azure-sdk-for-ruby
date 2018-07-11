@@ -30,6 +30,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # started or completed.
       attr_accessor :progress_percentage
 
+      # @return [String] Time remaining for execution of this job.
+      attr_accessor :estimated_remaining_duration
+
       # @return [String] Non localized error message on job execution.
       attr_accessor :dynamic_error_message
 
@@ -94,6 +97,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 serialized_name: 'progressPercentage',
                 type: {
                   name: 'Double'
+                }
+              },
+              estimated_remaining_duration: {
+                required: false,
+                serialized_name: 'estimatedRemainingDuration',
+                type: {
+                  name: 'String'
                 }
               },
               dynamic_error_message: {

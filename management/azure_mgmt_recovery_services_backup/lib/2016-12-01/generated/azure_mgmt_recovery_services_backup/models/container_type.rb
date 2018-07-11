@@ -28,11 +28,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       SQLAGWorkLoadContainer = "SQLAGWorkLoadContainer"
       StorageContainer = "StorageContainer"
       GenericContainer = "GenericContainer"
-      SqlCluster = "SqlCluster"
-      ExchangeDAG = "ExchangeDAG"
-      SharepointFarm = "SharepointFarm"
-      HyperVCluster = "HyperVCluster"
-      WindowsClient = "WindowsClient"
     end
   end
 end

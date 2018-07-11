@@ -27,8 +27,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the details of the backup policies associated to Recovery Services
-    # Vault. This is an asynchronous operation. Status of the operation can be
-    # fetched using GetPolicyOperationResult API.
+    # Vault. This is an asynchronous
+    # operation. Status of the operation can be fetched using
+    # GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -46,8 +47,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the details of the backup policies associated to Recovery Services
-    # Vault. This is an asynchronous operation. Status of the operation can be
-    # fetched using GetPolicyOperationResult API.
+    # Vault. This is an asynchronous
+    # operation. Status of the operation can be fetched using
+    # GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -64,8 +66,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the details of the backup policies associated to Recovery Services
-    # Vault. This is an asynchronous operation. Status of the operation can be
-    # fetched using GetPolicyOperationResult API.
+    # Vault. This is an asynchronous
+    # operation. Status of the operation can be fetched using
+    # GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -131,7 +134,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Creates or modifies a backup policy. This is an asynchronous operation.
-    # Status of the operation can be fetched using GetPolicyOperationResult API.
+    # Status of the operation can be fetched
+    # using GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -150,7 +154,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Creates or modifies a backup policy. This is an asynchronous operation.
-    # Status of the operation can be fetched using GetPolicyOperationResult API.
+    # Status of the operation can be fetched
+    # using GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -168,7 +173,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Creates or modifies a backup policy. This is an asynchronous operation.
-    # Status of the operation can be fetched using GetPolicyOperationResult API.
+    # Status of the operation can be fetched
+    # using GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -245,8 +251,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Deletes specified backup policy from your Recovery Services Vault. This is an
-    # asynchronous operation. Status of the operation can be fetched using
-    # GetPolicyOperationResult API.
+    # asynchronous operation. Status of the
+    # operation can be fetched using GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -263,8 +269,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Deletes specified backup policy from your Recovery Services Vault. This is an
-    # asynchronous operation. Status of the operation can be fetched using
-    # GetPolicyOperationResult API.
+    # asynchronous operation. Status of the
+    # operation can be fetched using GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -281,8 +287,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Deletes specified backup policy from your Recovery Services Vault. This is an
-    # asynchronous operation. Status of the operation can be fetched using
-    # GetPolicyOperationResult API.
+    # asynchronous operation. Status of the
+    # operation can be fetched using GetPolicyOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

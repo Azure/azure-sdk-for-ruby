@@ -27,10 +27,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # OperationStatus enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs when the
-    # operation is complete.
+    # status can be in progress, completed
+    # or failed. You can refer to the OperationStatus enum for all the possible
+    # states of an operation. Some operations
+    # create jobs. This method returns the list of jobs when the operation is
+    # complete.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -48,10 +49,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # OperationStatus enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs when the
-    # operation is complete.
+    # status can be in progress, completed
+    # or failed. You can refer to the OperationStatus enum for all the possible
+    # states of an operation. Some operations
+    # create jobs. This method returns the list of jobs when the operation is
+    # complete.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -68,10 +70,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # OperationStatus enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs when the
-    # operation is complete.
+    # status can be in progress, completed
+    # or failed. You can refer to the OperationStatus enum for all the possible
+    # states of an operation. Some operations
+    # create jobs. This method returns the list of jobs when the operation is
+    # complete.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

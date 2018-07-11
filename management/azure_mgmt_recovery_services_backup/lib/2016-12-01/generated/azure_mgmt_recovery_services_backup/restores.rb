@@ -27,7 +27,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Restores the specified backed up data. This is an asynchronous operation. To
-    # know the status of this API call, use GetProtectedItemOperationResult API.
+    # know the status of this API call, use
+    # GetProtectedItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -50,7 +51,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Restores the specified backed up data. This is an asynchronous operation. To
-    # know the status of this API call, use GetProtectedItemOperationResult API.
+    # know the status of this API call, use
+    # GetProtectedItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -73,7 +75,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Restores the specified backed up data. This is an asynchronous operation. To
-    # know the status of this API call, use GetProtectedItemOperationResult API.
+    # know the status of this API call, use
+    # GetProtectedItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
