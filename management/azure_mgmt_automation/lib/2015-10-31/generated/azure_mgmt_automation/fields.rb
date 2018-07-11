@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of fields of a given type identified by module name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param module_name [String] The name of module.
     # @param type_name [String] The name of type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -42,7 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of fields of a given type identified by module name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param module_name [String] The name of module.
     # @param type_name [String] The name of type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -58,7 +58,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of fields of a given type identified by module name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param module_name [String] The name of module.
     # @param type_name [String] The name of type.
     # @param [Hash{String => String}] A hash of custom headers that will be added

@@ -14,7 +14,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       include MsRestAzure
 
       # @return [Array<Key>] Lists the automation keys.
-      attr_accessor :value
+      attr_accessor :keys
 
 
       #
@@ -29,9 +29,9 @@ module Azure::Automation::Mgmt::V2015_10_31
             name: 'Composite',
             class_name: 'KeyListResult',
             model_properties: {
-              value: {
+              keys: {
                 required: false,
-                serialized_name: 'value',
+                serialized_name: 'keys',
                 type: {
                   name: 'Sequence',
                   element: {

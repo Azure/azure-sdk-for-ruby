@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -41,7 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -56,7 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -126,9 +126,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -141,9 +141,9 @@ module Azure::Automation::Mgmt::V2015_10_31
 
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -178,7 +178,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -194,7 +194,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -209,7 +209,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook draft identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -273,22 +273,20 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [String] operation results.
-    #
     def publish(resource_group_name, automation_account_name, runbook_name, custom_headers = nil)
       response = publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -304,14 +302,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = {
-            required: false,
-            serialized_name: 'parsed_response',
-            type: {
-              name: 'String'
-            }
-          }
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -325,7 +315,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Undo draft edit to last known published state identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -341,7 +331,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Undo draft edit to last known published state identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -356,7 +346,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Undo draft edit to last known published state identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -420,9 +410,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -437,9 +427,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content [String] The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -453,9 +443,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Replaces the runbook draft content.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content [String] The runbook draft content.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -540,24 +530,23 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [String] operation results.
     #
     def begin_publish(resource_group_name, automation_account_name, runbook_name, custom_headers = nil)
       response = begin_publish_async(resource_group_name, automation_account_name, runbook_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -573,7 +562,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Publish runbook draft.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the publish runbook
     # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -611,28 +600,12 @@ module Azure::Automation::Mgmt::V2015_10_31
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 202
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'String'
-              }
-            }
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end

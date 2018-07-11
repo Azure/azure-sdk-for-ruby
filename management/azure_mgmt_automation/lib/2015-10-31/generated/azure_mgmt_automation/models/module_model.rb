@@ -48,6 +48,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [String] Gets or sets the description.
       attr_accessor :description
 
+      # @return [Boolean] Gets or sets type of module, if its composite or not.
+      attr_accessor :is_composite
+
       # @return [String] Gets or sets the etag of the resource.
       attr_accessor :etag
 
@@ -180,6 +183,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'properties.description',
                 type: {
                   name: 'String'
+                }
+              },
+              is_composite: {
+                required: false,
+                serialized_name: 'properties.isComposite',
+                type: {
+                  name: 'Boolean'
                 }
               },
               etag: {
