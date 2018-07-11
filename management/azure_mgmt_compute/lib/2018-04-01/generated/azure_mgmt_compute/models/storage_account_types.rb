@@ -11,6 +11,7 @@ module Azure::Compute::Mgmt::V2018_04_01
     module StorageAccountTypes
       StandardLRS = "Standard_LRS"
       PremiumLRS = "Premium_LRS"
+      StandardSSDLRS = "StandardSSD_LRS"
     end
   end
 end
