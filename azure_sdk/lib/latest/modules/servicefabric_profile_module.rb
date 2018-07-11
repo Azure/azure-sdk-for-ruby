@@ -7,41 +7,15 @@ require 'azure_mgmt_service_fabric'
 module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
-      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
-      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
-      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
+      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
 
       module Models
-        ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
-        ErrorModel = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
-        ServiceTypeHealthPolicyMapItem = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
-        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
-        ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
-        OperationResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationResult
-        ServiceCorrelationDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
-        ServicePlacementPolicyDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
-        ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
-        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationHealthPolicy
-        ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
-        ApplicationParameter = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
-        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
-        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
-        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
-        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
-        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
-        DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
-        RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
-        Resource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Resource
-        ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
-        AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
-        ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
-        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
-        ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
-        CertificateDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
         ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
         ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
         ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
@@ -72,11 +46,37 @@ module Azure::Profiles::Latest
         StatefulServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
         StatefulServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceUpdateProperties
         Cluster = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Cluster
+        CertificateDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
+        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
+        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
+        OperationResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationResult
+        Resource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Resource
         ProvisioningState = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProvisioningState
+        ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
+        ErrorModel = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
+        ServiceTypeHealthPolicyMapItem = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
+        ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
+        ServiceCorrelationDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
+        ServicePlacementPolicyDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
+        ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
+        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationHealthPolicy
+        ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
+        ApplicationParameter = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
+        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
+        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
+        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
+        DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
+        RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
+        ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
+        AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
+        ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
+        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
+        ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
       end
 
       class ServiceFabricManagementClass
-        attr_reader :clusters, :cluster_versions, :operations, :application_type, :version, :application, :service, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :version, :application_type, :service, :application, :cluster_versions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -86,13 +86,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @clusters = @client_0.clusters
-          @cluster_versions = @client_0.cluster_versions
           @operations = @client_0.operations
-          @application_type = @client_0.application_type
+          @clusters = @client_0.clusters
           @version = @client_0.version
-          @application = @client_0.application
+          @application_type = @client_0.application_type
           @service = @client_0.service
+          @application = @client_0.application
+          @cluster_versions = @client_0.cluster_versions
 
           @model_classes = ModelClasses.new
         end
@@ -111,84 +111,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def service_properties_base
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
-          end
-          def error_model
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
-          end
-          def service_type_health_policy_map_item
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
-          end
-          def operation_list_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
-          end
-          def application_metric_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
-          end
-          def operation_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationResult
-          end
-          def service_correlation_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
-          end
-          def service_placement_policy_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
-          end
-          def service_type_delta_health_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
-          end
-          def application_health_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationHealthPolicy
-          end
-          def cluster_update_parameters
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
-          end
-          def application_parameter
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
-          end
-          def cluster_code_versions_list_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
-          end
-          def service_load_metric_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
-          end
-          def cluster_code_versions_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
-          end
-          def partition_scheme_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
-          end
-          def proxy_resource
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
-          end
-          def diagnostics_storage_account_config
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
-          end
-          def rolling_upgrade_monitoring_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
-          end
-          def resource
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Resource
-          end
-          def cluster_upgrade_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
-          end
-          def available_operation_display
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
-          end
-          def cluster_health_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
-          end
-          def azure_active_directory
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
-          end
-          def service_type_health_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
-          end
-          def certificate_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
-          end
           def application_type_resource_list
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
           end
@@ -279,8 +201,86 @@ module Azure::Profiles::Latest
           def cluster
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Cluster
           end
+          def certificate_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
+          end
+          def operation_list_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
+          end
+          def proxy_resource
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
+          end
+          def operation_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationResult
+          end
+          def resource
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Resource
+          end
           def provisioning_state
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProvisioningState
+          end
+          def service_properties_base
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
+          end
+          def error_model
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
+          end
+          def service_type_health_policy_map_item
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
+          end
+          def application_metric_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
+          end
+          def service_correlation_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
+          end
+          def service_placement_policy_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
+          end
+          def service_type_delta_health_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
+          end
+          def application_health_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationHealthPolicy
+          end
+          def cluster_update_parameters
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
+          end
+          def application_parameter
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
+          end
+          def cluster_code_versions_list_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
+          end
+          def service_load_metric_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+          end
+          def cluster_code_versions_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
+          end
+          def partition_scheme_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
+          end
+          def diagnostics_storage_account_config
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
+          end
+          def rolling_upgrade_monitoring_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
+          end
+          def cluster_upgrade_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
+          end
+          def available_operation_display
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
+          end
+          def cluster_health_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
+          end
+          def azure_active_directory
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
+          end
+          def service_type_health_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
           end
         end
       end
