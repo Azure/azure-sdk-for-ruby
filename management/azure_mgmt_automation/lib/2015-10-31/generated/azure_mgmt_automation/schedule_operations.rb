@@ -109,7 +109,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201 || status_code == 200
+        unless status_code == 201 || status_code == 200 || status_code == 409
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
