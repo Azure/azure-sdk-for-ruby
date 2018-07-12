@@ -41,7 +41,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Solution',
           type: {
@@ -49,7 +48,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'Solution',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -57,7 +55,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -65,7 +62,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               order: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'order',
                 type: {
@@ -73,7 +69,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -81,7 +76,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -90,19 +84,16 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'data',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'NameValuePairElementType',
                             type: {
@@ -115,19 +106,16 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'NameValuePairElementType',
                             type: {
