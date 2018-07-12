@@ -30,7 +30,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [String] operation results.
+    # @return [NOT_IMPLEMENTED] operation results.
     #
     def get_content(resource_group_name, automation_account_name, runbook_name, custom_headers = nil)
       response = get_content_async(resource_group_name, automation_account_name, runbook_name, custom_headers).value!
@@ -107,7 +107,7 @@ module Azure::Automation::Mgmt::V2015_10_31
               required: false,
               serialized_name: 'parsed_response',
               type: {
-                name: 'String'
+                name: 'Stream'
               }
             }
             result.body = @client.deserialize(result_mapper, parsed_response)
