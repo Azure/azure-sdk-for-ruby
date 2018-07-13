@@ -14,7 +14,6 @@ module Azure::Profiles::Latest
       TrafficManagerUserMetricsKeys = Azure::TrafficManager::Mgmt::V2017_09_01_preview::TrafficManagerUserMetricsKeys
 
       module Models
-        MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
         TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
         EndpointStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
         EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
@@ -29,6 +28,7 @@ module Azure::Profiles::Latest
         Region = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Region
         CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
         DnsConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
+        MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
         TrackedResource = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource
         HeatMapEndpoint = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapEndpoint
         TrafficFlow = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficFlow
@@ -82,9 +82,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def monitor_config
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
-          end
           def traffic_manager_geographic_hierarchy
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
           end
@@ -126,6 +123,9 @@ module Azure::Profiles::Latest
           end
           def dns_config
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
+          end
+          def monitor_config
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
           end
           def tracked_resource
             Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource

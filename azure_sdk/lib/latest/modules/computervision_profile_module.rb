@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      OcrLine = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
       CelebritiesModel = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
       OcrRegion = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
       Category = Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
@@ -46,6 +45,7 @@ module Azure::Profiles::Latest
       Line = Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
       OcrWord = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
       TextOperationResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
+      OcrLine = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
     end
 
     class ComputerVisionDataClass
@@ -77,9 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def ocr_line
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
-        end
         def celebrities_model
           Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
         end
@@ -190,6 +187,9 @@ module Azure::Profiles::Latest
         end
         def text_operation_result
           Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
+        end
+        def ocr_line
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
         end
       end
     end

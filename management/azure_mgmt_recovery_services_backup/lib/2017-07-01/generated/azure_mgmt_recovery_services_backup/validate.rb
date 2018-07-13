@@ -32,8 +32,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param parameters [ValidateOperationRequestResource] resource validate
-    # operation request
+    # @param parameters [ValidateOperationRequest] resource validate operation
+    # request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -51,8 +51,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param parameters [ValidateOperationRequestResource] resource validate
-    # operation request
+    # @param parameters [ValidateOperationRequest] resource validate operation
+    # request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -69,8 +69,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param parameters [ValidateOperationRequestResource] resource validate
-    # operation request
+    # @param parameters [ValidateOperationRequest] resource validate operation
+    # request
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -93,7 +93,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationRequestResource.mapper()
+      request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationRequest.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

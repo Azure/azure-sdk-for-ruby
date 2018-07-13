@@ -7,19 +7,19 @@ require 'azure_mgmt_resources_management'
 module Azure::Profiles::Latest
   module ResourcesManagement
     module Mgmt
-      ManagementGroupSubscriptions = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::ManagementGroupSubscriptions
       Operations = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Operations
       ManagementGroups = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::ManagementGroups
+      ManagementGroupSubscriptions = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::ManagementGroupSubscriptions
 
       module Models
         ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
         ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
-        OperationDisplay = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
         ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
-        OperationListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
-        ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
+        OperationDisplay = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
         ManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
+        OperationListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
         CreateGroupRequest = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
+        ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
         ManagementGroup = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
         ErrorResponse = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
         Operation = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
@@ -27,7 +27,7 @@ module Azure::Profiles::Latest
       end
 
       class ResourcesManagementManagementClass
-        attr_reader :management_group_subscriptions, :operations, :management_groups, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :management_groups, :management_group_subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,9 +37,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @management_group_subscriptions = @client_0.management_group_subscriptions
           @operations = @client_0.operations
           @management_groups = @client_0.management_groups
+          @management_group_subscriptions = @client_0.management_group_subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -64,23 +64,23 @@ module Azure::Profiles::Latest
           def parent_group_info
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
           end
-          def operation_display
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
-          end
           def management_group_details
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
           end
-          def operation_list_result
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
-          end
-          def management_group_info
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
+          def operation_display
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
           end
           def management_group_child_info
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
           end
+          def operation_list_result
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
+          end
           def create_group_request
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
+          end
+          def management_group_info
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
           end
           def management_group
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
