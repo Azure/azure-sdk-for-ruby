@@ -7,13 +7,13 @@ require 'azure_mgmt_service_fabric'
 module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
-      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
-      Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
+      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
+      Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
 
       module Models
         ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
@@ -46,23 +46,23 @@ module Azure::Profiles::Latest
         ClusterListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterListResult
         SettingsParameterDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SettingsParameterDescription
         ApplicationUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationUpgradePolicy
-        CertificateDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
         SettingsSectionDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SettingsSectionDescription
         VersionResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResourceList
+        EndpointRangeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::EndpointRangeDescription
+        CertificateDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
         ServiceResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceList
         NodeTypeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NodeTypeDescription
-        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
         SingletonPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
         UniformInt64RangePartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
-        EndpointRangeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::EndpointRangeDescription
+        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
         ApplicationTypeResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
         VersionResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResource
         NamedPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
         ApplicationResourceUpdate = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceUpdate
-        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
+        ApplicationResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResource
         ServiceResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResource
         ServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceProperties
-        ApplicationResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResource
+        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
         ServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceUpdateProperties
         ServiceResourceUpdate = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceUpdate
         StatelessServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
@@ -76,7 +76,7 @@ module Azure::Profiles::Latest
       end
 
       class ServiceFabricManagementClass
-        attr_reader :application_type, :operations, :service, :version, :application, :clusters, :cluster_versions, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :application, :version, :clusters, :cluster_versions, :application_type, :service, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -86,13 +86,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @application_type = @client_0.application_type
           @operations = @client_0.operations
-          @service = @client_0.service
-          @version = @client_0.version
           @application = @client_0.application
+          @version = @client_0.version
           @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
+          @application_type = @client_0.application_type
+          @service = @client_0.service
 
           @model_classes = ModelClasses.new
         end
@@ -201,14 +201,17 @@ module Azure::Profiles::Latest
           def application_upgrade_policy
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationUpgradePolicy
           end
-          def certificate_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
-          end
           def settings_section_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SettingsSectionDescription
           end
           def version_resource_list
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResourceList
+          end
+          def endpoint_range_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::EndpointRangeDescription
+          end
+          def certificate_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
           end
           def service_resource_list
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceList
@@ -216,17 +219,14 @@ module Azure::Profiles::Latest
           def node_type_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NodeTypeDescription
           end
-          def operation_list_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
-          end
           def singleton_partition_scheme_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
           end
           def uniform_int64_range_partition_scheme_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
           end
-          def endpoint_range_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::EndpointRangeDescription
+          def operation_list_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
           end
           def application_type_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
@@ -240,8 +240,8 @@ module Azure::Profiles::Latest
           def application_resource_update
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceUpdate
           end
-          def proxy_resource
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
+          def application_resource
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResource
           end
           def service_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResource
@@ -249,8 +249,8 @@ module Azure::Profiles::Latest
           def service_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceProperties
           end
-          def application_resource
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResource
+          def proxy_resource
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
           end
           def service_update_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceUpdateProperties

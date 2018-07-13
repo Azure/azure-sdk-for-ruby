@@ -9,9 +9,6 @@ module Azure::Profiles::Latest
     ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
     module Models
-      CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
-      ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-      ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
@@ -28,7 +25,7 @@ module Azure::Profiles::Latest
       TrendingImagesCategory = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesCategory
       PivotSuggestions = Azure::CognitiveServices::ImageSearch::V1_0::Models::PivotSuggestions
       RelatedCollectionsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedCollectionsModule
-      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+      ImageTagsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageTagsModule
       RecipesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecipesModule
       ImagesImageMetadata = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesImageMetadata
       ImageInsightsImageCaption = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightsImageCaption
@@ -48,18 +45,18 @@ module Azure::Profiles::Latest
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
-      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-      ImageTagsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageTagsModule
-      ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
-      ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
+      ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
       Freshness = Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
+      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
+      ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
+      ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
       ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
       Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-      ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
@@ -67,6 +64,9 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::ImageSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
+      CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
+      ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
+      ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
     end
 
     class ImageSearchDataClass
@@ -99,15 +99,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def creative_work
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
-        end
-        def error_code
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-        end
-        def error_sub_code
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
-        end
         def safe_search
           Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
         end
@@ -156,8 +147,8 @@ module Azure::Profiles::Latest
         def related_collections_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedCollectionsModule
         end
-        def error
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        def image_tags_module
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageTagsModule
         end
         def recipes_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecipesModule
@@ -216,23 +207,23 @@ module Azure::Profiles::Latest
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
         end
-        def images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-        end
-        def image_tags_module
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageTagsModule
+        def image_aspect
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
         end
         def image_color
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
         end
-        def image_aspect
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
+        def freshness
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
+        end
+        def images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
         end
         def image_content
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
         end
-        def freshness
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
+        def image_type
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
         end
         def image_size
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
@@ -246,11 +237,11 @@ module Azure::Profiles::Latest
         def image_crop_type
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
         end
+        def error
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        end
         def image_insight_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-        end
-        def image_type
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
         end
         def response_base
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
@@ -272,6 +263,15 @@ module Azure::Profiles::Latest
         end
         def thing
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
+        end
+        def creative_work
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
+        end
+        def error_code
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
+        end
+        def error_sub_code
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
         end
       end
     end

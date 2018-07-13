@@ -34,7 +34,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
   autoload :BackupPolicies,                                     '2017-07-01/generated/azure_mgmt_recovery_services_backup/backup_policies.rb'
   autoload :BackupProtectedItems,                               '2017-07-01/generated/azure_mgmt_recovery_services_backup/backup_protected_items.rb'
   autoload :BackupUsageSummaries,                               '2017-07-01/generated/azure_mgmt_recovery_services_backup/backup_usage_summaries.rb'
-  autoload :Validate,                                           '2017-07-01/generated/azure_mgmt_recovery_services_backup/validate.rb'
+  autoload :Operation,                                          '2017-07-01/generated/azure_mgmt_recovery_services_backup/operation.rb'
   autoload :RecoveryServicesBackupClient,                       '2017-07-01/generated/azure_mgmt_recovery_services_backup/recovery_services_backup_client.rb'
 
   module Models

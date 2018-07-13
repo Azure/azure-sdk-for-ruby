@@ -42,7 +42,7 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
     BackupPolicies = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::BackupPolicies
     BackupProtectedItems = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::BackupProtectedItems
     BackupUsageSummaries = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::BackupUsageSummaries
-    Validate = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Validate
+    Operation = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Operation
 
     module Models
       ClientDiscoveryDisplay = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryDisplay
@@ -327,7 +327,7 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
     # RecoveryServicesBackupManagementClass
     #
     class RecoveryServicesBackupManagementClass
-      attr_reader :operations, :backup_resource_vault_configs, :backup_engines, :protection_container_refresh_operation_results, :protectable_containers, :protection_containers, :backup_workload_items, :protection_container_operation_results, :protected_items, :backups, :protected_item_operation_results, :protected_item_operation_statuses, :recovery_points, :item_level_recovery_connections, :restores, :job_cancellations, :job_operation_results, :backup_operation_results, :backup_operation_statuses, :protection_policies, :protection_policy_operation_results, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protection_containers, :security_pins, :backup_resource_storage_configs, :protection_intent_operations, :backup_status, :feature_support, :backup_jobs, :job_details, :export_jobs_operation_results, :jobs, :backup_policies, :backup_protected_items, :backup_usage_summaries, :validate, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :backup_resource_vault_configs, :backup_engines, :protection_container_refresh_operation_results, :protectable_containers, :protection_containers, :backup_workload_items, :protection_container_operation_results, :protected_items, :backups, :protected_item_operation_results, :protected_item_operation_statuses, :recovery_points, :item_level_recovery_connections, :restores, :job_cancellations, :job_operation_results, :backup_operation_results, :backup_operation_statuses, :protection_policies, :protection_policy_operation_results, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protection_containers, :security_pins, :backup_resource_storage_configs, :protection_intent_operations, :backup_status, :feature_support, :backup_jobs, :job_details, :export_jobs_operation_results, :jobs, :backup_policies, :backup_protected_items, :backup_usage_summaries, :operation, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -395,7 +395,7 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
         @backup_policies = @client_2.backup_policies
         @backup_protected_items = @client_2.backup_protected_items
         @backup_usage_summaries = @client_2.backup_usage_summaries
-        @validate = @client_2.validate
+        @operation = @client_2.operation
 
         @model_classes = ModelClasses.new
       end
