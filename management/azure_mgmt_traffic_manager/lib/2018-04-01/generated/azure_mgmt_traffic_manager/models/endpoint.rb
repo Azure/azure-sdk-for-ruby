@@ -83,7 +83,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
             model_properties: {
               id: {
                 required: false,
-                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -91,7 +90,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -99,7 +97,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
               },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
