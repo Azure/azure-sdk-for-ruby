@@ -6,12 +6,11 @@
 module Azure::ContainerRegistry::Mgmt::V2017_10_01
   module Models
     #
-    # Defines values for WebhookAction
+    # Defines values for PolicyStatus
     #
-    module WebhookAction
-      Push = "push"
-      Delete = "delete"
-      Quarantine = "quarantine"
+    module PolicyStatus
+      Enabled = "enabled"
+      Disabled = "disabled"
     end
   end
 end
