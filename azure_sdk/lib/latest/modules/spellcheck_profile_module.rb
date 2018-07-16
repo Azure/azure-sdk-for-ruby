@@ -8,18 +8,18 @@ module Azure::Profiles::Latest
   module SpellCheck
 
     module Models
-      SpellingTokenSuggestion = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
       ResponseBase = Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
-      SpellingFlaggedToken = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingFlaggedToken
-      Error = Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
+      ErrorResponse = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
       SpellCheck = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellCheck
       Identifiable = Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
-      Response = Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
       Answer = Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
-      ErrorResponse = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
-      ErrorType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
+      Response = Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
       ErrorCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
+      SpellingTokenSuggestion = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
+      SpellingFlaggedToken = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingFlaggedToken
+      ErrorType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
+      Error = Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
       ActionType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ActionType
       Mode = Azure::CognitiveServices::SpellCheck::V1_0::Models::Mode
     end
@@ -53,17 +53,11 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def spelling_token_suggestion
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
-        end
         def response_base
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
         end
-        def spelling_flagged_token
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingFlaggedToken
-        end
-        def error
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
+        def error_response
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
         end
         def spell_check
           Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellCheck
@@ -71,23 +65,29 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
         end
-        def response
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
-        end
         def answer
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
         end
-        def error_response
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
-        end
-        def error_type
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
+        def response
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
         end
         def error_code
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
         end
         def error_sub_code
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
+        end
+        def spelling_token_suggestion
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
+        end
+        def spelling_flagged_token
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingFlaggedToken
+        end
+        def error_type
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
+        end
+        def error
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
         end
         def action_type
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ActionType
