@@ -112,6 +112,26 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
                   name: 'Boolean'
                 }
               },
+              api_revision_description: {
+                required: false,
+                serialized_name: 'apiRevisionDescription',
+                constraints: {
+                  MaxLength: 256
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              api_version_description: {
+                required: false,
+                serialized_name: 'apiVersionDescription',
+                constraints: {
+                  MaxLength: 256
+                },
+                type: {
+                  name: 'String'
+                }
+              },
               api_version_set_id: {
                 required: false,
                 serialized_name: 'apiVersionSetId',
