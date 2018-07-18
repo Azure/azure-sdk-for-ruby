@@ -34,7 +34,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SimpleRetentionPolicy',
           type: {
@@ -42,7 +41,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'SimpleRetentionPolicy',
             model_properties: {
               retentionPolicyType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'retentionPolicyType',
                 type: {
@@ -50,7 +48,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               retention_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionDuration',
                 type: {

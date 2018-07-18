@@ -38,7 +38,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DpmJobTaskDetails',
           type: {
@@ -46,7 +45,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'DpmJobTaskDetails',
             model_properties: {
               task_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'taskId',
                 type: {
@@ -54,7 +52,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -62,7 +59,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -70,7 +66,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'duration',
                 type: {
@@ -78,7 +73,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

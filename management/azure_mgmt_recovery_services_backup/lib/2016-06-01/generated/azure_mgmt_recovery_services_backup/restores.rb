@@ -44,8 +44,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def trigger(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers:nil)
-      response = trigger_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers:custom_headers).value!
+    def trigger(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers = nil)
+      response = trigger_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers).value!
       nil
     end
 
@@ -69,8 +69,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def trigger_with_http_info(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers:nil)
-      trigger_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers:custom_headers).value!
+    def trigger_with_http_info(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers = nil)
+      trigger_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers).value!
     end
 
     #
@@ -93,7 +93,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def trigger_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers:nil)
+    def trigger_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, recovery_point_id, resource_restore_request, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -106,11 +106,12 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::RestoreRequestResource.mapper()
