@@ -128,7 +128,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -143,7 +143,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -412,7 +412,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -429,7 +429,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content The runbook draft content.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -445,7 +445,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
-    # @param runbook_content [String] The runbook draft content.
+    # @param runbook_content The runbook draft content.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -473,7 +473,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         required: true,
         serialized_name: 'runbookContent',
         type: {
-          name: 'String'
+          name: 'Stream'
         }
       }
       request_content = @client.serialize(request_mapper,  runbook_content)
