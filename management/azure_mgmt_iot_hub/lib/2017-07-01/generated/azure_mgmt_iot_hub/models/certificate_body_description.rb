@@ -23,7 +23,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateBodyDescription',
           type: {
@@ -31,7 +30,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'CertificateBodyDescription',
             model_properties: {
               certificate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificate',
                 type: {
