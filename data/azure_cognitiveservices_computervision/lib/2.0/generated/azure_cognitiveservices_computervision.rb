@@ -60,7 +60,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     autoload :VisualFeatureTypes,                                 '2.0/generated/azure_cognitiveservices_computervision/models/visual_feature_types.rb'
     autoload :OcrLanguages,                                       '2.0/generated/azure_cognitiveservices_computervision/models/ocr_languages.rb'
     autoload :TextRecognitionMode,                                '2.0/generated/azure_cognitiveservices_computervision/models/text_recognition_mode.rb'
-    autoload :AzureRegions,                                       '2.0/generated/azure_cognitiveservices_computervision/models/azure_regions.rb'
     autoload :Details,                                            '2.0/generated/azure_cognitiveservices_computervision/models/details.rb'
   end
 end

@@ -17,12 +17,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials1
 
-    # @return [AzureRegions] Supported Azure regions for Cognitive Services
-    # endpoints. Possible values include: 'westus', 'westeurope',
-    # 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus',
-    # 'southcentralus', 'northeurope', 'eastasia', 'australiaeast',
-    # 'brazilsouth'
-    attr_accessor :azure_region
+    # @return [String] Supported Cognitive Services endpoints
+    attr_accessor :endpoint
 
     # @return Subscription credentials which uniquely identify client
     # subscription.
@@ -46,7 +42,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = 'https://{AzureRegion}.api.cognitive.microsoft.com/vision/v2.0'
+      @base_url = '{Endpoint}/vision/v2.0'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -158,7 +154,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_models_async(custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
 
 
       request_headers = {}
@@ -169,7 +165,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'models'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -314,7 +310,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def analyze_image_async(url, visual_features = nil, details = nil, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
       image_url = ImageUrl.new
@@ -338,7 +334,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'analyze'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -446,7 +442,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def generate_thumbnail_async(width, height, url, smart_cropping = false, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'width is nil' if width.nil?
       fail ArgumentError, 'height is nil' if height.nil?
       fail ArgumentError, 'url is nil' if url.nil?
@@ -472,7 +468,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'generateThumbnail'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -595,7 +591,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def recognize_printed_text_async(detect_orientation, url, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'detect_orientation is nil' if detect_orientation.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -620,7 +616,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'ocr'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -737,7 +733,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def describe_image_async(url, max_candidates = '1', language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
       image_url = ImageUrl.new
@@ -761,7 +757,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'describe'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -869,7 +865,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def tag_image_async(url, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
       image_url = ImageUrl.new
@@ -893,7 +889,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'tag'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1007,7 +1003,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def analyze_image_by_domain_async(model, url, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'model is nil' if model.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -1032,7 +1028,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'models/{model}/analyze'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1122,7 +1118,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def recognize_text_async(url, mode, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'mode is nil' if mode.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -1147,7 +1143,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'recognizeText'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1221,7 +1217,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_text_operation_result_async(operation_id, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'operation_id is nil' if operation_id.nil?
 
 
@@ -1233,7 +1229,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'textOperations/{operationId}'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1370,7 +1366,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def analyze_image_in_stream_async(image, visual_features = nil, details = nil, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
@@ -1396,7 +1392,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'analyze'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1504,7 +1500,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def generate_thumbnail_in_stream_async(width, height, image, smart_cropping = false, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'width is nil' if width.nil?
       fail ArgumentError, 'height is nil' if height.nil?
       fail ArgumentError, 'image is nil' if image.nil?
@@ -1532,7 +1528,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'generateThumbnail'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1655,7 +1651,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def recognize_printed_text_in_stream_async(detect_orientation, image, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'detect_orientation is nil' if detect_orientation.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -1682,7 +1678,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'ocr'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1799,7 +1795,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def describe_image_in_stream_async(image, max_candidates = '1', language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
@@ -1825,7 +1821,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'describe'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1933,7 +1929,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def tag_image_in_stream_async(image, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
@@ -1959,7 +1955,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'tag'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -2073,7 +2069,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def analyze_image_by_domain_in_stream_async(model, image, language = nil, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'model is nil' if model.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -2100,7 +2096,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'models/{model}/analyze'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -2190,7 +2186,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def recognize_text_in_stream_async(image, mode, custom_headers = nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
       fail ArgumentError, 'mode is nil' if mode.nil?
 
@@ -2217,7 +2213,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       path_template = 'recognizeText'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
+    request_url = request_url.gsub('{Endpoint}', endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
