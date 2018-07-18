@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve all the job streams for the compilation Job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_id The job id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -41,7 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve all the job streams for the compilation Job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_id The job id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -56,7 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve all the job streams for the compilation Job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_id The job id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

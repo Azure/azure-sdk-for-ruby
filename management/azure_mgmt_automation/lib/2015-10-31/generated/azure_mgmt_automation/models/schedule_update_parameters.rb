@@ -12,7 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the name of the schedule.
+      # @return [String] Gets or sets the name of the Schedule.
       attr_accessor :name
 
       # @return [String] Gets or sets the description of the schedule.
