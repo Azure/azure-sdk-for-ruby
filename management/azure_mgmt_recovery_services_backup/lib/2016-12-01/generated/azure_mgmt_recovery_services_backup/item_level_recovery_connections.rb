@@ -27,8 +27,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provisions a script which invokes an iSCSI connection to the backup data.
-    # Executing this script opens a file explorer displaying all the recoverable
-    # files and folders. This is an asynchronous operation. To know the status of
+    # Executing this script opens a file
+    # explorer displaying all the recoverable files and folders. This is an
+    # asynchronous operation. To know the status of
     # provisioning, call GetProtectedItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
@@ -40,7 +41,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param protected_item_name [String] Backed up item name whose files/folders
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
-    # up data. iSCSI connection will be provisioned for this backed up data.
+    # up data. iSCSI connection will be provisioned
+    # for this backed up data.
     # @param parameters [ILRRequestResource] resource ILR request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -53,8 +55,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provisions a script which invokes an iSCSI connection to the backup data.
-    # Executing this script opens a file explorer displaying all the recoverable
-    # files and folders. This is an asynchronous operation. To know the status of
+    # Executing this script opens a file
+    # explorer displaying all the recoverable files and folders. This is an
+    # asynchronous operation. To know the status of
     # provisioning, call GetProtectedItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
@@ -66,7 +69,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param protected_item_name [String] Backed up item name whose files/folders
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
-    # up data. iSCSI connection will be provisioned for this backed up data.
+    # up data. iSCSI connection will be provisioned
+    # for this backed up data.
     # @param parameters [ILRRequestResource] resource ILR request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -79,8 +83,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provisions a script which invokes an iSCSI connection to the backup data.
-    # Executing this script opens a file explorer displaying all the recoverable
-    # files and folders. This is an asynchronous operation. To know the status of
+    # Executing this script opens a file
+    # explorer displaying all the recoverable files and folders. This is an
+    # asynchronous operation. To know the status of
     # provisioning, call GetProtectedItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
@@ -92,7 +97,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param protected_item_name [String] Backed up item name whose files/folders
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
-    # up data. iSCSI connection will be provisioned for this backed up data.
+    # up data. iSCSI connection will be provisioned
+    # for this backed up data.
     # @param parameters [ILRRequestResource] resource ILR request
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -157,8 +163,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Revokes an iSCSI connection which can be used to download a script. Executing
-    # this script opens a file explorer displaying all recoverable files and
-    # folders. This is an asynchronous operation.
+    # this script opens a file explorer
+    # displaying all recoverable files and folders. This is an asynchronous
+    # operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -169,7 +176,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param protected_item_name [String] Backed up item name whose files/folders
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
-    # up data. iSCSI connection will be revoked for this backed up data.
+    # up data. iSCSI connection will be revoked for
+    # this backed up data.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -181,8 +189,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Revokes an iSCSI connection which can be used to download a script. Executing
-    # this script opens a file explorer displaying all recoverable files and
-    # folders. This is an asynchronous operation.
+    # this script opens a file explorer
+    # displaying all recoverable files and folders. This is an asynchronous
+    # operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -193,7 +202,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param protected_item_name [String] Backed up item name whose files/folders
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
-    # up data. iSCSI connection will be revoked for this backed up data.
+    # up data. iSCSI connection will be revoked for
+    # this backed up data.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -205,8 +215,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Revokes an iSCSI connection which can be used to download a script. Executing
-    # this script opens a file explorer displaying all recoverable files and
-    # folders. This is an asynchronous operation.
+    # this script opens a file explorer
+    # displaying all recoverable files and folders. This is an asynchronous
+    # operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -217,7 +228,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param protected_item_name [String] Backed up item name whose files/folders
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
-    # up data. iSCSI connection will be revoked for this backed up data.
+    # up data. iSCSI connection will be revoked for
+    # this backed up data.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -27,7 +27,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides a pageable list of workload item of a specific container according
-    # to the query filter and the pagination parameters.
+    # to the query filter and the pagination
+    # parameters.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -48,7 +49,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides a pageable list of workload item of a specific container according
-    # to the query filter and the pagination parameters.
+    # to the query filter and the pagination
+    # parameters.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -68,7 +70,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides a pageable list of workload item of a specific container according
-    # to the query filter and the pagination parameters.
+    # to the query filter and the pagination
+    # parameters.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -138,7 +141,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides a pageable list of workload item of a specific container according
-    # to the query filter and the pagination parameters.
+    # to the query filter and the pagination
+    # parameters.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -154,7 +158,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides a pageable list of workload item of a specific container according
-    # to the query filter and the pagination parameters.
+    # to the query filter and the pagination
+    # parameters.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -169,7 +174,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides a pageable list of workload item of a specific container according
-    # to the query filter and the pagination parameters.
+    # to the query filter and the pagination
+    # parameters.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -228,7 +234,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides a pageable list of workload item of a specific container according
-    # to the query filter and the pagination parameters.
+    # to the query filter and the pagination
+    # parameters.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

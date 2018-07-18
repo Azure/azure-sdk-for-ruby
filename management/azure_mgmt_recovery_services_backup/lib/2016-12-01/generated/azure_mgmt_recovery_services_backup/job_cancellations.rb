@@ -27,7 +27,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Cancels a job. This is an asynchronous operation. To know the status of the
-    # cancellation, call GetCancelOperationResult API.
+    # cancellation, call
+    # GetCancelOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -44,7 +45,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Cancels a job. This is an asynchronous operation. To know the status of the
-    # cancellation, call GetCancelOperationResult API.
+    # cancellation, call
+    # GetCancelOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -61,7 +63,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Cancels a job. This is an asynchronous operation. To know the status of the
-    # cancellation, call GetCancelOperationResult API.
+    # cancellation, call
+    # GetCancelOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

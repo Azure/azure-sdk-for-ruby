@@ -27,8 +27,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the details of the backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call the
-    # GetItemOperationResult API.
+    # operation. To know the status of the operation,
+    # call the GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -51,8 +51,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the details of the backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call the
-    # GetItemOperationResult API.
+    # operation. To know the status of the operation,
+    # call the GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -74,8 +74,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the details of the backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call the
-    # GetItemOperationResult API.
+    # operation. To know the status of the operation,
+    # call the GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -148,8 +148,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Enables backup of an item or to modifies the backup policy information of an
-    # already backed up item. This is an asynchronous operation. To know the status
-    # of the operation, call the GetItemOperationResult API.
+    # already backed up item. This is an
+    # asynchronous operation. To know the status of the operation, call the
+    # GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -170,8 +171,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Enables backup of an item or to modifies the backup policy information of an
-    # already backed up item. This is an asynchronous operation. To know the status
-    # of the operation, call the GetItemOperationResult API.
+    # already backed up item. This is an
+    # asynchronous operation. To know the status of the operation, call the
+    # GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -192,8 +194,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Enables backup of an item or to modifies the backup policy information of an
-    # already backed up item. This is an asynchronous operation. To know the status
-    # of the operation, call the GetItemOperationResult API.
+    # already backed up item. This is an
+    # asynchronous operation. To know the status of the operation, call the
+    # GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -265,8 +268,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Used to disable backup of an item within a container. This is an asynchronous
-    # operation. To know the status of the request, call the GetItemOperationResult
-    # API.
+    # operation. To know the status of the
+    # request, call the GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -286,8 +289,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Used to disable backup of an item within a container. This is an asynchronous
-    # operation. To know the status of the request, call the GetItemOperationResult
-    # API.
+    # operation. To know the status of the
+    # request, call the GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -307,8 +310,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Used to disable backup of an item within a container. This is an asynchronous
-    # operation. To know the status of the request, call the GetItemOperationResult
-    # API.
+    # operation. To know the status of the
+    # request, call the GetItemOperationResult API.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

@@ -27,7 +27,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
     #
     # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # provides pagination parameters to fetch
+    # scoped results.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -45,7 +46,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
     #
     # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # provides pagination parameters to fetch
+    # scoped results.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -62,7 +64,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
     #
     # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # provides pagination parameters to fetch
+    # scoped results.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -127,7 +130,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
     #
     # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # provides pagination parameters to fetch
+    # scoped results.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -143,7 +147,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
     #
     # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # provides pagination parameters to fetch
+    # scoped results.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -158,7 +163,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
     #
     # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # provides pagination parameters to fetch
+    # scoped results.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -217,7 +223,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
     #
     # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # provides pagination parameters to fetch
+    # scoped results.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

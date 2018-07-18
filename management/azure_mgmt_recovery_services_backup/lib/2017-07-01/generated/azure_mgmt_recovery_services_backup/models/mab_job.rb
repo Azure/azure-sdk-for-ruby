@@ -38,8 +38,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
       # 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
       # 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
-      # 'GenericContainer', 'SqlCluster', 'ExchangeDAG', 'SharepointFarm',
-      # 'HyperVCluster', 'WindowsClient'
+      # 'GenericContainer'
       attr_accessor :mab_server_type
 
       # @return [WorkloadType] Workload type of backup item. Possible values

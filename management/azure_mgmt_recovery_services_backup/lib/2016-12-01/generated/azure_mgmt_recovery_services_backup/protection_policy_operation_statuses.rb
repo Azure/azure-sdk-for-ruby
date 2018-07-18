@@ -27,10 +27,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the status of the asynchronous operations like backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # Operation Status enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs associated with
-    # operation.
+    # status can be in progress, completed
+    # or failed. You can refer to the Operation Status enum for all the possible
+    # states of an operation. Some operations
+    # create jobs. This method returns the list of jobs associated with operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -51,10 +51,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the status of the asynchronous operations like backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # Operation Status enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs associated with
-    # operation.
+    # status can be in progress, completed
+    # or failed. You can refer to the Operation Status enum for all the possible
+    # states of an operation. Some operations
+    # create jobs. This method returns the list of jobs associated with operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -74,10 +74,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
     #
     # Provides the status of the asynchronous operations like backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # Operation Status enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs associated with
-    # operation.
+    # status can be in progress, completed
+    # or failed. You can refer to the Operation Status enum for all the possible
+    # states of an operation. Some operations
+    # create jobs. This method returns the list of jobs associated with operation.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
