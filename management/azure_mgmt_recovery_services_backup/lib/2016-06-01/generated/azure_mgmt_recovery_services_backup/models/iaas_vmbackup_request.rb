@@ -35,7 +35,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IaasVMBackupRequest',
           type: {
@@ -43,7 +42,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'IaasVMBackupRequest',
             model_properties: {
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -51,7 +49,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recovery_point_expiry_time_in_utc: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointExpiryTimeInUTC',
                 type: {
