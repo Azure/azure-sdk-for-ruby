@@ -11,6 +11,9 @@ module Azure::IotHub::Profiles::Latest
     Certificates = Azure::IotHub::Mgmt::V2017_07_01::Certificates
 
     module Models
+      JobStatus = Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
+      IotHubScaleType = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
+      IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
       IotHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubProperties
       IotHubSkuInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuInfo
       CertificateBodyDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateBodyDescription
@@ -66,9 +69,6 @@ module Azure::IotHub::Profiles::Latest
       IotHubSku = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
       IotHubSkuTier = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuTier
       JobType = Azure::IotHub::Mgmt::V2017_07_01::Models::JobType
-      JobStatus = Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
-      IotHubScaleType = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
-      IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
     end
 
     #
@@ -118,6 +118,15 @@ module Azure::IotHub::Profiles::Latest
     end
 
     class ModelClasses
+      def job_status
+        Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
+      end
+      def iot_hub_scale_type
+        Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
+      end
+      def iot_hub_name_unavailability_reason
+        Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
+      end
       def iot_hub_properties
         Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubProperties
       end
@@ -282,15 +291,6 @@ module Azure::IotHub::Profiles::Latest
       end
       def job_type
         Azure::IotHub::Mgmt::V2017_07_01::Models::JobType
-      end
-      def job_status
-        Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
-      end
-      def iot_hub_scale_type
-        Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
-      end
-      def iot_hub_name_unavailability_reason
-        Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
       end
     end
   end
