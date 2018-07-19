@@ -6,7 +6,7 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # The integration account AS2 oneway agreement.
+    # The integration account AS2 one-way agreement.
     #
     class AS2OneWayAgreement
 
@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2OneWayAgreement',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2OneWayAgreement',
             model_properties: {
               sender_business_identity: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'senderBusinessIdentity',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_business_identity: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'receiverBusinessIdentity',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               protocol_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocolSettings',
                 type: {

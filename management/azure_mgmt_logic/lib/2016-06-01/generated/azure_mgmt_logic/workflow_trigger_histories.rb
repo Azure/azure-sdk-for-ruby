@@ -28,14 +28,15 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param trigger_name [String] The workflow trigger name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<WorkflowTriggerHistory>] operation results.
     #
-    def list(resource_group_name, workflow_name, trigger_name, top:nil, filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, workflow_name, trigger_name, top:top, filter:filter, custom_headers:custom_headers)
+    def list(resource_group_name, workflow_name, trigger_name, top = nil, filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, workflow_name, trigger_name, top, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -46,14 +47,15 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param trigger_name [String] The workflow trigger name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, workflow_name, trigger_name, top:nil, filter:nil, custom_headers:nil)
-      list_async(resource_group_name, workflow_name, trigger_name, top:top, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, workflow_name, trigger_name, top = nil, filter = nil, custom_headers = nil)
+      list_async(resource_group_name, workflow_name, trigger_name, top, filter, custom_headers).value!
     end
 
     #
@@ -63,13 +65,14 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param trigger_name [String] The workflow trigger name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, workflow_name, trigger_name, top:nil, filter:nil, custom_headers:nil)
+    def list_async(resource_group_name, workflow_name, trigger_name, top = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -78,7 +81,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -136,8 +138,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [WorkflowTriggerHistory] operation results.
     #
-    def get(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:nil)
-      response = get_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, workflow_name, trigger_name, history_name, custom_headers = nil)
+      response = get_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -154,8 +156,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:nil)
-      get_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, workflow_name, trigger_name, history_name, custom_headers = nil)
+      get_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers).value!
     end
 
     #
@@ -171,7 +173,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:nil)
+    def get_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -181,7 +183,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -238,8 +239,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def resubmit(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:nil)
-      response = resubmit_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:custom_headers).value!
+    def resubmit(resource_group_name, workflow_name, trigger_name, history_name, custom_headers = nil)
+      response = resubmit_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers).value!
       nil
     end
 
@@ -256,8 +257,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def resubmit_with_http_info(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:nil)
-      resubmit_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:custom_headers).value!
+    def resubmit_with_http_info(resource_group_name, workflow_name, trigger_name, history_name, custom_headers = nil)
+      resubmit_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers).value!
     end
 
     #
@@ -273,7 +274,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def resubmit_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers:nil)
+    def resubmit_async(resource_group_name, workflow_name, trigger_name, history_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -283,7 +284,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -328,8 +328,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [WorkflowTriggerHistoryListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -343,8 +343,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -357,12 +357,11 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -413,19 +412,20 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param trigger_name [String] The workflow trigger name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WorkflowTriggerHistoryListResult] which provide lazy access to pages
     # of the response.
     #
-    def list_as_lazy(resource_group_name, workflow_name, trigger_name, top:nil, filter:nil, custom_headers:nil)
-      response = list_async(resource_group_name, workflow_name, trigger_name, top:top, filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, workflow_name, trigger_name, top = nil, filter = nil, custom_headers = nil)
+      response = list_async(resource_group_name, workflow_name, trigger_name, top, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
