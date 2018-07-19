@@ -18,24 +18,28 @@ module Azure::EventGrid::Profiles::Latest
     ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
     DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
     EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
-    SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+    DeviceConnectionStateEventInfo = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
     SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-    SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
-    ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
-    StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
-    MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-    ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
-    ContainerRegistryEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+    DeviceConnectionStateEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
     ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
-    ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
-    EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-    ContainerRegistryEventActor = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
-    ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
-    ContainerRegistryEventSource = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
-    ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+    SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+    MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+    SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+    StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+    ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
+    ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
     ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
+    ContainerRegistryEventSource = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
+    EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+    ContainerRegistryEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+    ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+    ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
+    ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+    ContainerRegistryEventActor = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
     IotHubDeviceCreatedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
     IotHubDeviceDeletedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDeletedEventData
+    IotHubDeviceConnectedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceConnectedEventData
+    IotHubDeviceDisconnectedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDisconnectedEventData
     ContainerRegistryImagePushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
     ContainerRegistryImageDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
     JobState = Azure::EventGrid::V2018_01_01::Models::JobState
@@ -118,59 +122,71 @@ module Azure::EventGrid::Profiles::Latest
     def event_grid_event
       Azure::EventGrid::V2018_01_01::Models::EventGridEvent
     end
-    def subscription_validation_event_data
-      Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+    def device_connection_state_event_info
+      Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
     end
     def subscription_validation_response
       Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
     end
-    def subscription_deleted_event_data
-      Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
-    end
-    def service_bus_active_messages_available_with_no_listeners_event_data
-      Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
-    end
-    def storage_blob_created_event_data
-      Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
-    end
-    def media_job_state_change_event_data
-      Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-    end
-    def resource_write_failure_data
-      Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
-    end
-    def container_registry_event_target
-      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+    def device_connection_state_event_properties
+      Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
     end
     def resource_delete_cancel_data
       Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
     end
-    def container_registry_event_request
-      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
+    def subscription_validation_event_data
+      Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
     end
-    def event_hub_capture_file_created_event_data
-      Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+    def media_job_state_change_event_data
+      Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
     end
-    def container_registry_event_actor
-      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
+    def subscription_deleted_event_data
+      Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
     end
-    def service_bus_deadletter_messages_available_with_no_listeners_event_data
-      Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+    def storage_blob_created_event_data
+      Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+    end
+    def service_bus_active_messages_available_with_no_listeners_event_data
+      Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
+    end
+    def resource_write_failure_data
+      Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
+    end
+    def container_registry_event_data
+      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
     end
     def container_registry_event_source
       Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
     end
+    def event_hub_capture_file_created_event_data
+      Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+    end
+    def container_registry_event_target
+      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+    end
+    def service_bus_deadletter_messages_available_with_no_listeners_event_data
+      Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+    end
+    def container_registry_event_request
+      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
+    end
     def resource_delete_success_data
       Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
     end
-    def container_registry_event_data
-      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
+    def container_registry_event_actor
+      Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
     end
     def iot_hub_device_created_event_data
       Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
     end
     def iot_hub_device_deleted_event_data
       Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDeletedEventData
+    end
+    def iot_hub_device_connected_event_data
+      Azure::EventGrid::V2018_01_01::Models::IotHubDeviceConnectedEventData
+    end
+    def iot_hub_device_disconnected_event_data
+      Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDisconnectedEventData
     end
     def container_registry_image_pushed_event_data
       Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData

@@ -39,20 +39,6 @@ module Azure::EventGrid::V2018_01_01
                   name: 'String'
                 }
               },
-              op_type: {
-                required: false,
-                serialized_name: 'opType',
-                type: {
-                  name: 'String'
-                }
-              },
-              operation_timestamp: {
-                required: false,
-                serialized_name: 'operationTimestamp',
-                type: {
-                  name: 'String'
-                }
-              },
               twin: {
                 required: false,
                 serialized_name: 'twin',
