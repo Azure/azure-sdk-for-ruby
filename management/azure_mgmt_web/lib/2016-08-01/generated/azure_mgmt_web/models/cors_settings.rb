@@ -24,7 +24,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CorsSettings',
           type: {
@@ -32,13 +31,11 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'CorsSettings',
             model_properties: {
               allowed_origins: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedOrigins',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

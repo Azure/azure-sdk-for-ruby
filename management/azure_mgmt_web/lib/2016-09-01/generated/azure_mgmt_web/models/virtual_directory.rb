@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualDirectory',
           type: {
@@ -33,7 +32,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'VirtualDirectory',
             model_properties: {
               virtual_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualPath',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               physical_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'physicalPath',
                 type: {

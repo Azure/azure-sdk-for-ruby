@@ -64,7 +64,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricSpecification',
           type: {
@@ -72,7 +71,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'MetricSpecification',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -80,7 +78,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -88,7 +85,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display_description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayDescription',
                 type: {
@@ -96,7 +92,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -104,7 +99,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregationType',
                 type: {
@@ -112,7 +106,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               supports_instance_level_aggregation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'supportsInstanceLevelAggregation',
                 type: {
@@ -120,7 +113,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               enable_regional_mdm_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableRegionalMdmAccount',
                 type: {
@@ -128,7 +120,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               source_mdm_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceMdmAccount',
                 type: {
@@ -136,7 +127,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               source_mdm_namespace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceMdmNamespace',
                 type: {
@@ -144,7 +134,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               metric_filter_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricFilterPattern',
                 type: {
@@ -152,7 +141,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               fill_gap_with_zero: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fillGapWithZero',
                 type: {
@@ -160,7 +148,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               is_internal: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isInternal',
                 type: {
@@ -168,13 +155,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               dimensions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dimensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DimensionElementType',
                       type: {
@@ -185,7 +170,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 type: {
@@ -193,13 +177,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               availabilities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'availabilities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricAvailabilityElementType',
                       type: {

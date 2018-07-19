@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2016_03_01
   #
-  # Recommendations
+  # WebSite Management Client
   #
   class Recommendations
     include MsRestAzure
@@ -36,11 +36,11 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [Array<Recommendation>] operation results.
     #
-    def list(featured:nil, filter:nil, custom_headers:nil)
-      response = list_async(featured:featured, filter:filter, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+    def list(featured = nil, filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(featured, filter, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -60,8 +60,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(featured:nil, filter:nil, custom_headers:nil)
-      list_async(featured:featured, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(featured = nil, filter = nil, custom_headers = nil)
+      list_async(featured, filter, custom_headers).value!
     end
 
     #
@@ -81,13 +81,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(featured:nil, filter:nil, custom_headers:nil)
+    def list_async(featured = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -120,23 +119,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              client_side_validation: true,
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    client_side_validation: true,
-                    required: false,
-                    serialized_name: 'RecommendationElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'Recommendation'
-                    }
-                }
-              }
-            }
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -158,8 +141,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def reset_all_filters(custom_headers:nil)
-      response = reset_all_filters_async(custom_headers:custom_headers).value!
+    def reset_all_filters(custom_headers = nil)
+      response = reset_all_filters_async(custom_headers).value!
       nil
     end
 
@@ -173,8 +156,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def reset_all_filters_with_http_info(custom_headers:nil)
-      reset_all_filters_async(custom_headers:custom_headers).value!
+    def reset_all_filters_with_http_info(custom_headers = nil)
+      reset_all_filters_async(custom_headers).value!
     end
 
     #
@@ -187,13 +170,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def reset_all_filters_async(custom_headers:nil)
+    def reset_all_filters_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -229,6 +211,94 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # Disables the specified rule so it will not apply to a subscription in the
+    # future.
+    #
+    # Disables the specified rule so it will not apply to a subscription in the
+    # future.
+    #
+    # @param name [String] Rule name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def disable_recommendation_for_subscription(name, custom_headers = nil)
+      response = disable_recommendation_for_subscription_async(name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Disables the specified rule so it will not apply to a subscription in the
+    # future.
+    #
+    # Disables the specified rule so it will not apply to a subscription in the
+    # future.
+    #
+    # @param name [String] Rule name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disable_recommendation_for_subscription_with_http_info(name, custom_headers = nil)
+      disable_recommendation_for_subscription_async(name, custom_headers).value!
+    end
+
+    #
+    # Disables the specified rule so it will not apply to a subscription in the
+    # future.
+    #
+    # Disables the specified rule so it will not apply to a subscription in the
+    # future.
+    #
+    # @param name [String] Rule name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disable_recommendation_for_subscription_async(name, custom_headers = nil)
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/{name}/disable'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Get past recommendations for an app, optionally specified by the time range.
     #
     # Get past recommendations for an app, optionally specified by the time range.
@@ -243,11 +313,11 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [Array<Recommendation>] operation results.
     #
-    def list_history_for_web_app(resource_group_name, site_name, filter:nil, custom_headers:nil)
-      response = list_history_for_web_app_async(resource_group_name, site_name, filter:filter, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+    def list_history_for_web_app(resource_group_name, site_name, filter = nil, custom_headers = nil)
+      first_page = list_history_for_web_app_as_lazy(resource_group_name, site_name, filter, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -267,8 +337,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_history_for_web_app_with_http_info(resource_group_name, site_name, filter:nil, custom_headers:nil)
-      list_history_for_web_app_async(resource_group_name, site_name, filter:filter, custom_headers:custom_headers).value!
+    def list_history_for_web_app_with_http_info(resource_group_name, site_name, filter = nil, custom_headers = nil)
+      list_history_for_web_app_async(resource_group_name, site_name, filter, custom_headers).value!
     end
 
     #
@@ -288,18 +358,14 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_history_for_web_app_async(resource_group_name, site_name, filter:nil, custom_headers:nil)
+    def list_history_for_web_app_async(resource_group_name, site_name, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -332,23 +398,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              client_side_validation: true,
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    client_side_validation: true,
-                    required: false,
-                    serialized_name: 'RecommendationElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'Recommendation'
-                    }
-                }
-              }
-            }
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -378,11 +428,11 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [Array<Recommendation>] operation results.
     #
-    def list_recommended_rules_for_web_app(resource_group_name, site_name, featured:nil, filter:nil, custom_headers:nil)
-      response = list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured:featured, filter:filter, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+    def list_recommended_rules_for_web_app(resource_group_name, site_name, featured = nil, filter = nil, custom_headers = nil)
+      first_page = list_recommended_rules_for_web_app_as_lazy(resource_group_name, site_name, featured, filter, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -404,8 +454,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_recommended_rules_for_web_app_with_http_info(resource_group_name, site_name, featured:nil, filter:nil, custom_headers:nil)
-      list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured:featured, filter:filter, custom_headers:custom_headers).value!
+    def list_recommended_rules_for_web_app_with_http_info(resource_group_name, site_name, featured = nil, filter = nil, custom_headers = nil)
+      list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured, filter, custom_headers).value!
     end
 
     #
@@ -427,18 +477,14 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured:nil, filter:nil, custom_headers:nil)
+    def list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -471,23 +517,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              client_side_validation: true,
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    client_side_validation: true,
-                    required: false,
-                    serialized_name: 'RecommendationElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'Recommendation'
-                    }
-                }
-              }
-            }
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -512,8 +542,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def disable_all_for_web_app(resource_group_name, site_name, custom_headers:nil)
-      response = disable_all_for_web_app_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def disable_all_for_web_app(resource_group_name, site_name, custom_headers = nil)
+      response = disable_all_for_web_app_async(resource_group_name, site_name, custom_headers).value!
       nil
     end
 
@@ -530,8 +560,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def disable_all_for_web_app_with_http_info(resource_group_name, site_name, custom_headers:nil)
-      disable_all_for_web_app_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def disable_all_for_web_app_with_http_info(resource_group_name, site_name, custom_headers = nil)
+      disable_all_for_web_app_async(resource_group_name, site_name, custom_headers).value!
     end
 
     #
@@ -547,18 +577,14 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def disable_all_for_web_app_async(resource_group_name, site_name, custom_headers:nil)
+    def disable_all_for_web_app_async(resource_group_name, site_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -605,8 +631,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def reset_all_filters_for_web_app(resource_group_name, site_name, custom_headers:nil)
-      response = reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def reset_all_filters_for_web_app(resource_group_name, site_name, custom_headers = nil)
+      response = reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers).value!
       nil
     end
 
@@ -623,8 +649,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def reset_all_filters_for_web_app_with_http_info(resource_group_name, site_name, custom_headers:nil)
-      reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def reset_all_filters_for_web_app_with_http_info(resource_group_name, site_name, custom_headers = nil)
+      reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers).value!
     end
 
     #
@@ -640,18 +666,14 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers:nil)
+    def reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -697,13 +719,15 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param name [String] Name of the recommendation.
     # @param update_seen [Boolean] Specify <code>true</code> to update the
     # last-seen timestamp of the recommendation object.
+    # @param recommendation_id [String] The GUID of the recommedation object if you
+    # query an expired one. You don't need to specify it to query an active entry.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RecommendationRule] operation results.
     #
-    def get_rule_details_by_web_app(resource_group_name, site_name, name, update_seen:nil, custom_headers:nil)
-      response = get_rule_details_by_web_app_async(resource_group_name, site_name, name, update_seen:update_seen, custom_headers:custom_headers).value!
+    def get_rule_details_by_web_app(resource_group_name, site_name, name, update_seen = nil, recommendation_id = nil, custom_headers = nil)
+      response = get_rule_details_by_web_app_async(resource_group_name, site_name, name, update_seen, recommendation_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -718,13 +742,15 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param name [String] Name of the recommendation.
     # @param update_seen [Boolean] Specify <code>true</code> to update the
     # last-seen timestamp of the recommendation object.
+    # @param recommendation_id [String] The GUID of the recommedation object if you
+    # query an expired one. You don't need to specify it to query an active entry.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_rule_details_by_web_app_with_http_info(resource_group_name, site_name, name, update_seen:nil, custom_headers:nil)
-      get_rule_details_by_web_app_async(resource_group_name, site_name, name, update_seen:update_seen, custom_headers:custom_headers).value!
+    def get_rule_details_by_web_app_with_http_info(resource_group_name, site_name, name, update_seen = nil, recommendation_id = nil, custom_headers = nil)
+      get_rule_details_by_web_app_async(resource_group_name, site_name, name, update_seen, recommendation_id, custom_headers).value!
     end
 
     #
@@ -738,16 +764,15 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param name [String] Name of the recommendation.
     # @param update_seen [Boolean] Specify <code>true</code> to update the
     # last-seen timestamp of the recommendation object.
+    # @param recommendation_id [String] The GUID of the recommedation object if you
+    # query an expired one. You don't need to specify it to query an active entry.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_rule_details_by_web_app_async(resource_group_name, site_name, name, update_seen:nil, custom_headers:nil)
+    def get_rule_details_by_web_app_async(resource_group_name, site_name, name, update_seen = nil, recommendation_id = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -755,7 +780,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -767,7 +791,7 @@ module Azure::Web::Mgmt::V2016_03_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'updateSeen' => update_seen,'api-version' => @client.api_version},
+          query_params: {'updateSeen' => update_seen,'recommendationId' => recommendation_id,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -798,6 +822,467 @@ module Azure::Web::Mgmt::V2016_03_01
       end
 
       promise.execute
+    end
+
+    #
+    # Disables the specific rule for a web site permanently.
+    #
+    # Disables the specific rule for a web site permanently.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site name
+    # @param name [String] Rule name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def disable_recommendation_for_site(resource_group_name, site_name, name, custom_headers = nil)
+      response = disable_recommendation_for_site_async(resource_group_name, site_name, name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Disables the specific rule for a web site permanently.
+    #
+    # Disables the specific rule for a web site permanently.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site name
+    # @param name [String] Rule name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disable_recommendation_for_site_with_http_info(resource_group_name, site_name, name, custom_headers = nil)
+      disable_recommendation_for_site_async(resource_group_name, site_name, name, custom_headers).value!
+    end
+
+    #
+    # Disables the specific rule for a web site permanently.
+    #
+    # Disables the specific rule for a web site permanently.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site name
+    # @param name [String] Rule name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disable_recommendation_for_site_async(resource_group_name, site_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'site_name is nil' if site_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/{name}/disable'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List all recommendations for a subscription.
+    #
+    # List all recommendations for a subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RecommendationCollection] operation results.
+    #
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List all recommendations for a subscription.
+    #
+    # List all recommendations for a subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # List all recommendations for a subscription.
+    #
+    # List all recommendations for a subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RecommendationCollection] operation results.
+    #
+    def list_history_for_web_app_next(next_page_link, custom_headers = nil)
+      response = list_history_for_web_app_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_history_for_web_app_next_with_http_info(next_page_link, custom_headers = nil)
+      list_history_for_web_app_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_history_for_web_app_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get all recommendations for an app.
+    #
+    # Get all recommendations for an app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RecommendationCollection] operation results.
+    #
+    def list_recommended_rules_for_web_app_next(next_page_link, custom_headers = nil)
+      response = list_recommended_rules_for_web_app_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get all recommendations for an app.
+    #
+    # Get all recommendations for an app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_recommended_rules_for_web_app_next_with_http_info(next_page_link, custom_headers = nil)
+      list_recommended_rules_for_web_app_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get all recommendations for an app.
+    #
+    # Get all recommendations for an app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_recommended_rules_for_web_app_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::RecommendationCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List all recommendations for a subscription.
+    #
+    # List all recommendations for a subscription.
+    #
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RecommendationCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_as_lazy(featured = nil, filter = nil, custom_headers = nil)
+      response = list_async(featured, filter, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RecommendationCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_history_for_web_app_as_lazy(resource_group_name, site_name, filter = nil, custom_headers = nil)
+      response = list_history_for_web_app_async(resource_group_name, site_name, filter, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_history_for_web_app_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get all recommendations for an app.
+    #
+    # Get all recommendations for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Return only channels specified in the filter. Filter
+    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # channel eq 'Notification'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RecommendationCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_recommended_rules_for_web_app_as_lazy(resource_group_name, site_name, featured = nil, filter = nil, custom_headers = nil)
+      response = list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured, filter, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_recommended_rules_for_web_app_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
     end
 
   end
