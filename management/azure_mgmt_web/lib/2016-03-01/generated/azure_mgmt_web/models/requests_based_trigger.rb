@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RequestsBasedTrigger',
           type: {
@@ -33,7 +32,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'RequestsBasedTrigger',
             model_properties: {
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               time_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInterval',
                 type: {
