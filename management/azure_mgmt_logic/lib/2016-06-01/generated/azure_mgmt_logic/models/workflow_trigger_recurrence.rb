@@ -20,10 +20,10 @@ module Azure::Logic::Mgmt::V2016_06_01
       # @return [Integer] The interval.
       attr_accessor :interval
 
-      # @return [DateTime] The start time.
+      # @return [String] The start time.
       attr_accessor :start_time
 
-      # @return [DateTime] The end time.
+      # @return [String] The end time.
       attr_accessor :end_time
 
       # @return [String] The time zone.
@@ -39,7 +39,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerRecurrence',
           type: {
@@ -47,7 +46,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowTriggerRecurrence',
             model_properties: {
               frequency: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'frequency',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {
@@ -64,23 +61,20 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               },
               time_zone: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -88,7 +82,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               schedule: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'schedule',
                 type: {

@@ -27,7 +27,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -35,7 +34,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'Sku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               plan: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {

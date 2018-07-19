@@ -16,9 +16,30 @@ module Azure::Profiles::Latest
       ImportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ImportTasks
 
       module Models
+        PushQuotaFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
+        AppInfoFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
+        CampaignListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
+        CampaignResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
+        ImportTaskResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
+        PushModes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
+        CampaignTypes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
+        DeliveryTimes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
+        NotificationTypes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationTypes
+        CampaignStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStates
+        CampaignFeedbacks = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignFeedbacks
+        AudienceOperators = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AudienceOperators
+        CampaignType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignType
+        ExportState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
+        ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
+        JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
+        CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
+        ProvisioningStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
+        Filter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Filter
+        ExportFormat = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportFormat
+        Resource = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Resource
+        ApiError = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
         CampaignState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignState
         ApiErrorError = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiErrorError
-        ApiError = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
         ExportTaskParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskParameter
         AppListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppListResult
         DeviceTagsParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceTagsParameters
@@ -28,7 +49,6 @@ module Azure::Profiles::Latest
         ExportOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportOptions
         CampaignTestSavedParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTestSavedParameters
         DateRangeExportTaskParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter
-        Filter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Filter
         DeviceMeta = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
         NotificationOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
         CampaignsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
@@ -48,7 +68,6 @@ module Azure::Profiles::Latest
         FeedbackByCampaignParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByCampaignParameter
         DeviceInfo = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceInfo
         ImportTaskListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskListResult
-        Resource = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Resource
         DeviceLocation = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceLocation
         ExportTaskResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult
         Device = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Device
@@ -86,25 +105,6 @@ module Azure::Profiles::Latest
         EngageActiveUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageActiveUsersFilter
         EngageIdleUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageIdleUsersFilter
         NativePushEnabledFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NativePushEnabledFilter
-        PushQuotaFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
-        AppInfoFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
-        CampaignListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
-        CampaignResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
-        ImportTaskResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
-        ProvisioningStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
-        PushModes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
-        CampaignTypes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
-        DeliveryTimes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
-        NotificationTypes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationTypes
-        CampaignStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStates
-        CampaignFeedbacks = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignFeedbacks
-        AudienceOperators = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AudienceOperators
-        CampaignType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignType
-        ExportState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
-        ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
-        ExportFormat = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportFormat
-        JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
-        CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
       end
 
       class MobileEngagementManagementClass
@@ -143,14 +143,77 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def push_quota_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
+          end
+          def app_info_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
+          end
+          def campaign_list_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
+          end
+          def campaign_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
+          end
+          def import_task_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
+          end
+          def push_modes
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
+          end
+          def campaign_types
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
+          end
+          def delivery_times
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
+          end
+          def notification_types
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationTypes
+          end
+          def campaign_states
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStates
+          end
+          def campaign_feedbacks
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignFeedbacks
+          end
+          def audience_operators
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AudienceOperators
+          end
+          def campaign_type
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignType
+          end
+          def export_state
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
+          end
+          def export_type
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
+          end
+          def job_states
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
+          end
+          def campaign_kinds
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
+          end
+          def provisioning_states
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
+          end
+          def filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Filter
+          end
+          def export_format
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportFormat
+          end
+          def resource
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Resource
+          end
+          def api_error
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
+          end
           def campaign_state
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignState
           end
           def api_error_error
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiErrorError
-          end
-          def api_error
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
           end
           def export_task_parameter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskParameter
@@ -178,9 +241,6 @@ module Azure::Profiles::Latest
           end
           def date_range_export_task_parameter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter
-          end
-          def filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Filter
           end
           def device_meta
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
@@ -238,9 +298,6 @@ module Azure::Profiles::Latest
           end
           def import_task_list_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskListResult
-          end
-          def resource
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Resource
           end
           def device_location
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceLocation
@@ -352,63 +409,6 @@ module Azure::Profiles::Latest
           end
           def native_push_enabled_filter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NativePushEnabledFilter
-          end
-          def push_quota_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
-          end
-          def app_info_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
-          end
-          def campaign_list_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
-          end
-          def campaign_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
-          end
-          def import_task_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
-          end
-          def provisioning_states
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
-          end
-          def push_modes
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
-          end
-          def campaign_types
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
-          end
-          def delivery_times
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
-          end
-          def notification_types
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationTypes
-          end
-          def campaign_states
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStates
-          end
-          def campaign_feedbacks
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignFeedbacks
-          end
-          def audience_operators
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AudienceOperators
-          end
-          def campaign_type
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignType
-          end
-          def export_state
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
-          end
-          def export_type
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
-          end
-          def export_format
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportFormat
-          end
-          def job_states
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
-          end
-          def campaign_kinds
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
           end
         end
       end

@@ -55,7 +55,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowRunTrigger',
           type: {
@@ -63,7 +62,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowRunTrigger',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -72,7 +70,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               inputs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'inputs',
@@ -81,7 +78,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               inputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'inputsLink',
@@ -91,7 +87,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'outputs',
@@ -100,7 +95,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               outputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'outputsLink',
@@ -110,7 +104,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -119,7 +112,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -128,7 +120,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'trackingId',
@@ -137,7 +128,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -146,7 +136,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -156,7 +145,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',
