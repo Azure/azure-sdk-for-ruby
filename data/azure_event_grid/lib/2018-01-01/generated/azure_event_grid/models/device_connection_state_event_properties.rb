@@ -6,10 +6,10 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Schema of the Data property of an EventGridEvent for a device life cycle
-    # event (DeviceCreated, DeviceDeleted).
+    # Schema of the Data property of an EventGridEvent for a device connection
+    # state event (DeviceConnected, DeviceDisconnected).
     #
-    class DeviceLifeCycleEventProperties
+    class DeviceConnectionStateEventProperties
 
       include MsRestAzure
 
@@ -19,30 +19,43 @@ module Azure::EventGrid::V2018_01_01
       # characters: - : . + % _ &#35; * ? ! ( ) , = @ ; $ '.
       attr_accessor :device_id
 
+      # @return [String] The unique identifier of the module. This
+      # case-sensitive string can be up to 128 characters long, and supports
+      # ASCII 7-bit alphanumeric characters plus the following special
+      # characters: - : . + % _ &#35; * ? ! ( ) , = @ ; $ '.
+      attr_accessor :module_id
+
       # @return [String] Name of the IoT Hub where the device was created or
       # deleted.
       attr_accessor :hub_name
 
-      # @return [DeviceTwinInfo] Information about the device twin, which is
-      # the cloud representation of application device metadata.
-      attr_accessor :twin
+      # @return [DeviceConnectionStateEventInfo] Information about the device
+      # connection state event.
+      attr_accessor :device_connection_state_event_info
 
 
       #
-      # Mapper for DeviceLifeCycleEventProperties class as Ruby Hash.
+      # Mapper for DeviceConnectionStateEventProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DeviceLifeCycleEventProperties',
+          serialized_name: 'DeviceConnectionStateEventProperties',
           type: {
             name: 'Composite',
-            class_name: 'DeviceLifeCycleEventProperties',
+            class_name: 'DeviceConnectionStateEventProperties',
             model_properties: {
               device_id: {
                 required: false,
                 serialized_name: 'deviceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              module_id: {
+                required: false,
+                serialized_name: 'moduleId',
                 type: {
                   name: 'String'
                 }
@@ -54,12 +67,12 @@ module Azure::EventGrid::V2018_01_01
                   name: 'String'
                 }
               },
-              twin: {
+              device_connection_state_event_info: {
                 required: false,
-                serialized_name: 'twin',
+                serialized_name: 'deviceConnectionStateEventInfo',
                 type: {
                   name: 'Composite',
-                  class_name: 'DeviceTwinInfo'
+                  class_name: 'DeviceConnectionStateEventInfo'
                 }
               }
             }

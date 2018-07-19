@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::EventGrid::V2018_01_01
-    VERSION = '0.16.1'
+    VERSION = '0.16.0'
 end
