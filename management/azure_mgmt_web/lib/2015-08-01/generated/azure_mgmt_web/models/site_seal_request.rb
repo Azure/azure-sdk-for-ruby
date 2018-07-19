@@ -26,7 +26,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SiteSealRequest',
           type: {
@@ -34,7 +33,6 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'SiteSealRequest',
             model_properties: {
               light_theme: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lightTheme',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               locale: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'locale',
                 type: {
