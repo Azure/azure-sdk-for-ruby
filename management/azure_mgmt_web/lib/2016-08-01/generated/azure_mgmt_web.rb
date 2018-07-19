@@ -188,11 +188,13 @@ module Azure::Web::Mgmt::V2016_08_01
     autoload :ManagedPipelineMode,                                '2016-08-01/generated/azure_mgmt_web/models/managed_pipeline_mode.rb'
     autoload :SiteLoadBalancing,                                  '2016-08-01/generated/azure_mgmt_web/models/site_load_balancing.rb'
     autoload :AutoHealActionType,                                 '2016-08-01/generated/azure_mgmt_web/models/auto_heal_action_type.rb'
+    autoload :SupportedTlsVersions,                               '2016-08-01/generated/azure_mgmt_web/models/supported_tls_versions.rb'
     autoload :SiteExtensionType,                                  '2016-08-01/generated/azure_mgmt_web/models/site_extension_type.rb'
     autoload :UsageState,                                         '2016-08-01/generated/azure_mgmt_web/models/usage_state.rb'
     autoload :SiteAvailabilityState,                              '2016-08-01/generated/azure_mgmt_web/models/site_availability_state.rb'
     autoload :HostType,                                           '2016-08-01/generated/azure_mgmt_web/models/host_type.rb'
     autoload :TriggeredWebJobStatus,                              '2016-08-01/generated/azure_mgmt_web/models/triggered_web_job_status.rb'
+    autoload :ManagedServiceIdentityType,                         '2016-08-01/generated/azure_mgmt_web/models/managed_service_identity_type.rb'
     autoload :StatusOptions,                                      '2016-08-01/generated/azure_mgmt_web/models/status_options.rb'
     autoload :ProvisioningState,                                  '2016-08-01/generated/azure_mgmt_web/models/provisioning_state.rb'
   end
