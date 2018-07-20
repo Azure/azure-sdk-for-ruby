@@ -30,7 +30,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutoscaleNotification',
           type: {
@@ -38,7 +37,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'AutoscaleNotification',
             model_properties: {
               operation: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'operation',
@@ -48,7 +46,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               email: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'email',
                 type: {
@@ -57,13 +54,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               webhooks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'webhooks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WebhookNotificationElementType',
                       type: {

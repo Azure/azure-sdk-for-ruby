@@ -34,7 +34,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RuleDataSource',
           type: {
@@ -44,7 +43,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'RuleDataSource',
             model_properties: {
               resource_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceUri',
                 type: {

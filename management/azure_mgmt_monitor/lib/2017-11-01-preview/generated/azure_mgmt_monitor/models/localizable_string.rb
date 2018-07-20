@@ -25,7 +25,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LocalizableString',
           type: {
@@ -33,7 +32,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
             class_name: 'LocalizableString',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               localized_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {
