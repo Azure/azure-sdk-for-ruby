@@ -52,7 +52,6 @@ module Azure::Profiles::Latest
         ScaleDirection = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleDirection
         ScaleType = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleType
         Operation = Azure::Monitor::Mgmt::V2015_04_01::Models::Operation
-        RecurrenceFrequency = Azure::Monitor::Mgmt::V2015_04_01::Models::RecurrenceFrequency
         RuleManagementEventClaimsDataSource = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleManagementEventClaimsDataSource
         AlertRuleResourceCollection = Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourceCollection
         RuleDataSource = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleDataSource
@@ -283,9 +282,6 @@ module Azure::Profiles::Latest
           end
           def operation
             Azure::Monitor::Mgmt::V2015_04_01::Models::Operation
-          end
-          def recurrence_frequency
-            Azure::Monitor::Mgmt::V2015_04_01::Models::RecurrenceFrequency
           end
           def rule_management_event_claims_data_source
             Azure::Monitor::Mgmt::V2016_03_01::Models::RuleManagementEventClaimsDataSource
