@@ -34,14 +34,17 @@ module Azure::Monitor::Mgmt::V2016_03_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [AlertRuleIncidents] alert_rule_incidents
-    attr_reader :alert_rule_incidents
-
     # @return [AlertRules] alert_rules
     attr_reader :alert_rules
 
+    # @return [AlertRuleIncidents] alert_rule_incidents
+    attr_reader :alert_rule_incidents
+
     # @return [LogProfiles] log_profiles
     attr_reader :log_profiles
+
+    # @return [MetricDefinitions] metric_definitions
+    attr_reader :metric_definitions
 
     #
     # Creates initializes a new instance of the MonitorManagementClient class.
@@ -56,9 +59,10 @@ module Azure::Monitor::Mgmt::V2016_03_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @alert_rule_incidents = AlertRuleIncidents.new(self)
       @alert_rules = AlertRules.new(self)
+      @alert_rule_incidents = AlertRuleIncidents.new(self)
       @log_profiles = LogProfiles.new(self)
+      @metric_definitions = MetricDefinitions.new(self)
       @api_version = '2016-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -112,9 +116,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -131,7 +132,9 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::Monitor::Mgmt::V2016_03_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Monitor::Mgmt::V2016_03_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

@@ -38,7 +38,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ItsmReceiver',
           type: {
@@ -46,7 +45,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ItsmReceiver',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               workspace_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'workspaceId',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               connection_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'connectionId',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               ticket_configuration: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ticketConfiguration',
                 type: {
@@ -78,7 +73,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               region: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'region',
                 type: {
