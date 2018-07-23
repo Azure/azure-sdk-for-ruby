@@ -26,7 +26,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplyRecoveryPointInputProperties',
           type: {
@@ -34,7 +33,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ApplyRecoveryPointInputProperties',
             model_properties: {
               recovery_point_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointId',
                 type: {
@@ -42,7 +40,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {

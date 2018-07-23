@@ -29,7 +29,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConfigureAlertRequestProperties',
           type: {
@@ -37,7 +36,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ConfigureAlertRequestProperties',
             model_properties: {
               send_to_owners: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sendToOwners',
                 type: {
@@ -45,13 +43,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               custom_email_addresses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customEmailAddresses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -61,7 +57,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               locale: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'locale',
                 type: {
