@@ -30,7 +30,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverJobDetails',
           type: {
@@ -38,13 +37,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'FailoverJobDetails',
             model_properties: {
               affected_object_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedObjectDetails',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -54,7 +51,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -62,13 +58,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protected_item_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemDetails',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FailoverReplicationProtectedItemDetailsElementType',
                       type: {

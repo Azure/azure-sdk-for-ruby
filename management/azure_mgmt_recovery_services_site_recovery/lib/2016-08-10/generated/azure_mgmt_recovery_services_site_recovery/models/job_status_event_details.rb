@@ -38,7 +38,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobStatus',
           type: {
@@ -46,7 +45,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'JobStatusEventDetails',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -54,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobId',
                 type: {
@@ -62,7 +59,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobFriendlyName',
                 type: {
@@ -70,7 +66,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobStatus',
                 type: {
@@ -78,7 +73,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               affected_object_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedObjectType',
                 type: {
