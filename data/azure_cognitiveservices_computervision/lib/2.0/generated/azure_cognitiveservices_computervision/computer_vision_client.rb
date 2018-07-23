@@ -42,7 +42,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = '{Endpoint}/vision/v2.0'
+      @base_url = '{Endpoint}'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
