@@ -126,7 +126,9 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_storage'
-        sdk_information = "#{sdk_information}/0.16.2"
+        if defined? Azure::Storage::Mgmt::V2015_05_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Storage::Mgmt::V2015_05_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Storage::Mgmt::V2018_02_01
-    VERSION = '0.16.1'
+    VERSION = '0.16.3'
 end
