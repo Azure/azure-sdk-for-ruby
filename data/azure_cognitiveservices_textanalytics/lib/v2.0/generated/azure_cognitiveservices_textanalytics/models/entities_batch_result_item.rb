@@ -9,52 +9,51 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # Model object.
     #
     #
-    class KeyPhraseBatchResultItem
+    class EntitiesBatchResultItem
 
       include MsRestAzure
-
-      # @return [Array<String>] A list of representative words or phrases. The
-      # number of key phrases returned is proportional to the number of words
-      # in the input document.
-      attr_accessor :key_phrases
 
       # @return [String] Unique document identifier.
       attr_accessor :id
 
+      # @return [Array<EntityRecord>] Recognized entities in the document.
+      attr_accessor :entities
+
 
       #
-      # Mapper for KeyPhraseBatchResultItem class as Ruby Hash.
+      # Mapper for EntitiesBatchResultItem class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'KeyPhraseBatchResultItem',
+          serialized_name: 'EntitiesBatchResultItem',
           type: {
             name: 'Composite',
-            class_name: 'KeyPhraseBatchResultItem',
+            class_name: 'EntitiesBatchResultItem',
             model_properties: {
-              key_phrases: {
-                required: false,
-                read_only: true,
-                serialized_name: 'keyPhrases',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
+                }
+              },
+              entities: {
+                required: false,
+                read_only: true,
+                serialized_name: 'entities',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'EntityRecordElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'EntityRecord'
+                      }
+                  }
                 }
               }
             }

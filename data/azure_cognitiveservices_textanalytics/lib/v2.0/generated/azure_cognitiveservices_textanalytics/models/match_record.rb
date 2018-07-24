@@ -9,52 +9,53 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # Model object.
     #
     #
-    class InternalError
+    class MatchRecord
 
       include MsRestAzure
 
-      # @return [String]
-      attr_accessor :code
+      # @return [String] Entity text as appears in the request.
+      attr_accessor :text
 
-      # @return [String]
-      attr_accessor :message
+      # @return [Integer] Start position (in Unicode characters) for the entity
+      # match text.
+      attr_accessor :offset
 
-      # @return [InternalError]
-      attr_accessor :inner_error
+      # @return [Integer] Length (in Unicode characters) for the entity match
+      # text.
+      attr_accessor :length
 
 
       #
-      # Mapper for InternalError class as Ruby Hash.
+      # Mapper for MatchRecord class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'InternalError',
+          serialized_name: 'MatchRecord',
           type: {
             name: 'Composite',
-            class_name: 'InternalError',
+            class_name: 'MatchRecord',
             model_properties: {
-              code: {
+              text: {
                 required: false,
-                serialized_name: 'code',
+                serialized_name: 'text',
                 type: {
                   name: 'String'
                 }
               },
-              message: {
+              offset: {
                 required: false,
-                serialized_name: 'message',
+                serialized_name: 'offset',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               },
-              inner_error: {
+              length: {
                 required: false,
-                serialized_name: 'innerError',
+                serialized_name: 'length',
                 type: {
-                  name: 'Composite',
-                  class_name: 'InternalError'
+                  name: 'Number'
                 }
               }
             }

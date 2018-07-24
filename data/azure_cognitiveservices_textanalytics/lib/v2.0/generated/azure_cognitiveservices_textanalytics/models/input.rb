@@ -26,7 +26,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Input',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
             class_name: 'Input',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'text',
                 type: {

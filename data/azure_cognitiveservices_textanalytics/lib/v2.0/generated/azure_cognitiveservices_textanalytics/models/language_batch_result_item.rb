@@ -26,7 +26,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LanguageBatchResultItem',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
             class_name: 'LanguageBatchResultItem',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,14 +41,12 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               detected_languages: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'detectedLanguages',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DetectedLanguageElementType',
                       type: {

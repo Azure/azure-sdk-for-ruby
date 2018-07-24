@@ -9,52 +9,59 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # Model object.
     #
     #
-    class KeyPhraseBatchResultItem
+    class EntitiesBatchResult
 
       include MsRestAzure
 
-      # @return [Array<String>] A list of representative words or phrases. The
-      # number of key phrases returned is proportional to the number of words
-      # in the input document.
-      attr_accessor :key_phrases
+      # @return [Array<EntitiesBatchResultItem>]
+      attr_accessor :documents
 
-      # @return [String] Unique document identifier.
-      attr_accessor :id
+      # @return [Array<ErrorRecord>]
+      attr_accessor :errors
 
 
       #
-      # Mapper for KeyPhraseBatchResultItem class as Ruby Hash.
+      # Mapper for EntitiesBatchResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'KeyPhraseBatchResultItem',
+          serialized_name: 'EntitiesBatchResult',
           type: {
             name: 'Composite',
-            class_name: 'KeyPhraseBatchResultItem',
+            class_name: 'EntitiesBatchResult',
             model_properties: {
-              key_phrases: {
+              documents: {
                 required: false,
                 read_only: true,
-                serialized_name: 'keyPhrases',
+                serialized_name: 'documents',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'EntitiesBatchResultItemElementType',
                       type: {
-                        name: 'String'
+                        name: 'Composite',
+                        class_name: 'EntitiesBatchResultItem'
                       }
                   }
                 }
               },
-              id: {
+              errors: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'errors',
                 type: {
-                  name: 'String'
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ErrorRecordElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ErrorRecord'
+                      }
+                  }
                 }
               }
             }
