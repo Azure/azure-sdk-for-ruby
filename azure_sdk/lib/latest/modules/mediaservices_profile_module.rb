@@ -32,11 +32,11 @@ module Azure::Profiles::Latest
         EnvelopeEncryption = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EnvelopeEncryption
         ContentKeyPolicyCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyCollection
         Preset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Preset
-        ApiError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ApiError
-        Codec = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Codec
         MediaServiceCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaServiceCollection
-        JobError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobError
+        Codec = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Codec
         SubscriptionMediaServiceCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaServiceCollection
+        JobError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobError
+        ApiError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ApiError
         JobErrorDetail = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorDetail
         Resource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
         LiveEventEndpoint = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEndpoint
@@ -69,9 +69,9 @@ module Azure::Profiles::Latest
         Filters = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Filters
         ContentKeyPolicyProperties = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyProperties
         Layer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Layer
-        ODataError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ODataError
+        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
         StreamingLocatorContentKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingLocatorContentKey
-        CheckNameAvailabilityInput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CheckNameAvailabilityInput
+        ODataError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ODataError
         StreamingLocatorUserDefinedContentKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingLocatorUserDefinedContentKey
         IPAccessControl = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::IPAccessControl
         AssetStorageEncryptionKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AssetStorageEncryptionKey
@@ -87,7 +87,7 @@ module Azure::Profiles::Latest
         StreamingEndpointAccessControl = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointAccessControl
         ContentKeyPolicyOption = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOption
         AkamaiAccessControl = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AkamaiAccessControl
-        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
+        CheckNameAvailabilityInput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CheckNameAvailabilityInput
         AkamaiSignatureHeaderAuthenticationKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AkamaiSignatureHeaderAuthenticationKey
         AssetCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AssetCollection
         LiveEventListResult = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventListResult
@@ -271,20 +271,20 @@ module Azure::Profiles::Latest
           def preset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Preset
           end
-          def api_error
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ApiError
+          def media_service_collection
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaServiceCollection
           end
           def codec
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Codec
           end
-          def media_service_collection
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaServiceCollection
+          def subscription_media_service_collection
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaServiceCollection
           end
           def job_error
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobError
           end
-          def subscription_media_service_collection
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaServiceCollection
+          def api_error
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ApiError
           end
           def job_error_detail
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorDetail
@@ -382,14 +382,14 @@ module Azure::Profiles::Latest
           def layer
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Layer
           end
-          def odata_error
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ODataError
+          def operation_collection
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
           end
           def streaming_locator_content_key
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingLocatorContentKey
           end
-          def check_name_availability_input
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CheckNameAvailabilityInput
+          def odata_error
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ODataError
           end
           def streaming_locator_user_defined_content_key
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingLocatorUserDefinedContentKey
@@ -436,8 +436,8 @@ module Azure::Profiles::Latest
           def akamai_access_control
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AkamaiAccessControl
           end
-          def operation_collection
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
+          def check_name_availability_input
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CheckNameAvailabilityInput
           end
           def akamai_signature_header_authentication_key
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AkamaiSignatureHeaderAuthenticationKey

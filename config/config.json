@@ -499,12 +499,12 @@
   },
   "azure_mgmt_media_services": {
     "azure_mgmt_media_services_2015_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/mediaservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cb76c25f829478cfbb370def9b6792cf6d871f89/specification/mediaservices/resource-manager/readme.md",
       "namespace": "Azure::MediaServices::Mgmt::V2015_10_01",
       "tag": "package-2015-10"
     },
     "azure_mgmt_media_services_2018_03_30_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4fc4a59bcfab6b59a9d46c22a2454bef3230c45a/specification/mediaservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cb76c25f829478cfbb370def9b6792cf6d871f89/specification/mediaservices/resource-manager/readme.md",
       "namespace": "Azure::MediaServices::Mgmt::V2018_03_30_preview",
       "tag": "package-2018-03-preview"
     }
