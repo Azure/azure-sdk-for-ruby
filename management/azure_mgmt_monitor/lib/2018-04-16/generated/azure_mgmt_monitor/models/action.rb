@@ -6,8 +6,7 @@
 module Azure::Monitor::Mgmt::V2018_04_16
   module Models
     #
-    # Model object.
-    #
+    # Action descriptor.
     #
     class Action
 

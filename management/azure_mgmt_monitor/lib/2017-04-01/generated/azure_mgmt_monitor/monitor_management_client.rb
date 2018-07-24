@@ -127,7 +127,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.16.1"
         add_user_agent_information(sdk_information)
     end
   end

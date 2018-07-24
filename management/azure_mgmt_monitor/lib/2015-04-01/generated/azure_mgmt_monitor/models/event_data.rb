@@ -12,7 +12,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
 
       include MsRestAzure
 
-      # @return [SenderAuthorization]
+      # @return [SenderAuthorization] The sender authorization information.
       attr_accessor :authorization
 
       # @return [Hash{String => String}] key value pairs to identify ARM
