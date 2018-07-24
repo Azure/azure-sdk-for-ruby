@@ -22,7 +22,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ARecord',
           type: {
@@ -30,7 +29,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
             class_name: 'ARecord',
             model_properties: {
               ipv4address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv4Address',
                 type: {
