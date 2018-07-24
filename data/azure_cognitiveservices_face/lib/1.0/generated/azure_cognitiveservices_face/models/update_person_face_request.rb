@@ -23,7 +23,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdatePersonFaceRequest',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'UpdatePersonFaceRequest',
             model_properties: {
               user_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userData',
                 constraints: {

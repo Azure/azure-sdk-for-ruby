@@ -29,7 +29,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Noise',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Noise',
             model_properties: {
               noise_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noiseLevel',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

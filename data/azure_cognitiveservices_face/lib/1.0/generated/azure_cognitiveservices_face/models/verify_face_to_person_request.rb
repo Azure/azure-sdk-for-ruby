@@ -31,7 +31,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VerifyFaceToPersonRequest',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'VerifyFaceToPersonRequest',
             model_properties: {
               face_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'faceId',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               person_group_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'personGroupId',
                 constraints: {
@@ -59,7 +56,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               person_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'personId',
                 type: {

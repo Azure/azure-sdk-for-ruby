@@ -73,6 +73,5 @@ module Azure::CognitiveServices::Face::V1_0
     autoload :FindSimilarMatchMode,                               '1.0/generated/azure_cognitiveservices_face/models/find_similar_match_mode.rb'
     autoload :TrainingStatusType,                                 '1.0/generated/azure_cognitiveservices_face/models/training_status_type.rb'
     autoload :FaceAttributeType,                                  '1.0/generated/azure_cognitiveservices_face/models/face_attribute_type.rb'
-    autoload :AzureRegions,                                       '1.0/generated/azure_cognitiveservices_face/models/azure_regions.rb'
   end
 end

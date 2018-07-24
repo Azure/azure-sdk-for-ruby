@@ -30,7 +30,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Occlusion',
           type: {
@@ -38,7 +37,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Occlusion',
             model_properties: {
               forehead_occluded: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'foreheadOccluded',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_occluded: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeOccluded',
                 type: {
@@ -54,7 +51,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               mouth_occluded: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mouthOccluded',
                 type: {

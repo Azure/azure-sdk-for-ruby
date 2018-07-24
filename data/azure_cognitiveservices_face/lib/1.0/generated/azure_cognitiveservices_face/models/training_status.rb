@@ -40,7 +40,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrainingStatus',
           type: {
@@ -48,7 +47,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'TrainingStatus',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {
@@ -57,7 +55,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               created: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createdDateTime',
                 type: {
@@ -65,7 +62,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               last_action: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastActionDateTime',
                 type: {
@@ -73,7 +69,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
