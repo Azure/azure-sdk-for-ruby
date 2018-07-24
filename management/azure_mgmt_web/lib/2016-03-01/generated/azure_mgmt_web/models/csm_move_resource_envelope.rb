@@ -26,7 +26,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CsmMoveResourceEnvelope',
           type: {
@@ -34,7 +33,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'CsmMoveResourceEnvelope',
             model_properties: {
               target_resource_group: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetResourceGroup',
                 constraints: {
@@ -47,13 +45,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               resources: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resources',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

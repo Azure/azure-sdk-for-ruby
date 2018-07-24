@@ -22,7 +22,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiDefinitionInfo',
           type: {
@@ -30,7 +29,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ApiDefinitionInfo',
             model_properties: {
               url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {

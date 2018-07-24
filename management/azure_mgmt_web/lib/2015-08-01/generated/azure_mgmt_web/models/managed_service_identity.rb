@@ -12,7 +12,8 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
-      # @return Type of managed service identity.
+      # @return [ManagedServiceIdentityType] Type of managed service identity.
+      # Possible values include: 'SystemAssigned'
       attr_accessor :type
 
       # @return [String] Tenant of managed service identity.
@@ -28,7 +29,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagedServiceIdentity',
           type: {
@@ -36,15 +36,13 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'ManagedServiceIdentity',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
-                  name: 'Object'
+                  name: 'String'
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -53,7 +51,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',

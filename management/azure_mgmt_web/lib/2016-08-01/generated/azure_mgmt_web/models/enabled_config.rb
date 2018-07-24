@@ -23,7 +23,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EnabledConfig',
           type: {
@@ -31,7 +30,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'EnabledConfig',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
