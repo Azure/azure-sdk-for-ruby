@@ -665,8 +665,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # an error code and a message to help understand what went wrong.
     #
     # @param url [String] Publicly reachable URL of an image
-    # @param max_candidates [String] Maximum number of candidate descriptions to be
-    # returned.  The default is 1.
+    # @param max_candidates [Integer] Maximum number of candidate descriptions to
+    # be returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -677,7 +677,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image(url, max_candidates = '1', language = nil, custom_headers = nil)
+    def describe_image(url, max_candidates = 1, language = nil, custom_headers = nil)
       response = describe_image_async(url, max_candidates, language, custom_headers).value!
       response.body unless response.nil?
     end
@@ -693,8 +693,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # an error code and a message to help understand what went wrong.
     #
     # @param url [String] Publicly reachable URL of an image
-    # @param max_candidates [String] Maximum number of candidate descriptions to be
-    # returned.  The default is 1.
+    # @param max_candidates [Integer] Maximum number of candidate descriptions to
+    # be returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -705,7 +705,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_with_http_info(url, max_candidates = '1', language = nil, custom_headers = nil)
+    def describe_image_with_http_info(url, max_candidates = 1, language = nil, custom_headers = nil)
       describe_image_async(url, max_candidates, language, custom_headers).value!
     end
 
@@ -720,8 +720,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # an error code and a message to help understand what went wrong.
     #
     # @param url [String] Publicly reachable URL of an image
-    # @param max_candidates [String] Maximum number of candidate descriptions to be
-    # returned.  The default is 1.
+    # @param max_candidates [Integer] Maximum number of candidate descriptions to
+    # be returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -732,7 +732,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_async(url, max_candidates = '1', language = nil, custom_headers = nil)
+    def describe_image_async(url, max_candidates = 1, language = nil, custom_headers = nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -1282,10 +1282,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # the accent color, dominant color, and whether an image is black&white.Adult -
     # detects if the image is pornographic in nature (depicts nudity or a sex act).
     # Sexually suggestive content is also detected.
-    # @param details [Enum] A string indicating which domain-specific details to
-    # return. Multiple values should be comma-separated. Valid visual feature types
-    # include:Celebrities - identifies celebrities if detected in the image.
-    # Possible values include: 'Celebrities', 'Landmarks'
+    # @param details [Array<Details>] A string indicating which domain-specific
+    # details to return. Multiple values should be comma-separated. Valid visual
+    # feature types include:Celebrities - identifies celebrities if detected in the
+    # image.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -1317,10 +1317,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # the accent color, dominant color, and whether an image is black&white.Adult -
     # detects if the image is pornographic in nature (depicts nudity or a sex act).
     # Sexually suggestive content is also detected.
-    # @param details [Enum] A string indicating which domain-specific details to
-    # return. Multiple values should be comma-separated. Valid visual feature types
-    # include:Celebrities - identifies celebrities if detected in the image.
-    # Possible values include: 'Celebrities', 'Landmarks'
+    # @param details [Array<Details>] A string indicating which domain-specific
+    # details to return. Multiple values should be comma-separated. Valid visual
+    # feature types include:Celebrities - identifies celebrities if detected in the
+    # image.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -1351,10 +1351,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # the accent color, dominant color, and whether an image is black&white.Adult -
     # detects if the image is pornographic in nature (depicts nudity or a sex act).
     # Sexually suggestive content is also detected.
-    # @param details [Enum] A string indicating which domain-specific details to
-    # return. Multiple values should be comma-separated. Valid visual feature types
-    # include:Celebrities - identifies celebrities if detected in the image.
-    # Possible values include: 'Celebrities', 'Landmarks'
+    # @param details [Array<Details>] A string indicating which domain-specific
+    # details to return. Multiple values should be comma-separated. Valid visual
+    # feature types include:Celebrities - identifies celebrities if detected in the
+    # image.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -1396,7 +1396,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'visualFeatures' => visual_features.nil? ? nil : visual_features.join(','),'details' => details,'language' => language},
+          query_params: {'visualFeatures' => visual_features.nil? ? nil : visual_features.join(','),'details' => details.nil? ? nil : details.join(','),'language' => language},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1727,8 +1727,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # an error code and a message to help understand what went wrong.
     #
     # @param image An image stream.
-    # @param max_candidates [String] Maximum number of candidate descriptions to be
-    # returned.  The default is 1.
+    # @param max_candidates [Integer] Maximum number of candidate descriptions to
+    # be returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -1739,7 +1739,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image_in_stream(image, max_candidates = '1', language = nil, custom_headers = nil)
+    def describe_image_in_stream(image, max_candidates = 1, language = nil, custom_headers = nil)
       response = describe_image_in_stream_async(image, max_candidates, language, custom_headers).value!
       response.body unless response.nil?
     end
@@ -1755,8 +1755,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # an error code and a message to help understand what went wrong.
     #
     # @param image An image stream.
-    # @param max_candidates [String] Maximum number of candidate descriptions to be
-    # returned.  The default is 1.
+    # @param max_candidates [Integer] Maximum number of candidate descriptions to
+    # be returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -1767,7 +1767,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_in_stream_with_http_info(image, max_candidates = '1', language = nil, custom_headers = nil)
+    def describe_image_in_stream_with_http_info(image, max_candidates = 1, language = nil, custom_headers = nil)
       describe_image_in_stream_async(image, max_candidates, language, custom_headers).value!
     end
 
@@ -1782,8 +1782,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # an error code and a message to help understand what went wrong.
     #
     # @param image An image stream.
-    # @param max_candidates [String] Maximum number of candidate descriptions to be
-    # returned.  The default is 1.
+    # @param max_candidates [Integer] Maximum number of candidate descriptions to
+    # be returned.  The default is 1.
     # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
@@ -1794,7 +1794,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_in_stream_async(image, max_candidates = '1', language = nil, custom_headers = nil)
+    def describe_image_in_stream_async(image, max_candidates = 1, language = nil, custom_headers = nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
