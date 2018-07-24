@@ -53,7 +53,12 @@ module MsRestAzure
               update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
             else
               task.shutdown
-              fail AzureOperationError, 'Location header is missing from long running operation'
+              if !polling_state.response.body.to_s.empty?
+                body = JSON.load(polling_state.response.body)
+                polling_state.resource = custom_deserialization_block.call(body)
+              else
+                fail AzureOperationError, 'Location header is missing from long running operation'
+              end
             end
 
             if AsyncOperationStatus.is_terminal_status(polling_state.status)
@@ -81,6 +86,10 @@ module MsRestAzure
         if (http_method === :put || http_method === :patch) && polling_state.resource.nil?
           get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers})
           update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
+        end
+
+        if((http_method === :post || http_method === :delete) && !polling_state.location_header_link.nil?)
+          update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
         end
 
         # Process long-running POST/DELETE operation with schema defined on success status codes
@@ -173,6 +182,8 @@ module MsRestAzure
 
         polling_state.error_data = error_data
         polling_state.resource = result.body
+      elsif status_code === 404 && http_method === :delete && !polling_state.azure_async_operation_header_link.nil? && !polling_state.location_header_link.nil?
+        polling_state.status = AsyncOperationStatus::SUCCESS_STATUS
       else
         fail AzureOperationError, "The response from long running operation does not have a valid status code. Method: #{http_method}, Status Code: #{status_code}"
       end
