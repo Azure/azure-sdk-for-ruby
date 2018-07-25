@@ -472,8 +472,13 @@
     }
   },
   "azure_mgmt_iot_central":{
+    "azure_mgmt_iot_central_2018_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/iotcentral/resource-manager/readme.md",
+      "namespace": "Azure::IotCentral::Mgmt::V2018_09_01",
+      "tag": "package-2018-09-01"
+    },
     "azure_mgmt_iot_central_2017_07_01_privatepreview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80cbb435e41327d75b1467f68865231706c090fe/specification/iotcentral/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/iotcentral/resource-manager/readme.md",
       "namespace": "Azure::IotCentral::Mgmt::V2017_07_01_privatepreview",
       "tag": "package-2017-07-01-privatepreview"
     }
