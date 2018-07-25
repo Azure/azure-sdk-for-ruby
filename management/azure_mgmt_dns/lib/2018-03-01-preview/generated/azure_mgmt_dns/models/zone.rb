@@ -8,7 +8,7 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Describes a DNS zone.
     #
-    class Zone < Resource
+    class Zone < TrackedResource
 
       include MsRestAzure
 
@@ -80,13 +80,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -99,6 +92,13 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               etag: {

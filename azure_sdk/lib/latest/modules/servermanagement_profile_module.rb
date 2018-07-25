@@ -24,17 +24,17 @@ module Azure::Profiles::Latest
         PowerShellCommandResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResults
         PowerShellTabCompletionResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionResults
         SessionParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
-        GatewayProfile = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayProfile
         Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
-        NodeParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeParameters
-        PowerShellCommandParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandParameters
         PowerShellSessionResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResources
+        NodeParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeParameters
+        GatewayProfile = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayProfile
+        PowerShellTabCompletionParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionParameters
         PromptMessageResponse = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptMessageResponse
         GatewayResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResource
         NodeResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResource
         SessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
+        PowerShellCommandParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandParameters
         PowerShellSessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
-        PowerShellTabCompletionParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionParameters
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
@@ -111,20 +111,20 @@ module Azure::Profiles::Latest
           def session_parameters
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
           end
-          def gateway_profile
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayProfile
-          end
           def resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
+          end
+          def power_shell_session_resources
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResources
           end
           def node_parameters
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeParameters
           end
-          def power_shell_command_parameters
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandParameters
+          def gateway_profile
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayProfile
           end
-          def power_shell_session_resources
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResources
+          def power_shell_tab_completion_parameters
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionParameters
           end
           def prompt_message_response
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptMessageResponse
@@ -138,11 +138,11 @@ module Azure::Profiles::Latest
           def session_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
           end
+          def power_shell_command_parameters
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandParameters
+          end
           def power_shell_session_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
-          end
-          def power_shell_tab_completion_parameters
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionParameters
           end
           def power_shell_command_status
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus

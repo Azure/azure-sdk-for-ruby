@@ -3,39 +3,31 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Dns::Mgmt::V2017_10_01
+module Azure::Dns::Mgmt::V2018_03_01_preview
   module Models
     #
-    # Model object.
+    # The resource model definition for a Azure Resource Manager resource with
+    # an etag.
     #
-    #
-    class Resource
+    class AzureEntityResource < Resource
 
       include MsRestAzure
 
-      # @return [String] Fully qualified resource Id for the resource. Ex -
-      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-      attr_accessor :id
-
-      # @return [String] The name of the resource
-      attr_accessor :name
-
-      # @return [String] The type of the resource. Ex-
-      # Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-      attr_accessor :type
+      # @return [String] Resource Etag.
+      attr_accessor :etag
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for AzureEntityResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'AzureEntityResource',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'AzureEntityResource',
             model_properties: {
               id: {
                 required: false,
@@ -57,6 +49,14 @@ module Azure::Dns::Mgmt::V2017_10_01
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              etag: {
+                required: false,
+                read_only: true,
+                serialized_name: 'etag',
                 type: {
                   name: 'String'
                 }

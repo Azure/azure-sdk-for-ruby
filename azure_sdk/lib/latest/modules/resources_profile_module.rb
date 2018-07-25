@@ -56,11 +56,11 @@ module Azure::Profiles::Latest
         AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
         Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
-        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
-        DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
-        GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
-        SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
         DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
+        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
+        GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
+        DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
+        SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
         ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
       end
 
@@ -222,20 +222,20 @@ module Azure::Profiles::Latest
           def resource
             Azure::Resources::Mgmt::V2017_05_10::Models::Resource
           end
+          def deployment_operation
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
+          end
           def resource_group_patchable
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
-          end
-          def deployment_mode
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
           end
           def generic_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
           end
+          def deployment_mode
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
+          end
           def sub_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
-          end
-          def deployment_operation
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
           end
           def resource_identity_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
