@@ -6,43 +6,43 @@
 module Azure::CognitiveServices::ContentModerator::V1_0
   module Models
     #
-    # Image List Metadata.
+    # Detected SSN details.
     #
-    class ImageListMetadata
+    class SSN
 
       include MsRestAzure
 
-      # @return [String] Optional Key value pair to describe your list.
-      attr_accessor :key_one
+      # @return [String] Detected SSN in the input text content.
+      attr_accessor :text
 
-      # @return [String] Optional Key value pair to describe your list.
-      attr_accessor :key_two
+      # @return [Integer] Index(Location) of the SSN in the input text content.
+      attr_accessor :index
 
 
       #
-      # Mapper for ImageListMetadata class as Ruby Hash.
+      # Mapper for SSN class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ImageList_Metadata',
+          serialized_name: 'SSN',
           type: {
             name: 'Composite',
-            class_name: 'ImageListMetadata',
+            class_name: 'SSN',
             model_properties: {
-              key_one: {
+              text: {
                 required: false,
-                serialized_name: 'Key One',
+                serialized_name: 'Text',
                 type: {
                   name: 'String'
                 }
               },
-              key_two: {
+              index: {
                 required: false,
-                serialized_name: 'Key Two',
+                serialized_name: 'Index',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               }
             }

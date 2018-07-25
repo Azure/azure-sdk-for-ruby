@@ -49,7 +49,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Screen',
           type: {
@@ -57,7 +56,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Screen',
             model_properties: {
               original_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'OriginalText',
                 type: {
@@ -65,7 +63,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               normalized_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'NormalizedText',
                 type: {
@@ -73,7 +70,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               auto_corrected_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'AutoCorrectedText',
                 type: {
@@ -81,13 +77,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               misrepresentation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Misrepresentation',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -97,7 +91,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               classification: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Classification',
                 type: {
@@ -106,7 +99,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -115,7 +107,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               pii: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'PII',
                 type: {
@@ -124,7 +115,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Language',
                 type: {
@@ -132,13 +122,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               terms: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Terms',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DetectedTermsElementType',
                       type: {
@@ -149,7 +137,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {

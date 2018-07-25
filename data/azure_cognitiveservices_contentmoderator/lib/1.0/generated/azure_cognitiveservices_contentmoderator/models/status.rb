@@ -28,7 +28,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Status',
           type: {
@@ -36,7 +35,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Status',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Code',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Description',
                 type: {
@@ -52,7 +49,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               exception: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Exception',
                 type: {

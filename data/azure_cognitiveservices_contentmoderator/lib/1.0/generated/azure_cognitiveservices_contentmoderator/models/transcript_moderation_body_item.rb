@@ -26,7 +26,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'transcriptModerationBodyItem',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'TranscriptModerationBodyItem',
             model_properties: {
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Timestamp',
                 type: {
@@ -42,13 +40,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               terms: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Terms',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TranscriptModerationBodyItemTermsItemElementType',
                       type: {

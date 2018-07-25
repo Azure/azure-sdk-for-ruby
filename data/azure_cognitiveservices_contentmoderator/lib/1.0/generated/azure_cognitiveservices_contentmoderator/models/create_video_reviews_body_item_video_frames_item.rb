@@ -38,7 +38,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateVideoReviewsBodyItem_VideoFramesItem',
           type: {
@@ -46,7 +45,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'CreateVideoReviewsBodyItemVideoFramesItem',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Id',
                 type: {
@@ -54,7 +52,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Timestamp',
                 type: {
@@ -62,7 +59,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               frame_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'FrameImage',
                 type: {
@@ -70,13 +66,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               reviewer_result_tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ReviewerResultTags',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItemElementType',
                       type: {
@@ -87,13 +81,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateVideoReviewsBodyItemVideoFramesItemMetadataItemElementType',
                       type: {
