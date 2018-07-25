@@ -280,22 +280,22 @@
   },
   "azure_mgmt_container_registry": {
     "azure_mgmt_container_registry_2017_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/containerregistry/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerregistry/resource-manager/readme.md",
       "namespace": "Azure::ContainerRegistry::Mgmt::V2017_10_01",
       "tag": "package-2017-10"
     },
     "azure_mgmt_container_registry_2017_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/containerregistry/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerregistry/resource-manager/readme.md",
       "namespace": "Azure::ContainerRegistry::Mgmt::V2017_06_01_preview",
       "tag": "package-2017-06-preview"
     },
     "azure_mgmt_container_registry_2017_03_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/containerregistry/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerregistry/resource-manager/readme.md",
       "namespace": "Azure::ContainerRegistry::Mgmt::V2017_03_01",
       "tag": "package-2017-03"
     },
     "azure_mgmt_container_registry_2016_06_27_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/containerregistry/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerregistry/resource-manager/readme.md",
       "namespace": "Azure::ContainerRegistry::Mgmt::V2016_06_27_preview",
       "tag": "package-2016-06-preview"
     }
