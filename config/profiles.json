@@ -170,7 +170,7 @@
                 },
                 "Microsoft.EventHub": {
                     "management": {
-                        "2017-04-01": ["*"]
+                        "2018-01-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Features": {
@@ -782,7 +782,7 @@
             "resourceTypes": {
                 "Microsoft.EventHub" : {
                     "management": {
-                        "2017-04-01": ["*"]
+                        "2018-01-01-preview": ["*"]
                     }
                 }
             },
