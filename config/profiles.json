@@ -115,7 +115,7 @@
                 },
                 "Microsoft.ContainerInstance": {
                     "management": {
-                        "2018-02-01-preview": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerRegistry": {
@@ -638,7 +638,7 @@
             "resourceTypes": {
                 "Microsoft.ContainerInstance" : {
                     "management": {
-                        "2018-02-01-preview": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 }
             },
