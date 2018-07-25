@@ -195,7 +195,7 @@
                 },
                 "Microsoft.KeyVault": {
                     "management": {
-                        "2016-10-01": ["*"]
+                        "2018-02-14": ["*"]
                     },
                     "data": {
                         "7.0": ["*"]
@@ -850,7 +850,7 @@
             "resourceTypes": {
                 "Microsoft.KeyVault" : {
                     "management": {
-                        "2016-10-01": ["*"]
+                        "2018-02-14": ["*"]
                     }
                 }
             },
