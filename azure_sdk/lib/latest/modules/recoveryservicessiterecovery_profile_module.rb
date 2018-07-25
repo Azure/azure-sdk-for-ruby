@@ -11,16 +11,16 @@ module Azure::Profiles::Latest
       ReplicationVaultHealth = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationVaultHealth
       RecoveryPoints = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::RecoveryPoints
       ReplicationProtectedItems = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationProtectedItems
-      ReplicationNetworkMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationNetworkMappings
       ReplicationFabrics = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationFabrics
       ReplicationvCenters = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationvCenters
+      ReplicationStorageClassificationMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationStorageClassificationMappings
       ReplicationStorageClassifications = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationStorageClassifications
       ReplicationRecoveryServicesProviders = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationRecoveryServicesProviders
       ReplicationRecoveryPlans = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationRecoveryPlans
       ReplicationProtectionContainers = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationProtectionContainers
       ReplicationProtectionContainerMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationProtectionContainerMappings
-      ReplicationStorageClassificationMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationStorageClassificationMappings
       ReplicationProtectableItems = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationProtectableItems
+      ReplicationNetworkMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationNetworkMappings
       ReplicationPolicies = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationPolicies
       ReplicationNetworks = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationNetworks
       ReplicationLogicalNetworks = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationLogicalNetworks
@@ -29,98 +29,101 @@ module Azure::Profiles::Latest
       ReplicationAlertSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationAlertSettings
 
       module Models
-        InMageEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageEnableProtectionInput
         A2AEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AEnableProtectionInput
-        HyperVReplica2012EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012EventDetails
-        HyperVReplica2012R2EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012R2EventDetails
-        A2AUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AUpdateReplicationProtectedItemInput
+        HyperVReplicaAzureUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
+        InMageAzureV2EnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EnableProtectionInput
+        InMageEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageEnableProtectionInput
         HyperVReplicaBaseEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBaseEventDetails
-        InMageAzureV2EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EventDetails
-        JobStatusEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobStatusEventDetails
-        HyperVReplicaAzureEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureEventDetails
+        HyperVReplica2012EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012EventDetails
+        InMageAzureV2UpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
+        A2AUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AUpdateReplicationProtectedItemInput
         A2AEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AEventDetails
-        ReplicationGroupDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationGroupDetails
-        InMageAzureV2RecoveryPointDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2RecoveryPointDetails
-        HyperVVirtualMachineDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVVirtualMachineDetails
+        InMageAzureV2EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EventDetails
+        HyperVReplica2012R2EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012R2EventDetails
+        HyperVReplicaAzureEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureEventDetails
         VMwareVirtualMachineDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareVirtualMachineDetails
-        HyperVReplicaAzureFailbackProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureFailbackProviderInput
-        InMageAzureV2FailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2FailoverProviderInput
-        InMageDisableProtectionProviderSpecificInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDisableProtectionProviderSpecificInput
+        ReplicationGroupDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationGroupDetails
+        JobStatusEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobStatusEventDetails
+        HyperVVirtualMachineDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVVirtualMachineDetails
         HyperVReplicaAzureFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureFailoverProviderInput
-        HyperVReplicaAzureReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureReprotectInput
-        InMageAzureV2ReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ReprotectInput
-        InMageFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageFailoverProviderInput
+        HyperVReplicaAzureFailbackProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureFailbackProviderInput
+        InMageAzureV2RecoveryPointDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2RecoveryPointDetails
+        InMageDisableProtectionProviderSpecificInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDisableProtectionProviderSpecificInput
         A2AFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AFailoverProviderInput
-        HyperVReplicaAzureApplyRecoveryPointInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureApplyRecoveryPointInput
-        InMageAzureV2ApplyRecoveryPointInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ApplyRecoveryPointInput
-        InMageReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReprotectInput
+        HyperVReplicaAzureReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureReprotectInput
+        InMageAzureV2FailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2FailoverProviderInput
+        InMageFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageFailoverProviderInput
         A2AReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AReprotectInput
-        VirtualMachineTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VirtualMachineTaskDetails
-        FabricReplicationGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricReplicationGroupTaskDetails
-        A2AApplyRecoveryPointInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AApplyRecoveryPointInput
+        HyperVReplicaAzureApplyRecoveryPointInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureApplyRecoveryPointInput
+        InMageAzureV2ReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ReprotectInput
+        InMageReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReprotectInput
         JobTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobTaskDetails
-        VmNicUpdatesTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmNicUpdatesTaskDetails
-        ConsistencyCheckTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ConsistencyCheckTaskDetails
-        ManualActionTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ManualActionTaskDetails
+        VirtualMachineTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VirtualMachineTaskDetails
+        InMageAzureV2ApplyRecoveryPointInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ApplyRecoveryPointInput
+        A2AApplyRecoveryPointInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AApplyRecoveryPointInput
         ScriptActionTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ScriptActionTaskDetails
-        RecoveryPlanGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanGroupTaskDetails
-        RecoveryPlanShutdownGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanShutdownGroupTaskDetails
-        AutomationRunbookTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AutomationRunbookTaskDetails
+        VmNicUpdatesTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmNicUpdatesTaskDetails
+        FabricReplicationGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricReplicationGroupTaskDetails
+        ManualActionTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ManualActionTaskDetails
         InlineWorkflowTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InlineWorkflowTaskDetails
-        FailoverJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FailoverJobDetails
-        ExportJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ExportJobDetails
-        AsrJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AsrJobDetails
+        RecoveryPlanGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanGroupTaskDetails
+        ConsistencyCheckTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ConsistencyCheckTaskDetails
+        AutomationRunbookTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AutomationRunbookTaskDetails
         TestFailoverJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::TestFailoverJobDetails
-        A2ASwitchProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ASwitchProtectionInput
-        HyperVReplicaAzurePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzurePolicyDetails
-        SwitchProtectionJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionJobDetails
+        FailoverJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FailoverJobDetails
+        RecoveryPlanShutdownGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanShutdownGroupTaskDetails
+        AsrJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AsrJobDetails
         A2AContainerCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AContainerCreationInput
-        HyperVReplicaBluePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyDetails
-        InMageBasePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageBasePolicyDetails
-        HyperVReplicaBasePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBasePolicyDetails
+        A2ASwitchProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ASwitchProtectionInput
+        ExportJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ExportJobDetails
+        SwitchProtectionJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionJobDetails
         HyperVReplicaPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaPolicyDetails
-        A2APolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyDetails
-        RcmAzureMigrationPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RcmAzureMigrationPolicyDetails
-        InMageAzureV2PolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyDetails
+        HyperVReplicaBluePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyDetails
+        HyperVReplicaAzurePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzurePolicyDetails
+        HyperVReplicaBasePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBasePolicyDetails
         InMagePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMagePolicyDetails
-        HyperVReplicaPolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaPolicyInput
-        HyperVReplicaBluePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyInput
-        VmwareCbtPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmwareCbtPolicyDetails
+        A2APolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyDetails
+        InMageBasePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageBasePolicyDetails
+        InMageAzureV2PolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyDetails
         HyperVReplicaAzurePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzurePolicyInput
-        A2APolicyCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyCreationInput
-        VMwareCbtPolicyCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareCbtPolicyCreationInput
-        InMageAzureV2PolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyInput
+        HyperVReplicaPolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaPolicyInput
+        RcmAzureMigrationPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RcmAzureMigrationPolicyDetails
+        VmwareCbtPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmwareCbtPolicyDetails
         InMagePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMagePolicyInput
-        RecoveryPlanManualActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanManualActionDetails
-        RecoveryPlanHyperVReplicaAzureFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanHyperVReplicaAzureFailoverInput
+        A2APolicyCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyCreationInput
+        HyperVReplicaBluePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyInput
+        InMageAzureV2PolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyInput
         Job = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job
+        RecoveryPlanManualActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanManualActionDetails
+        VMwareCbtPolicyCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareCbtPolicyCreationInput
+        RecoveryPlanScriptActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanScriptActionDetails
         RecoveryPlanAutomationRunbookActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanAutomationRunbookActionDetails
         RecoveryPlanInMageFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanInMageFailoverInput
-        RecoveryPlanA2AFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanA2AFailoverInput
+        RecoveryPlanHyperVReplicaAzureFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanHyperVReplicaAzureFailoverInput
         RecoveryPlanHyperVReplicaAzureFailbackInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanHyperVReplicaAzureFailbackInput
-        RecoveryPlanScriptActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanScriptActionDetails
+        RecoveryPlanInMageAzureV2FailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanInMageAzureV2FailoverInput
         RecoveryPlanGroupType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanGroupType
-        ReplicationProtectedItemOperation = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemOperation
+        RecoveryPlanA2AFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanA2AFailoverInput
         AzureFabricCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricCreationInput
         VMwareV2FabricCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareV2FabricCreationInput
-        RecoveryPlanInMageAzureV2FailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanInMageAzureV2FailoverInput
-        LicenseType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LicenseType
+        SourceSiteOperations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SourceSiteOperations
+        ReplicationProtectedItemOperation = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemOperation
         PossibleOperationsDirections = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PossibleOperationsDirections
         FailoverDeploymentModel = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FailoverDeploymentModel
-        SourceSiteOperations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SourceSiteOperations
-        MultiVmSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MultiVmSyncStatus
+        RecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPointType
+        LicenseType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LicenseType
         DisableProtectionReason = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DisableProtectionReason
         HealthErrorCategory = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HealthErrorCategory
-        RecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPointType
-        DataSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DataSyncStatus
+        HyperVReplicaAzureRpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureRpRecoveryPointType
+        MultiVmSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MultiVmSyncStatus
         SetMultiVmSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SetMultiVmSyncStatus
         RecoveryPlanActionLocation = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanActionLocation
-        HyperVReplicaAzureRpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureRpRecoveryPointType
-        A2ARpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ARpRecoveryPointType
+        RpInMageRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RpInMageRecoveryPointType
+        IdentityProviderType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::IdentityProviderType
         AlternateLocationRecoveryOption = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AlternateLocationRecoveryOption
         InMageV2RpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageV2RpRecoveryPointType
-        IdentityProviderType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::IdentityProviderType
-        RpInMageRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RpInMageRecoveryPointType
+        A2ARpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ARpRecoveryPointType
+        DataSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DataSyncStatus
         Event = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Event
         PolicyCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyCollection
         RoleAssignment = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RoleAssignment
@@ -292,72 +295,69 @@ module Azure::Profiles::Latest
         FabricCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricCreationInput
         Display = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Display
         A2AVmManagedDiskInputDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AVmManagedDiskInputDetails
-        Resource = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Resource
+        A2AVmDiskInputDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AVmDiskInputDetails
         ConfigurationSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ConfigurationSettings
         EncryptionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EncryptionDetails
         A2AProtectedDiskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedDiskDetails
-        InMageDiskExclusionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDiskExclusionInput
-        A2AVmDiskInputDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AVmDiskInputDetails
-        InMageDiskSignatureExclusionOptions = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDiskSignatureExclusionOptions
         Subnet = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Subnet
+        EventQueryParameter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EventQueryParameter
+        InMageDiskSignatureExclusionOptions = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDiskSignatureExclusionOptions
+        InMageDiskExclusionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDiskExclusionInput
         InMageVolumeExclusionOptions = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageVolumeExclusionOptions
         NetworkMappingProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMappingProperties
-        EventQueryParameter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EventQueryParameter
-        ReplicationProviderSpecificContainerMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProviderSpecificContainerMappingInput
-        InputEndpoint = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InputEndpoint
         AzureToAzureVmSyncedConfigDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureVmSyncedConfigDetails
-        SwitchProtectionInputProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionInputProperties
-        A2AProtectedManagedDiskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedManagedDiskDetails
+        ReplicationProviderSpecificContainerMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProviderSpecificContainerMappingInput
+        Resource = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Resource
         ASRTask = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ASRTask
-        MobilityServiceUpdate = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
-        Alert = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Alert
+        SwitchProtectionInputProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionInputProperties
+        InputEndpoint = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InputEndpoint
         PolicyProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyProperties
-        LogicalNetwork = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LogicalNetwork
-        NetworkMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMapping
+        MobilityServiceUpdate = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
+        A2AProtectedManagedDiskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedManagedDiskDetails
         Fabric = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric
-        Network = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
-        RecoveryPlan = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlan
+        LogicalNetwork = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LogicalNetwork
+        Alert = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Alert
         ProtectableItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItem
         ProtectionContainerMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectionContainerMapping
-        StorageClassification = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassification
+        NetworkMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMapping
         RecoveryServicesProvider = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryServicesProvider
         Policy = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Policy
-        VaultHealthDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
+        RecoveryPlan = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlan
+        StorageClassificationMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassificationMapping
+        Network = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
+        StorageClassification = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassification
         RecoveryPoint = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPoint
         VCenter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VCenter
         ProtectionContainer = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectionContainer
         AzureToAzureNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureNetworkMappingSettings
-        StorageClassificationMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassificationMapping
-        VmmToVmmNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmNetworkMappingSettings
-        AzureToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureCreateNetworkMappingInput
-        ReplicationProtectedItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem
         VmmToAzureNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureNetworkMappingSettings
-        AzureToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureUpdateNetworkMappingInput
-        VmmToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureUpdateNetworkMappingInput
-        VmmToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureCreateNetworkMappingInput
+        VmmToVmmNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmNetworkMappingSettings
+        VaultHealthDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
+        ReplicationProtectedItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem
         VmmToVmmCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmCreateNetworkMappingInput
-        VmmDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmDetails
-        HyperVSiteDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVSiteDetails
-        VmmToVmmUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmUpdateNetworkMappingInput
+        AzureToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureUpdateNetworkMappingInput
+        AzureToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureCreateNetworkMappingInput
+        VmmToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureCreateNetworkMappingInput
         AzureFabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricSpecificDetails
-        HyperVReplicaBaseReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBaseReplicationDetails
-        HyperVReplicaReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaReplicationDetails
-        VMwareDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareDetails
+        VmmDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmDetails
+        VmmToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureUpdateNetworkMappingInput
+        VmmToVmmUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmUpdateNetworkMappingInput
         VMwareV2FabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareV2FabricSpecificDetails
-        InMageAzureV2ReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ReplicationDetails
-        InMageReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReplicationDetails
-        HyperVReplicaBlueReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBlueReplicationDetails
+        HyperVReplicaBaseReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBaseReplicationDetails
+        HyperVSiteDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVSiteDetails
+        VMwareDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareDetails
         HyperVReplicaAzureReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureReplicationDetails
-        SanEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SanEnableProtectionInput
-        InMageAzureV2EnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EnableProtectionInput
-        A2AReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AReplicationDetails
+        InMageAzureV2ReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ReplicationDetails
+        HyperVReplicaReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaReplicationDetails
+        HyperVReplicaBlueReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBlueReplicationDetails
         HyperVReplicaAzureEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureEnableProtectionInput
-        HyperVReplicaAzureUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
-        InMageAzureV2UpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
+        SanEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SanEnableProtectionInput
+        InMageReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReplicationDetails
+        A2AReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AReplicationDetails
       end
 
       class RecoveryServicesSiteRecoveryManagementClass
-        attr_reader :operations, :replication_vault_health, :recovery_points, :replication_protected_items, :replication_network_mappings, :replication_fabrics, :replicationv_centers, :replication_storage_classifications, :replication_recovery_services_providers, :replication_recovery_plans, :replication_protection_containers, :replication_protection_container_mappings, :replication_storage_classification_mappings, :replication_protectable_items, :replication_policies, :replication_networks, :replication_logical_networks, :replication_jobs, :replication_events, :replication_alert_settings, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :replication_vault_health, :recovery_points, :replication_protected_items, :replication_fabrics, :replicationv_centers, :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_services_providers, :replication_recovery_plans, :replication_protection_containers, :replication_protection_container_mappings, :replication_protectable_items, :replication_network_mappings, :replication_policies, :replication_networks, :replication_logical_networks, :replication_jobs, :replication_events, :replication_alert_settings, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -371,16 +371,16 @@ module Azure::Profiles::Latest
           @replication_vault_health = @client_0.replication_vault_health
           @recovery_points = @client_0.recovery_points
           @replication_protected_items = @client_0.replication_protected_items
-          @replication_network_mappings = @client_0.replication_network_mappings
           @replication_fabrics = @client_0.replication_fabrics
           @replicationv_centers = @client_0.replicationv_centers
+          @replication_storage_classification_mappings = @client_0.replication_storage_classification_mappings
           @replication_storage_classifications = @client_0.replication_storage_classifications
           @replication_recovery_services_providers = @client_0.replication_recovery_services_providers
           @replication_recovery_plans = @client_0.replication_recovery_plans
           @replication_protection_containers = @client_0.replication_protection_containers
           @replication_protection_container_mappings = @client_0.replication_protection_container_mappings
-          @replication_storage_classification_mappings = @client_0.replication_storage_classification_mappings
           @replication_protectable_items = @client_0.replication_protectable_items
+          @replication_network_mappings = @client_0.replication_network_mappings
           @replication_policies = @client_0.replication_policies
           @replication_networks = @client_0.replication_networks
           @replication_logical_networks = @client_0.replication_logical_networks
@@ -405,200 +405,209 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def in_mage_enable_protection_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageEnableProtectionInput
-          end
           def a2_aenable_protection_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AEnableProtectionInput
           end
-          def hyper_vreplica2012_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012EventDetails
+          def hyper_vreplica_azure_update_replication_protected_item_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
           end
-          def hyper_vreplica2012_r2_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012R2EventDetails
+          def in_mage_azure_v2_enable_protection_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EnableProtectionInput
           end
-          def a2_aupdate_replication_protected_item_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AUpdateReplicationProtectedItemInput
+          def in_mage_enable_protection_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageEnableProtectionInput
           end
           def hyper_vreplica_base_event_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBaseEventDetails
           end
-          def in_mage_azure_v2_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EventDetails
+          def hyper_vreplica2012_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012EventDetails
           end
-          def job_status_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobStatusEventDetails
+          def in_mage_azure_v2_update_replication_protected_item_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
           end
-          def hyper_vreplica_azure_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureEventDetails
+          def a2_aupdate_replication_protected_item_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AUpdateReplicationProtectedItemInput
           end
           def a2_aevent_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AEventDetails
           end
-          def replication_group_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationGroupDetails
+          def in_mage_azure_v2_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EventDetails
           end
-          def in_mage_azure_v2_recovery_point_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2RecoveryPointDetails
+          def hyper_vreplica2012_r2_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012R2EventDetails
           end
-          def hyper_vvirtual_machine_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVVirtualMachineDetails
+          def hyper_vreplica_azure_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureEventDetails
           end
           def vmware_virtual_machine_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareVirtualMachineDetails
           end
-          def hyper_vreplica_azure_failback_provider_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureFailbackProviderInput
+          def replication_group_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationGroupDetails
           end
-          def in_mage_azure_v2_failover_provider_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2FailoverProviderInput
+          def job_status_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobStatusEventDetails
           end
-          def in_mage_disable_protection_provider_specific_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDisableProtectionProviderSpecificInput
+          def hyper_vvirtual_machine_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVVirtualMachineDetails
           end
           def hyper_vreplica_azure_failover_provider_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureFailoverProviderInput
           end
-          def hyper_vreplica_azure_reprotect_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureReprotectInput
+          def hyper_vreplica_azure_failback_provider_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureFailbackProviderInput
           end
-          def in_mage_azure_v2_reprotect_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ReprotectInput
+          def in_mage_azure_v2_recovery_point_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2RecoveryPointDetails
           end
-          def in_mage_failover_provider_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageFailoverProviderInput
+          def in_mage_disable_protection_provider_specific_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDisableProtectionProviderSpecificInput
           end
           def a2_afailover_provider_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AFailoverProviderInput
           end
-          def hyper_vreplica_azure_apply_recovery_point_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureApplyRecoveryPointInput
+          def hyper_vreplica_azure_reprotect_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureReprotectInput
           end
-          def in_mage_azure_v2_apply_recovery_point_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ApplyRecoveryPointInput
+          def in_mage_azure_v2_failover_provider_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2FailoverProviderInput
           end
-          def in_mage_reprotect_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReprotectInput
+          def in_mage_failover_provider_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageFailoverProviderInput
           end
           def a2_areprotect_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AReprotectInput
           end
-          def virtual_machine_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VirtualMachineTaskDetails
+          def hyper_vreplica_azure_apply_recovery_point_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureApplyRecoveryPointInput
           end
-          def fabric_replication_group_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricReplicationGroupTaskDetails
+          def in_mage_azure_v2_reprotect_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ReprotectInput
           end
-          def a2_aapply_recovery_point_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AApplyRecoveryPointInput
+          def in_mage_reprotect_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReprotectInput
           end
           def job_task_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobTaskDetails
           end
-          def vm_nic_updates_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmNicUpdatesTaskDetails
+          def virtual_machine_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VirtualMachineTaskDetails
           end
-          def consistency_check_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ConsistencyCheckTaskDetails
+          def in_mage_azure_v2_apply_recovery_point_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ApplyRecoveryPointInput
           end
-          def manual_action_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ManualActionTaskDetails
+          def a2_aapply_recovery_point_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AApplyRecoveryPointInput
           end
           def script_action_task_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ScriptActionTaskDetails
           end
-          def recovery_plan_group_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanGroupTaskDetails
+          def vm_nic_updates_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmNicUpdatesTaskDetails
           end
-          def recovery_plan_shutdown_group_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanShutdownGroupTaskDetails
+          def fabric_replication_group_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricReplicationGroupTaskDetails
           end
-          def automation_runbook_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AutomationRunbookTaskDetails
+          def manual_action_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ManualActionTaskDetails
           end
           def inline_workflow_task_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InlineWorkflowTaskDetails
           end
-          def failover_job_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FailoverJobDetails
+          def recovery_plan_group_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanGroupTaskDetails
           end
-          def export_job_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ExportJobDetails
+          def consistency_check_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ConsistencyCheckTaskDetails
           end
-          def asr_job_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AsrJobDetails
+          def automation_runbook_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AutomationRunbookTaskDetails
           end
           def test_failover_job_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::TestFailoverJobDetails
           end
-          def a2_aswitch_protection_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ASwitchProtectionInput
+          def failover_job_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FailoverJobDetails
           end
-          def hyper_vreplica_azure_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzurePolicyDetails
+          def recovery_plan_shutdown_group_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanShutdownGroupTaskDetails
           end
-          def switch_protection_job_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionJobDetails
+          def asr_job_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AsrJobDetails
           end
           def a2_acontainer_creation_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AContainerCreationInput
           end
-          def hyper_vreplica_blue_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyDetails
+          def a2_aswitch_protection_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ASwitchProtectionInput
           end
-          def in_mage_base_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageBasePolicyDetails
+          def export_job_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ExportJobDetails
           end
-          def hyper_vreplica_base_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBasePolicyDetails
+          def switch_protection_job_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionJobDetails
           end
           def hyper_vreplica_policy_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaPolicyDetails
           end
-          def a2_apolicy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyDetails
+          def hyper_vreplica_blue_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyDetails
           end
-          def rcm_azure_migration_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RcmAzureMigrationPolicyDetails
+          def hyper_vreplica_azure_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzurePolicyDetails
           end
-          def in_mage_azure_v2_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyDetails
+          def hyper_vreplica_base_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBasePolicyDetails
           end
           def in_mage_policy_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMagePolicyDetails
           end
-          def hyper_vreplica_policy_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaPolicyInput
+          def a2_apolicy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyDetails
           end
-          def hyper_vreplica_blue_policy_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyInput
+          def in_mage_base_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageBasePolicyDetails
           end
-          def vmware_cbt_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmwareCbtPolicyDetails
+          def in_mage_azure_v2_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyDetails
           end
           def hyper_vreplica_azure_policy_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzurePolicyInput
           end
-          def a2_apolicy_creation_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyCreationInput
+          def hyper_vreplica_policy_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaPolicyInput
           end
-          def vmware_cbt_policy_creation_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareCbtPolicyCreationInput
+          def rcm_azure_migration_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RcmAzureMigrationPolicyDetails
           end
-          def in_mage_azure_v2_policy_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyInput
+          def vmware_cbt_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmwareCbtPolicyDetails
           end
           def in_mage_policy_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMagePolicyInput
           end
-          def recovery_plan_manual_action_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanManualActionDetails
+          def a2_apolicy_creation_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2APolicyCreationInput
           end
-          def recovery_plan_hyper_vreplica_azure_failover_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanHyperVReplicaAzureFailoverInput
+          def hyper_vreplica_blue_policy_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBluePolicyInput
+          end
+          def in_mage_azure_v2_policy_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2PolicyInput
           end
           def job
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job
+          end
+          def recovery_plan_manual_action_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanManualActionDetails
+          end
+          def vmware_cbt_policy_creation_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareCbtPolicyCreationInput
+          end
+          def recovery_plan_script_action_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanScriptActionDetails
           end
           def recovery_plan_automation_runbook_action_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanAutomationRunbookActionDetails
@@ -606,20 +615,20 @@ module Azure::Profiles::Latest
           def recovery_plan_in_mage_failover_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanInMageFailoverInput
           end
-          def recovery_plan_a2_afailover_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanA2AFailoverInput
+          def recovery_plan_hyper_vreplica_azure_failover_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanHyperVReplicaAzureFailoverInput
           end
           def recovery_plan_hyper_vreplica_azure_failback_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanHyperVReplicaAzureFailbackInput
           end
-          def recovery_plan_script_action_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanScriptActionDetails
+          def recovery_plan_in_mage_azure_v2_failover_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanInMageAzureV2FailoverInput
           end
           def recovery_plan_group_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanGroupType
           end
-          def replication_protected_item_operation
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemOperation
+          def recovery_plan_a2_afailover_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanA2AFailoverInput
           end
           def azure_fabric_creation_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricCreationInput
@@ -627,11 +636,11 @@ module Azure::Profiles::Latest
           def vmware_v2_fabric_creation_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareV2FabricCreationInput
           end
-          def recovery_plan_in_mage_azure_v2_failover_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanInMageAzureV2FailoverInput
+          def source_site_operations
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SourceSiteOperations
           end
-          def license_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LicenseType
+          def replication_protected_item_operation
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemOperation
           end
           def possible_operations_directions
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PossibleOperationsDirections
@@ -639,11 +648,11 @@ module Azure::Profiles::Latest
           def failover_deployment_model
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FailoverDeploymentModel
           end
-          def source_site_operations
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SourceSiteOperations
+          def recovery_point_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPointType
           end
-          def multi_vm_sync_status
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MultiVmSyncStatus
+          def license_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LicenseType
           end
           def disable_protection_reason
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DisableProtectionReason
@@ -651,11 +660,11 @@ module Azure::Profiles::Latest
           def health_error_category
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HealthErrorCategory
           end
-          def recovery_point_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPointType
+          def hyper_vreplica_azure_rp_recovery_point_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureRpRecoveryPointType
           end
-          def data_sync_status
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DataSyncStatus
+          def multi_vm_sync_status
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MultiVmSyncStatus
           end
           def set_multi_vm_sync_status
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SetMultiVmSyncStatus
@@ -663,11 +672,11 @@ module Azure::Profiles::Latest
           def recovery_plan_action_location
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlanActionLocation
           end
-          def hyper_vreplica_azure_rp_recovery_point_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureRpRecoveryPointType
+          def rp_in_mage_recovery_point_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RpInMageRecoveryPointType
           end
-          def a2_arp_recovery_point_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ARpRecoveryPointType
+          def identity_provider_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::IdentityProviderType
           end
           def alternate_location_recovery_option
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AlternateLocationRecoveryOption
@@ -675,11 +684,11 @@ module Azure::Profiles::Latest
           def in_mage_v2_rp_recovery_point_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageV2RpRecoveryPointType
           end
-          def identity_provider_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::IdentityProviderType
+          def a2_arp_recovery_point_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2ARpRecoveryPointType
           end
-          def rp_in_mage_recovery_point_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RpInMageRecoveryPointType
+          def data_sync_status
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DataSyncStatus
           end
           def event
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Event
@@ -1194,8 +1203,8 @@ module Azure::Profiles::Latest
           def a2_avm_managed_disk_input_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AVmManagedDiskInputDetails
           end
-          def resource
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Resource
+          def a2_avm_disk_input_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AVmDiskInputDetails
           end
           def configuration_settings
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ConfigurationSettings
@@ -1206,17 +1215,17 @@ module Azure::Profiles::Latest
           def a2_aprotected_disk_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedDiskDetails
           end
-          def in_mage_disk_exclusion_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDiskExclusionInput
+          def subnet
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Subnet
           end
-          def a2_avm_disk_input_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AVmDiskInputDetails
+          def event_query_parameter
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EventQueryParameter
           end
           def in_mage_disk_signature_exclusion_options
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDiskSignatureExclusionOptions
           end
-          def subnet
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Subnet
+          def in_mage_disk_exclusion_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageDiskExclusionInput
           end
           def in_mage_volume_exclusion_options
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageVolumeExclusionOptions
@@ -1224,50 +1233,41 @@ module Azure::Profiles::Latest
           def network_mapping_properties
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMappingProperties
           end
-          def event_query_parameter
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EventQueryParameter
+          def azure_to_azure_vm_synced_config_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureVmSyncedConfigDetails
           end
           def replication_provider_specific_container_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProviderSpecificContainerMappingInput
           end
-          def input_endpoint
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InputEndpoint
-          end
-          def azure_to_azure_vm_synced_config_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureVmSyncedConfigDetails
-          end
-          def switch_protection_input_properties
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionInputProperties
-          end
-          def a2_aprotected_managed_disk_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedManagedDiskDetails
+          def resource
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Resource
           end
           def asrtask
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ASRTask
           end
-          def mobility_service_update
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
+          def switch_protection_input_properties
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionInputProperties
           end
-          def alert
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Alert
+          def input_endpoint
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InputEndpoint
           end
           def policy_properties
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyProperties
           end
-          def logical_network
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LogicalNetwork
+          def mobility_service_update
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
           end
-          def network_mapping
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMapping
+          def a2_aprotected_managed_disk_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedManagedDiskDetails
           end
           def fabric
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric
           end
-          def network
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
+          def logical_network
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LogicalNetwork
           end
-          def recovery_plan
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlan
+          def alert
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Alert
           end
           def protectable_item
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItem
@@ -1275,8 +1275,8 @@ module Azure::Profiles::Latest
           def protection_container_mapping
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectionContainerMapping
           end
-          def storage_classification
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassification
+          def network_mapping
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMapping
           end
           def recovery_services_provider
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryServicesProvider
@@ -1284,8 +1284,17 @@ module Azure::Profiles::Latest
           def policy
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Policy
           end
-          def vault_health_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
+          def recovery_plan
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlan
+          end
+          def storage_classification_mapping
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassificationMapping
+          end
+          def network
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
+          end
+          def storage_classification
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassification
           end
           def recovery_point
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPoint
@@ -1299,86 +1308,77 @@ module Azure::Profiles::Latest
           def azure_to_azure_network_mapping_settings
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureNetworkMappingSettings
           end
-          def storage_classification_mapping
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassificationMapping
+          def vmm_to_azure_network_mapping_settings
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureNetworkMappingSettings
           end
           def vmm_to_vmm_network_mapping_settings
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmNetworkMappingSettings
           end
-          def azure_to_azure_create_network_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureCreateNetworkMappingInput
+          def vault_health_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
           end
           def replication_protected_item
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem
           end
-          def vmm_to_azure_network_mapping_settings
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureNetworkMappingSettings
+          def vmm_to_vmm_create_network_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmCreateNetworkMappingInput
           end
           def azure_to_azure_update_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureUpdateNetworkMappingInput
           end
-          def vmm_to_azure_update_network_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureUpdateNetworkMappingInput
+          def azure_to_azure_create_network_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureCreateNetworkMappingInput
           end
           def vmm_to_azure_create_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureCreateNetworkMappingInput
           end
-          def vmm_to_vmm_create_network_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmCreateNetworkMappingInput
+          def azure_fabric_specific_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricSpecificDetails
           end
           def vmm_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmDetails
           end
-          def hyper_vsite_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVSiteDetails
+          def vmm_to_azure_update_network_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureUpdateNetworkMappingInput
           end
           def vmm_to_vmm_update_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmUpdateNetworkMappingInput
           end
-          def azure_fabric_specific_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricSpecificDetails
+          def vmware_v2_fabric_specific_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareV2FabricSpecificDetails
           end
           def hyper_vreplica_base_replication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBaseReplicationDetails
           end
-          def hyper_vreplica_replication_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaReplicationDetails
+          def hyper_vsite_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVSiteDetails
           end
           def vmware_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareDetails
           end
-          def vmware_v2_fabric_specific_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareV2FabricSpecificDetails
+          def hyper_vreplica_azure_replication_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureReplicationDetails
           end
           def in_mage_azure_v2_replication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2ReplicationDetails
           end
-          def in_mage_replication_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReplicationDetails
+          def hyper_vreplica_replication_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaReplicationDetails
           end
           def hyper_vreplica_blue_replication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaBlueReplicationDetails
           end
-          def hyper_vreplica_azure_replication_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureReplicationDetails
+          def hyper_vreplica_azure_enable_protection_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureEnableProtectionInput
           end
           def san_enable_protection_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SanEnableProtectionInput
           end
-          def in_mage_azure_v2_enable_protection_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2EnableProtectionInput
+          def in_mage_replication_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageReplicationDetails
           end
           def a2_areplication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AReplicationDetails
-          end
-          def hyper_vreplica_azure_enable_protection_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureEnableProtectionInput
-          end
-          def hyper_vreplica_azure_update_replication_protected_item_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
-          end
-          def in_mage_azure_v2_update_replication_protected_item_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
           end
         end
       end

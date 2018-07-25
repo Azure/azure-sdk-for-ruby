@@ -8,15 +8,15 @@ module Azure::Profiles::Latest
   module ServiceBus
     module Mgmt
       Operations = Azure::ServiceBus::Mgmt::V2017_04_01::Operations
+      Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
+      DisasterRecoveryConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::DisasterRecoveryConfigs
       Queues = Azure::ServiceBus::Mgmt::V2017_04_01::Queues
       Rules = Azure::ServiceBus::Mgmt::V2017_04_01::Rules
       PremiumMessagingRegionsOperations = Azure::ServiceBus::Mgmt::V2017_04_01::PremiumMessagingRegionsOperations
       Topics = Azure::ServiceBus::Mgmt::V2017_04_01::Topics
       Namespaces = Azure::ServiceBus::Mgmt::V2017_04_01::Namespaces
-      DisasterRecoveryConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::DisasterRecoveryConfigs
-      EventHubs = Azure::ServiceBus::Mgmt::V2017_04_01::EventHubs
-      Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
       Regions = Azure::ServiceBus::Mgmt::V2017_04_01::Regions
+      EventHubs = Azure::ServiceBus::Mgmt::V2017_04_01::EventHubs
 
       module Models
         OperationDisplay = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
@@ -72,7 +72,7 @@ module Azure::Profiles::Latest
       end
 
       class ServiceBusManagementClass
-        attr_reader :operations, :queues, :rules, :premium_messaging_regions_operations, :topics, :namespaces, :disaster_recovery_configs, :event_hubs, :subscriptions, :regions, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :subscriptions, :disaster_recovery_configs, :queues, :rules, :premium_messaging_regions_operations, :topics, :namespaces, :regions, :event_hubs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -83,15 +83,15 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
+          @subscriptions = @client_0.subscriptions
+          @disaster_recovery_configs = @client_0.disaster_recovery_configs
           @queues = @client_0.queues
           @rules = @client_0.rules
           @premium_messaging_regions_operations = @client_0.premium_messaging_regions_operations
           @topics = @client_0.topics
           @namespaces = @client_0.namespaces
-          @disaster_recovery_configs = @client_0.disaster_recovery_configs
-          @event_hubs = @client_0.event_hubs
-          @subscriptions = @client_0.subscriptions
           @regions = @client_0.regions
+          @event_hubs = @client_0.event_hubs
 
           @model_classes = ModelClasses.new
         end

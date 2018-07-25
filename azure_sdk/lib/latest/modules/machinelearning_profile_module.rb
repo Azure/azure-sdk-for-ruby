@@ -10,6 +10,9 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
+        InputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
+        GraphPackage = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphPackage
+        PaginatedWebServicesList = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
         ExampleRequest = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
         AsyncOperationErrorInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
         WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
@@ -44,9 +47,6 @@ module Azure::Profiles::Latest
         GraphParameterLink = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameterLink
         CommitmentPlan = Azure::MachineLearning::Mgmt::V2017_01_01::Models::CommitmentPlan
         GraphParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameter
-        InputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
-        GraphPackage = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphPackage
-        PaginatedWebServicesList = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
       end
 
       class MachineLearningManagementClass
@@ -79,6 +79,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def input_port
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
+          end
+          def graph_package
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphPackage
+          end
+          def paginated_web_services_list
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
+          end
           def example_request
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
           end
@@ -180,15 +189,6 @@ module Azure::Profiles::Latest
           end
           def graph_parameter
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameter
-          end
-          def input_port
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
-          end
-          def graph_package
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphPackage
-          end
-          def paginated_web_services_list
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
           end
         end
       end

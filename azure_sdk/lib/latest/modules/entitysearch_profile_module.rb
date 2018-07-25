@@ -28,10 +28,10 @@ module Azure::Profiles::Latest
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
       EntertainmentBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
       MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
+      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
       ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
       ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
-      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
       FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
       LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
@@ -144,6 +144,9 @@ module Azure::Profiles::Latest
         def movie_theater
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
         end
+        def response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
         def contractual_rules_license_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
         end
@@ -152,9 +155,6 @@ module Azure::Profiles::Latest
         end
         def contractual_rules_media_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
-        end
-        def response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
         end
         def contractual_rules_text_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
