@@ -419,22 +419,22 @@
   },
   "azure_mgmt_event_grid": {
     "azure_mgmt_event_grid_2018_05_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b3958fed2c2b12a3318233c3b43cee48cc5893d4/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2018_05_01_preview",
       "tag": "package-2018-05-preview"
     },
     "azure_mgmt_event_grid_2018_01_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2018_01_01",
       "tag": "package-2018-01"
     },
     "azure_mgmt_event_grid_2017_09_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2017_09_15_preview",
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_event_grid_2017_06_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2017_06_15_preview",
       "tag": "package-2017-06-preview"
     }
