@@ -397,22 +397,22 @@
   },
   "azure_mgmt_dns": {
     "azure_mgmt_dns_2018_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/8d1a0b8f007f52c741b338ef59abacc71488866f/specification/dns/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/dns/resource-manager/readme.md",
       "namespace": "Azure::Dns::Mgmt::V2018_03_01_preview",
       "tag": "package-2018-03-preview"
     },
     "azure_mgmt_dns_2017_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/8d1a0b8f007f52c741b338ef59abacc71488866f/specification/dns/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/dns/resource-manager/readme.md",
       "namespace": "Azure::Dns::Mgmt::V2017_10_01",
       "tag": "package-2017-10"
     },
     "azure_mgmt_dns_2017_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/8d1a0b8f007f52c741b338ef59abacc71488866f/specification/dns/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/dns/resource-manager/readme.md",
       "namespace": "Azure::Dns::Mgmt::V2017_09_01",
       "tag": "package-2017-09"
     },
     "azure_mgmt_dns_2016_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/8d1a0b8f007f52c741b338ef59abacc71488866f/specification/dns/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/dns/resource-manager/readme.md",
       "namespace": "Azure::Dns::Mgmt::V2016_04_01",
       "tag": "package-2016-04"
     }
