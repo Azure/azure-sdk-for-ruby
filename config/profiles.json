@@ -404,7 +404,7 @@
                 },
                 "Microsoft.CognitiveServices.ComputerVision": {
                     "data": {
-                        "1.0": ["*"]
+                        "2.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.ContentModerator": {
@@ -1493,7 +1493,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.ComputerVision" : {
                         "data": {
-                            "1.0": ["*"]
+                            "2.0": ["*"]
                         }
                     }
                 },
