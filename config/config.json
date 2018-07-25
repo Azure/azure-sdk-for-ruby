@@ -1234,19 +1234,25 @@
   },
   "azure_key_vault":{
     "azure_key_vault_2016_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/456a0e937655073bdd60df2736f0d8d555fd1f75/specification/keyvault/data-plane/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/keyvault/data-plane/readme.md",
       "namespace": "Azure::KeyVault::V2016_10_01",
       "tag": "package-2016-10"
     },
     "azure_key_vault_2015_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/456a0e937655073bdd60df2736f0d8d555fd1f75/specification/keyvault/data-plane/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/keyvault/data-plane/readme.md",
       "namespace": "Azure::KeyVault::V2015_06_01",
       "tag": "package-2015-06"
     },
+    "azure_key_vault_7_0_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/keyvault/data-plane/Microsoft.KeyVault/preview/7.0/keyvault.json"
+      ],
+      "namespace": "Azure::KeyVault::V7_0_preview"
+    },
     "azure_key_vault_7_0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/456a0e937655073bdd60df2736f0d8d555fd1f75/specification/keyvault/data-plane/readme.md",
-      "namespace": "Azure::KeyVault::V7_0_preview",
-      "tag": "package-7.0-preview"
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/keyvault/data-plane/readme.md",
+      "namespace": "Azure::KeyVault::V7_0",
+      "tag": "package-7.0"
     }
   }
 }
