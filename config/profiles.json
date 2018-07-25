@@ -190,7 +190,7 @@
                 },
                 "Microsoft.IotHub": {
                     "management": {
-                        "2017-07-01": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 },
                 "Microsoft.KeyVault": {
@@ -836,7 +836,7 @@
             "resourceTypes": {
                 "Microsoft.IotHub" : {
                     "management": {
-                        "2017-07-01": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 }
             },
