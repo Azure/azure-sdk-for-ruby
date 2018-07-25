@@ -17,11 +17,10 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Specifies the Azure subscription ID, which uniquely
-    # identifies the Microsoft Azure subscription.
+    # @return [String] The ID of the target subscription.
     attr_accessor :subscription_id
 
-    # @return [String] Specifies the API version.
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.

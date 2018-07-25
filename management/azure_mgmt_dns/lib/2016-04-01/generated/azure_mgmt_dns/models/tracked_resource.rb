@@ -3,39 +3,33 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Dns::Mgmt::V2017_10_01
+module Azure::Dns::Mgmt::V2016_04_01
   module Models
     #
-    # Model object.
+    # The resource model definition for a ARM tracked top level resource
     #
-    #
-    class Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      # @return [String] Fully qualified resource Id for the resource. Ex -
-      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-      attr_accessor :id
+      # @return [Hash{String => String}] Resource tags.
+      attr_accessor :tags
 
-      # @return [String] The name of the resource
-      attr_accessor :name
-
-      # @return [String] The type of the resource. Ex-
-      # Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-      attr_accessor :type
+      # @return [String] The geo-location where the resource lives
+      attr_accessor :location
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for TrackedResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'TrackedResource',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'TrackedResource',
             model_properties: {
               id: {
                 required: false,
@@ -57,6 +51,27 @@ module Azure::Dns::Mgmt::V2017_10_01
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }

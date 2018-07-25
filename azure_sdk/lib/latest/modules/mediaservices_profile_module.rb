@@ -102,8 +102,8 @@ module Azure::Profiles::Latest
         JobInput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInput
         MediaService = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaService
         SubscriptionMediaService = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
-        Asset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
         OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
+        Asset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier
         ContentKeyPolicyOpenRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
@@ -135,7 +135,7 @@ module Azure::Profiles::Latest
         JpgImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JpgImage
         MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MultiBitrateFormat
         Mp4Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Mp4Format
-        PngLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
+        PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
         BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
         StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
         VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
@@ -186,7 +186,7 @@ module Azure::Profiles::Latest
         StreamingEndpointResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
         ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
         TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
-        PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
+        PngLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
         Resource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
         StorageAccount = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StorageAccount
         Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Format
@@ -481,11 +481,11 @@ module Azure::Profiles::Latest
           def subscription_media_service
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
           end
-          def asset
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
-          end
           def operation_collection
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
+          end
+          def asset
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
           end
           def content_key_policy_play_ready_content_encryption_key_from_header
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader
@@ -580,8 +580,8 @@ module Azure::Profiles::Latest
           def mp4_format
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Mp4Format
           end
-          def png_layer
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
+          def png_image
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
           end
           def built_in_standard_encoder_preset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
@@ -733,8 +733,8 @@ module Azure::Profiles::Latest
           def tracked_resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
           end
-          def png_image
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
+          def png_layer
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
           end
           def resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
