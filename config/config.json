@@ -110,13 +110,18 @@
     }
   },
   "azure_mgmt_billing": {
+    "azure_mgmt_billing_2018_03_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/billing/resource-manager/readme.md",
+      "namespace": "Azure::Billing::Mgmt::V2018_03_01_preview",
+      "tag": "package-2018-03-preview"
+    },
     "azure_mgmt_billing_2017_04_24_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/billing/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/billing/resource-manager/readme.md",
       "namespace": "Azure::Billing::Mgmt::V2017_04_24_preview",
       "tag": "package-2017-04-preview"
     },
     "azure_mgmt_billing_2017_02_27_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/billing/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/billing/resource-manager/readme.md",
       "namespace": "Azure::Billing::Mgmt::V2017_02_27_preview",
       "tag": "package-2017-02-preview"
     }

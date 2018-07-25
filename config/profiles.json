@@ -83,7 +83,7 @@
                 },
                 "Microsoft.Billing": {
                     "management": {
-                        "2017-04-24-preview": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.CDN": {
@@ -540,7 +540,7 @@
             "resourceTypes": {
                 "Microsoft.Billing" : {
                     "management": {
-                        "2017-04-24-preview": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 }
             },
