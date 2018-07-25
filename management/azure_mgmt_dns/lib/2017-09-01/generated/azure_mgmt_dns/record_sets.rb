@@ -24,7 +24,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Updates a record set within a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -41,15 +42,16 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [RecordSet] operation results.
     #
-    def update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, custom_headers:nil)
-      response = update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, custom_headers = nil)
+      response = update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Updates a record set within a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -66,14 +68,15 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, custom_headers:nil)
-      update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, custom_headers = nil)
+      update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, custom_headers).value!
     end
 
     #
     # Updates a record set within a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -90,7 +93,7 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, custom_headers:nil)
+    def update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
@@ -101,12 +104,13 @@ module Azure::Dns::Mgmt::V2017_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Dns::Mgmt::V2017_09_01::Models::RecordSet.mapper()
@@ -158,7 +162,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Creates or updates a record set within a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -180,15 +185,16 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [RecordSet] operation results.
     #
-    def create_or_update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, if_none_match:nil, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, if_none_match:if_none_match, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, if_none_match = nil, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, if_none_match, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates or updates a record set within a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -210,14 +216,15 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, if_none_match:nil, custom_headers:nil)
-      create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, if_none_match:if_none_match, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, if_none_match = nil, custom_headers = nil)
+      create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, if_none_match, custom_headers).value!
     end
 
     #
     # Creates or updates a record set within a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -239,7 +246,7 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, if_none_match:nil, custom_headers:nil)
+    def create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, if_none_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
@@ -250,13 +257,14 @@ module Azure::Dns::Mgmt::V2017_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['If-None-Match'] = if_none_match unless if_none_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Dns::Mgmt::V2017_09_01::Models::RecordSet.mapper()
@@ -318,7 +326,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Deletes a record set from a DNS zone. This operation cannot be undone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -334,15 +343,16 @@ module Azure::Dns::Mgmt::V2017_09_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:nil, custom_headers:nil)
-      response = delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:if_match, custom_headers:custom_headers).value!
+    def delete(resource_group_name, zone_name, relative_record_set_name, record_type, if_match = nil, custom_headers = nil)
+      response = delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match, custom_headers).value!
       nil
     end
 
     #
     # Deletes a record set from a DNS zone. This operation cannot be undone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -359,14 +369,15 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:nil, custom_headers:nil)
-      delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:if_match, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, if_match = nil, custom_headers = nil)
+      delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match, custom_headers).value!
     end
 
     #
     # Deletes a record set from a DNS zone. This operation cannot be undone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -383,7 +394,7 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:nil, custom_headers:nil)
+    def delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
@@ -393,7 +404,6 @@ module Azure::Dns::Mgmt::V2017_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -433,7 +443,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Gets a record set.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -446,15 +457,16 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [RecordSet] operation results.
     #
-    def get(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:nil)
-      response = get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:custom_headers).value!
+    def get(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers = nil)
+      response = get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Gets a record set.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -467,14 +479,15 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:nil)
-      get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers = nil)
+      get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers).value!
     end
 
     #
     # Gets a record set.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param relative_record_set_name [String] The name of the record set, relative
@@ -487,7 +500,7 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:nil)
+    def get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
@@ -497,7 +510,6 @@ module Azure::Dns::Mgmt::V2017_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -546,7 +558,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Lists the record sets of a specified type in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
@@ -563,15 +576,16 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_by_type(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      first_page = list_by_type_as_lazy(resource_group_name, zone_name, record_type, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers)
+    def list_by_type(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      first_page = list_by_type_as_lazy(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Lists the record sets of a specified type in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
@@ -588,14 +602,15 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_type_with_http_info(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      list_by_type_async(resource_group_name, zone_name, record_type, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_type_with_http_info(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      list_by_type_async(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers).value!
     end
 
     #
     # Lists the record sets of a specified type in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
@@ -612,7 +627,7 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_type_async(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
+    def list_by_type_async(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'record_type is nil' if record_type.nil?
@@ -621,7 +636,6 @@ module Azure::Dns::Mgmt::V2017_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -669,7 +683,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Lists all record sets in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
@@ -683,15 +698,16 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_by_dns_zone(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      first_page = list_by_dns_zone_as_lazy(resource_group_name, zone_name, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers)
+    def list_by_dns_zone(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      first_page = list_by_dns_zone_as_lazy(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Lists all record sets in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
@@ -705,14 +721,15 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_dns_zone_with_http_info(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      list_by_dns_zone_async(resource_group_name, zone_name, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_dns_zone_with_http_info(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      list_by_dns_zone_async(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers).value!
     end
 
     #
     # Lists all record sets in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
@@ -726,7 +743,7 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_dns_zone_async(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
+    def list_by_dns_zone_async(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -734,7 +751,6 @@ module Azure::Dns::Mgmt::V2017_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -789,8 +805,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [RecordSetListResult] operation results.
     #
-    def list_by_type_next(next_page_link, custom_headers:nil)
-      response = list_by_type_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_type_next(next_page_link, custom_headers = nil)
+      response = list_by_type_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -804,8 +820,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_type_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_type_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_type_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_type_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -818,12 +834,11 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_type_next_async(next_page_link, custom_headers:nil)
+    def list_by_type_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -877,8 +892,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [RecordSetListResult] operation results.
     #
-    def list_by_dns_zone_next(next_page_link, custom_headers:nil)
-      response = list_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_dns_zone_next(next_page_link, custom_headers = nil)
+      response = list_by_dns_zone_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -892,8 +907,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_dns_zone_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_dns_zone_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_dns_zone_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -906,12 +921,11 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_dns_zone_next_async(next_page_link, custom_headers:nil)
+    def list_by_dns_zone_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -958,7 +972,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Lists the record sets of a specified type in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
@@ -976,12 +991,12 @@ module Azure::Dns::Mgmt::V2017_09_01
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_type_as_lazy(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      response = list_by_type_async(resource_group_name, zone_name, record_type, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_type_as_lazy(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      response = list_by_type_async(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_type_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_type_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -990,7 +1005,8 @@ module Azure::Dns::Mgmt::V2017_09_01
     #
     # Lists all record sets in a DNS zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
@@ -1005,12 +1021,12 @@ module Azure::Dns::Mgmt::V2017_09_01
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_dns_zone_as_lazy(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      response = list_by_dns_zone_async(resource_group_name, zone_name, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_dns_zone_as_lazy(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      response = list_by_dns_zone_async(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_dns_zone_next_async(next_page_link, custom_headers)
         end
         page
       end
