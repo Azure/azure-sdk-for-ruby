@@ -128,7 +128,7 @@ end
 
 gem_versions = JSON.parse(File.read(File.expand_path("#{get_config_files_folder}/GEM_VERSIONS", __FILE__)).strip)
 gems_to_release = JSON.parse(File.read(File.expand_path("#{get_config_files_folder}/GEMS_TO_RELEASE", __FILE__)).strip)
-GEMS_TO_IGNORE = %w{azure_mgmt_graph}
+GEMS_TO_IGNORE = %w{azure_mgmt_graph, azure_mgmt_mobile_engagement}
 REGEN_EXCLUDES = ['azure_sdk']
 
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
