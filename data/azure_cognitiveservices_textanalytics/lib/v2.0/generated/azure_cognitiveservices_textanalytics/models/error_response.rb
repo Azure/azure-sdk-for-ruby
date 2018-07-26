@@ -32,7 +32,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -40,7 +39,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -48,7 +46,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -56,7 +53,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -64,7 +60,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               inner_error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'innerError',
                 type: {
