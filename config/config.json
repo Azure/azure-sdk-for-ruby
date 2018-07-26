@@ -458,7 +458,7 @@
   },
   "azure_mgmt_features": {
     "azure_mgmt_features_2015_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Features::Mgmt::V2015_12_01",
       "tag": "package-features-2015-12"
     }
