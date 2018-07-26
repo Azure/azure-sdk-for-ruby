@@ -1046,12 +1046,12 @@
   },
   "azure_mgmt_service_bus": {
     "azure_mgmt_service_bus_2017_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/servicebus/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/servicebus/resource-manager/readme.md",
       "namespace": "Azure::ServiceBus::Mgmt::V2017_04_01",
       "tag": "package-2017-04"
     },
     "azure_mgmt_service_bus_2015_08_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/servicebus/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/servicebus/resource-manager/readme.md",
       "namespace": "Azure::ServiceBus::Mgmt::V2015_08_01",
       "tag": "package-2015-08"
     }
