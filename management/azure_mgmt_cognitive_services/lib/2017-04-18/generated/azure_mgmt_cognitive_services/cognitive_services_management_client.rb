@@ -38,6 +38,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return [Accounts] accounts
     attr_reader :accounts
 
+    # @return [ResourceSkus] resource_skus
+    attr_reader :resource_skus
+
     # @return [Operations] operations
     attr_reader :operations
 
@@ -58,6 +61,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       @credentials = credentials
 
       @accounts = Accounts.new(self)
+      @resource_skus = ResourceSkus.new(self)
       @operations = Operations.new(self)
       @check_sku_availability = CheckSkuAvailability.new(self)
       @api_version = '2017-04-18'
@@ -113,9 +117,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -132,7 +133,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cognitive_services'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
