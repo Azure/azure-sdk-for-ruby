@@ -1106,7 +1106,7 @@
   },
   "azure_mgmt_stor_simple8000_series": {
     "azure_mgmt_stor_simple8000_series_2017_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/storsimple8000series/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/storsimple8000series/resource-manager/readme.md",
       "namespace": "Azure::StorSimple8000Series::Mgmt::V2017_06_01",
       "tag": "package-2017-06"
     }
