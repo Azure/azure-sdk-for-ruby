@@ -276,8 +276,7 @@
                 },
                 "Microsoft.Policy": {
                     "management": {
-                        "2016-12-01": ["*"],
-                        "2017-06-01-preview": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 },
                 "Microsoft.PolicyInsights": {
@@ -1099,8 +1098,7 @@
             "resourceTypes": {
                 "Microsoft.Policy" : {
                     "management": {
-                        "2016-12-01": ["*"],
-                        "2017-06-01-preview": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 }
             },
