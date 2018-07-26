@@ -43,7 +43,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FindSimilarRequest',
           type: {
@@ -51,7 +50,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'FindSimilarRequest',
             model_properties: {
               face_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'faceId',
                 type: {
@@ -59,7 +57,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               face_list_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'faceListId',
                 constraints: {
@@ -71,7 +68,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               face_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'faceIds',
                 constraints: {
@@ -80,7 +76,6 @@ module Azure::CognitiveServices::Face::V1_0
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UuidElementType',
                       type: {
@@ -90,7 +85,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               max_num_of_candidates_returned: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxNumOfCandidatesReturned',
                 default_value: 20,
@@ -103,7 +97,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 default_value: 'matchPerson',

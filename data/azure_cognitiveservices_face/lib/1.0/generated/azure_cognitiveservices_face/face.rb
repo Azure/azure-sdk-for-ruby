@@ -44,8 +44,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def find_similar(face_id, face_list_id:nil, face_ids:nil, max_num_of_candidates_returned:20, mode:nil, custom_headers:nil)
-      response = find_similar_async(face_id, face_list_id:face_list_id, face_ids:face_ids, max_num_of_candidates_returned:max_num_of_candidates_returned, mode:mode, custom_headers:custom_headers).value!
+    def find_similar(face_id, face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
+      response = find_similar_async(face_id, face_list_id, face_ids, max_num_of_candidates_returned, mode, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -72,8 +72,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def find_similar_with_http_info(face_id, face_list_id:nil, face_ids:nil, max_num_of_candidates_returned:20, mode:nil, custom_headers:nil)
-      find_similar_async(face_id, face_list_id:face_list_id, face_ids:face_ids, max_num_of_candidates_returned:max_num_of_candidates_returned, mode:mode, custom_headers:custom_headers).value!
+    def find_similar_with_http_info(face_id, face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
+      find_similar_async(face_id, face_list_id, face_ids, max_num_of_candidates_returned, mode, custom_headers).value!
     end
 
     #
@@ -99,14 +99,9 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def find_similar_async(face_id, face_list_id:nil, face_ids:nil, max_num_of_candidates_returned:20, mode:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
+    def find_similar_async(face_id, face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'face_id is nil' if face_id.nil?
-      fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
-      fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
-      fail ArgumentError, "'face_ids' should satisfy the constraint - 'MaxItems': '1000'" if !face_ids.nil? && face_ids.length > 1000
-      fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned > 1000
-      fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMinimum': '1'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned < 1
 
       body = FindSimilarRequest.new
       unless face_id.nil? && face_list_id.nil? && face_ids.nil? && max_num_of_candidates_returned.nil? && mode.nil?
@@ -118,11 +113,12 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest.mapper()
@@ -132,7 +128,7 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'findsimilars'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -157,13 +153,11 @@ module Azure::CognitiveServices::Face::V1_0
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'SimilarFaceElementType',
                     type: {
@@ -195,8 +189,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [GroupResult] operation results.
     #
-    def group(face_ids, custom_headers:nil)
-      response = group_async(face_ids, custom_headers:custom_headers).value!
+    def group(face_ids, custom_headers = nil)
+      response = group_async(face_ids, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -210,8 +204,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def group_with_http_info(face_ids, custom_headers:nil)
-      group_async(face_ids, custom_headers:custom_headers).value!
+    def group_with_http_info(face_ids, custom_headers = nil)
+      group_async(face_ids, custom_headers).value!
     end
 
     #
@@ -224,10 +218,9 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def group_async(face_ids, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
+    def group_async(face_ids, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'face_ids is nil' if face_ids.nil?
-      fail ArgumentError, "'face_ids' should satisfy the constraint - 'MaxItems': '1000'" if !face_ids.nil? && face_ids.length > 1000
 
       body = GroupRequest.new
       unless face_ids.nil?
@@ -235,11 +228,12 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest.mapper()
@@ -249,7 +243,7 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'group'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -304,8 +298,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def identify(person_group_id, face_ids, max_num_of_candidates_returned:1, confidence_threshold:nil, custom_headers:nil)
-      response = identify_async(person_group_id, face_ids, max_num_of_candidates_returned:max_num_of_candidates_returned, confidence_threshold:confidence_threshold, custom_headers:custom_headers).value!
+    def identify(person_group_id, face_ids, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
+      response = identify_async(person_group_id, face_ids, max_num_of_candidates_returned, confidence_threshold, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -327,8 +321,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def identify_with_http_info(person_group_id, face_ids, max_num_of_candidates_returned:1, confidence_threshold:nil, custom_headers:nil)
-      identify_async(person_group_id, face_ids, max_num_of_candidates_returned:max_num_of_candidates_returned, confidence_threshold:confidence_threshold, custom_headers:custom_headers).value!
+    def identify_with_http_info(person_group_id, face_ids, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
+      identify_async(person_group_id, face_ids, max_num_of_candidates_returned, confidence_threshold, custom_headers).value!
     end
 
     #
@@ -349,15 +343,10 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def identify_async(person_group_id, face_ids, max_num_of_candidates_returned:1, confidence_threshold:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
+    def identify_async(person_group_id, face_ids, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'face_ids is nil' if face_ids.nil?
-      fail ArgumentError, "'face_ids' should satisfy the constraint - 'MaxItems': '10'" if !face_ids.nil? && face_ids.length > 10
-      fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMaximum': '5'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned > 5
-      fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMinimum': '1'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned < 1
 
       body = IdentifyRequest.new
       unless person_group_id.nil? && face_ids.nil? && max_num_of_candidates_returned.nil? && confidence_threshold.nil?
@@ -368,11 +357,12 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest.mapper()
@@ -382,7 +372,7 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'identify'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -407,13 +397,11 @@ module Azure::CognitiveServices::Face::V1_0
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'IdentifyResultElementType',
                     type: {
@@ -446,8 +434,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [VerifyResult] operation results.
     #
-    def verify_face_to_face(face_id1, face_id2, custom_headers:nil)
-      response = verify_face_to_face_async(face_id1, face_id2, custom_headers:custom_headers).value!
+    def verify_face_to_face(face_id1, face_id2, custom_headers = nil)
+      response = verify_face_to_face_async(face_id1, face_id2, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -462,8 +450,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_face_to_face_with_http_info(face_id1, face_id2, custom_headers:nil)
-      verify_face_to_face_async(face_id1, face_id2, custom_headers:custom_headers).value!
+    def verify_face_to_face_with_http_info(face_id1, face_id2, custom_headers = nil)
+      verify_face_to_face_async(face_id1, face_id2, custom_headers).value!
     end
 
     #
@@ -477,8 +465,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_face_to_face_async(face_id1, face_id2, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
+    def verify_face_to_face_async(face_id1, face_id2, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'face_id1 is nil' if face_id1.nil?
       fail ArgumentError, 'face_id2 is nil' if face_id2.nil?
 
@@ -489,11 +477,12 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest.mapper()
@@ -503,7 +492,7 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'verify'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -544,7 +533,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Detect human faces in an image and returns face locations, and optionally
     # with faceIds, landmarks, and attributes.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
@@ -559,8 +548,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def detect_with_url(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      response = detect_with_url_async(url, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_url(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, custom_headers = nil)
+      response = detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -568,7 +557,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Detect human faces in an image and returns face locations, and optionally
     # with faceIds, landmarks, and attributes.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
@@ -583,15 +572,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_with_url_with_http_info(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      detect_with_url_async(url, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_url_with_http_info(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, custom_headers = nil)
+      detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, custom_headers).value!
     end
 
     #
     # Detect human faces in an image and returns face locations, and optionally
     # with faceIds, landmarks, and attributes.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
@@ -606,8 +595,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_with_url_async(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
+    def detect_with_url_async(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
       image_url = ImageUrl.new
@@ -616,11 +605,12 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl.mapper()
@@ -630,7 +620,7 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'detect'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -656,13 +646,11 @@ module Azure::CognitiveServices::Face::V1_0
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'DetectedFaceElementType',
                     type: {
@@ -699,8 +687,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [VerifyResult] operation results.
     #
-    def verify_face_to_person(face_id, person_group_id, person_id, custom_headers:nil)
-      response = verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers:custom_headers).value!
+    def verify_face_to_person(face_id, person_group_id, person_id, custom_headers = nil)
+      response = verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -719,8 +707,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_face_to_person_with_http_info(face_id, person_group_id, person_id, custom_headers:nil)
-      verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers:custom_headers).value!
+    def verify_face_to_person_with_http_info(face_id, person_group_id, person_id, custom_headers = nil)
+      verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers).value!
     end
 
     #
@@ -738,12 +726,10 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
+    def verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'face_id is nil' if face_id.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
 
       body = VerifyFaceToPersonRequest.new
@@ -754,11 +740,12 @@ module Azure::CognitiveServices::Face::V1_0
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest.mapper()
@@ -768,7 +755,7 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'verify'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -824,8 +811,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def detect_with_stream(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      response = detect_with_stream_async(image, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_stream(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, custom_headers = nil)
+      response = detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -848,8 +835,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_with_stream_with_http_info(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      detect_with_stream_async(image, return_face_id:return_face_id, return_face_landmarks:return_face_landmarks, return_face_attributes:return_face_attributes, custom_headers:custom_headers).value!
+    def detect_with_stream_with_http_info(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, custom_headers = nil)
+      detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, custom_headers).value!
     end
 
     #
@@ -871,21 +858,21 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_with_stream_async(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
+    def detect_with_stream_async(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/octet-stream'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
+      request_headers['Content-Type'] = 'application/octet-stream'
+
       # Serialize Request
       request_mapper = {
-        client_side_validation: true,
         required: true,
         serialized_name: 'Image',
         type: {
@@ -893,11 +880,12 @@ module Azure::CognitiveServices::Face::V1_0
         }
       }
       request_content = @client.serialize(request_mapper,  image)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'detect'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -923,13 +911,11 @@ module Azure::CognitiveServices::Face::V1_0
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'DetectedFaceElementType',
                     type: {

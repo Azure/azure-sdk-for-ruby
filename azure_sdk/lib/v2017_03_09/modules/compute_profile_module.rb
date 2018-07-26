@@ -7,17 +7,22 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2017_03_09
   module Compute
     module Mgmt
-      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
-      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensionImages
-      VirtualMachineExtensions = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2016_03_30::VirtualMachines
       VirtualMachineImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineImages
-      UsageOperations = Azure::Compute::Mgmt::V2016_03_30::UsageOperations
       VirtualMachineSizes = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineSizes
       VirtualMachineScaleSets = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSets
       VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSetVMs
+      UsageOperations = Azure::Compute::Mgmt::V2016_03_30::UsageOperations
+      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
+      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensionImages
+      VirtualMachineExtensions = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensions
 
       module Models
+        Sku = Azure::Compute::Mgmt::V2016_03_30::Models::Sku
+        SubResource = Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
+        UsageName = Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
+        Usage = Azure::Compute::Mgmt::V2016_03_30::Models::Usage
+        Resource = Azure::Compute::Mgmt::V2016_03_30::Models::Resource
         DiagnosticsProfile = Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile
         InstanceViewStatus = Azure::Compute::Mgmt::V2016_03_30::Models::InstanceViewStatus
         VirtualMachineExtensionHandlerInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
@@ -28,13 +33,10 @@ module Azure::Profiles::V2017_03_09
         InnerError = Azure::Compute::Mgmt::V2016_03_30::Models::InnerError
         VirtualMachineExtensionInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionInstanceView
         NetworkProfile = Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
-        Resource = Azure::Compute::Mgmt::V2016_03_30::Models::Resource
         BootDiagnostics = Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnostics
         PurchasePlan = Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan
-        SubResource = Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
         DataDiskImage = Azure::Compute::Mgmt::V2016_03_30::Models::DataDiskImage
         ApiErrorBase = Azure::Compute::Mgmt::V2016_03_30::Models::ApiErrorBase
-        UsageName = Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
         VirtualMachineAgentInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineAgentInstanceView
         ListUsagesResult = Azure::Compute::Mgmt::V2016_03_30::Models::ListUsagesResult
         DiskInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::DiskInstanceView
@@ -49,7 +51,6 @@ module Azure::Profiles::V2017_03_09
         OSDisk = Azure::Compute::Mgmt::V2016_03_30::Models::OSDisk
         VirtualMachineListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineListResult
         StorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::StorageProfile
-        Sku = Azure::Compute::Mgmt::V2016_03_30::Models::Sku
         WinRMListener = Azure::Compute::Mgmt::V2016_03_30::Models::WinRMListener
         UpgradePolicy = Azure::Compute::Mgmt::V2016_03_30::Models::UpgradePolicy
         WindowsConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::WindowsConfiguration
@@ -84,7 +85,6 @@ module Azure::Profiles::V2017_03_09
         VirtualMachineStatusCodeCount = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineStatusCodeCount
         LinuxConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::LinuxConfiguration
         VirtualMachineScaleSetInstanceViewStatusesSummary = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetInstanceViewStatusesSummary
-        Usage = Azure::Compute::Mgmt::V2016_03_30::Models::Usage
         VirtualMachineScaleSetVMExtensionsSummary = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMExtensionsSummary
         WinRMConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::WinRMConfiguration
         VirtualMachineScaleSetInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetInstanceView
@@ -122,7 +122,7 @@ module Azure::Profiles::V2017_03_09
       end
 
       class ComputeManagementClass
-        attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_machines, :virtual_machine_images, :virtual_machine_sizes, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :usage_operations, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -132,15 +132,15 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @availability_sets = @client_0.availability_sets
-          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
-          @virtual_machine_extensions = @client_0.virtual_machine_extensions
           @virtual_machines = @client_0.virtual_machines
           @virtual_machine_images = @client_0.virtual_machine_images
-          @usage_operations = @client_0.usage_operations
           @virtual_machine_sizes = @client_0.virtual_machine_sizes
           @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
           @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
+          @usage_operations = @client_0.usage_operations
+          @availability_sets = @client_0.availability_sets
+          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
+          @virtual_machine_extensions = @client_0.virtual_machine_extensions
 
           @model_classes = ModelClasses.new
         end
@@ -159,6 +159,21 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def sku
+            Azure::Compute::Mgmt::V2016_03_30::Models::Sku
+          end
+          def sub_resource
+            Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
+          end
+          def usage_name
+            Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
+          end
+          def usage
+            Azure::Compute::Mgmt::V2016_03_30::Models::Usage
+          end
+          def resource
+            Azure::Compute::Mgmt::V2016_03_30::Models::Resource
+          end
           def diagnostics_profile
             Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile
           end
@@ -189,26 +204,17 @@ module Azure::Profiles::V2017_03_09
           def network_profile
             Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
           end
-          def resource
-            Azure::Compute::Mgmt::V2016_03_30::Models::Resource
-          end
           def boot_diagnostics
             Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnostics
           end
           def purchase_plan
             Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan
           end
-          def sub_resource
-            Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
-          end
           def data_disk_image
             Azure::Compute::Mgmt::V2016_03_30::Models::DataDiskImage
           end
           def api_error_base
             Azure::Compute::Mgmt::V2016_03_30::Models::ApiErrorBase
-          end
-          def usage_name
-            Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
           end
           def virtual_machine_agent_instance_view
             Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineAgentInstanceView
@@ -251,9 +257,6 @@ module Azure::Profiles::V2017_03_09
           end
           def storage_profile
             Azure::Compute::Mgmt::V2016_03_30::Models::StorageProfile
-          end
-          def sku
-            Azure::Compute::Mgmt::V2016_03_30::Models::Sku
           end
           def win_rmlistener
             Azure::Compute::Mgmt::V2016_03_30::Models::WinRMListener
@@ -356,9 +359,6 @@ module Azure::Profiles::V2017_03_09
           end
           def virtual_machine_scale_set_instance_view_statuses_summary
             Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetInstanceViewStatusesSummary
-          end
-          def usage
-            Azure::Compute::Mgmt::V2016_03_30::Models::Usage
           end
           def virtual_machine_scale_set_vmextensions_summary
             Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetVMExtensionsSummary

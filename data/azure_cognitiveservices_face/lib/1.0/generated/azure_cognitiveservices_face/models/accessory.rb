@@ -26,7 +26,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Accessory',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Accessory',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -43,7 +41,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               confidence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'confidence',
                 type: {

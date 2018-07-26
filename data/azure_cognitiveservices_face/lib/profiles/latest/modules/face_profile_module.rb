@@ -5,14 +5,14 @@
 require 'azure_cognitiveservices_face'
 
 module Azure::Face::Profiles::Latest
-  Face = Azure::CognitiveServices::Face::V1_0::Face
   PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
+  Face = Azure::CognitiveServices::Face::V1_0::Face
   PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
   FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
 
   module Models
-    FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
     Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+    FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
     SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
     FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
     GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
@@ -57,14 +57,13 @@ module Azure::Face::Profiles::Latest
     FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
     TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
     FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-    AzureRegions = Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
   end
 
   #
   # FaceDataClass
   #
   class FaceDataClass
-    attr_reader :face, :person_group_person, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
+    attr_reader :person_group_person, :face, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -84,8 +83,8 @@ module Azure::Face::Profiles::Latest
         @client_0.subscription_id = configurable.subscription_id
       end
       add_telemetry(@client_0)
-      @face = @client_0.face
       @person_group_person = @client_0.person_group_person
+      @face = @client_0.face
       @person_group_operations = @client_0.person_group_operations
       @face_list_operations = @client_0.face_list_operations
 
@@ -108,11 +107,11 @@ module Azure::Face::Profiles::Latest
   end
 
   class ModelClasses
-    def find_similar_request
-      Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
-    end
     def error
       Azure::CognitiveServices::Face::V1_0::Models::Error
+    end
+    def find_similar_request
+      Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
     end
     def similar_face
       Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
@@ -245,9 +244,6 @@ module Azure::Face::Profiles::Latest
     end
     def face_attribute_type
       Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-    end
-    def azure_regions
-      Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
     end
   end
 end
