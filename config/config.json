@@ -1024,15 +1024,25 @@
     }
   },
   "azure_mgmt_resources_management": {
+    "azure_mgmt_resources_management_2018_03_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/managementgroups/resource-manager/readme.md",
+      "namespace": "Azure::ResourcesManagement::Mgmt::V2018_03_01_preview",
+      "tag": "package-2018-03"
+    },
+    "azure_mgmt_resources_management_2018_01_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/managementgroups/resource-manager/readme.md",
+      "namespace": "Azure::ResourcesManagement::Mgmt::V2018_01_01_preview",
+      "tag": "package-2018-01"
+    },
     "azure_mgmt_resources_management_2017_11_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/managementgroups/resource-manager/readme.md",
       "namespace": "Azure::ResourcesManagement::Mgmt::V2017_11_01_preview",
-      "tag": "package-management-2017-11"
+      "tag": "package-2017-11"
     },
     "azure_mgmt_resources_management_2017_08_31_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/managementgroups/resource-manager/readme.md",
       "namespace": "Azure::ResourcesManagement::Mgmt::V2017_08_31_preview",
-      "tag": "package-management-2017-08"
+      "tag": "package-2017-08"
     }
   },
   "azure_mgmt_scheduler": {
