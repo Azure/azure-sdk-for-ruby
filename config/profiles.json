@@ -309,7 +309,7 @@
                 },
                 "Microsoft.Redis": {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 },
                 "Microsoft.Relay": {
@@ -1186,7 +1186,7 @@
             "resourceTypes": {
                 "Microsoft.Redis" : {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 }
             },
