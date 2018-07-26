@@ -354,7 +354,8 @@
                 },
                 "Microsoft.ServiceFabric": {
                     "management": {
-                        "2017-07-01-preview": ["*"]
+                        "2017-07-01-preview": ["*"],
+                        "2018-02-01": ["*"]
                     }
                 },
                 "Microsoft.Signalr": {
@@ -1324,7 +1325,8 @@
             "resourceTypes": {
                 "Microsoft.ServiceFabric" : {
                     "management": {
-                        "2017-07-01-preview": ["*"]
+                        "2017-07-01-preview": ["*"],
+                        "2018-02-01": ["*"]
                     }
                 }
             },
