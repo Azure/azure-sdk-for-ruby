@@ -223,7 +223,7 @@
                 },
                 "Microsoft.ManagedApplications": {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.MarketplaceOrdering": {
@@ -944,7 +944,7 @@
             "resourceTypes": {
                 "Microsoft.ManagedApplications" : {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 }
             },
