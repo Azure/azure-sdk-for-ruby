@@ -26,7 +26,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultPatchParameters',
           type: {
@@ -34,13 +33,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'VaultPatchParameters',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -50,7 +47,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
