@@ -392,8 +392,7 @@
                 },
                 "Microsoft.TrafficManager": {
                     "management": {
-                        "2017-05-01": ["*"],
-                        "2017-09-01-preview": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 },
                 "Microsoft.Web": {
@@ -1450,8 +1449,7 @@
             "resourceTypes": {
                 "Microsoft.TrafficManager": {
                     "management": {
-                        "2017-05-01": ["*"],
-                        "2017-09-01-preview": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 }
             },
