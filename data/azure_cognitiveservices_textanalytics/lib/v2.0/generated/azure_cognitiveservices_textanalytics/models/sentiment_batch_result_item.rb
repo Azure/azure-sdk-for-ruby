@@ -29,7 +29,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SentimentBatchResultItem',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
             class_name: 'SentimentBatchResultItem',
             model_properties: {
               score: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'score',
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',

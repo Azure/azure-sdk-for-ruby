@@ -23,7 +23,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BatchInput',
           type: {
@@ -31,13 +30,11 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
             class_name: 'BatchInput',
             model_properties: {
               documents: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'documents',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InputElementType',
                       type: {

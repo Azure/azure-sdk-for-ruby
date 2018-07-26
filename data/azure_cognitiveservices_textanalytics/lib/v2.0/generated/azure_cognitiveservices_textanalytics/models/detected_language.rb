@@ -32,7 +32,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetectedLanguage',
           type: {
@@ -40,7 +39,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
             class_name: 'DetectedLanguage',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +46,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               iso6391name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'iso6391Name',
                 type: {
@@ -56,7 +53,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
                 }
               },
               score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'score',
                 type: {
