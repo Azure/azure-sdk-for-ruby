@@ -5,7 +5,7 @@
 
 module Azure::ServiceFabric::Mgmt::V2016_09_01
   #
-  # Operations
+  # Service Fabric Management Client
   #
   class Operations
     include MsRestAzure

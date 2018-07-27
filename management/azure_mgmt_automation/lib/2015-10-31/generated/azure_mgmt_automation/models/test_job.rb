@@ -45,6 +45,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # test job.
       attr_accessor :parameters
 
+      # @return [Integer] The activity-level tracing options of the runbook.
+      attr_accessor :log_activity_trace
+
 
       #
       # Mapper for TestJob class as Ruby Hash.
@@ -145,6 +148,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                         name: 'String'
                       }
                   }
+                }
+              },
+              log_activity_trace: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'logActivityTrace',
+                type: {
+                  name: 'Number'
                 }
               }
             }

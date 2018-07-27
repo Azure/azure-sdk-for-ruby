@@ -12,7 +12,7 @@ module Azure::KeyVault::V7_0_preview
       P256 = "P-256"
       P384 = "P-384"
       P521 = "P-521"
-      SECP256K1 = "SECP256K1"
+      P256K = "P-256K"
     end
   end
 end

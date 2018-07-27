@@ -77,7 +77,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'

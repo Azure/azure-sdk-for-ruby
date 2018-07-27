@@ -6,7 +6,7 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # The X12 oneway agreement.
+    # The X12 one-way agreement.
     #
     class X12OneWayAgreement
 

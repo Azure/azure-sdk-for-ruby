@@ -15,15 +15,23 @@ module Azure::KeyVault::V7_0_preview
       # @return [Boolean] Indicates if the private key can be exported.
       attr_accessor :exportable
 
-      # @return [String] The key type.
+      # @return [JsonWebKeyType] The type of key pair to be used for the
+      # certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+      # 'oct'
       attr_accessor :key_type
 
-      # @return [Integer] The key size in bytes. For example;  1024 or 2048.
+      # @return [Integer] The key size in bits. For example: 2048, 3072, or
+      # 4096 for RSA.
       attr_accessor :key_size
 
       # @return [Boolean] Indicates if the same key pair will be used on
       # certificate renewal.
       attr_accessor :reuse_key
+
+      # @return [JsonWebKeyCurveName] Elliptic curve name. For valid values,
+      # see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
+      # 'P-521', 'P-256K'
+      attr_accessor :curve
 
 
       #
@@ -69,6 +77,14 @@ module Azure::KeyVault::V7_0_preview
                 serialized_name: 'reuse_key',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              curve: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'crv',
+                type: {
+                  name: 'String'
                 }
               }
             }

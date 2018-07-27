@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2016_03_01
   #
-  # Diagnostics
+  # WebSite Management Client
   #
   class Diagnostics
     include MsRestAzure
@@ -20,6 +20,450 @@ module Azure::Web::Mgmt::V2016_03_01
 
     # @return [WebSiteManagementClient] reference to the WebSiteManagementClient
     attr_reader :client
+
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Site Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<DetectorResponse>] operation results.
+    #
+    def list_hosting_environment_detector_responses(resource_group_name, name, custom_headers:nil)
+      first_page = list_hosting_environment_detector_responses_as_lazy(resource_group_name, name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Site Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_hosting_environment_detector_responses_with_http_info(resource_group_name, name, custom_headers:nil)
+      list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Site Name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get Hosting Environment Detector Response
+    #
+    # Get Hosting Environment Detector Response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] App Service Environment Name
+    # @param detector_name [String] Detector Resource Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponse] operation results.
+    #
+    def get_hosting_environment_detector_response(resource_group_name, name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      response = get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get Hosting Environment Detector Response
+    #
+    # Get Hosting Environment Detector Response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] App Service Environment Name
+    # @param detector_name [String] Detector Resource Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_hosting_environment_detector_response_with_http_info(resource_group_name, name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Get Hosting Environment Detector Response
+    #
+    # Get Hosting Environment Detector Response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] App Service Environment Name
+    # @param detector_name [String] Detector Resource Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'detector_name is nil' if detector_name.nil?
+      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors/{detectorName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'detectorName' => detector_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'startTime' => start_time,'endTime' => end_time,'timeGrain' => time_grain,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<DetectorResponse>] operation results.
+    #
+    def list_site_detector_responses(resource_group_name, site_name, custom_headers:nil)
+      first_page = list_site_detector_responses_as_lazy(resource_group_name, site_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_site_detector_responses_with_http_info(resource_group_name, site_name, custom_headers:nil)
+      list_site_detector_responses_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_site_detector_responses_async(resource_group_name, site_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'site_name is nil' if site_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get site detector response
+    #
+    # Get site detector response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param detector_name [String] Detector Resource Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponse] operation results.
+    #
+    def get_site_detector_response(resource_group_name, site_name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      response = get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get site detector response
+    #
+    # Get site detector response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param detector_name [String] Detector Resource Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_site_detector_response_with_http_info(resource_group_name, site_name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Get site detector response
+    #
+    # Get site detector response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param detector_name [String] Detector Resource Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'site_name is nil' if site_name.nil?
+      fail ArgumentError, 'detector_name is nil' if detector_name.nil?
+      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors/{detectorName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'detectorName' => detector_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'startTime' => start_time,'endTime' => end_time,'timeGrain' => time_grain,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
 
     #
     # Get Diagnostics Categories
@@ -905,6 +1349,236 @@ module Azure::Web::Mgmt::V2016_03_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param slot [String] Slot Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<DetectorResponse>] operation results.
+    #
+    def list_site_detector_responses_slot(resource_group_name, site_name, slot, custom_headers:nil)
+      first_page = list_site_detector_responses_slot_as_lazy(resource_group_name, site_name, slot, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param slot [String] Slot Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_site_detector_responses_slot_with_http_info(resource_group_name, site_name, slot, custom_headers:nil)
+      list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers:custom_headers).value!
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param slot [String] Slot Name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'site_name is nil' if site_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get site detector response
+    #
+    # Get site detector response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param detector_name [String] Detector Resource Name
+    # @param slot [String] Slot Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponse] operation results.
+    #
+    def get_site_detector_response_slot(resource_group_name, site_name, detector_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      response = get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get site detector response
+    #
+    # Get site detector response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param detector_name [String] Detector Resource Name
+    # @param slot [String] Slot Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_site_detector_response_slot_with_http_info(resource_group_name, site_name, detector_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Get site detector response
+    #
+    # Get site detector response
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param detector_name [String] Detector Resource Name
+    # @param slot [String] Slot Name
+    # @param start_time [DateTime] Start Time
+    # @param end_time [DateTime] End Time
+    # @param time_grain [String] Time Grain
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'site_name is nil' if site_name.nil?
+      fail ArgumentError, 'detector_name is nil' if detector_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors/{detectorName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'detectorName' => detector_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'startTime' => start_time,'endTime' => end_time,'timeGrain' => time_grain,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1846,6 +2520,194 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # List Hosting Environment Detector Responses
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponseCollection] operation results.
+    #
+    def list_hosting_environment_detector_responses_next(next_page_link, custom_headers:nil)
+      response = list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_hosting_environment_detector_responses_next_with_http_info(next_page_link, custom_headers:nil)
+      list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponseCollection] operation results.
+    #
+    def list_site_detector_responses_next(next_page_link, custom_headers:nil)
+      response = list_site_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_site_detector_responses_next_with_http_info(next_page_link, custom_headers:nil)
+      list_site_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_site_detector_responses_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Get Diagnostics Categories
     #
     # Get Diagnostics Categories
@@ -2209,6 +3071,100 @@ module Azure::Web::Mgmt::V2016_03_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticDetectorCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponseCollection] operation results.
+    #
+    def list_site_detector_responses_slot_next(next_page_link, custom_headers:nil)
+      response = list_site_detector_responses_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_site_detector_responses_slot_next_with_http_info(next_page_link, custom_headers:nil)
+      list_site_detector_responses_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_site_detector_responses_slot_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::DetectorResponseCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2598,6 +3554,56 @@ module Azure::Web::Mgmt::V2016_03_01
     end
 
     #
+    # List Hosting Environment Detector Responses
+    #
+    # List Hosting Environment Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Site Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponseCollection] which provide lazy access to pages of
+    # the response.
+    #
+    def list_hosting_environment_detector_responses_as_lazy(resource_group_name, name, custom_headers:nil)
+      response = list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponseCollection] which provide lazy access to pages of
+    # the response.
+    #
+    def list_site_detector_responses_as_lazy(resource_group_name, site_name, custom_headers:nil)
+      response = list_site_detector_responses_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_site_detector_responses_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
     # Get Diagnostics Categories
     #
     # Get Diagnostics Categories
@@ -2696,6 +3702,32 @@ module Azure::Web::Mgmt::V2016_03_01
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           get_site_detector_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # List Site Detector Responses
+    #
+    # List Site Detector Responses
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Site Name
+    # @param slot [String] Slot Name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DetectorResponseCollection] which provide lazy access to pages of
+    # the response.
+    #
+    def list_site_detector_responses_slot_as_lazy(resource_group_name, site_name, slot, custom_headers:nil)
+      response = list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_site_detector_responses_slot_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

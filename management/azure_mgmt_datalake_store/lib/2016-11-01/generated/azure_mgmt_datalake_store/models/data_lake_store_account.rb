@@ -58,6 +58,10 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       # with this Data Lake Store account.
       attr_accessor :firewall_rules
 
+      # @return [Array<VirtualNetworkRule>] The list of virtual network rules
+      # associated with this Data Lake Store account.
+      attr_accessor :virtual_network_rules
+
       # @return [FirewallState] The current state of the IP address firewall
       # for this Data Lake Store account. Possible values include: 'Enabled',
       # 'Disabled'
@@ -276,6 +280,24 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                       type: {
                         name: 'Composite',
                         class_name: 'FirewallRule'
+                      }
+                  }
+                }
+              },
+              virtual_network_rules: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.virtualNetworkRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'VirtualNetworkRuleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'VirtualNetworkRule'
                       }
                   }
                 }

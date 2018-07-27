@@ -7,7 +7,7 @@ module Azure::Compute::Mgmt::V2017_12_01
   module Models
     #
     # Information about rollback on failed VM instances after a OS Upgrade
-    # operation
+    # operation.
     #
     class RollbackStatusInfo
 
@@ -20,7 +20,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       # @return [Integer] The number of instances which failed to rollback.
       attr_accessor :failed_rolledback_instance_count
 
-      # @return [ApiError] Error Details if OS rollback failed.
+      # @return [ApiError] Error details if OS rollback failed.
       attr_accessor :rollback_error
 
 

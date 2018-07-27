@@ -12,7 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the id of the resource.
+      # @return [String] Id of the resource.
       attr_accessor :id
 
       # @return [RunbookAssociationProperty] Gets or sets the runbook.
@@ -59,6 +59,17 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [Hash{String => String}] Gets or sets the parameters of the
       # job.
       attr_accessor :parameters
+
+      # @return [JobProvisioningState] The provisioning state of a resource.
+      # Possible values include: 'Failed', 'Succeeded', 'Suspended',
+      # 'Processing'
+      attr_accessor :provisioning_state
+
+      # @return [String] Gets or sets the id of job schedule.
+      attr_accessor :job_schedule_id
+
+      # @return [ScheduleAssociationProperty] Gets or sets the runbook.
+      attr_accessor :schedule
 
 
       #
@@ -193,6 +204,31 @@ module Azure::Automation::Mgmt::V2015_10_31
                         name: 'String'
                       }
                   }
+                }
+              },
+              provisioning_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              job_schedule_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.jobScheduleId',
+                type: {
+                  name: 'String'
+                }
+              },
+              schedule: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.schedule',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ScheduleAssociationProperty'
                 }
               }
             }

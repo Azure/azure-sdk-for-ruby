@@ -42,6 +42,12 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       # gateway.
       attr_accessor :is_online
 
+      # @return [String] Description of the Api Revision.
+      attr_accessor :api_revision_description
+
+      # @return [String] Description of the Api Version.
+      attr_accessor :api_version_description
+
       # @return [String] A resource identifier for the related ApiVersionSet.
       attr_accessor :api_version_set_id
 
@@ -171,6 +177,28 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
                 serialized_name: 'properties.isOnline',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              api_revision_description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.apiRevisionDescription',
+                constraints: {
+                  MaxLength: 256
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              api_version_description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.apiVersionDescription',
+                constraints: {
+                  MaxLength: 256
+                },
+                type: {
+                  name: 'String'
                 }
               },
               api_version_set_id: {

@@ -157,6 +157,15 @@ module Azure::Web::Mgmt::V2016_09_01
       # @return [Array<IpSecurityRestriction>] IP security restrictions.
       attr_accessor :ip_security_restrictions
 
+      # @return [Boolean] Http20Enabled: configures a web site to allow clients
+      # to connect over http2.0. Default value: true .
+      attr_accessor :http20enabled
+
+      # @return [SupportedTlsVersions] MinTlsVersion: configures the minimum
+      # version of TLS required for SSL requests. Possible values include:
+      # '1.0', '1.1', '1.2'
+      attr_accessor :min_tls_version
+
 
       #
       # Mapper for SiteConfig class as Ruby Hash.
@@ -578,6 +587,23 @@ module Azure::Web::Mgmt::V2016_09_01
                         class_name: 'IpSecurityRestriction'
                       }
                   }
+                }
+              },
+              http20enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'http20Enabled',
+                default_value: true,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              min_tls_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'minTlsVersion',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -25,6 +25,14 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     # @return [String] Client Api Version.
     attr_reader :api_version
 
+    # @return [WorkspacePurgeBody] Describes the body of a request to purge
+    # data in a single table of an Log Analytics Workspace
+    attr_accessor :body
+
+    # @return [String] In a purge status request, this is the Id of the
+    # operation the status of which is returned.
+    attr_accessor :purge_id
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 

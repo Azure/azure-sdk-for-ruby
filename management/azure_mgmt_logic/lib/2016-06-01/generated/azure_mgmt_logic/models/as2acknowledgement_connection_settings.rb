@@ -6,7 +6,7 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # The AS2 agreement acknowledegment connection settings.
+    # The AS2 agreement acknowledgement connection settings.
     #
     class AS2AcknowledgementConnectionSettings
 

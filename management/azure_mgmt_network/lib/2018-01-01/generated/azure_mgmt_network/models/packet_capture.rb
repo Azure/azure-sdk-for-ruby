@@ -12,6 +12,15 @@ module Azure::Network::Mgmt::V2018_01_01
 
       include MsRestAzure
 
+      # @return [String] Name of the packet capture.
+      attr_accessor :name
+
+      # @return [String] ID of the packet capture.
+      attr_accessor :id
+
+      # @return [String] Packet capture type.
+      attr_accessor :type
+
       # @return [String] The ID of the targeted resource, only VM is currently
       # supported.
       attr_accessor :target
@@ -48,6 +57,33 @@ module Azure::Network::Mgmt::V2018_01_01
             name: 'Composite',
             class_name: 'PacketCapture',
             model_properties: {
+              name: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              id: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
               target: {
                 client_side_validation: true,
                 required: true,

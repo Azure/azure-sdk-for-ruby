@@ -5,10 +5,10 @@
 
 module Azure::SQL::Mgmt::V2017_03_01_preview
   #
-  # The Azure SQL Database management API provides a RESTful set of web APIs
-  # that interact with Azure SQL Database services to manage your databases.
-  # The API enables users to create, retrieve, update, and delete databases,
-  # servers, and other entities.
+  # The Azure SQL Database management API provides a RESTful set of web
+  # services that interact with Azure SQL Database services to manage your
+  # databases. The API enables you to create, retrieve, update, and delete
+  # databases.
   #
   class Databases
     include MsRestAzure

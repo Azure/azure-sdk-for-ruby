@@ -6,23 +6,23 @@ require 'azure_mgmt_iot_central'
 
 module Azure::IotCentral::Profiles::Latest
   module Mgmt
-    Apps = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Apps
-    Operations = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Operations
+    Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
+    Operations = Azure::IotCentral::Mgmt::V2018_09_01::Operations
 
     module Models
-      AppListResult = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppListResult
-      OperationDisplay = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::OperationDisplay
-      AppPatch = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppPatch
-      Operation = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::Operation
-      ErrorDetails = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::ErrorDetails
-      OperationListResult = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::OperationListResult
-      Resource = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::Resource
-      OperationInputs = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::OperationInputs
-      AppSkuInfo = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppSkuInfo
-      AppNameAvailabilityInfo = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppNameAvailabilityInfo
-      App = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::App
-      AppSku = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppSku
-      AppNameUnavailabilityReason = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppNameUnavailabilityReason
+      AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+      OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
+      AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
+      Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+      ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
+      OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
+      Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
+      OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+      AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+      AppNameAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameAvailabilityInfo
+      App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
+      AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
+      AppNameUnavailabilityReason = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameUnavailabilityReason
     end
 
     #
@@ -44,7 +44,7 @@ module Azure::IotCentral::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::IotCentralClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::IotCentral::Mgmt::V2018_09_01::IotCentralClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
@@ -72,43 +72,43 @@ module Azure::IotCentral::Profiles::Latest
 
     class ModelClasses
       def app_list_result
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppListResult
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
       end
       def operation_display
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::OperationDisplay
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
       end
       def app_patch
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppPatch
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
       end
       def operation
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::Operation
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
       end
       def error_details
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::ErrorDetails
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
       end
       def operation_list_result
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::OperationListResult
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
       end
       def resource
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::Resource
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       end
       def operation_inputs
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::OperationInputs
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
       end
       def app_sku_info
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppSkuInfo
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
       end
       def app_name_availability_info
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppNameAvailabilityInfo
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameAvailabilityInfo
       end
       def app
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::App
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::App
       end
       def app_sku
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppSku
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
       end
       def app_name_unavailability_reason
-        Azure::IotCentral::Mgmt::V2017_07_01_privatepreview::Models::AppNameUnavailabilityReason
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameUnavailabilityReason
       end
     end
   end

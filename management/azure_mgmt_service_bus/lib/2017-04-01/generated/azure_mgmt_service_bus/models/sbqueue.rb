@@ -75,6 +75,10 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       # 'Renaming', 'Unknown'
       attr_accessor :status
 
+      # @return [Boolean] Value that indicates whether server-side batched
+      # operations are enabled.
+      attr_accessor :enable_batched_operations
+
       # @return [Duration] ISO 8061 timeSpan idle interval after which the
       # queue is automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
@@ -261,6 +265,14 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 type: {
                   name: 'Enum',
                   module: 'EntityStatus'
+                }
+              },
+              enable_batched_operations: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.enableBatchedOperations',
+                type: {
+                  name: 'Boolean'
                 }
               },
               auto_delete_on_idle: {

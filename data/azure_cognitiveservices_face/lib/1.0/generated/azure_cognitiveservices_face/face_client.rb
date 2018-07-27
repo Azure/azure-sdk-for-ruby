@@ -12,17 +12,10 @@ module Azure::CognitiveServices::Face::V1_0
     include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
-    attr_reader :base_url
+    attr_accessor :base_url
 
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials1
-
-    # @return [AzureRegions] Supported Azure regions for Cognitive Services
-    # endpoints. Possible values include: 'westus', 'westeurope',
-    # 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus',
-    # 'southcentralus', 'northeurope', 'eastasia', 'australiaeast',
-    # 'brazilsouth'
-    attr_accessor :azure_region
 
     # @return Subscription credentials which uniquely identify client
     # subscription.
@@ -54,11 +47,12 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Creates initializes a new instance of the FaceClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
+    # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
     #
-    def initialize(credentials = nil, options = nil)
+    def initialize(credentials = nil, base_url = nil, options = nil)
       super(credentials, options)
-      @base_url = 'https://{AzureRegion}.api.cognitive.microsoft.com/face/v1.0'
+      @base_url = base_url || 'https://api.cognitive.microsoft.com/face/v1.0'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials

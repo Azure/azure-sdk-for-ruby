@@ -12,8 +12,8 @@ module Azure::Network::Mgmt::V2018_01_01
 
       include MsRestAzure
 
-      # @return [String] A unique read-only string that changes whenever the
-      # resource is updated.
+      # @return [String] . Default value: 'A unique read-only string that
+      # changes whenever the resource is updated.' .
       attr_accessor :etag
 
       # @return [ProvisioningState] The provisioning state of the resource.
@@ -88,6 +88,7 @@ module Azure::Network::Mgmt::V2018_01_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
+                default_value: 'A unique read-only string that changes whenever the resource is updated.',
                 type: {
                   name: 'String'
                 }

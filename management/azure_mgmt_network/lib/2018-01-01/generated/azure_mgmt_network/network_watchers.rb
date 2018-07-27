@@ -5,10 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_01_01
   #
-  # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage your
-  # network resources. The API has entities that capture the relationship
-  # between an end user and the Microsoft Azure Networks service.
+  # Network Client
   #
   class NetworkWatchers
     include MsRestAzure
@@ -890,7 +887,7 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Configures flow log on a specified resource.
+    # Configures flow log and traffic analytics (optional) on a specified resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
@@ -940,14 +937,15 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Queries status of flow log on a specified resource.
+    # Queries status of flow log and traffic analytics (optional) on a specified
+    # resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
     # @param network_watcher_name [String] The name of the network watcher
     # resource.
     # @param parameters [FlowLogStatusParameters] Parameters that define a resource
-    # to query flow log status.
+    # to query flow log and traffic analytics (optional) status.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -964,7 +962,7 @@ module Azure::Network::Mgmt::V2018_01_01
     # @param network_watcher_name [String] The name of the network watcher
     # resource.
     # @param parameters [FlowLogStatusParameters] Parameters that define a resource
-    # to query flow log status.
+    # to query flow log and traffic analytics (optional) status.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1813,7 +1811,7 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Configures flow log on a specified resource.
+    # Configures flow log and traffic analytics (optional) on a specified resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
@@ -1832,7 +1830,7 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Configures flow log on a specified resource.
+    # Configures flow log and traffic analytics (optional) on a specified resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
@@ -1850,7 +1848,7 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Configures flow log on a specified resource.
+    # Configures flow log and traffic analytics (optional) on a specified resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
@@ -1935,14 +1933,15 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Queries status of flow log on a specified resource.
+    # Queries status of flow log and traffic analytics (optional) on a specified
+    # resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
     # @param network_watcher_name [String] The name of the network watcher
     # resource.
     # @param parameters [FlowLogStatusParameters] Parameters that define a resource
-    # to query flow log status.
+    # to query flow log and traffic analytics (optional) status.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1954,14 +1953,15 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Queries status of flow log on a specified resource.
+    # Queries status of flow log and traffic analytics (optional) on a specified
+    # resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
     # @param network_watcher_name [String] The name of the network watcher
     # resource.
     # @param parameters [FlowLogStatusParameters] Parameters that define a resource
-    # to query flow log status.
+    # to query flow log and traffic analytics (optional) status.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1972,14 +1972,15 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Queries status of flow log on a specified resource.
+    # Queries status of flow log and traffic analytics (optional) on a specified
+    # resource.
     #
     # @param resource_group_name [String] The name of the network watcher resource
     # group.
     # @param network_watcher_name [String] The name of the network watcher
     # resource.
     # @param parameters [FlowLogStatusParameters] Parameters that define a resource
-    # to query flow log status.
+    # to query flow log and traffic analytics (optional) status.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

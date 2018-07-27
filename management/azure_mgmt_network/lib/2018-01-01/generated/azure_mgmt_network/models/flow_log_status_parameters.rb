@@ -6,14 +6,15 @@
 module Azure::Network::Mgmt::V2018_01_01
   module Models
     #
-    # Parameters that define a resource to query flow log status.
+    # Parameters that define a resource to query flow log and traffic analytics
+    # (optional) status.
     #
     class FlowLogStatusParameters
 
       include MsRestAzure
 
-      # @return [String] The target resource where getting the flow logging
-      # status.
+      # @return [String] The target resource where getting the flow logging and
+      # traffic analytics (optional) status.
       attr_accessor :target_resource_id
 
 

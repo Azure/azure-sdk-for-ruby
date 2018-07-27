@@ -5,7 +5,7 @@
 
 module Azure::ServiceFabric::Mgmt::V2016_09_01
   #
-  # ClusterVersions
+  # Service Fabric Management Client
   #
   class ClusterVersions
     include MsRestAzure

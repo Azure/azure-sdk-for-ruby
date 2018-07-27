@@ -36,7 +36,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     autoload :ErrorResponse,                                      '2017-11-01-preview/generated/azure_mgmt_resources_management/models/error_response.rb'
     autoload :ManagementGroup,                                    '2017-11-01-preview/generated/azure_mgmt_resources_management/models/management_group.rb'
     autoload :ManagementGroupInfo,                                '2017-11-01-preview/generated/azure_mgmt_resources_management/models/management_group_info.rb'
-    autoload :CreateGroupRequest,                                 '2017-11-01-preview/generated/azure_mgmt_resources_management/models/create_group_request.rb'
+    autoload :CreateManagementGroupRequest,                       '2017-11-01-preview/generated/azure_mgmt_resources_management/models/create_management_group_request.rb'
     autoload :Operation,                                          '2017-11-01-preview/generated/azure_mgmt_resources_management/models/operation.rb'
   end
 end

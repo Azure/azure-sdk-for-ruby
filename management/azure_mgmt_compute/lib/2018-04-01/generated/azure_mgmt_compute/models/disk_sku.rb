@@ -6,14 +6,14 @@
 module Azure::Compute::Mgmt::V2018_04_01
   module Models
     #
-    # The disks sku name. Can be Standard_LRS or Premium_LRS.
+    # The disks sku name. Can be Standard_LRS, Premium_LRS, or StandardSSD_LRS.
     #
     class DiskSku
 
       include MsRestAzure
 
       # @return [StorageAccountTypes] The sku name. Possible values include:
-      # 'Standard_LRS', 'Premium_LRS'
+      # 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
       attr_accessor :name
 
       # @return [String] The sku tier. Default value: 'Standard' .

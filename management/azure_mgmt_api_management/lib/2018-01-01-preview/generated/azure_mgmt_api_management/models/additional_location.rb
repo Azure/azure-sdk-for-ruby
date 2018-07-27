@@ -20,9 +20,16 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       # Management service.
       attr_accessor :sku
 
-      # @return [Array<String>] Static IP addresses of the location's virtual
-      # machines.
+      # @return [Array<String>] Public Static Load Balanced IP addresses of the
+      # API Management service in the additional location. Available only for
+      # Basic, Standard and Premium SKU.
       attr_accessor :public_ipaddresses
+
+      # @return [Array<String>] Private Static Load Balanced IP addresses of
+      # the API Management service which is deployed in an Internal Virtual
+      # Network in a particular additional location. Available only for Basic,
+      # Standard and Premium SKU.
+      attr_accessor :private_ipaddresses
 
       # @return [VirtualNetworkConfiguration] Virtual network configuration for
       # the location.
@@ -68,6 +75,23 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'publicIPAddresses',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              private_ipaddresses: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'privateIPAddresses',
                 type: {
                   name: 'Sequence',
                   element: {

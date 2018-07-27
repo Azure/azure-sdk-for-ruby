@@ -51,6 +51,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # @return [ConsumerGroups] consumer_groups
     attr_reader :consumer_groups
 
+    # @return [Regions] regions
+    attr_reader :regions
+
     #
     # Creates initializes a new instance of the EventHubManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -69,6 +72,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
       @event_hubs = EventHubs.new(self)
       @consumer_groups = ConsumerGroups.new(self)
+      @regions = Regions.new(self)
       @api_version = '2017-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

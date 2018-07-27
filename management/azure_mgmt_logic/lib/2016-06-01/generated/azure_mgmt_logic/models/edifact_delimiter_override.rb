@@ -18,7 +18,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       # @return [String] The message version.
       attr_accessor :message_version
 
-      # @return [String] The message releaseversion.
+      # @return [String] The message release.
       attr_accessor :message_release
 
       # @return [Integer] The data element separator.

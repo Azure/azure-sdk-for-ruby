@@ -5,7 +5,7 @@
 
 module Azure::ContainerService::Mgmt::V2017_01_31
   #
-  # Compute Client
+  # The Container Service Client.
   #
   class ContainerServices
     include MsRestAzure

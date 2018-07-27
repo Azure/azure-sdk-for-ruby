@@ -18,7 +18,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       # @return [Float] Scoring of the category.
       attr_accessor :score
 
-      # @return [CategoryDetail] Additional category detail if available.
+      # @return [CategoryDetail]
       attr_accessor :detail
 
 

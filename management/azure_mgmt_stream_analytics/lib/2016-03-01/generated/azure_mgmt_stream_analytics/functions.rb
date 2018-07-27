@@ -513,7 +513,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     # @param job_name [String] The name of the streaming job.
     # @param select [String] The $select OData query parameter. This is a
     # comma-separated list of structural properties to include in the response, or
-    # “*” to include all properties. By default, all properties are returned except
+    # "*" to include all properties. By default, all properties are returned except
     # diagnostics. Currently only accepts '*' as a valid value.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -534,7 +534,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     # @param job_name [String] The name of the streaming job.
     # @param select [String] The $select OData query parameter. This is a
     # comma-separated list of structural properties to include in the response, or
-    # “*” to include all properties. By default, all properties are returned except
+    # "*" to include all properties. By default, all properties are returned except
     # diagnostics. Currently only accepts '*' as a valid value.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -554,7 +554,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     # @param job_name [String] The name of the streaming job.
     # @param select [String] The $select OData query parameter. This is a
     # comma-separated list of structural properties to include in the response, or
-    # “*” to include all properties. By default, all properties are returned except
+    # "*" to include all properties. By default, all properties are returned except
     # diagnostics. Currently only accepts '*' as a valid value.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1032,7 +1032,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     # @param job_name [String] The name of the streaming job.
     # @param select [String] The $select OData query parameter. This is a
     # comma-separated list of structural properties to include in the response, or
-    # “*” to include all properties. By default, all properties are returned except
+    # "*" to include all properties. By default, all properties are returned except
     # diagnostics. Currently only accepts '*' as a valid value.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

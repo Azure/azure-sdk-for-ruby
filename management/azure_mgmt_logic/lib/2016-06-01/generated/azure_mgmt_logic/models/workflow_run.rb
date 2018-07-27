@@ -12,6 +12,9 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      # @return [DateTime] Gets the wait end time.
+      attr_accessor :wait_end_time
+
       # @return [DateTime] Gets the start time.
       attr_accessor :start_time
 
@@ -75,6 +78,15 @@ module Azure::Logic::Mgmt::V2016_06_01
                 serialized_name: 'id',
                 type: {
                   name: 'String'
+                }
+              },
+              wait_end_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.waitEndTime',
+                type: {
+                  name: 'DateTime'
                 }
               },
               start_time: {

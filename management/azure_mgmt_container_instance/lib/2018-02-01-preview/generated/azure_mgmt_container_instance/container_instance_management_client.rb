@@ -48,6 +48,9 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
     # @return [ContainerLogs] container_logs
     attr_reader :container_logs
 
+    # @return [StartContainer] start_container
+    attr_reader :start_container
+
     #
     # Creates initializes a new instance of the ContainerInstanceManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -65,6 +68,7 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       @operations = Operations.new(self)
       @container_group_usage = ContainerGroupUsage.new(self)
       @container_logs = ContainerLogs.new(self)
+      @start_container = StartContainer.new(self)
       @api_version = '2018-02-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

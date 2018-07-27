@@ -66,7 +66,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_async(person_group_id, name:nil, user_data:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -94,7 +93,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'persongroups/{personGroupId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -161,7 +159,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(person_group_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -176,7 +173,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'persongroups/{personGroupId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -240,7 +236,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(person_group_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -255,7 +250,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'persongroups/{personGroupId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -337,7 +331,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_async(person_group_id, name:nil, user_data:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -365,7 +358,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'persongroups/{personGroupId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -430,7 +422,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_training_status_async(person_group_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -445,7 +436,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'persongroups/{personGroupId}/training'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -525,7 +515,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(start:nil, top:1000, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, "'start' should satisfy the constraint - 'MaxLength': '64'" if !start.nil? && start.length > 64
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
@@ -540,7 +529,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'persongroups'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -632,7 +620,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def train_async(person_group_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -647,7 +634,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'persongroups/{personGroupId}/train'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
