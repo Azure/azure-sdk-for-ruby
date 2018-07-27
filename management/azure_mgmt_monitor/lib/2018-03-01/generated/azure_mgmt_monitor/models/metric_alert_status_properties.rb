@@ -12,7 +12,8 @@ module Azure::Monitor::Mgmt::V2018_03_01
 
       include MsRestAzure
 
-      # @return [Hash{String => String}]
+      # @return [Hash{String => String}] An object describing the type of the
+      # dimensions.
       attr_accessor :dimensions
 
       # @return [String] status value

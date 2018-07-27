@@ -13,7 +13,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
       include MsRestAzure
 
-      # @return [OcrResult]
+      # @return [String] The BCP-47 language code of the text in the image.
       attr_accessor :language
 
       # @return [Float] The angle, in degrees, of the detected text with
@@ -58,8 +58,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 required: false,
                 serialized_name: 'language',
                 type: {
-                  name: 'Composite',
-                  class_name: 'OcrResult'
+                  name: 'String'
                 }
               },
               text_angle: {

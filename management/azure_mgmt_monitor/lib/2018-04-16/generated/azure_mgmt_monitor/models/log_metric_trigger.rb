@@ -6,8 +6,7 @@
 module Azure::Monitor::Mgmt::V2018_04_16
   module Models
     #
-    # Model object.
-    #
+    # A log metrics trigger descriptor.
     #
     class LogMetricTrigger
 
@@ -18,7 +17,7 @@ module Azure::Monitor::Mgmt::V2018_04_16
       # 'GreaterThan', 'LessThan', 'Equal'
       attr_accessor :threshold_operator
 
-      # @return [Float]
+      # @return [Float] The threshold of the metric trigger.
       attr_accessor :threshold
 
       # @return [MetricTriggerType] Metric Trigger Type - 'Consecutive' or

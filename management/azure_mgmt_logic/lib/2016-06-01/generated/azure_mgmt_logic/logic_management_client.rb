@@ -52,8 +52,25 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @return [WorkflowRunActions] workflow_run_actions
     attr_reader :workflow_run_actions
 
+    # @return [WorkflowRunActionRepetitions] workflow_run_action_repetitions
+    attr_reader :workflow_run_action_repetitions
+
+    # @return [WorkflowRunActionScopedRepetitions]
+    # workflow_run_action_scoped_repetitions
+    attr_reader :workflow_run_action_scoped_repetitions
+
+    # @return [WorkflowRunOperations] workflow_run_operations
+    attr_reader :workflow_run_operations
+
     # @return [IntegrationAccounts] integration_accounts
     attr_reader :integration_accounts
+
+    # @return [IntegrationAccountAssemblies] integration_account_assemblies
+    attr_reader :integration_account_assemblies
+
+    # @return [IntegrationAccountBatchConfigurations]
+    # integration_account_batch_configurations
+    attr_reader :integration_account_batch_configurations
 
     # @return [Schemas] schemas
     attr_reader :schemas
@@ -92,7 +109,12 @@ module Azure::Logic::Mgmt::V2016_06_01
       @workflow_trigger_histories = WorkflowTriggerHistories.new(self)
       @workflow_runs = WorkflowRuns.new(self)
       @workflow_run_actions = WorkflowRunActions.new(self)
+      @workflow_run_action_repetitions = WorkflowRunActionRepetitions.new(self)
+      @workflow_run_action_scoped_repetitions = WorkflowRunActionScopedRepetitions.new(self)
+      @workflow_run_operations = WorkflowRunOperations.new(self)
       @integration_accounts = IntegrationAccounts.new(self)
+      @integration_account_assemblies = IntegrationAccountAssemblies.new(self)
+      @integration_account_batch_configurations = IntegrationAccountBatchConfigurations.new(self)
       @schemas = Schemas.new(self)
       @maps = Maps.new(self)
       @partners = Partners.new(self)

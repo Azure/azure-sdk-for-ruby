@@ -20,6 +20,10 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [String] Gets or sets the next link.
       attr_accessor :next_link
 
+      # @return [Integer] Gets the total number of configurations matching
+      # filter criteria.
+      attr_accessor :total_count
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -88,6 +92,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'
+                }
+              },
+              total_count: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'totalCount',
+                type: {
+                  name: 'Number'
                 }
               }
             }

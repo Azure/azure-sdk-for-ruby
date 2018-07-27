@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2015_04_01
   #
-  # TopLevelDomains
+  # WebSite Management Client
   #
   class TopLevelDomains
     include MsRestAzure

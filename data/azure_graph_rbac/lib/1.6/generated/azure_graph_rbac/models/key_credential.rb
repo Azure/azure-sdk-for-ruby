@@ -35,6 +35,9 @@ module Azure::GraphRbac::V1_6
       # 'Symmetric'.
       attr_accessor :type
 
+      # @return [Array<Integer>] Custom Key Identifier
+      attr_accessor :custom_key_identifier
+
 
       #
       # Mapper for KeyCredential class as Ruby Hash.
@@ -110,6 +113,14 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              custom_key_identifier: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'customKeyIdentifier',
+                type: {
+                  name: 'ByteArray'
                 }
               }
             }

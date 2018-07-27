@@ -58,7 +58,6 @@ module Azure::Profiles::Latest
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-      AzureRegions = Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
     end
 
     class FaceDataClass
@@ -231,9 +230,6 @@ module Azure::Profiles::Latest
         end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-        end
-        def azure_regions
-          Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
         end
       end
     end

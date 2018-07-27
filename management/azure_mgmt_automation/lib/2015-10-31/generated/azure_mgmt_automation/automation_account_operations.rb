@@ -24,8 +24,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountUpdateParameters] Parameters supplied to
     # the update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -41,8 +41,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountUpdateParameters] Parameters supplied to
     # the update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -57,8 +57,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountUpdateParameters] Parameters supplied to
     # the update automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -68,6 +68,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def update_async(resource_group_name, automation_account_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -131,9 +133,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create or update automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Parameters supplied to the create or
-    # update automation account.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountCreateOrUpdateParameters] Parameters
     # supplied to the create or update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -149,9 +150,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create or update automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Parameters supplied to the create or
-    # update automation account.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountCreateOrUpdateParameters] Parameters
     # supplied to the create or update automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -166,9 +166,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create or update automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Parameters supplied to the create or
-    # update automation account.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param parameters [AutomationAccountCreateOrUpdateParameters] Parameters
     # supplied to the create or update automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -178,6 +177,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def create_or_update_async(resource_group_name, automation_account_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -251,8 +252,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -265,8 +266,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -279,8 +280,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete an automation account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] Automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -288,6 +289,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def delete_async(resource_group_name, automation_account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -333,8 +336,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Get information about an Automation Account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -348,8 +351,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Get information about an Automation Account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -362,8 +365,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Get information about an Automation Account.
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -371,6 +374,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def get_async(resource_group_name, automation_account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -426,7 +431,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -440,7 +445,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -453,7 +458,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -461,6 +466,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def list_by_resource_group_async(resource_group_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -787,7 +794,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of accounts within a given resource group.
     #
-    # @param resource_group_name [String] The resource group name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

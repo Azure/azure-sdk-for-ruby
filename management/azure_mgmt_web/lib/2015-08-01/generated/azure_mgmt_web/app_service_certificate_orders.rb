@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2015_08_01
   #
-  # AppServiceCertificateOrders
+  # WebSite Management Client
   #
   class AppServiceCertificateOrders
     include MsRestAzure

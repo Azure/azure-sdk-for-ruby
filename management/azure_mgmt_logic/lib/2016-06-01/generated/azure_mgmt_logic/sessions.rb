@@ -27,7 +27,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: ChangedTime.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -44,7 +45,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: ChangedTime.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,7 +62,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: ChangedTime.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -511,7 +514,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: ChangedTime.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

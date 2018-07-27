@@ -45,6 +45,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # @return [DisasterRecoveryConfigs] disaster_recovery_configs
     attr_reader :disaster_recovery_configs
 
+    # @return [MigrationConfigs] migration_configs
+    attr_reader :migration_configs
+
     # @return [Queues] queues
     attr_reader :queues
 
@@ -83,6 +86,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
       @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
+      @migration_configs = MigrationConfigs.new(self)
       @queues = Queues.new(self)
       @topics = Topics.new(self)
       @subscriptions = Subscriptions.new(self)

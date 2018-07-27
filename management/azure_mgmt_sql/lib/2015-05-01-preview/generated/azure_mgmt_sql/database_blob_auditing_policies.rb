@@ -31,8 +31,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # audit policy is defined.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -50,8 +49,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # audit policy is defined.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -68,8 +66,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # audit policy is defined.
+    # @param database_name [String] The name of the database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -137,8 +134,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # auditing policy will be defined.
+    # @param database_name [String] The name of the database.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -158,8 +154,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # auditing policy will be defined.
+    # @param database_name [String] The name of the database.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -178,8 +173,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which the blob
-    # auditing policy will be defined.
+    # @param database_name [String] The name of the database.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added

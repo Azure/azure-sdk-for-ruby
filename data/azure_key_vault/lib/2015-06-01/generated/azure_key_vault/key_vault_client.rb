@@ -117,7 +117,7 @@ module Azure::KeyVault::V2015_06_01
     # @param kty [JsonWebKeyType] The type of key to create. Valid key types, see
     # JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve, RSA,
     # HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
-    # @param key_size [Integer] The key size in bytes. e.g. 1024 or 2048.
+    # @param key_size [Integer] The key size in bits. e.g. 1024 or 2048.
     # @param key_ops [Array<JsonWebKeyOperation>]
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application-specific metadata in the
@@ -141,7 +141,7 @@ module Azure::KeyVault::V2015_06_01
     # @param kty [JsonWebKeyType] The type of key to create. Valid key types, see
     # JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve, RSA,
     # HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
-    # @param key_size [Integer] The key size in bytes. e.g. 1024 or 2048.
+    # @param key_size [Integer] The key size in bits. e.g. 1024 or 2048.
     # @param key_ops [Array<JsonWebKeyOperation>]
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application-specific metadata in the
@@ -164,7 +164,7 @@ module Azure::KeyVault::V2015_06_01
     # @param kty [JsonWebKeyType] The type of key to create. Valid key types, see
     # JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve, RSA,
     # HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
-    # @param key_size [Integer] The key size in bytes. e.g. 1024 or 2048.
+    # @param key_size [Integer] The key size in bits. e.g. 1024 or 2048.
     # @param key_ops [Array<JsonWebKeyOperation>]
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application-specific metadata in the

@@ -34,9 +34,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [ClassicAdministrators] classic_administrators
-    attr_reader :classic_administrators
-
     # @return [Permissions] permissions
     attr_reader :permissions
 
@@ -49,6 +46,9 @@ module Azure::Authorization::Mgmt::V2015_07_01
 
     # @return [RoleDefinitions] role_definitions
     attr_reader :role_definitions
+
+    # @return [ClassicAdministrators] classic_administrators
+    attr_reader :classic_administrators
 
     #
     # Creates initializes a new instance of the AuthorizationManagementClient class.
@@ -63,11 +63,11 @@ module Azure::Authorization::Mgmt::V2015_07_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @classic_administrators = ClassicAdministrators.new(self)
       @permissions = Permissions.new(self)
       @provider_operations_metadata_operations = ProviderOperationsMetadataOperations.new(self)
       @role_assignments = RoleAssignments.new(self)
       @role_definitions = RoleDefinitions.new(self)
+      @classic_administrators = ClassicAdministrators.new(self)
       @api_version = '2015-07-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

@@ -29,12 +29,13 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       attr_accessor :compute_policies
 
       # @return [Array<UpdateFirewallRuleWithAccountParameters>] The list of
-      # firewall rules associated with this Data Lake Analytics account.
+      # firewall rules associated with this account.
       attr_accessor :firewall_rules
 
       # @return [FirewallState] The current state of the IP address firewall
-      # for this Data Lake Analytics account. Possible values include:
-      # 'Enabled', 'Disabled'
+      # for this account. Disabling the firewall does not remove existing
+      # rules, they will just be ignored until the firewall is re-enabled.
+      # Possible values include: 'Enabled', 'Disabled'
       attr_accessor :firewall_state
 
       # @return [FirewallAllowAzureIpsState] The current state of allowing or

@@ -11,6 +11,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     module SignalRSkuTier
       Free = "Free"
       Basic = "Basic"
+      Standard = "Standard"
       Premium = "Premium"
     end
   end

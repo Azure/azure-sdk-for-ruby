@@ -9,12 +9,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # Represents a recommendation rule that the recommendation engine can
     # perform.
     #
-    class RecommendationRule
+    class RecommendationRule < ProxyOnlyResource
 
       include MsRestAzure
 
       # @return [String] Unique name of the rule.
-      attr_accessor :name
+      attr_accessor :recommendation_rule_name
 
       # @return [String] UI friendly name of the rule.
       attr_accessor :display_name
@@ -78,10 +78,45 @@ module Azure::Web::Mgmt::V2016_03_01
             name: 'Composite',
             class_name: 'RecommendationRule',
             model_properties: {
+              id: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              recommendation_rule_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.name',
                 type: {
                   name: 'String'
                 }
@@ -89,7 +124,7 @@ module Azure::Web::Mgmt::V2016_03_01
               display_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'displayName',
+                serialized_name: 'properties.displayName',
                 type: {
                   name: 'String'
                 }
@@ -97,7 +132,7 @@ module Azure::Web::Mgmt::V2016_03_01
               message: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'message',
+                serialized_name: 'properties.message',
                 type: {
                   name: 'String'
                 }
@@ -105,7 +140,7 @@ module Azure::Web::Mgmt::V2016_03_01
               recommendation_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'recommendationId',
+                serialized_name: 'properties.recommendationId',
                 type: {
                   name: 'String'
                 }
@@ -113,7 +148,7 @@ module Azure::Web::Mgmt::V2016_03_01
               description: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'description',
+                serialized_name: 'properties.description',
                 type: {
                   name: 'String'
                 }
@@ -121,7 +156,7 @@ module Azure::Web::Mgmt::V2016_03_01
               action_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'actionName',
+                serialized_name: 'properties.actionName',
                 type: {
                   name: 'String'
                 }
@@ -129,7 +164,7 @@ module Azure::Web::Mgmt::V2016_03_01
               level: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'level',
+                serialized_name: 'properties.level',
                 type: {
                   name: 'Enum',
                   module: 'NotificationLevel'
@@ -138,7 +173,7 @@ module Azure::Web::Mgmt::V2016_03_01
               channels: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'channels',
+                serialized_name: 'properties.channels',
                 type: {
                   name: 'Enum',
                   module: 'Channels'
@@ -147,7 +182,7 @@ module Azure::Web::Mgmt::V2016_03_01
               tags: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'properties.tags',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -163,7 +198,7 @@ module Azure::Web::Mgmt::V2016_03_01
               is_dynamic: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'isDynamic',
+                serialized_name: 'properties.isDynamic',
                 type: {
                   name: 'Boolean'
                 }
@@ -171,7 +206,7 @@ module Azure::Web::Mgmt::V2016_03_01
               extension_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'extensionName',
+                serialized_name: 'properties.extensionName',
                 type: {
                   name: 'String'
                 }
@@ -179,7 +214,7 @@ module Azure::Web::Mgmt::V2016_03_01
               blade_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'bladeName',
+                serialized_name: 'properties.bladeName',
                 type: {
                   name: 'String'
                 }
@@ -187,7 +222,7 @@ module Azure::Web::Mgmt::V2016_03_01
               forward_link: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'forwardLink',
+                serialized_name: 'properties.forwardLink',
                 type: {
                   name: 'String'
                 }

@@ -16,7 +16,8 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       attr_accessor :policy_content
 
       # @return [PolicyContentFormat] Format of the policyContent. Possible
-      # values include: 'xml', 'xml-link'. Default value: 'xml' .
+      # values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'. Default
+      # value: 'xml' .
       attr_accessor :content_format
 
 

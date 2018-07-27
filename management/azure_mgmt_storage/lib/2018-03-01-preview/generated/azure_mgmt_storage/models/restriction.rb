@@ -22,9 +22,9 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
       attr_accessor :values
 
       # @return [ReasonCode] The reason for the restriction. As of now this can
-      # be “QuotaId” or “NotAvailableForSubscription”. Quota Id is set when the
+      # be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the
       # SKU has requiredQuotas parameter as the subscription does not belong to
-      # that quota. The “NotAvailableForSubscription” is related to capacity at
+      # that quota. The "NotAvailableForSubscription" is related to capacity at
       # DC. Possible values include: 'QuotaId', 'NotAvailableForSubscription'
       attr_accessor :reason_code
 

@@ -16,6 +16,10 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       # would like to send Diagnostic Logs.
       attr_accessor :storage_account_id
 
+      # @return [String] The service bus rule Id of the diagnostic setting.
+      # This is here to maintain backwards compatibility.
+      attr_accessor :service_bus_rule_id
+
       # @return [String] The resource Id for the event hub authorization rule.
       attr_accessor :event_hub_authorization_rule_id
 
@@ -80,6 +84,14 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountId',
+                type: {
+                  name: 'String'
+                }
+              },
+              service_bus_rule_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.serviceBusRuleId',
                 type: {
                   name: 'String'
                 }

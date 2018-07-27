@@ -119,14 +119,14 @@ module Azure::Network::Mgmt::V2017_09_01
     # @return [RouteFilterRules] route_filter_rules
     attr_reader :route_filter_rules
 
-    # @return [BgpServiceCommunities] bgp_service_communities
-    attr_reader :bgp_service_communities
-
     # @return [RouteTables] route_tables
     attr_reader :route_tables
 
     # @return [Routes] routes
     attr_reader :routes
+
+    # @return [BgpServiceCommunities] bgp_service_communities
+    attr_reader :bgp_service_communities
 
     # @return [Usages] usages
     attr_reader :usages
@@ -189,9 +189,9 @@ module Azure::Network::Mgmt::V2017_09_01
       @public_ipaddresses = PublicIPAddresses.new(self)
       @route_filters = RouteFilters.new(self)
       @route_filter_rules = RouteFilterRules.new(self)
-      @bgp_service_communities = BgpServiceCommunities.new(self)
       @route_tables = RouteTables.new(self)
       @routes = Routes.new(self)
+      @bgp_service_communities = BgpServiceCommunities.new(self)
       @usages = Usages.new(self)
       @virtual_networks = VirtualNetworks.new(self)
       @subnets = Subnets.new(self)

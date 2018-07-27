@@ -16,8 +16,9 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # number code, such as A0 or P3.  Required (if sku is specified)
       attr_accessor :name
 
-      # @return [SignalRSkuTier] The tier of this particular SKU. Optional.
-      # Possible values include: 'Free', 'Basic', 'Premium'
+      # @return [SignalRSkuTier] Optional tier of this particular SKU. `Basic`
+      # is deprecated, use `Standard` instead for Basic tier. Possible values
+      # include: 'Free', 'Basic', 'Standard', 'Premium'
       attr_accessor :tier
 
       # @return [String] Optional, string. When the name field is the

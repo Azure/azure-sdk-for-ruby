@@ -50,6 +50,13 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [Recommendations] recommendations
     attr_reader :recommendations
 
+    # @return [ResourceHealthMetadataOperations]
+    # resource_health_metadata_operations
+    attr_reader :resource_health_metadata_operations
+
+    # @return [BillingMeters] billing_meters
+    attr_reader :billing_meters
+
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -68,6 +75,8 @@ module Azure::Web::Mgmt::V2016_03_01
       @diagnostics = Diagnostics.new(self)
       @provider = Provider.new(self)
       @recommendations = Recommendations.new(self)
+      @resource_health_metadata_operations = ResourceHealthMetadataOperations.new(self)
+      @billing_meters = BillingMeters.new(self)
       @api_version = '2016-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

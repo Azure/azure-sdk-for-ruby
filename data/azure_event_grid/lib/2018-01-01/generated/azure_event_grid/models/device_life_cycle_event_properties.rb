@@ -16,22 +16,15 @@ module Azure::EventGrid::V2018_01_01
       # @return [String] The unique identifier of the device. This
       # case-sensitive string can be up to 128 characters long, and supports
       # ASCII 7-bit alphanumeric characters plus the following special
-      # characters: - : . + % _ # * ? ! ( ) , = @ ; $ '.
+      # characters: - : . + % _ &#35; * ? ! ( ) , = @ ; $ '.
       attr_accessor :device_id
 
       # @return [String] Name of the IoT Hub where the device was created or
       # deleted.
       attr_accessor :hub_name
 
-      # @return [String] The event type specified for this operation by the IoT
-      # Hub.
-      attr_accessor :op_type
-
-      # @return [String] The ISO8601 timestamp of the operation.
-      attr_accessor :operation_timestamp
-
       # @return [DeviceTwinInfo] Information about the device twin, which is
-      # the cloud represenation of application device metadata.
+      # the cloud representation of application device metadata.
       attr_accessor :twin
 
 
@@ -60,22 +53,6 @@ module Azure::EventGrid::V2018_01_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'hubName',
-                type: {
-                  name: 'String'
-                }
-              },
-              op_type: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'opType',
-                type: {
-                  name: 'String'
-                }
-              },
-              operation_timestamp: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'operationTimestamp',
                 type: {
                   name: 'String'
                 }

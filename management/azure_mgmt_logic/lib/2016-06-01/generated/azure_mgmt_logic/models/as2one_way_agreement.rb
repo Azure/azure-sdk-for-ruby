@@ -6,7 +6,7 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # The integration account AS2 oneway agreement.
+    # The integration account AS2 one-way agreement.
     #
     class AS2OneWayAgreement
 

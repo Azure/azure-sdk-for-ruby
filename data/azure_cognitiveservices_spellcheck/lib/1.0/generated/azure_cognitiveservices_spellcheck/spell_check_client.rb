@@ -278,7 +278,7 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # default is Proof. 1) Proof—Finds most spelling and grammar mistakes. 2)
     # Spell—Finds most spelling mistakes but does not find some of the grammar
     # errors that Proof catches (for example, capitalization and repeated words).
-    # Possible values include: 'Proof', 'Spell'
+    # Possible values include: 'proof', 'spell'
     # @param pre_context_text [String] A string that gives context to the text
     # string. For example, the text string petal is valid. However, if you set
     # preContextText to bike, the context changes and the text string becomes not
@@ -476,7 +476,7 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # default is Proof. 1) Proof—Finds most spelling and grammar mistakes. 2)
     # Spell—Finds most spelling mistakes but does not find some of the grammar
     # errors that Proof catches (for example, capitalization and repeated words).
-    # Possible values include: 'Proof', 'Spell'
+    # Possible values include: 'proof', 'spell'
     # @param pre_context_text [String] A string that gives context to the text
     # string. For example, the text string petal is valid. However, if you set
     # preContextText to bike, the context changes and the text string becomes not
@@ -673,7 +673,7 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # default is Proof. 1) Proof—Finds most spelling and grammar mistakes. 2)
     # Spell—Finds most spelling mistakes but does not find some of the grammar
     # errors that Proof catches (for example, capitalization and repeated words).
-    # Possible values include: 'Proof', 'Spell'
+    # Possible values include: 'proof', 'spell'
     # @param pre_context_text [String] A string that gives context to the text
     # string. For example, the text string petal is valid. However, if you set
     # preContextText to bike, the context changes and the text string becomes not

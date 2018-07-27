@@ -15,7 +15,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
       # @return [String] the id of the action group to use.
       attr_accessor :action_group_id
 
-      # @return [Hash{String => String}]
+      # @return [Hash{String => String}] The properties of a webhook object.
       attr_accessor :webhook_properties
 
 

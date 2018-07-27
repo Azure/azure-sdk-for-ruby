@@ -12,13 +12,19 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
       include MsRestAzure
 
-      # @return [Score]
+      # @return [ClassificationCategory1] The category1 score details of the
+      # text. <a href="https://aka.ms/textClassifyCategories">Click here</a>
+      # for more details on category classification.
       attr_accessor :category1
 
-      # @return [Score]
+      # @return [ClassificationCategory2] The category2 score details of the
+      # text. <a href="https://aka.ms/textClassifyCategories">Click here</a>
+      # for more details on category classification.
       attr_accessor :category2
 
-      # @return [Score]
+      # @return [ClassificationCategory3] The category3 score details of the
+      # text. <a href="https://aka.ms/textClassifyCategories">Click here</a>
+      # for more details on category classification.
       attr_accessor :category3
 
       # @return [Boolean] The review recommended flag.
@@ -44,7 +50,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 serialized_name: 'Category1',
                 type: {
                   name: 'Composite',
-                  class_name: 'Score'
+                  class_name: 'ClassificationCategory1'
                 }
               },
               category2: {
@@ -53,7 +59,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 serialized_name: 'Category2',
                 type: {
                   name: 'Composite',
-                  class_name: 'Score'
+                  class_name: 'ClassificationCategory2'
                 }
               },
               category3: {
@@ -62,7 +68,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 serialized_name: 'Category3',
                 type: {
                   name: 'Composite',
-                  class_name: 'Score'
+                  class_name: 'ClassificationCategory3'
                 }
               },
               review_recommended: {

@@ -38,6 +38,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return [Accounts] accounts
     attr_reader :accounts
 
+    # @return [ResourceSkus] resource_skus
+    attr_reader :resource_skus
+
     # @return [Operations] operations
     attr_reader :operations
 
@@ -58,6 +61,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       @credentials = credentials
 
       @accounts = Accounts.new(self)
+      @resource_skus = ResourceSkus.new(self)
       @operations = Operations.new(self)
       @check_sku_availability = CheckSkuAvailability.new(self)
       @api_version = '2017-04-18'

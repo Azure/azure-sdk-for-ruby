@@ -37,15 +37,20 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       # permitted to retrieve secrets from the key vault.
       attr_accessor :enabled_for_template_deployment
 
-      # @return [Boolean] Property to specify whether the 'soft delete'
-      # functionality is enabled for this key vault. It does not accept false
-      # value.
+      # @return [Boolean] Property specifying whether recoverable deletion
+      # ('soft' delete) is enabled for this key vault. The property may not be
+      # set to false.
       attr_accessor :enable_soft_delete
 
       # @return [CreateMode] The vault's create mode to indicate whether the
       # vault need to be recovered or not. Possible values include: 'recover',
       # 'default'
       attr_accessor :create_mode
+
+      # @return [Boolean] Property specifying whether protection against purge
+      # is enabled for this vault; it is only effective if soft delete is also
+      # enabled. Once activated, the property may no longer be reset to false.
+      attr_accessor :enable_purge_protection
 
 
       #
@@ -134,6 +139,14 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 type: {
                   name: 'Enum',
                   module: 'CreateMode'
+                }
+              },
+              enable_purge_protection: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enablePurgeProtection',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

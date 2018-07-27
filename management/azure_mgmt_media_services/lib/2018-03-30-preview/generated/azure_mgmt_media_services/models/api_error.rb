@@ -12,7 +12,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
       include MsRestAzure
 
-      # @return [ODataError] ApiError. The error properties.
+      # @return [ODataError] The error properties.
       attr_accessor :error
 
 

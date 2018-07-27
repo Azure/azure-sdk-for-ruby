@@ -8,18 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the varible.
     #
-    class Variable
+    class Variable < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets the id of the resource.
-      attr_accessor :id
-
-      # @return [String] Gets the name of the variable.
-      attr_accessor :name
-
-      # @return [String] Resource type
-      attr_accessor :type
 
       # @return [String] Gets or sets the value of the variable.
       attr_accessor :value

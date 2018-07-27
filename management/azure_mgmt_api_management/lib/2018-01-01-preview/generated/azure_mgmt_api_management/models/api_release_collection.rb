@@ -67,6 +67,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
               value: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
@@ -84,6 +85,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
               next_link: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

@@ -32,6 +32,9 @@ module Azure::Search::Mgmt::V2015_08_19
       # in the Azure portal.
       attr_accessor :tags
 
+      # @return [Identity] The identity of the resource.
+      attr_accessor :identity
+
 
       #
       # Mapper for Resource class as Ruby Hash.
@@ -95,6 +98,15 @@ module Azure::Search::Mgmt::V2015_08_19
                         name: 'String'
                       }
                   }
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Identity'
                 }
               }
             }

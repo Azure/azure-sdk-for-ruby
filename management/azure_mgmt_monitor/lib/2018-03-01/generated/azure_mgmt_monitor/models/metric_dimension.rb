@@ -6,8 +6,7 @@
 module Azure::Monitor::Mgmt::V2018_03_01
   module Models
     #
-    # Model object.
-    #
+    # Specifies a metric dimension.
     #
     class MetricDimension
 

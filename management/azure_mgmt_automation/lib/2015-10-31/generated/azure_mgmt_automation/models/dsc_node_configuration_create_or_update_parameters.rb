@@ -16,7 +16,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [ContentSource] Gets or sets the source.
       attr_accessor :source
 
-      # @return [String] Gets or sets the type of the parameter.
+      # @return [String] Name of the node configuration.
       attr_accessor :name
 
       # @return [DscConfigurationAssociationProperty] Gets or sets the
@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       # @return [Boolean] If a new build version of NodeConfiguration is
       # required.
-      attr_accessor :new_node_configuration_build_version_required
+      attr_accessor :increment_node_configuration_build
 
 
       #
@@ -68,10 +68,10 @@ module Azure::Automation::Mgmt::V2015_10_31
                   class_name: 'DscConfigurationAssociationProperty'
                 }
               },
-              new_node_configuration_build_version_required: {
+              increment_node_configuration_build: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'newNodeConfigurationBuildVersionRequired',
+                serialized_name: 'incrementNodeConfigurationBuild',
                 type: {
                   name: 'Boolean'
                 }

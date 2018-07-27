@@ -23,7 +23,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
 
-      # @return [ImageMetadata] Image metadata
+      # @return [ImageMetadata]
       attr_accessor :metadata
 
 

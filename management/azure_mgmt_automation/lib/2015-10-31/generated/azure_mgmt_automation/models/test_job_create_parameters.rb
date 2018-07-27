@@ -12,9 +12,6 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the runbook name.
-      attr_accessor :runbook_name
-
       # @return [Hash{String => String}] Gets or sets the parameters of the
       # test job.
       attr_accessor :parameters
@@ -37,14 +34,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             name: 'Composite',
             class_name: 'TestJobCreateParameters',
             model_properties: {
-              runbook_name: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'runbookName',
-                type: {
-                  name: 'String'
-                }
-              },
               parameters: {
                 client_side_validation: true,
                 required: false,

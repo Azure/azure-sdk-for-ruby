@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2015_04_01
   #
-  # DomainRegistrationProvider
+  # WebSite Management Client
   #
   class DomainRegistrationProvider
     include MsRestAzure

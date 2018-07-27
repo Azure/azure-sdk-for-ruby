@@ -137,6 +137,15 @@ module Azure::Search::Mgmt::V2015_08_19
                   }
                 }
               },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Identity'
+                }
+              },
               replica_count: {
                 client_side_validation: true,
                 required: false,

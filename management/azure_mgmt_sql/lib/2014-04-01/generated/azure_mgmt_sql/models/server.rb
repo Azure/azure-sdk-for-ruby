@@ -88,6 +88,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                   name: 'String'
                 }
               },
+              location: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               tags: {
                 client_side_validation: true,
                 required: false,
@@ -102,14 +110,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                         name: 'String'
                       }
                   }
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
                 }
               },
               kind: {

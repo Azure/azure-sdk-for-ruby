@@ -35,7 +35,7 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       # @return [EventDeliverySchema] The event delivery schema for the event
       # subscription. Possible values include: 'EventGridSchema',
       # 'InputEventSchema', 'CloudEventV01Schema'. Default value:
-      # 'EventGridSchema' .
+      # 'InputEventSchema' .
       attr_accessor :event_delivery_schema
 
       # @return [RetryPolicy] The retry policy for events. This can be used to
@@ -146,7 +146,7 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventDeliverySchema',
-                default_value: 'EventGridSchema',
+                default_value: 'InputEventSchema',
                 type: {
                   name: 'String'
                 }

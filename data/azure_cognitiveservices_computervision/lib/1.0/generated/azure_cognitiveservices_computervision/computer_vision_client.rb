@@ -15,18 +15,14 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     attr_reader :base_url
 
     # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials1
+    attr_reader :credentials
 
     # @return [AzureRegions] Supported Azure regions for Cognitive Services
     # endpoints. Possible values include: 'westus', 'westeurope',
     # 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus',
     # 'southcentralus', 'northeurope', 'eastasia', 'australiaeast',
-    # 'brazilsouth'
+    # 'brazilsouth', 'canadacentral', 'centralindia', 'uksouth', 'japaneast'
     attr_accessor :azure_region
-
-    # @return Subscription credentials which uniquely identify client
-    # subscription.
-    attr_accessor :credentials
 
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
@@ -216,7 +212,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # to allow you to choose which features to return.  By default, image
     # categories are returned in the response.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param visual_features [Array<VisualFeatureTypes>] A string indicating what
     # visual feature types to return. Multiple values should be comma-separated.
     # Valid visual feature types include:Categories - categorizes image content
@@ -232,11 +228,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include:Celebrities - identifies celebrities if detected in the
     # image.
-    # @param language [Language1] A string indicating which language to return. The
-    # service will return recognition results in specified language. If this
+    # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.zh - Simplified Chinese. Possible values
-    # include: 'en', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -254,7 +250,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # to allow you to choose which features to return.  By default, image
     # categories are returned in the response.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param visual_features [Array<VisualFeatureTypes>] A string indicating what
     # visual feature types to return. Multiple values should be comma-separated.
     # Valid visual feature types include:Categories - categorizes image content
@@ -270,11 +266,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include:Celebrities - identifies celebrities if detected in the
     # image.
-    # @param language [Language1] A string indicating which language to return. The
-    # service will return recognition results in specified language. If this
+    # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.zh - Simplified Chinese. Possible values
-    # include: 'en', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -291,7 +287,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # to allow you to choose which features to return.  By default, image
     # categories are returned in the response.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param visual_features [Array<VisualFeatureTypes>] A string indicating what
     # visual feature types to return. Multiple values should be comma-separated.
     # Valid visual feature types include:Categories - categorizes image content
@@ -307,11 +303,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include:Celebrities - identifies celebrities if detected in the
     # image.
-    # @param language [Language1] A string indicating which language to return. The
-    # service will return recognition results in specified language. If this
+    # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.zh - Simplified Chinese. Possible values
-    # include: 'en', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -392,7 +388,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # Recommended minimum of 50.
     # @param height [Integer] Height of the thumbnail. It must be between 1 and
     # 1024. Recommended minimum of 50.
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param smart_cropping [Boolean] Boolean flag for enabling smart cropping.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -417,7 +413,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # Recommended minimum of 50.
     # @param height [Integer] Height of the thumbnail. It must be between 1 and
     # 1024. Recommended minimum of 50.
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param smart_cropping [Boolean] Boolean flag for enabling smart cropping.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -441,7 +437,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # Recommended minimum of 50.
     # @param height [Integer] Height of the thumbnail. It must be between 1 and
     # 1024. Recommended minimum of 50.
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param smart_cropping [Boolean] Boolean flag for enabling smart cropping.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -535,7 +531,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # the image. With detectOrientation=true the OCR service tries to detect the
     # image orientation and correct it before further processing (e.g. if it's
     # upside-down).
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param language [OcrLanguages] The BCP-47 language code of the text to be
     # detected in the image. The default value is 'unk'. Possible values include:
     # 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr', 'de', 'el',
@@ -563,7 +559,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # the image. With detectOrientation=true the OCR service tries to detect the
     # image orientation and correct it before further processing (e.g. if it's
     # upside-down).
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param language [OcrLanguages] The BCP-47 language code of the text to be
     # detected in the image. The default value is 'unk'. Possible values include:
     # 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr', 'de', 'el',
@@ -590,7 +586,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # the image. With detectOrientation=true the OCR service tries to detect the
     # image orientation and correct it before further processing (e.g. if it's
     # upside-down).
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param language [OcrLanguages] The BCP-47 language code of the text to be
     # detected in the image. The default value is 'unk'. Possible values include:
     # 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr', 'de', 'el',
@@ -674,16 +670,21 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # will be returned in JSON.  If the request failed, the response will contain
     # an error code and a message to help understand what went wrong.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param max_candidates [String] Maximum number of candidate descriptions to be
     # returned.  The default is 1.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image(url, max_candidates:'1', custom_headers:nil)
-      response = describe_image_async(url, max_candidates:max_candidates, custom_headers:custom_headers).value!
+    def describe_image(url, max_candidates:'1', language:nil, custom_headers:nil)
+      response = describe_image_async(url, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -697,16 +698,21 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # will be returned in JSON.  If the request failed, the response will contain
     # an error code and a message to help understand what went wrong.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param max_candidates [String] Maximum number of candidate descriptions to be
     # returned.  The default is 1.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_with_http_info(url, max_candidates:'1', custom_headers:nil)
-      describe_image_async(url, max_candidates:max_candidates, custom_headers:custom_headers).value!
+    def describe_image_with_http_info(url, max_candidates:'1', language:nil, custom_headers:nil)
+      describe_image_async(url, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -719,15 +725,20 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # will be returned in JSON.  If the request failed, the response will contain
     # an error code and a message to help understand what went wrong.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param max_candidates [String] Maximum number of candidate descriptions to be
     # returned.  The default is 1.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_async(url, max_candidates:'1', custom_headers:nil)
+    def describe_image_async(url, max_candidates:'1', language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -755,7 +766,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxCandidates' => max_candidates},
+          query_params: {'maxCandidates' => max_candidates,'language' => language},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -795,17 +806,22 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag “cello” may be accompanied
-    # by the hint “musical instrument”. All tags are in English.
+    # ambiguity or provide context, for example the tag 'cello' may be accompanied
+    # by the hint 'musical instrument'. All tags are in English.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TagResult] operation results.
     #
-    def tag_image(url, custom_headers:nil)
-      response = tag_image_async(url, custom_headers:custom_headers).value!
+    def tag_image(url, language:nil, custom_headers:nil)
+      response = tag_image_async(url, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -815,17 +831,22 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag “cello” may be accompanied
-    # by the hint “musical instrument”. All tags are in English.
+    # ambiguity or provide context, for example the tag 'cello' may be accompanied
+    # by the hint 'musical instrument'. All tags are in English.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def tag_image_with_http_info(url, custom_headers:nil)
-      tag_image_async(url, custom_headers:custom_headers).value!
+    def tag_image_with_http_info(url, language:nil, custom_headers:nil)
+      tag_image_async(url, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -834,16 +855,21 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag “cello” may be accompanied
-    # by the hint “musical instrument”. All tags are in English.
+    # ambiguity or provide context, for example the tag 'cello' may be accompanied
+    # by the hint 'musical instrument'. All tags are in English.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def tag_image_async(url, custom_headers:nil)
+    def tag_image_async(url, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -871,6 +897,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'language' => language},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -914,16 +941,20 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # failed, the response will contain an error code and a message to help
     # understand what went wrong.
     #
-    # @param model [DomainModels] The domain-specific content to recognize.
-    # Possible values include: 'Celebrities', 'Landmarks'
-    # @param url [String]
+    # @param model [String] The domain-specific content to recognize.
+    # @param url [String] Publicly reachable URL of an image
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DomainModelResults] operation results.
     #
-    def analyze_image_by_domain(model, url, custom_headers:nil)
-      response = analyze_image_by_domain_async(model, url, custom_headers:custom_headers).value!
+    def analyze_image_by_domain(model, url, language:nil, custom_headers:nil)
+      response = analyze_image_by_domain_async(model, url, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -937,16 +968,20 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # failed, the response will contain an error code and a message to help
     # understand what went wrong.
     #
-    # @param model [DomainModels] The domain-specific content to recognize.
-    # Possible values include: 'Celebrities', 'Landmarks'
-    # @param url [String]
+    # @param model [String] The domain-specific content to recognize.
+    # @param url [String] Publicly reachable URL of an image
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_by_domain_with_http_info(model, url, custom_headers:nil)
-      analyze_image_by_domain_async(model, url, custom_headers:custom_headers).value!
+    def analyze_image_by_domain_with_http_info(model, url, language:nil, custom_headers:nil)
+      analyze_image_by_domain_async(model, url, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -959,15 +994,19 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # failed, the response will contain an error code and a message to help
     # understand what went wrong.
     #
-    # @param model [DomainModels] The domain-specific content to recognize.
-    # Possible values include: 'Celebrities', 'Landmarks'
-    # @param url [String]
+    # @param model [String] The domain-specific content to recognize.
+    # @param url [String] Publicly reachable URL of an image
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_by_domain_async(model, url, custom_headers:nil)
+    def analyze_image_by_domain_async(model, url, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'model is nil' if model.nil?
       fail ArgumentError, 'url is nil' if url.nil?
@@ -997,6 +1036,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'model' => model},
+          query_params: {'language' => language},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1032,13 +1072,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
     #
     # Recognize Text operation. When you use the Recognize Text interface, the
-    # response contains a field called “Operation-Location”. The
-    # “Operation-Location” field contains the URL that you must use for your Get
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your Get
     # Handwritten Text Operation Result operation.
     #
-    # @param url [String]
-    # @param detect_handwriting [Boolean] If “true” is specified, handwriting
-    # recognition is performed. If this parameter is set to “false” or is not
+    # @param url [String] Publicly reachable URL of an image
+    # @param detect_handwriting [Boolean] If 'true' is specified, handwriting
+    # recognition is performed. If this parameter is set to 'false' or is not
     # specified, printed text recognition is performed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1051,13 +1091,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
     #
     # Recognize Text operation. When you use the Recognize Text interface, the
-    # response contains a field called “Operation-Location”. The
-    # “Operation-Location” field contains the URL that you must use for your Get
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your Get
     # Handwritten Text Operation Result operation.
     #
-    # @param url [String]
-    # @param detect_handwriting [Boolean] If “true” is specified, handwriting
-    # recognition is performed. If this parameter is set to “false” or is not
+    # @param url [String] Publicly reachable URL of an image
+    # @param detect_handwriting [Boolean] If 'true' is specified, handwriting
+    # recognition is performed. If this parameter is set to 'false' or is not
     # specified, printed text recognition is performed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1070,13 +1110,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
     #
     # Recognize Text operation. When you use the Recognize Text interface, the
-    # response contains a field called “Operation-Location”. The
-    # “Operation-Location” field contains the URL that you must use for your Get
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your Get
     # Handwritten Text Operation Result operation.
     #
-    # @param url [String]
-    # @param detect_handwriting [Boolean] If “true” is specified, handwriting
-    # recognition is performed. If this parameter is set to “false” or is not
+    # @param url [String] Publicly reachable URL of an image
+    # @param detect_handwriting [Boolean] If 'true' is specified, handwriting
+    # recognition is performed. If this parameter is set to 'false' or is not
     # specified, printed text recognition is performed.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1251,11 +1291,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # return. Multiple values should be comma-separated. Valid visual feature types
     # include:Celebrities - identifies celebrities if detected in the image.
     # Possible values include: 'Celebrities', 'Landmarks'
-    # @param language [Enum] A string indicating which language to return. The
-    # service will return recognition results in specified language. If this
+    # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.zh - Simplified Chinese. Possible values
-    # include: 'en', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1286,11 +1326,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # return. Multiple values should be comma-separated. Valid visual feature types
     # include:Celebrities - identifies celebrities if detected in the image.
     # Possible values include: 'Celebrities', 'Landmarks'
-    # @param language [Enum] A string indicating which language to return. The
-    # service will return recognition results in specified language. If this
+    # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.zh - Simplified Chinese. Possible values
-    # include: 'en', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1320,11 +1360,11 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # return. Multiple values should be comma-separated. Valid visual feature types
     # include:Celebrities - identifies celebrities if detected in the image.
     # Possible values include: 'Celebrities', 'Landmarks'
-    # @param language [Enum] A string indicating which language to return. The
-    # service will return recognition results in specified language. If this
+    # @param language [Enum] The desired language for output generation. If this
     # parameter is not specified, the default value is &quot;en&quot;.Supported
-    # languages:en - English, Default.zh - Simplified Chinese. Possible values
-    # include: 'en', 'zh'
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1512,7 +1552,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -1696,13 +1736,18 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param max_candidates [String] Maximum number of candidate descriptions to be
     # returned.  The default is 1.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image_in_stream(image, max_candidates:'1', custom_headers:nil)
-      response = describe_image_in_stream_async(image, max_candidates:max_candidates, custom_headers:custom_headers).value!
+    def describe_image_in_stream(image, max_candidates:'1', language:nil, custom_headers:nil)
+      response = describe_image_in_stream_async(image, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1719,13 +1764,18 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param max_candidates [String] Maximum number of candidate descriptions to be
     # returned.  The default is 1.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_in_stream_with_http_info(image, max_candidates:'1', custom_headers:nil)
-      describe_image_in_stream_async(image, max_candidates:max_candidates, custom_headers:custom_headers).value!
+    def describe_image_in_stream_with_http_info(image, max_candidates:'1', language:nil, custom_headers:nil)
+      describe_image_in_stream_async(image, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -1741,12 +1791,17 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # @param image An image stream.
     # @param max_candidates [String] Maximum number of candidate descriptions to be
     # returned.  The default is 1.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_in_stream_async(image, max_candidates:'1', custom_headers:nil)
+    def describe_image_in_stream_async(image, max_candidates:'1', language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -1776,7 +1831,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxCandidates' => max_candidates},
+          query_params: {'maxCandidates' => max_candidates,'language' => language},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1816,17 +1871,22 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag “cello” may be accompanied
-    # by the hint “musical instrument”. All tags are in English.
+    # ambiguity or provide context, for example the tag 'cello' may be accompanied
+    # by the hint 'musical instrument'. All tags are in English.
     #
     # @param image An image stream.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TagResult] operation results.
     #
-    def tag_image_in_stream(image, custom_headers:nil)
-      response = tag_image_in_stream_async(image, custom_headers:custom_headers).value!
+    def tag_image_in_stream(image, language:nil, custom_headers:nil)
+      response = tag_image_in_stream_async(image, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1836,17 +1896,22 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag “cello” may be accompanied
-    # by the hint “musical instrument”. All tags are in English.
+    # ambiguity or provide context, for example the tag 'cello' may be accompanied
+    # by the hint 'musical instrument'. All tags are in English.
     #
     # @param image An image stream.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def tag_image_in_stream_with_http_info(image, custom_headers:nil)
-      tag_image_in_stream_async(image, custom_headers:custom_headers).value!
+    def tag_image_in_stream_with_http_info(image, language:nil, custom_headers:nil)
+      tag_image_in_stream_async(image, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -1855,16 +1920,21 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag “cello” may be accompanied
-    # by the hint “musical instrument”. All tags are in English.
+    # ambiguity or provide context, for example the tag 'cello' may be accompanied
+    # by the hint 'musical instrument'. All tags are in English.
     #
     # @param image An image stream.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def tag_image_in_stream_async(image, custom_headers:nil)
+    def tag_image_in_stream_async(image, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -1894,6 +1964,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'language' => language},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1939,13 +2010,18 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @param model [String] The domain-specific content to recognize.
     # @param image An image stream.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DomainModelResults] operation results.
     #
-    def analyze_image_by_domain_in_stream(model, image, custom_headers:nil)
-      response = analyze_image_by_domain_in_stream_async(model, image, custom_headers:custom_headers).value!
+    def analyze_image_by_domain_in_stream(model, image, language:nil, custom_headers:nil)
+      response = analyze_image_by_domain_in_stream_async(model, image, language:language, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1961,13 +2037,18 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @param model [String] The domain-specific content to recognize.
     # @param image An image stream.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_by_domain_in_stream_with_http_info(model, image, custom_headers:nil)
-      analyze_image_by_domain_in_stream_async(model, image, custom_headers:custom_headers).value!
+    def analyze_image_by_domain_in_stream_with_http_info(model, image, language:nil, custom_headers:nil)
+      analyze_image_by_domain_in_stream_async(model, image, language:language, custom_headers:custom_headers).value!
     end
 
     #
@@ -1982,12 +2063,17 @@ module Azure::CognitiveServices::ComputerVision::V1_0
     #
     # @param model [String] The domain-specific content to recognize.
     # @param image An image stream.
+    # @param language [Enum] The desired language for output generation. If this
+    # parameter is not specified, the default value is &quot;en&quot;.Supported
+    # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
+    # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
+    # 'ja', 'pt', 'zh'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_by_domain_in_stream_async(model, image, custom_headers:nil)
+    def analyze_image_by_domain_in_stream_async(model, image, language:nil, custom_headers:nil)
       fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'model is nil' if model.nil?
       fail ArgumentError, 'image is nil' if image.nil?
@@ -2019,6 +2105,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'model' => model},
+          query_params: {'language' => language},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -2054,13 +2141,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
     #
     # Recognize Text operation. When you use the Recognize Text interface, the
-    # response contains a field called “Operation-Location”. The
-    # “Operation-Location” field contains the URL that you must use for your Get
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your Get
     # Handwritten Text Operation Result operation.
     #
     # @param image An image stream.
-    # @param detect_handwriting [Boolean] If “true” is specified, handwriting
-    # recognition is performed. If this parameter is set to “false” or is not
+    # @param detect_handwriting [Boolean] If 'true' is specified, handwriting
+    # recognition is performed. If this parameter is set to 'false' or is not
     # specified, printed text recognition is performed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -2073,13 +2160,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
     #
     # Recognize Text operation. When you use the Recognize Text interface, the
-    # response contains a field called “Operation-Location”. The
-    # “Operation-Location” field contains the URL that you must use for your Get
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your Get
     # Handwritten Text Operation Result operation.
     #
     # @param image An image stream.
-    # @param detect_handwriting [Boolean] If “true” is specified, handwriting
-    # recognition is performed. If this parameter is set to “false” or is not
+    # @param detect_handwriting [Boolean] If 'true' is specified, handwriting
+    # recognition is performed. If this parameter is set to 'false' or is not
     # specified, printed text recognition is performed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -2092,13 +2179,13 @@ module Azure::CognitiveServices::ComputerVision::V1_0
 
     #
     # Recognize Text operation. When you use the Recognize Text interface, the
-    # response contains a field called “Operation-Location”. The
-    # “Operation-Location” field contains the URL that you must use for your Get
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your Get
     # Handwritten Text Operation Result operation.
     #
     # @param image An image stream.
-    # @param detect_handwriting [Boolean] If “true” is specified, handwriting
-    # recognition is performed. If this parameter is set to “false” or is not
+    # @param detect_handwriting [Boolean] If 'true' is specified, handwriting
+    # recognition is performed. If this parameter is set to 'false' or is not
     # specified, printed text recognition is performed.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

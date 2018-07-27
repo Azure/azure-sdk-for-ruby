@@ -229,11 +229,9 @@ module Azure::Compute::Mgmt::V2018_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationStatusResponse] operation results.
-    #
     def delete(resource_group_name, snapshot_name, custom_headers:nil)
       response = delete_async(resource_group_name, snapshot_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -254,8 +252,6 @@ module Azure::Compute::Mgmt::V2018_04_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Compute::Mgmt::V2018_04_01::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -497,11 +493,9 @@ module Azure::Compute::Mgmt::V2018_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationStatusResponse] operation results.
-    #
     def revoke_access(resource_group_name, snapshot_name, custom_headers:nil)
       response = revoke_access_async(resource_group_name, snapshot_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -522,8 +516,6 @@ module Azure::Compute::Mgmt::V2018_04_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Compute::Mgmt::V2018_04_01::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -787,11 +779,10 @@ module Azure::Compute::Mgmt::V2018_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationStatusResponse] operation results.
     #
     def begin_delete(resource_group_name, snapshot_name, custom_headers:nil)
       response = begin_delete_async(resource_group_name, snapshot_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -858,16 +849,6 @@ module Azure::Compute::Mgmt::V2018_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2018_04_01::Models::OperationStatusResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end
@@ -997,11 +978,10 @@ module Azure::Compute::Mgmt::V2018_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationStatusResponse] operation results.
     #
     def begin_revoke_access(resource_group_name, snapshot_name, custom_headers:nil)
       response = begin_revoke_access_async(resource_group_name, snapshot_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -1068,16 +1048,6 @@ module Azure::Compute::Mgmt::V2018_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2018_04_01::Models::OperationStatusResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end

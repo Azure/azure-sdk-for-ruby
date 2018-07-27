@@ -12,11 +12,14 @@ module Azure::Network::Mgmt::V2018_01_01
 
       include MsRestAzure
 
-      # @return [String] Name of the packet capture session.
+      # @return [String] Name of the packet capture.
       attr_accessor :name
 
-      # @return [String] ID of the packet capture operation.
+      # @return [String] ID of the packet capture.
       attr_accessor :id
+
+      # @return [String] Packet capture type.
+      attr_accessor :type
 
       # @return [String] . Default value: 'A unique read-only string that
       # changes whenever the resource is updated.' .
@@ -77,6 +80,15 @@ module Azure::Network::Mgmt::V2018_01_01
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

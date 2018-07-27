@@ -54,10 +54,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       # partitioned across multiple message brokers is enabled.
       attr_accessor :enable_partitioning
 
-      # @return [Boolean] Value that indicates whether partitioning is enabled
-      # or disabled. NOTE: This property is unsupported, and may be deprecated.
-      attr_accessor :enable_subscription_partitioning
-
       # @return [Boolean] Whether messages should be filtered before
       # publishing.
       attr_accessor :filtering_messages_before_publishing
@@ -226,14 +222,6 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enablePartitioning',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              enable_subscription_partitioning: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.enableSubscriptionPartitioning',
                 type: {
                   name: 'Boolean'
                 }

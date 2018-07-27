@@ -36,8 +36,8 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       # usage aggregate belongs.
       attr_accessor :usage_end_time
 
-      # @return The amount of the resource consumption that occurred in this
-      # time frame.
+      # @return [Float] The amount of the resource consumption that occurred in
+      # this time frame.
       attr_accessor :quantity
 
       # @return [String] The unit in which the usage for this resource is being
@@ -139,7 +139,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 required: false,
                 serialized_name: 'properties.quantity',
                 type: {
-                  name: 'Object'
+                  name: 'Double'
                 }
               },
               unit: {

@@ -24,6 +24,9 @@ module Azure::Logic::Mgmt::V2016_06_01
       # @return [String] The SAS signature.
       attr_accessor :sig
 
+      # @return [String] The SAS timestamp.
+      attr_accessor :se
+
 
       #
       # Mapper for WorkflowTriggerListCallbackUrlQueries class as Ruby Hash.
@@ -66,6 +69,14 @@ module Azure::Logic::Mgmt::V2016_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'sig',
+                type: {
+                  name: 'String'
+                }
+              },
+              se: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'se',
                 type: {
                   name: 'String'
                 }

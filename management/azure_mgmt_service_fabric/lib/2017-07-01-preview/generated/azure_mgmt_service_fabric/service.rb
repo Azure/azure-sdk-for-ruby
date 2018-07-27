@@ -5,7 +5,7 @@
 
 module Azure::ServiceFabric::Mgmt::V2017_07_01_preview
   #
-  # Azure Service Fabric Resource Provider API Client
+  # Service Fabric Management Client
   #
   class Service
     include MsRestAzure

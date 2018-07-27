@@ -11,6 +11,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
     module WebhookAction
       Push = "push"
       Delete = "delete"
+      Quarantine = "quarantine"
     end
   end
 end

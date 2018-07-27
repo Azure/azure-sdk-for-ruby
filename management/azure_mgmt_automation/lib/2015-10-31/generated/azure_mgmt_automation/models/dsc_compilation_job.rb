@@ -8,12 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the Dsc Compilation job.
     #
-    class DscCompilationJob
+    class DscCompilationJob < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets the id of the resource.
-      attr_accessor :id
 
       # @return [DscConfigurationAssociationProperty] Gets or sets the
       # configuration.
@@ -27,6 +24,15 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       # @return [DateTime] Gets the creation time of the job.
       attr_accessor :creation_time
+
+      # @return [JobProvisioningState] The current provisioning state of the
+      # job. Possible values include: 'Failed', 'Succeeded', 'Suspended',
+      # 'Processing'
+      attr_accessor :provisioning_state
+
+      # @return [String] Gets or sets the runOn which specifies the group name
+      # where the job is to be executed.
+      attr_accessor :run_on
 
       # @return [JobStatus] Gets or sets the status of the job. Possible values
       # include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
@@ -79,6 +85,24 @@ module Azure::Automation::Mgmt::V2015_10_31
                   name: 'String'
                 }
               },
+              name: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
               configuration: {
                 client_side_validation: true,
                 required: false,
@@ -113,6 +137,22 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'properties.creationTime',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              provisioning_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              run_on: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.runOn',
+                type: {
+                  name: 'String'
                 }
               },
               status: {

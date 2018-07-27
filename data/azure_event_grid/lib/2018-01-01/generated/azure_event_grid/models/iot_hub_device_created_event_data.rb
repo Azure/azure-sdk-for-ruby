@@ -42,22 +42,6 @@ module Azure::EventGrid::V2018_01_01
                   name: 'String'
                 }
               },
-              op_type: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'opType',
-                type: {
-                  name: 'String'
-                }
-              },
-              operation_timestamp: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'operationTimestamp',
-                type: {
-                  name: 'String'
-                }
-              },
               twin: {
                 client_side_validation: true,
                 required: false,
