@@ -24,24 +24,24 @@ module Azure::Profiles::Latest
       PivotSuggestions = Azure::CognitiveServices::ImageSearch::V1_0::Models::PivotSuggestions
       RelatedCollectionsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedCollectionsModule
       ImageTagsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageTagsModule
+      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       RecipesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecipesModule
       ImagesImageMetadata = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesImageMetadata
       ImageInsightsImageCaption = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightsImageCaption
-      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       TrendingImagesTile = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesTile
       ImagesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
       Offer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Offer
       AggregateOffer = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
       AggregateRating = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateRating
-      ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
       Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
       NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
+      ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
       RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
       ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
-      RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
+      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
-      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+      RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
       Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
@@ -144,6 +144,9 @@ module Azure::Profiles::Latest
         def image_tags_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageTagsModule
         end
+        def error_response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+        end
         def recipes_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecipesModule
         end
@@ -152,9 +155,6 @@ module Azure::Profiles::Latest
         end
         def image_insights_image_caption
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightsImageCaption
-        end
-        def error_response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
         end
         def trending_images_tile
           Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesTile
@@ -171,14 +171,14 @@ module Azure::Profiles::Latest
         def aggregate_rating
           Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateRating
         end
-        def image_gallery
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
-        end
         def recipe
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
         end
         def normalized_rectangle
           Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
+        end
+        def image_gallery
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
         end
         def recognized_entity_region
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
@@ -186,8 +186,8 @@ module Azure::Profiles::Latest
         def image_insights
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
         end
-        def recognized_entity
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
+        def trending_images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
         end
         def rating
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
@@ -195,8 +195,8 @@ module Azure::Profiles::Latest
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
         end
-        def trending_images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+        def recognized_entity
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
         end
         def error
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Error

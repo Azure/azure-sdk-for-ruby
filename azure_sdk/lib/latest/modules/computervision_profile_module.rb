@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      ImageDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
+      RecognitionResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::RecognitionResult
+      TagResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TagResult
       ImageType = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageType
       ComputerVisionError = Azure::CognitiveServices::ComputerVision::V1_0::Models::ComputerVisionError
       CategoryDetail = Azure::CognitiveServices::ComputerVision::V1_0::Models::CategoryDetail
@@ -43,9 +46,6 @@ module Azure::Profiles::Latest
       AdultInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
       LandmarkResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
       ImageCaption = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
-      ImageDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
-      RecognitionResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::RecognitionResult
-      TagResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TagResult
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_description
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
+        end
+        def recognition_result
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::RecognitionResult
+        end
+        def tag_result
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::TagResult
+        end
         def image_type
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageType
         end
@@ -181,15 +190,6 @@ module Azure::Profiles::Latest
         end
         def image_caption
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
-        end
-        def image_description
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
-        end
-        def recognition_result
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::RecognitionResult
-        end
-        def tag_result
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::TagResult
         end
       end
     end
