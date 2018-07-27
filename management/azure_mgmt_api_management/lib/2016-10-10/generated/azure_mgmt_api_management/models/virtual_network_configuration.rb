@@ -34,7 +34,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkConfiguration',
           type: {
@@ -42,7 +41,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'VirtualNetworkConfiguration',
             model_properties: {
               vnetid: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'vnetid',
@@ -51,7 +49,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               subnetname: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subnetname',
@@ -60,7 +57,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               subnet_resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnetResourceId',
                 constraints: {
@@ -71,7 +67,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {

@@ -23,7 +23,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceCheckNameAvailabilityParameters',
           type: {
@@ -31,7 +30,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ApiManagementServiceCheckNameAvailabilityParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
