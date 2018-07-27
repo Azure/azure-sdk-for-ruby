@@ -50,7 +50,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceManageDeploymentsParameters',
           type: {
@@ -58,7 +57,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ApiManagementServiceManageDeploymentsParameters',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -66,7 +64,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               sku_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'skuType',
                 type: {
@@ -75,7 +72,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               sku_unit_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuUnitCount',
                 default_value: 1,
@@ -84,13 +80,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               additional_locations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'additionalLocations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AdditionalRegionElementType',
                       type: {
@@ -101,7 +95,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               vpn_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vpnConfiguration',
                 type: {
@@ -110,7 +103,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               vpn_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vpnType',
                 default_value: 'None',

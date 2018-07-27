@@ -25,7 +25,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackendAuthorizationHeaderCredentials',
           type: {
@@ -33,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'BackendAuthorizationHeaderCredentials',
             model_properties: {
               scheme: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'scheme',
                 constraints: {
@@ -45,7 +43,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               parameter: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'parameter',
                 constraints: {
