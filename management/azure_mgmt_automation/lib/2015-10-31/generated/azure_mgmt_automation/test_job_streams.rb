@@ -26,7 +26,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # stream id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param job_stream_id [String] The job stream id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -44,7 +44,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # stream id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param job_stream_id [String] The job stream id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -61,7 +61,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # stream id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param job_stream_id [String] The job stream id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -127,7 +127,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of test job streams identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -144,7 +144,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of test job streams identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -160,7 +160,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of test job streams identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -312,7 +312,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of test job streams identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

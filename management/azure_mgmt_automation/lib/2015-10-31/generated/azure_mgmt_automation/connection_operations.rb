@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The name of connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -41,7 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The name of connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -56,7 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The name of connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -120,7 +120,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the connection identified by connection name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The name of connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -136,7 +136,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the connection identified by connection name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The name of connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -151,7 +151,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the connection identified by connection name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The name of connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -215,7 +215,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create or update a connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The parameters supplied to the create or
     # update connection operation.
     # @param parameters [ConnectionCreateOrUpdateParameters] The parameters
@@ -234,7 +234,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create or update a connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The parameters supplied to the create or
     # update connection operation.
     # @param parameters [ConnectionCreateOrUpdateParameters] The parameters
@@ -252,7 +252,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create or update a connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The parameters supplied to the create or
     # update connection operation.
     # @param parameters [ConnectionCreateOrUpdateParameters] The parameters
@@ -339,7 +339,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The parameters supplied to the update a
     # connection operation.
     # @param parameters [ConnectionUpdateParameters] The parameters supplied to the
@@ -358,7 +358,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The parameters supplied to the update a
     # connection operation.
     # @param parameters [ConnectionUpdateParameters] The parameters supplied to the
@@ -376,7 +376,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a connection.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param connection_name [String] The parameters supplied to the update a
     # connection operation.
     # @param parameters [ConnectionUpdateParameters] The parameters supplied to the
@@ -453,7 +453,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connections.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -468,7 +468,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connections.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -482,7 +482,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connections.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -631,7 +631,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of connections.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

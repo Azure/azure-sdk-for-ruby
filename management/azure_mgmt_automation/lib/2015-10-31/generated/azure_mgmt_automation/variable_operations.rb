@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The variable name.
     # @param parameters [VariableCreateOrUpdateParameters] The parameters supplied
     # to the create or update variable operation.
@@ -43,7 +43,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The variable name.
     # @param parameters [VariableCreateOrUpdateParameters] The parameters supplied
     # to the create or update variable operation.
@@ -60,7 +60,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The variable name.
     # @param parameters [VariableCreateOrUpdateParameters] The parameters supplied
     # to the create or update variable operation.
@@ -146,7 +146,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The variable name.
     # @param parameters [VariableUpdateParameters] The parameters supplied to the
     # update variable operation.
@@ -164,7 +164,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The variable name.
     # @param parameters [VariableUpdateParameters] The parameters supplied to the
     # update variable operation.
@@ -181,7 +181,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update a variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The variable name.
     # @param parameters [VariableUpdateParameters] The parameters supplied to the
     # update variable operation.
@@ -257,7 +257,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The name of variable.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -272,7 +272,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The name of variable.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -287,7 +287,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the variable.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The name of variable.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -341,7 +341,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the variable identified by variable name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The name of variable.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -357,7 +357,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the variable identified by variable name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The name of variable.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -372,7 +372,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the variable identified by variable name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param variable_name [String] The name of variable.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -436,7 +436,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of variables.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -451,7 +451,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of variables.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -465,7 +465,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of variables.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -614,7 +614,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of variables.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

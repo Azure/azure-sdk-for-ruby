@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a test job of the runbook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the create test job
     # operation.
     # @param parameters [TestJobCreateParameters] The parameters supplied to the
@@ -44,7 +44,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a test job of the runbook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the create test job
     # operation.
     # @param parameters [TestJobCreateParameters] The parameters supplied to the
@@ -62,7 +62,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create a test job of the runbook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The parameters supplied to the create test job
     # operation.
     # @param parameters [TestJobCreateParameters] The parameters supplied to the
@@ -139,7 +139,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the test job for the specified runbook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -155,7 +155,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the test job for the specified runbook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -170,7 +170,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the test job for the specified runbook.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -234,7 +234,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Resume the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -249,7 +249,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Resume the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -264,7 +264,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Resume the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -318,7 +318,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Stop the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -333,7 +333,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Stop the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -348,7 +348,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Stop the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -402,7 +402,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Suspend the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -417,7 +417,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Suspend the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -432,7 +432,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Suspend the test job.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
