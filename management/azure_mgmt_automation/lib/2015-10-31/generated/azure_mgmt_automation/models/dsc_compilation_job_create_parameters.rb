@@ -22,7 +22,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       # @return [Boolean] If a new build version of NodeConfiguration is
       # required.
-      attr_accessor :new_node_configuration_build_version_required
+      attr_accessor :increment_node_configuration_build
 
       # @return [String] Gets or sets name of the resource.
       attr_accessor :name
@@ -69,9 +69,9 @@ module Azure::Automation::Mgmt::V2015_10_31
                   }
                 }
               },
-              new_node_configuration_build_version_required: {
+              increment_node_configuration_build: {
                 required: false,
-                serialized_name: 'properties.newNodeConfigurationBuildVersionRequired',
+                serialized_name: 'properties.incrementNodeConfigurationBuild',
                 type: {
                   name: 'Boolean'
                 }
