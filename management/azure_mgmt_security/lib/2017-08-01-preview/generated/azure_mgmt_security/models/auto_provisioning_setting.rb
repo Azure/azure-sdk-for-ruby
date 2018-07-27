@@ -12,10 +12,9 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
-      # @return [ProvisioningSetting] Describes what kind of security agent
-      # provisioning action to take. Possible values include: 'Automatic',
-      # 'Off'
-      attr_accessor :provisioning_setting
+      # @return [AutoProvision] Describes what kind of security agent
+      # provisioning action to take. Possible values include: 'On', 'Off'
+      attr_accessor :auto_provision
 
 
       #
@@ -58,10 +57,10 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                   name: 'String'
                 }
               },
-              provisioning_setting: {
+              auto_provision: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'properties.provisioningSetting',
+                serialized_name: 'properties.autoProvision',
                 type: {
                   name: 'String'
                 }

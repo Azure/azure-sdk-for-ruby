@@ -18,6 +18,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       # 'Failed'. Possible values include: 'Accepted', 'Succeeded', 'Failed'
       attr_accessor :provisioning_state
 
+      # @return [Integer] Number of entities pending to be replicated.
+      attr_accessor :pending_replication_operations_count
+
       # @return [String] ARM Id of the Primary/Secondary eventhub namespace
       # name, which is part of GEO DR pairning
       attr_accessor :partner_namespace
@@ -80,6 +83,15 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 type: {
                   name: 'Enum',
                   module: 'ProvisioningStateDR'
+                }
+              },
+              pending_replication_operations_count: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.pendingReplicationOperationsCount',
+                type: {
+                  name: 'Number'
                 }
               },
               partner_namespace: {

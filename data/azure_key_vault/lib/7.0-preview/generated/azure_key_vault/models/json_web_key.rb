@@ -15,8 +15,9 @@ module Azure::KeyVault::V7_0_preview
       # @return [String] Key identifier.
       attr_accessor :kid
 
-      # @return [JsonWebKeyType] JsonWebKey key type (kty). Possible values
-      # include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+      # @return [JsonWebKeyType] JsonWebKey Key Type (kty), as defined in
+      # https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40.
+      # Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
       attr_accessor :kty
 
       # @return [Array<String>]
@@ -54,7 +55,7 @@ module Azure::KeyVault::V7_0_preview
 
       # @return [JsonWebKeyCurveName] Elliptic curve name. For valid values,
       # see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
-      # 'P-521', 'SECP256K1'
+      # 'P-521', 'P-256K'
       attr_accessor :crv
 
       # @return X component of an EC public key.

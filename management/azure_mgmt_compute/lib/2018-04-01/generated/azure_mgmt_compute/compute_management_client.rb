@@ -36,6 +36,53 @@ module Azure::Compute::Mgmt::V2018_04_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
+    # @return [AvailabilitySets] availability_sets
+    attr_reader :availability_sets
+
+    # @return [VirtualMachineExtensionImages] virtual_machine_extension_images
+    attr_reader :virtual_machine_extension_images
+
+    # @return [VirtualMachineExtensions] virtual_machine_extensions
+    attr_reader :virtual_machine_extensions
+
+    # @return [VirtualMachineImages] virtual_machine_images
+    attr_reader :virtual_machine_images
+
+    # @return [UsageOperations] usage_operations
+    attr_reader :usage_operations
+
+    # @return [VirtualMachineSizes] virtual_machine_sizes
+    attr_reader :virtual_machine_sizes
+
+    # @return [Images] images
+    attr_reader :images
+
+    # @return [VirtualMachines] virtual_machines
+    attr_reader :virtual_machines
+
+    # @return [VirtualMachineScaleSets] virtual_machine_scale_sets
+    attr_reader :virtual_machine_scale_sets
+
+    # @return [VirtualMachineScaleSetExtensions]
+    # virtual_machine_scale_set_extensions
+    attr_reader :virtual_machine_scale_set_extensions
+
+    # @return [VirtualMachineScaleSetRollingUpgrades]
+    # virtual_machine_scale_set_rolling_upgrades
+    attr_reader :virtual_machine_scale_set_rolling_upgrades
+
+    # @return [VirtualMachineScaleSetVMs] virtual_machine_scale_set_vms
+    attr_reader :virtual_machine_scale_set_vms
+
+    # @return [LogAnalytics] log_analytics
+    attr_reader :log_analytics
+
+    # @return [VirtualMachineRunCommands] virtual_machine_run_commands
+    attr_reader :virtual_machine_run_commands
+
     # @return [Disks] disks
     attr_reader :disks
 
@@ -55,6 +102,21 @@ module Azure::Compute::Mgmt::V2018_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
+      @availability_sets = AvailabilitySets.new(self)
+      @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
+      @virtual_machine_extensions = VirtualMachineExtensions.new(self)
+      @virtual_machine_images = VirtualMachineImages.new(self)
+      @usage_operations = UsageOperations.new(self)
+      @virtual_machine_sizes = VirtualMachineSizes.new(self)
+      @images = Images.new(self)
+      @virtual_machines = VirtualMachines.new(self)
+      @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
+      @virtual_machine_scale_set_extensions = VirtualMachineScaleSetExtensions.new(self)
+      @virtual_machine_scale_set_rolling_upgrades = VirtualMachineScaleSetRollingUpgrades.new(self)
+      @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
+      @log_analytics = LogAnalytics.new(self)
+      @virtual_machine_run_commands = VirtualMachineRunCommands.new(self)
       @disks = Disks.new(self)
       @snapshots = Snapshots.new(self)
       @api_version = '2018-04-01'
@@ -129,7 +191,7 @@ module Azure::Compute::Mgmt::V2018_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

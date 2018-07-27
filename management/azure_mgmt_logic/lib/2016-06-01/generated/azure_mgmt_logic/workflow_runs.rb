@@ -27,7 +27,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param workflow_name [String] The workflow name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -44,7 +45,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param workflow_name [String] The workflow name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,7 +62,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param workflow_name [String] The workflow name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -394,7 +397,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param resource_group_name [String] The resource group name.
     # @param workflow_name [String] The workflow name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status, StartTime, and ClientTrackingId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

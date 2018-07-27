@@ -21,7 +21,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       # @return [String] Operation resource.
       attr_accessor :resource
 
-      # @return [String] Operation.
+      # @return [String] The operation name.
       attr_accessor :operation
 
       # @return [String] Operation description.

@@ -13,7 +13,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       include MsRestAzure
 
       # @return [SkuNameEnum] The name of the SKU. Possible values include:
-      # 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'Standalone'
+      # 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
+      # 'Standalone'
       attr_accessor :name
 
 

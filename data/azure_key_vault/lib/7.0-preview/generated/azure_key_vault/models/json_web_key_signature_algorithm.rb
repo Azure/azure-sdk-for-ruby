@@ -19,7 +19,7 @@ module Azure::KeyVault::V7_0_preview
       ES256 = "ES256"
       ES384 = "ES384"
       ES512 = "ES512"
-      ECDSA256 = "ECDSA256"
+      ES256K = "ES256K"
     end
   end
 end

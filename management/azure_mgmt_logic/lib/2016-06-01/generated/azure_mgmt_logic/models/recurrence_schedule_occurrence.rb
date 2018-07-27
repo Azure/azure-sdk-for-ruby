@@ -6,7 +6,7 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # The recurrence schedule occurence.
+    # The recurrence schedule occurrence.
     #
     class RecurrenceScheduleOccurrence
 

@@ -36,17 +36,14 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
-    # @return [Name] name
-    attr_reader :name
-
     # @return [NotificationHubs] notification_hubs
     attr_reader :notification_hubs
-
-    # @return [Hubs] hubs
-    attr_reader :hubs
 
     #
     # Creates initializes a new instance of the NotificationHubsManagementClient class.
@@ -61,10 +58,9 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
-      @name = Name.new(self)
       @notification_hubs = NotificationHubs.new(self)
-      @hubs = Hubs.new(self)
       @api_version = '2017-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

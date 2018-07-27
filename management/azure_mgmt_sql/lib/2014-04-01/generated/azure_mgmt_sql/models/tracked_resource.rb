@@ -12,11 +12,11 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
-      # @return [Hash{String => String}] Resource tags.
-      attr_accessor :tags
-
       # @return [String] Resource location.
       attr_accessor :location
+
+      # @return [Hash{String => String}] Resource tags.
+      attr_accessor :tags
 
 
       #
@@ -59,6 +59,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                   name: 'String'
                 }
               },
+              location: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               tags: {
                 client_side_validation: true,
                 required: false,
@@ -73,14 +81,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                         name: 'String'
                       }
                   }
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
                 }
               }
             }

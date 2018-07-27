@@ -12,7 +12,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
       include MsRestAzure
 
-      # @return [ArmSku] The name and tier of the SKU.
+      # @return [Sku] The name and tier of the SKU.
       attr_accessor :sku
 
       # @return [String] Kind of database. This is metadata used for the Azure
@@ -54,8 +54,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       # Copy, Secondary, and RestoreLongTermRetentionBackup are not supported
       # for DataWarehouse edition. Possible values include: 'Default', 'Copy',
-      # 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
-      # 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+      # 'Secondary', 'OnlineSecondary', 'PointInTimeRestore', 'Restore',
+      # 'Recovery', 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
       # 'RestoreLongTermRetentionBackup'
       attr_accessor :create_mode
 
@@ -78,11 +78,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # associated with create operation of this database.
       attr_accessor :source_database_id
 
-      # @return [Status] The status of the database. Possible values include:
-      # 'Online', 'Restoring', 'RecoveryPending', 'Recovering', 'Suspect',
-      # 'Offline', 'Standby', 'Shutdown', 'EmergencyMode', 'AutoClosed',
-      # 'Copying', 'Creating', 'Inaccessible', 'OfflineSecondary', 'Pausing',
-      # 'Paused', 'Resuming', 'Scaling'
+      # @return [DatabaseStatus] The status of the database. Possible values
+      # include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering',
+      # 'Suspect', 'Offline', 'Standby', 'Shutdown', 'EmergencyMode',
+      # 'AutoClosed', 'Copying', 'Creating', 'Inaccessible',
+      # 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling'
       attr_accessor :status
 
       # @return The ID of the database.
@@ -206,7 +206,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 serialized_name: 'sku',
                 type: {
                   name: 'Composite',
-                  class_name: 'ArmSku'
+                  class_name: 'Sku'
                 }
               },
               kind: {

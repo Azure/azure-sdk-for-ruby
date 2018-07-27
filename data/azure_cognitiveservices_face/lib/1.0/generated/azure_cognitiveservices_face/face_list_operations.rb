@@ -66,7 +66,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_async(face_list_id, name:nil, user_data:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_list_id is nil' if face_list_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -94,7 +93,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists/{faceListId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -159,7 +157,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(face_list_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_list_id is nil' if face_list_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -174,7 +171,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists/{faceListId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -253,7 +249,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_async(face_list_id, name:nil, user_data:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_list_id is nil' if face_list_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -281,7 +276,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists/{faceListId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -348,7 +342,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(face_list_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_list_id is nil' if face_list_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -363,7 +356,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists/{faceListId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -427,7 +419,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
 
 
       request_headers = {}
@@ -439,7 +430,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -536,7 +526,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_face_async(face_list_id, persisted_face_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_list_id is nil' if face_list_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -552,7 +541,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists/{faceListId}/persistedFaces/{persistedFaceId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -585,7 +573,7 @@ module Azure::CognitiveServices::Face::V1_0
     # face, and persistedFaceId will not expire.
     #
     # @param face_list_id [String] Id referencing a particular face list.
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param user_data [String] User-specified data about the face for any purpose.
     # The maximum length is 1KB.
     # @param target_face [Array<Integer>] A face rectangle to specify the target
@@ -610,7 +598,7 @@ module Azure::CognitiveServices::Face::V1_0
     # face, and persistedFaceId will not expire.
     #
     # @param face_list_id [String] Id referencing a particular face list.
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param user_data [String] User-specified data about the face for any purpose.
     # The maximum length is 1KB.
     # @param target_face [Array<Integer>] A face rectangle to specify the target
@@ -634,7 +622,7 @@ module Azure::CognitiveServices::Face::V1_0
     # face, and persistedFaceId will not expire.
     #
     # @param face_list_id [String] Id referencing a particular face list.
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param user_data [String] User-specified data about the face for any purpose.
     # The maximum length is 1KB.
     # @param target_face [Array<Integer>] A face rectangle to specify the target
@@ -649,7 +637,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_face_from_url_async(face_list_id, url, user_data:nil, target_face:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_list_id is nil' if face_list_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -676,7 +663,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists/{faceListId}/persistedFaces'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -785,7 +771,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_face_from_stream_async(face_list_id, image, user_data:nil, target_face:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_list_id is nil' if face_list_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -814,7 +799,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'facelists/{faceListId}/persistedFaces'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

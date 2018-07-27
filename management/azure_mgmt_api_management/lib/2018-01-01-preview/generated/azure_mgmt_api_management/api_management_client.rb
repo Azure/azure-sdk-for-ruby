@@ -75,6 +75,15 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @return [ApiDiagnosticLogger] api_diagnostic_logger
     attr_reader :api_diagnostic_logger
 
+    # @return [ApiIssue] api_issue
+    attr_reader :api_issue
+
+    # @return [ApiIssueComment] api_issue_comment
+    attr_reader :api_issue_comment
+
+    # @return [ApiIssueAttachment] api_issue_attachment
+    attr_reader :api_issue_attachment
+
     # @return [AuthorizationServer] authorization_server
     attr_reader :authorization_server
 
@@ -230,6 +239,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       @api_schema = ApiSchema.new(self)
       @api_diagnostic = ApiDiagnostic.new(self)
       @api_diagnostic_logger = ApiDiagnosticLogger.new(self)
+      @api_issue = ApiIssue.new(self)
+      @api_issue_comment = ApiIssueComment.new(self)
+      @api_issue_attachment = ApiIssueAttachment.new(self)
       @authorization_server = AuthorizationServer.new(self)
       @backend = Backend.new(self)
       @certificate = Certificate.new(self)

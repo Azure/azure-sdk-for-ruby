@@ -439,7 +439,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
     #
     # Deletes the specified firewall rule from the specified Data Lake Store
-    # account
+    # account.
     #
     # @param resource_group_name [String] The name of the Azure resource group.
     # @param account_name [String] The name of the Data Lake Store account.
@@ -455,7 +455,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
     #
     # Deletes the specified firewall rule from the specified Data Lake Store
-    # account
+    # account.
     #
     # @param resource_group_name [String] The name of the Azure resource group.
     # @param account_name [String] The name of the Data Lake Store account.
@@ -471,7 +471,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
     #
     # Deletes the specified firewall rule from the specified Data Lake Store
-    # account
+    # account.
     #
     # @param resource_group_name [String] The name of the Azure resource group.
     # @param account_name [String] The name of the Data Lake Store account.

@@ -39,7 +39,7 @@ module Azure::Batch::Mgmt::V2017_09_01
       attr_accessor :windows_configuration
 
       # @return [Array<DataDisk>] The configuration for data disks attached to
-      # the comptue nodes in the pool. This property must be specified if the
+      # the compute nodes in the pool. This property must be specified if the
       # compute nodes in the pool need to have empty data disks attached to
       # them.
       attr_accessor :data_disks

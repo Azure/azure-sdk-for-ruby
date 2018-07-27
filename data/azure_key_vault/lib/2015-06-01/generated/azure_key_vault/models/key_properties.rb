@@ -18,7 +18,7 @@ module Azure::KeyVault::V2015_06_01
       # @return [String] The key type.
       attr_accessor :key_type
 
-      # @return [Integer] The key size in bytes. e.g. 2048.
+      # @return [Integer] The key size in bits. e.g. 2048.
       attr_accessor :key_size
 
       # @return [Boolean] Indicates if the same key pair will be used on

@@ -42,6 +42,9 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
+    # @return [VirtualNetworkRules] virtual_network_rules
+    attr_reader :virtual_network_rules
+
     # @return [TrustedIdProviders] trusted_id_providers
     attr_reader :trusted_id_providers
 
@@ -66,6 +69,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       @accounts = Accounts.new(self)
       @firewall_rules = FirewallRules.new(self)
+      @virtual_network_rules = VirtualNetworkRules.new(self)
       @trusted_id_providers = TrustedIdProviders.new(self)
       @operations = Operations.new(self)
       @locations = Locations.new(self)

@@ -18,7 +18,7 @@ module Azure::KeyVault::V2015_06_01
       # 'RSA-HSM', 'oct'
       attr_accessor :kty
 
-      # @return [Integer] The key size in bytes. e.g. 1024 or 2048.
+      # @return [Integer] The key size in bits. e.g. 1024 or 2048.
       attr_accessor :key_size
 
       # @return [Array<JsonWebKeyOperation>]

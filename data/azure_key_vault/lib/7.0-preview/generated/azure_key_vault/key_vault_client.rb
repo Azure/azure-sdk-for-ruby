@@ -123,14 +123,15 @@ module Azure::KeyVault::V7_0_preview
     # @param kty [JsonWebKeyType] The type of key to create. For valid values, see
     # JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
     # 'oct'
-    # @param key_size [Integer] The key size in bytes. For example, 1024 or 2048.
+    # @param key_size [Integer] The key size in bits. For example: 2048, 3072, or
+    # 4096 for RSA.
     # @param key_ops [Array<JsonWebKeyOperation>]
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-    # 'SECP256K1'
+    # 'P-256K'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -156,14 +157,15 @@ module Azure::KeyVault::V7_0_preview
     # @param kty [JsonWebKeyType] The type of key to create. For valid values, see
     # JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
     # 'oct'
-    # @param key_size [Integer] The key size in bytes. For example, 1024 or 2048.
+    # @param key_size [Integer] The key size in bits. For example: 2048, 3072, or
+    # 4096 for RSA.
     # @param key_ops [Array<JsonWebKeyOperation>]
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-    # 'SECP256K1'
+    # 'P-256K'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -188,14 +190,15 @@ module Azure::KeyVault::V7_0_preview
     # @param kty [JsonWebKeyType] The type of key to create. For valid values, see
     # JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
     # 'oct'
-    # @param key_size [Integer] The key size in bytes. For example, 1024 or 2048.
+    # @param key_size [Integer] The key size in bits. For example: 2048, 3072, or
+    # 4096 for RSA.
     # @param key_ops [Array<JsonWebKeyOperation>]
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-    # 'SECP256K1'
+    # 'P-256K'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1619,7 +1622,7 @@ module Azure::KeyVault::V7_0_preview
     # algorithm identifier. For more information on possible algorithm types, see
     # JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
     # 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-    # 'ECDSA256'
+    # 'ES256K'
     # @param value
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1646,7 +1649,7 @@ module Azure::KeyVault::V7_0_preview
     # algorithm identifier. For more information on possible algorithm types, see
     # JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
     # 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-    # 'ECDSA256'
+    # 'ES256K'
     # @param value
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1672,7 +1675,7 @@ module Azure::KeyVault::V7_0_preview
     # algorithm identifier. For more information on possible algorithm types, see
     # JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
     # 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-    # 'ECDSA256'
+    # 'ES256K'
     # @param value
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1766,7 +1769,7 @@ module Azure::KeyVault::V7_0_preview
     # algorithm. For more information on possible algorithm types, see
     # JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
     # 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-    # 'ECDSA256'
+    # 'ES256K'
     # @param digest The digest used for signing.
     # @param signature The signature to be verified.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1797,7 +1800,7 @@ module Azure::KeyVault::V7_0_preview
     # algorithm. For more information on possible algorithm types, see
     # JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
     # 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-    # 'ECDSA256'
+    # 'ES256K'
     # @param digest The digest used for signing.
     # @param signature The signature to be verified.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1827,7 +1830,7 @@ module Azure::KeyVault::V7_0_preview
     # algorithm. For more information on possible algorithm types, see
     # JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
     # 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-    # 'ECDSA256'
+    # 'ES256K'
     # @param digest The digest used for signing.
     # @param signature The signature to be verified.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -4013,13 +4016,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<CertificateItem>] operation results.
     #
-    def get_certificates(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_certificates_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+    def get_certificates(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      first_page = get_certificates_as_lazy(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -4034,13 +4039,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_certificates_with_http_info(vault_base_url, maxresults:nil, custom_headers:nil)
-      get_certificates_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers).value!
+    def get_certificates_with_http_info(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      get_certificates_async(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers).value!
     end
 
     #
@@ -4054,12 +4061,14 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_certificates_async(vault_base_url, maxresults:nil, custom_headers:nil)
+    def get_certificates_async(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMaximum': '25'" if !maxresults.nil? && maxresults > 25
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMinimum': '1'" if !maxresults.nil? && maxresults < 1
@@ -4079,7 +4088,7 @@ module Azure::KeyVault::V7_0_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxresults' => maxresults,'api-version' => api_version},
+          query_params: {'maxresults' => maxresults,'includePending' => include_pending,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -6507,6 +6516,230 @@ module Azure::KeyVault::V7_0_preview
     end
 
     #
+    # Backs up the specified certificate.
+    #
+    # Requests that a backup of the specified certificate be downloaded to the
+    # client. All versions of the certificate will be downloaded. This operation
+    # requires the certificates/backup permission.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_name [String] The name of the certificate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BackupCertificateResult] operation results.
+    #
+    def backup_certificate(vault_base_url, certificate_name, custom_headers:nil)
+      response = backup_certificate_async(vault_base_url, certificate_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Backs up the specified certificate.
+    #
+    # Requests that a backup of the specified certificate be downloaded to the
+    # client. All versions of the certificate will be downloaded. This operation
+    # requires the certificates/backup permission.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_name [String] The name of the certificate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def backup_certificate_with_http_info(vault_base_url, certificate_name, custom_headers:nil)
+      backup_certificate_async(vault_base_url, certificate_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Backs up the specified certificate.
+    #
+    # Requests that a backup of the specified certificate be downloaded to the
+    # client. All versions of the certificate will be downloaded. This operation
+    # requires the certificates/backup permission.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_name [String] The name of the certificate.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def backup_certificate_async(vault_base_url, certificate_name, custom_headers:nil)
+      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'certificates/{certificate-name}/backup'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'certificate-name' => certificate_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::V7_0_preview::Models::BackupCertificateResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Restores a backed up certificate to a vault.
+    #
+    # Restores a backed up certificate, and all its versions, to a vault. This
+    # operation requires the certificates/restore permission.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_bundle_backup The backup blob associated with a
+    # certificate bundle.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CertificateBundle] operation results.
+    #
+    def restore_certificate(vault_base_url, certificate_bundle_backup, custom_headers:nil)
+      response = restore_certificate_async(vault_base_url, certificate_bundle_backup, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Restores a backed up certificate to a vault.
+    #
+    # Restores a backed up certificate, and all its versions, to a vault. This
+    # operation requires the certificates/restore permission.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_bundle_backup The backup blob associated with a
+    # certificate bundle.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def restore_certificate_with_http_info(vault_base_url, certificate_bundle_backup, custom_headers:nil)
+      restore_certificate_async(vault_base_url, certificate_bundle_backup, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Restores a backed up certificate to a vault.
+    #
+    # Restores a backed up certificate, and all its versions, to a vault. This
+    # operation requires the certificates/restore permission.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_bundle_backup The backup blob associated with a
+    # certificate bundle.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def restore_certificate_async(vault_base_url, certificate_bundle_backup, custom_headers:nil)
+      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'certificate_bundle_backup is nil' if certificate_bundle_backup.nil?
+
+      parameters = CertificateRestoreParameters.new
+      unless certificate_bundle_backup.nil?
+        parameters.certificateBundleBackup = certificate_bundle_backup
+      end
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::KeyVault::V7_0_preview::Models::CertificateRestoreParameters.mapper()
+      request_content = self.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'certificates/restore'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::V7_0_preview::Models::CertificateBundle.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Lists the deleted certificates in the specified vault currently available for
     # recovery.
     #
@@ -6520,13 +6753,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<DeletedCertificateItem>] operation results.
     #
-    def get_deleted_certificates(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_deleted_certificates_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+    def get_deleted_certificates(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      first_page = get_deleted_certificates_as_lazy(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -6544,13 +6779,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_deleted_certificates_with_http_info(vault_base_url, maxresults:nil, custom_headers:nil)
-      get_deleted_certificates_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers).value!
+    def get_deleted_certificates_with_http_info(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      get_deleted_certificates_async(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers).value!
     end
 
     #
@@ -6567,12 +6804,14 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_deleted_certificates_async(vault_base_url, maxresults:nil, custom_headers:nil)
+    def get_deleted_certificates_async(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMaximum': '25'" if !maxresults.nil? && maxresults > 25
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMinimum': '1'" if !maxresults.nil? && maxresults < 1
@@ -6592,7 +6831,7 @@ module Azure::KeyVault::V7_0_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxresults' => maxresults,'api-version' => api_version},
+          query_params: {'maxresults' => maxresults,'includePending' => include_pending,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -7284,8 +7523,8 @@ module Azure::KeyVault::V7_0_preview
     # will be added to the HTTP request.
     #
     #
-    def purge_deleted_storge_account(vault_base_url, storage_account_name, custom_headers:nil)
-      response = purge_deleted_storge_account_async(vault_base_url, storage_account_name, custom_headers:custom_headers).value!
+    def purge_deleted_storage_account(vault_base_url, storage_account_name, custom_headers:nil)
+      response = purge_deleted_storage_account_async(vault_base_url, storage_account_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -7305,8 +7544,8 @@ module Azure::KeyVault::V7_0_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def purge_deleted_storge_account_with_http_info(vault_base_url, storage_account_name, custom_headers:nil)
-      purge_deleted_storge_account_async(vault_base_url, storage_account_name, custom_headers:custom_headers).value!
+    def purge_deleted_storage_account_with_http_info(vault_base_url, storage_account_name, custom_headers:nil)
+      purge_deleted_storage_account_async(vault_base_url, storage_account_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -7325,7 +7564,7 @@ module Azure::KeyVault::V7_0_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def purge_deleted_storge_account_async(vault_base_url, storage_account_name, custom_headers:nil)
+    def purge_deleted_storage_account_async(vault_base_url, storage_account_name, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, 'storage_account_name is nil' if storage_account_name.nil?
       fail ArgumentError, "'storage_account_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z]+$'" if !storage_account_name.nil? && storage_account_name.match(Regexp.new('^^[0-9a-zA-Z]+$$')).nil?
@@ -11335,13 +11574,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CertificateListResult] operation results.
     #
-    def get_certificates_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_certificates_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+    def get_certificates_as_lazy(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      first_page = get_certificates_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11356,13 +11597,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_certificates_as_lazy_with_http_info(vault_base_url, maxresults:nil, custom_headers:nil)
-      get_certificates_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers).value!
+    def get_certificates_as_lazy_with_http_info(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      get_certificates_as_lazy_async(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers).value!
     end
 
     #
@@ -11376,12 +11619,14 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_certificates_as_lazy_async(vault_base_url, maxresults:nil, custom_headers:nil)
+    def get_certificates_as_lazy_async(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMaximum': '25'" if !maxresults.nil? && maxresults > 25
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMinimum': '1'" if !maxresults.nil? && maxresults < 1
@@ -11396,7 +11641,7 @@ module Azure::KeyVault::V7_0_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxresults' => maxresults},
+          query_params: {'maxresults' => maxresults,'includePending' => include_pending},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -11658,13 +11903,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DeletedCertificateListResult] operation results.
     #
-    def get_deleted_certificates_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_deleted_certificates_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+    def get_deleted_certificates_as_lazy(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      first_page = get_deleted_certificates_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11682,13 +11929,15 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_deleted_certificates_as_lazy_with_http_info(vault_base_url, maxresults:nil, custom_headers:nil)
-      get_deleted_certificates_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers).value!
+    def get_deleted_certificates_as_lazy_with_http_info(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
+      get_deleted_certificates_as_lazy_async(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers).value!
     end
 
     #
@@ -11705,12 +11954,14 @@ module Azure::KeyVault::V7_0_preview
     # https://myvault.vault.azure.net.
     # @param maxresults [Integer] Maximum number of results to return in a page. If
     # not specified the service will return up to 25 results.
+    # @param include_pending [Boolean] Specifies whether to include certificates
+    # which are not completely provisioned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_deleted_certificates_as_lazy_async(vault_base_url, maxresults:nil, custom_headers:nil)
+    def get_deleted_certificates_as_lazy_async(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMaximum': '25'" if !maxresults.nil? && maxresults > 25
       fail ArgumentError, "'maxresults' should satisfy the constraint - 'InclusiveMinimum': '1'" if !maxresults.nil? && maxresults < 1
@@ -11725,7 +11976,7 @@ module Azure::KeyVault::V7_0_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxresults' => maxresults},
+          query_params: {'maxresults' => maxresults,'includePending' => include_pending},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

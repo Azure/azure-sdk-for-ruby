@@ -28,7 +28,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param run_name [String] The workflow run name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -46,7 +47,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param run_name [String] The workflow run name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -63,7 +65,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param run_name [String] The workflow run name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -224,6 +227,106 @@ module Azure::Logic::Mgmt::V2016_06_01
     end
 
     #
+    # Lists a workflow run expression trace.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param run_name [String] The workflow run name.
+    # @param action_name [String] The workflow action name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ExpressionTraces] operation results.
+    #
+    def list_expression_traces(resource_group_name, workflow_name, run_name, action_name, custom_headers:nil)
+      response = list_expression_traces_async(resource_group_name, workflow_name, run_name, action_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists a workflow run expression trace.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param run_name [String] The workflow run name.
+    # @param action_name [String] The workflow action name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_expression_traces_with_http_info(resource_group_name, workflow_name, run_name, action_name, custom_headers:nil)
+      list_expression_traces_async(resource_group_name, workflow_name, run_name, action_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Lists a workflow run expression trace.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param run_name [String] The workflow run name.
+    # @param action_name [String] The workflow action name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_expression_traces_async(resource_group_name, workflow_name, run_name, action_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
+      fail ArgumentError, 'run_name is nil' if run_name.nil?
+      fail ArgumentError, 'action_name is nil' if action_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/listExpressionTraces'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name,'runName' => run_name,'actionName' => action_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets a list of workflow run actions.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -318,7 +421,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @param workflow_name [String] The workflow name.
     # @param run_name [String] The workflow run name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: Status.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

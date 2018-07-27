@@ -205,8 +205,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     #
     # @return [SecurityContact] operation results.
     #
-    def crete(security_contact_name, security_contact, custom_headers:nil)
-      response = crete_async(security_contact_name, security_contact, custom_headers:custom_headers).value!
+    def create(security_contact_name, security_contact, custom_headers:nil)
+      response = create_async(security_contact_name, security_contact, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -220,8 +220,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def crete_with_http_info(security_contact_name, security_contact, custom_headers:nil)
-      crete_async(security_contact_name, security_contact, custom_headers:custom_headers).value!
+    def create_with_http_info(security_contact_name, security_contact, custom_headers:nil)
+      create_async(security_contact_name, security_contact, custom_headers:custom_headers).value!
     end
 
     #
@@ -234,7 +234,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def crete_async(security_contact_name, security_contact, custom_headers:nil)
+    def create_async(security_contact_name, security_contact, custom_headers:nil)
       @client.api_version = '2017-08-01-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
@@ -360,7 +360,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

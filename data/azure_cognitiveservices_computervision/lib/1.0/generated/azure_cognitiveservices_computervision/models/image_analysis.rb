@@ -15,21 +15,19 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       # @return [Array<Category>] An array indicating identified categories.
       attr_accessor :categories
 
-      # @return [AdultInfo] A property scoring on whether the image is
-      # adult-oriented and/or racy.
+      # @return [AdultInfo]
       attr_accessor :adult
 
-      # @return [ColorInfo] A property scoring on color spectrums.
+      # @return [ColorInfo]
       attr_accessor :color
 
-      # @return [ImageType] A property indicating type of image (whether it's
-      # clipart or line drawing)
+      # @return [ImageType]
       attr_accessor :image_type
 
       # @return [Array<ImageTag>] A list of tags with confidence level.
       attr_accessor :tags
 
-      # @return [ImageDescriptionDetails] Description of the image.
+      # @return [ImageDescriptionDetails]
       attr_accessor :description
 
       # @return [Array<FaceDescription>] An array of possible faces within the
@@ -39,7 +37,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       # @return [String] Id of the request for tracking purposes.
       attr_accessor :request_id
 
-      # @return [ImageMetadata] Image metadata
+      # @return [ImageMetadata]
       attr_accessor :metadata
 
 

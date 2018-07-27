@@ -12,6 +12,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      # @return [Hash{String => String}] dictionary object for custom filters
+      attr_accessor :properties
+
       # @return [String] Identifier of the correlation.
       attr_accessor :correlation_id
 
@@ -54,6 +57,22 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             name: 'Composite',
             class_name: 'CorrelationFilter',
             model_properties: {
+              properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               correlation_id: {
                 client_side_validation: true,
                 required: false,

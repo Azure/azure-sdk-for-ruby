@@ -13,7 +13,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] Publicly reachable URL of an image
       attr_accessor :url
 
 

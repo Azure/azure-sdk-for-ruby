@@ -53,13 +53,14 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       attr_accessor :hostname_configurations
 
       # @return [Array<String>] Public Static Load Balanced IP addresses of the
-      # API Management service. Available only for Basic, Standard and Premium
-      # SKU.
+      # API Management service in Primary region. Available only for Basic,
+      # Standard and Premium SKU.
       attr_accessor :public_ipaddresses
 
       # @return [Array<String>] Private Static Load Balanced IP addresses of
-      # the API Management service which is deployed in an Internal Virtual
-      # Network. Available only for Basic, Standard and Premium SKU.
+      # the API Management service in Primary region which is deployed in an
+      # Internal Virtual Network. Available only for Basic, Standard and
+      # Premium SKU.
       attr_accessor :private_ipaddresses
 
       # @return [VirtualNetworkConfiguration] Virtual network configuration of

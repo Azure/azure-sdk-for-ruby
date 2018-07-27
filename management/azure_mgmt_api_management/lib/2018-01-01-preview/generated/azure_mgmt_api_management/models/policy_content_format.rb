@@ -11,6 +11,8 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     module PolicyContentFormat
       Xml = "xml"
       XmlLink = "xml-link"
+      Rawxml = "rawxml"
+      RawxmlLink = "rawxml-link"
     end
   end
 end

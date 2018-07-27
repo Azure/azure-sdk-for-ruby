@@ -17,7 +17,8 @@ module Azure::KeyVault::V7_0_preview
       # 'RSA-HSM', 'oct'
       attr_accessor :kty
 
-      # @return [Integer] The key size in bytes. For example, 1024 or 2048.
+      # @return [Integer] The key size in bits. For example: 2048, 3072, or
+      # 4096 for RSA.
       attr_accessor :key_size
 
       # @return [Array<JsonWebKeyOperation>]
@@ -32,7 +33,7 @@ module Azure::KeyVault::V7_0_preview
 
       # @return [JsonWebKeyCurveName] Elliptic curve name. For valid values,
       # see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
-      # 'P-521', 'SECP256K1'
+      # 'P-521', 'P-256K'
       attr_accessor :curve
 
 

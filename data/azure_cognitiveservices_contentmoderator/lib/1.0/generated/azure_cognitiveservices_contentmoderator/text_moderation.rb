@@ -45,10 +45,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # Detects profanity in more than 100 languages and match against custom and
     # shared blacklists.
     #
-    # @param language [String] Language of the terms.
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
+    # @param language [String] Language of the text.
     # @param autocorrect [Boolean] Autocorrect text.
     # @param pii [Boolean] Detect personal identifiable information.
     # @param list_id [String] The list Id.
@@ -58,8 +58,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Screen] operation results.
     #
-    def screen_text(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
-      response = screen_text_async(language, text_content_type, text_content, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
+    def screen_text(text_content_type, text_content, language:nil, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
+      response = screen_text_async(text_content_type, text_content, language:language, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -69,10 +69,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # Detects profanity in more than 100 languages and match against custom and
     # shared blacklists.
     #
-    # @param language [String] Language of the terms.
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
+    # @param language [String] Language of the text.
     # @param autocorrect [Boolean] Autocorrect text.
     # @param pii [Boolean] Detect personal identifiable information.
     # @param list_id [String] The list Id.
@@ -82,8 +82,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def screen_text_with_http_info(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
-      screen_text_async(language, text_content_type, text_content, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
+    def screen_text_with_http_info(text_content_type, text_content, language:nil, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
+      screen_text_async(text_content_type, text_content, language:language, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
     end
 
     #
@@ -92,10 +92,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # Detects profanity in more than 100 languages and match against custom and
     # shared blacklists.
     #
-    # @param language [String] Language of the terms.
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
+    # @param language [String] Language of the text.
     # @param autocorrect [Boolean] Autocorrect text.
     # @param pii [Boolean] Detect personal identifiable information.
     # @param list_id [String] The list Id.
@@ -105,9 +105,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def screen_text_async(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
+    def screen_text_async(text_content_type, text_content, language:nil, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
       fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
-      fail ArgumentError, 'language is nil' if language.nil?
       fail ArgumentError, 'text_content_type is nil' if text_content_type.nil?
       fail ArgumentError, 'text_content is nil' if text_content.nil?
 
@@ -126,11 +125,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
         required: true,
         serialized_name: 'Text Content',
         type: {
-          name: 'String'
+          name: 'Stream'
         }
       }
       request_content = @client.serialize(request_mapper,  text_content)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'contentmoderator/moderate/v1.0/ProcessText/Screen/'
 
@@ -181,7 +179,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -200,7 +198,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -218,7 +216,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -244,11 +242,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
         required: true,
         serialized_name: 'Text Content',
         type: {
-          name: 'String'
+          name: 'Stream'
         }
       }
       request_content = @client.serialize(request_mapper,  text_content)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'contentmoderator/moderate/v1.0/ProcessText/DetectLanguage'
 

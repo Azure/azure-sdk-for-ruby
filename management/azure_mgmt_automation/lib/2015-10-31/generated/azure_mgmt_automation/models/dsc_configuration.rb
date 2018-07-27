@@ -8,7 +8,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the configuration type.
     #
-    class DscConfiguration < Resource
+    class DscConfiguration < TrackedResource
 
       include MsRestAzure
 
@@ -39,6 +39,9 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       # @return [DateTime] Gets or sets the last modified time.
       attr_accessor :last_modified_time
+
+      # @return [Integer] Gets the number of compiled node configurations.
+      attr_accessor :node_configuration_count
 
       # @return [String] Gets or sets the description.
       attr_accessor :description
@@ -87,14 +90,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 client_side_validation: true,
                 required: false,
@@ -109,6 +104,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               provisioning_state: {
@@ -184,6 +187,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              node_configuration_count: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.nodeConfigurationCount',
+                type: {
+                  name: 'Number'
                 }
               },
               description: {

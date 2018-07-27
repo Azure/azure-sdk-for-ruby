@@ -24,44 +24,49 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete the job schedule identified by job schedule name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(automation_account_name, job_schedule_id, custom_headers:nil)
-      response = delete_async(automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
+    def delete(resource_group_name, automation_account_name, job_schedule_id, custom_headers:nil)
+      response = delete_async(resource_group_name, automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # Delete the job schedule identified by job schedule name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(automation_account_name, job_schedule_id, custom_headers:nil)
-      delete_async(automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, automation_account_name, job_schedule_id, custom_headers:nil)
+      delete_async(resource_group_name, automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
     end
 
     #
     # Delete the job schedule identified by job schedule name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(automation_account_name, job_schedule_id, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def delete_async(resource_group_name, automation_account_name, job_schedule_id, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'job_schedule_id is nil' if job_schedule_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -80,7 +85,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'jobScheduleId' => job_schedule_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'jobScheduleId' => job_schedule_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -107,45 +112,50 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the job schedule identified by job schedule name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [JobSchedule] operation results.
     #
-    def get(automation_account_name, job_schedule_id, custom_headers:nil)
-      response = get_async(automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
+    def get(resource_group_name, automation_account_name, job_schedule_id, custom_headers:nil)
+      response = get_async(resource_group_name, automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve the job schedule identified by job schedule name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(automation_account_name, job_schedule_id, custom_headers:nil)
-      get_async(automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, automation_account_name, job_schedule_id, custom_headers:nil)
+      get_async(resource_group_name, automation_account_name, job_schedule_id, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve the job schedule identified by job schedule name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(automation_account_name, job_schedule_id, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def get_async(resource_group_name, automation_account_name, job_schedule_id, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'job_schedule_id is nil' if job_schedule_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -164,7 +174,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'jobScheduleId' => job_schedule_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'jobScheduleId' => job_schedule_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -201,7 +211,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create a job schedule.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param parameters [JobScheduleCreateParameters] The parameters supplied to
     # the create job schedule operation.
@@ -210,15 +221,16 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [JobSchedule] operation results.
     #
-    def create(automation_account_name, job_schedule_id, parameters, custom_headers:nil)
-      response = create_async(automation_account_name, job_schedule_id, parameters, custom_headers:custom_headers).value!
+    def create(resource_group_name, automation_account_name, job_schedule_id, parameters, custom_headers:nil)
+      response = create_async(resource_group_name, automation_account_name, job_schedule_id, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Create a job schedule.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param parameters [JobScheduleCreateParameters] The parameters supplied to
     # the create job schedule operation.
@@ -227,14 +239,15 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(automation_account_name, job_schedule_id, parameters, custom_headers:nil)
-      create_async(automation_account_name, job_schedule_id, parameters, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, automation_account_name, job_schedule_id, parameters, custom_headers:nil)
+      create_async(resource_group_name, automation_account_name, job_schedule_id, parameters, custom_headers:custom_headers).value!
     end
 
     #
     # Create a job schedule.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_schedule_id The job schedule name.
     # @param parameters [JobScheduleCreateParameters] The parameters supplied to
     # the create job schedule operation.
@@ -243,9 +256,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(automation_account_name, job_schedule_id, parameters, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def create_async(resource_group_name, automation_account_name, job_schedule_id, parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'job_schedule_id is nil' if job_schedule_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -271,7 +286,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'jobScheduleId' => job_schedule_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'jobScheduleId' => job_schedule_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -309,42 +324,50 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of job schedules.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
+    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<JobSchedule>] operation results.
     #
-    def list_by_automation_account(automation_account_name, custom_headers:nil)
-      first_page = list_by_automation_account_as_lazy(automation_account_name, custom_headers:custom_headers)
+    def list_by_automation_account(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      first_page = list_by_automation_account_as_lazy(resource_group_name, automation_account_name, filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
     # Retrieve a list of job schedules.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
+    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_automation_account_with_http_info(automation_account_name, custom_headers:nil)
-      list_by_automation_account_async(automation_account_name, custom_headers:custom_headers).value!
+    def list_by_automation_account_with_http_info(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      list_by_automation_account_async(resource_group_name, automation_account_name, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve a list of job schedules.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
+    # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_automation_account_async(automation_account_name, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def list_by_automation_account_async(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -362,8 +385,8 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -487,15 +510,17 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of job schedules.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
+    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [JobScheduleListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_automation_account_as_lazy(automation_account_name, custom_headers:nil)
-      response = list_by_automation_account_async(automation_account_name, custom_headers:custom_headers).value!
+    def list_by_automation_account_as_lazy(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      response = list_by_automation_account_async(resource_group_name, automation_account_name, filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

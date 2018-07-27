@@ -43,6 +43,6 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     autoload :AlertNotifications,                                 '2017-08-01-preview/generated/azure_mgmt_security/models/alert_notifications.rb'
     autoload :AlertsToAdmins,                                     '2017-08-01-preview/generated/azure_mgmt_security/models/alerts_to_admins.rb'
     autoload :PricingTier,                                        '2017-08-01-preview/generated/azure_mgmt_security/models/pricing_tier.rb'
-    autoload :ProvisioningSetting,                                '2017-08-01-preview/generated/azure_mgmt_security/models/provisioning_setting.rb'
+    autoload :AutoProvision,                                      '2017-08-01-preview/generated/azure_mgmt_security/models/auto_provision.rb'
   end
 end
