@@ -6,28 +6,35 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Event data for Microsoft.Devices.DeviceCreated event.
+    # Event data for Microsoft.Devices.DeviceConnected event.
     #
-    class IotHubDeviceCreatedEventData < DeviceLifeCycleEventProperties
+    class IotHubDeviceConnectedEventData < DeviceConnectionStateEventProperties
 
       include MsRestAzure
 
 
       #
-      # Mapper for IotHubDeviceCreatedEventData class as Ruby Hash.
+      # Mapper for IotHubDeviceConnectedEventData class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'IotHubDeviceCreatedEventData',
+          serialized_name: 'IotHubDeviceConnectedEventData',
           type: {
             name: 'Composite',
-            class_name: 'IotHubDeviceCreatedEventData',
+            class_name: 'IotHubDeviceConnectedEventData',
             model_properties: {
               device_id: {
                 required: false,
                 serialized_name: 'deviceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              module_id: {
+                required: false,
+                serialized_name: 'moduleId',
                 type: {
                   name: 'String'
                 }
@@ -39,12 +46,12 @@ module Azure::EventGrid::V2018_01_01
                   name: 'String'
                 }
               },
-              twin: {
+              device_connection_state_event_info: {
                 required: false,
-                serialized_name: 'twin',
+                serialized_name: 'deviceConnectionStateEventInfo',
                 type: {
                   name: 'Composite',
-                  class_name: 'DeviceTwinInfo'
+                  class_name: 'DeviceConnectionStateEventInfo'
                 }
               }
             }
