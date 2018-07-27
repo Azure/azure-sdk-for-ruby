@@ -611,13 +611,6 @@
       "tag": "package-2018-06-preview"
     }
   },
-  "azure_mgmt_mobile_engagement": {
-    "azure_mgmt_mobile_engagement_2014_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/mobileengagement/resource-manager/readme.md",
-      "namespace": "Azure::MobileEngagement::Mgmt::V2014_12_01",
-      "tag": "package-2014-12"
-    }
-  },
   "azure_mgmt_monitor": {
     "azure_mgmt_monitor_2018_04_16": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/monitor/resource-manager/readme.md",
@@ -1047,13 +1040,6 @@
       ],
       "namespace": "Azure::Security::Mgmt::V2017_08_01_preview",
       "title": "SecurityManagementClient"
-    }
-  },
-  "azure_mgmt_server_management": {
-    "azure_mgmt_server_management_2016_07_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/68a0d93b00f335894fd00b83bbdc8dd27e68b034/specification/servermanagement/resource-manager/readme.md",
-      "namespace": "Azure::ServerManagement::Mgmt::V2016_07_01_preview",
-      "tag": "package-2016-07-preview"
     }
   },
   "azure_mgmt_service_bus": {

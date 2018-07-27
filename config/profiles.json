@@ -237,11 +237,6 @@
                         "2018-06-01-preview": ["*"]
                     }
                 },
-                "Microsoft.MobileEngagement": {
-                    "management": {
-                        "2014-12-01": ["*"]
-                    }
-                },
                 "Microsoft.Monitor": {
                     "management": {
                         "2015-04-01": ["*"],
@@ -340,11 +335,6 @@
                 "Microsoft.Security": {
                     "management": {
                         "2017-08-01-preview": ["*"]
-                    }
-                },
-                "Microsoft.ServerManagement": {
-                    "management": {
-                        "2016-07-01-preview": ["*"]
                     }
                 },
                 "Microsoft.ServiceBus": {
@@ -978,20 +968,6 @@
             "individual_gem_profile": true
         }
         ],
-        "azure_mgmt_mobile_engagement": [
-        {
-            "name": "Latest",
-            "resourceTypes": {
-                "Microsoft.MobileEngagement" : {
-                    "management": {
-                        "2014-12-01": ["*"]
-                    }
-                }
-            },
-            "output_dir": "management/azure_mgmt_mobile_engagement/lib/profiles",
-            "individual_gem_profile": true
-        }
-        ],
         "azure_mgmt_monitor": [
         {
             "name": "Latest",
@@ -1284,20 +1260,6 @@
                 }
             },
             "output_dir": "management/azure_mgmt_security/lib/profiles",
-            "individual_gem_profile": true
-        }
-        ],
-        "azure_mgmt_server_management": [
-        {
-            "name": "Latest",
-            "resourceTypes": {
-                "Microsoft.ServerManagement" : {
-                    "management": {
-                        "2016-07-01-preview": ["*"]
-                    }
-                }
-            },
-            "output_dir": "management/azure_mgmt_server_management/lib/profiles",
             "individual_gem_profile": true
         }
         ],
