@@ -102,13 +102,13 @@ module Azure::Profiles::Latest
         JobInput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInput
         MediaService = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaService
         SubscriptionMediaService = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
-        Asset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
         OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
+        Asset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier
-        ContentKeyPolicyOpenRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
         ContentKeyPolicyUnknownRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyUnknownRestriction
         ContentKeyPolicySymmetricTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicySymmetricTokenKey
+        ContentKeyPolicyOpenRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
         ContentKeyPolicyRsaTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRsaTokenKey
         ContentKeyPolicyX509CertificateTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyX509CertificateTokenKey
         ContentKeyPolicyTokenRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyTokenRestriction
@@ -135,7 +135,7 @@ module Azure::Profiles::Latest
         JpgImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JpgImage
         MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MultiBitrateFormat
         Mp4Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Mp4Format
-        PngLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
+        PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
         BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
         StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
         VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
@@ -183,10 +183,10 @@ module Azure::Profiles::Latest
         LiveEventEncodingType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
         LiveEventResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
         StreamOptionsFlag = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
+        TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
         StreamingEndpointResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
         ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
-        TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
-        PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
+        PngLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
         Resource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
         StorageAccount = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StorageAccount
         Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Format
@@ -481,11 +481,11 @@ module Azure::Profiles::Latest
           def subscription_media_service
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
           end
-          def asset
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
-          end
           def operation_collection
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
+          end
+          def asset
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
           end
           def content_key_policy_play_ready_content_encryption_key_from_header
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader
@@ -493,14 +493,14 @@ module Azure::Profiles::Latest
           def content_key_policy_play_ready_content_encryption_key_from_key_identifier
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier
           end
-          def content_key_policy_open_restriction
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
-          end
           def content_key_policy_unknown_restriction
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyUnknownRestriction
           end
           def content_key_policy_symmetric_token_key
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicySymmetricTokenKey
+          end
+          def content_key_policy_open_restriction
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
           end
           def content_key_policy_rsa_token_key
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRsaTokenKey
@@ -580,8 +580,8 @@ module Azure::Profiles::Latest
           def mp4_format
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Mp4Format
           end
-          def png_layer
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
+          def png_image
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
           end
           def built_in_standard_encoder_preset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
@@ -724,17 +724,17 @@ module Azure::Profiles::Latest
           def stream_options_flag
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
           end
+          def tracked_resource
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
+          end
           def streaming_endpoint_resource_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
           end
           def proxy_resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
           end
-          def tracked_resource
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
-          end
-          def png_image
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
+          def png_layer
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
           end
           def resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource

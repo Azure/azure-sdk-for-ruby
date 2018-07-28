@@ -33,7 +33,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LoggerCreateParameters',
           type: {
@@ -41,7 +40,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'LoggerCreateParameters',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',
@@ -51,7 +49,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -59,13 +56,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               credentials: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'credentials',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -75,7 +70,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               is_buffered: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isBuffered',
                 type: {

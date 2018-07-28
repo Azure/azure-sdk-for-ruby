@@ -9,6 +9,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Defines values for AutomationKeyPermissions
     #
     module AutomationKeyPermissions
+      Read = "Read"
       Full = "Full"
     end
   end

@@ -16,6 +16,7 @@ module Azure::Profiles::Latest
       EdgeNodes = Azure::CDN::Mgmt::V2017_10_12::EdgeNodes
 
       module Models
+        ValidateCustomDomainOutput = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
         CheckNameAvailabilityInput = Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityInput
         DeliveryRuleCondition = Azure::CDN::Mgmt::V2017_10_12::Models::DeliveryRuleCondition
         CheckNameAvailabilityOutput = Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityOutput
@@ -47,10 +48,10 @@ module Azure::Profiles::Latest
         CustomHttpsProvisioningSubstate = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
         ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         OperationDisplay = Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
+        TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
         ErrorResponse = Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
         ProxyResource = Azure::CDN::Mgmt::V2017_10_12::Models::ProxyResource
         Operation = Azure::CDN::Mgmt::V2017_10_12::Models::Operation
-        TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
         Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
         CustomDomain = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomain
         Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
@@ -74,7 +75,6 @@ module Azure::Profiles::Latest
         CustomDomainListResult = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomainListResult
         ValidateCustomDomainInput = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainInput
         IpAddressGroup = Azure::CDN::Mgmt::V2017_10_12::Models::IpAddressGroup
-        ValidateCustomDomainOutput = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
       end
 
       class CDNManagementClass
@@ -113,6 +113,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def validate_custom_domain_output
+            Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
+          end
           def check_name_availability_input
             Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityInput
           end
@@ -206,6 +209,9 @@ module Azure::Profiles::Latest
           def operation_display
             Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
           end
+          def tracked_resource
+            Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
+          end
           def error_response
             Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
           end
@@ -214,9 +220,6 @@ module Azure::Profiles::Latest
           end
           def operation
             Azure::CDN::Mgmt::V2017_10_12::Models::Operation
-          end
-          def tracked_resource
-            Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
           end
           def sku
             Azure::CDN::Mgmt::V2017_10_12::Models::Sku
@@ -286,9 +289,6 @@ module Azure::Profiles::Latest
           end
           def ip_address_group
             Azure::CDN::Mgmt::V2017_10_12::Models::IpAddressGroup
-          end
-          def validate_custom_domain_output
-            Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
           end
         end
       end

@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Creates the Dsc compilation job of the configuration.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param compilation_job_id The the DSC configuration Id.
     # @param parameters [DscCompilationJobCreateParameters] The parameters supplied
     # to the create compilation job operation.
@@ -43,7 +43,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Creates the Dsc compilation job of the configuration.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param compilation_job_id The the DSC configuration Id.
     # @param parameters [DscCompilationJobCreateParameters] The parameters supplied
     # to the create compilation job operation.
@@ -60,7 +60,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Creates the Dsc compilation job of the configuration.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param compilation_job_id The the DSC configuration Id.
     # @param parameters [DscCompilationJobCreateParameters] The parameters supplied
     # to the create compilation job operation.
@@ -136,7 +136,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc configuration compilation job identified by job id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param compilation_job_id The Dsc configuration compilation job id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -152,7 +152,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc configuration compilation job identified by job id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param compilation_job_id The Dsc configuration compilation job id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -167,7 +167,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc configuration compilation job identified by job id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param compilation_job_id The Dsc configuration compilation job id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -231,7 +231,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of dsc compilation jobs.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -247,7 +247,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of dsc compilation jobs.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -262,7 +262,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of dsc compilation jobs.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -325,7 +325,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the job stream identified by job stream id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_id The job id.
     # @param job_stream_id [String] The job stream id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -342,7 +342,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the job stream identified by job stream id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_id The job id.
     # @param job_stream_id [String] The job stream id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -358,7 +358,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the job stream identified by job stream id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param job_id The job id.
     # @param job_stream_id [String] The job stream id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -511,7 +511,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of dsc compilation jobs.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
