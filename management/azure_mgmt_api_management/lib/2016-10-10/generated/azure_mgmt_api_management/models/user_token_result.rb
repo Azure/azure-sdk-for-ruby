@@ -22,7 +22,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserTokenResult',
           type: {
@@ -30,7 +29,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'UserTokenResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

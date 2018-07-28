@@ -92,7 +92,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OAuth2AuthorizationServerUpdateContract',
           type: {
@@ -100,7 +99,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'OAuth2AuthorizationServerUpdateContract',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -112,7 +110,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -120,7 +117,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               client_registration_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientRegistrationEndpoint',
                 type: {
@@ -128,7 +124,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               authorization_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationEndpoint',
                 type: {
@@ -136,13 +131,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               authorization_methods: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationMethods',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MethodContractElementType',
                       type: {
@@ -153,13 +146,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               client_authentication_method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientAuthenticationMethod',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClientAuthenticationMethodContractElementType',
                       type: {
@@ -170,13 +161,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               token_body_parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tokenBodyParameters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TokenBodyParameterContractElementType',
                       type: {
@@ -187,7 +176,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               token_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tokenEndpoint',
                 type: {
@@ -195,7 +183,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               support_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'supportState',
                 type: {
@@ -203,7 +190,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               default_scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultScope',
                 type: {
@@ -211,13 +197,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               grant_types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'grantTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GrantTypesContractElementType',
                       type: {
@@ -228,13 +212,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               bearer_token_sending_methods: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bearerTokenSendingMethods',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BearerTokenSendingMethodsContractElementType',
                       type: {
@@ -245,7 +227,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               client_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientId',
                 type: {
@@ -253,7 +234,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               client_secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientSecret',
                 type: {
@@ -261,7 +241,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               resource_owner_username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceOwnerUsername',
                 type: {
@@ -269,7 +248,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               resource_owner_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceOwnerPassword',
                 type: {

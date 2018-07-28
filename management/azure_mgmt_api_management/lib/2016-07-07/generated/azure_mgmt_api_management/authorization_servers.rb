@@ -41,8 +41,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Array<OAuth2AuthorizationServerContract>] operation results.
     #
-    def list_by_service(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      first_page = list_by_service_as_lazy(resource_group_name, service_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers)
+    def list_by_service(resource_group_name, service_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
+      first_page = list_by_service_as_lazy(resource_group_name, service_name, filter, top, skip, custom_headers)
       first_page.get_all_items
     end
 
@@ -66,8 +66,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_service_with_http_info(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      list_by_service_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers).value!
+    def list_by_service_with_http_info(resource_group_name, service_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
+      list_by_service_async(resource_group_name, service_name, filter, top, skip, custom_headers).value!
     end
 
     #
@@ -90,20 +90,14 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_service_async(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
+    def list_by_service_async(resource_group_name, service_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
-      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -159,8 +153,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [OAuth2AuthorizationServerContract] operation results.
     #
-    def get(resource_group_name, service_name, authsid, custom_headers:nil)
-      response = get_async(resource_group_name, service_name, authsid, custom_headers:custom_headers).value!
+    def get(resource_group_name, service_name, authsid, custom_headers = nil)
+      response = get_async(resource_group_name, service_name, authsid, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -175,8 +169,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, service_name, authsid, custom_headers:nil)
-      get_async(resource_group_name, service_name, authsid, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, service_name, authsid, custom_headers = nil)
+      get_async(resource_group_name, service_name, authsid, custom_headers).value!
     end
 
     #
@@ -190,21 +184,15 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, service_name, authsid, custom_headers:nil)
+    def get_async(resource_group_name, service_name, authsid, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'authsid is nil' if authsid.nil?
-      fail ArgumentError, "'authsid' should satisfy the constraint - 'MaxLength': '256'" if !authsid.nil? && authsid.length > 256
-      fail ArgumentError, "'authsid' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !authsid.nil? && authsid.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -261,8 +249,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     # will be added to the HTTP request.
     #
     #
-    def create_or_update(resource_group_name, service_name, authsid, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, service_name, authsid, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, service_name, authsid, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, service_name, authsid, parameters, custom_headers).value!
       nil
     end
 
@@ -279,8 +267,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, service_name, authsid, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, service_name, authsid, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, service_name, authsid, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, service_name, authsid, parameters, custom_headers).value!
     end
 
     #
@@ -296,26 +284,22 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, service_name, authsid, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, service_name, authsid, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'authsid is nil' if authsid.nil?
-      fail ArgumentError, "'authsid' should satisfy the constraint - 'MaxLength': '256'" if !authsid.nil? && authsid.length > 256
-      fail ArgumentError, "'authsid' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !authsid.nil? && authsid.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::ApiManagement::Mgmt::V2016_07_07::Models::OAuth2AuthorizationServerContract.mapper()
@@ -368,8 +352,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     # will be added to the HTTP request.
     #
     #
-    def update(resource_group_name, service_name, authsid, parameters, if_match, custom_headers:nil)
-      response = update_async(resource_group_name, service_name, authsid, parameters, if_match, custom_headers:custom_headers).value!
+    def update(resource_group_name, service_name, authsid, parameters, if_match, custom_headers = nil)
+      response = update_async(resource_group_name, service_name, authsid, parameters, if_match, custom_headers).value!
       nil
     end
 
@@ -389,8 +373,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, service_name, authsid, parameters, if_match, custom_headers:nil)
-      update_async(resource_group_name, service_name, authsid, parameters, if_match, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, service_name, authsid, parameters, if_match, custom_headers = nil)
+      update_async(resource_group_name, service_name, authsid, parameters, if_match, custom_headers).value!
     end
 
     #
@@ -409,12 +393,9 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, service_name, authsid, parameters, if_match, custom_headers:nil)
+    def update_async(resource_group_name, service_name, authsid, parameters, if_match, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'authsid is nil' if authsid.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
@@ -423,12 +404,13 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::ApiManagement::Mgmt::V2016_07_07::Models::OAuth2AuthorizationServerUpdateContract.mapper()
@@ -479,8 +461,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, service_name, authsid, if_match, custom_headers:nil)
-      response = delete_async(resource_group_name, service_name, authsid, if_match, custom_headers:custom_headers).value!
+    def delete(resource_group_name, service_name, authsid, if_match, custom_headers = nil)
+      response = delete_async(resource_group_name, service_name, authsid, if_match, custom_headers).value!
       nil
     end
 
@@ -498,8 +480,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, service_name, authsid, if_match, custom_headers:nil)
-      delete_async(resource_group_name, service_name, authsid, if_match, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, service_name, authsid, if_match, custom_headers = nil)
+      delete_async(resource_group_name, service_name, authsid, if_match, custom_headers).value!
     end
 
     #
@@ -516,12 +498,9 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, service_name, authsid, if_match, custom_headers:nil)
+    def delete_async(resource_group_name, service_name, authsid, if_match, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'authsid is nil' if authsid.nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -529,7 +508,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -576,8 +554,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [AuthorizationServerCollection] operation results.
     #
-    def list_by_service_next(next_page_link, custom_headers:nil)
-      response = list_by_service_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_service_next(next_page_link, custom_headers = nil)
+      response = list_by_service_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -592,8 +570,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_service_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_service_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_service_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_service_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -607,12 +585,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_service_next_async(next_page_link, custom_headers:nil)
+    def list_by_service_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -677,12 +654,12 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     # @return [AuthorizationServerCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_by_service_as_lazy(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      response = list_by_service_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers).value!
+    def list_by_service_as_lazy(resource_group_name, service_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
+      response = list_by_service_async(resource_group_name, service_name, filter, top, skip, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_service_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_service_next_async(next_page_link, custom_headers)
         end
         page
       end

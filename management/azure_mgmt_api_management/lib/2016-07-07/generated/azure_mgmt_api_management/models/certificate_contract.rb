@@ -35,7 +35,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateContract',
           type: {
@@ -43,7 +42,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'CertificateContract',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,7 +50,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               subject: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'subject',
                 type: {
@@ -60,7 +57,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               thumbprint: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'thumbprint',
                 type: {
@@ -68,7 +64,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               expiration_date: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'expirationDate',
                 type: {
