@@ -256,7 +256,7 @@
                 },
                 "Microsoft.Network": {
                     "management": {
-                        "2018-04-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -1018,7 +1018,7 @@
             "resourceTypes": {
                 "Microsoft.Network" : {
                     "management": {
-                        "2018-04-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 }
             },
