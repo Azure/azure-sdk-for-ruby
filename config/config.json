@@ -782,7 +782,10 @@
       "title": "NetworkManagementClient"
     },
     "azure_mgmt_network_2017_03_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e3c509317a877e7e361da3650924c3f8139fbed/specification/network/resource-manager/readme.md",
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e3c509317a877e7e361da3650924c3f8139fbed/specification/network/resource-manager/Microsoft.Network/stable/2018-06-01/vmssNetworkInterface.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e3c509317a877e7e361da3650924c3f8139fbed/specification/network/resource-manager/Microsoft.Network/stable/2018-06-01/vmssPublicIpAddress.json"
+      ],
       "namespace": "Azure::Network::Mgmt::V2017_03_30",
       "tag": "package-2017-03-30-only",
       "title": "NetworkManagementClient"

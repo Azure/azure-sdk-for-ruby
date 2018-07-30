@@ -32,6 +32,10 @@ module Azure::Network::Mgmt::V2017_03_30
       # associated with the public IP address.
       attr_accessor :dns_settings
 
+      # @return [Array<IpTag>] The list of tags associated with the public IP
+      # address.
+      attr_accessor :ip_tags
+
       # @return [String] The IP address associated with the public IP address
       # resource.
       attr_accessor :ip_address
@@ -160,6 +164,23 @@ module Azure::Network::Mgmt::V2017_03_30
                 type: {
                   name: 'Composite',
                   class_name: 'PublicIPAddressDnsSettings'
+                }
+              },
+              ip_tags: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.ipTags',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'IpTagElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IpTag'
+                      }
+                  }
                 }
               },
               ip_address: {
