@@ -12,10 +12,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [Float] Confidence level that the image is a clip art.
+      # @return [Integer] Confidence level that the image is a clip art.
       attr_accessor :clip_art_type
 
-      # @return [Float] Confidence level that the image is a line drawing.
+      # @return [Integer] Confidence level that the image is a line drawing.
       attr_accessor :line_drawing_type
 
 
@@ -35,14 +35,14 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 required: false,
                 serialized_name: 'clipArtType',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               },
               line_drawing_type: {
                 required: false,
                 serialized_name: 'lineDrawingType',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               }
             }
