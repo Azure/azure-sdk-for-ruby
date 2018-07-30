@@ -6,18 +6,19 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # The response of the List Namespace operation
+    # The response of the List MessagingRegions operation.
     #
-    class EHNamespaceListResult
+    class MessagingRegionsListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<EHNamespace>] Result of the List Namespace operation
+      # @return [Array<MessagingRegions>] Result of the List MessagingRegions
+      # type.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of namespaces.
+      # contains incomplete list of MessagingRegions.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -26,7 +27,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<EHNamespace>] operation results.
+      # @return [Array<MessagingRegions>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +42,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       # Gets the next page of results.
       #
-      # @return [EHNamespaceListResult] with next page content.
+      # @return [MessagingRegionsListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,16 +54,16 @@ module Azure::EventHub::Mgmt::V2017_04_01
       end
 
       #
-      # Mapper for EHNamespaceListResult class as Ruby Hash.
+      # Mapper for MessagingRegionsListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'EHNamespaceListResult',
+          serialized_name: 'MessagingRegionsListResult',
           type: {
             name: 'Composite',
-            class_name: 'EHNamespaceListResult',
+            class_name: 'MessagingRegionsListResult',
             model_properties: {
               value: {
                 required: false,
@@ -71,16 +72,17 @@ module Azure::EventHub::Mgmt::V2017_04_01
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'EHNamespaceElementType',
+                      serialized_name: 'MessagingRegionsElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'EHNamespace'
+                        class_name: 'MessagingRegions'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'
