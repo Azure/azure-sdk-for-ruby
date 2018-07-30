@@ -62,7 +62,7 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Gets the specified authorization from the specified express route circuit.
+    # Gets the specified peering for the express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -78,7 +78,7 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Gets the specified authorization from the specified express route circuit.
+    # Gets the specified peering for the express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -93,7 +93,7 @@ module Azure::Network::Mgmt::V2018_01_01
     end
 
     #
-    # Gets the specified authorization from the specified express route circuit.
+    # Gets the specified peering for the express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
