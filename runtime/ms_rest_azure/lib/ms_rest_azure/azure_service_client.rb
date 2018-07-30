@@ -33,7 +33,7 @@ module MsRestAzure
     #
     # @return [MsRest::HttpOperationResponse] the response.
     #
-    def get_long_running_operation_result(azure_response, custom_deserialization_block)
+    def get_long_running_operation_result(azure_response, custom_deserialization_block, final_state_via = FinalStateVia::DEFAULT)
       check_for_status_code_failure(azure_response)
 
       http_method = azure_response.request.method
@@ -47,15 +47,19 @@ module MsRestAzure
             if !polling_state.azure_async_operation_header_link.nil?
               update_state_from_azure_async_operation_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state)
             elsif !polling_state.location_header_link.nil?
-              update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
+              update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block, final_state_via)
             elsif http_method === :put
               get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers, user_agent_extended: user_agent_extended})
               update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
             else
               task.shutdown
-              if !polling_state.response.body.to_s.empty?
-                body = JSON.load(polling_state.response.body)
-                polling_state.resource = custom_deserialization_block.call(body)
+              if final_state_via == FinalStateVia::LOCATION
+                if !polling_state.response.body.to_s.empty?
+                  body = JSON.load(polling_state.response.body)
+                  polling_state.resource = custom_deserialization_block.call(body)
+                else
+                  fail AzureOperationError, 'Location header is missing from long running operation'
+                end
               else
                 fail AzureOperationError, 'Location header is missing from long running operation'
               end
@@ -88,8 +92,10 @@ module MsRestAzure
           update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
         end
 
-        if((http_method === :post || http_method === :delete) && !polling_state.location_header_link.nil?)
-          update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
+        if final_state_via == FinalStateVia::LOCATION
+          if((http_method === :post || http_method === :delete) && !polling_state.location_header_link.nil?)
+            update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
+          end
         end
 
         # Process long-running POST/DELETE operation with schema defined on success status codes
@@ -162,7 +168,7 @@ module MsRestAzure
     # @param polling_state [MsRestAzure::PollingState] polling state to update.
     # @param custom_deserialization_block [Proc] custom deserialization method for parsing response.
     #
-    def update_state_from_location_header(request, polling_state, custom_deserialization_block)
+    def update_state_from_location_header(request, polling_state, custom_deserialization_block, final_state_via)
       result = get_async_with_custom_deserialization(request, custom_deserialization_block)
 
       polling_state.update_response(result.response)
@@ -182,7 +188,7 @@ module MsRestAzure
 
         polling_state.error_data = error_data
         polling_state.resource = result.body
-      elsif status_code === 404 && http_method === :delete && !polling_state.azure_async_operation_header_link.nil? && !polling_state.location_header_link.nil?
+      elsif final_state_via == FinalStateVia::LOCATION && status_code === 404 && http_method === :delete && !polling_state.azure_async_operation_header_link.nil? && !polling_state.location_header_link.nil?
         polling_state.status = AsyncOperationStatus::SUCCESS_STATUS
       else
         fail AzureOperationError, "The response from long running operation does not have a valid status code. Method: #{http_method}, Status Code: #{status_code}"
