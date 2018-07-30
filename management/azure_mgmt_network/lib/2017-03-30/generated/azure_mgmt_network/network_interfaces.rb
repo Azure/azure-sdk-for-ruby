@@ -5,7 +5,10 @@
 
 module Azure::Network::Mgmt::V2017_03_30
   #
-  # Network Client
+  # The Microsoft Azure Network management API provides a RESTful set of web
+  # services that interact with Microsoft Azure Networks service to manage your
+  # network resources. The API has entities that capture the relationship
+  # between an end user and the Microsoft Azure Networks service.
   #
   class NetworkInterfaces
     include MsRestAzure

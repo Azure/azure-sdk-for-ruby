@@ -23,8 +23,8 @@ module Azure::Network::Mgmt::V2017_03_30
       # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] Resource that is unique within a resource group. This
-      # name can be used to access the resource.
+      # @return [String] Name of the backend address pool that is unique within
+      # an Application Gateway.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
