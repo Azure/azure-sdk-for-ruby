@@ -75,6 +75,7 @@ module Azure::Network::Mgmt::V2018_01_01
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
