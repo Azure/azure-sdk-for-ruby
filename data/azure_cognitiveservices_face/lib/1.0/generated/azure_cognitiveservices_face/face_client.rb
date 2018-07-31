@@ -48,6 +48,18 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [FaceListOperations] face_list_operations
     attr_reader :face_list_operations
 
+    # @return [LargePersonGroupPerson] large_person_group_person
+    attr_reader :large_person_group_person
+
+    # @return [LargePersonGroupOperations] large_person_group_operations
+    attr_reader :large_person_group_operations
+
+    # @return [LargeFaceListOperations] large_face_list_operations
+    attr_reader :large_face_list_operations
+
+    # @return [LargeFaceListFace] large_face_list_face
+    attr_reader :large_face_list_face
+
     #
     # Creates initializes a new instance of the FaceClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -64,6 +76,10 @@ module Azure::CognitiveServices::Face::V1_0
       @person_group_person = PersonGroupPerson.new(self)
       @person_group_operations = PersonGroupOperations.new(self)
       @face_list_operations = FaceListOperations.new(self)
+      @large_person_group_person = LargePersonGroupPerson.new(self)
+      @large_person_group_operations = LargePersonGroupOperations.new(self)
+      @large_face_list_operations = LargeFaceListOperations.new(self)
+      @large_face_list_face = LargeFaceListFace.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

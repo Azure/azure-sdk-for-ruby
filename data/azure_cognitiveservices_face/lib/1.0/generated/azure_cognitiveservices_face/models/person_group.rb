@@ -12,7 +12,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       include MsRestAzure
 
-      # @return [String] PersonGroupId of the existing person groups.
+      # @return [String] PersonGroupId of the target person group.
       attr_accessor :person_group_id
 
 

@@ -22,8 +22,8 @@ module Azure::CognitiveServices::Face::V1_0
     attr_reader :client
 
     #
-    # Given query face's faceId, find the similar-looking faces from a faceId array
-    # or a faceListId.
+    # Given query face's faceId, find the similar-looking faces from a faceId
+    # array, a face list or a large face list.
     #
     # @param face_id FaceId of the query face. User needs to call Face - Detect
     # first to get a valid faceId. Note that this faceId is not persisted and will
@@ -31,9 +31,17 @@ module Azure::CognitiveServices::Face::V1_0
     # @param face_list_id [String] An existing user-specified unique candidate face
     # list, created in Face List - Create a Face List. Face list contains a set of
     # persistedFaceIds which are persisted and will never expire. Parameter
-    # faceListId and faceIds should not be provided at the same time
+    # faceListId, largeFaceListId and faceIds should not be provided at the same
+    # time。
+    # @param large_face_list_id [String] An existing user-specified unique
+    # candidate large face list, created in LargeFaceList - Create. Large face list
+    # contains a set of persistedFaceIds which are persisted and will never expire.
+    # Parameter faceListId, largeFaceListId and faceIds should not be provided at
+    # the same time.
     # @param face_ids An array of candidate faceIds. All of them are created by
     # Face - Detect and the faceIds will expire 24 hours after the detection call.
+    # The number of faceIds is limited to 1000. Parameter faceListId,
+    # largeFaceListId and faceIds should not be provided at the same time.
     # @param max_num_of_candidates_returned [Integer] The number of top similar
     # faces returned. The valid range is [1, 1000].
     # @param mode [FindSimilarMatchMode] Similar face searching mode. It can be
@@ -44,14 +52,14 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def find_similar(face_id, face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
-      response = find_similar_async(face_id, face_list_id, face_ids, max_num_of_candidates_returned, mode, custom_headers).value!
+    def find_similar(face_id, face_list_id = nil, large_face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
+      response = find_similar_async(face_id, face_list_id, large_face_list_id, face_ids, max_num_of_candidates_returned, mode, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Given query face's faceId, find the similar-looking faces from a faceId array
-    # or a faceListId.
+    # Given query face's faceId, find the similar-looking faces from a faceId
+    # array, a face list or a large face list.
     #
     # @param face_id FaceId of the query face. User needs to call Face - Detect
     # first to get a valid faceId. Note that this faceId is not persisted and will
@@ -59,9 +67,17 @@ module Azure::CognitiveServices::Face::V1_0
     # @param face_list_id [String] An existing user-specified unique candidate face
     # list, created in Face List - Create a Face List. Face list contains a set of
     # persistedFaceIds which are persisted and will never expire. Parameter
-    # faceListId and faceIds should not be provided at the same time
+    # faceListId, largeFaceListId and faceIds should not be provided at the same
+    # time。
+    # @param large_face_list_id [String] An existing user-specified unique
+    # candidate large face list, created in LargeFaceList - Create. Large face list
+    # contains a set of persistedFaceIds which are persisted and will never expire.
+    # Parameter faceListId, largeFaceListId and faceIds should not be provided at
+    # the same time.
     # @param face_ids An array of candidate faceIds. All of them are created by
     # Face - Detect and the faceIds will expire 24 hours after the detection call.
+    # The number of faceIds is limited to 1000. Parameter faceListId,
+    # largeFaceListId and faceIds should not be provided at the same time.
     # @param max_num_of_candidates_returned [Integer] The number of top similar
     # faces returned. The valid range is [1, 1000].
     # @param mode [FindSimilarMatchMode] Similar face searching mode. It can be
@@ -72,13 +88,13 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def find_similar_with_http_info(face_id, face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
-      find_similar_async(face_id, face_list_id, face_ids, max_num_of_candidates_returned, mode, custom_headers).value!
+    def find_similar_with_http_info(face_id, face_list_id = nil, large_face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
+      find_similar_async(face_id, face_list_id, large_face_list_id, face_ids, max_num_of_candidates_returned, mode, custom_headers).value!
     end
 
     #
-    # Given query face's faceId, find the similar-looking faces from a faceId array
-    # or a faceListId.
+    # Given query face's faceId, find the similar-looking faces from a faceId
+    # array, a face list or a large face list.
     #
     # @param face_id FaceId of the query face. User needs to call Face - Detect
     # first to get a valid faceId. Note that this faceId is not persisted and will
@@ -86,9 +102,17 @@ module Azure::CognitiveServices::Face::V1_0
     # @param face_list_id [String] An existing user-specified unique candidate face
     # list, created in Face List - Create a Face List. Face list contains a set of
     # persistedFaceIds which are persisted and will never expire. Parameter
-    # faceListId and faceIds should not be provided at the same time
+    # faceListId, largeFaceListId and faceIds should not be provided at the same
+    # time。
+    # @param large_face_list_id [String] An existing user-specified unique
+    # candidate large face list, created in LargeFaceList - Create. Large face list
+    # contains a set of persistedFaceIds which are persisted and will never expire.
+    # Parameter faceListId, largeFaceListId and faceIds should not be provided at
+    # the same time.
     # @param face_ids An array of candidate faceIds. All of them are created by
     # Face - Detect and the faceIds will expire 24 hours after the detection call.
+    # The number of faceIds is limited to 1000. Parameter faceListId,
+    # largeFaceListId and faceIds should not be provided at the same time.
     # @param max_num_of_candidates_returned [Integer] The number of top similar
     # faces returned. The valid range is [1, 1000].
     # @param mode [FindSimilarMatchMode] Similar face searching mode. It can be
@@ -99,14 +123,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def find_similar_async(face_id, face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
+    def find_similar_async(face_id, face_list_id = nil, large_face_list_id = nil, face_ids = nil, max_num_of_candidates_returned = 20, mode = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'face_id is nil' if face_id.nil?
 
       body = FindSimilarRequest.new
-      unless face_id.nil? && face_list_id.nil? && face_ids.nil? && max_num_of_candidates_returned.nil? && mode.nil?
+      unless face_id.nil? && face_list_id.nil? && large_face_list_id.nil? && face_ids.nil? && max_num_of_candidates_returned.nil? && mode.nil?
         body.face_id = face_id
         body.face_list_id = face_list_id
+        body.large_face_list_id = large_face_list_id
         body.face_ids = face_ids
         body.max_num_of_candidates_returned = max_num_of_candidates_returned
         body.mode = mode
@@ -281,13 +306,18 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Identify unknown faces from a person group.
+    # 1-to-many identification to find the closest matches of the specific query
+    # person face from a person group or large person group.
     #
-    # @param person_group_id [String] PersonGroupId of the target person group,
-    # created by PersonGroups.Create
     # @param face_ids Array of query faces faceIds, created by the Face - Detect.
     # Each of the faces are identified independently. The valid number of faceIds
     # is between [1, 10].
+    # @param person_group_id [String] PersonGroupId of the target person group,
+    # created by PersonGroup - Create. Parameter personGroupId and
+    # largePersonGroupId should not be provided at the same time.
+    # @param large_person_group_id [String] LargePersonGroupId of the target large
+    # person group, created by LargePersonGroup - Create. Parameter personGroupId
+    # and largePersonGroupId should not be provided at the same time.
     # @param max_num_of_candidates_returned [Integer] The range of
     # maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
     # @param confidence_threshold [Float] Confidence threshold of identification,
@@ -298,19 +328,24 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def identify(person_group_id, face_ids, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
-      response = identify_async(person_group_id, face_ids, max_num_of_candidates_returned, confidence_threshold, custom_headers).value!
+    def identify(face_ids, person_group_id = nil, large_person_group_id = nil, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
+      response = identify_async(face_ids, person_group_id, large_person_group_id, max_num_of_candidates_returned, confidence_threshold, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Identify unknown faces from a person group.
+    # 1-to-many identification to find the closest matches of the specific query
+    # person face from a person group or large person group.
     #
-    # @param person_group_id [String] PersonGroupId of the target person group,
-    # created by PersonGroups.Create
     # @param face_ids Array of query faces faceIds, created by the Face - Detect.
     # Each of the faces are identified independently. The valid number of faceIds
     # is between [1, 10].
+    # @param person_group_id [String] PersonGroupId of the target person group,
+    # created by PersonGroup - Create. Parameter personGroupId and
+    # largePersonGroupId should not be provided at the same time.
+    # @param large_person_group_id [String] LargePersonGroupId of the target large
+    # person group, created by LargePersonGroup - Create. Parameter personGroupId
+    # and largePersonGroupId should not be provided at the same time.
     # @param max_num_of_candidates_returned [Integer] The range of
     # maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
     # @param confidence_threshold [Float] Confidence threshold of identification,
@@ -321,18 +356,23 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def identify_with_http_info(person_group_id, face_ids, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
-      identify_async(person_group_id, face_ids, max_num_of_candidates_returned, confidence_threshold, custom_headers).value!
+    def identify_with_http_info(face_ids, person_group_id = nil, large_person_group_id = nil, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
+      identify_async(face_ids, person_group_id, large_person_group_id, max_num_of_candidates_returned, confidence_threshold, custom_headers).value!
     end
 
     #
-    # Identify unknown faces from a person group.
+    # 1-to-many identification to find the closest matches of the specific query
+    # person face from a person group or large person group.
     #
-    # @param person_group_id [String] PersonGroupId of the target person group,
-    # created by PersonGroups.Create
     # @param face_ids Array of query faces faceIds, created by the Face - Detect.
     # Each of the faces are identified independently. The valid number of faceIds
     # is between [1, 10].
+    # @param person_group_id [String] PersonGroupId of the target person group,
+    # created by PersonGroup - Create. Parameter personGroupId and
+    # largePersonGroupId should not be provided at the same time.
+    # @param large_person_group_id [String] LargePersonGroupId of the target large
+    # person group, created by LargePersonGroup - Create. Parameter personGroupId
+    # and largePersonGroupId should not be provided at the same time.
     # @param max_num_of_candidates_returned [Integer] The range of
     # maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
     # @param confidence_threshold [Float] Confidence threshold of identification,
@@ -343,15 +383,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def identify_async(person_group_id, face_ids, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
+    def identify_async(face_ids, person_group_id = nil, large_person_group_id = nil, max_num_of_candidates_returned = 1, confidence_threshold = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, 'face_ids is nil' if face_ids.nil?
 
       body = IdentifyRequest.new
-      unless person_group_id.nil? && face_ids.nil? && max_num_of_candidates_returned.nil? && confidence_threshold.nil?
-        body.person_group_id = person_group_id
+      unless face_ids.nil? && person_group_id.nil? && large_person_group_id.nil? && max_num_of_candidates_returned.nil? && confidence_threshold.nil?
         body.face_ids = face_ids
+        body.person_group_id = person_group_id
+        body.large_person_group_id = large_person_group_id
         body.max_num_of_candidates_returned = max_num_of_candidates_returned
         body.confidence_threshold = confidence_threshold
       end
@@ -676,19 +716,25 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify whether two faces belong to a same person. Compares a face Id with a
     # Person Id
     #
-    # @param face_id FaceId the face, comes from Face - Detect
+    # @param face_id FaceId of the face, comes from Face - Detect
+    # @param person_id Specify a certain person in a person group or a large person
+    # group. personId is created in PersonGroup Person - Create or LargePersonGroup
+    # Person - Create.
     # @param person_group_id [String] Using existing personGroupId and personId for
-    # fast loading a specified person. personGroupId is created in Person
-    # Groups.Create.
-    # @param person_id Specify a certain person in a person group. personId is
-    # created in Persons.Create.
+    # fast loading a specified person. personGroupId is created in PersonGroup -
+    # Create. Parameter personGroupId and largePersonGroupId should not be provided
+    # at the same time.
+    # @param large_person_group_id [String] Using existing largePersonGroupId and
+    # personId for fast loading a specified person. largePersonGroupId is created
+    # in LargePersonGroup - Create. Parameter personGroupId and largePersonGroupId
+    # should not be provided at the same time.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [VerifyResult] operation results.
     #
-    def verify_face_to_person(face_id, person_group_id, person_id, custom_headers = nil)
-      response = verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers).value!
+    def verify_face_to_person(face_id, person_id, person_group_id = nil, large_person_group_id = nil, custom_headers = nil)
+      response = verify_face_to_person_async(face_id, person_id, person_group_id, large_person_group_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -696,46 +742,58 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify whether two faces belong to a same person. Compares a face Id with a
     # Person Id
     #
-    # @param face_id FaceId the face, comes from Face - Detect
+    # @param face_id FaceId of the face, comes from Face - Detect
+    # @param person_id Specify a certain person in a person group or a large person
+    # group. personId is created in PersonGroup Person - Create or LargePersonGroup
+    # Person - Create.
     # @param person_group_id [String] Using existing personGroupId and personId for
-    # fast loading a specified person. personGroupId is created in Person
-    # Groups.Create.
-    # @param person_id Specify a certain person in a person group. personId is
-    # created in Persons.Create.
+    # fast loading a specified person. personGroupId is created in PersonGroup -
+    # Create. Parameter personGroupId and largePersonGroupId should not be provided
+    # at the same time.
+    # @param large_person_group_id [String] Using existing largePersonGroupId and
+    # personId for fast loading a specified person. largePersonGroupId is created
+    # in LargePersonGroup - Create. Parameter personGroupId and largePersonGroupId
+    # should not be provided at the same time.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_face_to_person_with_http_info(face_id, person_group_id, person_id, custom_headers = nil)
-      verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers).value!
+    def verify_face_to_person_with_http_info(face_id, person_id, person_group_id = nil, large_person_group_id = nil, custom_headers = nil)
+      verify_face_to_person_async(face_id, person_id, person_group_id, large_person_group_id, custom_headers).value!
     end
 
     #
     # Verify whether two faces belong to a same person. Compares a face Id with a
     # Person Id
     #
-    # @param face_id FaceId the face, comes from Face - Detect
+    # @param face_id FaceId of the face, comes from Face - Detect
+    # @param person_id Specify a certain person in a person group or a large person
+    # group. personId is created in PersonGroup Person - Create or LargePersonGroup
+    # Person - Create.
     # @param person_group_id [String] Using existing personGroupId and personId for
-    # fast loading a specified person. personGroupId is created in Person
-    # Groups.Create.
-    # @param person_id Specify a certain person in a person group. personId is
-    # created in Persons.Create.
+    # fast loading a specified person. personGroupId is created in PersonGroup -
+    # Create. Parameter personGroupId and largePersonGroupId should not be provided
+    # at the same time.
+    # @param large_person_group_id [String] Using existing largePersonGroupId and
+    # personId for fast loading a specified person. largePersonGroupId is created
+    # in LargePersonGroup - Create. Parameter personGroupId and largePersonGroupId
+    # should not be provided at the same time.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers = nil)
+    def verify_face_to_person_async(face_id, person_id, person_group_id = nil, large_person_group_id = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'face_id is nil' if face_id.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
 
       body = VerifyFaceToPersonRequest.new
-      unless face_id.nil? && person_group_id.nil? && person_id.nil?
+      unless face_id.nil? && person_group_id.nil? && large_person_group_id.nil? && person_id.nil?
         body.face_id = face_id
         body.person_group_id = person_group_id
+        body.large_person_group_id = large_person_group_id
         body.person_id = person_id
       end
 
