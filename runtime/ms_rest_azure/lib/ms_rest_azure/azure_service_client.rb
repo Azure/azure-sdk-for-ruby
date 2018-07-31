@@ -30,6 +30,7 @@ module MsRestAzure
     # Retrieves the result of 'POST','DELETE','PUT' or 'PATCH' operation. Performs polling of required.
     # @param azure_response [MsRestAzure::AzureOperationResponse] response from Azure service.
     # @param custom_deserialization_block [Proc] custom logic for response deserialization.
+    # @param final_state_via [MsRestAzure::FinalStateVia] Final State via value
     #
     # @return [MsRest::HttpOperationResponse] the response.
     #
@@ -94,7 +95,7 @@ module MsRestAzure
 
         if final_state_via == FinalStateVia::LOCATION
           if((http_method === :post || http_method === :delete) && !polling_state.location_header_link.nil?)
-            update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
+            update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block, final_state_via)
           end
         end
 
@@ -167,8 +168,9 @@ module MsRestAzure
     # @param request [MsRest::HttpOperationRequest] The url retrieve data from.
     # @param polling_state [MsRestAzure::PollingState] polling state to update.
     # @param custom_deserialization_block [Proc] custom deserialization method for parsing response.
+    # @param final_state_via [MsRestAzure::FinalStateVia] Final State via value
     #
-    def update_state_from_location_header(request, polling_state, custom_deserialization_block, final_state_via)
+    def update_state_from_location_header(request, polling_state, custom_deserialization_block, final_state_via = FinalStateVia::DEFAULT)
       result = get_async_with_custom_deserialization(request, custom_deserialization_block)
 
       polling_state.update_response(result.response)
