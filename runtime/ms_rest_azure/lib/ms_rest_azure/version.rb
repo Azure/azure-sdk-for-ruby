@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module MsRestAzure
-  VERSION = '0.10.9'
+  VERSION = '0.11.0'
 end

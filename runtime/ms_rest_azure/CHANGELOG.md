@@ -1,4 +1,4 @@
-##2018.07.31 ms_rest_azure version 0.10.9
+##2018.07.31 ms_rest_azure version 0.11.0
 * Added USER_DEFINED_IMDS_MAX_RETRY_TIME to msi_token_provider. Refer [PR #1539](https://github.com/Azure/azure-sdk-for-ruby/pull/1539) and [Issue #1344](https://github.com/Azure/azure-sdk-for-ruby/issues/1344) for further details.
 * Modified Long Running Operation Logic to make final calls based on Final State Via value. Refer [PR #1537](https://github.com/Azure/azure-sdk-for-ruby/pull/1537) for further details.
 
