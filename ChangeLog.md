@@ -2,6 +2,7 @@
 * Released Rollup gem, all management gems and data plane gems with all the latest changes. 
 * This specifically includes updates to the compute gem with versions of 2018-04-01 & 2018-06-01 versions.
 * The major versions of all the gems have been updated.
+* Runtime ms_rest_azure (0.11.0) has been released and all gems point to the latest version.
 
 ## 2018.06.27 - Azure Ruby SDK Release
 * Released 0.16.3 version of azure_mgmt_storage gem. This includes new features: HDFS & Static Website.
