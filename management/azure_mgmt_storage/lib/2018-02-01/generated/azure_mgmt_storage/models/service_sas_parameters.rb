@@ -97,7 +97,7 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               resource: {
-                required: true,
+                required: false,
                 serialized_name: 'signedResource',
                 type: {
                   name: 'String'
