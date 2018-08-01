@@ -6,47 +6,34 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # A combination of user defined name and user specified data for the
-    # person, largePersonGroup/personGroup, and largeFaceList/faceList.
+    # Request to update face data.
     #
-    class NameAndUserDataContract
+    class UpdateFaceRequest
 
       include MsRestAzure
 
-      # @return [String] User defined name, maximum length is 128.
-      attr_accessor :name
-
-      # @return [String] User specified data. Length should not exceed 16KB.
+      # @return [String] User-provided data attached to the face. The size
+      # limit is 1KB.
       attr_accessor :user_data
 
 
       #
-      # Mapper for NameAndUserDataContract class as Ruby Hash.
+      # Mapper for UpdateFaceRequest class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'NameAndUserDataContract',
+          serialized_name: 'UpdateFaceRequest',
           type: {
             name: 'Composite',
-            class_name: 'NameAndUserDataContract',
+            class_name: 'UpdateFaceRequest',
             model_properties: {
-              name: {
-                required: false,
-                serialized_name: 'name',
-                constraints: {
-                  MaxLength: 128
-                },
-                type: {
-                  name: 'String'
-                }
-              },
               user_data: {
                 required: false,
                 serialized_name: 'userData',
                 constraints: {
-                  MaxLength: 16384
+                  MaxLength: 1024
                 },
                 type: {
                   name: 'String'

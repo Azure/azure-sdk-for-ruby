@@ -531,7 +531,7 @@ module Azure::CognitiveServices::Face::V1_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'facelists/{faceListId}/persistedFaces/{persistedFaceId}'
+      path_template = 'facelists/{faceListId}/persistedfaces/{persistedFaceId}'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
@@ -653,7 +653,7 @@ module Azure::CognitiveServices::Face::V1_0
       request_content = @client.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'facelists/{faceListId}/persistedFaces'
+      path_template = 'facelists/{faceListId}/persistedfaces'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
@@ -789,7 +789,7 @@ module Azure::CognitiveServices::Face::V1_0
       request_content = @client.serialize(request_mapper,  image)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'facelists/{faceListId}/persistedFaces'
+      path_template = 'facelists/{faceListId}/persistedfaces'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)

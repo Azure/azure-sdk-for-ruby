@@ -20,11 +20,21 @@ module Azure::CognitiveServices::Face::V1_0
       # @return [String] An existing user-specified unique candidate face list,
       # created in Face List - Create a Face List. Face list contains a set of
       # persistedFaceIds which are persisted and will never expire. Parameter
-      # faceListId and faceIds should not be provided at the same time
+      # faceListId, largeFaceListId and faceIds should not be provided at the
+      # same time。
       attr_accessor :face_list_id
+
+      # @return [String] An existing user-specified unique candidate large face
+      # list, created in LargeFaceList - Create. Large face list contains a set
+      # of persistedFaceIds which are persisted and will never expire.
+      # Parameter faceListId, largeFaceListId and faceIds should not be
+      # provided at the same time.
+      attr_accessor :large_face_list_id
 
       # @return An array of candidate faceIds. All of them are created by Face
       # - Detect and the faceIds will expire 24 hours after the detection call.
+      # The number of faceIds is limited to 1000. Parameter faceListId,
+      # largeFaceListId and faceIds should not be provided at the same time.
       attr_accessor :face_ids
 
       # @return [Integer] The number of top similar faces returned. The valid
@@ -59,6 +69,17 @@ module Azure::CognitiveServices::Face::V1_0
               face_list_id: {
                 required: false,
                 serialized_name: 'faceListId',
+                constraints: {
+                  MaxLength: 64,
+                  Pattern: '^[a-z0-9-_]+$'
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              large_face_list_id: {
+                required: false,
+                serialized_name: 'largeFaceListId',
                 constraints: {
                   MaxLength: 64,
                   Pattern: '^[a-z0-9-_]+$'

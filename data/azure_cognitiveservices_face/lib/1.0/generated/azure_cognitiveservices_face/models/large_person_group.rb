@@ -6,31 +6,27 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # A combination of user defined name and user specified data for the
-    # person, largePersonGroup/personGroup, and largeFaceList/faceList.
+    # Large person group object.
     #
-    class NameAndUserDataContract
+    class LargePersonGroup < NameAndUserDataContract
 
       include MsRestAzure
 
-      # @return [String] User defined name, maximum length is 128.
-      attr_accessor :name
-
-      # @return [String] User specified data. Length should not exceed 16KB.
-      attr_accessor :user_data
+      # @return [String] LargePersonGroupId of the target large person groups
+      attr_accessor :large_person_group_id
 
 
       #
-      # Mapper for NameAndUserDataContract class as Ruby Hash.
+      # Mapper for LargePersonGroup class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'NameAndUserDataContract',
+          serialized_name: 'LargePersonGroup',
           type: {
             name: 'Composite',
-            class_name: 'NameAndUserDataContract',
+            class_name: 'LargePersonGroup',
             model_properties: {
               name: {
                 required: false,
@@ -47,6 +43,17 @@ module Azure::CognitiveServices::Face::V1_0
                 serialized_name: 'userData',
                 constraints: {
                   MaxLength: 16384
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              large_person_group_id: {
+                required: true,
+                serialized_name: 'largePersonGroupId',
+                constraints: {
+                  MaxLength: 64,
+                  Pattern: '^[a-z0-9-_]+$'
                 },
                 type: {
                   name: 'String'
