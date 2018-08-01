@@ -31,7 +31,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetectedFace',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'DetectedFace',
             model_properties: {
               face_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'faceId',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               face_rectangle: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'faceRectangle',
                 type: {
@@ -56,7 +53,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               face_landmarks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'faceLandmarks',
                 type: {
@@ -65,7 +61,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               face_attributes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'faceAttributes',
                 type: {

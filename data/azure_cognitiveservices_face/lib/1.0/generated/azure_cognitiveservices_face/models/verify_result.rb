@@ -30,7 +30,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VerifyResult',
           type: {
@@ -38,7 +37,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'VerifyResult',
             model_properties: {
               is_identical: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'isIdentical',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               confidence: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'confidence',
                 type: {

@@ -17,12 +17,9 @@ module Azure::CognitiveServices::Face::V1_0
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials1
 
-    # @return [AzureRegions] Supported Azure regions for Cognitive Services
-    # endpoints. Possible values include: 'westus', 'westeurope',
-    # 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus',
-    # 'southcentralus', 'northeurope', 'eastasia', 'australiaeast',
-    # 'brazilsouth'
-    attr_accessor :azure_region
+    # @return [String] Supported Cognitive Services endpoints (protocol and
+    # hostname, for example: https://westus.api.cognitive.microsoft.com).
+    attr_accessor :endpoint
 
     # @return Subscription credentials which uniquely identify client
     # subscription.
@@ -51,6 +48,15 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [FaceListOperations] face_list_operations
     attr_reader :face_list_operations
 
+    # @return [LargePersonGroupPerson] large_person_group_person
+    attr_reader :large_person_group_person
+
+    # @return [LargePersonGroupOperations] large_person_group_operations
+    attr_reader :large_person_group_operations
+
+    # @return [LargeFaceListOperations] large_face_list_operations
+    attr_reader :large_face_list_operations
+
     #
     # Creates initializes a new instance of the FaceClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -58,7 +64,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = 'https://{AzureRegion}.api.cognitive.microsoft.com/face/v1.0'
+      @base_url = '{Endpoint}/face/v1.0'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -67,6 +73,9 @@ module Azure::CognitiveServices::Face::V1_0
       @person_group_person = PersonGroupPerson.new(self)
       @person_group_operations = PersonGroupOperations.new(self)
       @face_list_operations = FaceListOperations.new(self)
+      @large_person_group_person = LargePersonGroupPerson.new(self)
+      @large_person_group_operations = LargePersonGroupOperations.new(self)
+      @large_face_list_operations = LargeFaceListOperations.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -119,9 +128,6 @@ module Azure::CognitiveServices::Face::V1_0
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -138,7 +144,9 @@ module Azure::CognitiveServices::Face::V1_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_face'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::CognitiveServices::Face::V1_0::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CognitiveServices::Face::V1_0::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
