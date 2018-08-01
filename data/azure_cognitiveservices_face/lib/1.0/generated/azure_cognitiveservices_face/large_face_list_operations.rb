@@ -1090,6 +1090,125 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
+    # List all faces in a large face list, and retrieve face information (including
+    # userData and persistedFaceIds of registered faces of the face).
+    #
+    # @param large_face_list_id [String] Id referencing a particular large face
+    # list.
+    # @param start [String] Starting face id to return (used to list a range of
+    # faces).
+    # @param top [Integer] Number of faces to return starting with the face id
+    # indicated by the 'start' parameter.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def list_faces(large_face_list_id, start = nil, top = nil, custom_headers = nil)
+      response = list_faces_async(large_face_list_id, start, top, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List all faces in a large face list, and retrieve face information (including
+    # userData and persistedFaceIds of registered faces of the face).
+    #
+    # @param large_face_list_id [String] Id referencing a particular large face
+    # list.
+    # @param start [String] Starting face id to return (used to list a range of
+    # faces).
+    # @param top [Integer] Number of faces to return starting with the face id
+    # indicated by the 'start' parameter.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_faces_with_http_info(large_face_list_id, start = nil, top = nil, custom_headers = nil)
+      list_faces_async(large_face_list_id, start, top, custom_headers).value!
+    end
+
+    #
+    # List all faces in a large face list, and retrieve face information (including
+    # userData and persistedFaceIds of registered faces of the face).
+    #
+    # @param large_face_list_id [String] Id referencing a particular large face
+    # list.
+    # @param start [String] Starting face id to return (used to list a range of
+    # faces).
+    # @param top [Integer] Number of faces to return starting with the face id
+    # indicated by the 'start' parameter.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_faces_async(large_face_list_id, start = nil, top = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
+      fail ArgumentError, 'large_face_list_id is nil' if large_face_list_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'largefacelists/{largeFaceListId}/persistedfaces'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'largeFaceListId' => large_face_list_id},
+          query_params: {'start' => start,'top' => top},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    required: false,
+                    serialized_name: 'PersistedFaceElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'PersistedFace'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Add a face to a large face list. The input face is specified as an image with
     # a targetFace rectangle. It returns a persistedFaceId representing the added
     # face, and persistedFaceId will not expire.

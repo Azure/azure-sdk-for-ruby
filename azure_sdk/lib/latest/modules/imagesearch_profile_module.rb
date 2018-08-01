@@ -41,16 +41,16 @@ module Azure::Profiles::Latest
       TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
-      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
-      ImagesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
-      ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
-      Freshness = Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
-      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-      ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
-      ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
+      ImagesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
+      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
+      ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
+      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
+      Freshness = Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
+      ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
+      ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
       ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
       ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
@@ -195,35 +195,35 @@ module Azure::Profiles::Latest
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
         end
-        def person
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
-        end
         def currency
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
-        end
-        def images_module
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
-        end
-        def image_aspect
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
         end
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
         end
-        def freshness
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
+        def images_module
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
+        end
+        def person
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
+        end
+        def image_color
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
+        end
+        def image_aspect
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
         end
         def images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
         end
-        def image_license
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
+        def freshness
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
         end
         def image_content
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
         end
-        def image_color
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
+        def image_license
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
         end
         def image_size
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize

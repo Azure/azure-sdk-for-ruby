@@ -27,7 +27,6 @@ module Azure::CognitiveServices::Face::V1_0
   autoload :LargePersonGroupPerson,                             '1.0/generated/azure_cognitiveservices_face/large_person_group_person.rb'
   autoload :LargePersonGroupOperations,                         '1.0/generated/azure_cognitiveservices_face/large_person_group_operations.rb'
   autoload :LargeFaceListOperations,                            '1.0/generated/azure_cognitiveservices_face/large_face_list_operations.rb'
-  autoload :LargeFaceListFace,                                  '1.0/generated/azure_cognitiveservices_face/large_face_list_face.rb'
   autoload :FaceClient,                                         '1.0/generated/azure_cognitiveservices_face/face_client.rb'
 
   module Models

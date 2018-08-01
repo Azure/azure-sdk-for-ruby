@@ -12,7 +12,6 @@ module Azure::Face::Profiles::Latest
   LargePersonGroupOperations = Azure::CognitiveServices::Face::V1_0::LargePersonGroupOperations
   FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
   LargeFaceListOperations = Azure::CognitiveServices::Face::V1_0::LargeFaceListOperations
-  LargeFaceListFace = Azure::CognitiveServices::Face::V1_0::LargeFaceListFace
 
   module Models
     Error = Azure::CognitiveServices::Face::V1_0::Models::Error
@@ -69,7 +68,7 @@ module Azure::Face::Profiles::Latest
   # FaceDataClass
   #
   class FaceDataClass
-    attr_reader :person_group_person, :face, :person_group_operations, :large_person_group_person, :large_person_group_operations, :face_list_operations, :large_face_list_operations, :large_face_list_face, :configurable, :base_url, :options, :model_classes
+    attr_reader :person_group_person, :face, :person_group_operations, :large_person_group_person, :large_person_group_operations, :face_list_operations, :large_face_list_operations, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -96,7 +95,6 @@ module Azure::Face::Profiles::Latest
       @large_person_group_operations = @client_0.large_person_group_operations
       @face_list_operations = @client_0.face_list_operations
       @large_face_list_operations = @client_0.large_face_list_operations
-      @large_face_list_face = @client_0.large_face_list_face
 
       @model_classes = ModelClasses.new
     end
