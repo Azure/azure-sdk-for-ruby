@@ -10,19 +10,19 @@ module Azure::Profiles::Latest
     module Models
       AzureRegions = Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
-      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
       BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
+      KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
       KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
       LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
       LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
-      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
-      DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
-      MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
-      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
-      KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
+      MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
+      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
+      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+      DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
     end
 
     class TextAnalyticsDataClass
@@ -60,11 +60,11 @@ module Azure::Profiles::Latest
         def multi_language_input
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
         end
-        def error_response
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
-        end
         def batch_input
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
+        end
+        def key_phrase_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
         end
         def key_phrase_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
@@ -75,29 +75,29 @@ module Azure::Profiles::Latest
         def language_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
         end
-        def input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
-        end
         def error_record
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
-        end
-        def detected_language
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
-        end
-        def multi_language_batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
         end
         def sentiment_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
         end
-        def internal_error
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
+        def multi_language_batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
         end
-        def key_phrase_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
+        def input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
+        end
+        def error_response
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+        end
+        def detected_language
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
         end
         def sentiment_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+        end
+        def internal_error
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
         end
       end
     end

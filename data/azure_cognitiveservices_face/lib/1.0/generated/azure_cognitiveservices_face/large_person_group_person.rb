@@ -859,8 +859,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [PersistedFace] operation results.
     #
-    def add_person_face_from_url(large_person_group_id, person_id, url, user_data = nil, target_face = nil, custom_headers = nil)
-      response = add_person_face_from_url_async(large_person_group_id, person_id, url, user_data, target_face, custom_headers).value!
+    def add_face_from_url(large_person_group_id, person_id, url, user_data = nil, target_face = nil, custom_headers = nil)
+      response = add_face_from_url_async(large_person_group_id, person_id, url, user_data, target_face, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -885,8 +885,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_person_face_from_url_with_http_info(large_person_group_id, person_id, url, user_data = nil, target_face = nil, custom_headers = nil)
-      add_person_face_from_url_async(large_person_group_id, person_id, url, user_data, target_face, custom_headers).value!
+    def add_face_from_url_with_http_info(large_person_group_id, person_id, url, user_data = nil, target_face = nil, custom_headers = nil)
+      add_face_from_url_async(large_person_group_id, person_id, url, user_data, target_face, custom_headers).value!
     end
 
     #
@@ -910,7 +910,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_person_face_from_url_async(large_person_group_id, person_id, url, user_data = nil, target_face = nil, custom_headers = nil)
+    def add_face_from_url_async(large_person_group_id, person_id, url, user_data = nil, target_face = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
