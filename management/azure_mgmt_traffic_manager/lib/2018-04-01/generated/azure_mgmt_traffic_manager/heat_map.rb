@@ -27,6 +27,8 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     # @param resource_group_name [String] The name of the resource group containing
     # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
+    # @param heat_map_type [Enum] The type of HeatMap for the Traffic Manager
+    # profile. Possible values include: 'default', 'ASN', 'Country', 'State'
     # @param top_left [Array<Float>] The top left latitude,longitude pair of the
     # rectangular viewport to query for.
     # @param bot_right [Array<Float>] The bottom right latitude,longitude pair of
@@ -36,8 +38,8 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     #
     # @return [HeatMapModel] operation results.
     #
-    def get(resource_group_name, profile_name, top_left = nil, bot_right = nil, custom_headers = nil)
-      response = get_async(resource_group_name, profile_name, top_left, bot_right, custom_headers).value!
+    def get(resource_group_name, profile_name, heat_map_type, top_left = nil, bot_right = nil, custom_headers = nil)
+      response = get_async(resource_group_name, profile_name, heat_map_type, top_left, bot_right, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -47,6 +49,8 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     # @param resource_group_name [String] The name of the resource group containing
     # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
+    # @param heat_map_type [Enum] The type of HeatMap for the Traffic Manager
+    # profile. Possible values include: 'default', 'ASN', 'Country', 'State'
     # @param top_left [Array<Float>] The top left latitude,longitude pair of the
     # rectangular viewport to query for.
     # @param bot_right [Array<Float>] The bottom right latitude,longitude pair of
@@ -56,8 +60,8 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, profile_name, top_left = nil, bot_right = nil, custom_headers = nil)
-      get_async(resource_group_name, profile_name, top_left, bot_right, custom_headers).value!
+    def get_with_http_info(resource_group_name, profile_name, heat_map_type, top_left = nil, bot_right = nil, custom_headers = nil)
+      get_async(resource_group_name, profile_name, heat_map_type, top_left, bot_right, custom_headers).value!
     end
 
     #
@@ -66,6 +70,8 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     # @param resource_group_name [String] The name of the resource group containing
     # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
+    # @param heat_map_type [Enum] The type of HeatMap for the Traffic Manager
+    # profile. Possible values include: 'default', 'ASN', 'Country', 'State'
     # @param top_left [Array<Float>] The top left latitude,longitude pair of the
     # rectangular viewport to query for.
     # @param bot_right [Array<Float>] The bottom right latitude,longitude pair of
@@ -75,11 +81,11 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, profile_name, top_left = nil, bot_right = nil, custom_headers = nil)
+    def get_async(resource_group_name, profile_name, heat_map_type, top_left = nil, bot_right = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
-      heat_map_type = 'default'
+      fail ArgumentError, 'heat_map_type is nil' if heat_map_type.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
