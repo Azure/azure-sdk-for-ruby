@@ -14,7 +14,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
 
 
       def initialize
-        @heatMapType = "asn"
+        @heatMapType = "Microsoft.Network/trafficManagerProfiles/heatMaps/asnTrafficFraction"
       end
 
       attr_accessor :heatMapType
@@ -30,7 +30,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
       def self.mapper()
         {
           required: false,
-          serialized_name: 'asn',
+          serialized_name: 'Microsoft.Network/trafficManagerProfiles/heatMaps/asnTrafficFraction',
           type: {
             name: 'Composite',
             class_name: 'HeatMapPropertyAsn',

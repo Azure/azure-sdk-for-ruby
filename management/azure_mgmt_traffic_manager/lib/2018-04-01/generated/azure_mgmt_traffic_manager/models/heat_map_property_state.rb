@@ -14,7 +14,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
 
 
       def initialize
-        @heatMapType = "state"
+        @heatMapType = "Microsoft.Network/trafficManagerProfiles/heatMaps/stateTrafficFraction"
       end
 
       attr_accessor :heatMapType
@@ -30,7 +30,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
       def self.mapper()
         {
           required: false,
-          serialized_name: 'state',
+          serialized_name: 'Microsoft.Network/trafficManagerProfiles/heatMaps/stateTrafficFraction',
           type: {
             name: 'Composite',
             class_name: 'HeatMapPropertyState',

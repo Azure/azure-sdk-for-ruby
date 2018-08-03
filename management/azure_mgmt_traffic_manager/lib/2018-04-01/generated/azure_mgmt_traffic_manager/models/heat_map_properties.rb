@@ -14,7 +14,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
 
 
       def initialize
-        @heatMapType = "default"
+        @heatMapType = "Microsoft.Network/trafficManagerProfiles/heatMaps/latencyVolumeByLocation"
       end
 
       attr_accessor :heatMapType
@@ -43,7 +43,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
       def self.mapper()
         {
           required: false,
-          serialized_name: 'default',
+          serialized_name: 'Microsoft.Network/trafficManagerProfiles/heatMaps/latencyVolumeByLocation',
           type: {
             name: 'Composite',
             class_name: 'HeatMapProperties',

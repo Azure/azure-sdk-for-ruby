@@ -14,10 +14,10 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
-      @@discriminatorMap["default"] = "HeatMapProperties"
-      @@discriminatorMap["asn"] = "HeatMapPropertyAsn"
-      @@discriminatorMap["country"] = "HeatMapPropertyCountry"
-      @@discriminatorMap["state"] = "HeatMapPropertyState"
+      @@discriminatorMap["Microsoft.Network/trafficManagerProfiles/heatMaps/latencyVolumeByLocation"] = "HeatMapProperties"
+      @@discriminatorMap["Microsoft.Network/trafficManagerProfiles/heatMaps/asnTrafficFraction"] = "HeatMapPropertyAsn"
+      @@discriminatorMap["Microsoft.Network/trafficManagerProfiles/heatMaps/countryTrafficFraction"] = "HeatMapPropertyCountry"
+      @@discriminatorMap["Microsoft.Network/trafficManagerProfiles/heatMaps/stateTrafficFraction"] = "HeatMapPropertyState"
 
       def initialize
         @heatMapType = "HeatMapPropertyBase"
