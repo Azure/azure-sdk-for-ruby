@@ -12,21 +12,8 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
 
       include MsRestAzure
 
-      # @return [DateTime] The beginning of the time window for this HeatMap,
-      # inclusive.
-      attr_accessor :start_time
-
-      # @return [DateTime] The ending of the time window for this HeatMap,
-      # exclusive.
-      attr_accessor :end_time
-
-      # @return [Array<HeatMapEndpoint>] The endpoints used in this HeatMap
-      # calculation.
-      attr_accessor :endpoints
-
-      # @return [Array<TrafficFlow>] The traffic flows produced in this HeatMap
-      # calculation.
-      attr_accessor :traffic_flows
+      # @return [String] Polymorphic Discriminator
+      attr_accessor :heatMapType
 
 
       #
@@ -65,48 +52,11 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                   name: 'String'
                 }
               },
-              start_time: {
-                required: false,
-                serialized_name: 'properties.startTime',
+              heatMapType: {
+                required: true,
+                serialized_name: 'properties.heatMapType',
                 type: {
-                  name: 'DateTime'
-                }
-              },
-              end_time: {
-                required: false,
-                serialized_name: 'properties.endTime',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              endpoints: {
-                required: false,
-                serialized_name: 'properties.endpoints',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'HeatMapEndpointElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'HeatMapEndpoint'
-                      }
-                  }
-                }
-              },
-              traffic_flows: {
-                required: false,
-                serialized_name: 'properties.trafficFlows',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'TrafficFlowElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'TrafficFlow'
-                      }
-                  }
+                  name: 'String'
                 }
               }
             }
