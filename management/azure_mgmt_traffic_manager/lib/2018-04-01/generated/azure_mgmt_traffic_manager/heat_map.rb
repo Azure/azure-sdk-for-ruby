@@ -28,7 +28,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param heat_map_type [Enum] The type of HeatMap for the Traffic Manager
-    # profile. Possible values include: 'default', 'ASN', 'Country', 'State'
+    # profile. Possible values include: 'default', 'asn', 'country', 'state'
     # @param top_left [Array<Float>] The top left latitude,longitude pair of the
     # rectangular viewport to query for.
     # @param bot_right [Array<Float>] The bottom right latitude,longitude pair of
@@ -50,7 +50,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param heat_map_type [Enum] The type of HeatMap for the Traffic Manager
-    # profile. Possible values include: 'default', 'ASN', 'Country', 'State'
+    # profile. Possible values include: 'default', 'asn', 'country', 'state'
     # @param top_left [Array<Float>] The top left latitude,longitude pair of the
     # rectangular viewport to query for.
     # @param bot_right [Array<Float>] The bottom right latitude,longitude pair of
@@ -71,7 +71,7 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
     # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param heat_map_type [Enum] The type of HeatMap for the Traffic Manager
-    # profile. Possible values include: 'default', 'ASN', 'Country', 'State'
+    # profile. Possible values include: 'default', 'asn', 'country', 'state'
     # @param top_left [Array<Float>] The top left latitude,longitude pair of the
     # rectangular viewport to query for.
     # @param bot_right [Array<Float>] The bottom right latitude,longitude pair of
