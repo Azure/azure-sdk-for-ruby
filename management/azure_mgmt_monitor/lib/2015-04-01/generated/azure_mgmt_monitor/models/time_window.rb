@@ -67,7 +67,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TimeWindow',
           type: {
@@ -75,7 +74,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'TimeWindow',
             model_properties: {
               time_zone: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -83,7 +81,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               start: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'start',
                 type: {
@@ -91,7 +88,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               end_property: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'end',
                 type: {

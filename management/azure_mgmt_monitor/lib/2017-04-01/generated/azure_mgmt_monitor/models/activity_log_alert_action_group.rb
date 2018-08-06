@@ -28,7 +28,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityLogAlertActionGroup',
           type: {
@@ -36,7 +35,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActivityLogAlertActionGroup',
             model_properties: {
               action_group_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'actionGroupId',
                 type: {
@@ -44,13 +42,11 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               webhook_properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'webhookProperties',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
