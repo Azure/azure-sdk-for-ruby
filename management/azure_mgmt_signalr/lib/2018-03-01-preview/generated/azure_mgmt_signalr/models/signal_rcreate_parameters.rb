@@ -27,7 +27,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SignalRCreateParameters',
           type: {
@@ -35,13 +34,11 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'SignalRCreateParameters',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -51,7 +48,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -60,7 +56,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -69,7 +64,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {

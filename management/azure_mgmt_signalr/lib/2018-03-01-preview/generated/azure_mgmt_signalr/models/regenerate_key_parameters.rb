@@ -24,7 +24,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeyParameters',
           type: {
@@ -32,7 +31,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'RegenerateKeyParameters',
             model_properties: {
               key_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyType',
                 type: {

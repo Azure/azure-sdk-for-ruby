@@ -4,15 +4,5 @@
 # regenerated.
 
 module Azure::Signalr::Mgmt::V2018_03_01_preview
-  module Models
-    #
-    # Defines values for SignalRSkuTier
-    #
-    module SignalRSkuTier
-      Free = "Free"
-      Basic = "Basic"
-      Standard = "Standard"
-      Premium = "Premium"
-    end
-  end
+    VERSION = '0.16.1'
 end

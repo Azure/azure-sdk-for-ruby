@@ -6,41 +6,41 @@
 module Azure::Signalr::Mgmt::V2018_03_01_preview
   module Models
     #
-    # A class represents the access keys of SignalR service.
+    # Localizable String object containing the name and a localized value.
     #
-    class SignalRKeys
+    class SignalRUsageName
 
       include MsRestAzure
 
-      # @return [String] The primary access key.
-      attr_accessor :primary_key
+      # @return [String] The indentifier of the usage.
+      attr_accessor :value
 
-      # @return [String] The secondary access key.
-      attr_accessor :secondary_key
+      # @return [String] Localized name of the usage.
+      attr_accessor :localized_value
 
 
       #
-      # Mapper for SignalRKeys class as Ruby Hash.
+      # Mapper for SignalRUsageName class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SignalRKeys',
+          serialized_name: 'SignalRUsageName',
           type: {
             name: 'Composite',
-            class_name: 'SignalRKeys',
+            class_name: 'SignalRUsageName',
             model_properties: {
-              primary_key: {
+              value: {
                 required: false,
-                serialized_name: 'primaryKey',
+                serialized_name: 'value',
                 type: {
                   name: 'String'
                 }
               },
-              secondary_key: {
+              localized_value: {
                 required: false,
-                serialized_name: 'secondaryKey',
+                serialized_name: 'localizedValue',
                 type: {
                   name: 'String'
                 }

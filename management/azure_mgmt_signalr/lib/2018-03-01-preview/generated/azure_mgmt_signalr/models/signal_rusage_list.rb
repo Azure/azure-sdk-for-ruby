@@ -6,15 +6,15 @@
 module Azure::Signalr::Mgmt::V2018_03_01_preview
   module Models
     #
-    # Object that includes an array of SignalR services and a possible link for
-    # next set.
+    # Object that includes an array of SignalR resource usages and a possible
+    # link for next set.
     #
-    class SignalRResourceList
+    class SignalRUsageList
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<SignalRResource>] List of SignalR services
+      # @return [Array<SignalRUsage>] List of SignalR usages
       attr_accessor :value
 
       # @return [String] The URL the client should use to fetch the next page
@@ -28,7 +28,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<SignalRResource>] operation results.
+      # @return [Array<SignalRUsage>] operation results.
       #
       def get_all_items
         items = @value
@@ -43,7 +43,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       # Gets the next page of results.
       #
-      # @return [SignalRResourceList] with next page content.
+      # @return [SignalRUsageList] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -55,16 +55,16 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       end
 
       #
-      # Mapper for SignalRResourceList class as Ruby Hash.
+      # Mapper for SignalRUsageList class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SignalRResourceList',
+          serialized_name: 'SignalRUsageList',
           type: {
             name: 'Composite',
-            class_name: 'SignalRResourceList',
+            class_name: 'SignalRUsageList',
             model_properties: {
               value: {
                 required: false,
@@ -73,10 +73,10 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SignalRResourceElementType',
+                      serialized_name: 'SignalRUsageElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SignalRResource'
+                        class_name: 'SignalRUsage'
                       }
                   }
                 }
