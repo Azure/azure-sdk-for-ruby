@@ -9,13 +9,14 @@ module Azure::Profiles::Latest
     module Mgmt
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
-      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
 
       module Models
+        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
         ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
         ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
         ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
@@ -72,11 +73,10 @@ module Azure::Profiles::Latest
         ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
         AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
         ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
-        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :version, :cluster_versions, :application_type, :application, :service, :clusters, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :version, :clusters, :cluster_versions, :application_type, :application, :service, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -88,11 +88,11 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @operations = @client_0.operations
           @version = @client_0.version
+          @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
           @application_type = @client_0.application_type
           @application = @client_0.application
           @service = @client_0.service
-          @clusters = @client_0.clusters
 
           @model_classes = ModelClasses.new
         end
@@ -111,6 +111,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def azure_active_directory
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
+          end
           def service_type_health_policy
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
           end
@@ -278,9 +281,6 @@ module Azure::Profiles::Latest
           end
           def cluster_health_policy
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
-          end
-          def azure_active_directory
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
           end
         end
       end

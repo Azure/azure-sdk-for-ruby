@@ -31,7 +31,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Terms_Paging',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'TermsPaging',
             model_properties: {
               total: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Total',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Limit',
                 type: {
@@ -55,7 +52,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               offset: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Offset',
                 type: {
@@ -63,7 +59,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               returned: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Returned',
                 type: {

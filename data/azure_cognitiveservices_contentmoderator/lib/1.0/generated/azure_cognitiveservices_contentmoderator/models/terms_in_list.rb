@@ -22,7 +22,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TermsInList',
           type: {
@@ -30,7 +29,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'TermsInList',
             model_properties: {
               term: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Term',
                 type: {

@@ -7,7 +7,7 @@ module Azure::CognitiveServices::Face::V1_0
   module Models
     #
     # A combination of user defined name and user specified data for the
-    # person, personGroup, and faceList
+    # person, largePersonGroup/personGroup, and largeFaceList/faceList.
     #
     class NameAndUserDataContract
 
@@ -26,7 +26,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NameAndUserDataContract',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'NameAndUserDataContract',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -45,7 +43,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               user_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userData',
                 constraints: {

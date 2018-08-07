@@ -44,7 +44,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Emotion',
           type: {
@@ -52,7 +51,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Emotion',
             model_properties: {
               anger: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'anger',
                 type: {
@@ -60,7 +58,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               contempt: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contempt',
                 type: {
@@ -68,7 +65,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               disgust: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'disgust',
                 type: {
@@ -76,7 +72,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               fear: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fear',
                 type: {
@@ -84,7 +79,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               happiness: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'happiness',
                 type: {
@@ -92,7 +86,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               neutral: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'neutral',
                 type: {
@@ -100,7 +93,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               sadness: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sadness',
                 type: {
@@ -108,7 +100,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               surprise: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'surprise',
                 type: {

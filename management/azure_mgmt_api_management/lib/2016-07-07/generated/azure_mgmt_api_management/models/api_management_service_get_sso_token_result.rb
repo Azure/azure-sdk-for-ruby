@@ -22,7 +22,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceGetSsoTokenResult',
           type: {
@@ -30,7 +29,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ApiManagementServiceGetSsoTokenResult',
             model_properties: {
               redirect_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'redirect_uri',
                 type: {

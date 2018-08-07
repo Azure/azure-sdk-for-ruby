@@ -25,7 +25,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OAuth2AuthenticationSettingsContract',
           type: {
@@ -33,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'OAuth2AuthenticationSettingsContract',
             model_properties: {
               authorization_server_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationServerId',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scope',
                 type: {

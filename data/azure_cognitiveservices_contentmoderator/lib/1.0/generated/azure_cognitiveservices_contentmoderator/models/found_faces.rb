@@ -40,7 +40,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FoundFaces',
           type: {
@@ -48,7 +47,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'FoundFaces',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -57,7 +55,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {
@@ -65,7 +62,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               cache_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CacheId',
                 type: {
@@ -73,7 +69,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               result: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Result',
                 type: {
@@ -81,7 +76,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Count',
                 type: {
@@ -89,13 +83,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               advanced_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'AdvancedInfo',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyValuePairElementType',
                       type: {
@@ -106,13 +98,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               faces: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Faces',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FaceElementType',
                       type: {

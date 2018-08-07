@@ -25,12 +25,12 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [String] operation results.
+    # @return [NOT_IMPLEMENTED] operation results.
     #
     def get_content(resource_group_name, automation_account_name, runbook_name, custom_headers = nil)
       response = get_content_async(resource_group_name, automation_account_name, runbook_name, custom_headers).value!
@@ -41,7 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -56,7 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the content of runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -107,7 +107,7 @@ module Azure::Automation::Mgmt::V2015_10_31
               required: false,
               serialized_name: 'parsed_response',
               type: {
-                name: 'String'
+                name: 'Stream'
               }
             }
             result.body = @client.deserialize(result_mapper, parsed_response)
@@ -126,7 +126,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -142,7 +142,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -157,7 +157,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -221,7 +221,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param parameters [RunbookCreateOrUpdateParameters] The create or update
     # parameters for runbook. Provide either content link for a published runbook
@@ -240,7 +240,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param parameters [RunbookCreateOrUpdateParameters] The create or update
     # parameters for runbook. Provide either content link for a published runbook
@@ -258,7 +258,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Create the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param parameters [RunbookCreateOrUpdateParameters] The create or update
     # parameters for runbook. Provide either content link for a published runbook
@@ -345,7 +345,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param parameters [RunbookUpdateParameters] The update parameters for
     # runbook.
@@ -363,7 +363,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param parameters [RunbookUpdateParameters] The update parameters for
     # runbook.
@@ -380,7 +380,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Update the runbook identified by runbook name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param parameters [RunbookUpdateParameters] The update parameters for
     # runbook.
@@ -456,7 +456,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the runbook by name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -471,7 +471,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the runbook by name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -486,7 +486,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Delete the runbook by name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param runbook_name [String] The runbook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -540,7 +540,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of runbooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -555,7 +555,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of runbooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -569,7 +569,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of runbooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -718,7 +718,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve a list of runbooks.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

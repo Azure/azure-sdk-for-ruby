@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Terms',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Terms',
             model_properties: {
               data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Data',
                 type: {
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               paging: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Paging',
                 type: {

@@ -31,7 +31,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TermsData',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'TermsData',
             model_properties: {
               language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Language',
                 type: {
@@ -47,13 +45,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               terms: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Terms',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TermsInListElementType',
                       type: {
@@ -64,7 +60,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -73,7 +68,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {

@@ -12,14 +12,20 @@ module Azure::CognitiveServices::Face::V1_0
 
       include MsRestAzure
 
-      # @return [String] PersonGroupId of the target person group, created by
-      # PersonGroups.Create
-      attr_accessor :person_group_id
-
       # @return Array of query faces faceIds, created by the Face - Detect.
       # Each of the faces are identified independently. The valid number of
       # faceIds is between [1, 10].
       attr_accessor :face_ids
+
+      # @return [String] PersonGroupId of the target person group, created by
+      # PersonGroup - Create. Parameter personGroupId and largePersonGroupId
+      # should not be provided at the same time.
+      attr_accessor :person_group_id
+
+      # @return [String] LargePersonGroupId of the target large person group,
+      # created by LargePersonGroup - Create. Parameter personGroupId and
+      # largePersonGroupId should not be provided at the same time.
+      attr_accessor :large_person_group_id
 
       # @return [Integer] The range of maxNumOfCandidatesReturned is between 1
       # and 5 (default is 1). Default value: 1 .
@@ -37,16 +43,31 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IdentifyRequest',
           type: {
             name: 'Composite',
             class_name: 'IdentifyRequest',
             model_properties: {
-              person_group_id: {
-                client_side_validation: true,
+              face_ids: {
                 required: true,
+                serialized_name: 'faceIds',
+                constraints: {
+                  MaxItems: 10
+                },
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'UuidElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              person_group_id: {
+                required: false,
                 serialized_name: 'personGroupId',
                 constraints: {
                   MaxLength: 64,
@@ -56,27 +77,18 @@ module Azure::CognitiveServices::Face::V1_0
                   name: 'String'
                 }
               },
-              face_ids: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'faceIds',
+              large_person_group_id: {
+                required: false,
+                serialized_name: 'largePersonGroupId',
                 constraints: {
-                  MaxItems: 10
+                  MaxLength: 64,
+                  Pattern: '^[a-z0-9-_]+$'
                 },
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'UuidElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'String'
                 }
               },
               max_num_of_candidates_returned: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxNumOfCandidatesReturned',
                 default_value: 1,
@@ -89,7 +101,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               confidence_threshold: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'confidenceThreshold',
                 type: {

@@ -31,7 +31,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Hair',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Hair',
             model_properties: {
               bald: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bald',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               invisible: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'invisible',
                 type: {
@@ -55,13 +52,11 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               hair_color: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hairColor',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HairColorElementType',
                       type: {

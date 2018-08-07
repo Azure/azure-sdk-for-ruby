@@ -25,7 +25,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node report list by node id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The parameters supplied to the list operation.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -42,7 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node report list by node id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The parameters supplied to the list operation.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -58,7 +58,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node report list by node id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The parameters supplied to the list operation.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -123,7 +123,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node report data by node id and report id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The Dsc node id.
     # @param report_id [String] The report id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -140,7 +140,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node report data by node id and report id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The Dsc node id.
     # @param report_id [String] The report id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -156,7 +156,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node report data by node id and report id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The Dsc node id.
     # @param report_id [String] The report id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -222,7 +222,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node reports by node id and report id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The Dsc node id.
     # @param report_id [String] The report id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -239,7 +239,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node reports by node id and report id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The Dsc node id.
     # @param report_id [String] The report id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -255,7 +255,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node reports by node id and report id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The Dsc node id.
     # @param report_id [String] The report id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -398,7 +398,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Retrieve the Dsc node report list by node id.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
-    # @param automation_account_name [String] The automation account name.
+    # @param automation_account_name [String] The name of the automation account.
     # @param node_id [String] The parameters supplied to the list operation.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
