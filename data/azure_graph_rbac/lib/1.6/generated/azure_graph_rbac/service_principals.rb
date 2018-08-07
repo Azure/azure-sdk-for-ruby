@@ -283,45 +283,45 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets service principal information from the directory.
+    # Gets service principal information from the directory. Query by objectId or
+    # pass a filter to query by appId
     #
     # @param object_id [String] The object ID of the service principal to get.
-    # @param filter [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ServicePrincipal] operation results.
     #
-    def get(object_id, filter = nil, custom_headers = nil)
-      response = get_async(object_id, filter, custom_headers).value!
+    def get(object_id, custom_headers = nil)
+      response = get_async(object_id, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets service principal information from the directory.
+    # Gets service principal information from the directory. Query by objectId or
+    # pass a filter to query by appId
     #
     # @param object_id [String] The object ID of the service principal to get.
-    # @param filter [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(object_id, filter = nil, custom_headers = nil)
-      get_async(object_id, filter, custom_headers).value!
+    def get_with_http_info(object_id, custom_headers = nil)
+      get_async(object_id, custom_headers).value!
     end
 
     #
-    # Gets service principal information from the directory.
+    # Gets service principal information from the directory. Query by objectId or
+    # pass a filter to query by appId
     #
     # @param object_id [String] The object ID of the service principal to get.
-    # @param filter [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(object_id, filter = nil, custom_headers = nil)
+    def get_async(object_id, custom_headers = nil)
       fail ArgumentError, 'object_id is nil' if object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
@@ -339,7 +339,7 @@ module Azure::GraphRbac::V1_6
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'objectId' => object_id,'tenantID' => @client.tenant_id},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

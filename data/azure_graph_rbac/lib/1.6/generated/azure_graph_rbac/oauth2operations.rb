@@ -22,6 +22,8 @@ module Azure::GraphRbac::V1_6
     attr_reader :client
 
     #
+    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+    #
     # @param filter [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -34,6 +36,8 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+    #
     # @param filter [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -44,6 +48,8 @@ module Azure::GraphRbac::V1_6
       get_async(filter, custom_headers).value!
     end
 
+    #
+    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
     #
     # @param filter [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -102,6 +108,8 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Grants OAuth2 permissions for the relevant resource Ids of an app.
+    #
     # @param body [OAuth2]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -114,6 +122,8 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Grants OAuth2 permissions for the relevant resource Ids of an app.
+    #
     # @param body [OAuth2]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -124,6 +134,8 @@ module Azure::GraphRbac::V1_6
       post_async(body, custom_headers).value!
     end
 
+    #
+    # Grants OAuth2 permissions for the relevant resource Ids of an app.
     #
     # @param body [OAuth2]
     # @param [Hash{String => String}] A hash of custom headers that will be added
