@@ -64,7 +64,6 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
               },
               certificate: {
                 required: false,
-                read_only: true,
                 serialized_name: 'certificate',
                 type: {
                   name: 'Composite',
