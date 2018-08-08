@@ -30,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CbcsDrmConfiguration',
           type: {
@@ -38,7 +37,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'CbcsDrmConfiguration',
             model_properties: {
               fair_play: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fairPlay',
                 type: {
@@ -47,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               play_ready: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'playReady',
                 type: {
@@ -56,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               widevine: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'widevine',
                 type: {
