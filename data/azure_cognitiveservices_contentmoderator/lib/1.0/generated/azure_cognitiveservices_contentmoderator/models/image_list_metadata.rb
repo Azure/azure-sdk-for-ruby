@@ -12,6 +12,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
       include MsRestAzure
 
+      # @return [Hash{String => String}] Unmatched properties from the message
+      # are deserialized this collection
+      attr_accessor :additional_properties
+
       # @return [String] Optional Key value pair to describe your list.
       attr_accessor :key_one
 
@@ -31,6 +35,19 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             name: 'Composite',
             class_name: 'ImageListMetadata',
             model_properties: {
+              additional_properties: {
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               key_one: {
                 required: false,
                 serialized_name: 'Key One',
