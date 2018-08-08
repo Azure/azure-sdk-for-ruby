@@ -26,7 +26,6 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -34,7 +33,6 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -43,7 +41,6 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
