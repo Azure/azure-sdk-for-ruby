@@ -7,10 +7,10 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
-      HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
-      Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
+      Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
+      HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
 
       module Models
         RelayNamespaceListResult = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
@@ -20,11 +20,11 @@ module Azure::Profiles::Latest
         ResourceNamespacePatch = Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
         HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
         WcfRelay = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
-        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
         RelayNamespace = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
+        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+        RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
         Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
         ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
-        RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
         KeyType = Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
         AccessKeys = Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
         CheckNameAvailabilityResult = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
@@ -43,7 +43,7 @@ module Azure::Profiles::Latest
       end
 
       class RelayManagementClass
-        attr_reader :hybrid_connections, :operations, :wcfrelays, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :wcfrelays, :operations, :namespaces, :hybrid_connections, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @hybrid_connections = @client_0.hybrid_connections
-          @operations = @client_0.operations
           @wcfrelays = @client_0.wcfrelays
+          @operations = @client_0.operations
           @namespaces = @client_0.namespaces
+          @hybrid_connections = @client_0.hybrid_connections
 
           @model_classes = ModelClasses.new
         end
@@ -96,20 +96,20 @@ module Azure::Profiles::Latest
           def wcf_relay
             Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
           end
+          def relay_namespace
+            Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
+          end
           def sku
             Azure::Relay::Mgmt::V2017_04_01::Models::Sku
           end
-          def relay_namespace
-            Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
+          def relay_update_parameters
+            Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
           end
           def relaytype
             Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
           end
           def provisioning_state_enum
             Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
-          end
-          def relay_update_parameters
-            Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
           end
           def key_type
             Azure::Relay::Mgmt::V2017_04_01::Models::KeyType

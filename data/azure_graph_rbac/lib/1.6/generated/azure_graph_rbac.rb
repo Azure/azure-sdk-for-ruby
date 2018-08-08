@@ -26,7 +26,7 @@ module Azure::GraphRbac::V1_6
   autoload :ServicePrincipals,                                  '1.6/generated/azure_graph_rbac/service_principals.rb'
   autoload :Users,                                              '1.6/generated/azure_graph_rbac/users.rb'
   autoload :Domains,                                            '1.6/generated/azure_graph_rbac/domains.rb'
-  autoload :OAuth2Operations,                                   '1.6/generated/azure_graph_rbac/oauth2operations.rb'
+  autoload :OAuth2,                                             '1.6/generated/azure_graph_rbac/oauth2.rb'
   autoload :GraphRbacClient,                                    '1.6/generated/azure_graph_rbac/graph_rbac_client.rb'
 
   module Models
@@ -44,7 +44,7 @@ module Azure::GraphRbac::V1_6
     autoload :ApplicationAddOwnerParameters,                      '1.6/generated/azure_graph_rbac/models/application_add_owner_parameters.rb'
     autoload :ApplicationUpdateParameters,                        '1.6/generated/azure_graph_rbac/models/application_update_parameters.rb'
     autoload :DirectoryObjectListResult,                          '1.6/generated/azure_graph_rbac/models/directory_object_list_result.rb'
-    autoload :OAuth2,                                             '1.6/generated/azure_graph_rbac/models/oauth2.rb'
+    autoload :Permissions,                                        '1.6/generated/azure_graph_rbac/models/permissions.rb'
     autoload :PasswordCredentialListResult,                       '1.6/generated/azure_graph_rbac/models/password_credential_list_result.rb'
     autoload :ServicePrincipalCreateParameters,                   '1.6/generated/azure_graph_rbac/models/service_principal_create_parameters.rb'
     autoload :AADObject,                                          '1.6/generated/azure_graph_rbac/models/aadobject.rb'

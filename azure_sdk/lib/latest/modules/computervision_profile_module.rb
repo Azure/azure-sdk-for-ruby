@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      AzureRegions = Azure::CognitiveServices::ComputerVision::V1_0::Models::AzureRegions
       Details = Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
       FaceDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
       ImageAnalysis = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
@@ -46,6 +45,7 @@ module Azure::Profiles::Latest
       ComputerVisionErrorCodes = Azure::CognitiveServices::ComputerVision::V1_0::Models::ComputerVisionErrorCodes
       VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V1_0::Models::VisualFeatureTypes
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLanguages
+      AzureRegions = Azure::CognitiveServices::ComputerVision::V1_0::Models::AzureRegions
     end
 
     class ComputerVisionDataClass
@@ -77,9 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def azure_regions
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::AzureRegions
-        end
         def details
           Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
         end
@@ -190,6 +187,9 @@ module Azure::Profiles::Latest
         end
         def ocr_languages
           Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLanguages
+        end
+        def azure_regions
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::AzureRegions
         end
       end
     end

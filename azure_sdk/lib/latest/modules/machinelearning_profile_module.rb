@@ -10,7 +10,6 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
-        ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
         AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
         OutputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
@@ -47,6 +46,7 @@ module Azure::Profiles::Latest
         WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
         DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
         ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+        ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
       end
 
       class MachineLearningManagementClass
@@ -79,9 +79,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def column_format
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
-          end
           def asset_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
           end
@@ -189,6 +186,9 @@ module Azure::Profiles::Latest
           end
           def column_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+          end
+          def column_format
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
           end
         end
       end

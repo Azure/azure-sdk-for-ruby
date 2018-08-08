@@ -15,8 +15,8 @@ module Azure::Profiles::Latest
         PolicyDefinition = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinitionListResult
         PolicyMode = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyMode
-        PolicyAssignment = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyAssignment
         PolicyDefinitionReference = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyDefinitionReference
+        PolicyAssignment = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyAssignment
         PolicySetDefinition = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinition
         PolicySku = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySku
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinitionListResult
@@ -74,11 +74,11 @@ module Azure::Profiles::Latest
           def policy_mode
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyMode
           end
-          def policy_assignment
-            Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyAssignment
-          end
           def policy_definition_reference
             Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyDefinitionReference
+          end
+          def policy_assignment
+            Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyAssignment
           end
           def policy_set_definition
             Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinition

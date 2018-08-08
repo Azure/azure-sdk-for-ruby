@@ -27,16 +27,15 @@ module Azure::Profiles::Latest
         SBSku = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSku
         SBTopicListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopicListResult
         Operation = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Operation
-        SBNamespaceListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
         PremiumMessagingRegionsProperties = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsProperties
-        SBSubscriptionListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscriptionListResult
+        SBNamespaceListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
         AuthorizationRuleProperties = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AuthorizationRuleProperties
-        RuleListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult
         SBAuthorizationRuleListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult
         MessageCountDetails = Azure::ServiceBus::Mgmt::V2017_04_01::Models::MessageCountDetails
-        SqlFilter = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
+        RuleListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult
+        SBSubscriptionListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscriptionListResult
         CorrelationFilter = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CorrelationFilter
-        TrackedResource = Azure::ServiceBus::Mgmt::V2017_04_01::Models::TrackedResource
+        SqlFilter = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
         SBAuthorizationRule = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRule
         SBQueue = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBQueue
         SBTopic = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopic
@@ -47,8 +46,9 @@ module Azure::Profiles::Latest
         PremiumMessagingRegions = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
         SBNamespace = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespace
         ResourceNamespacePatch = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
-        KeyType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
         FilterType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
+        TrackedResource = Azure::ServiceBus::Mgmt::V2017_04_01::Models::TrackedResource
+        KeyType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
         SBNamespaceUpdateParameters = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceUpdateParameters
         CaptureDescription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CaptureDescription
         Destination = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Destination
@@ -134,20 +134,14 @@ module Azure::Profiles::Latest
           def operation
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::Operation
           end
-          def sbnamespace_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
-          end
           def premium_messaging_regions_properties
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsProperties
           end
-          def sbsubscription_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscriptionListResult
+          def sbnamespace_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceListResult
           end
           def authorization_rule_properties
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::AuthorizationRuleProperties
-          end
-          def rule_list_result
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult
           end
           def sbauthorization_rule_list_result
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult
@@ -155,14 +149,17 @@ module Azure::Profiles::Latest
           def message_count_details
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::MessageCountDetails
           end
-          def sql_filter
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
+          def rule_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult
+          end
+          def sbsubscription_list_result
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscriptionListResult
           end
           def correlation_filter
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::CorrelationFilter
           end
-          def tracked_resource
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::TrackedResource
+          def sql_filter
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlFilter
           end
           def sbauthorization_rule
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRule
@@ -194,11 +191,14 @@ module Azure::Profiles::Latest
           def resource_namespace_patch
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
           end
-          def key_type
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
-          end
           def filter_type
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
+          end
+          def tracked_resource
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::TrackedResource
+          end
+          def key_type
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
           end
           def sbnamespace_update_parameters
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespaceUpdateParameters

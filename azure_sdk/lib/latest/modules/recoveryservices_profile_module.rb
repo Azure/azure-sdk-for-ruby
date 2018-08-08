@@ -16,10 +16,9 @@ module Azure::Profiles::Latest
       VaultExtendedInfoOperations = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultExtendedInfoOperations
 
       module Models
-        ResourceCertificateAndAadDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
         ResourceCertificateAndAcsDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
-        TrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
         PatchTrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
+        TrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
         PatchVault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
         VaultExtendedInfoResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
         AuthType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
@@ -50,6 +49,7 @@ module Azure::Profiles::Latest
         ReplicationUsageList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsageList
         ResourceCertificateDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
         NameInfo = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
+        ResourceCertificateAndAadDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
       end
 
       class RecoveryServicesManagementClass
@@ -88,17 +88,14 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def resource_certificate_and_aad_details
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
-          end
           def resource_certificate_and_acs_details
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
           end
-          def tracked_resource
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
-          end
           def patch_tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
+          end
+          def tracked_resource
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
           end
           def patch_vault
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
@@ -189,6 +186,9 @@ module Azure::Profiles::Latest
           end
           def name_info
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
+          end
+          def resource_certificate_and_aad_details
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
           end
         end
       end

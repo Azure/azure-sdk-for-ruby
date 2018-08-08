@@ -9,18 +9,18 @@ module Azure::Profiles::Latest
     Web = Azure::CognitiveServices::WebSearch::V1_0::Web
 
     module Models
-      MediaObject = Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
       StructuredValue = Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
+      ErrorCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
       Videos = Azure::CognitiveServices::WebSearch::V1_0::Models::Videos
       Images = Azure::CognitiveServices::WebSearch::V1_0::Models::Images
       AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
-      Response = Azure::CognitiveServices::WebSearch::V1_0::Models::Response
       NewsArticle = Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
       ResponseBase = Azure::CognitiveServices::WebSearch::V1_0::Models::ResponseBase
+      Response = Azure::CognitiveServices::WebSearch::V1_0::Models::Response
       QueryContext = Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
-      WebWebGrouping = Azure::CognitiveServices::WebSearch::V1_0::Models::WebWebGrouping
-      TimeZoneTimeZoneInformation = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZoneTimeZoneInformation
+      RankingRankingItem = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
       WebPage = Azure::CognitiveServices::WebSearch::V1_0::Models::WebPage
+      VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
       SearchResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::SearchResponse
       SearchResultsAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
@@ -29,27 +29,27 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::WebSearch::V1_0::Models::CreativeWork
       RankingRankingResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingResponse
       WebMetaTag = Azure::CognitiveServices::WebSearch::V1_0::Models::WebMetaTag
-      VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
+      TimeZoneTimeZoneInformation = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZoneTimeZoneInformation
       Computation = Azure::CognitiveServices::WebSearch::V1_0::Models::Computation
       RankingRankingGroup = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingGroup
       Query = Azure::CognitiveServices::WebSearch::V1_0::Models::Query
-      TimeZone = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
+      WebWebGrouping = Azure::CognitiveServices::WebSearch::V1_0::Models::WebWebGrouping
       ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
       WebWebAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::WebWebAnswer
-      RankingRankingItem = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
+      News = Azure::CognitiveServices::WebSearch::V1_0::Models::News
       SpellSuggestions = Azure::CognitiveServices::WebSearch::V1_0::Models::SpellSuggestions
+      TimeZone = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
       ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
-      SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
       TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
       RelatedSearchesRelatedSearchAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::RelatedSearchesRelatedSearchAnswer
-      News = Azure::CognitiveServices::WebSearch::V1_0::Models::News
+      SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
       Article = Azure::CognitiveServices::WebSearch::V1_0::Models::Article
       Freshness = Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
       Places = Azure::CognitiveServices::WebSearch::V1_0::Models::Places
       Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
       Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
-      ErrorCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
+      MediaObject = Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
     end
 
     class WebSearchDataClass
@@ -82,11 +82,11 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def media_object
-          Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
-        end
         def structured_value
           Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
+        end
+        def error_code
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
         end
         def videos
           Azure::CognitiveServices::WebSearch::V1_0::Models::Videos
@@ -97,26 +97,26 @@ module Azure::Profiles::Latest
         def answer_type
           Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
         end
-        def response
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Response
-        end
         def news_article
           Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
         end
         def response_base
           Azure::CognitiveServices::WebSearch::V1_0::Models::ResponseBase
         end
+        def response
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Response
+        end
         def query_context
           Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
         end
-        def web_web_grouping
-          Azure::CognitiveServices::WebSearch::V1_0::Models::WebWebGrouping
-        end
-        def time_zone_time_zone_information
-          Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZoneTimeZoneInformation
+        def ranking_ranking_item
+          Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
         end
         def web_page
           Azure::CognitiveServices::WebSearch::V1_0::Models::WebPage
+        end
+        def video_object
+          Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
         end
         def search_response
           Azure::CognitiveServices::WebSearch::V1_0::Models::SearchResponse
@@ -142,8 +142,8 @@ module Azure::Profiles::Latest
         def web_meta_tag
           Azure::CognitiveServices::WebSearch::V1_0::Models::WebMetaTag
         end
-        def video_object
-          Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
+        def time_zone_time_zone_information
+          Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZoneTimeZoneInformation
         end
         def computation
           Azure::CognitiveServices::WebSearch::V1_0::Models::Computation
@@ -154,8 +154,8 @@ module Azure::Profiles::Latest
         def query
           Azure::CognitiveServices::WebSearch::V1_0::Models::Query
         end
-        def time_zone
-          Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
+        def web_web_grouping
+          Azure::CognitiveServices::WebSearch::V1_0::Models::WebWebGrouping
         end
         def error_sub_code
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
@@ -163,17 +163,17 @@ module Azure::Profiles::Latest
         def web_web_answer
           Azure::CognitiveServices::WebSearch::V1_0::Models::WebWebAnswer
         end
-        def ranking_ranking_item
-          Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
+        def news
+          Azure::CognitiveServices::WebSearch::V1_0::Models::News
         end
         def spell_suggestions
           Azure::CognitiveServices::WebSearch::V1_0::Models::SpellSuggestions
         end
+        def time_zone
+          Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
+        end
         def error_response
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
-        end
-        def safe_search
-          Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
         end
         def text_format
           Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
@@ -181,8 +181,8 @@ module Azure::Profiles::Latest
         def related_searches_related_search_answer
           Azure::CognitiveServices::WebSearch::V1_0::Models::RelatedSearchesRelatedSearchAnswer
         end
-        def news
-          Azure::CognitiveServices::WebSearch::V1_0::Models::News
+        def safe_search
+          Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
         end
         def article
           Azure::CognitiveServices::WebSearch::V1_0::Models::Article
@@ -202,8 +202,8 @@ module Azure::Profiles::Latest
         def intangible
           Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
         end
-        def error_code
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
+        def media_object
+          Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
         end
       end
     end

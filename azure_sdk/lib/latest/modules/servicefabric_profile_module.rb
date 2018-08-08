@@ -11,12 +11,11 @@ module Azure::Profiles::Latest
       Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
+      Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
-      Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
 
       module Models
-        ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
         ClientCertificateThumbprint = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateThumbprint
         ClusterUpgradeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradeDeltaHealthPolicy
         ClusterVersionDetails = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterVersionDetails
@@ -73,10 +72,11 @@ module Azure::Profiles::Latest
         ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
         ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
         ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
+        ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :clusters, :cluster_versions, :application_type, :application, :version, :service, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :cluster_versions, :application_type, :service, :application, :version, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -90,9 +90,9 @@ module Azure::Profiles::Latest
           @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
           @application_type = @client_0.application_type
+          @service = @client_0.service
           @application = @client_0.application
           @version = @client_0.version
-          @service = @client_0.service
 
           @model_classes = ModelClasses.new
         end
@@ -111,9 +111,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def application_resource_list
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
-          end
           def client_certificate_thumbprint
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateThumbprint
           end
@@ -281,6 +278,9 @@ module Azure::Profiles::Latest
           end
           def client_certificate_common_name
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
+          end
+          def application_resource_list
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
           end
         end
       end

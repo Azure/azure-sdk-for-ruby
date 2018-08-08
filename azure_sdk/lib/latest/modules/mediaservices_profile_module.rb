@@ -105,8 +105,8 @@ module Azure::Profiles::Latest
         Asset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier
-        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
         ContentKeyPolicyOpenRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
+        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
         ContentKeyPolicyUnknownRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyUnknownRestriction
         ContentKeyPolicySymmetricTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicySymmetricTokenKey
         ContentKeyPolicyRsaTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRsaTokenKey
@@ -138,7 +138,7 @@ module Azure::Profiles::Latest
         PngLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
         PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
         BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
-        VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
+        StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
         TransportStreamFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransportStreamFormat
         VideoOverlay = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
         Transform = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Transform
@@ -182,8 +182,8 @@ module Azure::Profiles::Latest
         LiveEventInputProtocol = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventInputProtocol
         LiveEventEncodingType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
         LiveEventResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
-        StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
         StreamOptionsFlag = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
+        VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
         StreamingEndpointResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
         ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
         TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
@@ -490,11 +490,11 @@ module Azure::Profiles::Latest
           def content_key_policy_play_ready_content_encryption_key_from_key_identifier
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier
           end
-          def operation_collection
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
-          end
           def content_key_policy_open_restriction
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
+          end
+          def operation_collection
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
           end
           def content_key_policy_unknown_restriction
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyUnknownRestriction
@@ -589,8 +589,8 @@ module Azure::Profiles::Latest
           def built_in_standard_encoder_preset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
           end
-          def video_analyzer_preset
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
+          def standard_encoder_preset
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
           end
           def transport_stream_format
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransportStreamFormat
@@ -721,11 +721,11 @@ module Azure::Profiles::Latest
           def live_event_resource_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
           end
-          def standard_encoder_preset
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
-          end
           def stream_options_flag
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
+          end
+          def video_analyzer_preset
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
           end
           def streaming_endpoint_resource_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState

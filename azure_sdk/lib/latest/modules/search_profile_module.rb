@@ -23,8 +23,8 @@ module Azure::Profiles::Latest
         QueryKey = Azure::Search::Mgmt::V2015_08_19::Models::QueryKey
         SearchService = Azure::Search::Mgmt::V2015_08_19::Models::SearchService
         UnavailableNameReason = Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
-        Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
         HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
+        Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
         SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
         AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
         Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
@@ -95,11 +95,11 @@ module Azure::Profiles::Latest
           def unavailable_name_reason
             Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
           end
-          def operation
-            Azure::Search::Mgmt::V2015_08_19::Models::Operation
-          end
           def hosting_mode
             Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
+          end
+          def operation
+            Azure::Search::Mgmt::V2015_08_19::Models::Operation
           end
           def search_service_status
             Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus

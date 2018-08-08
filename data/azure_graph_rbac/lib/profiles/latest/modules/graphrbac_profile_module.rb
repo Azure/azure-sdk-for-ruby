@@ -11,7 +11,7 @@ module Azure::GraphRbac::Profiles::Latest
   ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
   Users = Azure::GraphRbac::V1_6::Users
   Domains = Azure::GraphRbac::V1_6::Domains
-  OAuth2Operations = Azure::GraphRbac::V1_6::OAuth2Operations
+  OAuth2 = Azure::GraphRbac::V1_6::OAuth2
 
   module Models
     GroupListResult = Azure::GraphRbac::V1_6::Models::GroupListResult
@@ -28,7 +28,7 @@ module Azure::GraphRbac::Profiles::Latest
     ApplicationAddOwnerParameters = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
     ApplicationUpdateParameters = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
     DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
-    OAuth2 = Azure::GraphRbac::V1_6::Models::OAuth2
+    Permissions = Azure::GraphRbac::V1_6::Models::Permissions
     PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
     ServicePrincipalCreateParameters = Azure::GraphRbac::V1_6::Models::ServicePrincipalCreateParameters
     AADObject = Azure::GraphRbac::V1_6::Models::AADObject
@@ -63,7 +63,7 @@ module Azure::GraphRbac::Profiles::Latest
   # GraphRbacDataClass
   #
   class GraphRbacDataClass
-    attr_reader :objects, :applications, :groups, :service_principals, :users, :domains, :oauth2_operations, :configurable, :base_url, :options, :model_classes
+    attr_reader :objects, :applications, :groups, :service_principals, :users, :domains, :oauth2, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -89,7 +89,7 @@ module Azure::GraphRbac::Profiles::Latest
       @service_principals = @client_0.service_principals
       @users = @client_0.users
       @domains = @client_0.domains
-      @oauth2_operations = @client_0.oauth2_operations
+      @oauth2 = @client_0.oauth2
 
       @model_classes = ModelClasses.new
     end
@@ -152,8 +152,8 @@ module Azure::GraphRbac::Profiles::Latest
     def directory_object_list_result
       Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
     end
-    def oauth2
-      Azure::GraphRbac::V1_6::Models::OAuth2
+    def permissions
+      Azure::GraphRbac::V1_6::Models::Permissions
     end
     def password_credential_list_result
       Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
