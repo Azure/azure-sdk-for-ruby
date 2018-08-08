@@ -16,13 +16,13 @@ module Azure::Profiles::Latest
         UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
         InfoField = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
         UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
-        OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
-        RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
         ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+        OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
         MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
         MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
         RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
         AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
+        RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
       end
 
       class CommerceManagementClass
@@ -71,14 +71,11 @@ module Azure::Profiles::Latest
           def usage_aggregation_list_result
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
           end
-          def offer_term_info
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
-          end
-          def rate_card_query_parameters
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
-          end
           def error_response
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+          end
+          def offer_term_info
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
           end
           def monetary_credit
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
@@ -91,6 +88,9 @@ module Azure::Profiles::Latest
           end
           def aggregation_granularity
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
+          end
+          def rate_card_query_parameters
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
           end
         end
       end

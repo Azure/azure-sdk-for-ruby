@@ -60,7 +60,6 @@ module Azure::CDN::Mgmt::V2016_10_02
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CustomDomainListResult',
           type: {
@@ -68,13 +67,11 @@ module Azure::CDN::Mgmt::V2016_10_02
             class_name: 'CustomDomainListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CustomDomainElementType',
                       type: {
@@ -85,7 +82,6 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
