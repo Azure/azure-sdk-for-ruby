@@ -7,11 +7,11 @@ module Azure::GraphRbac::V1_6
   #
   # The Graph RBAC Management Client
   #
-  class Domains
+  class OAuth2
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Domains class.
+    # Creates and initializes a new instance of the OAuth2 class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,42 +22,45 @@ module Azure::GraphRbac::V1_6
     attr_reader :client
 
     #
-    # Gets a list of domains for the current tenant.
+    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
     #
-    # @param filter [String] The filter to apply to the operation.
+    # @param filter [String] This is the Service Principal ObjectId associated with
+    # the app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DomainListResult] operation results.
+    # @return [Permissions] operation results.
     #
-    def list(filter = nil, custom_headers = nil)
-      response = list_async(filter, custom_headers).value!
+    def get(filter = nil, custom_headers = nil)
+      response = get_async(filter, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a list of domains for the current tenant.
+    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
     #
-    # @param filter [String] The filter to apply to the operation.
+    # @param filter [String] This is the Service Principal ObjectId associated with
+    # the app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter = nil, custom_headers = nil)
-      list_async(filter, custom_headers).value!
+    def get_with_http_info(filter = nil, custom_headers = nil)
+      get_async(filter, custom_headers).value!
     end
 
     #
-    # Gets a list of domains for the current tenant.
+    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
     #
-    # @param filter [String] The filter to apply to the operation.
+    # @param filter [String] This is the Service Principal ObjectId associated with
+    # the app
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter = nil, custom_headers = nil)
+    def get_async(filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
@@ -67,7 +70,7 @@ module Azure::GraphRbac::V1_6
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{tenantID}/domains'
+      path_template = '{tenantID}/oauth2PermissionGrants'
 
       request_url = @base_url || @client.base_url
 
@@ -94,7 +97,7 @@ module Azure::GraphRbac::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::GraphRbac::V1_6::Models::DomainListResult.mapper()
+            result_mapper = Azure::GraphRbac::V1_6::Models::Permissions.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -108,43 +111,42 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets a specific domain in the current tenant.
+    # Grants OAuth2 permissions for the relevant resource Ids of an app.
     #
-    # @param domain_name [String] name of the domain.
+    # @param body [Permissions]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Domain] operation results.
+    # @return [Permissions] operation results.
     #
-    def get(domain_name, custom_headers = nil)
-      response = get_async(domain_name, custom_headers).value!
+    def post(body = nil, custom_headers = nil)
+      response = post_async(body, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a specific domain in the current tenant.
+    # Grants OAuth2 permissions for the relevant resource Ids of an app.
     #
-    # @param domain_name [String] name of the domain.
+    # @param body [Permissions]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(domain_name, custom_headers = nil)
-      get_async(domain_name, custom_headers).value!
+    def post_with_http_info(body = nil, custom_headers = nil)
+      post_async(body, custom_headers).value!
     end
 
     #
-    # Gets a specific domain in the current tenant.
+    # Grants OAuth2 permissions for the relevant resource Ids of an app.
     #
-    # @param domain_name [String] name of the domain.
+    # @param body [Permissions]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(domain_name, custom_headers = nil)
-      fail ArgumentError, 'domain_name is nil' if domain_name.nil?
+    def post_async(body = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
@@ -154,34 +156,43 @@ module Azure::GraphRbac::V1_6
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{tenantID}/domains/{domainName}'
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::GraphRbac::V1_6::Models::Permissions.mapper()
+      request_content = @client.serialize(request_mapper,  body)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '{tenantID}/oauth2PermissionGrants'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'domainName' => domain_name,'tenantID' => @client.tenant_id},
+          path_params: {'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:get, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
-        if status_code == 200
+        if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::GraphRbac::V1_6::Models::Domain.mapper()
+            result_mapper = Azure::GraphRbac::V1_6::Models::Permissions.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
