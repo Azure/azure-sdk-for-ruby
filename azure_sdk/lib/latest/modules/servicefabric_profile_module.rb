@@ -7,13 +7,13 @@ require 'azure_mgmt_service_fabric'
 module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
-      Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
 
       module Models
         AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
@@ -76,7 +76,7 @@ module Azure::Profiles::Latest
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :version, :clusters, :cluster_versions, :application_type, :application, :service, :configurable, :base_url, :options, :model_classes
+        attr_reader :version, :clusters, :cluster_versions, :application_type, :operations, :service, :application, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -86,13 +86,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @version = @client_0.version
           @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
           @application_type = @client_0.application_type
-          @application = @client_0.application
+          @operations = @client_0.operations
           @service = @client_0.service
+          @application = @client_0.application
 
           @model_classes = ModelClasses.new
         end

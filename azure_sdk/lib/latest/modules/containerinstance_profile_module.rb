@@ -42,10 +42,10 @@ module Azure::Profiles::Latest
         ResourceRequirements = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ResourceRequirements
         Container = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Container
         GitRepoVolume = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::GitRepoVolume
+        ImageRegistryCredential = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ImageRegistryCredential
         Operation = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Operation
         EnvironmentVariable = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::EnvironmentVariable
         ResourceLimits = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ResourceLimits
-        ImageRegistryCredential = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ImageRegistryCredential
         AzureFileVolume = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::AzureFileVolume
         Logs = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Logs
         Port = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Port
@@ -169,6 +169,9 @@ module Azure::Profiles::Latest
           def git_repo_volume
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::GitRepoVolume
           end
+          def image_registry_credential
+            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ImageRegistryCredential
+          end
           def operation
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Operation
           end
@@ -177,9 +180,6 @@ module Azure::Profiles::Latest
           end
           def resource_limits
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ResourceLimits
-          end
-          def image_registry_credential
-            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ImageRegistryCredential
           end
           def azure_file_volume
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::AzureFileVolume

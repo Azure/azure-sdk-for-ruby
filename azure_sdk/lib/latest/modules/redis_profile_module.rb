@@ -35,14 +35,14 @@ module Azure::Profiles::Latest
         RedisResource = Azure::Redis::Mgmt::V2017_10_01::Models::RedisResource
         RedisCreateParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisCreateParameters
         RedisPatchSchedule = Azure::Redis::Mgmt::V2017_10_01::Models::RedisPatchSchedule
-        OperationDisplay = Azure::Redis::Mgmt::V2017_10_01::Models::OperationDisplay
-        SkuName = Azure::Redis::Mgmt::V2017_10_01::Models::SkuName
-        OperationListResult = Azure::Redis::Mgmt::V2017_10_01::Models::OperationListResult
-        SkuFamily = Azure::Redis::Mgmt::V2017_10_01::Models::SkuFamily
-        RedisKeyType = Azure::Redis::Mgmt::V2017_10_01::Models::RedisKeyType
         RedisLinkedServerWithProperties = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithProperties
+        SkuName = Azure::Redis::Mgmt::V2017_10_01::Models::SkuName
+        RedisKeyType = Azure::Redis::Mgmt::V2017_10_01::Models::RedisKeyType
+        SkuFamily = Azure::Redis::Mgmt::V2017_10_01::Models::SkuFamily
         ReplicationRole = Azure::Redis::Mgmt::V2017_10_01::Models::ReplicationRole
         RebootType = Azure::Redis::Mgmt::V2017_10_01::Models::RebootType
+        OperationDisplay = Azure::Redis::Mgmt::V2017_10_01::Models::OperationDisplay
+        OperationListResult = Azure::Redis::Mgmt::V2017_10_01::Models::OperationListResult
         TrackedResource = Azure::Redis::Mgmt::V2017_10_01::Models::TrackedResource
         ProxyResource = Azure::Redis::Mgmt::V2017_10_01::Models::ProxyResource
         Operation = Azure::Redis::Mgmt::V2017_10_01::Models::Operation
@@ -145,29 +145,29 @@ module Azure::Profiles::Latest
           def redis_patch_schedule
             Azure::Redis::Mgmt::V2017_10_01::Models::RedisPatchSchedule
           end
-          def operation_display
-            Azure::Redis::Mgmt::V2017_10_01::Models::OperationDisplay
+          def redis_linked_server_with_properties
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithProperties
           end
           def sku_name
             Azure::Redis::Mgmt::V2017_10_01::Models::SkuName
           end
-          def operation_list_result
-            Azure::Redis::Mgmt::V2017_10_01::Models::OperationListResult
-          end
-          def sku_family
-            Azure::Redis::Mgmt::V2017_10_01::Models::SkuFamily
-          end
           def redis_key_type
             Azure::Redis::Mgmt::V2017_10_01::Models::RedisKeyType
           end
-          def redis_linked_server_with_properties
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithProperties
+          def sku_family
+            Azure::Redis::Mgmt::V2017_10_01::Models::SkuFamily
           end
           def replication_role
             Azure::Redis::Mgmt::V2017_10_01::Models::ReplicationRole
           end
           def reboot_type
             Azure::Redis::Mgmt::V2017_10_01::Models::RebootType
+          end
+          def operation_display
+            Azure::Redis::Mgmt::V2017_10_01::Models::OperationDisplay
+          end
+          def operation_list_result
+            Azure::Redis::Mgmt::V2017_10_01::Models::OperationListResult
           end
           def tracked_resource
             Azure::Redis::Mgmt::V2017_10_01::Models::TrackedResource

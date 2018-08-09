@@ -28,10 +28,10 @@ module Azure::Profiles::Latest
       Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
-      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
-      SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
-      TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
+      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
+      TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
+      SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
     end
 
@@ -122,17 +122,17 @@ module Azure::Profiles::Latest
         def video_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
         end
+        def error_sub_code
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
+        end
         def error_response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
-        end
-        def safe_search
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
         end
         def text_format
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
         end
-        def error_sub_code
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
+        def safe_search
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
         end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error

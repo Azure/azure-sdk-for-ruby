@@ -7,9 +7,9 @@ require 'azure_mgmt_storage'
 module Azure::Profiles::Latest
   module Storage
     module Mgmt
-      Operations = Azure::Storage::Mgmt::V2018_03_01_preview::Operations
       StorageAccounts = Azure::Storage::Mgmt::V2018_03_01_preview::StorageAccounts
       BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
+      Operations = Azure::Storage::Mgmt::V2018_03_01_preview::Operations
       Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
       Usages = Azure::Storage::Mgmt::V2018_03_01_preview::Usages
 
@@ -27,15 +27,15 @@ module Azure::Profiles::Latest
         Permissions = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
         ServiceSpecification = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
         State = Azure::Storage::Mgmt::V2018_03_01_preview::Models::State
-        OperationDisplay = Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationDisplay
         Reason = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Reason
+        OperationDisplay = Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationDisplay
         OperationListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationListResult
         TrackedResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::TrackedResource
         ProxyResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ProxyResource
         Services = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Services
+        AzureEntityResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
         Operation = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Operation
         Identity = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Identity
-        AzureEntityResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
         VirtualNetworkRule = Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
         StorageAccountCheckNameAvailabilityParameters = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountCheckNameAvailabilityParameters
         StorageAccountKey = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountKey
@@ -50,8 +50,8 @@ module Azure::Profiles::Latest
         CustomDomain = Azure::Storage::Mgmt::V2018_03_01_preview::Models::CustomDomain
         UsageName = Azure::Storage::Mgmt::V2018_03_01_preview::Models::UsageName
         StorageAccountCreateParameters = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountCreateParameters
-        Usage = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Usage
         Dimension = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Dimension
+        Usage = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Usage
         UsageListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::UsageListResult
         CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
         EncryptionServices = Azure::Storage::Mgmt::V2018_03_01_preview::Models::EncryptionServices
@@ -94,7 +94,7 @@ module Azure::Profiles::Latest
       end
 
       class StorageManagementClass
-        attr_reader :operations, :storage_accounts, :blob_containers, :skus, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :storage_accounts, :blob_containers, :operations, :skus, :usages, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -104,9 +104,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @storage_accounts = @client_0.storage_accounts
           @blob_containers = @client_0.blob_containers
+          @operations = @client_0.operations
           @skus = @client_0.skus
           @usages = @client_0.usages
 
@@ -166,11 +166,11 @@ module Azure::Profiles::Latest
           def state
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::State
           end
-          def operation_display
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationDisplay
-          end
           def reason
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Reason
+          end
+          def operation_display
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationDisplay
           end
           def operation_list_result
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationListResult
@@ -184,14 +184,14 @@ module Azure::Profiles::Latest
           def services
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Services
           end
+          def azure_entity_resource
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
+          end
           def operation
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Operation
           end
           def identity
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Identity
-          end
-          def azure_entity_resource
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
           end
           def virtual_network_rule
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
@@ -235,11 +235,11 @@ module Azure::Profiles::Latest
           def storage_account_create_parameters
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountCreateParameters
           end
-          def usage
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Usage
-          end
           def dimension
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Dimension
+          end
+          def usage
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Usage
           end
           def usage_list_result
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::UsageListResult
