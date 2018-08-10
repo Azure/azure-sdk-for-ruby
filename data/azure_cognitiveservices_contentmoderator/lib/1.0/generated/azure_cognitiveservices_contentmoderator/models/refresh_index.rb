@@ -34,7 +34,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RefreshIndex',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'RefreshIndex',
             model_properties: {
               content_source_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ContentSourceId',
                 type: {
@@ -50,7 +48,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               is_update_success: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'IsUpdateSuccess',
                 type: {
@@ -58,13 +55,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               advanced_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'AdvancedInfo',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RefreshIndexAdvancedInfoItemElementType',
                       type: {
@@ -75,7 +70,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -84,7 +78,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {

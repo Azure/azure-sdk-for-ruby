@@ -26,7 +26,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RefreshIndex_AdvancedInfoItem',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'RefreshIndexAdvancedInfoItem',
             model_properties: {
               key_one: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Key One',
                 type: {
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               key_two: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Key Two',
                 type: {

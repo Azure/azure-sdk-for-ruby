@@ -15,6 +15,9 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [Array<Email>]
       attr_accessor :email
 
+      # @return [Array<SSN>]
+      attr_accessor :ssn
+
       # @return [Array<IPA>]
       attr_accessor :ipa
 
@@ -31,7 +34,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PII',
           type: {
@@ -39,13 +41,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'PII',
             model_properties: {
               email: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Email',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EmailElementType',
                       type: {
@@ -55,14 +55,27 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                   }
                 }
               },
+              ssn: {
+                required: false,
+                serialized_name: 'SSN',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SSNElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SSN'
+                      }
+                  }
+                }
+              },
               ipa: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'IPA',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IPAElementType',
                       type: {
@@ -73,13 +86,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               phone: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Phone',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PhoneElementType',
                       type: {
@@ -90,13 +101,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Address',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AddressElementType',
                       type: {

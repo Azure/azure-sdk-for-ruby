@@ -17,22 +17,9 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials1
 
-    # @return [AzureRegionBaseUrl] Supported Azure regions for Content
-    # Moderator endpoints. Possible values include:
-    # 'westus.api.cognitive.microsoft.com',
-    # 'westus2.api.cognitive.microsoft.com',
-    # 'eastus.api.cognitive.microsoft.com',
-    # 'eastus2.api.cognitive.microsoft.com',
-    # 'westcentralus.api.cognitive.microsoft.com',
-    # 'southcentralus.api.cognitive.microsoft.com',
-    # 'westeurope.api.cognitive.microsoft.com',
-    # 'northeurope.api.cognitive.microsoft.com',
-    # 'southeastasia.api.cognitive.microsoft.com',
-    # 'eastasia.api.cognitive.microsoft.com',
-    # 'australiaeast.api.cognitive.microsoft.com',
-    # 'brazilsouth.api.cognitive.microsoft.com',
-    # 'contentmoderatortest.azure-api.net'
-    attr_accessor :base_url
+    # @return [String] Supported Cognitive Services endpoints (protocol and
+    # hostname, for example: https://westus.api.cognitive.microsoft.com).
+    attr_accessor :endpoint
 
     # @return Subscription credentials which uniquely identify client
     # subscription.
@@ -77,7 +64,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = 'https://{baseUrl}/'
+      @base_url = '{Endpoint}'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -141,9 +128,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -160,7 +144,9 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_contentmoderator'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::CognitiveServices::ContentModerator::V1_0::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CognitiveServices::ContentModerator::V1_0::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

@@ -12,13 +12,19 @@ module Azure::CognitiveServices::ContentModerator::V1_0
 
       include MsRestAzure
 
-      # @return [Score]
+      # @return [ClassificationCategory1] The category1 score details of the
+      # text. <a href="https://aka.ms/textClassifyCategories">Click here</a>
+      # for more details on category classification.
       attr_accessor :category1
 
-      # @return [Score]
+      # @return [ClassificationCategory2] The category2 score details of the
+      # text. <a href="https://aka.ms/textClassifyCategories">Click here</a>
+      # for more details on category classification.
       attr_accessor :category2
 
-      # @return [Score]
+      # @return [ClassificationCategory3] The category3 score details of the
+      # text. <a href="https://aka.ms/textClassifyCategories">Click here</a>
+      # for more details on category classification.
       attr_accessor :category3
 
       # @return [Boolean] The review recommended flag.
@@ -31,7 +37,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Classification',
           type: {
@@ -39,34 +44,30 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Classification',
             model_properties: {
               category1: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Category1',
                 type: {
                   name: 'Composite',
-                  class_name: 'Score'
+                  class_name: 'ClassificationCategory1'
                 }
               },
               category2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Category2',
                 type: {
                   name: 'Composite',
-                  class_name: 'Score'
+                  class_name: 'ClassificationCategory2'
                 }
               },
               category3: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Category3',
                 type: {
                   name: 'Composite',
-                  class_name: 'Score'
+                  class_name: 'ClassificationCategory3'
                 }
               },
               review_recommended: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ReviewRecommended',
                 type: {

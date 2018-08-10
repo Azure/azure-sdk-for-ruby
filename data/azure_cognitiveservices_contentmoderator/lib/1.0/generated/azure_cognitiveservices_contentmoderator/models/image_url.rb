@@ -26,7 +26,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageUrl',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'ImageUrl',
             model_properties: {
               data_representation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'DataRepresentation',
                 default_value: 'URL',
@@ -43,7 +41,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Value',
                 type: {

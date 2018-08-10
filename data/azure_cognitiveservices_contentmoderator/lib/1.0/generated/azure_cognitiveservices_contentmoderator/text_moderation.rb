@@ -17,14 +17,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
   # If the content passed to the text API or the image API exceeds the size
   # limits, the API will return an error code that informs about the issue.
   #
-  # This API is currently available in:
-  #
-  # * West US - westus.api.cognitive.microsoft.com
-  # * East US 2 - eastus2.api.cognitive.microsoft.com
-  # * West Central US - westcentralus.api.cognitive.microsoft.com
-  # * West Europe - westeurope.api.cognitive.microsoft.com
-  # * Southeast Asia - southeastasia.api.cognitive.microsoft.com .
-  #
   class TextModeration
     include MsRestAzure
 
@@ -45,10 +37,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # Detects profanity in more than 100 languages and match against custom and
     # shared blacklists.
     #
-    # @param language [String] Language of the terms.
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
+    # @param language [String] Language of the text.
     # @param autocorrect [Boolean] Autocorrect text.
     # @param pii [Boolean] Detect personal identifiable information.
     # @param list_id [String] The list Id.
@@ -58,8 +50,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Screen] operation results.
     #
-    def screen_text(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
-      response = screen_text_async(language, text_content_type, text_content, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
+    def screen_text(text_content_type, text_content, language = nil, autocorrect = false, pii = false, list_id = nil, classify = false, custom_headers = nil)
+      response = screen_text_async(text_content_type, text_content, language, autocorrect, pii, list_id, classify, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -69,10 +61,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # Detects profanity in more than 100 languages and match against custom and
     # shared blacklists.
     #
-    # @param language [String] Language of the terms.
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
+    # @param language [String] Language of the text.
     # @param autocorrect [Boolean] Autocorrect text.
     # @param pii [Boolean] Detect personal identifiable information.
     # @param list_id [String] The list Id.
@@ -82,8 +74,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def screen_text_with_http_info(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
-      screen_text_async(language, text_content_type, text_content, autocorrect:autocorrect, pii:pii, list_id:list_id, classify:classify, custom_headers:custom_headers).value!
+    def screen_text_with_http_info(text_content_type, text_content, language = nil, autocorrect = false, pii = false, list_id = nil, classify = false, custom_headers = nil)
+      screen_text_async(text_content_type, text_content, language, autocorrect, pii, list_id, classify, custom_headers).value!
     end
 
     #
@@ -92,10 +84,10 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # Detects profanity in more than 100 languages and match against custom and
     # shared blacklists.
     #
-    # @param language [String] Language of the terms.
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
+    # @param language [String] Language of the text.
     # @param autocorrect [Boolean] Autocorrect text.
     # @param pii [Boolean] Detect personal identifiable information.
     # @param list_id [String] The list Id.
@@ -105,28 +97,28 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def screen_text_async(language, text_content_type, text_content, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
-      fail ArgumentError, 'language is nil' if language.nil?
+    def screen_text_async(text_content_type, text_content, language = nil, autocorrect = false, pii = false, list_id = nil, classify = false, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'text_content_type is nil' if text_content_type.nil?
       fail ArgumentError, 'text_content is nil' if text_content.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'text/plain'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      fail RuntimeError, 'Header Content-Type is forbidden to change'
       request_headers['Content-Type'] = text_content_type.to_s unless text_content_type.to_s.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
+      request_headers['Content-Type'] = 'text/plain'
+
       # Serialize Request
       request_mapper = {
-        client_side_validation: true,
         required: true,
         serialized_name: 'Text Content',
         type: {
-          name: 'String'
+          name: 'Stream'
         }
       }
       request_content = @client.serialize(request_mapper,  text_content)
@@ -135,7 +127,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessText/Screen/'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -181,14 +173,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DetectedLanguage] operation results.
     #
-    def detect_language(text_content_type, text_content, custom_headers:nil)
-      response = detect_language_async(text_content_type, text_content, custom_headers:custom_headers).value!
+    def detect_language(text_content_type, text_content, custom_headers = nil)
+      response = detect_language_async(text_content_type, text_content, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -200,14 +192,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_language_with_http_info(text_content_type, text_content, custom_headers:nil)
-      detect_language_async(text_content_type, text_content, custom_headers:custom_headers).value!
+    def detect_language_with_http_info(text_content_type, text_content, custom_headers = nil)
+      detect_language_async(text_content_type, text_content, custom_headers).value!
     end
 
     #
@@ -218,33 +210,34 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @param text_content_type [Enum] The content type. Possible values include:
     # 'text/plain', 'text/html', 'text/xml', 'text/markdown'
-    # @param text_content [String] Content to screen.
+    # @param text_content Content to screen.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_language_async(text_content_type, text_content, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+    def detect_language_async(text_content_type, text_content, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'text_content_type is nil' if text_content_type.nil?
       fail ArgumentError, 'text_content is nil' if text_content.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'text/plain'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      fail RuntimeError, 'Header Content-Type is forbidden to change'
       request_headers['Content-Type'] = text_content_type.to_s unless text_content_type.to_s.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
+      request_headers['Content-Type'] = 'text/plain'
+
       # Serialize Request
       request_mapper = {
-        client_side_validation: true,
         required: true,
         serialized_name: 'Text Content',
         type: {
-          name: 'String'
+          name: 'Stream'
         }
       }
       request_content = @client.serialize(request_mapper,  text_content)
@@ -253,7 +246,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessText/DetectLanguage'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

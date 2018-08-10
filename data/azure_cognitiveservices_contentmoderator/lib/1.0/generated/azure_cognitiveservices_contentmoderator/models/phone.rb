@@ -29,7 +29,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Phone',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Phone',
             model_properties: {
               country_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CountryCode',
                 type: {
@@ -45,7 +43,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Text',
                 type: {
@@ -53,7 +50,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               index: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Index',
                 type: {
