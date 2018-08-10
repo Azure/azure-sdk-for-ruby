@@ -48,7 +48,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InMageAzureV2',
           type: {
@@ -56,7 +55,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageAzureV2ReprotectInput',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -64,7 +62,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               master_target_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'masterTargetId',
                 type: {
@@ -72,7 +69,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               process_server_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'processServerId',
                 type: {
@@ -80,7 +76,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               storage_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -88,7 +83,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               run_as_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'runAsAccountId',
                 type: {
@@ -96,7 +90,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               policy_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyId',
                 type: {
@@ -104,7 +97,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               log_storage_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logStorageAccountId',
                 type: {
@@ -112,13 +104,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disks_to_include: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'disksToInclude',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

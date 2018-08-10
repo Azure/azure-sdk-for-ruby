@@ -33,8 +33,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Alert] operation results.
     #
-    def get(alert_setting_name, custom_headers:nil)
-      response = get_async(alert_setting_name, custom_headers:custom_headers).value!
+    def get(alert_setting_name, custom_headers = nil)
+      response = get_async(alert_setting_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(alert_setting_name, custom_headers:nil)
-      get_async(alert_setting_name, custom_headers:custom_headers).value!
+    def get_with_http_info(alert_setting_name, custom_headers = nil)
+      get_async(alert_setting_name, custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(alert_setting_name, custom_headers:nil)
+    def get_async(alert_setting_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -75,7 +75,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -134,8 +133,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Alert] operation results.
     #
-    def create(alert_setting_name, request, custom_headers:nil)
-      response = create_async(alert_setting_name, request, custom_headers:custom_headers).value!
+    def create(alert_setting_name, request, custom_headers = nil)
+      response = create_async(alert_setting_name, request, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -153,8 +152,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(alert_setting_name, request, custom_headers:nil)
-      create_async(alert_setting_name, request, custom_headers:custom_headers).value!
+    def create_with_http_info(alert_setting_name, request, custom_headers = nil)
+      create_async(alert_setting_name, request, custom_headers).value!
     end
 
     #
@@ -171,7 +170,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(alert_setting_name, request, custom_headers:nil)
+    def create_async(alert_setting_name, request, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -181,11 +180,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ConfigureAlertRequest.mapper()
@@ -243,8 +243,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Array<Alert>] operation results.
     #
-    def list(custom_headers:nil)
-      first_page = list_as_lazy(custom_headers:custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -258,8 +258,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
@@ -272,7 +272,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -280,7 +280,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -337,8 +336,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [AlertCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -354,8 +353,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -370,12 +369,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -429,12 +427,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [AlertCollection] which provide lazy access to pages of the response.
     #
-    def list_as_lazy(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

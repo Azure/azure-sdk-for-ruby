@@ -25,7 +25,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyProperties',
           type: {
@@ -33,7 +32,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'PolicyProperties',
             model_properties: {
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -41,7 +39,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {
