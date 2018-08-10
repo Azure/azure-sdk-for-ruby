@@ -7,10 +7,11 @@ require 'azure_mgmt_analysis_services'
 module Azure::Profiles::Latest
   module AnalysisServices
     module Mgmt
-      Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
       Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
+      Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
 
       module Models
+        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
         SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
         State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
@@ -37,11 +38,10 @@ module Azure::Profiles::Latest
         SkuEnumerationForExistingResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
         AnalysisServicesServer = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
-        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
       end
 
       class AnalysisServicesManagementClass
-        attr_reader :servers, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :servers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -51,8 +51,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @servers = @client_0.servers
           @operations = @client_0.operations
+          @servers = @client_0.servers
 
           @model_classes = ModelClasses.new
         end
@@ -71,6 +71,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def status
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
+          end
           def resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
           end
@@ -148,9 +151,6 @@ module Azure::Profiles::Latest
           end
           def connection_mode
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
-          end
-          def status
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
           end
         end
       end

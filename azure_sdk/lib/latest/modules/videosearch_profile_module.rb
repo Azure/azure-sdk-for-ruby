@@ -29,17 +29,17 @@ module Azure::Profiles::Latest
       Thing = Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
-      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+      ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
-      ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
+      VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
       VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
       VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
+      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
       PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
       VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
       TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
-      VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
     end
 
@@ -133,8 +133,8 @@ module Azure::Profiles::Latest
         def error_code
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
         end
-        def error_response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+        def error_sub_code
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
         end
         def identifiable
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
@@ -142,8 +142,8 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
         end
-        def error_sub_code
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
+        def video_pricing
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
         end
         def video_resolution
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
@@ -154,6 +154,9 @@ module Azure::Profiles::Latest
         def video_query_scenario
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
         end
+        def error_response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+        end
         def pivot_suggestions
           Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
         end
@@ -162,9 +165,6 @@ module Azure::Profiles::Latest
         end
         def text_format
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
-        end
-        def video_pricing
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
         end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error

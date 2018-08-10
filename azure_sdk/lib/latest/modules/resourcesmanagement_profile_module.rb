@@ -13,17 +13,17 @@ module Azure::Profiles::Latest
 
       module Models
         OperationDisplay = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
-        OperationListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
         ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
-        ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
         ManagementGroup = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
-        ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
+        OperationListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
         ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
         CreateGroupRequest = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
         ManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
-        Operation = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
+        ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
+        ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
         ErrorResponse = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
         ErrorDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
+        Operation = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
       end
 
       class ResourcesManagementManagementClass
@@ -61,20 +61,14 @@ module Azure::Profiles::Latest
           def operation_display
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
           end
-          def operation_list_result
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
-          end
           def management_group_list_result
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
-          end
-          def parent_group_info
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
           end
           def management_group
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
           end
-          def management_group_details
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
+          def operation_list_result
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
           end
           def management_group_info
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
@@ -85,14 +79,20 @@ module Azure::Profiles::Latest
           def management_group_child_info
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
           end
-          def operation
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
+          def parent_group_info
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
+          end
+          def management_group_details
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
           end
           def error_response
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
           end
           def error_details
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
+          end
+          def operation
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
           end
         end
       end

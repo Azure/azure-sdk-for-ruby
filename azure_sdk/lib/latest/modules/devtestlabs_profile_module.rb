@@ -166,19 +166,19 @@ module Azure::Profiles::Latest
         SourceControlType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SourceControlType
         Subnet = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Subnet
         Event = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Event
-        User = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
+        WindowsOsState = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::WindowsOsState
         LinuxOsState = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LinuxOsState
         StorageType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::StorageType
         CostThresholdStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdStatus
-        WindowsOsState = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::WindowsOsState
+        NotificationChannelEventType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelEventType
         VirtualMachineCreationSource = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualMachineCreationSource
         CustomImageOsType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CustomImageOsType
-        HostCachingOptions = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
-        NotificationChannelEventType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelEventType
+        User = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
+        TargetCostStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TargetCostStatus
         ReportingCycleType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ReportingCycleType
         FileUploadOptions = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::FileUploadOptions
         PremiumDataDisk = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PremiumDataDisk
-        TargetCostStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TargetCostStatus
+        HostCachingOptions = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
         PolicyEvaluatorType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType
         CostType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostType
         HttpStatusCode = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HttpStatusCode
@@ -644,8 +644,8 @@ module Azure::Profiles::Latest
           def event
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Event
           end
-          def user
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
+          def windows_os_state
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::WindowsOsState
           end
           def linux_os_state
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LinuxOsState
@@ -656,8 +656,8 @@ module Azure::Profiles::Latest
           def cost_threshold_status
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdStatus
           end
-          def windows_os_state
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::WindowsOsState
+          def notification_channel_event_type
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelEventType
           end
           def virtual_machine_creation_source
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualMachineCreationSource
@@ -665,11 +665,11 @@ module Azure::Profiles::Latest
           def custom_image_os_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CustomImageOsType
           end
-          def host_caching_options
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
+          def user
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
           end
-          def notification_channel_event_type
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelEventType
+          def target_cost_status
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TargetCostStatus
           end
           def reporting_cycle_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ReportingCycleType
@@ -680,8 +680,8 @@ module Azure::Profiles::Latest
           def premium_data_disk
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PremiumDataDisk
           end
-          def target_cost_status
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TargetCostStatus
+          def host_caching_options
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
           end
           def policy_evaluator_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType

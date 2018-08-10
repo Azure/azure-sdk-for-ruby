@@ -77,43 +77,43 @@ module Azure::Profiles::Latest
         RunbookCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateParameters
         DscNodeUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeUpdateParameters
         AutomationAccountUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountUpdateParameters
-        OperationDisplay = Azure::Automation::Mgmt::V2015_10_31::Models::OperationDisplay
-        ConnectionTypeCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeCreateOrUpdateParameters
         RunbookUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookUpdateParameters
-        DscConfigurationListResult = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationListResult
+        ConnectionTypeCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeCreateOrUpdateParameters
         RunbookDraftUndoEditResult = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraftUndoEditResult
-        ConnectionTypeAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeAssociationProperty
+        DscConfigurationListResult = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationListResult
         TestJobCreateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::TestJobCreateParameters
-        RunbookCreateOrUpdateDraftProperties = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftProperties
+        ConnectionTypeAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeAssociationProperty
         TestJob = Azure::Automation::Mgmt::V2015_10_31::Models::TestJob
-        RunbookCreateOrUpdateDraftParameters = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftParameters
-        ErrorResponse = Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
-        AutomationAccount = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccount
-        OperationListResult = Azure::Automation::Mgmt::V2015_10_31::Models::OperationListResult
+        OperationDisplay = Azure::Automation::Mgmt::V2015_10_31::Models::OperationDisplay
         DscCompilationJobListResult = Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJobListResult
-        ProxyResource = Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
-        Operation = Azure::Automation::Mgmt::V2015_10_31::Models::Operation
-        DscCompilationJob = Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
-        DscConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
-        Credential = Azure::Automation::Mgmt::V2015_10_31::Models::Credential
+        OperationListResult = Azure::Automation::Mgmt::V2015_10_31::Models::OperationListResult
         TrackedResource = Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
-        ModuleModel = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
+        RunbookCreateOrUpdateDraftParameters = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftParameters
+        RunbookCreateOrUpdateDraftProperties = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftProperties
+        AutomationAccount = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccount
+        ProxyResource = Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
+        Credential = Azure::Automation::Mgmt::V2015_10_31::Models::Credential
+        DscCompilationJob = Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
+        ErrorResponse = Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
         DscNode = Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
         DscNodeConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
-        Variable = Azure::Automation::Mgmt::V2015_10_31::Models::Variable
+        DscConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
         Runbook = Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
-        Schedule = Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
-        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+        Operation = Azure::Automation::Mgmt::V2015_10_31::Models::Operation
+        ModuleModel = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
         Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
-        Job = Azure::Automation::Mgmt::V2015_10_31::Models::Job
-        JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
+        Schedule = Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
+        Variable = Azure::Automation::Mgmt::V2015_10_31::Models::Variable
         AutomationKeyName = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
+        Job = Azure::Automation::Mgmt::V2015_10_31::Models::Job
+        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+        JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
         AutomationKeyPermissions = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
         SkuNameEnum = Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
-        JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
+        DscConfigurationProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
         JobStreamType = Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
         ContentSourceType = Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
-        DscConfigurationProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
+        JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
         DscConfigurationState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
         Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
         GroupTypeEnum = Azure::Automation::Mgmt::V2015_10_31::Models::GroupTypeEnum
@@ -163,7 +163,6 @@ module Azure::Profiles::Latest
         CredentialListResult = Azure::Automation::Mgmt::V2015_10_31::Models::CredentialListResult
         HybridRunbookWorkerGroupUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupUpdateParameters
         DscConfigurationAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationAssociationProperty
-        CertificateCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::CertificateCreateOrUpdateParameters
         RunbookAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookAssociationProperty
         VariableUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::VariableUpdateParameters
         ScheduleAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleAssociationProperty
@@ -171,6 +170,7 @@ module Azure::Profiles::Latest
         ContentHash = Azure::Automation::Mgmt::V2015_10_31::Models::ContentHash
         JobListResult = Azure::Automation::Mgmt::V2015_10_31::Models::JobListResult
         DscConfigurationParameter = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationParameter
+        CertificateCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::CertificateCreateOrUpdateParameters
         JobCreateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::JobCreateParameters
         VariableListResult = Azure::Automation::Mgmt::V2015_10_31::Models::VariableListResult
         JobSchedule = Azure::Automation::Mgmt::V2015_10_31::Models::JobSchedule
@@ -350,68 +350,59 @@ module Azure::Profiles::Latest
           def automation_account_update_parameters
             Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountUpdateParameters
           end
-          def operation_display
-            Azure::Automation::Mgmt::V2015_10_31::Models::OperationDisplay
+          def runbook_update_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookUpdateParameters
           end
           def connection_type_create_or_update_parameters
             Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeCreateOrUpdateParameters
           end
-          def runbook_update_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookUpdateParameters
+          def runbook_draft_undo_edit_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraftUndoEditResult
           end
           def dsc_configuration_list_result
             Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationListResult
           end
-          def runbook_draft_undo_edit_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraftUndoEditResult
+          def test_job_create_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::TestJobCreateParameters
           end
           def connection_type_association_property
             Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeAssociationProperty
           end
-          def test_job_create_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::TestJobCreateParameters
-          end
-          def runbook_create_or_update_draft_properties
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftProperties
-          end
           def test_job
             Azure::Automation::Mgmt::V2015_10_31::Models::TestJob
           end
-          def runbook_create_or_update_draft_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftParameters
-          end
-          def error_response
-            Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
-          end
-          def automation_account
-            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccount
-          end
-          def operation_list_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::OperationListResult
+          def operation_display
+            Azure::Automation::Mgmt::V2015_10_31::Models::OperationDisplay
           end
           def dsc_compilation_job_list_result
             Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJobListResult
           end
-          def proxy_resource
-            Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
-          end
-          def operation
-            Azure::Automation::Mgmt::V2015_10_31::Models::Operation
-          end
-          def dsc_compilation_job
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
-          end
-          def dsc_configuration
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
-          end
-          def credential
-            Azure::Automation::Mgmt::V2015_10_31::Models::Credential
+          def operation_list_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::OperationListResult
           end
           def tracked_resource
             Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
           end
-          def module_model
-            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
+          def runbook_create_or_update_draft_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftParameters
+          end
+          def runbook_create_or_update_draft_properties
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftProperties
+          end
+          def automation_account
+            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccount
+          end
+          def proxy_resource
+            Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
+          end
+          def credential
+            Azure::Automation::Mgmt::V2015_10_31::Models::Credential
+          end
+          def dsc_compilation_job
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
+          end
+          def error_response
+            Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
           end
           def dsc_node
             Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
@@ -419,29 +410,38 @@ module Azure::Profiles::Latest
           def dsc_node_configuration
             Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
           end
-          def variable
-            Azure::Automation::Mgmt::V2015_10_31::Models::Variable
+          def dsc_configuration
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
           end
           def runbook
             Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
           end
-          def schedule
-            Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
+          def operation
+            Azure::Automation::Mgmt::V2015_10_31::Models::Operation
           end
-          def automation_account_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+          def module_model
+            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
           end
           def webhook
             Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
           end
-          def job
-            Azure::Automation::Mgmt::V2015_10_31::Models::Job
+          def schedule
+            Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
           end
-          def job_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
+          def variable
+            Azure::Automation::Mgmt::V2015_10_31::Models::Variable
           end
           def automation_key_name
             Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
+          end
+          def job
+            Azure::Automation::Mgmt::V2015_10_31::Models::Job
+          end
+          def automation_account_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+          end
+          def job_status
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
           end
           def automation_key_permissions
             Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
@@ -449,8 +449,8 @@ module Azure::Profiles::Latest
           def sku_name_enum
             Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
           end
-          def job_status
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
+          def dsc_configuration_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
           end
           def job_stream_type
             Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
@@ -458,8 +458,8 @@ module Azure::Profiles::Latest
           def content_source_type
             Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
           end
-          def dsc_configuration_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
+          def job_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
           end
           def dsc_configuration_state
             Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
@@ -608,9 +608,6 @@ module Azure::Profiles::Latest
           def dsc_configuration_association_property
             Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationAssociationProperty
           end
-          def certificate_create_or_update_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::CertificateCreateOrUpdateParameters
-          end
           def runbook_association_property
             Azure::Automation::Mgmt::V2015_10_31::Models::RunbookAssociationProperty
           end
@@ -631,6 +628,9 @@ module Azure::Profiles::Latest
           end
           def dsc_configuration_parameter
             Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationParameter
+          end
+          def certificate_create_or_update_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::CertificateCreateOrUpdateParameters
           end
           def job_create_parameters
             Azure::Automation::Mgmt::V2015_10_31::Models::JobCreateParameters

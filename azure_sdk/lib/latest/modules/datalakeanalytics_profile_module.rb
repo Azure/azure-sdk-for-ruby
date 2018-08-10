@@ -7,9 +7,9 @@ require 'azure_mgmt_datalake_analytics'
 module Azure::Profiles::Latest
   module DataLakeAnalytics
     module Mgmt
-      Operations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Operations
       StorageAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::StorageAccounts
       Accounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Accounts
+      Operations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Operations
       DataLakeStoreAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::DataLakeStoreAccounts
       ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
       FirewallRules = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::FirewallRules
@@ -52,14 +52,14 @@ module Azure::Profiles::Latest
         StorageContainer = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageContainer
         AADObjectType = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::AADObjectType
         FirewallState = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::FirewallState
-        OperationDisplay = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationDisplay
         FirewallAllowAzureIpsState = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::FirewallAllowAzureIpsState
-        OperationListResult = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationListResult
-        DataLakeAnalyticsAccountStatus = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountStatus
         TierType = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::TierType
-        OperationOrigin = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationOrigin
+        DataLakeAnalyticsAccountStatus = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountStatus
         DataLakeAnalyticsAccountState = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountState
+        OperationOrigin = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationOrigin
+        OperationDisplay = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationDisplay
         SubscriptionState = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubscriptionState
+        OperationListResult = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationListResult
         Operation = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::Operation
         SubResource = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubResource
         Resource = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::Resource
@@ -67,7 +67,7 @@ module Azure::Profiles::Latest
       end
 
       class DataLakeAnalyticsManagementClass
-        attr_reader :operations, :storage_accounts, :accounts, :data_lake_store_accounts, :compute_policies, :firewall_rules, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :storage_accounts, :accounts, :operations, :data_lake_store_accounts, :compute_policies, :firewall_rules, :locations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -77,9 +77,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @storage_accounts = @client_0.storage_accounts
           @accounts = @client_0.accounts
+          @operations = @client_0.operations
           @data_lake_store_accounts = @client_0.data_lake_store_accounts
           @compute_policies = @client_0.compute_policies
           @firewall_rules = @client_0.firewall_rules
@@ -210,29 +210,29 @@ module Azure::Profiles::Latest
           def firewall_state
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::FirewallState
           end
-          def operation_display
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationDisplay
-          end
           def firewall_allow_azure_ips_state
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::FirewallAllowAzureIpsState
-          end
-          def operation_list_result
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationListResult
-          end
-          def data_lake_analytics_account_status
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountStatus
           end
           def tier_type
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::TierType
           end
-          def operation_origin
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationOrigin
+          def data_lake_analytics_account_status
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountStatus
           end
           def data_lake_analytics_account_state
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountState
           end
+          def operation_origin
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationOrigin
+          end
+          def operation_display
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationDisplay
+          end
           def subscription_state
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubscriptionState
+          end
+          def operation_list_result
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationListResult
           end
           def operation
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::Operation

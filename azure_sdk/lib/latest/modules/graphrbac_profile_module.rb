@@ -23,14 +23,14 @@ module Azure::Profiles::Latest
       GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
       PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
       SignInName = Azure::GraphRbac::V1_6::Models::SignInName
-      GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
       ApplicationAddOwnerParameters = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
       UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
       DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
       UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
+      ADGroup = Azure::GraphRbac::V1_6::Models::ADGroup
       Application = Azure::GraphRbac::V1_6::Models::Application
       ApplicationCreateParameters = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
-      ADGroup = Azure::GraphRbac::V1_6::Models::ADGroup
+      GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
       UserType = Azure::GraphRbac::V1_6::Models::UserType
       ApplicationUpdateParameters = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
@@ -120,9 +120,6 @@ module Azure::Profiles::Latest
         def sign_in_name
           Azure::GraphRbac::V1_6::Models::SignInName
         end
-        def group_create_parameters
-          Azure::GraphRbac::V1_6::Models::GroupCreateParameters
-        end
         def application_add_owner_parameters
           Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
         end
@@ -135,14 +132,17 @@ module Azure::Profiles::Latest
         def user_get_member_groups_parameters
           Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
         end
+        def adgroup
+          Azure::GraphRbac::V1_6::Models::ADGroup
+        end
         def application
           Azure::GraphRbac::V1_6::Models::Application
         end
         def application_create_parameters
           Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
         end
-        def adgroup
-          Azure::GraphRbac::V1_6::Models::ADGroup
+        def group_create_parameters
+          Azure::GraphRbac::V1_6::Models::GroupCreateParameters
         end
         def service_principal
           Azure::GraphRbac::V1_6::Models::ServicePrincipal

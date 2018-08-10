@@ -201,14 +201,14 @@ module Azure::Profiles::Latest
         StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageQueueEventSubscriptionDestination
         HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::HybridConnectionEventSubscriptionDestination
         EventSubscription = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscription
-        Operation = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
         JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonInputSchemaMapping
         Topic = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Topic
+        EventType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationsListResult
         TrackedResource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TrackedResource
-        EventType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
-        TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
         EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
+        TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
+        Operation = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
         EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
         InputSchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
@@ -321,14 +321,14 @@ module Azure::Profiles::Latest
           def event_subscription
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscription
           end
-          def operation
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
-          end
           def json_input_schema_mapping
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonInputSchemaMapping
           end
           def topic
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Topic
+          end
+          def event_type
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
           end
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationsListResult
@@ -336,14 +336,14 @@ module Azure::Profiles::Latest
           def tracked_resource
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TrackedResource
           end
-          def event_type
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
+          def event_subscription_provisioning_state
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
           end
           def topic_type_info
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
           end
-          def event_subscription_provisioning_state
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
+          def operation
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
           end
           def event_delivery_schema
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema

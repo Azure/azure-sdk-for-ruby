@@ -9,15 +9,15 @@ module Azure::Profiles::Latest
     Web = Azure::CognitiveServices::WebSearch::V1_0::Web
 
     module Models
+      Article = Azure::CognitiveServices::WebSearch::V1_0::Models::Article
       ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
-      ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
+      ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
       Places = Azure::CognitiveServices::WebSearch::V1_0::Models::Places
       Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
       MediaObject = Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
       SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
       Freshness = Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
       StructuredValue = Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
-      ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
       Images = Azure::CognitiveServices::WebSearch::V1_0::Models::Images
       Response = Azure::CognitiveServices::WebSearch::V1_0::Models::Response
       AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
@@ -47,7 +47,7 @@ module Azure::Profiles::Latest
       TimeZone = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
       News = Azure::CognitiveServices::WebSearch::V1_0::Models::News
       TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
-      Article = Azure::CognitiveServices::WebSearch::V1_0::Models::Article
+      ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
       Videos = Azure::CognitiveServices::WebSearch::V1_0::Models::Videos
     end
@@ -82,11 +82,14 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def article
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Article
+        end
         def image_object
           Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
         end
-        def error_response
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
+        def error_sub_code
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
         end
         def places
           Azure::CognitiveServices::WebSearch::V1_0::Models::Places
@@ -105,9 +108,6 @@ module Azure::Profiles::Latest
         end
         def structured_value
           Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
-        end
-        def error_sub_code
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
         end
         def images
           Azure::CognitiveServices::WebSearch::V1_0::Models::Images
@@ -196,8 +196,8 @@ module Azure::Profiles::Latest
         def text_format
           Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
         end
-        def article
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Article
+        def error_response
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
         end
         def error
           Azure::CognitiveServices::WebSearch::V1_0::Models::Error

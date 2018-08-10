@@ -8,13 +8,13 @@ module Azure::Profiles::Latest
   module StorSimple8000Series
     module Mgmt
       BackupSchedules = Azure::StorSimple8000Series::Mgmt::V2017_06_01::BackupSchedules
-      Operations = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Operations
+      CloudAppliances = Azure::StorSimple8000Series::Mgmt::V2017_06_01::CloudAppliances
       HardwareComponentGroups = Azure::StorSimple8000Series::Mgmt::V2017_06_01::HardwareComponentGroups
       VolumeContainers = Azure::StorSimple8000Series::Mgmt::V2017_06_01::VolumeContainers
-      CloudAppliances = Azure::StorSimple8000Series::Mgmt::V2017_06_01::CloudAppliances
+      Volumes = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Volumes
       StorageAccountCredentials = Azure::StorSimple8000Series::Mgmt::V2017_06_01::StorageAccountCredentials
       Backups = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Backups
-      Volumes = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Volumes
+      Operations = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Operations
       Jobs = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Jobs
       Devices = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Devices
       BackupPolicies = Azure::StorSimple8000Series::Mgmt::V2017_06_01::BackupPolicies
@@ -187,7 +187,7 @@ module Azure::Profiles::Latest
       end
 
       class StorSimple8000SeriesManagementClass
-        attr_reader :backup_schedules, :operations, :hardware_component_groups, :volume_containers, :cloud_appliances, :storage_account_credentials, :backups, :volumes, :jobs, :devices, :backup_policies, :managers, :access_control_records, :alerts, :bandwidth_settings, :device_settings, :configurable, :base_url, :options, :model_classes
+        attr_reader :backup_schedules, :cloud_appliances, :hardware_component_groups, :volume_containers, :volumes, :storage_account_credentials, :backups, :operations, :jobs, :devices, :backup_policies, :managers, :access_control_records, :alerts, :bandwidth_settings, :device_settings, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -198,13 +198,13 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @backup_schedules = @client_0.backup_schedules
-          @operations = @client_0.operations
+          @cloud_appliances = @client_0.cloud_appliances
           @hardware_component_groups = @client_0.hardware_component_groups
           @volume_containers = @client_0.volume_containers
-          @cloud_appliances = @client_0.cloud_appliances
+          @volumes = @client_0.volumes
           @storage_account_credentials = @client_0.storage_account_credentials
           @backups = @client_0.backups
-          @volumes = @client_0.volumes
+          @operations = @client_0.operations
           @jobs = @client_0.jobs
           @devices = @client_0.devices
           @backup_policies = @client_0.backup_policies

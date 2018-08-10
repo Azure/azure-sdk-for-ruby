@@ -33,9 +33,9 @@ module Azure::Profiles::Latest
       NetworkWatchers = Azure::Network::Mgmt::V2018_01_01::NetworkWatchers
       PacketCaptures = Azure::Network::Mgmt::V2018_01_01::PacketCaptures
       ConnectionMonitors = Azure::Network::Mgmt::V2018_01_01::ConnectionMonitors
+      Operations = Azure::Network::Mgmt::V2018_01_01::Operations
       RouteFilters = Azure::Network::Mgmt::V2018_01_01::RouteFilters
       RouteFilterRules = Azure::Network::Mgmt::V2018_01_01::RouteFilterRules
-      Operations = Azure::Network::Mgmt::V2018_01_01::Operations
       BgpServiceCommunities = Azure::Network::Mgmt::V2018_01_01::BgpServiceCommunities
       VirtualNetworkPeerings = Azure::Network::Mgmt::V2018_01_01::VirtualNetworkPeerings
       ApplicationGateways = Azure::Network::Mgmt::V2018_01_01::ApplicationGateways
@@ -163,9 +163,9 @@ module Azure::Profiles::Latest
         ConnectionStateSnapshot = Azure::Network::Mgmt::V2018_01_01::Models::ConnectionStateSnapshot
         GatewayRouteListResult = Azure::Network::Mgmt::V2018_01_01::Models::GatewayRouteListResult
         ConnectionMonitorQueryResult = Azure::Network::Mgmt::V2018_01_01::Models::ConnectionMonitorQueryResult
-        Availability = Azure::Network::Mgmt::V2018_01_01::Models::Availability
         ApplicationSecurityGroup = Azure::Network::Mgmt::V2018_01_01::Models::ApplicationSecurityGroup
         ResourceNavigationLink = Azure::Network::Mgmt::V2018_01_01::Models::ResourceNavigationLink
+        Availability = Azure::Network::Mgmt::V2018_01_01::Models::Availability
         ApplicationGatewayAuthenticationCertificate = Azure::Network::Mgmt::V2018_01_01::Models::ApplicationGatewayAuthenticationCertificate
         ApplicationGatewayRedirectConfiguration = Azure::Network::Mgmt::V2018_01_01::Models::ApplicationGatewayRedirectConfiguration
         ApplicationGatewayFirewallRuleSet = Azure::Network::Mgmt::V2018_01_01::Models::ApplicationGatewayFirewallRuleSet
@@ -336,7 +336,7 @@ module Azure::Profiles::Latest
       end
 
       class NetworkManagementClass
-        attr_reader :network_interfaces, :network_security_groups, :security_rules, :public_ipaddresses, :route_tables, :routes, :usages, :virtual_networks, :subnets, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :application_security_groups, :available_endpoint_services, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interface_ipconfigurations, :network_interface_load_balancers, :default_security_rules, :network_watchers, :packet_captures, :connection_monitors, :route_filters, :route_filter_rules, :operations, :bgp_service_communities, :virtual_network_peerings, :application_gateways, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :configurable, :base_url, :options, :model_classes
+        attr_reader :network_interfaces, :network_security_groups, :security_rules, :public_ipaddresses, :route_tables, :routes, :usages, :virtual_networks, :subnets, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :application_security_groups, :available_endpoint_services, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interface_ipconfigurations, :network_interface_load_balancers, :default_security_rules, :network_watchers, :packet_captures, :connection_monitors, :operations, :route_filters, :route_filter_rules, :bgp_service_communities, :virtual_network_peerings, :application_gateways, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -372,9 +372,9 @@ module Azure::Profiles::Latest
           @network_watchers = @client_0.network_watchers
           @packet_captures = @client_0.packet_captures
           @connection_monitors = @client_0.connection_monitors
+          @operations = @client_0.operations
           @route_filters = @client_0.route_filters
           @route_filter_rules = @client_0.route_filter_rules
-          @operations = @client_0.operations
           @bgp_service_communities = @client_0.bgp_service_communities
           @virtual_network_peerings = @client_0.virtual_network_peerings
           @application_gateways = @client_0.application_gateways
@@ -752,14 +752,14 @@ module Azure::Profiles::Latest
           def connection_monitor_query_result
             Azure::Network::Mgmt::V2018_01_01::Models::ConnectionMonitorQueryResult
           end
-          def availability
-            Azure::Network::Mgmt::V2018_01_01::Models::Availability
-          end
           def application_security_group
             Azure::Network::Mgmt::V2018_01_01::Models::ApplicationSecurityGroup
           end
           def resource_navigation_link
             Azure::Network::Mgmt::V2018_01_01::Models::ResourceNavigationLink
+          end
+          def availability
+            Azure::Network::Mgmt::V2018_01_01::Models::Availability
           end
           def application_gateway_authentication_certificate
             Azure::Network::Mgmt::V2018_01_01::Models::ApplicationGatewayAuthenticationCertificate

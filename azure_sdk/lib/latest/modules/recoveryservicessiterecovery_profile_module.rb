@@ -7,7 +7,6 @@ require 'azure_mgmt_recovery_services_site_recovery'
 module Azure::Profiles::Latest
   module RecoveryServicesSiteRecovery
     module Mgmt
-      Operations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Operations
       ReplicationVaultHealth = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationVaultHealth
       RecoveryPoints = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::RecoveryPoints
       ReplicationProtectedItems = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationProtectedItems
@@ -23,10 +22,11 @@ module Azure::Profiles::Latest
       ReplicationProtectableItems = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationProtectableItems
       ReplicationPolicies = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationPolicies
       ReplicationNetworks = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationNetworks
-      ReplicationLogicalNetworks = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationLogicalNetworks
+      Operations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Operations
       ReplicationJobs = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationJobs
-      ReplicationEvents = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationEvents
+      ReplicationLogicalNetworks = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationLogicalNetworks
       ReplicationAlertSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationAlertSettings
+      ReplicationEvents = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationEvents
 
       module Models
         HyperVReplica2012EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::HyperVReplica2012EventDetails
@@ -120,8 +120,8 @@ module Azure::Profiles::Latest
         RpInMageRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RpInMageRecoveryPointType
         IdentityProviderType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::IdentityProviderType
         Event = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Event
-        PolicyCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyCollection
         RoleAssignment = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RoleAssignment
+        PolicyCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyCollection
         JobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobDetails
         JobCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobCollection
         Severity = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Severity
@@ -357,7 +357,7 @@ module Azure::Profiles::Latest
       end
 
       class RecoveryServicesSiteRecoveryManagementClass
-        attr_reader :operations, :replication_vault_health, :recovery_points, :replication_protected_items, :replication_network_mappings, :replication_fabrics, :replicationv_centers, :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_plans, :replication_protection_containers, :replication_recovery_services_providers, :replication_protection_container_mappings, :replication_protectable_items, :replication_policies, :replication_networks, :replication_logical_networks, :replication_jobs, :replication_events, :replication_alert_settings, :configurable, :base_url, :options, :model_classes
+        attr_reader :replication_vault_health, :recovery_points, :replication_protected_items, :replication_network_mappings, :replication_fabrics, :replicationv_centers, :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_plans, :replication_protection_containers, :replication_recovery_services_providers, :replication_protection_container_mappings, :replication_protectable_items, :replication_policies, :replication_networks, :operations, :replication_jobs, :replication_logical_networks, :replication_alert_settings, :replication_events, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -367,7 +367,6 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @replication_vault_health = @client_0.replication_vault_health
           @recovery_points = @client_0.recovery_points
           @replication_protected_items = @client_0.replication_protected_items
@@ -383,10 +382,11 @@ module Azure::Profiles::Latest
           @replication_protectable_items = @client_0.replication_protectable_items
           @replication_policies = @client_0.replication_policies
           @replication_networks = @client_0.replication_networks
-          @replication_logical_networks = @client_0.replication_logical_networks
+          @operations = @client_0.operations
           @replication_jobs = @client_0.replication_jobs
-          @replication_events = @client_0.replication_events
+          @replication_logical_networks = @client_0.replication_logical_networks
           @replication_alert_settings = @client_0.replication_alert_settings
+          @replication_events = @client_0.replication_events
 
           @model_classes = ModelClasses.new
         end
@@ -678,11 +678,11 @@ module Azure::Profiles::Latest
           def event
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Event
           end
-          def policy_collection
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyCollection
-          end
           def role_assignment
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RoleAssignment
+          end
+          def policy_collection
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyCollection
           end
           def job_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobDetails
