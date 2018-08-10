@@ -46,7 +46,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Evaluate',
           type: {
@@ -54,7 +53,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Evaluate',
             model_properties: {
               cache_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CacheID',
                 type: {
@@ -62,7 +60,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               result: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Result',
                 type: {
@@ -70,7 +67,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {
@@ -78,7 +74,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               adult_classification_score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'AdultClassificationScore',
                 type: {
@@ -86,7 +81,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               is_image_adult_classified: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'IsImageAdultClassified',
                 type: {
@@ -94,7 +88,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               racy_classification_score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'RacyClassificationScore',
                 type: {
@@ -102,7 +95,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               is_image_racy_classified: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'IsImageRacyClassified',
                 type: {
@@ -110,13 +102,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               advanced_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'AdvancedInfo',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyValuePairElementType',
                       type: {
@@ -127,7 +117,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {

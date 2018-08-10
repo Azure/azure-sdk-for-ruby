@@ -46,7 +46,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateVideoReviewsBodyItem',
           type: {
@@ -54,13 +53,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'CreateVideoReviewsBodyItem',
             model_properties: {
               video_frames: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'VideoFrames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateVideoReviewsBodyItemVideoFramesItemElementType',
                       type: {
@@ -71,13 +68,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateVideoReviewsBodyItemMetadataItemElementType',
                       type: {
@@ -88,7 +83,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Type',
                 type: {
@@ -96,7 +90,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Content',
                 type: {
@@ -104,7 +97,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               content_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ContentId',
                 type: {
@@ -112,7 +104,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -120,7 +111,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               timescale: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Timescale',
                 type: {
@@ -128,7 +118,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               callback_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CallbackEndpoint',
                 type: {

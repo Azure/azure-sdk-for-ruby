@@ -31,7 +31,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageList',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'ImageList',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Id',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Name',
                 type: {
@@ -55,7 +52,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Description',
                 type: {
@@ -63,7 +59,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Metadata',
                 type: {

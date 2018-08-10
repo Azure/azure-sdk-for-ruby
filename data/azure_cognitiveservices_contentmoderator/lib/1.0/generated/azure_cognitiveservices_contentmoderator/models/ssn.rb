@@ -6,33 +6,43 @@
 module Azure::CognitiveServices::ContentModerator::V1_0
   module Models
     #
-    # Terms in list Id passed.
+    # Detected SSN details.
     #
-    class TermsInList
+    class SSN
 
       include MsRestAzure
 
-      # @return [String] Added term details.
-      attr_accessor :term
+      # @return [String] Detected SSN in the input text content.
+      attr_accessor :text
+
+      # @return [Integer] Index(Location) of the SSN in the input text content.
+      attr_accessor :index
 
 
       #
-      # Mapper for TermsInList class as Ruby Hash.
+      # Mapper for SSN class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TermsInList',
+          serialized_name: 'SSN',
           type: {
             name: 'Composite',
-            class_name: 'TermsInList',
+            class_name: 'SSN',
             model_properties: {
-              term: {
+              text: {
                 required: false,
-                serialized_name: 'Term',
+                serialized_name: 'Text',
                 type: {
                   name: 'String'
+                }
+              },
+              index: {
+                required: false,
+                serialized_name: 'Index',
+                type: {
+                  name: 'Number'
                 }
               }
             }

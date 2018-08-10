@@ -47,7 +47,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Job',
           type: {
@@ -55,7 +54,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Job',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Id',
                 type: {
@@ -63,7 +61,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               team_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TeamName',
                 type: {
@@ -71,7 +68,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -79,7 +75,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               workflow_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'WorkflowId',
                 type: {
@@ -87,7 +82,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Type',
                 type: {
@@ -95,7 +89,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               call_back_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CallBackEndpoint',
                 type: {
@@ -103,7 +96,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               review_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ReviewId',
                 type: {
@@ -111,13 +103,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               result_meta_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ResultMetaData',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyValuePairElementType',
                       type: {
@@ -128,13 +118,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               job_execution_report: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'JobExecutionReport',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobExecutionReportDetailsElementType',
                       type: {

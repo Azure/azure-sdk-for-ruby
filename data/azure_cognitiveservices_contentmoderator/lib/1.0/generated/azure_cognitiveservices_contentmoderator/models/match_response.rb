@@ -34,7 +34,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MatchResponse',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'MatchResponse',
             model_properties: {
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {
@@ -50,7 +48,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               cache_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CacheID',
                 type: {
@@ -58,7 +55,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               is_match: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'IsMatch',
                 type: {
@@ -66,13 +62,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               matches: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Matches',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MatchElementType',
                       type: {
@@ -83,7 +77,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {

@@ -28,7 +28,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetectedLanguage',
           type: {
@@ -36,7 +35,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'DetectedLanguage',
             model_properties: {
               detected_language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'DetectedLanguage',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -53,7 +50,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {

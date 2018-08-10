@@ -6,33 +6,35 @@
 module Azure::CognitiveServices::ContentModerator::V1_0
   module Models
     #
-    # Terms in list Id passed.
+    # The category2 score details of the text. <a
+    # href="https://aka.ms/textClassifyCategories">Click here</a> for more
+    # details on category classification.
     #
-    class TermsInList
+    class ClassificationCategory2
 
       include MsRestAzure
 
-      # @return [String] Added term details.
-      attr_accessor :term
+      # @return [Float] The category2 score.
+      attr_accessor :score
 
 
       #
-      # Mapper for TermsInList class as Ruby Hash.
+      # Mapper for ClassificationCategory2 class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TermsInList',
+          serialized_name: 'Classification_Category2',
           type: {
             name: 'Composite',
-            class_name: 'TermsInList',
+            class_name: 'ClassificationCategory2',
             model_properties: {
-              term: {
+              score: {
                 required: false,
-                serialized_name: 'Term',
+                serialized_name: 'Score',
                 type: {
-                  name: 'String'
+                  name: 'Double'
                 }
               }
             }
