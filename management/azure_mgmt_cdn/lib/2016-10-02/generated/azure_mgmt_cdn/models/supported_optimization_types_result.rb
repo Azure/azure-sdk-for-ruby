@@ -23,7 +23,6 @@ module Azure::CDN::Mgmt::V2016_10_02
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SupportedOptimizationTypesResult',
           type: {
@@ -31,13 +30,11 @@ module Azure::CDN::Mgmt::V2016_10_02
             class_name: 'SupportedOptimizationTypesResult',
             model_properties: {
               supported_optimization_types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'supportedOptimizationTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OptimizationTypeElementType',
                       type: {
