@@ -27,7 +27,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RetentionPolicyParameters',
           type: {
@@ -35,7 +34,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'RetentionPolicyParameters',
             model_properties: {
               days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'days',
                 default_value: 0,
@@ -44,7 +42,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 default_value: false,

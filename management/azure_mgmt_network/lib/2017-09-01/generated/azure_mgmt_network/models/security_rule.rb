@@ -97,7 +97,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SecurityRule',
           type: {
@@ -105,7 +104,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'SecurityRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -113,7 +111,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -121,7 +118,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -129,7 +125,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               source_port_range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourcePortRange',
                 type: {
@@ -137,7 +132,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               destination_port_range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.destinationPortRange',
                 type: {
@@ -145,7 +139,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               source_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceAddressPrefix',
                 type: {
@@ -153,13 +146,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               source_address_prefixes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceAddressPrefixes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -169,13 +160,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               source_application_security_groups: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceApplicationSecurityGroups',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationSecurityGroupElementType',
                       type: {
@@ -186,7 +175,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               destination_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.destinationAddressPrefix',
                 type: {
@@ -194,13 +182,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               destination_address_prefixes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.destinationAddressPrefixes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -210,13 +196,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               destination_application_security_groups: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.destinationApplicationSecurityGroups',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationSecurityGroupElementType',
                       type: {
@@ -227,13 +211,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               source_port_ranges: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourcePortRanges',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -243,13 +225,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               destination_port_ranges: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.destinationPortRanges',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -259,7 +239,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               access: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.access',
                 type: {
@@ -267,7 +246,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.priority',
                 type: {
@@ -275,7 +253,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               direction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.direction',
                 type: {
@@ -283,7 +260,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -291,7 +267,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -299,7 +274,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
