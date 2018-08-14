@@ -13,9 +13,12 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
-      # @return [String] The resource identifier of the target Azure Container
+      # @return [String] The resource identifier of the source Azure Container
       # Registry.
       attr_accessor :resource_id
+
+      # @return [String] The address of the source registry.
+      attr_accessor :registry_uri
 
       # @return [String] Repository name of the source image.
       # Specify an image by repository ('hello-world'). This will use the
@@ -39,8 +42,15 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'ImportSource',
             model_properties: {
               resource_id: {
-                required: true,
+                required: false,
                 serialized_name: 'resourceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              registry_uri: {
+                required: false,
+                serialized_name: 'registryUri',
                 type: {
                   name: 'String'
                 }
