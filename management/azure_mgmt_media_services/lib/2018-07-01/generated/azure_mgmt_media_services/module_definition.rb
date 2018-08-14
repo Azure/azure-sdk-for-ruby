@@ -3,6 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::MediaServices::Mgmt::V2018_03_30_preview
-    VERSION = '0.17.0'
-end
+module Azure end
+module Azure::MediaServices end
+module Azure::MediaServices::Mgmt end
+module Azure::MediaServices::Mgmt::V2018_07_01 end
