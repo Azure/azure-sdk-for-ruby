@@ -12,6 +12,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<AccountFilter>] A collection of AccountFilter items.
       attr_accessor :value
 
@@ -19,6 +20,37 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # collection contains too many results to return in one response).
       attr_accessor :odatanext_link
 
+      # return [Proc] with next page method call.
+      attr_accessor :next_method
+
+      #
+      # Gets the rest of the items for the request, enabling auto-pagination.
+      #
+      # @return [Array<AccountFilter>] operation results.
+      #
+      def get_all_items
+        items = @value
+        page = self
+        while page.odatanext_link != nil do
+          page = page.get_next_page
+          items.concat(page.value)
+        end
+        items
+      end
+
+      #
+      # Gets the next page of results.
+      #
+      # @return [AccountFilterCollection] with next page content.
+      #
+      def get_next_page
+        response = @next_method.call(@odatanext_link).value! unless @next_method.nil?
+        unless response.nil?
+          @odatanext_link = response.body.odatanext_link
+          @value = response.body.value
+          self
+        end
+      end
 
       #
       # Mapper for AccountFilterCollection class as Ruby Hash.
