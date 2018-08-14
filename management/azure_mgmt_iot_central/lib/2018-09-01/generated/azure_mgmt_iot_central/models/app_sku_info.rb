@@ -23,7 +23,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppSkuInfo',
           type: {
@@ -31,7 +30,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'AppSkuInfo',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

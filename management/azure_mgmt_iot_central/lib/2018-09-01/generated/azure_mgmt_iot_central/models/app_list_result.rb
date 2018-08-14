@@ -58,7 +58,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppListResult',
           type: {
@@ -66,7 +65,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'AppListResult',
             model_properties: {
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
@@ -74,13 +72,11 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AppElementType',
                       type: {
