@@ -62,47 +62,47 @@ module Azure::Profiles::Latest
         SubResource = Azure::Compute::Mgmt::V2017_12_01::Models::SubResource
         UsageName = Azure::Compute::Mgmt::V2017_12_01::Models::UsageName
         Usage = Azure::Compute::Mgmt::V2017_12_01::Models::Usage
-        ImageListResult = Azure::Compute::Mgmt::V2017_12_01::Models::ImageListResult
         ComputeOperationValue = Azure::Compute::Mgmt::V2017_12_01::Models::ComputeOperationValue
         VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateOSProfile
-        RecoveryWalkResponse = Azure::Compute::Mgmt::V2017_12_01::Models::RecoveryWalkResponse
-        SubResourceReadOnly = Azure::Compute::Mgmt::V2017_12_01::Models::SubResourceReadOnly
+        Resource = Azure::Compute::Mgmt::V2017_12_01::Models::Resource
+        VirtualMachineScaleSetManagedDiskParameters = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetManagedDiskParameters
         AutoOSUpgradePolicy = Azure::Compute::Mgmt::V2017_12_01::Models::AutoOSUpgradePolicy
         RollingUpgradePolicy = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradePolicy
-        RunCommandParameterDefinition = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandParameterDefinition
         ImageOSDisk = Azure::Compute::Mgmt::V2017_12_01::Models::ImageOSDisk
+        RunCommandParameterDefinition = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandParameterDefinition
         ImageDataDisk = Azure::Compute::Mgmt::V2017_12_01::Models::ImageDataDisk
         ImageStorageProfile = Azure::Compute::Mgmt::V2017_12_01::Models::ImageStorageProfile
+        ImageListResult = Azure::Compute::Mgmt::V2017_12_01::Models::ImageListResult
         RunCommandInputParameter = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandInputParameter
-        Resource = Azure::Compute::Mgmt::V2017_12_01::Models::Resource
         ComputeOperationListResult = Azure::Compute::Mgmt::V2017_12_01::Models::ComputeOperationListResult
-        RollbackStatusInfo = Azure::Compute::Mgmt::V2017_12_01::Models::RollbackStatusInfo
-        VirtualMachineScaleSetManagedDiskParameters = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetManagedDiskParameters
-        InstanceViewStatus = Azure::Compute::Mgmt::V2017_12_01::Models::InstanceViewStatus
-        VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetDataDisk
+        RollingUpgradeProgressInfo = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeProgressInfo
         VirtualMachineScaleSetUpdateOSDisk = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateOSDisk
+        VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetDataDisk
+        InstanceViewStatus = Azure::Compute::Mgmt::V2017_12_01::Models::InstanceViewStatus
+        VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
+        VirtualMachineScaleSetUpdateStorageProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateStorageProfile
         VaultSecretGroup = Azure::Compute::Mgmt::V2017_12_01::Models::VaultSecretGroup
         VirtualMachineSize = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineSize
         VaultCertificate = Azure::Compute::Mgmt::V2017_12_01::Models::VaultCertificate
         OSProfile = Azure::Compute::Mgmt::V2017_12_01::Models::OSProfile
         VirtualMachineHealthStatus = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineHealthStatus
-        VirtualMachineScaleSetNetworkConfigurationDnsSettings = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetNetworkConfigurationDnsSettings
         RunCommandListResult = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandListResult
-        VirtualMachineScaleSetListOSUpgradeHistory = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListOSUpgradeHistory
-        UpgradeOperationHistoricalStatusInfo = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfo
-        RunCommandInput = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandInput
         VirtualMachineScaleSetUpdateNetworkProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateNetworkProfile
-        LogAnalyticsOutput = Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsOutput
-        UpgradeOperationHistoricalStatusInfoProperties = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfoProperties
-        LogAnalyticsInputBase = Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsInputBase
+        RunCommandInput = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandInput
+        VirtualMachineScaleSetListOSUpgradeHistory = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListOSUpgradeHistory
         VirtualMachineScaleSetExtensionListResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetExtensionListResult
+        LogAnalyticsOutput = Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsOutput
+        LogAnalyticsInputBase = Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsInputBase
         VirtualMachineScaleSetUpdateVMProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateVMProfile
-        BootDiagnostics = Azure::Compute::Mgmt::V2017_12_01::Models::BootDiagnostics
-        UpgradeOperationHistoryStatus = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoryStatus
         DiskInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::DiskInstanceView
-        RollingUpgradeProgressInfo = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeProgressInfo
-        NetworkProfile = Azure::Compute::Mgmt::V2017_12_01::Models::NetworkProfile
+        UpgradeOperationHistoricalStatusInfo = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfo
+        UpgradeOperationHistoricalStatusInfoProperties = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfoProperties
+        BootDiagnostics = Azure::Compute::Mgmt::V2017_12_01::Models::BootDiagnostics
+        DiagnosticsProfile = Azure::Compute::Mgmt::V2017_12_01::Models::DiagnosticsProfile
         VirtualMachineInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineInstanceView
+        VirtualMachineExtensionInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionInstanceView
+        NetworkProfile = Azure::Compute::Mgmt::V2017_12_01::Models::NetworkProfile
+        RollingUpgradeRunningStatus = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeRunningStatus
         VirtualMachineListResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineListResult
         StorageProfile = Azure::Compute::Mgmt::V2017_12_01::Models::StorageProfile
         WinRMListener = Azure::Compute::Mgmt::V2017_12_01::Models::WinRMListener
@@ -113,14 +113,14 @@ module Azure::Profiles::Latest
         VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetOSProfile
         AvailabilitySetListResult = Azure::Compute::Mgmt::V2017_12_01::Models::AvailabilitySetListResult
         VirtualMachineScaleSetOSDisk = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetOSDisk
-        VirtualMachineExtensionInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionInstanceView
+        ListUsagesResult = Azure::Compute::Mgmt::V2017_12_01::Models::ListUsagesResult
         VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetStorageProfile
         VirtualMachineExtensionsListResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionsListResult
         ApiEntityReference = Azure::Compute::Mgmt::V2017_12_01::Models::ApiEntityReference
         ComputeLongRunningOperationProperties = Azure::Compute::Mgmt::V2017_12_01::Models::ComputeLongRunningOperationProperties
-        VirtualMachineScaleSetUpdatePublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
+        VirtualMachineScaleSetVMInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceView
         VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineCaptureParameters
-        ListUsagesResult = Azure::Compute::Mgmt::V2017_12_01::Models::ListUsagesResult
+        RecoveryWalkResponse = Azure::Compute::Mgmt::V2017_12_01::Models::RecoveryWalkResponse
         DiskEncryptionSettings = Azure::Compute::Mgmt::V2017_12_01::Models::DiskEncryptionSettings
         VirtualMachineScaleSetNetworkProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetNetworkProfile
         VirtualHardDisk = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualHardDisk
@@ -134,39 +134,39 @@ module Azure::Profiles::Latest
         BootDiagnosticsInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::BootDiagnosticsInstanceView
         VirtualMachineScaleSetVMInstanceIDs = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceIDs
         Plan = Azure::Compute::Mgmt::V2017_12_01::Models::Plan
-        DataDiskImage = Azure::Compute::Mgmt::V2017_12_01::Models::DataDiskImage
-        VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
-        VirtualMachineScaleSetPublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfiguration
-        VirtualMachineScaleSetVMListResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMListResult
-        MaintenanceRedeployStatus = Azure::Compute::Mgmt::V2017_12_01::Models::MaintenanceRedeployStatus
-        RollingUpgradeRunningStatus = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeRunningStatus
         VirtualMachineScaleSetVMInstanceRequiredIDs = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceRequiredIDs
-        HardwareProfile = Azure::Compute::Mgmt::V2017_12_01::Models::HardwareProfile
+        VirtualMachineScaleSetUpdatePublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
         VirtualMachineStatusCodeCount = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineStatusCodeCount
-        DiagnosticsProfile = Azure::Compute::Mgmt::V2017_12_01::Models::DiagnosticsProfile
-        UpdateResource = Azure::Compute::Mgmt::V2017_12_01::Models::UpdateResource
-        VirtualMachineScaleSetUpdateStorageProfile = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateStorageProfile
-        VirtualMachineAgentInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineAgentInstanceView
-        LinuxConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::LinuxConfiguration
+        MaintenanceRedeployStatus = Azure::Compute::Mgmt::V2017_12_01::Models::MaintenanceRedeployStatus
+        VirtualMachineScaleSetNetworkConfigurationDnsSettings = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetNetworkConfigurationDnsSettings
         VirtualMachineScaleSetInstanceViewStatusesSummary = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetInstanceViewStatusesSummary
         VirtualMachineScaleSetVMExtensionsSummary = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMExtensionsSummary
-        DataDisk = Azure::Compute::Mgmt::V2017_12_01::Models::DataDisk
+        HardwareProfile = Azure::Compute::Mgmt::V2017_12_01::Models::HardwareProfile
         VirtualMachineScaleSetInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetInstanceView
-        OSDiskImage = Azure::Compute::Mgmt::V2017_12_01::Models::OSDiskImage
         KeyVaultSecretReference = Azure::Compute::Mgmt::V2017_12_01::Models::KeyVaultSecretReference
-        VirtualMachineScaleSetVMInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceView
+        UpdateResource = Azure::Compute::Mgmt::V2017_12_01::Models::UpdateResource
+        VirtualMachineScaleSetPublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfiguration
+        VirtualMachineAgentInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineAgentInstanceView
+        LinuxConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::LinuxConfiguration
         VirtualMachineScaleSetListWithLinkResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListWithLinkResult
-        VirtualMachineScaleSetListSkusResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListSkusResult
-        VirtualMachineExtensionHandlerInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionHandlerInstanceView
         VirtualMachineScaleSetListResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListResult
+        DataDisk = Azure::Compute::Mgmt::V2017_12_01::Models::DataDisk
+        VirtualMachineScaleSetSkuCapacity = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetSkuCapacity
+        OSDiskImage = Azure::Compute::Mgmt::V2017_12_01::Models::OSDiskImage
+        RollbackStatusInfo = Azure::Compute::Mgmt::V2017_12_01::Models::RollbackStatusInfo
+        UpgradeOperationHistoryStatus = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoryStatus
+        DataDiskImage = Azure::Compute::Mgmt::V2017_12_01::Models::DataDiskImage
+        VirtualMachineScaleSetVMListResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMListResult
+        VirtualMachineExtensionHandlerInstanceView = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionHandlerInstanceView
+        OperationStatusResponse = Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
         VirtualMachineExtension = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtension
         VirtualMachineScaleSetSku = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetSku
         WinRMConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::WinRMConfiguration
-        InnerError = Azure::Compute::Mgmt::V2017_12_01::Models::InnerError
+        SubResourceReadOnly = Azure::Compute::Mgmt::V2017_12_01::Models::SubResourceReadOnly
         VirtualMachineIdentity = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineIdentity
         VirtualMachine = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachine
-        RunCommandDocumentBase = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandDocumentBase
-        VirtualMachineScaleSetSkuCapacity = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetSkuCapacity
+        VirtualMachineScaleSetListSkusResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListSkusResult
+        AvailabilitySetUpdate = Azure::Compute::Mgmt::V2017_12_01::Models::AvailabilitySetUpdate
         AvailabilitySet = Azure::Compute::Mgmt::V2017_12_01::Models::AvailabilitySet
         ApiErrorBase = Azure::Compute::Mgmt::V2017_12_01::Models::ApiErrorBase
         VirtualMachineImageResource = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineImageResource
@@ -175,52 +175,52 @@ module Azure::Profiles::Latest
         ApiError = Azure::Compute::Mgmt::V2017_12_01::Models::ApiError
         VirtualMachineCaptureResult = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineCaptureResult
         NetworkInterfaceReference = Azure::Compute::Mgmt::V2017_12_01::Models::NetworkInterfaceReference
-        VirtualMachineExtensionImage = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionImage
+        InnerError = Azure::Compute::Mgmt::V2017_12_01::Models::InnerError
         ImageReference = Azure::Compute::Mgmt::V2017_12_01::Models::ImageReference
         VirtualMachineScaleSetNetworkConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetNetworkConfiguration
-        AvailabilitySetUpdate = Azure::Compute::Mgmt::V2017_12_01::Models::AvailabilitySetUpdate
-        OperationStatusResponse = Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
+        VirtualMachineScaleSetExtension = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetExtension
+        VirtualMachineImage = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineImage
         VirtualMachineUpdate = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineUpdate
         Image = Azure::Compute::Mgmt::V2017_12_01::Models::Image
         ImageUpdate = Azure::Compute::Mgmt::V2017_12_01::Models::ImageUpdate
-        VirtualMachineScaleSetIPConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetIPConfiguration
+        VirtualMachineExtensionImage = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionImage
         VirtualMachineScaleSetUpdateNetworkConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateNetworkConfiguration
-        VirtualMachineScaleSetExtension = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetExtension
+        VirtualMachineScaleSetUpdate = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdate
         VirtualMachineScaleSet = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSet
-        VirtualMachineImage = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineImage
-        ThrottledRequestsInput = Azure::Compute::Mgmt::V2017_12_01::Models::ThrottledRequestsInput
+        VirtualMachineScaleSetVM = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVM
+        RunCommandDocumentBase = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandDocumentBase
         LogAnalyticsOperationResult = Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsOperationResult
         RunCommandDocument = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandDocument
-        RunCommandResult = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandResult
+        VirtualMachineScaleSetIPConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetIPConfiguration
         ManagedDiskParameters = Azure::Compute::Mgmt::V2017_12_01::Models::ManagedDiskParameters
         PassNames = Azure::Compute::Mgmt::V2017_12_01::Models::PassNames
         ComponentNames = Azure::Compute::Mgmt::V2017_12_01::Models::ComponentNames
-        VirtualMachineScaleSetVM = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVM
+        SettingNames = Azure::Compute::Mgmt::V2017_12_01::Models::SettingNames
         VirtualMachineScaleSetUpdateIPConfiguration = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateIPConfiguration
         OperatingSystemTypes = Azure::Compute::Mgmt::V2017_12_01::Models::OperatingSystemTypes
-        VirtualMachineScaleSetUpdate = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdate
+        VirtualMachineSizeTypes = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineSizeTypes
         RollingUpgradeStatusInfo = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeStatusInfo
         RequestRateByIntervalInput = Azure::Compute::Mgmt::V2017_12_01::Models::RequestRateByIntervalInput
-        IntervalInMins = Azure::Compute::Mgmt::V2017_12_01::Models::IntervalInMins
-        SettingNames = Azure::Compute::Mgmt::V2017_12_01::Models::SettingNames
-        ProtocolTypes = Azure::Compute::Mgmt::V2017_12_01::Models::ProtocolTypes
+        ThrottledRequestsInput = Azure::Compute::Mgmt::V2017_12_01::Models::ThrottledRequestsInput
+        RunCommandResult = Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandResult
         StatusLevelTypes = Azure::Compute::Mgmt::V2017_12_01::Models::StatusLevelTypes
         UpgradeMode = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeMode
-        VirtualMachineSizeTypes = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineSizeTypes
+        IPVersion = Azure::Compute::Mgmt::V2017_12_01::Models::IPVersion
         CachingTypes = Azure::Compute::Mgmt::V2017_12_01::Models::CachingTypes
         DiskCreateOptionTypes = Azure::Compute::Mgmt::V2017_12_01::Models::DiskCreateOptionTypes
         UpgradeState = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeState
         UpgradeOperationInvoker = Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationInvoker
         RollingUpgradeStatusCode = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeStatusCode
-        RollingUpgradeActionType = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeActionType
+        ProtocolTypes = Azure::Compute::Mgmt::V2017_12_01::Models::ProtocolTypes
         ResourceIdentityType = Azure::Compute::Mgmt::V2017_12_01::Models::ResourceIdentityType
         VirtualMachineScaleSetSkuScaleType = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetSkuScaleType
         InstanceViewTypes = Azure::Compute::Mgmt::V2017_12_01::Models::InstanceViewTypes
         MaintenanceOperationResultCodeTypes = Azure::Compute::Mgmt::V2017_12_01::Models::MaintenanceOperationResultCodeTypes
         OperatingSystemStateTypes = Azure::Compute::Mgmt::V2017_12_01::Models::OperatingSystemStateTypes
-        IPVersion = Azure::Compute::Mgmt::V2017_12_01::Models::IPVersion
         VirtualMachinePriorityTypes = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachinePriorityTypes
         VirtualMachineEvictionPolicyTypes = Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineEvictionPolicyTypes
+        RollingUpgradeActionType = Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeActionType
+        IntervalInMins = Azure::Compute::Mgmt::V2017_12_01::Models::IntervalInMins
       end
 
       class ComputeManagementClass
@@ -391,20 +391,17 @@ module Azure::Profiles::Latest
           def usage
             Azure::Compute::Mgmt::V2017_12_01::Models::Usage
           end
-          def image_list_result
-            Azure::Compute::Mgmt::V2017_12_01::Models::ImageListResult
-          end
           def compute_operation_value
             Azure::Compute::Mgmt::V2017_12_01::Models::ComputeOperationValue
           end
           def virtual_machine_scale_set_update_osprofile
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateOSProfile
           end
-          def recovery_walk_response
-            Azure::Compute::Mgmt::V2017_12_01::Models::RecoveryWalkResponse
+          def resource
+            Azure::Compute::Mgmt::V2017_12_01::Models::Resource
           end
-          def sub_resource_read_only
-            Azure::Compute::Mgmt::V2017_12_01::Models::SubResourceReadOnly
+          def virtual_machine_scale_set_managed_disk_parameters
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetManagedDiskParameters
           end
           def auto_osupgrade_policy
             Azure::Compute::Mgmt::V2017_12_01::Models::AutoOSUpgradePolicy
@@ -412,11 +409,11 @@ module Azure::Profiles::Latest
           def rolling_upgrade_policy
             Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradePolicy
           end
-          def run_command_parameter_definition
-            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandParameterDefinition
-          end
           def image_osdisk
             Azure::Compute::Mgmt::V2017_12_01::Models::ImageOSDisk
+          end
+          def run_command_parameter_definition
+            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandParameterDefinition
           end
           def image_data_disk
             Azure::Compute::Mgmt::V2017_12_01::Models::ImageDataDisk
@@ -424,29 +421,32 @@ module Azure::Profiles::Latest
           def image_storage_profile
             Azure::Compute::Mgmt::V2017_12_01::Models::ImageStorageProfile
           end
+          def image_list_result
+            Azure::Compute::Mgmt::V2017_12_01::Models::ImageListResult
+          end
           def run_command_input_parameter
             Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandInputParameter
-          end
-          def resource
-            Azure::Compute::Mgmt::V2017_12_01::Models::Resource
           end
           def compute_operation_list_result
             Azure::Compute::Mgmt::V2017_12_01::Models::ComputeOperationListResult
           end
-          def rollback_status_info
-            Azure::Compute::Mgmt::V2017_12_01::Models::RollbackStatusInfo
+          def rolling_upgrade_progress_info
+            Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeProgressInfo
           end
-          def virtual_machine_scale_set_managed_disk_parameters
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetManagedDiskParameters
-          end
-          def instance_view_status
-            Azure::Compute::Mgmt::V2017_12_01::Models::InstanceViewStatus
+          def virtual_machine_scale_set_update_osdisk
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateOSDisk
           end
           def virtual_machine_scale_set_data_disk
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetDataDisk
           end
-          def virtual_machine_scale_set_update_osdisk
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateOSDisk
+          def instance_view_status
+            Azure::Compute::Mgmt::V2017_12_01::Models::InstanceViewStatus
+          end
+          def virtual_machine_scale_set_public_ipaddress_configuration_dns_settings
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
+          end
+          def virtual_machine_scale_set_update_storage_profile
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateStorageProfile
           end
           def vault_secret_group
             Azure::Compute::Mgmt::V2017_12_01::Models::VaultSecretGroup
@@ -463,56 +463,56 @@ module Azure::Profiles::Latest
           def virtual_machine_health_status
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineHealthStatus
           end
-          def virtual_machine_scale_set_network_configuration_dns_settings
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetNetworkConfigurationDnsSettings
-          end
           def run_command_list_result
             Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandListResult
-          end
-          def virtual_machine_scale_set_list_osupgrade_history
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListOSUpgradeHistory
-          end
-          def upgrade_operation_historical_status_info
-            Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfo
-          end
-          def run_command_input
-            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandInput
           end
           def virtual_machine_scale_set_update_network_profile
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateNetworkProfile
           end
-          def log_analytics_output
-            Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsOutput
+          def run_command_input
+            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandInput
           end
-          def upgrade_operation_historical_status_info_properties
-            Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfoProperties
-          end
-          def log_analytics_input_base
-            Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsInputBase
+          def virtual_machine_scale_set_list_osupgrade_history
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListOSUpgradeHistory
           end
           def virtual_machine_scale_set_extension_list_result
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetExtensionListResult
           end
+          def log_analytics_output
+            Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsOutput
+          end
+          def log_analytics_input_base
+            Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsInputBase
+          end
           def virtual_machine_scale_set_update_vmprofile
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateVMProfile
-          end
-          def boot_diagnostics
-            Azure::Compute::Mgmt::V2017_12_01::Models::BootDiagnostics
-          end
-          def upgrade_operation_history_status
-            Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoryStatus
           end
           def disk_instance_view
             Azure::Compute::Mgmt::V2017_12_01::Models::DiskInstanceView
           end
-          def rolling_upgrade_progress_info
-            Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeProgressInfo
+          def upgrade_operation_historical_status_info
+            Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfo
+          end
+          def upgrade_operation_historical_status_info_properties
+            Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoricalStatusInfoProperties
+          end
+          def boot_diagnostics
+            Azure::Compute::Mgmt::V2017_12_01::Models::BootDiagnostics
+          end
+          def diagnostics_profile
+            Azure::Compute::Mgmt::V2017_12_01::Models::DiagnosticsProfile
+          end
+          def virtual_machine_instance_view
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineInstanceView
+          end
+          def virtual_machine_extension_instance_view
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionInstanceView
           end
           def network_profile
             Azure::Compute::Mgmt::V2017_12_01::Models::NetworkProfile
           end
-          def virtual_machine_instance_view
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineInstanceView
+          def rolling_upgrade_running_status
+            Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeRunningStatus
           end
           def virtual_machine_list_result
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineListResult
@@ -544,8 +544,8 @@ module Azure::Profiles::Latest
           def virtual_machine_scale_set_osdisk
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetOSDisk
           end
-          def virtual_machine_extension_instance_view
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionInstanceView
+          def list_usages_result
+            Azure::Compute::Mgmt::V2017_12_01::Models::ListUsagesResult
           end
           def virtual_machine_scale_set_storage_profile
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetStorageProfile
@@ -559,14 +559,14 @@ module Azure::Profiles::Latest
           def compute_long_running_operation_properties
             Azure::Compute::Mgmt::V2017_12_01::Models::ComputeLongRunningOperationProperties
           end
-          def virtual_machine_scale_set_update_public_ipaddress_configuration
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
+          def virtual_machine_scale_set_vminstance_view
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceView
           end
           def virtual_machine_capture_parameters
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineCaptureParameters
           end
-          def list_usages_result
-            Azure::Compute::Mgmt::V2017_12_01::Models::ListUsagesResult
+          def recovery_walk_response
+            Azure::Compute::Mgmt::V2017_12_01::Models::RecoveryWalkResponse
           end
           def disk_encryption_settings
             Azure::Compute::Mgmt::V2017_12_01::Models::DiskEncryptionSettings
@@ -607,47 +607,20 @@ module Azure::Profiles::Latest
           def plan
             Azure::Compute::Mgmt::V2017_12_01::Models::Plan
           end
-          def data_disk_image
-            Azure::Compute::Mgmt::V2017_12_01::Models::DataDiskImage
-          end
-          def virtual_machine_scale_set_public_ipaddress_configuration_dns_settings
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
-          end
-          def virtual_machine_scale_set_public_ipaddress_configuration
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfiguration
-          end
-          def virtual_machine_scale_set_vmlist_result
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMListResult
-          end
-          def maintenance_redeploy_status
-            Azure::Compute::Mgmt::V2017_12_01::Models::MaintenanceRedeployStatus
-          end
-          def rolling_upgrade_running_status
-            Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeRunningStatus
-          end
           def virtual_machine_scale_set_vminstance_required_ids
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceRequiredIDs
           end
-          def hardware_profile
-            Azure::Compute::Mgmt::V2017_12_01::Models::HardwareProfile
+          def virtual_machine_scale_set_update_public_ipaddress_configuration
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
           end
           def virtual_machine_status_code_count
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineStatusCodeCount
           end
-          def diagnostics_profile
-            Azure::Compute::Mgmt::V2017_12_01::Models::DiagnosticsProfile
+          def maintenance_redeploy_status
+            Azure::Compute::Mgmt::V2017_12_01::Models::MaintenanceRedeployStatus
           end
-          def update_resource
-            Azure::Compute::Mgmt::V2017_12_01::Models::UpdateResource
-          end
-          def virtual_machine_scale_set_update_storage_profile
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateStorageProfile
-          end
-          def virtual_machine_agent_instance_view
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineAgentInstanceView
-          end
-          def linux_configuration
-            Azure::Compute::Mgmt::V2017_12_01::Models::LinuxConfiguration
+          def virtual_machine_scale_set_network_configuration_dns_settings
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetNetworkConfigurationDnsSettings
           end
           def virtual_machine_scale_set_instance_view_statuses_summary
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetInstanceViewStatusesSummary
@@ -655,32 +628,59 @@ module Azure::Profiles::Latest
           def virtual_machine_scale_set_vmextensions_summary
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMExtensionsSummary
           end
-          def data_disk
-            Azure::Compute::Mgmt::V2017_12_01::Models::DataDisk
+          def hardware_profile
+            Azure::Compute::Mgmt::V2017_12_01::Models::HardwareProfile
           end
           def virtual_machine_scale_set_instance_view
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetInstanceView
           end
-          def osdisk_image
-            Azure::Compute::Mgmt::V2017_12_01::Models::OSDiskImage
-          end
           def key_vault_secret_reference
             Azure::Compute::Mgmt::V2017_12_01::Models::KeyVaultSecretReference
           end
-          def virtual_machine_scale_set_vminstance_view
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMInstanceView
+          def update_resource
+            Azure::Compute::Mgmt::V2017_12_01::Models::UpdateResource
+          end
+          def virtual_machine_scale_set_public_ipaddress_configuration
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetPublicIPAddressConfiguration
+          end
+          def virtual_machine_agent_instance_view
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineAgentInstanceView
+          end
+          def linux_configuration
+            Azure::Compute::Mgmt::V2017_12_01::Models::LinuxConfiguration
           end
           def virtual_machine_scale_set_list_with_link_result
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListWithLinkResult
           end
-          def virtual_machine_scale_set_list_skus_result
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListSkusResult
+          def virtual_machine_scale_set_list_result
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListResult
+          end
+          def data_disk
+            Azure::Compute::Mgmt::V2017_12_01::Models::DataDisk
+          end
+          def virtual_machine_scale_set_sku_capacity
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetSkuCapacity
+          end
+          def osdisk_image
+            Azure::Compute::Mgmt::V2017_12_01::Models::OSDiskImage
+          end
+          def rollback_status_info
+            Azure::Compute::Mgmt::V2017_12_01::Models::RollbackStatusInfo
+          end
+          def upgrade_operation_history_status
+            Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeOperationHistoryStatus
+          end
+          def data_disk_image
+            Azure::Compute::Mgmt::V2017_12_01::Models::DataDiskImage
+          end
+          def virtual_machine_scale_set_vmlist_result
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVMListResult
           end
           def virtual_machine_extension_handler_instance_view
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionHandlerInstanceView
           end
-          def virtual_machine_scale_set_list_result
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListResult
+          def operation_status_response
+            Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
           end
           def virtual_machine_extension
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtension
@@ -691,8 +691,8 @@ module Azure::Profiles::Latest
           def win_rmconfiguration
             Azure::Compute::Mgmt::V2017_12_01::Models::WinRMConfiguration
           end
-          def inner_error
-            Azure::Compute::Mgmt::V2017_12_01::Models::InnerError
+          def sub_resource_read_only
+            Azure::Compute::Mgmt::V2017_12_01::Models::SubResourceReadOnly
           end
           def virtual_machine_identity
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineIdentity
@@ -700,11 +700,11 @@ module Azure::Profiles::Latest
           def virtual_machine
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachine
           end
-          def run_command_document_base
-            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandDocumentBase
+          def virtual_machine_scale_set_list_skus_result
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetListSkusResult
           end
-          def virtual_machine_scale_set_sku_capacity
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetSkuCapacity
+          def availability_set_update
+            Azure::Compute::Mgmt::V2017_12_01::Models::AvailabilitySetUpdate
           end
           def availability_set
             Azure::Compute::Mgmt::V2017_12_01::Models::AvailabilitySet
@@ -730,8 +730,8 @@ module Azure::Profiles::Latest
           def network_interface_reference
             Azure::Compute::Mgmt::V2017_12_01::Models::NetworkInterfaceReference
           end
-          def virtual_machine_extension_image
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionImage
+          def inner_error
+            Azure::Compute::Mgmt::V2017_12_01::Models::InnerError
           end
           def image_reference
             Azure::Compute::Mgmt::V2017_12_01::Models::ImageReference
@@ -739,11 +739,11 @@ module Azure::Profiles::Latest
           def virtual_machine_scale_set_network_configuration
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetNetworkConfiguration
           end
-          def availability_set_update
-            Azure::Compute::Mgmt::V2017_12_01::Models::AvailabilitySetUpdate
+          def virtual_machine_scale_set_extension
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetExtension
           end
-          def operation_status_response
-            Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
+          def virtual_machine_image
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineImage
           end
           def virtual_machine_update
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineUpdate
@@ -754,23 +754,23 @@ module Azure::Profiles::Latest
           def image_update
             Azure::Compute::Mgmt::V2017_12_01::Models::ImageUpdate
           end
-          def virtual_machine_scale_set_ipconfiguration
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetIPConfiguration
+          def virtual_machine_extension_image
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineExtensionImage
           end
           def virtual_machine_scale_set_update_network_configuration
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateNetworkConfiguration
           end
-          def virtual_machine_scale_set_extension
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetExtension
+          def virtual_machine_scale_set_update
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdate
           end
           def virtual_machine_scale_set
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSet
           end
-          def virtual_machine_image
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineImage
+          def virtual_machine_scale_set_vm
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVM
           end
-          def throttled_requests_input
-            Azure::Compute::Mgmt::V2017_12_01::Models::ThrottledRequestsInput
+          def run_command_document_base
+            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandDocumentBase
           end
           def log_analytics_operation_result
             Azure::Compute::Mgmt::V2017_12_01::Models::LogAnalyticsOperationResult
@@ -778,8 +778,8 @@ module Azure::Profiles::Latest
           def run_command_document
             Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandDocument
           end
-          def run_command_result
-            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandResult
+          def virtual_machine_scale_set_ipconfiguration
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetIPConfiguration
           end
           def managed_disk_parameters
             Azure::Compute::Mgmt::V2017_12_01::Models::ManagedDiskParameters
@@ -790,8 +790,8 @@ module Azure::Profiles::Latest
           def component_names
             Azure::Compute::Mgmt::V2017_12_01::Models::ComponentNames
           end
-          def virtual_machine_scale_set_vm
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetVM
+          def setting_names
+            Azure::Compute::Mgmt::V2017_12_01::Models::SettingNames
           end
           def virtual_machine_scale_set_update_ipconfiguration
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdateIPConfiguration
@@ -799,8 +799,8 @@ module Azure::Profiles::Latest
           def operating_system_types
             Azure::Compute::Mgmt::V2017_12_01::Models::OperatingSystemTypes
           end
-          def virtual_machine_scale_set_update
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineScaleSetUpdate
+          def virtual_machine_size_types
+            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineSizeTypes
           end
           def rolling_upgrade_status_info
             Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeStatusInfo
@@ -808,14 +808,11 @@ module Azure::Profiles::Latest
           def request_rate_by_interval_input
             Azure::Compute::Mgmt::V2017_12_01::Models::RequestRateByIntervalInput
           end
-          def interval_in_mins
-            Azure::Compute::Mgmt::V2017_12_01::Models::IntervalInMins
+          def throttled_requests_input
+            Azure::Compute::Mgmt::V2017_12_01::Models::ThrottledRequestsInput
           end
-          def setting_names
-            Azure::Compute::Mgmt::V2017_12_01::Models::SettingNames
-          end
-          def protocol_types
-            Azure::Compute::Mgmt::V2017_12_01::Models::ProtocolTypes
+          def run_command_result
+            Azure::Compute::Mgmt::V2017_12_01::Models::RunCommandResult
           end
           def status_level_types
             Azure::Compute::Mgmt::V2017_12_01::Models::StatusLevelTypes
@@ -823,8 +820,8 @@ module Azure::Profiles::Latest
           def upgrade_mode
             Azure::Compute::Mgmt::V2017_12_01::Models::UpgradeMode
           end
-          def virtual_machine_size_types
-            Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineSizeTypes
+          def ipversion
+            Azure::Compute::Mgmt::V2017_12_01::Models::IPVersion
           end
           def caching_types
             Azure::Compute::Mgmt::V2017_12_01::Models::CachingTypes
@@ -841,8 +838,8 @@ module Azure::Profiles::Latest
           def rolling_upgrade_status_code
             Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeStatusCode
           end
-          def rolling_upgrade_action_type
-            Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeActionType
+          def protocol_types
+            Azure::Compute::Mgmt::V2017_12_01::Models::ProtocolTypes
           end
           def resource_identity_type
             Azure::Compute::Mgmt::V2017_12_01::Models::ResourceIdentityType
@@ -859,14 +856,17 @@ module Azure::Profiles::Latest
           def operating_system_state_types
             Azure::Compute::Mgmt::V2017_12_01::Models::OperatingSystemStateTypes
           end
-          def ipversion
-            Azure::Compute::Mgmt::V2017_12_01::Models::IPVersion
-          end
           def virtual_machine_priority_types
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachinePriorityTypes
           end
           def virtual_machine_eviction_policy_types
             Azure::Compute::Mgmt::V2017_12_01::Models::VirtualMachineEvictionPolicyTypes
+          end
+          def rolling_upgrade_action_type
+            Azure::Compute::Mgmt::V2017_12_01::Models::RollingUpgradeActionType
+          end
+          def interval_in_mins
+            Azure::Compute::Mgmt::V2017_12_01::Models::IntervalInMins
           end
         end
       end

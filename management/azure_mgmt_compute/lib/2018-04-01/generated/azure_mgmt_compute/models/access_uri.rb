@@ -31,7 +31,7 @@ module Azure::Compute::Mgmt::V2018_04_01
               access_sas: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.output.accessSAS',
+                serialized_name: 'accessSAS',
                 type: {
                   name: 'String'
                 }
