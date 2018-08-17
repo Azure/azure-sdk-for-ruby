@@ -113,7 +113,8 @@ module Azure::GraphRbac::V1_6
     #
     # Grants OAuth2 permissions for the relevant resource Ids of an app.
     #
-    # @param body [Permissions]
+    # @param body [Permissions] The relevant app Service Principal Object Id and
+    # the Service Principal Objecit Id you want to grant.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -127,7 +128,8 @@ module Azure::GraphRbac::V1_6
     #
     # Grants OAuth2 permissions for the relevant resource Ids of an app.
     #
-    # @param body [Permissions]
+    # @param body [Permissions] The relevant app Service Principal Object Id and
+    # the Service Principal Objecit Id you want to grant.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -140,7 +142,8 @@ module Azure::GraphRbac::V1_6
     #
     # Grants OAuth2 permissions for the relevant resource Ids of an app.
     #
-    # @param body [Permissions]
+    # @param body [Permissions] The relevant app Service Principal Object Id and
+    # the Service Principal Objecit Id you want to grant.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
