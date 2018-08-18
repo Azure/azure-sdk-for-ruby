@@ -4,3 +4,4 @@
 
 require 'v2017_03_09/v2017_03_09_profile_client'
 require 'latest/latest_profile_client'
+require 'azure_sdk/version'
