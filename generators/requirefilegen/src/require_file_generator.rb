@@ -200,6 +200,7 @@ class RequireFileGenerator
     end
 
     remove_rb_extension
+    @requires.unshift "azure_sdk/version"
     file = get_require_file
     file.write(get_renderer(get_renderer_template))
   end

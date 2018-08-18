@@ -1,7 +1,7 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.18.0"
+        "azure_sdk": "0.18.1"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.17.0",

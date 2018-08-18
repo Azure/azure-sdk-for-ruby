@@ -1,3 +1,6 @@
+## 2018.08.18 - Azure Ruby SDK Release
+* Release Rollup gem 0.18.1 to fix [Issue# 1437](https://github.com/Azure/azure-sdk-for-ruby/issues/1437) and add missing azure_mgmt_signalr dependency to its gemspec file. 
+
 ## 2018.07.31 - Azure Ruby SDK Release
 * Released Rollup gem, all management gems and data plane gems with all the latest changes. 
 * This specifically includes updates to the compute gem with versions of 2018-04-01 & 2018-06-01 versions.
