@@ -177,6 +177,7 @@ class RequireFileGenerator
   def generate_require_files_for_rollup_gem
     puts 'Generating require files for rollup gem'
     @requires = []
+    @requires << "azure_sdk/version"
     @file_to_be_written = "#{@azure_sdk_location}/lib/azure_sdk.rb"
     Dir.chdir("#{@azure_sdk_location}/lib")
     sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
@@ -200,7 +201,6 @@ class RequireFileGenerator
     end
 
     remove_rb_extension
-    @requires << "azure_sdk/version"
     file = get_require_file
     file.write(get_renderer(get_renderer_template))
   end

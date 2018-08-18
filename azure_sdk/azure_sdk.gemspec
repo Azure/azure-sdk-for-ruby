@@ -93,6 +93,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_security', "~>#{gem_versions['management']['azure_mgmt_security']}"
   spec.add_runtime_dependency 'azure_mgmt_service_bus', "~>#{gem_versions['management']['azure_mgmt_service_bus']}"
   spec.add_runtime_dependency 'azure_mgmt_service_fabric', "~>#{gem_versions['management']['azure_mgmt_service_fabric']}"
+  spec.add_runtime_dependency 'azure_mgmt_signalr', "~>#{gem_versions['management']['azure_mgmt_signalr']}"
   spec.add_runtime_dependency 'azure_mgmt_sql', "~>#{gem_versions['management']['azure_mgmt_sql']}"
   spec.add_runtime_dependency 'azure_mgmt_stor_simple8000_series', "~>#{gem_versions['management']['azure_mgmt_stor_simple8000_series']}"
   spec.add_runtime_dependency 'azure_mgmt_storage', "~>#{gem_versions['management']['azure_mgmt_storage']}"
