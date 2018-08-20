@@ -58,8 +58,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       # response.
       attr_accessor :provisioning_state
 
-      # @return [VirtualMachineScaleSetVMInstanceView] The virtual machine
-      # instance view.
+      # @return [VirtualMachineInstanceView] The virtual machine instance view.
       attr_accessor :instance_view
 
       # @return [String] Specifies that the image or disk that is being used
@@ -182,7 +181,7 @@ module Azure::Compute::Mgmt::V2017_12_01
                 serialized_name: 'properties.instanceView',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualMachineScaleSetVMInstanceView'
+                  class_name: 'VirtualMachineInstanceView'
                 }
               },
               license_type: {
