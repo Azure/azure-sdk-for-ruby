@@ -41,6 +41,10 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # which is designed for customer server side usage.
       attr_accessor :server_port
 
+      # @return [String] Version of the SignalR resource. Probably you need the
+      # same or higher version of client SDKs.
+      attr_accessor :version
+
 
       #
       # Mapper for SignalRResource class as Ruby Hash.
@@ -152,6 +156,13 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 serialized_name: 'properties.serverPort',
                 type: {
                   name: 'Number'
+                }
+              },
+              version: {
+                required: false,
+                serialized_name: 'properties.version',
+                type: {
+                  name: 'String'
                 }
               }
             }

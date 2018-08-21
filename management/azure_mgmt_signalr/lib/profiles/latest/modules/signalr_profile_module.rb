@@ -13,6 +13,7 @@ module Azure::Signalr::Profiles::Latest
     module Models
       SignalRResourceList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
       OperationDisplay = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
+      Dimension = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
       ServiceSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
       SignalRUsageList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageList
       Operation = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
@@ -89,6 +90,9 @@ module Azure::Signalr::Profiles::Latest
       end
       def operation_display
         Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
+      end
+      def dimension
+        Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
       end
       def service_specification
         Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
