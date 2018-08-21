@@ -21,7 +21,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [String] Description for term list.
       attr_accessor :description
 
-      # @return [TermListMetadata] Term list metadata.
+      # @return [Hash{String => String}] Term list metadata.
       attr_accessor :metadata
 
 
@@ -62,8 +62,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 required: false,
                 serialized_name: 'Metadata',
                 type: {
-                  name: 'Composite',
-                  class_name: 'TermListMetadata'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

@@ -21,7 +21,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [String] Description for image list.
       attr_accessor :description
 
-      # @return [ImageListMetadata] Image List Metadata.
+      # @return [Hash{String => String}] Image List Metadata.
       attr_accessor :metadata
 
 
@@ -62,8 +62,14 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 required: false,
                 serialized_name: 'Metadata',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ImageListMetadata'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

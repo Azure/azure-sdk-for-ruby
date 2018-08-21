@@ -18,7 +18,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [Boolean] Update success status.
       attr_accessor :is_update_success
 
-      # @return [Array<RefreshIndexAdvancedInfoItem>] Advanced info list.
+      # @return [Array<Hash{String => String}>] Advanced info list.
       attr_accessor :advanced_info
 
       # @return [Status] Refresh index status.
@@ -61,10 +61,16 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'RefreshIndexAdvancedInfoItemElementType',
+                      serialized_name: 'HashElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'RefreshIndexAdvancedInfoItem'
+                        name: 'Dictionary',
+                        value: {
+                            required: false,
+                            serialized_name: 'StringElementType',
+                            type: {
+                              name: 'String'
+                            }
+                        }
                       }
                   }
                 }
