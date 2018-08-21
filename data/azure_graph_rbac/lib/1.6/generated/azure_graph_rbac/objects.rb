@@ -29,8 +29,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [AADObject] operation results.
     #
-    def get_current_user(custom_headers:nil)
-      response = get_current_user_async(custom_headers:custom_headers).value!
+    def get_current_user(custom_headers = nil)
+      response = get_current_user_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -42,8 +42,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_current_user_with_http_info(custom_headers:nil)
-      get_current_user_async(custom_headers:custom_headers).value!
+    def get_current_user_with_http_info(custom_headers = nil)
+      get_current_user_async(custom_headers).value!
     end
 
     #
@@ -54,13 +54,12 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_current_user_async(custom_headers:nil)
+    def get_current_user_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -114,8 +113,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Array<AADObject>] operation results.
     #
-    def get_objects_by_object_ids(parameters, custom_headers:nil)
-      first_page = get_objects_by_object_ids_as_lazy(parameters, custom_headers:custom_headers)
+    def get_objects_by_object_ids(parameters, custom_headers = nil)
+      first_page = get_objects_by_object_ids_as_lazy(parameters, custom_headers)
       first_page.get_all_items
     end
 
@@ -128,8 +127,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_objects_by_object_ids_with_http_info(parameters, custom_headers:nil)
-      get_objects_by_object_ids_async(parameters, custom_headers:custom_headers).value!
+    def get_objects_by_object_ids_with_http_info(parameters, custom_headers = nil)
+      get_objects_by_object_ids_async(parameters, custom_headers).value!
     end
 
     #
@@ -141,18 +140,19 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_objects_by_object_ids_async(parameters, custom_headers:nil)
+    def get_objects_by_object_ids_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::GetObjectsParameters.mapper()
@@ -209,8 +209,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Array<AADObject>] operation results.
     #
-    def get_objects_by_object_ids_next(next_link, custom_headers:nil)
-      response = get_objects_by_object_ids_next_async(next_link, custom_headers:custom_headers).value!
+    def get_objects_by_object_ids_next(next_link, custom_headers = nil)
+      response = get_objects_by_object_ids_next_async(next_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -223,8 +223,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_objects_by_object_ids_next_with_http_info(next_link, custom_headers:nil)
-      get_objects_by_object_ids_next_async(next_link, custom_headers:custom_headers).value!
+    def get_objects_by_object_ids_next_with_http_info(next_link, custom_headers = nil)
+      get_objects_by_object_ids_next_async(next_link, custom_headers).value!
     end
 
     #
@@ -236,14 +236,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_objects_by_object_ids_next_async(next_link, custom_headers:nil)
+    def get_objects_by_object_ids_next_async(next_link, custom_headers = nil)
       fail ArgumentError, 'next_link is nil' if next_link.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -299,12 +298,12 @@ module Azure::GraphRbac::V1_6
     # @return [GetObjectsResult] which provide lazy access to pages of the
     # response.
     #
-    def get_objects_by_object_ids_as_lazy(parameters, custom_headers:nil)
-      response = get_objects_by_object_ids_async(parameters, custom_headers:custom_headers).value!
+    def get_objects_by_object_ids_as_lazy(parameters, custom_headers = nil)
+      response = get_objects_by_object_ids_async(parameters, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_link|
-          get_objects_by_object_ids_next_async(next_link, custom_headers:custom_headers)
+          get_objects_by_object_ids_next_async(next_link, custom_headers)
         end
         page
       end

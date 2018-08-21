@@ -7,11 +7,11 @@ module Azure::GraphRbac::V1_6
   #
   # The Graph RBAC Management Client
   #
-  class Domains
+  class DeletedApplications
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Domains class.
+    # Creates and initializes a new instance of the DeletedApplications class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,44 +22,39 @@ module Azure::GraphRbac::V1_6
     attr_reader :client
 
     #
-    # Gets a list of domains for the current tenant.
+    # Restores the deleted application in the directory.
     #
-    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DomainListResult] operation results.
+    # @return [Application] operation results.
     #
-    def list(filter = nil, custom_headers = nil)
-      response = list_async(filter, custom_headers).value!
+    def restore(custom_headers = nil)
+      response = restore_async(custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a list of domains for the current tenant.
+    # Restores the deleted application in the directory.
     #
-    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter = nil, custom_headers = nil)
-      list_async(filter, custom_headers).value!
+    def restore_with_http_info(custom_headers = nil)
+      restore_async(custom_headers).value!
     end
 
     #
-    # Gets a list of domains for the current tenant.
+    # Restores the deleted application in the directory.
     #
-    # @param filter [String] The filter to apply to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter = nil, custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+    def restore_async(custom_headers = nil)
 
 
       request_headers = {}
@@ -67,18 +62,16 @@ module Azure::GraphRbac::V1_6
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{tenantID}/domains'
+      path_template = '{tenantID}/deletedApplications/{objectId}/restore'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:get, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -86,7 +79,7 @@ module Azure::GraphRbac::V1_6
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -94,7 +87,7 @@ module Azure::GraphRbac::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::GraphRbac::V1_6::Models::DomainListResult.mapper()
+            result_mapper = Azure::GraphRbac::V1_6::Models::Application.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -108,45 +101,39 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets a specific domain in the current tenant.
+    # Gets a list of deleted applications in the directory.
     #
-    # @param domain_name [String] name of the domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Domain] operation results.
+    # @return [ApplicationListResult] operation results.
     #
-    def get(domain_name, custom_headers = nil)
-      response = get_async(domain_name, custom_headers).value!
+    def get(custom_headers = nil)
+      response = get_async(custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a specific domain in the current tenant.
+    # Gets a list of deleted applications in the directory.
     #
-    # @param domain_name [String] name of the domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(domain_name, custom_headers = nil)
-      get_async(domain_name, custom_headers).value!
+    def get_with_http_info(custom_headers = nil)
+      get_async(custom_headers).value!
     end
 
     #
-    # Gets a specific domain in the current tenant.
+    # Gets a list of deleted applications in the directory.
     #
-    # @param domain_name [String] name of the domain.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(domain_name, custom_headers = nil)
-      fail ArgumentError, 'domain_name is nil' if domain_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+    def get_async(custom_headers = nil)
 
 
       request_headers = {}
@@ -154,14 +141,12 @@ module Azure::GraphRbac::V1_6
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{tenantID}/domains/{domainName}'
+      path_template = '{tenantID}/deletedApplications'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'domainName' => domain_name,'tenantID' => @client.tenant_id},
-          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -173,7 +158,7 @@ module Azure::GraphRbac::V1_6
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -181,7 +166,7 @@ module Azure::GraphRbac::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::GraphRbac::V1_6::Models::Domain.mapper()
+            result_mapper = Azure::GraphRbac::V1_6::Models::ApplicationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
