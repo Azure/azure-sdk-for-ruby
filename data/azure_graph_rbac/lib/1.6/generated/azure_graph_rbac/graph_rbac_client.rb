@@ -40,6 +40,9 @@ module Azure::GraphRbac::V1_6
     # @return [Applications] applications
     attr_reader :applications
 
+    # @return [DeletedApplications] deleted_applications
+    attr_reader :deleted_applications
+
     # @return [Groups] groups
     attr_reader :groups
 
@@ -67,6 +70,7 @@ module Azure::GraphRbac::V1_6
 
       @objects = Objects.new(self)
       @applications = Applications.new(self)
+      @deleted_applications = DeletedApplications.new(self)
       @groups = Groups.new(self)
       @service_principals = ServicePrincipals.new(self)
       @users = Users.new(self)
@@ -124,9 +128,6 @@ module Azure::GraphRbac::V1_6
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -143,7 +144,9 @@ module Azure::GraphRbac::V1_6
     #
     def add_telemetry
         sdk_information = 'azure_graph_rbac'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::GraphRbac::V1_6::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::GraphRbac::V1_6::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

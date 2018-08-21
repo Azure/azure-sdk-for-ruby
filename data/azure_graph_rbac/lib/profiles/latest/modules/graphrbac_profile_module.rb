@@ -7,6 +7,7 @@ require 'azure_graph_rbac'
 module Azure::GraphRbac::Profiles::Latest
   Objects = Azure::GraphRbac::V1_6::Objects
   Applications = Azure::GraphRbac::V1_6::Applications
+  DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
   Groups = Azure::GraphRbac::V1_6::Groups
   ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
   Users = Azure::GraphRbac::V1_6::Users
@@ -61,7 +62,7 @@ module Azure::GraphRbac::Profiles::Latest
   # GraphRbacDataClass
   #
   class GraphRbacDataClass
-    attr_reader :objects, :applications, :groups, :service_principals, :users, :domains, :configurable, :base_url, :options, :model_classes
+    attr_reader :objects, :applications, :deleted_applications, :groups, :service_principals, :users, :domains, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -83,6 +84,7 @@ module Azure::GraphRbac::Profiles::Latest
       add_telemetry(@client_0)
       @objects = @client_0.objects
       @applications = @client_0.applications
+      @deleted_applications = @client_0.deleted_applications
       @groups = @client_0.groups
       @service_principals = @client_0.service_principals
       @users = @client_0.users

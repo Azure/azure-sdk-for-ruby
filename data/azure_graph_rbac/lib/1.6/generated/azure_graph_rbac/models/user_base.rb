@@ -47,7 +47,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserBase',
           type: {
@@ -55,12 +54,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'UserBase',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -70,7 +67,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               immutable_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'immutableId',
                 type: {
@@ -78,7 +74,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               usage_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'usageLocation',
                 type: {
@@ -86,7 +81,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               given_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'givenName',
                 type: {
@@ -94,7 +88,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               surname: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'surname',
                 type: {
@@ -102,7 +95,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               user_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userType',
                 type: {
