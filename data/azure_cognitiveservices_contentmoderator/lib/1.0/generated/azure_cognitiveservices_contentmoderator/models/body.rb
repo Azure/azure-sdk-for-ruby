@@ -19,7 +19,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [String] Description of the list.
       attr_accessor :description
 
-      # @return Metadata of the list.
+      # @return [Hash{String => String}] Metadata of the list.
       attr_accessor :metadata
 
 
@@ -56,9 +56,9 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                   name: 'Dictionary',
                   value: {
                       required: false,
-                      serialized_name: 'ObjectElementType',
+                      serialized_name: 'StringElementType',
                       type: {
-                        name: 'Object'
+                        name: 'String'
                       }
                   }
                 }

@@ -18,7 +18,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [Boolean] Update success status.
       attr_accessor :is_update_success
 
-      # @return Advanced info list.
+      # @return [Array<Hash{String => String}>] Advanced info list.
       attr_accessor :advanced_info
 
       # @return [Status] Refresh index status.
@@ -66,9 +66,9 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                         name: 'Dictionary',
                         value: {
                             required: false,
-                            serialized_name: 'ObjectElementType',
+                            serialized_name: 'StringElementType',
                             type: {
-                              name: 'Object'
+                              name: 'String'
                             }
                         }
                       }
