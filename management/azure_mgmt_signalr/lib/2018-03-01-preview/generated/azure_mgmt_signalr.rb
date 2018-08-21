@@ -28,6 +28,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
   module Models
     autoload :SignalRResourceList,                                '2018-03-01-preview/generated/azure_mgmt_signalr/models/signal_rresource_list.rb'
     autoload :OperationDisplay,                                   '2018-03-01-preview/generated/azure_mgmt_signalr/models/operation_display.rb'
+    autoload :Dimension,                                          '2018-03-01-preview/generated/azure_mgmt_signalr/models/dimension.rb'
     autoload :ServiceSpecification,                               '2018-03-01-preview/generated/azure_mgmt_signalr/models/service_specification.rb'
     autoload :SignalRUsageList,                                   '2018-03-01-preview/generated/azure_mgmt_signalr/models/signal_rusage_list.rb'
     autoload :Operation,                                          '2018-03-01-preview/generated/azure_mgmt_signalr/models/operation.rb'

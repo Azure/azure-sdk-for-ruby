@@ -18,6 +18,7 @@ module Azure::Profiles::Latest
         SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
         KeyType = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
         OperationList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
+        Dimension = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
         MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
         ServiceSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
         Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
@@ -87,6 +88,9 @@ module Azure::Profiles::Latest
           end
           def operation_list
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
+          end
+          def dimension
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
           end
           def metric_specification
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification

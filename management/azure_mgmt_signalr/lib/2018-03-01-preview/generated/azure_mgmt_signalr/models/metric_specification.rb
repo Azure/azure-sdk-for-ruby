@@ -40,6 +40,9 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # belongs to. A metric can only belong to a single category.
       attr_accessor :category
 
+      # @return [Array<Dimension>] The dimensions of the metrics.
+      attr_accessor :dimensions
+
 
       #
       # Mapper for MetricSpecification class as Ruby Hash.
@@ -100,6 +103,21 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 serialized_name: 'category',
                 type: {
                   name: 'String'
+                }
+              },
+              dimensions: {
+                required: false,
+                serialized_name: 'dimensions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'DimensionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Dimension'
+                      }
+                  }
                 }
               }
             }
