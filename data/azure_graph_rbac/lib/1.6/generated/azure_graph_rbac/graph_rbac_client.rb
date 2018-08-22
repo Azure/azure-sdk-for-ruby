@@ -52,6 +52,9 @@ module Azure::GraphRbac::V1_6
     # @return [Domains] domains
     attr_reader :domains
 
+    # @return [OAuth2] oauth2
+    attr_reader :oauth2
+
     #
     # Creates initializes a new instance of the GraphRbacClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -71,6 +74,7 @@ module Azure::GraphRbac::V1_6
       @service_principals = ServicePrincipals.new(self)
       @users = Users.new(self)
       @domains = Domains.new(self)
+      @oauth2 = OAuth2.new(self)
       @api_version = '1.6'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -124,9 +128,6 @@ module Azure::GraphRbac::V1_6
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -143,7 +144,9 @@ module Azure::GraphRbac::V1_6
     #
     def add_telemetry
         sdk_information = 'azure_graph_rbac'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::GraphRbac::V1_6::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::GraphRbac::V1_6::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

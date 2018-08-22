@@ -35,7 +35,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Group',
           type: {
@@ -43,12 +42,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'ADGroup',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -58,7 +55,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectId',
@@ -67,7 +63,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               deletion_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletionTimestamp',
@@ -76,7 +71,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -84,7 +78,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -92,7 +85,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               security_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'securityEnabled',
                 type: {
@@ -100,7 +92,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               mail: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mail',
                 type: {

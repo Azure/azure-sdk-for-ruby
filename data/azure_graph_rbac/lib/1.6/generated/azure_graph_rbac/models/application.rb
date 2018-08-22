@@ -51,7 +51,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Application',
           type: {
@@ -59,12 +58,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'Application',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -74,7 +71,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectId',
@@ -83,7 +79,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               deletion_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletionTimestamp',
@@ -92,7 +87,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -100,7 +94,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               app_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appId',
                 type: {
@@ -108,13 +101,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               app_permissions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appPermissions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -124,7 +115,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               available_to_other_tenants: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableToOtherTenants',
                 type: {
@@ -132,7 +122,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -140,13 +129,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               identifier_uris: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identifierUris',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -156,13 +143,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               reply_urls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyUrls',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -172,7 +157,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               homepage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'homepage',
                 type: {
@@ -180,7 +164,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               oauth2allow_implicit_flow: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'oauth2AllowImplicitFlow',
                 type: {

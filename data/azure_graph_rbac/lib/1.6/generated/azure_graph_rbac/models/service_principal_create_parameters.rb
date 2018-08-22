@@ -36,7 +36,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServicePrincipalCreateParameters',
           type: {
@@ -44,12 +43,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'ServicePrincipalCreateParameters',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -59,7 +56,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               app_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'appId',
                 type: {
@@ -67,7 +63,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               account_enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'accountEnabled',
                 type: {
@@ -75,13 +70,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               key_credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyCredentialElementType',
                       type: {
@@ -92,13 +85,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               password_credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwordCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PasswordCredentialElementType',
                       type: {
