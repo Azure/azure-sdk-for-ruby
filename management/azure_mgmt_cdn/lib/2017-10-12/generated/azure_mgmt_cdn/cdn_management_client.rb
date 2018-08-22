@@ -129,9 +129,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -152,8 +149,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [CheckNameAvailabilityOutput] operation results.
     #
-    def check_name_availability(check_name_availability_input, custom_headers:nil)
-      response = check_name_availability_async(check_name_availability_input, custom_headers:custom_headers).value!
+    def check_name_availability(check_name_availability_input, custom_headers = nil)
+      response = check_name_availability_async(check_name_availability_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -168,8 +165,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(check_name_availability_input, custom_headers:nil)
-      check_name_availability_async(check_name_availability_input, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(check_name_availability_input, custom_headers = nil)
+      check_name_availability_async(check_name_availability_input, custom_headers).value!
     end
 
     #
@@ -183,17 +180,18 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(check_name_availability_input, custom_headers:nil)
+    def check_name_availability_async(check_name_availability_input, custom_headers = nil)
       fail ArgumentError, 'check_name_availability_input is nil' if check_name_availability_input.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityInput.mapper()
@@ -241,6 +239,108 @@ module Azure::CDN::Mgmt::V2017_10_12
     end
 
     #
+    # Check the availability of a resource name. This is needed for resources where
+    # name is globally unique, such as a CDN endpoint.
+    #
+    # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
+    # check.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckNameAvailabilityOutput] operation results.
+    #
+    def check_name_availability_with_subscription(check_name_availability_input, custom_headers = nil)
+      response = check_name_availability_with_subscription_async(check_name_availability_input, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check the availability of a resource name. This is needed for resources where
+    # name is globally unique, such as a CDN endpoint.
+    #
+    # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
+    # check.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_with_subscription_with_http_info(check_name_availability_input, custom_headers = nil)
+      check_name_availability_with_subscription_async(check_name_availability_input, custom_headers).value!
+    end
+
+    #
+    # Check the availability of a resource name. This is needed for resources where
+    # name is globally unique, such as a CDN endpoint.
+    #
+    # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
+    # check.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_with_subscription_async(check_name_availability_input, custom_headers = nil)
+      fail ArgumentError, 'check_name_availability_input is nil' if check_name_availability_input.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityInput.mapper()
+      request_content = self.serialize(request_mapper,  check_name_availability_input)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkNameAvailability'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityOutput.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Check if the probe path is a valid path and the file can be accessed. Probe
     # path is the path to a file hosted on the origin server to help accelerate the
     # delivery of dynamic content via the CDN endpoint. This path is relative to
@@ -252,8 +352,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [ValidateProbeOutput] operation results.
     #
-    def validate_probe(validate_probe_input, custom_headers:nil)
-      response = validate_probe_async(validate_probe_input, custom_headers:custom_headers).value!
+    def validate_probe(validate_probe_input, custom_headers = nil)
+      response = validate_probe_async(validate_probe_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -269,8 +369,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_probe_with_http_info(validate_probe_input, custom_headers:nil)
-      validate_probe_async(validate_probe_input, custom_headers:custom_headers).value!
+    def validate_probe_with_http_info(validate_probe_input, custom_headers = nil)
+      validate_probe_async(validate_probe_input, custom_headers).value!
     end
 
     #
@@ -285,18 +385,19 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_probe_async(validate_probe_input, custom_headers:nil)
+    def validate_probe_async(validate_probe_input, custom_headers = nil)
       fail ArgumentError, 'validate_probe_input is nil' if validate_probe_input.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateProbeInput.mapper()
@@ -351,7 +452,9 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cdn'
-        sdk_information = "#{sdk_information}/0.16.0"
+        if defined? Azure::CDN::Mgmt::V2017_10_12::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CDN::Mgmt::V2017_10_12::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
