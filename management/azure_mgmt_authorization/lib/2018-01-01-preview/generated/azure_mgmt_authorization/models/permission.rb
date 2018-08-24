@@ -31,7 +31,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Permission',
           type: {
@@ -39,13 +38,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
             class_name: 'Permission',
             model_properties: {
               actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -55,13 +52,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               not_actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notActions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -71,13 +66,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               data_actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataActions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,13 +80,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
                 }
               },
               not_data_actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notDataActions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

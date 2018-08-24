@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2015_07_01
+module Azure::Authorization::Mgmt::V2015_07_01_preview
   module Models
     #
     # Provider operations metadata list
@@ -57,7 +57,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProviderOperationsMetadataListResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'ProviderOperationsMetadataListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderOperationsMetadataElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
