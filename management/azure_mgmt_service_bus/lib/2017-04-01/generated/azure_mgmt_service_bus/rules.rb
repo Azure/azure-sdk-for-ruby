@@ -29,13 +29,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
     # @param subscription_name [String] The subscription name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Rule>] operation results.
     #
-    def list_by_subscriptions(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
-      first_page = list_by_subscriptions_as_lazy(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:custom_headers)
+    def list_by_subscriptions(resource_group_name, namespace_name, topic_name, subscription_name, skip:nil, top:nil, custom_headers:nil)
+      first_page = list_by_subscriptions_as_lazy(resource_group_name, namespace_name, topic_name, subscription_name, skip:skip, top:top, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -47,13 +53,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
     # @param subscription_name [String] The subscription name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscriptions_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
-      list_by_subscriptions_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:custom_headers).value!
+    def list_by_subscriptions_with_http_info(resource_group_name, namespace_name, topic_name, subscription_name, skip:nil, top:nil, custom_headers:nil)
+      list_by_subscriptions_async(resource_group_name, namespace_name, topic_name, subscription_name, skip:skip, top:top, custom_headers:custom_headers).value!
     end
 
     #
@@ -64,12 +76,18 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
     # @param subscription_name [String] The subscription name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscriptions_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
+    def list_by_subscriptions_async(resource_group_name, namespace_name, topic_name, subscription_name, skip:nil, top:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -83,6 +101,10 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !skip.nil? && skip > 1000
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
@@ -98,7 +120,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'topicName' => topic_name,'subscriptionName' => subscription_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$skip' => skip,'$top' => top},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -575,13 +597,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
     # @param subscription_name [String] The subscription name.
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RuleListResult] which provide lazy access to pages of the response.
     #
-    def list_by_subscriptions_as_lazy(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:nil)
-      response = list_by_subscriptions_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers:custom_headers).value!
+    def list_by_subscriptions_as_lazy(resource_group_name, namespace_name, topic_name, subscription_name, skip:nil, top:nil, custom_headers:nil)
+      response = list_by_subscriptions_async(resource_group_name, namespace_name, topic_name, subscription_name, skip:skip, top:top, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

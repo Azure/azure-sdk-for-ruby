@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2015_08_01
   #
-  # CertificateRegistrationProvider
+  # WebSite Management Client
   #
   class CertificateRegistrationProvider
     include MsRestAzure

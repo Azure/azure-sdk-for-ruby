@@ -184,8 +184,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -204,8 +205,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -223,8 +225,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -241,9 +244,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
       fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
       fail ArgumentError, 'api_id is nil' if api_id.nil?
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '256'" if !api_id.nil? && api_id.length > 256
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !api_id.nil? && api_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -292,8 +295,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -311,8 +315,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -329,8 +334,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -347,9 +353,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
       fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
       fail ArgumentError, 'api_id is nil' if api_id.nil?
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '256'" if !api_id.nil? && api_id.length > 256
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !api_id.nil? && api_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -417,8 +423,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -435,8 +442,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -453,8 +461,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param api_id [String] API identifier. Must be unique in the current API
-    # Management service instance.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -471,9 +480,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
       fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
       fail ArgumentError, 'api_id is nil' if api_id.nil?
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '256'" if !api_id.nil? && api_id.length > 256
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !api_id.nil? && api_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

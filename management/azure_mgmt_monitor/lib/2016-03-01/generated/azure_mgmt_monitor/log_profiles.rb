@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2016_03_01
   #
-  # LogProfiles
+  # Monitor Management Client
   #
   class LogProfiles
     include MsRestAzure

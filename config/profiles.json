@@ -62,7 +62,7 @@
                 },
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-01-01-preview": ["*"]
+                        "2018-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Authorization": {
@@ -83,7 +83,7 @@
                 },
                 "Microsoft.Billing": {
                     "management": {
-                        "2017-04-24-preview": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.CDN": {
@@ -103,19 +103,20 @@
                 },
                 "Microsoft.Compute": {
                     "management": {
-                        "2018-04-01": ["*"],
                         "2017-09-01": ["*"],
-                        "2017-12-01": ["*"]
+                        "2017-12-01": ["*"],
+                        "2018-04-01": ["*"],
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.Consumption": {
                     "management": {
-                        "2018-01-31": ["*"]
+                        "2018-06-30": ["*"]
                     }
                 },
                 "Microsoft.ContainerInstance": {
                     "management": {
-                        "2018-02-01-preview": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerRegistry": {
@@ -125,7 +126,9 @@
                 },
                 "Microsoft.ContainerService": {
                     "management": {
-                        "2017-01-31": ["*"]
+                        "2017-07-01": ["*"],
+                        "2018-03-31": ["*"],
+                        "2017-09-30": ["*"]
                     }
                 },
                 "Microsoft.CustomerInsights": {
@@ -141,6 +144,11 @@
                 "Microsoft.DataLakeStore": {
                     "management": {
                         "2016-11-01": ["*"]
+                    }
+                },
+                "Microsoft.DevSpaces": {
+                    "management": {
+                        "2018-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.DevTestLabs": {
@@ -163,7 +171,7 @@
                 },
                 "Microsoft.EventHub": {
                     "management": {
-                        "2017-04-01": ["*"]
+                        "2018-01-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Features": {
@@ -176,14 +184,22 @@
                         "1.6": ["*"]
                     }
                 },
+                "Microsoft.IotCentral": {
+                    "management": {
+                        "2018-09-01": ["*"]
+                    }
+                },
                 "Microsoft.IotHub": {
                     "management": {
-                        "2017-07-01": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 },
                 "Microsoft.KeyVault": {
                     "management": {
-                        "2016-10-01": ["*"]
+                        "2018-02-14": ["*"]
+                    },
+                    "data": {
+                        "7.0": ["*"]
                     }
                 },
                 "Microsoft.Links": {
@@ -208,7 +224,7 @@
                 },
                 "Microsoft.ManagedApplications": {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.MarketplaceOrdering": {
@@ -218,12 +234,7 @@
                 },
                 "Microsoft.MediaServices": {
                     "management": {
-                        "2018-03-30-preview": ["*"]
-                    }
-                },
-                "Microsoft.MobileEngagement": {
-                    "management": {
-                        "2014-12-01": ["*"]
+                        "2018-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Monitor": {
@@ -232,7 +243,10 @@
                         "2016-03-01": ["*"],
                         "2017-04-01": ["*"],
                         "2017-05-01-preview": ["*"],
-                        "2017-11-01-preview": ["*"]
+                        "2017-11-01-preview": ["*"],
+                        "2018-01-01": ["*"],
+                        "2018-03-01": ["*"],
+                        "2018-04-16": ["*"]
                     }
                 },
                 "Microsoft.ManagedServiceIdentity": {
@@ -242,7 +256,7 @@
                 },
                 "Microsoft.Network": {
                     "management": {
-                        "2018-01-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -258,8 +272,7 @@
                 },
                 "Microsoft.Policy": {
                     "management": {
-                        "2016-12-01": ["*"],
-                        "2017-06-01-preview": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 },
                 "Microsoft.PolicyInsights": {
@@ -286,12 +299,12 @@
                 },
                 "Microsoft.RecoveryServicesSiteRecovery": {
                     "management": {
-                        "2016-08-10": ["*"]
+                        "2018-01-10": ["*"]
                     }
                 },
                 "Microsoft.Redis": {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 },
                 "Microsoft.Relay": {
@@ -301,12 +314,12 @@
                 },
                 "Microsoft.Resources": {
                     "management": {
-                        "2017-05-10": ["*"]
+                        "2018-05-01": ["*"]
                     }
                 },
                 "Microsoft.ResourcesManagement": {
                     "management": {
-                        "2017-11-01-preview": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Scheduler": {
@@ -319,9 +332,9 @@
                         "2015-08-19": ["*"]
                     }
                 },
-                "Microsoft.ServerManagement": {
+                "Microsoft.Security": {
                     "management": {
-                        "2016-07-01-preview": ["*"]
+                        "2017-08-01-preview": ["*"]
                     }
                 },
                 "Microsoft.ServiceBus": {
@@ -331,7 +344,8 @@
                 },
                 "Microsoft.ServiceFabric": {
                     "management": {
-                        "2017-07-01-preview": ["*"]
+                        "2017-07-01-preview": ["*"],
+                        "2018-02-01": ["*"]
                     }
                 },
                 "Microsoft.Signalr": {
@@ -343,7 +357,8 @@
                     "management": {
                         "2014-04-01": ["*"],
                         "2015-05-01-preview": ["*"],
-                        "2017-03-01-preview": ["*"]
+                        "2017-03-01-preview": ["*"],
+                        "2017-10-01-preview": ["*"]
                     }
                 },
                 "Microsoft.StorSimple8000Series": {
@@ -368,22 +383,17 @@
                 },
                 "Microsoft.TrafficManager": {
                     "management": {
-                        "2017-05-01": ["*"],
-                        "2017-09-01-preview": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 },
                 "Microsoft.Web": {
                     "management": {
-                        "2015-04-01": ["*"],
-                        "2015-08-01": ["*"],
-                        "2016-03-01": ["*"],
-                        "2016-08-01": ["*"],
-                        "2016-09-01": ["*"]
+                        "2018-02-01": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.ComputerVision": {
                     "data": {
-                        "1.0": ["*"]
+                        "2.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.ContentModerator": {
@@ -462,7 +472,7 @@
             "resourceTypes": {
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-01-01-preview": ["*"]
+                        "2018-06-01-preview": ["*"]
                     }
                 }
             },
@@ -519,7 +529,7 @@
             "resourceTypes": {
                 "Microsoft.Billing" : {
                     "management": {
-                        "2017-04-24-preview": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 }
             },
@@ -587,9 +597,10 @@
             "resourceTypes": {
                 "Microsoft.Compute" : {
                     "management": {
-                        "2018-04-01": ["*"],
                         "2017-09-01": ["*"],
-                        "2017-12-01": ["*"]
+                        "2017-12-01": ["*"],
+                        "2018-04-01": ["*"],
+                        "2018-06-01": ["*"]
                     }
                 }
             },
@@ -603,7 +614,7 @@
             "resourceTypes": {
                 "Microsoft.Consumption" : {
                     "management": {
-                        "2018-01-31": ["*"]
+                        "2018-06-30": ["*"]
                     }
                 }
             },
@@ -617,7 +628,7 @@
             "resourceTypes": {
                 "Microsoft.ContainerInstance" : {
                     "management": {
-                        "2018-02-01-preview": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 }
             },
@@ -645,7 +656,9 @@
             "resourceTypes": {
                 "Microsoft.ContainerService" : {
                     "management": {
-                        "2017-01-31": ["*"]
+                        "2017-07-01": ["*"],
+                        "2018-03-31": ["*"],
+                        "2017-09-30": ["*"]
                     }
                 }
             },
@@ -695,6 +708,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_dev_spaces": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DevSpaces": {
+                        "management": {
+                            "2018-06-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_dev_spaces/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_devtestlabs": [
         {
             "name": "Latest",
@@ -743,7 +770,7 @@
             "resourceTypes": {
                 "Microsoft.EventHub" : {
                     "management": {
-                        "2017-04-01": ["*"]
+                        "2018-01-01-preview": ["*"]
                     }
                 }
             },
@@ -777,13 +804,27 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_iot_central": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.IotCentral": {
+                    "management": {
+                        "2018-09-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_iot_central/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_iot_hub": [
         {
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.IotHub" : {
                     "management": {
-                        "2017-07-01": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 }
             },
@@ -797,7 +838,7 @@
             "resourceTypes": {
                 "Microsoft.KeyVault" : {
                     "management": {
-                        "2016-10-01": ["*"]
+                        "2018-02-14": ["*"]
                     }
                 }
             },
@@ -891,7 +932,7 @@
             "resourceTypes": {
                 "Microsoft.ManagedApplications" : {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 }
             },
@@ -919,25 +960,11 @@
             "resourceTypes": {
                 "Microsoft.MediaServices" : {
                     "management": {
-                        "2018-03-30-preview": ["*"]
+                        "2018-06-01-preview": ["*"]
                     }
                 }
             },
             "output_dir": "management/azure_mgmt_media_services/lib/profiles",
-            "individual_gem_profile": true
-        }
-        ],
-        "azure_mgmt_mobile_engagement": [
-        {
-            "name": "Latest",
-            "resourceTypes": {
-                "Microsoft.MobileEngagement" : {
-                    "management": {
-                        "2014-12-01": ["*"]
-                    }
-                }
-            },
-            "output_dir": "management/azure_mgmt_mobile_engagement/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -991,7 +1018,7 @@
             "resourceTypes": {
                 "Microsoft.Network" : {
                     "management": {
-                        "2018-01-01": ["*"]
+                        "2018-06-01": ["*"]
                     }
                 }
             },
@@ -1046,8 +1073,7 @@
             "resourceTypes": {
                 "Microsoft.Policy" : {
                     "management": {
-                        "2016-12-01": ["*"],
-                        "2017-06-01-preview": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 }
             },
@@ -1119,7 +1145,7 @@
             "resourceTypes": {
                 "Microsoft.RecoveryServicesSiteRecovery" : {
                     "management": {
-                        "2016-08-10": ["*"]
+                        "2018-01-10": ["*"]
                     }
                 }
             },
@@ -1133,7 +1159,7 @@
             "resourceTypes": {
                 "Microsoft.Redis" : {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2018-03-01": ["*"]
                     }
                 }
             },
@@ -1161,7 +1187,7 @@
             "resourceTypes": {
                 "Microsoft.ResourcesManagement" : {
                     "management": {
-                        "2017-11-01-preview": ["*"]
+                        "2018-03-01-preview": ["*"]
                     }
                 }
             },
@@ -1187,7 +1213,7 @@
             "resourceTypes": {
                 "Microsoft.Resources" : {
                     "management": {
-                        "2017-05-10": ["*"]
+                        "2018-05-01": ["*"]
                     }
                 }
             },
@@ -1223,17 +1249,17 @@
             "individual_gem_profile": true
         }
         ],
-        "azure_mgmt_server_management": [
+        "azure_mgmt_security": [
         {
             "name": "Latest",
             "resourceTypes": {
-                "Microsoft.ServerManagement" : {
+                "Microsoft.Security": {
                     "management": {
-                        "2016-07-01-preview": ["*"]
+                        "2017-08-01-preview": ["*"]
                     }
                 }
             },
-            "output_dir": "management/azure_mgmt_server_management/lib/profiles",
+            "output_dir": "management/azure_mgmt_security/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1257,7 +1283,8 @@
             "resourceTypes": {
                 "Microsoft.ServiceFabric" : {
                     "management": {
-                        "2017-07-01-preview": ["*"]
+                        "2017-07-01-preview": ["*"],
+                        "2018-02-01": ["*"]
                     }
                 }
             },
@@ -1287,7 +1314,8 @@
                     "management": {
                         "2014-04-01": ["*"],
                         "2015-05-01-preview": ["*"],
-                        "2017-03-01-preview": ["*"]
+                        "2017-03-01-preview": ["*"],
+                        "2017-10-01-preview": ["*"]
                     }
                 }
             },
@@ -1381,8 +1409,7 @@
             "resourceTypes": {
                 "Microsoft.TrafficManager": {
                     "management": {
-                        "2017-05-01": ["*"],
-                        "2017-09-01-preview": ["*"]
+                        "2018-04-01": ["*"]
                     }
                 }
             },
@@ -1396,11 +1423,7 @@
             "resourceTypes": {
                 "Microsoft.Web" : {
                     "management": {
-                        "2015-04-01": ["*"],
-                        "2015-08-01": ["*"],
-                        "2016-03-01": ["*"],
-                        "2016-08-01": ["*"],
-                        "2016-09-01": ["*"]
+                        "2018-02-01": ["*"]
                     }
                 }
             },
@@ -1430,7 +1453,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.ComputerVision" : {
                         "data": {
-                            "1.0": ["*"]
+                            "2.0": ["*"]
                         }
                     }
                 },
@@ -1589,6 +1612,20 @@
                     }
                 },
                 "output_dir": "data/azure_event_grid/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_key_vault": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.KeyVault" : {
+                        "data": {
+                            "7.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_key_vault/lib/profiles",
                 "individual_gem_profile": true
             }
         ]

@@ -60,6 +60,10 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
       # to true. Default value: false .
       attr_accessor :enable_https_traffic_only
 
+      # @return [Boolean] Account HierarchicalNamespace enabled if sets to
+      # true. Default value: false .
+      attr_accessor :is_hns_enabled
+
 
       #
       # Mapper for StorageAccountCreateParameters class as Ruby Hash.
@@ -165,6 +169,15 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.supportsHttpsTrafficOnly',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              is_hns_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.isHnsEnabled',
                 default_value: false,
                 type: {
                   name: 'Boolean'

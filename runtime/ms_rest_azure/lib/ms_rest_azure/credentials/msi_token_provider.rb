@@ -106,13 +106,15 @@ module MsRestAzure
       retry_value = 1
       max_retry = 20
       response = nil
+      user_defined_time_limit = ENV['USER_DEFINED_IMDS_MAX_RETRY_TIME'].nil? ? 104900:ENV['USER_DEFINED_IMDS_MAX_RETRY_TIME']
+      total_wait = 0
 
       slots = []
       (0..max_retry-1).each do |i|
         slots << (100 * ((2 << i) - 1) /1000.to_f)
       end
 
-      while retry_value <= max_retry
+      while retry_value <= max_retry && total_wait < user_defined_time_limit
         response = connection.get do |request|
           request.headers['Metadata'] = 'true'
           request.headers['User-Agent'] = "Azure-SDK-For-Ruby/ms_rest_azure/#{MsRestAzure::VERSION}"
@@ -127,7 +129,9 @@ module MsRestAzure
           if (retry_value > max_retry)
             break
           end
+          wait = wait > user_defined_time_limit ? user_defined_time_limit : wait
           sleep(wait)
+          total_wait += wait
         elsif response.status != 200
           fail AzureOperationError, "Couldn't acquire access token from Managed Service Identity, please verify your tenant id, port and settings"
         else

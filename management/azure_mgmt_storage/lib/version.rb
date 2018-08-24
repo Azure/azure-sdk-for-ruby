@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::Storage::Mgmt
-    VERSION = '0.16.2'
+    VERSION = '0.17.0'
 end

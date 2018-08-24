@@ -6,7 +6,8 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # Definition of the runbook type.
+    # Model object.
+    #
     #
     class RunbookDraft
 

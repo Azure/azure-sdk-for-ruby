@@ -208,14 +208,14 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201 || status_code == 200
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
-        if status_code == 201
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceResource.mapper()
@@ -225,7 +225,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
           end
         end
         # Deserialize Response
-        if status_code == 200
+        if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceResource.mapper()
@@ -660,7 +660,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204 || status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1052,7 +1052,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ResourceListKeys] operation results.
+    # @return [SharedAccessAuthorizationRuleListResult] operation results.
     #
     def list_keys(resource_group_name, namespace_name, authorization_rule_name, custom_headers:nil)
       response = list_keys_async(resource_group_name, namespace_name, authorization_rule_name, custom_headers:custom_headers).value!
@@ -1128,7 +1128,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ResourceListKeys.mapper()
+            result_mapper = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SharedAccessAuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1325,7 +1325,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204 || status_code == 200 || status_code == 202
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

@@ -6,7 +6,7 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # The Edifact enevlope override settings.
+    # The Edifact envelope override settings.
     #
     class EdifactEnvelopeOverride
 

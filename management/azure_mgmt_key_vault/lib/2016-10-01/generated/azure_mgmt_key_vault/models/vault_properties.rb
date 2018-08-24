@@ -41,15 +41,26 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       # permitted to retrieve secrets from the key vault.
       attr_accessor :enabled_for_template_deployment
 
-      # @return [Boolean] Property to specify whether the 'soft delete'
-      # functionality is enabled for this key vault. It does not accept false
-      # value.
+      # @return [Boolean] Property specifying whether recoverable deletion is
+      # enabled for this key vault. Setting this property to true activates the
+      # soft delete feature, whereby vaults or vault entities can be recovered
+      # after deletion. Enabling this functionality is irreversible - that is,
+      # the property does not accept false as its value.
       attr_accessor :enable_soft_delete
 
       # @return [CreateMode] The vault's create mode to indicate whether the
       # vault need to be recovered or not. Possible values include: 'recover',
       # 'default'
       attr_accessor :create_mode
+
+      # @return [Boolean] Property specifying whether protection against purge
+      # is enabled for this vault. Setting this property to true activates
+      # protection against purge for this vault and its content - only the Key
+      # Vault service may initiate a hard, irrecoverable deletion. The setting
+      # is effective only if soft delete is also enabled. Enabling this
+      # functionality is irreversible - that is, the property does not accept
+      # false as its value.
+      attr_accessor :enable_purge_protection
 
 
       #
@@ -103,7 +114,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
               vault_uri: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'vaultUri',
                 type: {
                   name: 'String'
@@ -148,6 +158,14 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 type: {
                   name: 'Enum',
                   module: 'CreateMode'
+                }
+              },
+              enable_purge_protection: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enablePurgeProtection',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

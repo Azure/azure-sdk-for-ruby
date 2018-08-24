@@ -24,15 +24,16 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [String] API Version
     attr_reader :api_version
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [Certificates] certificates
@@ -49,6 +50,13 @@ module Azure::Web::Mgmt::V2016_03_01
 
     # @return [Recommendations] recommendations
     attr_reader :recommendations
+
+    # @return [ResourceHealthMetadataOperations]
+    # resource_health_metadata_operations
+    attr_reader :resource_health_metadata_operations
+
+    # @return [BillingMeters] billing_meters
+    attr_reader :billing_meters
 
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
@@ -68,6 +76,8 @@ module Azure::Web::Mgmt::V2016_03_01
       @diagnostics = Diagnostics.new(self)
       @provider = Provider.new(self)
       @recommendations = Recommendations.new(self)
+      @resource_health_metadata_operations = ResourceHealthMetadataOperations.new(self)
+      @billing_meters = BillingMeters.new(self)
       @api_version = '2016-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -2369,7 +2379,7 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

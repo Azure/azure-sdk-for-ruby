@@ -1,3 +1,26 @@
+## 2018.08.18 - Azure Ruby SDK Release
+* Release Rollup gem 0.18.1 to fix [Issue# 1437](https://github.com/Azure/azure-sdk-for-ruby/issues/1437) and add missing azure_mgmt_signalr dependency to its gemspec file. 
+
+## 2018.07.31 - Azure Ruby SDK Release
+* Released Rollup gem, all management gems and data plane gems with all the latest changes. 
+* This specifically includes updates to the compute gem with versions of 2018-04-01 & 2018-06-01 versions.
+* The major versions of all the gems have been updated.
+* Runtime ms_rest_azure (0.11.0) has been released and all gems point to the latest version.
+
+## 2018.06.27 - Azure Ruby SDK Release
+* Released 0.16.3 version of azure_mgmt_storage gem. This includes new features: HDFS & Static Website.
+
+## 2018.06.20 - Azure Ruby SDK Release
+* Released 0.16.0 version of azure_mgmt_security gem. This includes the 2017-08-01-preview version.
+* Released 0.16.0 version of azure_key_vault data plane gem.
+* Released 0.16.0 version of azure_mgmt_dev_spaces gem.
+* Released 0.16.0 version of azure_mgmt_iot_central gem. 
+* Released 0.17.11 version of azure_sdk  rollup gem. This includes reference to the new azure_mgmt_security & azure_key_vault gems.
+
+## 2018.06.15 - Azure Ruby SDK Release
+* Released 0.16.1 version of azure_mgmt_monitor gem. This includes new versions and additions to the old versions.
+* Released 0.17.10 version of azure_sdk  rollup gem. This includes reference to the changes in the azure_mgmt_monitor gem. 
+
 ## 2018.06.06 - Azure Ruby SDK Release
 * Released 0.16.0 version of azure_mgmt_policy_insights gem.
 * Released 0.17.9 version of azure_sdk  rollup gem. This includes reference to the new azure_mgmt_policy_insights gem.

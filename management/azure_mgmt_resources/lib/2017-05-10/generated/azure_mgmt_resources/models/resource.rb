@@ -6,7 +6,7 @@
 module Azure::Resources::Mgmt::V2017_05_10
   module Models
     #
-    # Resource.
+    # Basic set of the resource properties.
     #
     class Resource
 

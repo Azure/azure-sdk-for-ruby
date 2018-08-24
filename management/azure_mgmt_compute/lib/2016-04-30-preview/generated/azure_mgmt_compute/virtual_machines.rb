@@ -160,7 +160,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -392,7 +392,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -435,7 +435,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -844,7 +844,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -886,7 +886,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -928,7 +928,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -970,7 +970,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise

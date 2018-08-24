@@ -23,22 +23,32 @@ module Azure::Monitor::Mgmt::V2015_04_01
     # @return [String] Client Api Version.
     attr_reader :api_version
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
+
+    # @return [ActivityLogs] activity_logs
+    attr_reader :activity_logs
 
     # @return [AutoscaleSettings] autoscale_settings
     attr_reader :autoscale_settings
 
+    # @return [EventCategories] event_categories
+    attr_reader :event_categories
+
     # @return [Operations] operations
     attr_reader :operations
+
+    # @return [TenantActivityLogs] tenant_activity_logs
+    attr_reader :tenant_activity_logs
 
     #
     # Creates initializes a new instance of the MonitorManagementClient class.
@@ -53,8 +63,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @activity_logs = ActivityLogs.new(self)
       @autoscale_settings = AutoscaleSettings.new(self)
+      @event_categories = EventCategories.new(self)
       @operations = Operations.new(self)
+      @tenant_activity_logs = TenantActivityLogs.new(self)
       @api_version = '2015-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -127,7 +140,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

@@ -6,8 +6,8 @@
 module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
-    # Error reponse indicates Logic service is not able to process the incoming
-    # request. The error property contains the error details.
+    # Error response indicates Logic service is not able to process the
+    # incoming request. The error property contains the error details.
     #
     class ErrorResponse
 

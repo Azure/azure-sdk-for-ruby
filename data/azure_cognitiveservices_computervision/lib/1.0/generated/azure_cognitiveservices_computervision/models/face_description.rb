@@ -15,7 +15,7 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       # @return [Integer] Possible age of the face.
       attr_accessor :age
 
-      # @return [Enum] Possible gender of the face. Possible values include:
+      # @return [Gender] Possible gender of the face. Possible values include:
       # 'Male', 'Female'
       attr_accessor :gender
 
@@ -49,7 +49,8 @@ module Azure::CognitiveServices::ComputerVision::V1_0
                 required: false,
                 serialized_name: 'gender',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'Gender'
                 }
               },
               face_rectangle: {

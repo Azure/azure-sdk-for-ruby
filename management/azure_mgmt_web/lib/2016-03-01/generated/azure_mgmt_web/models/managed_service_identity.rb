@@ -12,7 +12,8 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
-      # @return Type of managed service identity.
+      # @return [ManagedServiceIdentityType] Type of managed service identity.
+      # Possible values include: 'SystemAssigned'
       attr_accessor :type
 
       # @return [String] Tenant of managed service identity.
@@ -40,7 +41,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 required: false,
                 serialized_name: 'type',
                 type: {
-                  name: 'Object'
+                  name: 'String'
                 }
               },
               tenant_id: {

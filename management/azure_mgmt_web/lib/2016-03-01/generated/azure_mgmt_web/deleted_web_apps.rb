@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2016_03_01
   #
-  # DeletedWebApps
+  # WebSite Management Client
   #
   class DeletedWebApps
     include MsRestAzure

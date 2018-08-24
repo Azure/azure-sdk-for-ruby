@@ -83,6 +83,7 @@ module Azure::Policy::Mgmt::V2015_10_01_preview
               id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

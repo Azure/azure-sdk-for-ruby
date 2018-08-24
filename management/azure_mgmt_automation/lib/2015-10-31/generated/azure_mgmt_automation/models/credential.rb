@@ -8,18 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the credential.
     #
-    class Credential
+    class Credential < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets the id of the resource.
-      attr_accessor :id
-
-      # @return [String] Gets the name of the credential.
-      attr_accessor :name
-
-      # @return [String] Resource type
-      attr_accessor :type
 
       # @return [String] Gets the user name of the credential.
       attr_accessor :user_name

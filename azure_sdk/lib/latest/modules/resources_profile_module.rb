@@ -7,61 +7,65 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::Latest
   module Resources
     module Mgmt
-      Deployments = Azure::Resources::Mgmt::V2017_05_10::Deployments
-      Providers = Azure::Resources::Mgmt::V2017_05_10::Providers
-      Resources = Azure::Resources::Mgmt::V2017_05_10::Resources
-      ResourceGroups = Azure::Resources::Mgmt::V2017_05_10::ResourceGroups
-      Tags = Azure::Resources::Mgmt::V2017_05_10::Tags
-      DeploymentOperations = Azure::Resources::Mgmt::V2017_05_10::DeploymentOperations
+      Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
+      Providers = Azure::Resources::Mgmt::V2018_05_01::Providers
+      Resources = Azure::Resources::Mgmt::V2018_05_01::Resources
+      ResourceGroups = Azure::Resources::Mgmt::V2018_05_01::ResourceGroups
+      Tags = Azure::Resources::Mgmt::V2018_05_01::Tags
+      DeploymentOperations = Azure::Resources::Mgmt::V2018_05_01::DeploymentOperations
 
       module Models
-        Sku = Azure::Resources::Mgmt::V2017_05_10::Models::Sku
-        Identity = Azure::Resources::Mgmt::V2017_05_10::Models::Identity
-        GenericResourceFilter = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
-        ResourceGroupFilter = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupFilter
-        ParametersLink = Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
-        ResourceListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceListResult
-        DeploymentProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
-        ResourceGroupProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupProperties
-        DeploymentExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
-        ResourceGroup = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup
-        AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
-        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
-        ProviderResourceType = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
-        ResourceGroupListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupListResult
-        BasicDependency = Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
-        ResourcesMoveInfo = Azure::Resources::Mgmt::V2017_05_10::Models::ResourcesMoveInfo
-        DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
-        ExportTemplateRequest = Azure::Resources::Mgmt::V2017_05_10::Models::ExportTemplateRequest
-        DeploymentExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
-        TagCount = Azure::Resources::Mgmt::V2017_05_10::Models::TagCount
-        ProviderListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
-        TagValue = Azure::Resources::Mgmt::V2017_05_10::Models::TagValue
-        DeploymentExtendedFilter = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtendedFilter
-        TagDetails = Azure::Resources::Mgmt::V2017_05_10::Models::TagDetails
-        DebugSetting = Azure::Resources::Mgmt::V2017_05_10::Models::DebugSetting
-        TagsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
-        ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceManagementErrorWithDetails
-        TargetResource = Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
-        Provider = Azure::Resources::Mgmt::V2017_05_10::Models::Provider
-        HttpMessage = Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
-        DeploymentValidateResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
-        DeploymentOperationProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
-        Plan = Azure::Resources::Mgmt::V2017_05_10::Models::Plan
-        DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
-        Deployment = Azure::Resources::Mgmt::V2017_05_10::Models::Deployment
-        DeploymentOperationsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
-        Dependency = Azure::Resources::Mgmt::V2017_05_10::Models::Dependency
-        ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
-        TemplateLink = Azure::Resources::Mgmt::V2017_05_10::Models::TemplateLink
-        Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
-        DeploymentListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
-        SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
-        AliasType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasType
-        ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
-        GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
-        DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
-        ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
+        Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
+        DeploymentExtendedFilter = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtendedFilter
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
+        Identity = Azure::Resources::Mgmt::V2018_05_01::Models::Identity
+        ParametersLink = Azure::Resources::Mgmt::V2018_05_01::Models::ParametersLink
+        DebugSetting = Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
+        DeploymentProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
+        ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
+        DeploymentExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
+        ResourceGroupProperties = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupProperties
+        AliasPathType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
+        ResourceGroup = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroup
+        ProviderResourceType = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderResourceType
+        ResourceGroupPatchable = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
+        BasicDependency = Azure::Resources::Mgmt::V2018_05_01::Models::BasicDependency
+        ResourceGroupListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
+        OnErrorDeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
+        ResourcesMoveInfo = Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
+        DeploymentValidateResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
+        ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
+        DeploymentListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
+        TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
+        Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
+        TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
+        TemplateLink = Azure::Resources::Mgmt::V2018_05_01::Models::TemplateLink
+        TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
+        Deployment = Azure::Resources::Mgmt::V2018_05_01::Models::Deployment
+        TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
+        AliasType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasType
+        TargetResource = Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
+        Dependency = Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
+        HttpMessage = Azure::Resources::Mgmt::V2018_05_01::Models::HttpMessage
+        DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
+        DeploymentOperationProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationProperties
+        GenericResourceFilter = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
+        DeploymentOperation = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperation
+        ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceManagementErrorWithDetails
+        DeploymentOperationsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationsListResult
+        DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
+        ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceProviderOperationDisplayProperties
+        OnErrorDeployment = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeployment
+        Resource = Azure::Resources::Mgmt::V2018_05_01::Models::Resource
+        ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
+        SubResource = Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
+        Provider = Azure::Resources::Mgmt::V2018_05_01::Models::Provider
+        ResourceGroupExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
+        GenericResource = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
+        DeploymentMode = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
+        OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
+        ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
       end
 
       class ResourcesManagementClass
@@ -70,7 +74,7 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          @client_0 = Azure::Resources::Mgmt::V2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
+          @client_0 = Azure::Resources::Mgmt::V2018_05_01::ResourceManagementClient.new(configurable.credentials, base_url, options)
           if(@client_0.respond_to?(:subscription_id))
             @client_0.subscription_id = configurable.subscription_id
           end
@@ -100,145 +104,157 @@ module Azure::Profiles::Latest
 
         class ModelClasses
           def sku
-            Azure::Resources::Mgmt::V2017_05_10::Models::Sku
-          end
-          def identity
-            Azure::Resources::Mgmt::V2017_05_10::Models::Identity
-          end
-          def generic_resource_filter
-            Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
-          end
-          def resource_group_filter
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupFilter
-          end
-          def parameters_link
-            Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
-          end
-          def resource_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceListResult
-          end
-          def deployment_properties
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
-          end
-          def resource_group_properties
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupProperties
-          end
-          def deployment_export_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
-          end
-          def resource_group
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup
-          end
-          def alias_path_type
-            Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
-          end
-          def resource_group_patchable
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
-          end
-          def provider_resource_type
-            Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
-          end
-          def resource_group_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupListResult
-          end
-          def basic_dependency
-            Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
-          end
-          def resources_move_info
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourcesMoveInfo
-          end
-          def deployment_properties_extended
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
-          end
-          def export_template_request
-            Azure::Resources::Mgmt::V2017_05_10::Models::ExportTemplateRequest
-          end
-          def deployment_extended
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
-          end
-          def tag_count
-            Azure::Resources::Mgmt::V2017_05_10::Models::TagCount
-          end
-          def provider_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
-          end
-          def tag_value
-            Azure::Resources::Mgmt::V2017_05_10::Models::TagValue
+            Azure::Resources::Mgmt::V2018_05_01::Models::Sku
           end
           def deployment_extended_filter
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtendedFilter
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtendedFilter
           end
-          def tag_details
-            Azure::Resources::Mgmt::V2017_05_10::Models::TagDetails
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
+          def resource_group_filter
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
+          end
+          def identity
+            Azure::Resources::Mgmt::V2018_05_01::Models::Identity
+          end
+          def parameters_link
+            Azure::Resources::Mgmt::V2018_05_01::Models::ParametersLink
           end
           def debug_setting
-            Azure::Resources::Mgmt::V2017_05_10::Models::DebugSetting
+            Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
           end
-          def tags_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
+          def deployment_properties
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
           end
-          def resource_management_error_with_details
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceManagementErrorWithDetails
+          def resource_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
           end
-          def target_resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
+          def deployment_export_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
           end
-          def provider
-            Azure::Resources::Mgmt::V2017_05_10::Models::Provider
+          def resource_group_properties
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupProperties
           end
-          def http_message
-            Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
+          def alias_path_type
+            Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
+          end
+          def resource_group
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroup
+          end
+          def provider_resource_type
+            Azure::Resources::Mgmt::V2018_05_01::Models::ProviderResourceType
+          end
+          def resource_group_patchable
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
+          end
+          def basic_dependency
+            Azure::Resources::Mgmt::V2018_05_01::Models::BasicDependency
+          end
+          def resource_group_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
+          end
+          def on_error_deployment_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
+          end
+          def resources_move_info
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
           end
           def deployment_validate_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
           end
-          def deployment_operation_properties
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
-          end
-          def plan
-            Azure::Resources::Mgmt::V2017_05_10::Models::Plan
-          end
-          def deployment_operation
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
-          end
-          def deployment
-            Azure::Resources::Mgmt::V2017_05_10::Models::Deployment
-          end
-          def deployment_operations_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
-          end
-          def dependency
-            Azure::Resources::Mgmt::V2017_05_10::Models::Dependency
-          end
-          def resource_provider_operation_display_properties
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
-          end
-          def template_link
-            Azure::Resources::Mgmt::V2017_05_10::Models::TemplateLink
-          end
-          def resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::Resource
+          def export_template_request
+            Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
           end
           def deployment_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
           end
-          def sub_resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
+          def tag_count
+            Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
+          end
+          def plan
+            Azure::Resources::Mgmt::V2018_05_01::Models::Plan
+          end
+          def tag_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
+          end
+          def template_link
+            Azure::Resources::Mgmt::V2018_05_01::Models::TemplateLink
+          end
+          def tag_details
+            Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
+          end
+          def deployment
+            Azure::Resources::Mgmt::V2018_05_01::Models::Deployment
+          end
+          def tags_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
           end
           def alias_type
-            Azure::Resources::Mgmt::V2017_05_10::Models::AliasType
+            Azure::Resources::Mgmt::V2018_05_01::Models::AliasType
+          end
+          def target_resource
+            Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
+          end
+          def dependency
+            Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
+          end
+          def http_message
+            Azure::Resources::Mgmt::V2018_05_01::Models::HttpMessage
+          end
+          def deployment_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
+          end
+          def deployment_operation_properties
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationProperties
+          end
+          def generic_resource_filter
+            Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
+          end
+          def deployment_operation
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperation
+          end
+          def resource_management_error_with_details
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceManagementErrorWithDetails
+          end
+          def deployment_operations_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationsListResult
+          end
+          def deployment_properties_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
+          end
+          def resource_provider_operation_display_properties
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceProviderOperationDisplayProperties
+          end
+          def on_error_deployment
+            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeployment
+          end
+          def resource
+            Azure::Resources::Mgmt::V2018_05_01::Models::Resource
+          end
+          def provider_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
+          end
+          def sub_resource
+            Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
+          end
+          def provider
+            Azure::Resources::Mgmt::V2018_05_01::Models::Provider
           end
           def resource_group_export_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
           end
           def generic_resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
+            Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
           end
           def deployment_mode
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
+          end
+          def on_error_deployment_type
+            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
           end
           def resource_identity_type
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
           end
         end
       end

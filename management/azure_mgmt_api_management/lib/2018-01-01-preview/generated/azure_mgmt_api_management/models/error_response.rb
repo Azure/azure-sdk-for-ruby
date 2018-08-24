@@ -6,7 +6,7 @@
 module Azure::ApiManagement::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Error Body contract.
+    # Error Response.
     #
     class ErrorResponse
 
@@ -40,7 +40,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
               code: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'code',
+                serialized_name: 'error.code',
                 type: {
                   name: 'String'
                 }
@@ -48,7 +48,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
               message: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'message',
+                serialized_name: 'error.message',
                 type: {
                   name: 'String'
                 }
@@ -56,7 +56,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
               details: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'details',
+                serialized_name: 'error.details',
                 type: {
                   name: 'Sequence',
                   element: {

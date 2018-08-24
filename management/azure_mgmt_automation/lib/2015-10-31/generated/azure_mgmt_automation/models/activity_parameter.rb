@@ -27,7 +27,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       # the parameter is dynamic.
       attr_accessor :is_dynamic
 
-      # @return [Boolean] Gets or sets the position of the activity parameter.
+      # @return [Integer] Gets or sets the position of the activity parameter.
       attr_accessor :position
 
       # @return [Boolean] Gets or sets a Boolean value that indicates true if
@@ -50,6 +50,14 @@ module Azure::Automation::Mgmt::V2015_10_31
       # if the cmdlet parameter does not accept all the remaining argument
       # values.
       attr_accessor :value_from_remaining_arguments
+
+      # @return [String] Gets or sets the description of the activity
+      # parameter.
+      attr_accessor :description
+
+      # @return [Array<ActivityParameterValidationSet>] Gets or sets the
+      # validation set of activity parameter.
+      attr_accessor :validation_set
 
 
       #
@@ -102,7 +110,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 required: false,
                 serialized_name: 'position',
                 type: {
-                  name: 'Boolean'
+                  name: 'Number'
                 }
               },
               value_from_pipeline: {
@@ -127,6 +135,31 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'valueFromRemainingArguments',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'description',
+                type: {
+                  name: 'String'
+                }
+              },
+              validation_set: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'validationSet',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ActivityParameterValidationSetElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ActivityParameterValidationSet'
+                      }
+                  }
                 }
               }
             }

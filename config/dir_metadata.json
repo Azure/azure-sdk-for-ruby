@@ -118,6 +118,13 @@
       "module_require": "azure_mgmt_datalake_store"
     }
   },
+  "Microsoft.DevSpaces": {
+    "management": {
+      "path": "management/azure_mgmt_dev_spaces",
+      "namespace": "Azure::DevSpaces::Mgmt",
+      "module_require": "azure_mgmt_dev_spaces"
+    }
+  },
   "Microsoft.DevTestLabs": {
     "management": {
       "path": "management/azure_mgmt_devtestlabs",
@@ -172,6 +179,13 @@
       "module_require": "azure_mgmt_insights"
     }
   },
+  "Microsoft.IotCentral": {
+    "management": {
+      "path": "management/azure_mgmt_iot_central",
+      "namespace": "Azure::IotCentral::Mgmt",
+      "module_require": "azure_mgmt_iot_central"
+    }
+  },
   "Microsoft.IotHub": {
     "management": {
       "path": "management/azure_mgmt_iot_hub",
@@ -184,6 +198,11 @@
       "path": "management/azure_mgmt_key_vault",
       "namespace": "Azure::KeyVault::Mgmt",
       "module_require": "azure_mgmt_key_vault"
+    },
+    "data": {
+      "path": "data/azure_key_vault",
+      "namespace": "Azure::KeyVault",
+      "module_require": "azure_key_vault"
     }
   },
   "Microsoft.Links": {
@@ -359,6 +378,13 @@
       "path": "management/azure_mgmt_search",
       "namespace": "Azure::Search::Mgmt",
       "module_require": "azure_mgmt_search"
+    }
+  },
+  "Microsoft.Security": {
+    "management": {
+      "path": "management/azure_mgmt_security",
+      "namespace": "Azure::Security::Mgmt",
+      "module_require": "azure_mgmt_security"
     }
   },
   "Microsoft.ServerManagement": {

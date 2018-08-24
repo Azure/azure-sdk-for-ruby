@@ -25,12 +25,18 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       # WestNorth EuropeWest Europe
       attr_accessor :region
 
+      # @return [String] Identifier for Azure Insights metrics
+      attr_accessor :metric_id
+
       # @return [String] Status of the namespace. It can be any of these
       # values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
       attr_accessor :status
 
       # @return [DateTime] The time the namespace was created.
       attr_accessor :created_at
+
+      # @return [DateTime] The time the namespace was updated.
+      attr_accessor :updated_at
 
       # @return [String] Endpoint you can use to perform NotificationHub
       # operations.
@@ -48,6 +54,9 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       # @return [Boolean] Whether or not the namespace is set as Critical.
       attr_accessor :critical
+
+      # @return [String] Data center for the namespace
+      attr_accessor :data_center
 
       # @return [NamespaceType] The namespace type. Possible values include:
       # 'Messaging', 'NotificationHub'
@@ -96,7 +105,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -151,6 +160,15 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                   name: 'String'
                 }
               },
+              metric_id: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.metricId',
+                type: {
+                  name: 'String'
+                }
+              },
               status: {
                 client_side_validation: true,
                 required: false,
@@ -163,6 +181,14 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdAt',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              updated_at: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'
                 }
@@ -205,6 +231,14 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 serialized_name: 'properties.critical',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              data_center: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.dataCenter',
+                type: {
+                  name: 'String'
                 }
               },
               namespace_type: {

@@ -61,6 +61,7 @@ module Azure::Locks::Mgmt::V2015_01_01
               id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -69,6 +70,7 @@ module Azure::Locks::Mgmt::V2015_01_01
               type: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'

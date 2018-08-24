@@ -24,15 +24,16 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # @return [String] The API version to use for the request.
     attr_reader :api_version
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [DatabaseAdvisors] database_advisors
@@ -47,11 +48,21 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     # @return [DatabaseBlobAuditingPolicies] database_blob_auditing_policies
     attr_reader :database_blob_auditing_policies
 
+    # @return [DatabaseAutomaticTuningOperations]
+    # database_automatic_tuning_operations
+    attr_reader :database_automatic_tuning_operations
+
     # @return [EncryptionProtectors] encryption_protectors
     attr_reader :encryption_protectors
 
     # @return [FailoverGroups] failover_groups
     attr_reader :failover_groups
+
+    # @return [FirewallRules] firewall_rules
+    attr_reader :firewall_rules
+
+    # @return [ManagedInstances] managed_instances
+    attr_reader :managed_instances
 
     # @return [Operations] operations
     attr_reader :operations
@@ -94,8 +105,11 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       @database_recommended_actions = DatabaseRecommendedActions.new(self)
       @server_advisors = ServerAdvisors.new(self)
       @database_blob_auditing_policies = DatabaseBlobAuditingPolicies.new(self)
+      @database_automatic_tuning_operations = DatabaseAutomaticTuningOperations.new(self)
       @encryption_protectors = EncryptionProtectors.new(self)
       @failover_groups = FailoverGroups.new(self)
+      @firewall_rules = FirewallRules.new(self)
+      @managed_instances = ManagedInstances.new(self)
       @operations = Operations.new(self)
       @server_keys = ServerKeys.new(self)
       @servers = Servers.new(self)
@@ -176,7 +190,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

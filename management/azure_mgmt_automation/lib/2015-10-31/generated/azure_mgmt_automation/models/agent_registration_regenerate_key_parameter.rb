@@ -13,8 +13,8 @@ module Azure::Automation::Mgmt::V2015_10_31
       include MsRestAzure
 
       # @return [AgentRegistrationKeyName] Gets or sets the agent registration
-      # key name - Primary or Secondary. Possible values include: 'Primary',
-      # 'Secondary'
+      # key name - primary or secondary. Possible values include: 'primary',
+      # 'secondary'
       attr_accessor :key_name
 
       # @return [String] Gets or sets the name of the resource.

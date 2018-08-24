@@ -4,6 +4,9 @@
 
 require '2017-11-30/generated/azure_mgmt_consumption'
 require '2017-12-30-preview/generated/azure_mgmt_consumption'
+require '2018-06-30/generated/azure_mgmt_consumption'
+require '2018-03-31/generated/azure_mgmt_consumption'
+require '2018-05-31/generated/azure_mgmt_consumption'
 require '2017-04-24-preview/generated/azure_mgmt_consumption'
 require '2018-01-31/generated/azure_mgmt_consumption'
 require 'profiles/latest/consumption_latest_profile_client'

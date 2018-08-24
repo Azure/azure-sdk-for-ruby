@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2017_11_01_preview
   #
-  # MetricBaseline
+  # Monitor Management Client
   #
   class MetricBaseline
     include MsRestAzure

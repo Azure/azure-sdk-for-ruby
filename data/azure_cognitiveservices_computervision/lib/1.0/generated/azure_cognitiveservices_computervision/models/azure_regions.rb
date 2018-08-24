@@ -21,6 +21,10 @@ module Azure::CognitiveServices::ComputerVision::V1_0
       Eastasia = "eastasia"
       Australiaeast = "australiaeast"
       Brazilsouth = "brazilsouth"
+      Canadacentral = "canadacentral"
+      Centralindia = "centralindia"
+      Uksouth = "uksouth"
+      Japaneast = "japaneast"
     end
   end
 end

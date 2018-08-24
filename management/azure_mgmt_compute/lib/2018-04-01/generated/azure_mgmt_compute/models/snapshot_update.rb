@@ -8,7 +8,7 @@ module Azure::Compute::Mgmt::V2018_04_01
     #
     # Snapshot update resource.
     #
-    class SnapshotUpdate < ResourceUpdate
+    class SnapshotUpdate
 
       include MsRestAzure
 
@@ -26,6 +26,12 @@ module Azure::Compute::Mgmt::V2018_04_01
       # @return [EncryptionSettings] Encryption settings for disk or snapshot
       attr_accessor :encryption_settings
 
+      # @return [Hash{String => String}] Resource tags
+      attr_accessor :tags
+
+      # @return [SnapshotSku]
+      attr_accessor :sku
+
 
       #
       # Mapper for SnapshotUpdate class as Ruby Hash.
@@ -40,31 +46,6 @@ module Azure::Compute::Mgmt::V2018_04_01
             name: 'Composite',
             class_name: 'SnapshotUpdate',
             model_properties: {
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              sku: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'DiskSku'
-                }
-              },
               os_type: {
                 client_side_validation: true,
                 required: false,
@@ -89,6 +70,31 @@ module Azure::Compute::Mgmt::V2018_04_01
                 type: {
                   name: 'Composite',
                   class_name: 'EncryptionSettings'
+                }
+              },
+              tags: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              sku: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SnapshotSku'
                 }
               }
             }

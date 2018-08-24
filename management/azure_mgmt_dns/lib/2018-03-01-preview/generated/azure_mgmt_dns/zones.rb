@@ -24,7 +24,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Creates or updates a DNS zone. Does not modify DNS records within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param parameters [Zone] Parameters supplied to the CreateOrUpdate operation.
@@ -47,7 +48,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Creates or updates a DNS zone. Does not modify DNS records within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param parameters [Zone] Parameters supplied to the CreateOrUpdate operation.
@@ -69,7 +71,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Creates or updates a DNS zone. Does not modify DNS records within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param parameters [Zone] Parameters supplied to the CreateOrUpdate operation.
@@ -86,6 +89,9 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     def create_or_update_async(resource_group_name, zone_name, parameters, if_match:nil, if_none_match:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -161,7 +167,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # Deletes a DNS zone. WARNING: All DNS records in the zone will also be
     # deleted. This operation cannot be undone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param if_match [String] The etag of the DNS zone. Omit this value to always
@@ -176,7 +183,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param if_match [String] The etag of the DNS zone. Omit this value to always
@@ -208,7 +216,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # Gets a DNS zone. Retrieves the zone properties, but not the record sets
     # within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -225,7 +234,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # Gets a DNS zone. Retrieves the zone properties, but not the record sets
     # within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -241,7 +251,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # Gets a DNS zone. Retrieves the zone properties, but not the record sets
     # within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -251,6 +262,9 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     def get_async(resource_group_name, zone_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -305,7 +319,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Updates a DNS zone. Does not modify DNS records within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param parameters [ZoneUpdate] Parameters supplied to the Update operation.
@@ -325,7 +340,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Updates a DNS zone. Does not modify DNS records within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param parameters [ZoneUpdate] Parameters supplied to the Update operation.
@@ -344,7 +360,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Updates a DNS zone. Does not modify DNS records within the zone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param parameters [ZoneUpdate] Parameters supplied to the Update operation.
@@ -358,6 +375,9 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     def update_async(resource_group_name, zone_name, parameters, if_match:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -421,7 +441,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Lists the DNS zones within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -437,7 +458,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Lists the DNS zones within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -452,7 +474,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Lists the DNS zones within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -462,6 +485,9 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     def list_by_resource_group_async(resource_group_name, top:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -606,7 +632,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # Deletes a DNS zone. WARNING: All DNS records in the zone will also be
     # deleted. This operation cannot be undone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param if_match [String] The etag of the DNS zone. Omit this value to always
@@ -625,7 +652,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # Deletes a DNS zone. WARNING: All DNS records in the zone will also be
     # deleted. This operation cannot be undone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param if_match [String] The etag of the DNS zone. Omit this value to always
@@ -644,7 +672,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # Deletes a DNS zone. WARNING: All DNS records in the zone will also be
     # deleted. This operation cannot be undone.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param if_match [String] The etag of the DNS zone. Omit this value to always
@@ -657,6 +686,9 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     def begin_delete_async(resource_group_name, zone_name, if_match:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -878,7 +910,8 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Lists the DNS zones within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

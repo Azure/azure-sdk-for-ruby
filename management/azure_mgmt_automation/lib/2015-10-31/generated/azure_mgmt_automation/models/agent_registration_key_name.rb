@@ -9,8 +9,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     # Defines values for AgentRegistrationKeyName
     #
     module AgentRegistrationKeyName
-      Primary = "Primary"
-      Secondary = "Secondary"
+      Primary = "primary"
+      Secondary = "secondary"
     end
   end
 end

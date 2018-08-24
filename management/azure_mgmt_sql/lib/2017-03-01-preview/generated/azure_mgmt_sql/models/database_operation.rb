@@ -48,6 +48,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [Boolean] Whether or not the error is a user error.
       attr_accessor :is_user_error
 
+      # @return [DateTime] The estimated completion time of the operation.
+      attr_accessor :estimated_completion_time
+
+      # @return [String] The operation description.
+      attr_accessor :description
+
+      # @return [Boolean] Whether the operation can be cancelled.
+      attr_accessor :is_cancellable
+
 
       #
       # Mapper for DatabaseOperation class as Ruby Hash.
@@ -184,6 +193,33 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isUserError',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              estimated_completion_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.estimatedCompletionTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              description: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.description',
+                type: {
+                  name: 'String'
+                }
+              },
+              is_cancellable: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.isCancellable',
                 type: {
                   name: 'Boolean'
                 }

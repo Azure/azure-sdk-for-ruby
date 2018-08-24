@@ -8,7 +8,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the automation account type.
     #
-    class AutomationAccount < Resource
+    class AutomationAccount < TrackedResource
 
       include MsRestAzure
 
@@ -75,14 +75,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 client_side_validation: true,
                 required: false,
@@ -97,6 +89,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               sku: {

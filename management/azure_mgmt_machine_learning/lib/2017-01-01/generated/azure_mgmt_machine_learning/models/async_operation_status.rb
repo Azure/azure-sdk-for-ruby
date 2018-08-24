@@ -54,6 +54,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -62,6 +63,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -97,6 +99,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               percent_complete: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'percentComplete',
                 type: {
                   name: 'Double'
@@ -105,6 +108,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               error_info: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'errorInfo',
                 type: {
                   name: 'Composite',

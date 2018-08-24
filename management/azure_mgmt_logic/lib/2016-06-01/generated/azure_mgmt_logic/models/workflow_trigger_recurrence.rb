@@ -20,10 +20,10 @@ module Azure::Logic::Mgmt::V2016_06_01
       # @return [Integer] The interval.
       attr_accessor :interval
 
-      # @return [DateTime] The start time.
+      # @return [String] The start time.
       attr_accessor :start_time
 
-      # @return [DateTime] The end time.
+      # @return [String] The end time.
       attr_accessor :end_time
 
       # @return [String] The time zone.
@@ -68,7 +68,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 required: false,
                 serialized_name: 'startTime',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               },
               end_time: {
@@ -76,7 +76,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 required: false,
                 serialized_name: 'endTime',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               },
               time_zone: {

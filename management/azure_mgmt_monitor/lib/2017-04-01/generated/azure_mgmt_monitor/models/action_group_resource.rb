@@ -115,7 +115,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 required: true,
                 serialized_name: 'properties.groupShortName',
                 constraints: {
-                  MaxLength: 15
+                  MaxLength: 12
                 },
                 type: {
                   name: 'String'
