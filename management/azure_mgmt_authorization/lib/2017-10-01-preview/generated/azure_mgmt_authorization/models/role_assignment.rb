@@ -40,7 +40,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleAssignment',
           type: {
@@ -48,7 +47,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
             class_name: 'RoleAssignment',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,7 +55,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,7 +63,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -75,7 +71,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scope',
                 type: {
@@ -83,7 +78,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               role_definition_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.roleDefinitionId',
                 type: {
@@ -91,7 +85,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.principalId',
                 type: {
@@ -99,7 +92,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               can_delegate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.canDelegate',
                 type: {
