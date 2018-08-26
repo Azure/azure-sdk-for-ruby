@@ -212,6 +212,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     autoload :EntropyMode,                                        '2018-07-01/generated/azure_mgmt_media_services/models/entropy_mode.rb'
     autoload :H264Complexity,                                     '2018-07-01/generated/azure_mgmt_media_services/models/h264complexity.rb'
     autoload :EncoderNamedPreset,                                 '2018-07-01/generated/azure_mgmt_media_services/models/encoder_named_preset.rb'
+    autoload :InsightsType,                                       '2018-07-01/generated/azure_mgmt_media_services/models/insights_type.rb'
     autoload :OnErrorType,                                        '2018-07-01/generated/azure_mgmt_media_services/models/on_error_type.rb'
     autoload :Priority,                                           '2018-07-01/generated/azure_mgmt_media_services/models/priority.rb'
     autoload :JobErrorCode,                                       '2018-07-01/generated/azure_mgmt_media_services/models/job_error_code.rb'

@@ -20,9 +20,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       attr_accessor :@odatatype
 
-      # @return [Boolean] Whether to only extract audio insights when
-      # processing a video file.
-      attr_accessor :audio_insights_only
+      # @return [InsightsType] The type of insights to be extracted. If not set
+      # then based on the content the type will selected.  If the content is
+      # audi only then only audio insights are extraced and if it is video
+      # only. Possible values include: 'AudioInsightsOnly',
+      # 'VideoInsightsOnly', 'AllInsights'
+      attr_accessor :insights_to_extract
 
 
       #
@@ -51,11 +54,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                   name: 'String'
                 }
               },
-              audio_insights_only: {
+              insights_to_extract: {
                 required: false,
-                serialized_name: 'audioInsightsOnly',
+                serialized_name: 'insightsToExtract',
                 type: {
-                  name: 'Boolean'
+                  name: 'Enum',
+                  module: 'InsightsType'
                 }
               }
             }

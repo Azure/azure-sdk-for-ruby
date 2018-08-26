@@ -33,8 +33,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # available are: 'Predefined_DownloadOnly',
       # 'Predefined_ClearStreamingOnly',
       # 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey',
-      # 'Predefined_SecureStreaming' and
-      # 'Predefined_SecureStreamingWithFairPlay'
+      # 'Predefined_MultiDrmCencStreaming' and 'Predefined_MultiDrmStreaming'
       attr_accessor :streaming_policy_name
 
       # @return [String] Default ContentKeyPolicy used by this Streaming

@@ -20,8 +20,9 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # 'CommonEncryptionCbcs', 'EnvelopeEncryption'
       attr_accessor :type
 
-      # @return [String] Label of Content Key
-      attr_accessor :label
+      # @return [String] Label of Content Key as specified in the Streaming
+      # Policy
+      attr_accessor :label_reference_in_streaming_policy
 
       # @return [String] Value of  of Content Key
       attr_accessor :value
@@ -61,9 +62,9 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                   module: 'StreamingLocatorContentKeyType'
                 }
               },
-              label: {
+              label_reference_in_streaming_policy: {
                 required: false,
-                serialized_name: 'label',
+                serialized_name: 'labelReferenceInStreamingPolicy',
                 type: {
                   name: 'String'
                 }
