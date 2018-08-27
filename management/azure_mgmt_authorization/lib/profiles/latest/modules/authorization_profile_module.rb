@@ -7,14 +7,14 @@ require 'azure_mgmt_authorization'
 module Azure::Authorization::Profiles::Latest
   module Mgmt
     ClassicAdministrators = Azure::Authorization::Mgmt::V2015_06_01_preview::ClassicAdministrators
+    RoleDefinitions = Azure::Authorization::Mgmt::V2018_01_01_preview::RoleDefinitions
     ProviderOperationsMetadataOperations = Azure::Authorization::Mgmt::V2018_01_01_preview::ProviderOperationsMetadataOperations
     Permissions = Azure::Authorization::Mgmt::V2018_01_01_preview::Permissions
     RoleAssignments = Azure::Authorization::Mgmt::V2018_01_01_preview::RoleAssignments
-    RoleDefinitions = Azure::Authorization::Mgmt::V2018_01_01_preview::RoleDefinitions
 
     module Models
-      ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       ClassicAdministrator = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
+      ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       RoleDefinitionFilter = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
       RoleDefinition = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
       ResourceType = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
@@ -34,7 +34,7 @@ module Azure::Authorization::Profiles::Latest
     # AuthorizationManagementClass
     #
     class AuthorizationManagementClass
-      attr_reader :classic_administrators, :provider_operations_metadata_operations, :permissions, :role_assignments, :role_definitions, :configurable, :base_url, :options, :model_classes
+      attr_reader :classic_administrators, :role_definitions, :provider_operations_metadata_operations, :permissions, :role_assignments, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -61,10 +61,10 @@ module Azure::Authorization::Profiles::Latest
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
+        @role_definitions = @client_1.role_definitions
         @provider_operations_metadata_operations = @client_1.provider_operations_metadata_operations
         @permissions = @client_1.permissions
         @role_assignments = @client_1.role_assignments
-        @role_definitions = @client_1.role_definitions
 
         @model_classes = ModelClasses.new
       end
@@ -87,11 +87,11 @@ module Azure::Authorization::Profiles::Latest
     end
 
     class ModelClasses
-      def classic_administrator_list_result
-        Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
-      end
       def classic_administrator
         Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
+      end
+      def classic_administrator_list_result
+        Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       end
       def role_definition_filter
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
