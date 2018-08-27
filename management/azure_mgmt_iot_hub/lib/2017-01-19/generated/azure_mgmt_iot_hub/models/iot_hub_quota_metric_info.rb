@@ -28,7 +28,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubQuotaMetricInfo',
           type: {
@@ -36,7 +35,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'IotHubQuotaMetricInfo',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Name',
@@ -45,7 +43,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'CurrentValue',
@@ -54,7 +51,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               max_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'MaxValue',

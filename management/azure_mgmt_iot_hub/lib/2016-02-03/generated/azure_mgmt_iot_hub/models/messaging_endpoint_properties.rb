@@ -33,7 +33,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MessagingEndpointProperties',
           type: {
@@ -41,7 +40,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'MessagingEndpointProperties',
             model_properties: {
               lock_duration_as_iso8601: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lockDurationAsIso8601',
                 type: {
@@ -49,7 +47,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               ttl_as_iso8601: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ttlAsIso8601',
                 type: {
@@ -57,7 +54,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               max_delivery_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDeliveryCount',
                 constraints: {

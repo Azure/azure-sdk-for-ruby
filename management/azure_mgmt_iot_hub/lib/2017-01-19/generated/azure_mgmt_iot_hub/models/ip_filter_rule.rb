@@ -30,7 +30,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IpFilterRule',
           type: {
@@ -38,7 +37,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'IpFilterRule',
             model_properties: {
               filter_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'filterName',
                 type: {
@@ -46,7 +44,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               action: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'action',
                 type: {
@@ -55,7 +52,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               ip_mask: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ipMask',
                 type: {
