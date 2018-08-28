@@ -55,12 +55,12 @@ module Azure::Profiles::Latest
         DeploymentExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
         AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
-        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
+        Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
         DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
         DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
-        Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
-        SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
         GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
+        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
+        SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
         ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
       end
 
@@ -219,8 +219,8 @@ module Azure::Profiles::Latest
           def resource_group_export_result
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
           end
-          def resource_group_patchable
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
+          def resource
+            Azure::Resources::Mgmt::V2017_05_10::Models::Resource
           end
           def deployment_operation
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
@@ -228,14 +228,14 @@ module Azure::Profiles::Latest
           def deployment_mode
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
           end
-          def resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::Resource
+          def generic_resource
+            Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
+          end
+          def resource_group_patchable
+            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
           end
           def sub_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
-          end
-          def generic_resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
           end
           def resource_identity_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType

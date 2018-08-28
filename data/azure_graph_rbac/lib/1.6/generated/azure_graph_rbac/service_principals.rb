@@ -283,7 +283,8 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets service principal information from the directory.
+    # Gets service principal information from the directory. Query by objectId or
+    # pass a filter to query by appId
     #
     # @param object_id [String] The object ID of the service principal to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -297,7 +298,8 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets service principal information from the directory.
+    # Gets service principal information from the directory. Query by objectId or
+    # pass a filter to query by appId
     #
     # @param object_id [String] The object ID of the service principal to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -310,7 +312,8 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets service principal information from the directory.
+    # Gets service principal information from the directory. Query by objectId or
+    # pass a filter to query by appId
     #
     # @param object_id [String] The object ID of the service principal to get.
     # @param [Hash{String => String}] A hash of custom headers that will be added
