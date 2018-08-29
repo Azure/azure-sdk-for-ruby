@@ -26,6 +26,10 @@ module Azure::Network::Mgmt::V2017_03_30
       # endpoints.
       attr_accessor :service_endpoints
 
+      # @return [Array<ServiceEndpointPolicy>] An array of service endpoint
+      # policies.
+      attr_accessor :service_endpoint_policies
+
       # @return [Array<IPConfiguration>] Gets an array of references to the
       # network interface IP configurations using subnet.
       attr_accessor :ip_configurations
@@ -106,6 +110,23 @@ module Azure::Network::Mgmt::V2017_03_30
                       type: {
                         name: 'Composite',
                         class_name: 'ServiceEndpointPropertiesFormat'
+                      }
+                  }
+                }
+              },
+              service_endpoint_policies: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.serviceEndpointPolicies',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ServiceEndpointPolicyElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ServiceEndpointPolicy'
                       }
                   }
                 }

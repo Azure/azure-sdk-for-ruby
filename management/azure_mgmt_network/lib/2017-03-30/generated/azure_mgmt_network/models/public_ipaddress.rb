@@ -40,6 +40,10 @@ module Azure::Network::Mgmt::V2017_03_30
       # resource.
       attr_accessor :ip_address
 
+      # @return [SubResource] The Public IP Prefix this Public IP Address
+      # should be allocated from.
+      attr_accessor :public_ipprefix
+
       # @return [Integer] The idle timeout of the public IP address.
       attr_accessor :idle_timeout_in_minutes
 
@@ -189,6 +193,15 @@ module Azure::Network::Mgmt::V2017_03_30
                 serialized_name: 'properties.ipAddress',
                 type: {
                   name: 'String'
+                }
+              },
+              public_ipprefix: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.publicIPPrefix',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               },
               idle_timeout_in_minutes: {
