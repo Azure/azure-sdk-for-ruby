@@ -1,5 +1,9 @@
+## 2018.08.29 - Azure Ruby SDK Release
+* Released 0.17.1 version of azure_mgmt_network to include new version 2018-07-01.
+* Released Rollup gem 0.18.2 to include latest version of Management Network.
+
 ## 2018.08.18 - Azure Ruby SDK Release
-* Release Rollup gem 0.18.1 to fix [Issue# 1437](https://github.com/Azure/azure-sdk-for-ruby/issues/1437) and add missing azure_mgmt_signalr dependency to its gemspec file. 
+* Released Rollup gem 0.18.1 to fix [Issue# 1437](https://github.com/Azure/azure-sdk-for-ruby/issues/1437) and add missing azure_mgmt_signalr dependency to its gemspec file. 
 
 ## 2018.07.31 - Azure Ruby SDK Release
 * Released Rollup gem, all management gems and data plane gems with all the latest changes. 
