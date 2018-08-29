@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       # @return [SubResource] Gets outbound rules that use this backend address
       # pool.
-      attr_accessor :outbound_nat_rule
+      attr_accessor :outbound_rule
 
       # @return [String] Get provisioning state of the public IP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -94,11 +94,11 @@ module Azure::Network::Mgmt::V2017_03_30
                   }
                 }
               },
-              outbound_nat_rule: {
+              outbound_rule: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.outboundNatRule',
+                serialized_name: 'properties.outboundRule',
                 type: {
                   name: 'Composite',
                   class_name: 'SubResource'

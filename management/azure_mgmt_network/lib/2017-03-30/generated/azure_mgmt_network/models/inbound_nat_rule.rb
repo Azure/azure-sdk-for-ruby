@@ -46,6 +46,11 @@ module Azure::Network::Mgmt::V2017_03_30
       # changed after you create the endpoint.
       attr_accessor :enable_floating_ip
 
+      # @return [Boolean] Receive bidirectional TCP Reset on TCP flow idle
+      # timeout or unexpected connection termination. This element is only used
+      # when the protocol is set to TCP.
+      attr_accessor :enable_tcp_reset
+
       # @return [String] Gets the provisioning state of the public IP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
@@ -135,6 +140,14 @@ module Azure::Network::Mgmt::V2017_03_30
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableFloatingIP',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_tcp_reset: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.enableTcpReset',
                 type: {
                   name: 'Boolean'
                 }
