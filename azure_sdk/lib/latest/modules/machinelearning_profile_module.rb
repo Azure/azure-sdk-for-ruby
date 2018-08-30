@@ -10,6 +10,13 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
+        ExampleRequest = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
+        AsyncOperationErrorInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
+        WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
+        WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+        DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
+        ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+        ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
         AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
         OutputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
@@ -40,13 +47,6 @@ module Azure::Profiles::Latest
         InputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
         GraphPackage = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphPackage
         PaginatedWebServicesList = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
-        ExampleRequest = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
-        AsyncOperationErrorInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
-        WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
-        WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
-        DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
-        ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
-        ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
       end
 
       class MachineLearningManagementClass
@@ -79,6 +79,27 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def example_request
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
+          end
+          def async_operation_error_info
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
+          end
+          def web_service
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
+          end
+          def web_service_properties_for_graph
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+          end
+          def diagnostics_level
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
+          end
+          def column_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+          end
+          def column_format
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
+          end
           def asset_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
           end
@@ -168,27 +189,6 @@ module Azure::Profiles::Latest
           end
           def paginated_web_services_list
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
-          end
-          def example_request
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
-          end
-          def async_operation_error_info
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
-          end
-          def web_service
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
-          end
-          def web_service_properties_for_graph
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
-          end
-          def diagnostics_level
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
-          end
-          def column_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
-          end
-          def column_format
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
           end
         end
       end

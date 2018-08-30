@@ -40,6 +40,9 @@ module Azure::GraphRbac::V1_6
     # @return [Applications] applications
     attr_reader :applications
 
+    # @return [DeletedApplications] deleted_applications
+    attr_reader :deleted_applications
+
     # @return [Groups] groups
     attr_reader :groups
 
@@ -70,6 +73,7 @@ module Azure::GraphRbac::V1_6
 
       @objects = Objects.new(self)
       @applications = Applications.new(self)
+      @deleted_applications = DeletedApplications.new(self)
       @groups = Groups.new(self)
       @service_principals = ServicePrincipals.new(self)
       @users = Users.new(self)

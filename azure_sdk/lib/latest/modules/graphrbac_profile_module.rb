@@ -6,23 +6,25 @@ require 'azure_graph_rbac'
 
 module Azure::Profiles::Latest
   module GraphRbac
+    Groups = Azure::GraphRbac::V1_6::Groups
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
     Domains = Azure::GraphRbac::V1_6::Domains
     OAuth2 = Azure::GraphRbac::V1_6::OAuth2
     Users = Azure::GraphRbac::V1_6::Users
     Objects = Azure::GraphRbac::V1_6::Objects
     Applications = Azure::GraphRbac::V1_6::Applications
-    Groups = Azure::GraphRbac::V1_6::Groups
+    DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
 
     module Models
+      PasswordCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
       UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
       KeyCredentialListResult = Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
       UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
       UserGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
       ADGroup = Azure::GraphRbac::V1_6::Models::ADGroup
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
-      UserType = Azure::GraphRbac::V1_6::Models::UserType
       Application = Azure::GraphRbac::V1_6::Models::Application
+      UserType = Azure::GraphRbac::V1_6::Models::UserType
       GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
       User = Azure::GraphRbac::V1_6::Models::User
       Permissions = Azure::GraphRbac::V1_6::Models::Permissions
@@ -57,11 +59,10 @@ module Azure::Profiles::Latest
       GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
       DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
       SignInName = Azure::GraphRbac::V1_6::Models::SignInName
-      PasswordCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
     end
 
     class GraphRbacDataClass
-      attr_reader :service_principals, :domains, :oauth2, :users, :objects, :applications, :groups, :configurable, :base_url, :options, :model_classes
+      attr_reader :groups, :service_principals, :domains, :oauth2, :users, :objects, :applications, :deleted_applications, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -71,13 +72,14 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @groups = @client_0.groups
         @service_principals = @client_0.service_principals
         @domains = @client_0.domains
         @oauth2 = @client_0.oauth2
         @users = @client_0.users
         @objects = @client_0.objects
         @applications = @client_0.applications
-        @groups = @client_0.groups
+        @deleted_applications = @client_0.deleted_applications
 
         @model_classes = ModelClasses.new
       end
@@ -96,6 +98,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def password_credentials_update_parameters
+          Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
+        end
         def user_list_result
           Azure::GraphRbac::V1_6::Models::UserListResult
         end
@@ -114,11 +119,11 @@ module Azure::Profiles::Latest
         def service_principal
           Azure::GraphRbac::V1_6::Models::ServicePrincipal
         end
-        def user_type
-          Azure::GraphRbac::V1_6::Models::UserType
-        end
         def application
           Azure::GraphRbac::V1_6::Models::Application
+        end
+        def user_type
+          Azure::GraphRbac::V1_6::Models::UserType
         end
         def group_create_parameters
           Azure::GraphRbac::V1_6::Models::GroupCreateParameters
@@ -221,9 +226,6 @@ module Azure::Profiles::Latest
         end
         def sign_in_name
           Azure::GraphRbac::V1_6::Models::SignInName
-        end
-        def password_credentials_update_parameters
-          Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
         end
       end
     end
