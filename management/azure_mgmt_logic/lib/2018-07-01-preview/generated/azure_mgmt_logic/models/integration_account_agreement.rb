@@ -22,7 +22,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       attr_accessor :metadata
 
       # @return [AgreementType] The agreement type. Possible values include:
-      # 'NotSpecified', 'AS2', 'X12', 'Edifact'
+      # 'NotSpecified', 'AS2', 'X12', 'EDIFACT'
       attr_accessor :agreement_type
 
       # @return [String] The integration account partner that is set as host

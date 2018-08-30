@@ -51,7 +51,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 required: true,
                 serialized_name: 'eventLevel',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'EventLevel'
                 }
               },
               event_time: {
