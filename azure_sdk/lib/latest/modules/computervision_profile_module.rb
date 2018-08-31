@@ -8,6 +8,14 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      ImageMetadata = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
+      DomainModelResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
+      Word = Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
+      CelebrityResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
+      FaceRectangle = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
+      LandmarkResultsLandmarksItem = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
+      AdultInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
+      LandmarkResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
       ImageCaption = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
       ImageDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
       RecognitionResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::RecognitionResult
@@ -38,14 +46,6 @@ module Azure::Profiles::Latest
       ModelDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
       ImageTag = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::ListModelsResult
-      ImageMetadata = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
-      DomainModelResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
-      Word = Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
-      CelebrityResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
-      FaceRectangle = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
-      LandmarkResultsLandmarksItem = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
-      AdultInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
-      LandmarkResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,30 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_metadata
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
+        end
+        def domain_model_results
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
+        end
+        def word
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
+        end
+        def celebrity_results
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
+        end
+        def face_rectangle
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
+        end
+        def landmark_results_landmarks_item
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
+        end
+        def adult_info
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
+        end
+        def landmark_results
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
+        end
         def image_caption
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
         end
@@ -166,30 +190,6 @@ module Azure::Profiles::Latest
         end
         def list_models_result
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ListModelsResult
-        end
-        def image_metadata
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
-        end
-        def domain_model_results
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
-        end
-        def word
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
-        end
-        def celebrity_results
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
-        end
-        def face_rectangle
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
-        end
-        def landmark_results_landmarks_item
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
-        end
-        def adult_info
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
-        end
-        def landmark_results
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
         end
       end
     end

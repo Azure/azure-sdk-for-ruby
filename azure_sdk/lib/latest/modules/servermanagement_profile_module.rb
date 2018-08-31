@@ -36,12 +36,12 @@ module Azure::Profiles::Latest
         SessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
         PowerShellSessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
+        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
         PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
         GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
         PowerShellExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
-        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         Error = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
       end
 
@@ -147,6 +147,9 @@ module Azure::Profiles::Latest
           def power_shell_command_status
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
           end
+          def version
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
+          end
           def retention_period
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
           end
@@ -161,9 +164,6 @@ module Azure::Profiles::Latest
           end
           def power_shell_expand_option
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
-          end
-          def version
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
           end
           def error
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error

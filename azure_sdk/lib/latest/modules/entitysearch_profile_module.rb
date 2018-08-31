@@ -20,6 +20,7 @@ module Azure::Profiles::Latest
       Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
+      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
@@ -27,7 +28,6 @@ module Azure::Profiles::Latest
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
       EntertainmentBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
-      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
       ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
       ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
@@ -39,9 +39,9 @@ module Azure::Profiles::Latest
       Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
-      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-      ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
+      ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
@@ -120,6 +120,9 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
         end
+        def response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
         def civic_structure
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
         end
@@ -140,9 +143,6 @@ module Azure::Profiles::Latest
         end
         def entertainment_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
-        end
-        def response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
         end
         def movie_theater
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
@@ -177,14 +177,14 @@ module Azure::Profiles::Latest
         def entity_scenario
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
         end
-        def answer_type
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+        def entity_type
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
         end
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
         end
-        def entity_type
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
+        def answer_type
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
         end
         def error_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
