@@ -34,8 +34,8 @@ module Azure::GraphRbac::V1_6
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Objects] objects
-    attr_reader :objects
+    # @return [SignedInUser] signed_in_user
+    attr_reader :signed_in_user
 
     # @return [Applications] applications
     attr_reader :applications
@@ -51,6 +51,9 @@ module Azure::GraphRbac::V1_6
 
     # @return [Users] users
     attr_reader :users
+
+    # @return [Objects] objects
+    attr_reader :objects
 
     # @return [Domains] domains
     attr_reader :domains
@@ -71,12 +74,13 @@ module Azure::GraphRbac::V1_6
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @objects = Objects.new(self)
+      @signed_in_user = SignedInUser.new(self)
       @applications = Applications.new(self)
       @deleted_applications = DeletedApplications.new(self)
       @groups = Groups.new(self)
       @service_principals = ServicePrincipals.new(self)
       @users = Users.new(self)
+      @objects = Objects.new(self)
       @domains = Domains.new(self)
       @oauth2 = OAuth2.new(self)
       @api_version = '1.6'

@@ -14,6 +14,7 @@ module Azure::Profiles::Latest
 
       module Models
         UpgradeMode = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
+        Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
         EncryptionJwkResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::EncryptionJwkResource
         GatewayStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayStatus
         GatewayResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResources
@@ -21,8 +22,8 @@ module Azure::Profiles::Latest
         GatewayParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayParameters
         PowerShellCommandResult = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResult
         NodeResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResources
-        Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
         PowerShellCommandResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResults
+        PowerShellTabCompletionResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionResults
         SessionParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
         GatewayProfile = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayProfile
         PowerShellSessionResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResources
@@ -37,7 +38,6 @@ module Azure::Profiles::Latest
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
-        PowerShellTabCompletionResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionResults
         PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
         GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
         PowerShellExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
@@ -81,6 +81,9 @@ module Azure::Profiles::Latest
           def upgrade_mode
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
           end
+          def resource
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
+          end
           def encryption_jwk_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::EncryptionJwkResource
           end
@@ -102,11 +105,11 @@ module Azure::Profiles::Latest
           def node_resources
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResources
           end
-          def resource
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
-          end
           def power_shell_command_results
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResults
+          end
+          def power_shell_tab_completion_results
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionResults
           end
           def session_parameters
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
@@ -149,9 +152,6 @@ module Azure::Profiles::Latest
           end
           def credential_data_format
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
-          end
-          def power_shell_tab_completion_results
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionResults
           end
           def prompt_field_type
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType

@@ -8,14 +8,22 @@ module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
 
       module Models
+        ApplicationParameter = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
+        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
+        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
+        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
+        DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
+        RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
+        ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
         AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
         ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
         AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
@@ -46,12 +54,12 @@ module Azure::Profiles::Latest
         ServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceUpdateProperties
         ServiceResourceUpdate = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceUpdate
         StatelessServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
+        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
         StatelessServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceUpdateProperties
         StatefulServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
         StatefulServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceUpdateProperties
         Cluster = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Cluster
         CertificateDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
-        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
         ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
         OperationResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationResult
         Resource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Resource
@@ -65,18 +73,10 @@ module Azure::Profiles::Latest
         ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
         ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationHealthPolicy
         ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
-        ApplicationParameter = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
-        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
-        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
-        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
-        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
-        DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
-        RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
-        ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :application, :version, :clusters, :cluster_versions, :application_type, :service, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :cluster_versions, :application_type, :service, :application, :version, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -87,12 +87,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @application = @client_0.application
-          @version = @client_0.version
           @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
           @application_type = @client_0.application_type
           @service = @client_0.service
+          @application = @client_0.application
+          @version = @client_0.version
 
           @model_classes = ModelClasses.new
         end
@@ -111,6 +111,30 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def application_parameter
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
+          end
+          def cluster_code_versions_list_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
+          end
+          def service_load_metric_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+          end
+          def cluster_code_versions_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
+          end
+          def partition_scheme_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
+          end
+          def diagnostics_storage_account_config
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
+          end
+          def rolling_upgrade_monitoring_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
+          end
+          def cluster_upgrade_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
+          end
           def available_operation_display
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
           end
@@ -201,6 +225,9 @@ module Azure::Profiles::Latest
           def stateless_service_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
           end
+          def operation_list_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
+          end
           def stateless_service_update_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceUpdateProperties
           end
@@ -215,9 +242,6 @@ module Azure::Profiles::Latest
           end
           def certificate_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
-          end
-          def operation_list_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
           end
           def proxy_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
@@ -257,30 +281,6 @@ module Azure::Profiles::Latest
           end
           def cluster_update_parameters
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
-          end
-          def application_parameter
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
-          end
-          def cluster_code_versions_list_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
-          end
-          def service_load_metric_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
-          end
-          def cluster_code_versions_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
-          end
-          def partition_scheme_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
-          end
-          def diagnostics_storage_account_config
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
-          end
-          def rolling_upgrade_monitoring_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
-          end
-          def cluster_upgrade_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
           end
         end
       end

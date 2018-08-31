@@ -59,8 +59,8 @@ module Azure::Profiles::Latest
         DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
         DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
         GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
-        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
         SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
+        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
         ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
       end
 
@@ -231,11 +231,11 @@ module Azure::Profiles::Latest
           def generic_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
           end
-          def resource_group_patchable
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
-          end
           def sub_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
+          end
+          def resource_group_patchable
+            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
           end
           def resource_identity_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
