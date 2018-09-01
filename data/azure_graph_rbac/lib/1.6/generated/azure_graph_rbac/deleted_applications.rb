@@ -111,37 +111,40 @@ module Azure::GraphRbac::V1_6
     #
     # Gets a list of deleted applications in the directory.
     #
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Application>] operation results.
     #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
+    def list(filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(filter, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Gets a list of deleted applications in the directory.
     #
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_with_http_info(filter = nil, custom_headers = nil)
+      list_async(filter, custom_headers).value!
     end
 
     #
     # Gets a list of deleted applications in the directory.
     #
+    # @param filter [String] The filter to apply to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_async(filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
@@ -158,7 +161,7 @@ module Azure::GraphRbac::V1_6
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -358,14 +361,15 @@ module Azure::GraphRbac::V1_6
     #
     # Gets a list of deleted applications in the directory.
     #
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ApplicationListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_as_lazy(filter = nil, custom_headers = nil)
+      response = list_async(filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_link|

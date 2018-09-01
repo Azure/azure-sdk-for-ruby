@@ -190,44 +190,43 @@ module Azure::GraphRbac::V1_6
     #
     # Get the list of directory objects that are owned by the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DirectoryObjectListResult] operation results.
+    # @return [Array<DirectoryObject>] operation results.
     #
-    def list_owned_objects_next(next_page_link, custom_headers = nil)
-      response = list_owned_objects_next_async(next_page_link, custom_headers).value!
+    def list_owned_objects_next(next_link, custom_headers = nil)
+      response = list_owned_objects_next_async(next_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Get the list of directory objects that are owned by the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_owned_objects_next_with_http_info(next_page_link, custom_headers = nil)
-      list_owned_objects_next_async(next_page_link, custom_headers).value!
+    def list_owned_objects_next_with_http_info(next_link, custom_headers = nil)
+      list_owned_objects_next_async(next_link, custom_headers).value!
     end
 
     #
     # Get the list of directory objects that are owned by the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
+    # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_owned_objects_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+    def list_owned_objects_next_async(next_link, custom_headers = nil)
+      fail ArgumentError, 'next_link is nil' if next_link.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
@@ -235,13 +234,15 @@ module Azure::GraphRbac::V1_6
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
+      path_template = '{tenantID}/{nextLink}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
+          path_params: {'tenantID' => @client.tenant_id},
+          skip_encoding_path_params: {'nextLink' => next_link},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -287,8 +288,8 @@ module Azure::GraphRbac::V1_6
       response = list_owned_objects_async(custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_owned_objects_next_async(next_page_link, custom_headers)
+        page.next_method = Proc.new do |next_link|
+          list_owned_objects_next_async(next_link, custom_headers)
         end
         page
       end

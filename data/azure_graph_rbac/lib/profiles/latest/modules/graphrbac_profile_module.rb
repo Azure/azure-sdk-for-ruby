@@ -23,9 +23,9 @@ module Azure::GraphRbac::Profiles::Latest
     PasswordCredential = Azure::GraphRbac::V1_6::Models::PasswordCredential
     RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
     GroupListResult = Azure::GraphRbac::V1_6::Models::GroupListResult
-    ApplicationUpdateParameters = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
+    ApplicationCreateParameters = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
     GroupGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
-    AppRole = Azure::GraphRbac::V1_6::Models::AppRole
+    ApplicationUpdateParameters = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
     UserGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
     AddOwnerParameters = Azure::GraphRbac::V1_6::Models::AddOwnerParameters
     GroupGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsResult
@@ -45,7 +45,7 @@ module Azure::GraphRbac::Profiles::Latest
     UserBase = Azure::GraphRbac::V1_6::Models::UserBase
     AADObject = Azure::GraphRbac::V1_6::Models::AADObject
     DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
-    ApplicationCreateParameters = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
+    AppRole = Azure::GraphRbac::V1_6::Models::AppRole
     Domain = Azure::GraphRbac::V1_6::Models::Domain
     PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
     SignInName = Azure::GraphRbac::V1_6::Models::SignInName
@@ -137,14 +137,14 @@ module Azure::GraphRbac::Profiles::Latest
     def group_list_result
       Azure::GraphRbac::V1_6::Models::GroupListResult
     end
-    def application_update_parameters
-      Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
+    def application_create_parameters
+      Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
     end
     def group_get_member_groups_parameters
       Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
     end
-    def app_role
-      Azure::GraphRbac::V1_6::Models::AppRole
+    def application_update_parameters
+      Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
     end
     def user_get_member_groups_result
       Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
@@ -203,8 +203,8 @@ module Azure::GraphRbac::Profiles::Latest
     def domain_list_result
       Azure::GraphRbac::V1_6::Models::DomainListResult
     end
-    def application_create_parameters
-      Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
+    def app_role
+      Azure::GraphRbac::V1_6::Models::AppRole
     end
     def domain
       Azure::GraphRbac::V1_6::Models::Domain
