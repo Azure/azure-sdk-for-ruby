@@ -40,7 +40,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Thing',
           type: {
@@ -48,7 +47,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
             class_name: 'Thing',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -56,7 +54,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,7 +62,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -74,7 +70,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -83,7 +78,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
@@ -92,7 +86,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -101,7 +94,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               bing_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bingId',

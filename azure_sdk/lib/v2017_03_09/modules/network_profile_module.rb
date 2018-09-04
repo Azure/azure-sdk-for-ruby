@@ -27,6 +27,7 @@ module Azure::Profiles::V2017_03_09
       LocalNetworkGateways = Azure::Network::Mgmt::V2015_06_15::LocalNetworkGateways
 
       module Models
+        UsageName = Azure::Network::Mgmt::V2015_06_15::Models::UsageName
         ExpressRouteCircuitsStatsListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitsStatsListResult
         ExpressRouteCircuitListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitListResult
         SubResource = Azure::Network::Mgmt::V2015_06_15::Models::SubResource
@@ -34,11 +35,10 @@ module Azure::Profiles::V2017_03_09
         PublicIPAddressListResult = Azure::Network::Mgmt::V2015_06_15::Models::PublicIPAddressListResult
         ApplicationGatewayListResult = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayListResult
         ApplicationGatewayBackendAddress = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayBackendAddress
-        Resource = Azure::Network::Mgmt::V2015_06_15::Models::Resource
         ConnectionResetSharedKey = Azure::Network::Mgmt::V2015_06_15::Models::ConnectionResetSharedKey
+        Resource = Azure::Network::Mgmt::V2015_06_15::Models::Resource
         DnsNameAvailabilityResult = Azure::Network::Mgmt::V2015_06_15::Models::DnsNameAvailabilityResult
         NetworkInterfaceDnsSettings = Azure::Network::Mgmt::V2015_06_15::Models::NetworkInterfaceDnsSettings
-        NetworkSecurityGroupListResult = Azure::Network::Mgmt::V2015_06_15::Models::NetworkSecurityGroupListResult
         VirtualNetworkGatewayListResult = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayListResult
         AuthorizationListResult = Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationListResult
         BgpSettings = Azure::Network::Mgmt::V2015_06_15::Models::BgpSettings
@@ -51,9 +51,9 @@ module Azure::Profiles::V2017_03_09
         ExpressRouteCircuitPeeringListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringListResult
         UsagesListResult = Azure::Network::Mgmt::V2015_06_15::Models::UsagesListResult
         ExpressRouteCircuitSku = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSku
-        UsageName = Azure::Network::Mgmt::V2015_06_15::Models::UsageName
         ExpressRouteCircuitServiceProviderProperties = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitServiceProviderProperties
         RouteTableListResult = Azure::Network::Mgmt::V2015_06_15::Models::RouteTableListResult
+        NetworkSecurityGroupListResult = Azure::Network::Mgmt::V2015_06_15::Models::NetworkSecurityGroupListResult
         NetworkInterfaceListResult = Azure::Network::Mgmt::V2015_06_15::Models::NetworkInterfaceListResult
         ConnectionSharedKey = Azure::Network::Mgmt::V2015_06_15::Models::ConnectionSharedKey
         ExpressRouteCircuitArpTable = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitArpTable
@@ -63,16 +63,13 @@ module Azure::Profiles::V2017_03_09
         ExpressRouteCircuitRoutesTable = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitRoutesTable
         DhcpOptions = Azure::Network::Mgmt::V2015_06_15::Models::DhcpOptions
         ExpressRouteCircuitsRoutesTableListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitsRoutesTableListResult
-        Usage = Azure::Network::Mgmt::V2015_06_15::Models::Usage
         ApplicationGatewaySku = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewaySku
         LocalNetworkGatewayListResult = Azure::Network::Mgmt::V2015_06_15::Models::LocalNetworkGatewayListResult
-        VirtualNetworkGatewayConnectionListResult = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayConnectionListResult
+        Usage = Azure::Network::Mgmt::V2015_06_15::Models::Usage
         LoadBalancerListResult = Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancerListResult
-        VirtualNetworkGatewaySku = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewaySku
+        VirtualNetworkGatewayConnectionListResult = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayConnectionListResult
         AzureAsyncOperationResult = Azure::Network::Mgmt::V2015_06_15::Models::AzureAsyncOperationResult
-        RouteListResult = Azure::Network::Mgmt::V2015_06_15::Models::RouteListResult
-        Error = Azure::Network::Mgmt::V2015_06_15::Models::Error
-        SubnetListResult = Azure::Network::Mgmt::V2015_06_15::Models::SubnetListResult
+        VirtualNetworkGatewaySku = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewaySku
         ExpressRouteServiceProviderListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProviderListResult
         VpnClientParameters = Azure::Network::Mgmt::V2015_06_15::Models::VpnClientParameters
         ErrorDetails = Azure::Network::Mgmt::V2015_06_15::Models::ErrorDetails
@@ -116,24 +113,27 @@ module Azure::Profiles::V2017_03_09
         VirtualNetworkGateway = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGateway
         LocalNetworkGateway = Azure::Network::Mgmt::V2015_06_15::Models::LocalNetworkGateway
         VirtualNetworkGatewayConnection = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayConnection
-        ApplicationGatewaySkuName = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewaySkuName
+        RouteListResult = Azure::Network::Mgmt::V2015_06_15::Models::RouteListResult
+        SubnetListResult = Azure::Network::Mgmt::V2015_06_15::Models::SubnetListResult
         ApplicationGatewayTier = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayTier
-        IPAllocationMethod = Azure::Network::Mgmt::V2015_06_15::Models::IPAllocationMethod
+        ApplicationGatewaySkuName = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewaySkuName
         TransportProtocol = Azure::Network::Mgmt::V2015_06_15::Models::TransportProtocol
-        SecurityRuleProtocol = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleProtocol
+        IPAllocationMethod = Azure::Network::Mgmt::V2015_06_15::Models::IPAllocationMethod
         SecurityRuleAccess = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleAccess
-        SecurityRuleDirection = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleDirection
+        SecurityRuleProtocol = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleProtocol
         RouteNextHopType = Azure::Network::Mgmt::V2015_06_15::Models::RouteNextHopType
-        ApplicationGatewayProtocol = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
+        SecurityRuleDirection = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleDirection
         ApplicationGatewayCookieBasedAffinity = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayCookieBasedAffinity
-        ApplicationGatewayRequestRoutingRuleType = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayRequestRoutingRuleType
+        ApplicationGatewayProtocol = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
         ApplicationGatewayOperationalState = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayOperationalState
-        AuthorizationUseStatus = Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationUseStatus
+        ApplicationGatewayRequestRoutingRuleType = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayRequestRoutingRuleType
         ExpressRouteCircuitPeeringAdvertisedPublicPrefixState = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
-        ExpressRouteCircuitPeeringType = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringType
+        AuthorizationUseStatus = Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationUseStatus
         ExpressRouteCircuitPeeringState = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringState
-        ExpressRouteCircuitSkuTier = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSkuTier
+        ExpressRouteCircuitPeeringType = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringType
         ExpressRouteCircuitSkuFamily = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSkuFamily
+        ExpressRouteCircuitSkuTier = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSkuTier
+        Error = Azure::Network::Mgmt::V2015_06_15::Models::Error
         ServiceProviderProvisioningState = Azure::Network::Mgmt::V2015_06_15::Models::ServiceProviderProvisioningState
         LoadDistribution = Azure::Network::Mgmt::V2015_06_15::Models::LoadDistribution
         ProbeProtocol = Azure::Network::Mgmt::V2015_06_15::Models::ProbeProtocol
@@ -194,6 +194,9 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def usage_name
+            Azure::Network::Mgmt::V2015_06_15::Models::UsageName
+          end
           def express_route_circuits_stats_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitsStatsListResult
           end
@@ -215,20 +218,17 @@ module Azure::Profiles::V2017_03_09
           def application_gateway_backend_address
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayBackendAddress
           end
-          def resource
-            Azure::Network::Mgmt::V2015_06_15::Models::Resource
-          end
           def connection_reset_shared_key
             Azure::Network::Mgmt::V2015_06_15::Models::ConnectionResetSharedKey
+          end
+          def resource
+            Azure::Network::Mgmt::V2015_06_15::Models::Resource
           end
           def dns_name_availability_result
             Azure::Network::Mgmt::V2015_06_15::Models::DnsNameAvailabilityResult
           end
           def network_interface_dns_settings
             Azure::Network::Mgmt::V2015_06_15::Models::NetworkInterfaceDnsSettings
-          end
-          def network_security_group_list_result
-            Azure::Network::Mgmt::V2015_06_15::Models::NetworkSecurityGroupListResult
           end
           def virtual_network_gateway_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayListResult
@@ -266,14 +266,14 @@ module Azure::Profiles::V2017_03_09
           def express_route_circuit_sku
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSku
           end
-          def usage_name
-            Azure::Network::Mgmt::V2015_06_15::Models::UsageName
-          end
           def express_route_circuit_service_provider_properties
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitServiceProviderProperties
           end
           def route_table_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::RouteTableListResult
+          end
+          def network_security_group_list_result
+            Azure::Network::Mgmt::V2015_06_15::Models::NetworkSecurityGroupListResult
           end
           def network_interface_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::NetworkInterfaceListResult
@@ -302,35 +302,26 @@ module Azure::Profiles::V2017_03_09
           def express_route_circuits_routes_table_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitsRoutesTableListResult
           end
-          def usage
-            Azure::Network::Mgmt::V2015_06_15::Models::Usage
-          end
           def application_gateway_sku
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewaySku
           end
           def local_network_gateway_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::LocalNetworkGatewayListResult
           end
-          def virtual_network_gateway_connection_list_result
-            Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayConnectionListResult
+          def usage
+            Azure::Network::Mgmt::V2015_06_15::Models::Usage
           end
           def load_balancer_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancerListResult
           end
-          def virtual_network_gateway_sku
-            Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewaySku
+          def virtual_network_gateway_connection_list_result
+            Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayConnectionListResult
           end
           def azure_async_operation_result
             Azure::Network::Mgmt::V2015_06_15::Models::AzureAsyncOperationResult
           end
-          def route_list_result
-            Azure::Network::Mgmt::V2015_06_15::Models::RouteListResult
-          end
-          def error
-            Azure::Network::Mgmt::V2015_06_15::Models::Error
-          end
-          def subnet_list_result
-            Azure::Network::Mgmt::V2015_06_15::Models::SubnetListResult
+          def virtual_network_gateway_sku
+            Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewaySku
           end
           def express_route_service_provider_list_result
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProviderListResult
@@ -461,59 +452,68 @@ module Azure::Profiles::V2017_03_09
           def virtual_network_gateway_connection
             Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayConnection
           end
-          def application_gateway_sku_name
-            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewaySkuName
+          def route_list_result
+            Azure::Network::Mgmt::V2015_06_15::Models::RouteListResult
+          end
+          def subnet_list_result
+            Azure::Network::Mgmt::V2015_06_15::Models::SubnetListResult
           end
           def application_gateway_tier
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayTier
           end
-          def ipallocation_method
-            Azure::Network::Mgmt::V2015_06_15::Models::IPAllocationMethod
+          def application_gateway_sku_name
+            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewaySkuName
           end
           def transport_protocol
             Azure::Network::Mgmt::V2015_06_15::Models::TransportProtocol
           end
-          def security_rule_protocol
-            Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleProtocol
+          def ipallocation_method
+            Azure::Network::Mgmt::V2015_06_15::Models::IPAllocationMethod
           end
           def security_rule_access
             Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleAccess
           end
-          def security_rule_direction
-            Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleDirection
+          def security_rule_protocol
+            Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleProtocol
           end
           def route_next_hop_type
             Azure::Network::Mgmt::V2015_06_15::Models::RouteNextHopType
           end
-          def application_gateway_protocol
-            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
+          def security_rule_direction
+            Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleDirection
           end
           def application_gateway_cookie_based_affinity
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayCookieBasedAffinity
           end
-          def application_gateway_request_routing_rule_type
-            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayRequestRoutingRuleType
+          def application_gateway_protocol
+            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
           end
           def application_gateway_operational_state
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayOperationalState
           end
-          def authorization_use_status
-            Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationUseStatus
+          def application_gateway_request_routing_rule_type
+            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayRequestRoutingRuleType
           end
           def express_route_circuit_peering_advertised_public_prefix_state
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
           end
-          def express_route_circuit_peering_type
-            Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringType
+          def authorization_use_status
+            Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationUseStatus
           end
           def express_route_circuit_peering_state
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringState
           end
-          def express_route_circuit_sku_tier
-            Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSkuTier
+          def express_route_circuit_peering_type
+            Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringType
           end
           def express_route_circuit_sku_family
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSkuFamily
+          end
+          def express_route_circuit_sku_tier
+            Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitSkuTier
+          end
+          def error
+            Azure::Network::Mgmt::V2015_06_15::Models::Error
           end
           def service_provider_provisioning_state
             Azure::Network::Mgmt::V2015_06_15::Models::ServiceProviderProvisioningState
