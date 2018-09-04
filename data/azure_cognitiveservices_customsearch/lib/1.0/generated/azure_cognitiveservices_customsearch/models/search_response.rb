@@ -38,7 +38,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SearchResponse',
           type: {
@@ -46,7 +45,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
             class_name: 'SearchResponse',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -54,7 +52,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -63,7 +60,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -72,7 +68,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               query_context: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queryContext',
@@ -82,7 +77,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               web_pages: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webPages',

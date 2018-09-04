@@ -25,7 +25,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WebMetaTag',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
             class_name: 'WebMetaTag',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::CustomSearch::V1_0
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'content',
