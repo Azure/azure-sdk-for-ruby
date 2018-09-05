@@ -6,10 +6,10 @@ require 'azure_cognitiveservices_face'
 
 module Azure::Profiles::Latest
   module Face
+    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
     Face = Azure::CognitiveServices::Face::V1_0::Face
-    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
 
     module Models
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
@@ -22,8 +22,8 @@ module Azure::Profiles::Latest
       IdentifyRequest = Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest
       HairColor = Azure::CognitiveServices::Face::V1_0::Models::HairColor
       IdentifyCandidate = Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
-      Makeup = Azure::CognitiveServices::Face::V1_0::Models::Makeup
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      IdentifyResult = Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
       Accessory = Azure::CognitiveServices::Face::V1_0::Models::Accessory
       VerifyFaceToPersonRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest
       Exposure = Azure::CognitiveServices::Face::V1_0::Models::Exposure
@@ -33,14 +33,14 @@ module Azure::Profiles::Latest
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
       PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
-      Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
-      Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
-      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
-      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
-      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
-      UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
+      Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
+      Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
+      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
+      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
+      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
+      UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
       Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
@@ -57,12 +57,12 @@ module Azure::Profiles::Latest
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+      Makeup = Azure::CognitiveServices::Face::V1_0::Models::Makeup
       AzureRegions = Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
-      IdentifyResult = Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
     end
 
     class FaceDataClass
-      attr_reader :person_group_operations, :face_list_operations, :face, :person_group_person, :configurable, :base_url, :options, :model_classes
+      attr_reader :person_group_person, :person_group_operations, :face_list_operations, :face, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -72,10 +72,10 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @person_group_person = @client_0.person_group_person
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
         @face = @client_0.face
-        @person_group_person = @client_0.person_group_person
 
         @model_classes = ModelClasses.new
       end
@@ -124,11 +124,11 @@ module Azure::Profiles::Latest
         def identify_candidate
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
         end
-        def makeup
-          Azure::CognitiveServices::Face::V1_0::Models::Makeup
-        end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
+        def identify_result
+          Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
         end
         def accessory
           Azure::CognitiveServices::Face::V1_0::Models::Accessory
@@ -157,29 +157,29 @@ module Azure::Profiles::Latest
         def facial_hair
           Azure::CognitiveServices::Face::V1_0::Models::FacialHair
         end
-        def coordinate
-          Azure::CognitiveServices::Face::V1_0::Models::Coordinate
+        def emotion
+          Azure::CognitiveServices::Face::V1_0::Models::Emotion
         end
         def occlusion
           Azure::CognitiveServices::Face::V1_0::Models::Occlusion
         end
+        def coordinate
+          Azure::CognitiveServices::Face::V1_0::Models::Coordinate
+        end
         def noise
           Azure::CognitiveServices::Face::V1_0::Models::Noise
         end
-        def emotion
-          Azure::CognitiveServices::Face::V1_0::Models::Emotion
-        end
-        def hair
-          Azure::CognitiveServices::Face::V1_0::Models::Hair
+        def name_and_user_data_contract
+          Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
         end
         def detected_face
           Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
         end
+        def hair
+          Azure::CognitiveServices::Face::V1_0::Models::Hair
+        end
         def update_person_face_request
           Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
-        end
-        def name_and_user_data_contract
-          Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
         end
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
@@ -229,11 +229,11 @@ module Azure::Profiles::Latest
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
         end
+        def makeup
+          Azure::CognitiveServices::Face::V1_0::Models::Makeup
+        end
         def azure_regions
           Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
-        end
-        def identify_result
-          Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
         end
       end
     end

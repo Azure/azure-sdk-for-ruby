@@ -8,12 +8,13 @@ module Azure::Profiles::Latest
   module Storage
     module Mgmt
       Operations = Azure::Storage::Mgmt::V2018_03_01_preview::Operations
-      Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
-      BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
-      Usages = Azure::Storage::Mgmt::V2018_03_01_preview::Usages
       StorageAccounts = Azure::Storage::Mgmt::V2018_03_01_preview::StorageAccounts
+      Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
+      Usages = Azure::Storage::Mgmt::V2018_03_01_preview::Usages
+      BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
 
       module Models
+        StorageSkuListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageSkuListResult
         ListContainerItems = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
         LegalHold = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold
         LegalHoldProperties = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHoldProperties
@@ -32,8 +33,8 @@ module Azure::Profiles::Latest
         DefaultAction = Azure::Storage::Mgmt::V2018_03_01_preview::Models::DefaultAction
         SignedResourceTypes = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResourceTypes
         HttpProtocol = Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
-        SignedResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
         Permissions = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
+        SignedResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
         PublicAccess = Azure::Storage::Mgmt::V2018_03_01_preview::Models::PublicAccess
         LeaseStatus = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseStatus
         LeaseState = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseState
@@ -90,11 +91,10 @@ module Azure::Profiles::Latest
         NetworkRuleSet = Azure::Storage::Mgmt::V2018_03_01_preview::Models::NetworkRuleSet
         IPRule = Azure::Storage::Mgmt::V2018_03_01_preview::Models::IPRule
         ManagementPoliciesRulesSetParameter = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ManagementPoliciesRulesSetParameter
-        StorageSkuListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageSkuListResult
       end
 
       class StorageManagementClass
-        attr_reader :operations, :skus, :blob_containers, :usages, :storage_accounts, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :storage_accounts, :skus, :usages, :blob_containers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -105,10 +105,10 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @skus = @client_0.skus
-          @blob_containers = @client_0.blob_containers
-          @usages = @client_0.usages
           @storage_accounts = @client_0.storage_accounts
+          @skus = @client_0.skus
+          @usages = @client_0.usages
+          @blob_containers = @client_0.blob_containers
 
           @model_classes = ModelClasses.new
         end
@@ -127,6 +127,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def storage_sku_list_result
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageSkuListResult
+          end
           def list_container_items
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
           end
@@ -181,11 +184,11 @@ module Azure::Profiles::Latest
           def http_protocol
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
           end
-          def signed_resource
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
-          end
           def permissions
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
+          end
+          def signed_resource
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
           end
           def public_access
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::PublicAccess
@@ -354,9 +357,6 @@ module Azure::Profiles::Latest
           end
           def management_policies_rules_set_parameter
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::ManagementPoliciesRulesSetParameter
-          end
-          def storage_sku_list_result
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageSkuListResult
           end
         end
       end

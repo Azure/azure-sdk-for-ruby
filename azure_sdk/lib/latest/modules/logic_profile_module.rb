@@ -7,6 +7,7 @@ require 'azure_mgmt_logic'
 module Azure::Profiles::Latest
   module Logic
     module Mgmt
+      WorkflowTriggers = Azure::Logic::Mgmt::V2016_06_01::WorkflowTriggers
       WorkflowTriggerHistories = Azure::Logic::Mgmt::V2016_06_01::WorkflowTriggerHistories
       WorkflowRuns = Azure::Logic::Mgmt::V2016_06_01::WorkflowRuns
       WorkflowRunActions = Azure::Logic::Mgmt::V2016_06_01::WorkflowRunActions
@@ -19,7 +20,6 @@ module Azure::Profiles::Latest
       Certificates = Azure::Logic::Mgmt::V2016_06_01::Certificates
       Workflows = Azure::Logic::Mgmt::V2016_06_01::Workflows
       WorkflowVersions = Azure::Logic::Mgmt::V2016_06_01::WorkflowVersions
-      WorkflowTriggers = Azure::Logic::Mgmt::V2016_06_01::WorkflowTriggers
 
       module Models
         ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
@@ -92,24 +92,24 @@ module Azure::Profiles::Latest
         EdifactValidationSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationSettings
         IntegrationAccountListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountListResult
         EdifactFramingSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactFramingSettings
-        IntegrationAccountSchemaListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaListResult
         KeyVaultKeyReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
+        IntegrationAccountSchemaListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaListResult
         EdifactEnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactEnvelopeSettings
         IntegrationAccountMapListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapListResult
         EdifactAcknowledgementSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactAcknowledgementSettings
-        PartnerContent = Azure::Logic::Mgmt::V2016_06_01::Models::PartnerContent
-        WorkflowTriggerCallbackUrl = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerCallbackUrl
-        EdifactProcessingSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProcessingSettings
         EdifactMessageFilter = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactMessageFilter
-        WorkflowRunActionFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionFilter
-        EdifactMessageIdentifier = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactMessageIdentifier
+        WorkflowTriggerCallbackUrl = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerCallbackUrl
+        PartnerContent = Azure::Logic::Mgmt::V2016_06_01::Models::PartnerContent
         EdifactEnvelopeOverride = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactEnvelopeOverride
-        EdifactSchemaReference = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactSchemaReference
-        BusinessIdentity = Azure::Logic::Mgmt::V2016_06_01::Models::BusinessIdentity
+        WorkflowRunActionFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionFilter
+        EdifactProcessingSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProcessingSettings
         CallbackUrl = Azure::Logic::Mgmt::V2016_06_01::Models::CallbackUrl
-        EdifactDelimiterOverride = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDelimiterOverride
-        IntegrationAccountSku = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
+        EdifactSchemaReference = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactSchemaReference
+        EdifactMessageIdentifier = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactMessageIdentifier
         EdifactValidationOverride = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationOverride
+        EdifactDelimiterOverride = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDelimiterOverride
+        BusinessIdentity = Azure::Logic::Mgmt::V2016_06_01::Models::BusinessIdentity
+        IntegrationAccountSku = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
         EdifactProtocolSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProtocolSettings
         WorkflowTriggerRecurrence = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerRecurrence
         EdifactOneWayAgreement = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactOneWayAgreement
@@ -151,16 +151,16 @@ module Azure::Profiles::Latest
         X12CharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::X12CharacterSet
         SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
         X12DateFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
-        X12TimeFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
         ContentLink = Azure::Logic::Mgmt::V2016_06_01::Models::ContentLink
-        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
         UsageIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
-        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
+        X12TimeFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
         EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
+        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
       end
 
       class LogicManagementClass
-        attr_reader :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :integration_accounts, :schemas, :maps, :partners, :agreements, :sessions, :certificates, :workflows, :workflow_versions, :workflow_triggers, :configurable, :base_url, :options, :model_classes
+        attr_reader :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :integration_accounts, :schemas, :maps, :partners, :agreements, :sessions, :certificates, :workflows, :workflow_versions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -170,6 +170,7 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @workflow_triggers = @client_0.workflow_triggers
           @workflow_trigger_histories = @client_0.workflow_trigger_histories
           @workflow_runs = @client_0.workflow_runs
           @workflow_run_actions = @client_0.workflow_run_actions
@@ -182,7 +183,6 @@ module Azure::Profiles::Latest
           @certificates = @client_0.certificates
           @workflows = @client_0.workflows
           @workflow_versions = @client_0.workflow_versions
-          @workflow_triggers = @client_0.workflow_triggers
 
           @model_classes = ModelClasses.new
         end
@@ -411,11 +411,11 @@ module Azure::Profiles::Latest
           def edifact_framing_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactFramingSettings
           end
-          def integration_account_schema_list_result
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaListResult
-          end
           def key_vault_key_reference
             Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
+          end
+          def integration_account_schema_list_result
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaListResult
           end
           def edifact_envelope_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactEnvelopeSettings
@@ -426,44 +426,44 @@ module Azure::Profiles::Latest
           def edifact_acknowledgement_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactAcknowledgementSettings
           end
-          def partner_content
-            Azure::Logic::Mgmt::V2016_06_01::Models::PartnerContent
+          def edifact_message_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactMessageFilter
           end
           def workflow_trigger_callback_url
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerCallbackUrl
           end
-          def edifact_processing_settings
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProcessingSettings
-          end
-          def edifact_message_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactMessageFilter
-          end
-          def workflow_run_action_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionFilter
-          end
-          def edifact_message_identifier
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactMessageIdentifier
+          def partner_content
+            Azure::Logic::Mgmt::V2016_06_01::Models::PartnerContent
           end
           def edifact_envelope_override
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactEnvelopeOverride
           end
-          def edifact_schema_reference
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactSchemaReference
+          def workflow_run_action_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionFilter
           end
-          def business_identity
-            Azure::Logic::Mgmt::V2016_06_01::Models::BusinessIdentity
+          def edifact_processing_settings
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProcessingSettings
           end
           def callback_url
             Azure::Logic::Mgmt::V2016_06_01::Models::CallbackUrl
           end
-          def edifact_delimiter_override
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDelimiterOverride
+          def edifact_schema_reference
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactSchemaReference
           end
-          def integration_account_sku
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
+          def edifact_message_identifier
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactMessageIdentifier
           end
           def edifact_validation_override
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationOverride
+          end
+          def edifact_delimiter_override
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDelimiterOverride
+          end
+          def business_identity
+            Azure::Logic::Mgmt::V2016_06_01::Models::BusinessIdentity
+          end
+          def integration_account_sku
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
           end
           def edifact_protocol_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProtocolSettings
@@ -588,23 +588,23 @@ module Azure::Profiles::Latest
           def x12_date_format
             Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
           end
-          def x12_time_format
-            Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
-          end
           def content_link
             Azure::Logic::Mgmt::V2016_06_01::Models::ContentLink
-          end
-          def message_filter_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
           end
           def usage_indicator
             Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
           end
-          def edifact_decimal_indicator
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
+          def x12_time_format
+            Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
           end
           def edifact_character_set
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
+          end
+          def message_filter_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+          end
+          def edifact_decimal_indicator
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
           end
         end
       end

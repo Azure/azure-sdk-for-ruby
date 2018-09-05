@@ -121,6 +121,105 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Updates a service principal in the directory.
+    #
+    # @param parameters [ServicePrincipalUpdateParameters] Parameters to update a
+    # service principal.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ServicePrincipal] operation results.
+    #
+    def update(parameters, custom_headers = nil)
+      response = update_async(parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates a service principal in the directory.
+    #
+    # @param parameters [ServicePrincipalUpdateParameters] Parameters to update a
+    # service principal.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(parameters, custom_headers = nil)
+      update_async(parameters, custom_headers).value!
+    end
+
+    #
+    # Updates a service principal in the directory.
+    #
+    # @param parameters [ServicePrincipalUpdateParameters] Parameters to update a
+    # service principal.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(parameters, custom_headers = nil)
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::GraphRbac::V1_6::Models::ServicePrincipalUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '{tenantID}/servicePrincipals'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'tenantID' => @client.tenant_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::GraphRbac::V1_6::Models::ServicePrincipal.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets a list of service principals from the current tenant.
     #
     # @param filter [String] The filter to apply to the operation.

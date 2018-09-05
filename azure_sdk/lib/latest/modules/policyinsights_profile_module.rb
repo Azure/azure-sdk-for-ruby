@@ -7,9 +7,9 @@ require 'azure_mgmt_policy_insights'
 module Azure::Profiles::Latest
   module PolicyInsights
     module Mgmt
+      PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
       PolicyStates = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyStates
       Operations = Azure::PolicyInsights::Mgmt::V2018_04_04::Operations
-      PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
 
       module Models
         OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
@@ -21,8 +21,8 @@ module Azure::Profiles::Latest
         SummarizeResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
         PolicyStatesQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
         PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
-        PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
         Operation = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
+        PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
         OperationsListResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
         QueryFailureError = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
         QueryOptions = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
@@ -31,7 +31,7 @@ module Azure::Profiles::Latest
       end
 
       class PolicyInsightsManagementClass
-        attr_reader :policy_states, :operations, :policy_events, :configurable, :base_url, :options, :model_classes
+        attr_reader :policy_events, :policy_states, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -41,9 +41,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @policy_events = @client_0.policy_events
           @policy_states = @client_0.policy_states
           @operations = @client_0.operations
-          @policy_events = @client_0.policy_events
 
           @model_classes = ModelClasses.new
         end
@@ -89,11 +89,11 @@ module Azure::Profiles::Latest
           def policy_event
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
           end
-          def policy_state
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
-          end
           def operation
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
+          end
+          def policy_state
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
           end
           def operations_list_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
