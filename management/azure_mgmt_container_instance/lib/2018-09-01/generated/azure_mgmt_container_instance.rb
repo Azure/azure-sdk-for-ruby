@@ -66,6 +66,7 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
     autoload :ContainerNetworkProtocol,                           '2018-09-01/generated/azure_mgmt_container_instance/models/container_network_protocol.rb'
     autoload :ContainerGroupRestartPolicy,                        '2018-09-01/generated/azure_mgmt_container_instance/models/container_group_restart_policy.rb'
     autoload :ContainerGroupNetworkProtocol,                      '2018-09-01/generated/azure_mgmt_container_instance/models/container_group_network_protocol.rb'
+    autoload :ContainerGroupIpAddressType,                        '2018-09-01/generated/azure_mgmt_container_instance/models/container_group_ip_address_type.rb'
     autoload :OperatingSystemTypes,                               '2018-09-01/generated/azure_mgmt_container_instance/models/operating_system_types.rb'
     autoload :LogAnalyticsLogType,                                '2018-09-01/generated/azure_mgmt_container_instance/models/log_analytics_log_type.rb'
     autoload :ContainerInstanceOperationsOrigin,                  '2018-09-01/generated/azure_mgmt_container_instance/models/container_instance_operations_origin.rb'

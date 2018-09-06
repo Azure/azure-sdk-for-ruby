@@ -15,8 +15,8 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       # @return [Array<Port>] The list of ports exposed on the container group.
       attr_accessor :ports
 
-      # @return [String] Specifies if the IP is exposed to the public internet.
-      # Default value: 'Public' .
+      # @return [ContainerGroupIpAddressType] Specifies if the IP is exposed to
+      # the public internet. Possible values include: 'Public', 'Private'
       attr_accessor :type
 
       # @return [String] The IP exposed to the public internet.
@@ -58,9 +58,7 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
               },
               type: {
                 required: true,
-                is_constant: true,
                 serialized_name: 'type',
-                default_value: 'Public',
                 type: {
                   name: 'String'
                 }
