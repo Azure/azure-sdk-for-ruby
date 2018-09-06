@@ -6,33 +6,34 @@
 module Azure::MediaServices::Mgmt::V2018_07_01
   module Models
     #
-    # scale units definition
+    # The IP access control for Live Event Input.
     #
-    class StreamingEntityScaleUnit
+    class LiveEventInputAccessControl
 
       include MsRestAzure
 
-      # @return [Integer] The scale unit number of the StreamingEndpoint.
-      attr_accessor :scale_unit
+      # @return [IPAccessControl] The IP access control properties.
+      attr_accessor :ip
 
 
       #
-      # Mapper for StreamingEntityScaleUnit class as Ruby Hash.
+      # Mapper for LiveEventInputAccessControl class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'StreamingEntityScaleUnit',
+          serialized_name: 'LiveEventInputAccessControl',
           type: {
             name: 'Composite',
-            class_name: 'StreamingEntityScaleUnit',
+            class_name: 'LiveEventInputAccessControl',
             model_properties: {
-              scale_unit: {
+              ip: {
                 required: false,
-                serialized_name: 'scaleUnit',
+                serialized_name: 'ip',
                 type: {
-                  name: 'Number'
+                  name: 'Composite',
+                  class_name: 'IPAccessControl'
                 }
               }
             }

@@ -15,10 +15,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [String] The StreamingEndpoint description.
       attr_accessor :description
 
-      # @return [Integer] The number of scale units.
+      # @return [Integer] The number of scale units.  Use the Scale operation
+      # to adjust this value.
       attr_accessor :scale_units
 
-      # @return [String] AvailabilitySet name
+      # @return [String] The name of the AvailabilitySet used with this
+      # StreamingEndpoint for high availability streaming.  This value can only
+      # be set at creation time.
       attr_accessor :availability_set_name
 
       # @return [StreamingEndpointAccessControl] The access control definition

@@ -23,7 +23,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # content.
       attr_accessor :archive_window_length
 
-      # @return [String] The manifest file name.
+      # @return [String] The manifest file name.  If not provided, the service
+      # will generate one automatically.
       attr_accessor :manifest_name
 
       # @return [Hls] The HLS configuration.

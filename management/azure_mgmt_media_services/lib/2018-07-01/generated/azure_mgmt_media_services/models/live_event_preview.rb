@@ -19,14 +19,24 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # LiveEvent preview.
       attr_accessor :access_control
 
-      # @return [String] The preview locator Guid.
+      # @return [String] The identifier of the preview locator in Guid format.
+      # Specifying this at creation time allows the caller to know the preview
+      # locator url before the event is created.  If omitted, the service will
+      # generate a random identifier.  This value cannot be updated once the
+      # live event is created.
       attr_accessor :preview_locator
 
-      # @return [String] The name of streaming policy used for LiveEvent
-      # preview
+      # @return [String] The name of streaming policy used for the LiveEvent
+      # preview.  This value is specified at creation time and cannot be
+      # updated.
       attr_accessor :streaming_policy_name
 
-      # @return [String] The alternative Media-Id associated with the preview
+      # @return [String] An Alternative Media Identifier associated with the
+      # StreamingLocator created for the preview.  This value is specified at
+      # creation time and cannot be updated.  The identifier can be used in the
+      # CustomLicenseAcquisitionUrlTemplate or the
+      # CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+      # StreamingPolicyName field.
       attr_accessor :alternative_media_id
 
 

@@ -18,7 +18,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [String] authentication key
       attr_accessor :base64key
 
-      # @return [DateTime] The exact time the authentication key.
+      # @return [DateTime] The expiration time of the authentication key.
       attr_accessor :expiration
 
 

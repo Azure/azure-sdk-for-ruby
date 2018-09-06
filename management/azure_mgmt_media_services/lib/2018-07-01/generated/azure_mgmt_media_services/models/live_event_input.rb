@@ -13,14 +13,21 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       include MsRestAzure
 
       # @return [LiveEventInputProtocol] The streaming protocol for the Live
-      # Event. Possible values include: 'FragmentedMP4', 'RTMP'
+      # Event.  This is specified at creation time and cannot be updated.
+      # Possible values include: 'FragmentedMP4', 'RTMP'
       attr_accessor :streaming_protocol
+
+      # @return [LiveEventInputAccessControl] The access control for LiveEvent
+      # Input.
+      attr_accessor :access_control
 
       # @return [String] ISO 8601 timespan duration of the key frame interval
       # duration.
       attr_accessor :key_frame_interval_duration
 
-      # @return [String] The access token.
+      # @return [String] A unique identifier for a stream.  This can be
+      # specified at creation time but cannot be updated.  If omitted, the
+      # service will generate a unique value.
       attr_accessor :access_token
 
       # @return [Array<LiveEventEndpoint>] The input endpoints for the Live
@@ -46,6 +53,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 type: {
                   name: 'Enum',
                   module: 'LiveEventInputProtocol'
+                }
+              },
+              access_control: {
+                required: false,
+                serialized_name: 'accessControl',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LiveEventInputAccessControl'
                 }
               },
               key_frame_interval_duration: {

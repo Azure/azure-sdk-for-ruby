@@ -12,11 +12,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       include MsRestAzure
 
-      # @return [LiveEventEncodingType] The encoding type for Live Event.
-      # Possible values include: 'None', 'Basic'
+      # @return [LiveEventEncodingType] The encoding type for Live Event.  This
+      # value is specified at creation time and cannot be updated. Possible
+      # values include: 'None', 'Basic'
       attr_accessor :encoding_type
 
-      # @return [String] The encoding preset name.
+      # @return [String] The encoding preset name.  This value is specified at
+      # creation time and cannot be updated.
       attr_accessor :preset_name
 
 

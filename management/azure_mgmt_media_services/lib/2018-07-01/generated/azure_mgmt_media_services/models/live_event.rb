@@ -35,10 +35,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [CrossSiteAccessPolicies] The Live Event access policies.
       attr_accessor :cross_site_access_policies
 
-      # @return [Boolean] The Live Event vanity URL flag.
+      # @return [Boolean] Specifies whether to use a vanity url with the Live
+      # Event.  This value is specified at creation time and cannot be updated.
       attr_accessor :vanity_url
 
-      # @return [Array<StreamOptionsFlag>] The stream options.
+      # @return [Array<StreamOptionsFlag>] The options to use for the
+      # LiveEvent.  This value is specified at creation time and cannot be
+      # updated.
       attr_accessor :stream_options
 
       # @return [DateTime] The exact time the Live Event was created.
