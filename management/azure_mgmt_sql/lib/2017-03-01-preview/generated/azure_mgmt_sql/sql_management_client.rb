@@ -107,9 +107,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [RestorePoints] restore_points
     attr_reader :restore_points
 
-    # @return [SensitivityLabels] sensitivity_labels
-    attr_reader :sensitivity_labels
-
     # @return [ServerAutomaticTuningOperations]
     # server_automatic_tuning_operations
     attr_reader :server_automatic_tuning_operations
@@ -155,7 +152,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       @backup_long_term_retention_policies = BackupLongTermRetentionPolicies.new(self)
       @managed_databases = ManagedDatabases.new(self)
       @restore_points = RestorePoints.new(self)
-      @sensitivity_labels = SensitivityLabels.new(self)
       @server_automatic_tuning_operations = ServerAutomaticTuningOperations.new(self)
       @server_dns_aliases = ServerDnsAliases.new(self)
       @server_security_alert_policies = ServerSecurityAlertPolicies.new(self)
