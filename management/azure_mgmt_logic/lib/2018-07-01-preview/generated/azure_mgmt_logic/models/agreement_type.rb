@@ -12,7 +12,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       NotSpecified = "NotSpecified"
       AS2 = "AS2"
       X12 = "X12"
-      EDIFACT = "EDIFACT"
+      Edifact = "Edifact"
     end
   end
 end

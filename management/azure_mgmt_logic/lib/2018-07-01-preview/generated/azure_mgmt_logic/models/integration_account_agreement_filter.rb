@@ -14,7 +14,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [AgreementType] The agreement type of integration account
       # agreement. Possible values include: 'NotSpecified', 'AS2', 'X12',
-      # 'EDIFACT'
+      # 'Edifact'
       attr_accessor :agreement_type
 
 
@@ -34,7 +34,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 required: true,
                 serialized_name: 'agreementType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'AgreementType'
                 }
               }
             }
