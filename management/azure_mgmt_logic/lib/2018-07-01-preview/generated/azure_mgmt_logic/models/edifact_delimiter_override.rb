@@ -117,14 +117,16 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 required: true,
                 serialized_name: 'segmentTerminatorSuffix',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'SegmentTerminatorSuffix'
                 }
               },
               decimal_point_indicator: {
                 required: true,
                 serialized_name: 'decimalPointIndicator',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'EdifactDecimalIndicator'
                 }
               },
               release_indicator: {

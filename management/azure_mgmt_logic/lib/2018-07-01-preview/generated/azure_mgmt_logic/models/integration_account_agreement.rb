@@ -127,7 +127,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 required: true,
                 serialized_name: 'properties.agreementType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'AgreementType'
                 }
               },
               host_partner: {

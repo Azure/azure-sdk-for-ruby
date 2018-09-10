@@ -77,7 +77,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                       required: false,
                       serialized_name: 'DaysOfWeekElementType',
                       type: {
-                        name: 'String'
+                        name: 'Enum',
+                        module: 'DaysOfWeek'
                       }
                   }
                 }
