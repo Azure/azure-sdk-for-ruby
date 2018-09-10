@@ -38,14 +38,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
             class_name: 'RoleAssignmentCreateParameters',
             model_properties: {
               role_definition_id: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.roleDefinitionId',
                 type: {
                   name: 'String'
                 }
               },
               principal_id: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.principalId',
                 type: {
                   name: 'String'
