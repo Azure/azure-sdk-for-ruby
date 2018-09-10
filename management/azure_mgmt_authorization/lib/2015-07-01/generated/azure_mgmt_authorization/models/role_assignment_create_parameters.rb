@@ -29,7 +29,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleAssignmentCreateParameters',
             model_properties: {
               properties: {
-                required: false,
+                required: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',

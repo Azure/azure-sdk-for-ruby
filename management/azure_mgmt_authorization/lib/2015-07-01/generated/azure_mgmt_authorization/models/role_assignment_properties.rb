@@ -34,14 +34,14 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleAssignmentProperties',
             model_properties: {
               role_definition_id: {
-                required: false,
+                required: true,
                 serialized_name: 'roleDefinitionId',
                 type: {
                   name: 'String'
                 }
               },
               principal_id: {
-                required: false,
+                required: true,
                 serialized_name: 'principalId',
                 type: {
                   name: 'String'
