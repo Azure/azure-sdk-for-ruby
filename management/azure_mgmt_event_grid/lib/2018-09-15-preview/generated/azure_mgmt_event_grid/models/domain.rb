@@ -89,6 +89,7 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -96,6 +97,7 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
               },
               endpoint: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.endpoint',
                 type: {
                   name: 'String'

@@ -15,6 +15,7 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["NumberIn"] = "NumberInAdvancedFilter"
+      @@discriminatorMap["NumberNotIn"] = "NumberNotInAdvancedFilter"
       @@discriminatorMap["NumberLessThan"] = "NumberLessThanAdvancedFilter"
       @@discriminatorMap["NumberGreaterThan"] = "NumberGreaterThanAdvancedFilter"
       @@discriminatorMap["NumberLessThanOrEquals"] = "NumberLessThanOrEqualsAdvancedFilter"
@@ -24,6 +25,7 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
       @@discriminatorMap["StringNotIn"] = "StringNotInAdvancedFilter"
       @@discriminatorMap["StringBeginsWith"] = "StringBeginsWithAdvancedFilter"
       @@discriminatorMap["StringEndsWith"] = "StringEndsWithAdvancedFilter"
+      @@discriminatorMap["StringContains"] = "StringContainsAdvancedFilter"
 
       def initialize
         @operatorType = "AdvancedFilter"
