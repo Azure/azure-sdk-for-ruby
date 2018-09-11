@@ -565,8 +565,7 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -582,8 +581,7 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -599,8 +597,7 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -623,7 +620,7 @@ module Azure::GraphRbac::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters.mapper()
+      request_mapper = Azure::GraphRbac::V1_6::Models::AddOwnerParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

@@ -22,42 +22,42 @@ module Azure::Profiles::Latest
       IdentifyRequest = Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest
       HairColor = Azure::CognitiveServices::Face::V1_0::Models::HairColor
       IdentifyCandidate = Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
-      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      Makeup = Azure::CognitiveServices::Face::V1_0::Models::Makeup
       IdentifyResult = Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
       Accessory = Azure::CognitiveServices::Face::V1_0::Models::Accessory
       VerifyFaceToPersonRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest
       Exposure = Azure::CognitiveServices::Face::V1_0::Models::Exposure
       VerifyFaceToFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
       FaceAttributes = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
-      VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
-      PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
+      Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
-      Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
+      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
       DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
-      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
+      Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
-      Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
-      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
       FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
-      GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
+      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
       Person = Azure::CognitiveServices::Face::V1_0::Models::Person
-      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+      GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
+      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
-      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
-      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
+      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-      Makeup = Azure::CognitiveServices::Face::V1_0::Models::Makeup
+      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
+      VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+      PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
       AzureRegions = Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
     end
 
@@ -124,8 +124,8 @@ module Azure::Profiles::Latest
         def identify_candidate
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
         end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
+        def makeup
+          Azure::CognitiveServices::Face::V1_0::Models::Makeup
         end
         def identify_result
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
@@ -145,17 +145,17 @@ module Azure::Profiles::Latest
         def face_attributes
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
         end
-        def verify_result
-          Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
         end
         def face_rectangle
           Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
-        def persisted_face
-          Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
-        end
         def facial_hair
           Azure::CognitiveServices::Face::V1_0::Models::FacialHair
+        end
+        def coordinate
+          Azure::CognitiveServices::Face::V1_0::Models::Coordinate
         end
         def emotion
           Azure::CognitiveServices::Face::V1_0::Models::Emotion
@@ -163,11 +163,11 @@ module Azure::Profiles::Latest
         def occlusion
           Azure::CognitiveServices::Face::V1_0::Models::Occlusion
         end
-        def coordinate
-          Azure::CognitiveServices::Face::V1_0::Models::Coordinate
-        end
         def noise
           Azure::CognitiveServices::Face::V1_0::Models::Noise
+        end
+        def hair
+          Azure::CognitiveServices::Face::V1_0::Models::Hair
         end
         def name_and_user_data_contract
           Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
@@ -175,11 +175,11 @@ module Azure::Profiles::Latest
         def detected_face
           Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
         end
-        def hair
-          Azure::CognitiveServices::Face::V1_0::Models::Hair
-        end
         def update_person_face_request
           Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
+        end
+        def blur
+          Azure::CognitiveServices::Face::V1_0::Models::Blur
         end
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
@@ -187,26 +187,26 @@ module Azure::Profiles::Latest
         def training_status
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
         end
-        def blur
-          Azure::CognitiveServices::Face::V1_0::Models::Blur
+        def face_list
+          Azure::CognitiveServices::Face::V1_0::Models::FaceList
         end
         def person_group
           Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
         end
-        def face_list
-          Azure::CognitiveServices::Face::V1_0::Models::FaceList
+        def person
+          Azure::CognitiveServices::Face::V1_0::Models::Person
         end
         def glasses_type
           Azure::CognitiveServices::Face::V1_0::Models::GlassesType
         end
-        def person
-          Azure::CognitiveServices::Face::V1_0::Models::Person
+        def hair_color_type
+          Azure::CognitiveServices::Face::V1_0::Models::HairColorType
         end
         def blur_level
           Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
         end
-        def hair_color_type
-          Azure::CognitiveServices::Face::V1_0::Models::HairColorType
+        def exposure_level
+          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
         def gender
           Azure::CognitiveServices::Face::V1_0::Models::Gender
@@ -214,23 +214,23 @@ module Azure::Profiles::Latest
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
-        def exposure_level
-          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
+        def find_similar_match_mode
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def accessory_type
           Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
         end
-        def find_similar_match_mode
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
+        def face_attribute_type
+          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
         end
         def training_status_type
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
         end
-        def face_attribute_type
-          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+        def verify_result
+          Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
         end
-        def makeup
-          Azure::CognitiveServices::Face::V1_0::Models::Makeup
+        def persisted_face
+          Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
         end
         def azure_regions
           Azure::CognitiveServices::Face::V1_0::Models::AzureRegions

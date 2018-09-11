@@ -8,20 +8,14 @@ module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
-      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
+      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
 
       module Models
-        ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
-        ErrorModel = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
-        ServiceTypeHealthPolicyMapItem = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
-        ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
-        ServiceCorrelationDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
-        ServicePlacementPolicyDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
         ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
         ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationHealthPolicy
         ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
@@ -54,29 +48,35 @@ module Azure::Profiles::Latest
         NamedPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
         SingletonPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
         UniformInt64RangePartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
-        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
         ApplicationTypeResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
         VersionResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResource
         ApplicationResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResource
         ApplicationResourceUpdate = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceUpdate
         ServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceProperties
         ServiceResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResource
+        OperationListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
         ServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceUpdateProperties
-        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
-        StatelessServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
         ServiceResourceUpdate = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceUpdate
-        StatefulServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
+        StatelessServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
         StatelessServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceUpdateProperties
-        Cluster = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Cluster
+        StatefulServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
         StatefulServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceUpdateProperties
+        Cluster = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Cluster
+        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
         CertificateDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
         OperationResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationResult
         Resource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Resource
         ProvisioningState = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProvisioningState
+        ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
+        ErrorModel = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
+        ServiceTypeHealthPolicyMapItem = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
+        ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
+        ServiceCorrelationDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
+        ServicePlacementPolicyDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :application, :version, :clusters, :cluster_versions, :application_type, :service, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :cluster_versions, :version, :application, :service, :application_type, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -87,12 +87,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @application = @client_0.application
-          @version = @client_0.version
           @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
-          @application_type = @client_0.application_type
+          @version = @client_0.version
+          @application = @client_0.application
           @service = @client_0.service
+          @application_type = @client_0.application_type
 
           @model_classes = ModelClasses.new
         end
@@ -111,24 +111,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def service_properties_base
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
-          end
-          def error_model
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
-          end
-          def service_type_health_policy_map_item
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
-          end
-          def application_metric_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
-          end
-          def service_correlation_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
-          end
-          def service_placement_policy_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
-          end
           def service_type_delta_health_policy
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
           end
@@ -225,9 +207,6 @@ module Azure::Profiles::Latest
           def uniform_int64_range_partition_scheme_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
           end
-          def operation_list_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
-          end
           def application_type_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
           end
@@ -246,29 +225,32 @@ module Azure::Profiles::Latest
           def service_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResource
           end
+          def operation_list_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::OperationListResult
+          end
           def service_update_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceUpdateProperties
-          end
-          def proxy_resource
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
-          end
-          def stateless_service_properties
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
           end
           def service_resource_update
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceUpdate
           end
-          def stateful_service_properties
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
+          def stateless_service_properties
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
           end
           def stateless_service_update_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceUpdateProperties
           end
-          def cluster
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Cluster
+          def stateful_service_properties
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
           end
           def stateful_service_update_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceUpdateProperties
+          end
+          def cluster
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Cluster
+          end
+          def proxy_resource
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
           end
           def certificate_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::CertificateDescription
@@ -281,6 +263,24 @@ module Azure::Profiles::Latest
           end
           def provisioning_state
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProvisioningState
+          end
+          def service_properties_base
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
+          end
+          def error_model
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
+          end
+          def service_type_health_policy_map_item
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
+          end
+          def application_metric_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
+          end
+          def service_correlation_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
+          end
+          def service_placement_policy_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
           end
         end
       end

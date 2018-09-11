@@ -497,7 +497,7 @@ module Azure::GraphRbac::V1_6
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<AADObject>] operation results.
+    # @return [Array<DirectoryObject>] operation results.
     #
     def get_group_members(object_id, custom_headers = nil)
       first_page = get_group_members_as_lazy(object_id, custom_headers)
@@ -566,7 +566,7 @@ module Azure::GraphRbac::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::GraphRbac::V1_6::Models::GetObjectsResult.mapper()
+            result_mapper = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1140,7 +1140,7 @@ module Azure::GraphRbac::V1_6
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<AADObject>] operation results.
+    # @return [Array<DirectoryObject>] operation results.
     #
     def get_group_members_next(next_link, custom_headers = nil)
       response = get_group_members_next_async(next_link, custom_headers).value!
@@ -1208,7 +1208,7 @@ module Azure::GraphRbac::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::GraphRbac::V1_6::Models::GetObjectsResult.mapper()
+            result_mapper = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1345,7 +1345,7 @@ module Azure::GraphRbac::V1_6
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [GetObjectsResult] which provide lazy access to pages of the
+    # @return [DirectoryObjectListResult] which provide lazy access to pages of the
     # response.
     #
     def get_group_members_as_lazy(object_id, custom_headers = nil)
