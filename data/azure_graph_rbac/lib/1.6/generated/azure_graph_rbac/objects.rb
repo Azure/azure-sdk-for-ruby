@@ -22,7 +22,9 @@ module Azure::GraphRbac::V1_6
     attr_reader :client
 
     #
-    # Gets AD group membership for the specified AD object IDs.
+    # Gets the directory objects specified in a list of object IDs. You can also
+    # specify which resource collections (users, groups, etc.) should be searched
+    # by specifying the optional types parameter.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -36,7 +38,9 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets AD group membership for the specified AD object IDs.
+    # Gets the directory objects specified in a list of object IDs. You can also
+    # specify which resource collections (users, groups, etc.) should be searched
+    # by specifying the optional types parameter.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -49,7 +53,9 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets AD group membership for the specified AD object IDs.
+    # Gets the directory objects specified in a list of object IDs. You can also
+    # specify which resource collections (users, groups, etc.) should be searched
+    # by specifying the optional types parameter.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -206,7 +212,9 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets AD group membership for the specified AD object IDs.
+    # Gets the directory objects specified in a list of object IDs. You can also
+    # specify which resource collections (users, groups, etc.) should be searched
+    # by specifying the optional types parameter.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
