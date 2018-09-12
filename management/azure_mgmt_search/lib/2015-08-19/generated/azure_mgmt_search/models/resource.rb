@@ -36,6 +36,15 @@ module Azure::Search::Mgmt::V2015_08_19
       attr_accessor :identity
 
 
+      # @return [String] the name of the resource group of the resource.
+      def resource_group
+        unless self.id.nil?
+          groups = self.id.match(/.+\/resourceGroups\/([^\/]+)\/.+/)
+          groups.captures[0].strip if groups
+        end
+      end
+
+
       #
       # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
