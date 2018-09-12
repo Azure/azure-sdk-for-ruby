@@ -6,32 +6,27 @@
 module Azure::SQL::Mgmt::V2015_05_01_preview
   module Models
     #
-    # The resource model definition representing SKU
+    # An ARM Resource SKU.
     #
     class Sku
 
       include MsRestAzure
 
-      # @return [String] The name of the SKU. Ex - P3. It is typically a
-      # letter+number code
+      # @return [String] The name of the SKU, typically, a letter + Number
+      # code, e.g. P3.
       attr_accessor :name
 
-      # @return [String] This field is required to be implemented by the
-      # Resource Provider if the service has more than one tier, but is not
-      # required on a PUT.
+      # @return [String] The tier of the particular SKU, e.g. Basic, Premium.
       attr_accessor :tier
 
-      # @return [String] The SKU size. When the name field is the combination
-      # of tier and some other value, this would be the standalone code.
+      # @return [String] Size of the particular SKU
       attr_accessor :size
 
       # @return [String] If the service has different generations of hardware,
       # for the same SKU, then that can be captured here.
       attr_accessor :family
 
-      # @return [Integer] If the SKU supports scale out/in then the capacity
-      # integer should be included. If scale out/in is not possible for the
-      # resource this may be omitted.
+      # @return [Integer] Capacity of the particular SKU.
       attr_accessor :capacity
 
 
