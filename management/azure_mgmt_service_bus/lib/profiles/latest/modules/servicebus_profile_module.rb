@@ -12,13 +12,17 @@ module Azure::ServiceBus::Profiles::Latest
     MigrationConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::MigrationConfigs
     Queues = Azure::ServiceBus::Mgmt::V2017_04_01::Queues
     Topics = Azure::ServiceBus::Mgmt::V2017_04_01::Topics
-    Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
     Rules = Azure::ServiceBus::Mgmt::V2017_04_01::Rules
     Regions = Azure::ServiceBus::Mgmt::V2017_04_01::Regions
     PremiumMessagingRegionsOperations = Azure::ServiceBus::Mgmt::V2017_04_01::PremiumMessagingRegionsOperations
     EventHubs = Azure::ServiceBus::Mgmt::V2017_04_01::EventHubs
+    Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
 
     module Models
+      FilterType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
+      EncodingCaptureDescription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
+      ProvisioningStateDR = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
+      RoleDisasterRecovery = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
       OperationDisplay = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
       SBQueueListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBQueueListResult
       Destination = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Destination
@@ -67,17 +71,13 @@ module Azure::ServiceBus::Profiles::Latest
       KeyType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
       EntityStatus = Azure::ServiceBus::Mgmt::V2017_04_01::Models::EntityStatus
       UnavailableReason = Azure::ServiceBus::Mgmt::V2017_04_01::Models::UnavailableReason
-      FilterType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
-      EncodingCaptureDescription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
-      ProvisioningStateDR = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
-      RoleDisasterRecovery = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
     end
 
     #
     # ServiceBusManagementClass
     #
     class ServiceBusManagementClass
-      attr_reader :operations, :namespaces, :disaster_recovery_configs, :migration_configs, :queues, :topics, :subscriptions, :rules, :regions, :premium_messaging_regions_operations, :event_hubs, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :namespaces, :disaster_recovery_configs, :migration_configs, :queues, :topics, :rules, :regions, :premium_messaging_regions_operations, :event_hubs, :subscriptions, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -103,11 +103,11 @@ module Azure::ServiceBus::Profiles::Latest
         @migration_configs = @client_0.migration_configs
         @queues = @client_0.queues
         @topics = @client_0.topics
-        @subscriptions = @client_0.subscriptions
         @rules = @client_0.rules
         @regions = @client_0.regions
         @premium_messaging_regions_operations = @client_0.premium_messaging_regions_operations
         @event_hubs = @client_0.event_hubs
+        @subscriptions = @client_0.subscriptions
 
         @model_classes = ModelClasses.new
       end
@@ -128,6 +128,18 @@ module Azure::ServiceBus::Profiles::Latest
     end
 
     class ModelClasses
+      def filter_type
+        Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
+      end
+      def encoding_capture_description
+        Azure::ServiceBus::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
+      end
+      def provisioning_state_dr
+        Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
+      end
+      def role_disaster_recovery
+        Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
+      end
       def operation_display
         Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
       end
@@ -271,18 +283,6 @@ module Azure::ServiceBus::Profiles::Latest
       end
       def unavailable_reason
         Azure::ServiceBus::Mgmt::V2017_04_01::Models::UnavailableReason
-      end
-      def filter_type
-        Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
-      end
-      def encoding_capture_description
-        Azure::ServiceBus::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
-      end
-      def provisioning_state_dr
-        Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
-      end
-      def role_disaster_recovery
-        Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
       end
     end
   end
