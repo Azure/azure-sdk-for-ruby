@@ -1,3 +1,7 @@
+## 2018.09.12 - Azure Ruby SDK Release
+* Released a minor version update of all management & data gems. In the resource class, a method resource_group is introduced. 
+  Refer [Issue #1615](https://github.com/Azure/azure-sdk-for-ruby/issues/1615) for further details.
+
 ## 2018.08.29 - Azure Ruby SDK Release
 * Released 0.17.1 version of azure_mgmt_network to include new version 2018-07-01.
 * Released Rollup gem 0.18.2 to include latest version of Management Network.
