@@ -26,8 +26,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # @return [StorageInsightStatus] The status of the storage insight
       attr_accessor :status
 
-      # @return [String] The ETag of the storage insight.
-      attr_accessor :e_tag
+      # @return [String] The etag of the storage insight.
+      attr_accessor :etag
 
 
       #
@@ -36,7 +36,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageInsight',
           type: {
@@ -44,7 +43,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'StorageInsight',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,7 +51,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,7 +59,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,13 +67,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,13 +81,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               containers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.containers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -103,13 +95,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               tables: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tables',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -119,7 +109,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               storage_account: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageAccount',
                 type: {
@@ -128,7 +117,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -137,10 +125,9 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                   class_name: 'StorageInsightStatus'
                 }
               },
-              e_tag: {
-                client_side_validation: true,
+              etag: {
                 required: false,
-                serialized_name: 'eTag',
+                serialized_name: 'etag',
                 type: {
                   name: 'String'
                 }
