@@ -32,7 +32,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspacePurgeBodyFilters',
           type: {
@@ -40,7 +39,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'WorkspacePurgeBodyFilters',
             model_properties: {
               column: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'column',
                 type: {
@@ -48,7 +46,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               operator: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operator',
                 type: {
@@ -56,7 +53,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

@@ -33,8 +33,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     # will be added to the HTTP request.
     #
     #
-    def disable_intelligence_pack(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:nil)
-      response = disable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:custom_headers).value!
+    def disable_intelligence_pack(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
+      response = disable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers).value!
       nil
     end
 
@@ -51,8 +51,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def disable_intelligence_pack_with_http_info(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:nil)
-      disable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:custom_headers).value!
+    def disable_intelligence_pack_with_http_info(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
+      disable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers).value!
     end
 
     #
@@ -68,11 +68,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def disable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:nil)
+    def disable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, 'intelligence_pack_name is nil' if intelligence_pack_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -80,7 +77,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -127,8 +123,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     # will be added to the HTTP request.
     #
     #
-    def enable_intelligence_pack(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:nil)
-      response = enable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:custom_headers).value!
+    def enable_intelligence_pack(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
+      response = enable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers).value!
       nil
     end
 
@@ -145,8 +141,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def enable_intelligence_pack_with_http_info(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:nil)
-      enable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:custom_headers).value!
+    def enable_intelligence_pack_with_http_info(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
+      enable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers).value!
     end
 
     #
@@ -162,11 +158,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def enable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers:nil)
+    def enable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, 'intelligence_pack_name is nil' if intelligence_pack_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -174,7 +167,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -221,8 +213,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Array] operation results.
     #
-    def list_intelligence_packs(resource_group_name, workspace_name, custom_headers:nil)
-      response = list_intelligence_packs_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def list_intelligence_packs(resource_group_name, workspace_name, custom_headers = nil)
+      response = list_intelligence_packs_async(resource_group_name, workspace_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -238,8 +230,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_intelligence_packs_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
-      list_intelligence_packs_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def list_intelligence_packs_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
+      list_intelligence_packs_async(resource_group_name, workspace_name, custom_headers).value!
     end
 
     #
@@ -254,18 +246,14 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_intelligence_packs_async(resource_group_name, workspace_name, custom_headers:nil)
+    def list_intelligence_packs_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -298,13 +286,11 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'IntelligencePackElementType',
                     type: {
@@ -337,8 +323,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [SharedKeys] operation results.
     #
-    def get_shared_keys(resource_group_name, workspace_name, custom_headers:nil)
-      response = get_shared_keys_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def get_shared_keys(resource_group_name, workspace_name, custom_headers = nil)
+      response = get_shared_keys_async(resource_group_name, workspace_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -353,8 +339,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_shared_keys_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
-      get_shared_keys_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def get_shared_keys_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
+      get_shared_keys_async(resource_group_name, workspace_name, custom_headers).value!
     end
 
     #
@@ -368,18 +354,14 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_shared_keys_async(resource_group_name, workspace_name, custom_headers:nil)
+    def get_shared_keys_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -435,8 +417,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [WorkspaceListUsagesResult] operation results.
     #
-    def list_usages(resource_group_name, workspace_name, custom_headers:nil)
-      response = list_usages_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def list_usages(resource_group_name, workspace_name, custom_headers = nil)
+      response = list_usages_async(resource_group_name, workspace_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -451,8 +433,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_usages_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
-      list_usages_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def list_usages_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
+      list_usages_async(resource_group_name, workspace_name, custom_headers).value!
     end
 
     #
@@ -466,18 +448,14 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_usages_async(resource_group_name, workspace_name, custom_headers:nil)
+    def list_usages_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -533,8 +511,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [WorkspaceListManagementGroupsResult] operation results.
     #
-    def list_management_groups(resource_group_name, workspace_name, custom_headers:nil)
-      response = list_management_groups_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def list_management_groups(resource_group_name, workspace_name, custom_headers = nil)
+      response = list_management_groups_async(resource_group_name, workspace_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -549,8 +527,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_management_groups_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
-      list_management_groups_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def list_management_groups_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
+      list_management_groups_async(resource_group_name, workspace_name, custom_headers).value!
     end
 
     #
@@ -564,18 +542,14 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_management_groups_async(resource_group_name, workspace_name, custom_headers:nil)
+    def list_management_groups_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -630,8 +604,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [WorkspaceListResult] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -645,8 +619,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -659,17 +633,13 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -722,8 +692,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [WorkspaceListResult] operation results.
     #
-    def list(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list(custom_headers = nil)
+      response = list_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -735,8 +705,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
@@ -747,13 +717,12 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -810,8 +779,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Workspace] operation results.
     #
-    def create_or_update(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, workspace_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -826,9 +795,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -853,8 +822,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, workspace_name, custom_headers:nil)
-      response = delete_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, workspace_name, custom_headers = nil)
+      response = delete_async(resource_group_name, workspace_name, custom_headers).value!
       nil
     end
 
@@ -868,8 +837,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
-      delete_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
+      delete_async(resource_group_name, workspace_name, custom_headers).value!
     end
 
     #
@@ -882,7 +851,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, workspace_name, custom_headers:nil)
+    def delete_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -890,7 +859,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -935,8 +903,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Workspace] operation results.
     #
-    def get(resource_group_name, workspace_name, custom_headers:nil)
-      response = get_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, workspace_name, custom_headers = nil)
+      response = get_async(resource_group_name, workspace_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -950,8 +918,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
-      get_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, workspace_name, custom_headers = nil)
+      get_async(resource_group_name, workspace_name, custom_headers).value!
     end
 
     #
@@ -964,7 +932,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, workspace_name, custom_headers:nil)
+    def get_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -972,7 +940,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1028,8 +995,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Workspace] operation results.
     #
-    def update(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      response = update_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, workspace_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, workspace_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1044,8 +1011,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      update_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, workspace_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, workspace_name, parameters, custom_headers).value!
     end
 
     #
@@ -1059,23 +1026,21 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, workspace_name, parameters, custom_headers:nil)
+    def update_async(resource_group_name, workspace_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MaxLength': '63'" if !workspace_name.nil? && workspace_name.length > 63
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MinLength': '4'" if !workspace_name.nil? && workspace_name.length < 4
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$'" if !workspace_name.nil? && workspace_name.match(Regexp.new('^^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
@@ -1135,8 +1100,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Workspace] operation results.
     #
-    def begin_create_or_update(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, workspace_name, parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1152,8 +1117,8 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, workspace_name, parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers).value!
     end
 
     #
@@ -1168,23 +1133,21 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MaxLength': '63'" if !workspace_name.nil? && workspace_name.length > 63
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MinLength': '4'" if !workspace_name.nil? && workspace_name.length < 4
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$'" if !workspace_name.nil? && workspace_name.match(Regexp.new('^^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()

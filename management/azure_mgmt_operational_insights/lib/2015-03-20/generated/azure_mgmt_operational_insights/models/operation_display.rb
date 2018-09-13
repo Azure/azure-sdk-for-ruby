@@ -12,7 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
-      # @return [String] Service provider: Microsoft OperationsManagement.
+      # @return [String] Service provider: OperationalInsights.
       attr_accessor :provider
 
       # @return [String] Resource on which the operation is performed etc.
@@ -28,7 +28,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -36,7 +35,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -44,7 +42,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               resource: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -52,7 +49,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
