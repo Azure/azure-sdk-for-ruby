@@ -11,6 +11,10 @@ module Azure::Billing::Profiles::Latest
     Operations = Azure::Billing::Mgmt::V2017_04_24_preview::Operations
 
     module Models
+      ErrorResponse = Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
+      OperationListResult = Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
+      BillingPeriod = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
+      Invoice = Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
       Resource = Azure::Billing::Mgmt::V2017_04_24_preview::Models::Resource
       BillingPeriodsListResult = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult
       InvoicesListResult = Azure::Billing::Mgmt::V2017_04_24_preview::Models::InvoicesListResult
@@ -18,10 +22,6 @@ module Azure::Billing::Profiles::Latest
       OperationDisplay = Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationDisplay
       DownloadUrl = Azure::Billing::Mgmt::V2017_04_24_preview::Models::DownloadUrl
       Operation = Azure::Billing::Mgmt::V2017_04_24_preview::Models::Operation
-      ErrorResponse = Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
-      OperationListResult = Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
-      BillingPeriod = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
-      Invoice = Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
     end
 
     #
@@ -71,6 +71,18 @@ module Azure::Billing::Profiles::Latest
     end
 
     class ModelClasses
+      def error_response
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
+      end
+      def operation_list_result
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
+      end
+      def billing_period
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
+      end
+      def invoice
+        Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
+      end
       def resource
         Azure::Billing::Mgmt::V2017_04_24_preview::Models::Resource
       end
@@ -91,18 +103,6 @@ module Azure::Billing::Profiles::Latest
       end
       def operation
         Azure::Billing::Mgmt::V2017_04_24_preview::Models::Operation
-      end
-      def error_response
-        Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
-      end
-      def operation_list_result
-        Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
-      end
-      def billing_period
-        Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
-      end
-      def invoice
-        Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
       end
     end
   end
