@@ -21,8 +21,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # @return [String] The type of the saved search.
       attr_accessor :type
 
-      # @return [String] The etag of the saved search.
-      attr_accessor :etag
+      # @return [String] The ETag of the saved search.
+      attr_accessor :e_tag
 
       # @return [String] The category of the saved search. This helps the user
       # to find a saved search faster.
@@ -80,9 +80,9 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                   name: 'String'
                 }
               },
-              etag: {
+              e_tag: {
                 required: false,
-                serialized_name: 'etag',
+                serialized_name: 'eTag',
                 type: {
                   name: 'String'
                 }

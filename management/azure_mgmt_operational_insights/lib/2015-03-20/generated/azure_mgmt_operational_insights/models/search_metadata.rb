@@ -39,7 +39,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # @return [DateTime] The time of last update.
       attr_accessor :last_updated
 
-      # @return [String] The etag of the search results.
+      # @return [String] The ETag of the search results.
       attr_accessor :e_tag
 
       # @return [Array<SearchSort>] How the results are sorted.

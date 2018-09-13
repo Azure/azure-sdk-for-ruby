@@ -26,8 +26,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # @return [StorageInsightStatus] The status of the storage insight
       attr_accessor :status
 
-      # @return [String] The etag of the storage insight.
-      attr_accessor :etag
+      # @return [String] The ETag of the storage insight.
+      attr_accessor :e_tag
 
 
       #
@@ -125,9 +125,9 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                   class_name: 'StorageInsightStatus'
                 }
               },
-              etag: {
+              e_tag: {
                 required: false,
-                serialized_name: 'etag',
+                serialized_name: 'eTag',
                 type: {
                   name: 'String'
                 }
