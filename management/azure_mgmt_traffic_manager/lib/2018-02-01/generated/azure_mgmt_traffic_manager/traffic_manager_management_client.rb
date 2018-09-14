@@ -134,7 +134,7 @@ module Azure::TrafficManager::Mgmt::V2018_02_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_traffic_manager'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end
