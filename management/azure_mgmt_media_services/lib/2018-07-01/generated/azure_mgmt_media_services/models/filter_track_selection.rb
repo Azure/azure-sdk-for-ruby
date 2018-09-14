@@ -30,7 +30,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'FilterTrackSelection',
             model_properties: {
               track_selections: {
-                required: false,
+                required: true,
                 serialized_name: 'trackSelections',
                 type: {
                   name: 'Sequence',

@@ -19,7 +19,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       attr_accessor :@odatatype
 
-      # @return [Array<Integer>] The key that must be used as FairPlay ASk.
+      # @return [Array<Integer>] The key that must be used as FairPlay
+      # Application Secret key.
       attr_accessor :ask
 
       # @return [String] The password encrypting FairPlay certificate in PKCS

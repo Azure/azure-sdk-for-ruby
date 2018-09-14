@@ -30,6 +30,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               metric_specifications: {
                 required: false,
+                read_only: true,
                 serialized_name: 'metricSpecifications',
                 type: {
                   name: 'Sequence',

@@ -6,7 +6,7 @@
 module Azure::MediaServices::Mgmt::V2018_07_01
   module Models
     #
-    # Properties of Streaming Locator.
+    # Properties of the Streaming Locator.
     #
     class AssetStreamingLocator
 
@@ -18,23 +18,24 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [String] Asset Name.
       attr_accessor :asset_name
 
-      # @return [DateTime] Creation time of Streaming Locator.
+      # @return [DateTime] The creation time of the Streaming Locator.
       attr_accessor :created
 
-      # @return [DateTime] StartTime of Streaming Locator.
+      # @return [DateTime] The start time of the Streaming Locator.
       attr_accessor :start_time
 
-      # @return [DateTime] EndTime of Streaming Locator.
+      # @return [DateTime] The end time of the Streaming Locator.
       attr_accessor :end_time
 
-      # @return StreamingLocatorId of Streaming Locator.
+      # @return StreamingLocatorId of the Streaming Locator.
       attr_accessor :streaming_locator_id
 
-      # @return [String] Streaming policy name used by this streaming locator.
+      # @return [String] Name of the Streaming Policy used by this Streaming
+      # Locator.
       attr_accessor :streaming_policy_name
 
-      # @return [String] Default ContentKeyPolicy used by this Streaming
-      # Locator
+      # @return [String] Name of the default ContentKeyPolicy used by this
+      # Streaming Locator.
       attr_accessor :default_content_key_policy_name
 
 
@@ -52,6 +53,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -59,6 +61,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               asset_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'assetName',
                 type: {
                   name: 'String'
@@ -66,6 +69,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               created: {
                 required: false,
+                read_only: true,
                 serialized_name: 'created',
                 type: {
                   name: 'DateTime'
@@ -73,6 +77,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               start_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'startTime',
                 type: {
                   name: 'DateTime'
@@ -80,6 +85,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               end_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'endTime',
                 type: {
                   name: 'DateTime'
@@ -87,6 +93,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               streaming_locator_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'streamingLocatorId',
                 type: {
                   name: 'String'
@@ -94,6 +101,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               streaming_policy_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'streamingPolicyName',
                 type: {
                   name: 'String'
@@ -101,6 +109,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               default_content_key_policy_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'defaultContentKeyPolicyName',
                 type: {
                   name: 'String'

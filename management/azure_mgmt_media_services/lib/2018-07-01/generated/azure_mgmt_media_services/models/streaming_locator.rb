@@ -15,41 +15,36 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [String] Asset Name
       attr_accessor :asset_name
 
-      # @return [DateTime] Creation time of Streaming Locator
+      # @return [DateTime] The creation time of the Streaming Locator.
       attr_accessor :created
 
-      # @return [DateTime] StartTime of Streaming Locator
+      # @return [DateTime] The start time of the Streaming Locator.
       attr_accessor :start_time
 
-      # @return [DateTime] EndTime of Streaming Locator
+      # @return [DateTime] The end time of the Streaming Locator.
       attr_accessor :end_time
 
-      # @return StreamingLocatorId of Streaming Locator
+      # @return The StreamingLocatorId of the Streaming Locator.
       attr_accessor :streaming_locator_id
 
-      # @return [String] Streaming policy name used by this streaming locator.
-      # Either specify the name of streaming policy you created or use one of
-      # the predefined streaming polices. The predefined streaming policies
-      # available are: 'Predefined_DownloadOnly',
+      # @return [String] Name of the Streaming Policy used by this Streaming
+      # Locator. Either specify the name of Streaming Policy you created or use
+      # one of the predefined Streaming Policies. The predefined Streaming
+      # Policies available are: 'Predefined_DownloadOnly',
       # 'Predefined_ClearStreamingOnly',
       # 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey',
       # 'Predefined_MultiDrmCencStreaming' and 'Predefined_MultiDrmStreaming'
       attr_accessor :streaming_policy_name
 
-      # @return [String] Default ContentKeyPolicy used by this Streaming
-      # Locator
+      # @return [String] Name of the default ContentKeyPolicy used by this
+      # Streaming Locator.
       attr_accessor :default_content_key_policy_name
 
-      # @return [Array<StreamingLocatorContentKey>] ContentKeys used by this
-      # Streaming Locator
+      # @return [Array<StreamingLocatorContentKey>] The ContentKeys used by
+      # this Streaming Locator.
       attr_accessor :content_keys
 
-      # @return [String] An Alternative Media Identifier associated with the
-      # StreamingLocator.  This identifier can be used to distinguish different
-      # StreamingLocators for the same Asset for authorization purposes in the
-      # CustomLicenseAcquisitionUrlTemplate or the
-      # CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
-      # StreamingPolicyName field.
+      # @return [String] Alternative Media ID of this Streaming Locator
       attr_accessor :alternative_media_id
 
 

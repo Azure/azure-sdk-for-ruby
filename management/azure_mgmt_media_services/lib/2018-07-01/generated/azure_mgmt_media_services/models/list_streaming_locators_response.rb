@@ -6,7 +6,7 @@
 module Azure::MediaServices::Mgmt::V2018_07_01
   module Models
     #
-    # The Streaming Locators associated with this asset.
+    # The Streaming Locators associated with this Asset.
     #
     class ListStreamingLocatorsResponse
 
@@ -30,6 +30,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               streaming_locators: {
                 required: false,
+                read_only: true,
                 serialized_name: 'streamingLocators',
                 type: {
                   name: 'Sequence',

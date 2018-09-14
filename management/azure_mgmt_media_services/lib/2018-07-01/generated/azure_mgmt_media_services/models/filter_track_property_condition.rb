@@ -46,7 +46,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'String'

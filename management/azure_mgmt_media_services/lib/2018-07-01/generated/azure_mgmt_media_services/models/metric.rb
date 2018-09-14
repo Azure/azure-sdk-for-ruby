@@ -47,6 +47,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -54,6 +55,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               display_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'displayName',
                 type: {
                   name: 'String'
@@ -61,13 +63,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               display_description: {
                 required: false,
+                read_only: true,
                 serialized_name: 'displayDescription',
                 type: {
                   name: 'String'
                 }
               },
               unit: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'unit',
                 type: {
                   name: 'Enum',
@@ -75,7 +79,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               aggregation_type: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'aggregationType',
                 type: {
                   name: 'Enum',
@@ -84,6 +89,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               dimensions: {
                 required: false,
+                read_only: true,
                 serialized_name: 'dimensions',
                 type: {
                   name: 'Sequence',
