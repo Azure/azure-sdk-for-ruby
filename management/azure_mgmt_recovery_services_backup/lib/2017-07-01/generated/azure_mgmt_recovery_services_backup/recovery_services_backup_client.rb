@@ -65,6 +65,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     # @return [BackupProtectedItems] backup_protected_items
     attr_reader :backup_protected_items
 
+    # @return [BackupProtectionIntent] backup_protection_intent
+    attr_reader :backup_protection_intent
+
     # @return [BackupUsageSummaries] backup_usage_summaries
     attr_reader :backup_usage_summaries
 
@@ -93,6 +96,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       @jobs = Jobs.new(self)
       @backup_policies = BackupPolicies.new(self)
       @backup_protected_items = BackupProtectedItems.new(self)
+      @backup_protection_intent = BackupProtectionIntent.new(self)
       @backup_usage_summaries = BackupUsageSummaries.new(self)
       @operation = Operation.new(self)
       @api_version = '2017-07-01'

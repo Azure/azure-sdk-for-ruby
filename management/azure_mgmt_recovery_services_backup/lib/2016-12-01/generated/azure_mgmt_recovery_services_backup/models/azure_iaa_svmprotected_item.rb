@@ -130,6 +130,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'String'
                 }
               },
+              vault_id: {
+                required: false,
+                serialized_name: 'vaultId',
+                type: {
+                  name: 'String'
+                }
+              },
               protectedItemType: {
                 required: true,
                 serialized_name: 'protectedItemType',

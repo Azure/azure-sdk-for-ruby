@@ -23,7 +23,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
       attr_accessor :backupManagementType
 
-      # @return [String] Type of workload for the backup management
+      # @return [WorkloadType] Type of workload for the backup management.
+      # Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+      # 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+      # 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
       attr_accessor :work_load_type
 
       # @return [Settings] Common settings for the backup management

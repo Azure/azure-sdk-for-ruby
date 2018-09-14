@@ -7,15 +7,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
+module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
   #
   # Open API 2.0 Specs for Azure RecoveryServices Backup service
   #
-  class ProtectableContainers
+  class BackupProtectionIntent
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the ProtectableContainers class.
+    # Creates and initializes a new instance of the BackupProtectionIntent class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -26,59 +26,58 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     attr_reader :client
 
     #
-    # Lists the containers that can be registered to Recovery Services Vault.
+    # Provides a pageable list of all intents that are present within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
     # @param filter [String] OData filter options.
+    # @param skip_token [String] skipToken Filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<ProtectableContainerResource>] operation results.
+    # @return [Array<ProtectionIntentResource>] operation results.
     #
-    def list(vault_name, resource_group_name, fabric_name, filter = nil, custom_headers = nil)
-      first_page = list_as_lazy(vault_name, resource_group_name, fabric_name, filter, custom_headers)
+    def list(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
+      first_page = list_as_lazy(vault_name, resource_group_name, filter, skip_token, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Lists the containers that can be registered to Recovery Services Vault.
+    # Provides a pageable list of all intents that are present within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
     # @param filter [String] OData filter options.
+    # @param skip_token [String] skipToken Filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(vault_name, resource_group_name, fabric_name, filter = nil, custom_headers = nil)
-      list_async(vault_name, resource_group_name, fabric_name, filter, custom_headers).value!
+    def list_with_http_info(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
+      list_async(vault_name, resource_group_name, filter, skip_token, custom_headers).value!
     end
 
     #
-    # Lists the containers that can be registered to Recovery Services Vault.
+    # Provides a pageable list of all intents that are present within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
     # @param filter [String] OData filter options.
+    # @param skip_token [String] skipToken Filter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(vault_name, resource_group_name, fabric_name, filter = nil, custom_headers = nil)
+    def list_async(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'fabric_name is nil' if fabric_name.nil?
 
 
       request_headers = {}
@@ -86,14 +85,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers'
+      path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'fabricName' => fabric_name},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter},
+          path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter,'$skipToken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -113,7 +112,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ProtectableContainerResourceList.mapper()
+            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntentResourceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -127,14 +126,14 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Lists the containers that can be registered to Recovery Services Vault.
+    # Provides a pageable list of all intents that are present within a vault.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProtectableContainerResourceList] operation results.
+    # @return [ProtectionIntentResourceList] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -142,7 +141,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Lists the containers that can be registered to Recovery Services Vault.
+    # Provides a pageable list of all intents that are present within a vault.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -156,7 +155,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Lists the containers that can be registered to Recovery Services Vault.
+    # Provides a pageable list of all intents that are present within a vault.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -200,7 +199,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ProtectableContainerResourceList.mapper()
+            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntentResourceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -214,21 +213,21 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Lists the containers that can be registered to Recovery Services Vault.
+    # Provides a pageable list of all intents that are present within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
     # @param filter [String] OData filter options.
+    # @param skip_token [String] skipToken Filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProtectableContainerResourceList] which provide lazy access to pages
-    # of the response.
+    # @return [ProtectionIntentResourceList] which provide lazy access to pages of
+    # the response.
     #
-    def list_as_lazy(vault_name, resource_group_name, fabric_name, filter = nil, custom_headers = nil)
-      response = list_async(vault_name, resource_group_name, fabric_name, filter, custom_headers).value!
+    def list_as_lazy(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
+      response = list_async(vault_name, resource_group_name, filter, skip_token, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

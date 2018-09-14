@@ -38,6 +38,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [Boolean] Indicates if protectable item is auto-protectable
       attr_accessor :is_auto_protectable
 
+      # @return [Boolean] Indicates if protectable item is auto-protected
+      attr_accessor :is_auto_protected
+
       # @return [Integer] For instance or AG, indicates number of DB's present
       attr_accessor :subinquireditemcount
 
@@ -121,6 +124,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
               is_auto_protectable: {
                 required: false,
                 serialized_name: 'isAutoProtectable',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              is_auto_protected: {
+                required: false,
+                serialized_name: 'isAutoProtected',
                 type: {
                   name: 'Boolean'
                 }

@@ -361,11 +361,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Inquires all the protectable item in the given container that can be
-    # protected.
+    # Inquires all the protectable items under the given container.
     #
-    # Inquires all the protectable items that are protectable under the given
-    # container.
+    # This is an async operation and the results should be tracked using location
+    # header or Azure-async-url.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -384,11 +383,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Inquires all the protectable item in the given container that can be
-    # protected.
+    # Inquires all the protectable items under the given container.
     #
-    # Inquires all the protectable items that are protectable under the given
-    # container.
+    # This is an async operation and the results should be tracked using location
+    # header or Azure-async-url.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -407,11 +405,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     end
 
     #
-    # Inquires all the protectable item in the given container that can be
-    # protected.
+    # Inquires all the protectable items under the given container.
     #
-    # Inquires all the protectable items that are protectable under the given
-    # container.
+    # This is an async operation and the results should be tracked using location
+    # header or Azure-async-url.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the

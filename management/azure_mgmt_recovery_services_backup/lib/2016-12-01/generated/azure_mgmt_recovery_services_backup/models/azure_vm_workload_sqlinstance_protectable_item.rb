@@ -100,6 +100,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                   name: 'Boolean'
                 }
               },
+              is_auto_protected: {
+                required: false,
+                serialized_name: 'isAutoProtected',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               subinquireditemcount: {
                 required: false,
                 serialized_name: 'subinquireditemcount',

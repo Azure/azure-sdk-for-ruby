@@ -16,7 +16,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
       include MsRestAzure
 
-      # @return [String] Type of backup policy type
+      # @return [PolicyType] Type of backup policy type. Possible values
+      # include: 'Invalid', 'Full', 'Differential', 'Log', 'CopyOnlyFull'
       attr_accessor :policy_type
 
       # @return [SchedulePolicy] Backup schedule specified as part of backup
