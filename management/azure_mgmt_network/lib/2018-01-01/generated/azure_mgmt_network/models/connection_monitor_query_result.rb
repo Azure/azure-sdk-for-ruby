@@ -23,7 +23,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionMonitorQueryResult',
           type: {
@@ -31,13 +30,11 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'ConnectionMonitorQueryResult',
             model_properties: {
               states: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'states',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectionStateSnapshotElementType',
                       type: {

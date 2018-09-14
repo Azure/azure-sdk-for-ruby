@@ -32,7 +32,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TopologyResource',
           type: {
@@ -40,7 +39,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'TopologyResource',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -56,7 +53,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -64,13 +60,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               associations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'associations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TopologyAssociationElementType',
                       type: {

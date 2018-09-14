@@ -29,7 +29,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AvailableProvidersListCountry',
           type: {
@@ -37,7 +36,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'AvailableProvidersListCountry',
             model_properties: {
               country_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'countryName',
                 type: {
@@ -45,13 +43,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               providers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'providers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -61,13 +57,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               states: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'states',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AvailableProvidersListStateElementType',
                       type: {
