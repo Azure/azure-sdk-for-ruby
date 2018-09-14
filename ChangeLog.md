@@ -1,5 +1,5 @@
-## 2018.09.12 - Azure Ruby SDK Release
-* Released a minor version update of all management & data gems. In the resource class, a method resource_group is introduced. 
+## 2018.09.11 - Azure Ruby SDK Release
+* Released a minor version update of some management gems. In the resource class, a method resource_group is introduced.
   Refer [Issue #1615](https://github.com/Azure/azure-sdk-for-ruby/issues/1615) for further details.
 
 ## 2018.08.29 - Azure Ruby SDK Release
