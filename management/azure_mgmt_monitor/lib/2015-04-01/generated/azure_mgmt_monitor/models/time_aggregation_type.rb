@@ -13,6 +13,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       Minimum = "Minimum"
       Maximum = "Maximum"
       Total = "Total"
+      Last = "Last"
       Count = "Count"
     end
   end
