@@ -20,6 +20,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       # settings for the virtual machine disks.
       attr_accessor :storage_profile
 
+      # @return [AdditionalCapabilities] Specifies additional capabilities
+      # enabled or disabled on the virtual machine in the scale set. For
+      # instance: whether the virtual machine has the capability to support
+      # attaching managed data disks with UltraSSD_LRS storage account type.
+      attr_accessor :additional_capabilities
+
       # @return [VirtualMachineScaleSetNetworkProfile] Specifies properties of
       # the network interfaces of the virtual machines in the scale set.
       attr_accessor :network_profile
@@ -85,6 +91,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineScaleSetStorageProfile'
+                }
+              },
+              additional_capabilities: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'additionalCapabilities',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AdditionalCapabilities'
                 }
               },
               network_profile: {

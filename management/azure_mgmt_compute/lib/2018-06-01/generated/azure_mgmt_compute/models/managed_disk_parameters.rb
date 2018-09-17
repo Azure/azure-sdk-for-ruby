@@ -13,9 +13,9 @@ module Azure::Compute::Mgmt::V2018_06_01
       include MsRestAzure
 
       # @return [StorageAccountTypes] Specifies the storage account type for
-      # the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
-      # StandardSSD_LRS. Possible values include: 'Standard_LRS',
-      # 'Premium_LRS', 'StandardSSD_LRS'
+      # the managed disk. UltraSSD_LRS can only be used for data disks.
+      # Possible values include: 'Standard_LRS', 'Premium_LRS',
+      # 'StandardSSD_LRS', 'UltraSSD_LRS'
       attr_accessor :storage_account_type
 
 

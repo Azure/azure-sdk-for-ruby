@@ -29,6 +29,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       # machine disks.
       attr_accessor :storage_profile
 
+      # @return [AdditionalCapabilities] Specifies additional capabilities
+      # enabled or disabled on the virtual machine. For instance: whether the
+      # virtual machine has the capability to support attaching managed data
+      # disks with UltraSSD_LRS storage account type.
+      attr_accessor :additional_capabilities
+
       # @return [OSProfile] Specifies the operating system settings for the
       # virtual machine.
       attr_accessor :os_profile
@@ -178,6 +184,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'StorageProfile'
+                }
+              },
+              additional_capabilities: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.additionalCapabilities',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AdditionalCapabilities'
                 }
               },
               os_profile: {

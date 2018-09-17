@@ -27,6 +27,10 @@ module Azure::Compute::Mgmt::V2018_06_01
       # associated with the public IP address.
       attr_accessor :ip_tags
 
+      # @return [SubResource] The PublicIPPrefix from which to allocate
+      # publicIP addresses.
+      attr_accessor :public_ipprefix
+
 
       #
       # Mapper for VirtualMachineScaleSetPublicIPAddressConfiguration class as
@@ -82,6 +86,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                         class_name: 'VirtualMachineScaleSetIpTag'
                       }
                   }
+                }
+              },
+              public_ipprefix: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.publicIPPrefix',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               }
             }

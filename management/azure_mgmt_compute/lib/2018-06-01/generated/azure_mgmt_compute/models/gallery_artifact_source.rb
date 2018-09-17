@@ -31,7 +31,7 @@ module Azure::Compute::Mgmt::V2018_06_01
             model_properties: {
               managed_image: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'managedImage',
                 type: {
                   name: 'Composite',
