@@ -1,3 +1,6 @@
+## 2018.09.17 - Azure Ruby SDK Release
+* Released 0.18.2 version of azure_mgmt_compute & 0.18.3 version of azure_sdk to include the latest changes to gallery.json.
+
 ## 2018.09.11 - Azure Ruby SDK Release
 * Released a minor version update of some management gems. In the resource class, a method resource_group is introduced.
   Refer [Issue #1615](https://github.com/Azure/azure-sdk-for-ruby/issues/1615) for further details.
