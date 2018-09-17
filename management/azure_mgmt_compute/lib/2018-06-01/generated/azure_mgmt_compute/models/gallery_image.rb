@@ -155,7 +155,7 @@ module Azure::Compute::Mgmt::V2018_06_01
               },
               os_type: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.osType',
                 type: {
                   name: 'Enum',
@@ -164,7 +164,7 @@ module Azure::Compute::Mgmt::V2018_06_01
               },
               os_state: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.osState',
                 type: {
                   name: 'Enum',
@@ -181,7 +181,7 @@ module Azure::Compute::Mgmt::V2018_06_01
               },
               identifier: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.identifier',
                 type: {
                   name: 'Composite',

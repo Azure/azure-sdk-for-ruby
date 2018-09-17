@@ -6,11 +6,13 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # Defines values for ScaleTier
+    # Defines values for DiskStorageAccountTypes
     #
-    module ScaleTier
-      S30 = "S30"
-      S100 = "S100"
+    module DiskStorageAccountTypes
+      StandardLRS = "Standard_LRS"
+      PremiumLRS = "Premium_LRS"
+      StandardSSDLRS = "StandardSSD_LRS"
+      UltraSSDLRS = "UltraSSD_LRS"
     end
   end
 end

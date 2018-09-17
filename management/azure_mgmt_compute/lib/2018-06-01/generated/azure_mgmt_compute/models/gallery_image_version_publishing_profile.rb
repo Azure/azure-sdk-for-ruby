@@ -12,9 +12,8 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       include MsRestAzure
 
-      # @return [ScaleTier] The scale tier of the gallery image version. Valid
-      # values are 'S30' and 'S100'. Possible values include: 'S30', 'S100'
-      attr_accessor :scale_tier
+      # @return [Integer] This is the number of source blob copies in a region.
+      attr_accessor :replica_count
 
       # @return [Boolean] The flag means that if it is set to true, people
       # deploying VMs with 'latest' as version will not use this version.
@@ -41,37 +40,38 @@ module Azure::Compute::Mgmt::V2018_06_01
             name: 'Composite',
             class_name: 'GalleryImageVersionPublishingProfile',
             model_properties: {
-              regions: {
+              target_regions: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'regions',
+                serialized_name: 'targetRegions',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'TargetRegionElementType',
                       type: {
-                        name: 'String'
+                        name: 'Composite',
+                        class_name: 'TargetRegion'
                       }
                   }
                 }
               },
               source: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'source',
                 type: {
                   name: 'Composite',
                   class_name: 'GalleryArtifactSource'
                 }
               },
-              scale_tier: {
+              replica_count: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'scaleTier',
+                serialized_name: 'replicaCount',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               },
               exclude_from_latest: {

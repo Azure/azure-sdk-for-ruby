@@ -37,6 +37,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       # machine disks.
       attr_accessor :storage_profile
 
+      # @return [AdditionalCapabilities] Specifies additional capabilities
+      # enabled or disabled on the virtual machine in the scale set. For
+      # instance: whether the virtual machine has the capability to support
+      # attaching managed data disks with UltraSSD_LRS storage account type.
+      attr_accessor :additional_capabilities
+
       # @return [OSProfile] Specifies the operating system settings for the
       # virtual machine.
       attr_accessor :os_profile
@@ -89,6 +95,9 @@ module Azure::Compute::Mgmt::V2018_06_01
       # @return [Array<VirtualMachineExtension>] The virtual machine child
       # extension resources.
       attr_accessor :resources
+
+      # @return [Array<String>] The virtual machine zones.
+      attr_accessor :zones
 
 
       #
@@ -220,6 +229,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                   class_name: 'StorageProfile'
                 }
               },
+              additional_capabilities: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.additionalCapabilities',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AdditionalCapabilities'
+                }
+              },
               os_profile: {
                 client_side_validation: true,
                 required: false,
@@ -296,6 +314,23 @@ module Azure::Compute::Mgmt::V2018_06_01
                       type: {
                         name: 'Composite',
                         class_name: 'VirtualMachineExtension'
+                      }
+                  }
+                }
+              },
+              zones: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'zones',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }

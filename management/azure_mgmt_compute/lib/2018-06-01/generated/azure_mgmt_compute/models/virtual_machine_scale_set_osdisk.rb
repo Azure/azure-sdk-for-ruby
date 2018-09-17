@@ -35,6 +35,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       # Possible values include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
+      # @return [Integer] Specifies the size of the operating system disk in
+      # gigabytes. This element can be used to overwrite the size of the disk
+      # in a virtual machine image. <br><br> This value cannot be larger than
+      # 1023 GB
+      attr_accessor :disk_size_gb
+
       # @return [OperatingSystemTypes] This property allows you to specify the
       # type of the OS that is included in the disk if creating a VM from
       # user-image or a specialized VHD. <br><br> Possible values are: <br><br>
@@ -99,6 +105,14 @@ module Azure::Compute::Mgmt::V2018_06_01
                 serialized_name: 'createOption',
                 type: {
                   name: 'String'
+                }
+              },
+              disk_size_gb: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'diskSizeGB',
+                type: {
+                  name: 'Number'
                 }
               },
               os_type: {

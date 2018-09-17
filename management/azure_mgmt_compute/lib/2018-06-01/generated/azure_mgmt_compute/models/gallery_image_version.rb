@@ -95,7 +95,7 @@ module Azure::Compute::Mgmt::V2018_06_01
               },
               publishing_profile: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.publishingProfile',
                 type: {
                   name: 'Composite',

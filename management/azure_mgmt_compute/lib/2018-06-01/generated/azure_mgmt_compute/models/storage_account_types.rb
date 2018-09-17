@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       StandardLRS = "Standard_LRS"
       PremiumLRS = "Premium_LRS"
       StandardSSDLRS = "StandardSSD_LRS"
+      UltraSSDLRS = "UltraSSD_LRS"
     end
   end
 end

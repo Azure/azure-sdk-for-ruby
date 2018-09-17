@@ -37,7 +37,7 @@ module Azure::Compute::Mgmt::V2018_06_01
             model_properties: {
               publisher: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'publisher',
                 type: {
                   name: 'String'
@@ -45,7 +45,7 @@ module Azure::Compute::Mgmt::V2018_06_01
               },
               offer: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'offer',
                 type: {
                   name: 'String'
@@ -53,7 +53,7 @@ module Azure::Compute::Mgmt::V2018_06_01
               },
               sku: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'sku',
                 type: {
                   name: 'String'

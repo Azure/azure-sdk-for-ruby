@@ -21,6 +21,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       # or disabled on the disk.
       attr_accessor :write_accelerator_enabled
 
+      # @return [Integer] Specifies the size of the operating system disk in
+      # gigabytes. This element can be used to overwrite the size of the disk
+      # in a virtual machine image. <br><br> This value cannot be larger than
+      # 1023 GB
+      attr_accessor :disk_size_gb
+
       # @return [VirtualHardDisk] The Source User Image VirtualHardDisk. This
       # VirtualHardDisk will be copied before using it to attach to the Virtual
       # Machine. If SourceImage is provided, the destination VirtualHardDisk
@@ -63,6 +69,14 @@ module Azure::Compute::Mgmt::V2018_06_01
                 serialized_name: 'writeAcceleratorEnabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              disk_size_gb: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'diskSizeGB',
+                type: {
+                  name: 'Number'
                 }
               },
               image: {

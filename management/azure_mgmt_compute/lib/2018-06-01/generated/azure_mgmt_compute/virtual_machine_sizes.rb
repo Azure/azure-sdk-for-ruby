@@ -22,7 +22,8 @@ module Azure::Compute::Mgmt::V2018_06_01
     attr_reader :client
 
     #
-    # Lists all available virtual machine sizes for a subscription in a location.
+    # This API is deprecated. Use [Resources
+    # Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
     #
     # @param location [String] The location upon which virtual-machine-sizes is
     # queried.
@@ -37,7 +38,8 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Lists all available virtual machine sizes for a subscription in a location.
+    # This API is deprecated. Use [Resources
+    # Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
     #
     # @param location [String] The location upon which virtual-machine-sizes is
     # queried.
@@ -51,7 +53,8 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Lists all available virtual machine sizes for a subscription in a location.
+    # This API is deprecated. Use [Resources
+    # Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
     #
     # @param location [String] The location upon which virtual-machine-sizes is
     # queried.

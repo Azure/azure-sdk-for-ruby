@@ -33,7 +33,7 @@ module Azure::Compute::Mgmt::V2018_04_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.output.accessSAS',
+                serialized_name: 'accessSAS',
                 type: {
                   name: 'String'
                 }
