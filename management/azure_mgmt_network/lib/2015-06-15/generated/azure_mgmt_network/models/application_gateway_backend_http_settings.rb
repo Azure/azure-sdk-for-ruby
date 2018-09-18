@@ -51,7 +51,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendHttpSettings',
           type: {
@@ -59,7 +58,6 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ApplicationGatewayBackendHttpSettings',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -67,7 +65,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.port',
                 type: {
@@ -75,7 +72,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -83,7 +79,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               cookie_based_affinity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cookieBasedAffinity',
                 type: {
@@ -91,7 +86,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               request_timeout: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requestTimeout',
                 type: {
@@ -99,7 +93,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               probe: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.probe',
                 type: {
@@ -108,7 +101,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -116,7 +108,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -124,7 +115,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

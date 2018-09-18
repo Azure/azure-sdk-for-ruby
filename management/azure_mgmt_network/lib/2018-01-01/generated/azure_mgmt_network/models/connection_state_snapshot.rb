@@ -37,7 +37,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionStateSnapshot',
           type: {
@@ -45,7 +44,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'ConnectionStateSnapshot',
             model_properties: {
               connection_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionState',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               evaluation_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'evaluationState',
                 type: {
@@ -77,14 +72,12 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               hops: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'hops',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectivityHopElementType',
                       type: {
