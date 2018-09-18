@@ -12,6 +12,10 @@ module Azure::Network::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      # @return [Array<VirtualNetworkTap>] The reference to Virtual Network
+      # Taps.
+      attr_accessor :virtual_network_taps
+
       # @return [Array<ApplicationGatewayBackendAddressPool>] The reference of
       # ApplicationGatewayBackendAddressPool resource.
       attr_accessor :application_gateway_backend_address_pools
@@ -86,6 +90,23 @@ module Azure::Network::Mgmt::V2017_03_30
                 serialized_name: 'id',
                 type: {
                   name: 'String'
+                }
+              },
+              virtual_network_taps: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.virtualNetworkTaps',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'VirtualNetworkTapElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'VirtualNetworkTap'
+                      }
+                  }
                 }
               },
               application_gateway_backend_address_pools: {

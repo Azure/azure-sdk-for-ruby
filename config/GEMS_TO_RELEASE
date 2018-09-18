@@ -1,6 +1,6 @@
 {
     "management": [
-        "azure_mgmt_compute"
+        "azure_mgmt_network"
     ],
     "rollup": [
         "azure_sdk"

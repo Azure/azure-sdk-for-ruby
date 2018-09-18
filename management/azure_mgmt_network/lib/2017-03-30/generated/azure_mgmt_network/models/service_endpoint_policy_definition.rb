@@ -90,6 +90,7 @@ module Azure::Network::Mgmt::V2017_03_30
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'

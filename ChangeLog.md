@@ -1,3 +1,7 @@
+## 2018.09.18 - Azure Ruby SDK Release
+* Released 0.17.3 version of azure_mgmt_network to include the latest version of 2018-08-01.
+* Released 0.18.4 version of azure_sdk to include the latest version changes in azure_mgmt_network.
+
 ## 2018.09.17 - Azure Ruby SDK Release
 * Released 0.18.2 version of azure_mgmt_compute & 0.18.3 version of azure_sdk to include the latest changes to gallery.json.
 
