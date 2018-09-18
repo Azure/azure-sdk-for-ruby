@@ -31,7 +31,6 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleAssignmentCreateParameters',
           type: {
@@ -39,23 +38,20 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
             class_name: 'RoleAssignmentCreateParameters',
             model_properties: {
               role_definition_id: {
-                client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.roleDefinitionId',
                 type: {
                   name: 'String'
                 }
               },
               principal_id: {
-                client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.principalId',
                 type: {
                   name: 'String'
                 }
               },
               can_delegate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.canDelegate',
                 type: {

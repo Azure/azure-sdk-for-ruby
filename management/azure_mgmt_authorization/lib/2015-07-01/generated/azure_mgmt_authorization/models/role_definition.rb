@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2015_07_01
+module Azure::Authorization::Mgmt::V2015_07_01_preview
   module Models
     #
     # Role definition.
@@ -21,8 +21,20 @@ module Azure::Authorization::Mgmt::V2015_07_01
       # @return [String] The role definition type.
       attr_accessor :type
 
-      # @return [RoleDefinitionProperties] Role definition properties.
-      attr_accessor :properties
+      # @return [String] The role name.
+      attr_accessor :role_name
+
+      # @return [String] The role definition description.
+      attr_accessor :description
+
+      # @return [String] The role type.
+      attr_accessor :role_type
+
+      # @return [Array<Permission>] Role definition permissions.
+      attr_accessor :permissions
+
+      # @return [Array<String>] Role definition assignable scopes.
+      attr_accessor :assignable_scopes
 
 
       #
@@ -31,7 +43,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleDefinition',
           type: {
@@ -39,7 +50,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleDefinition',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +58,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +66,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -65,13 +73,54 @@ module Azure::Authorization::Mgmt::V2015_07_01
                   name: 'String'
                 }
               },
-              properties: {
-                client_side_validation: true,
+              role_name: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.roleName',
                 type: {
-                  name: 'Composite',
-                  class_name: 'RoleDefinitionProperties'
+                  name: 'String'
+                }
+              },
+              description: {
+                required: false,
+                serialized_name: 'properties.description',
+                type: {
+                  name: 'String'
+                }
+              },
+              role_type: {
+                required: false,
+                serialized_name: 'properties.type',
+                type: {
+                  name: 'String'
+                }
+              },
+              permissions: {
+                required: false,
+                serialized_name: 'properties.permissions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'PermissionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Permission'
+                      }
+                  }
+                }
+              },
+              assignable_scopes: {
+                required: false,
+                serialized_name: 'properties.assignableScopes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }
