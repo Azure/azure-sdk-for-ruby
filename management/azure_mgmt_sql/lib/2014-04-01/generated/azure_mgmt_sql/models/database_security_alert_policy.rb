@@ -26,7 +26,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       # @return [String] Specifies the semicolon-separated list of alerts that
       # are disabled, or empty string to disable no alerts. Possible values:
       # Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
-      # Usage_Anomaly.
+      # Data_Exfiltration; Unsafe_Action.
       attr_accessor :disabled_alerts
 
       # @return [String] Specifies the semicolon-separated list of e-mail
