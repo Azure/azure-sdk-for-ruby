@@ -58,7 +58,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

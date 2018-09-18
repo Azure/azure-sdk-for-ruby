@@ -31,8 +31,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def cancel(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      response = cancel_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def cancel(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      response = cancel_async(resource_group_name, vm_scale_set_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -45,9 +45,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def cancel_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
+    def cancel_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       # Send request
-      promise = begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers)
+      promise = begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -57,7 +57,7 @@ module Azure::Compute::Mgmt::V2017_03_30
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
       promise
@@ -75,8 +75,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def start_osupgrade(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      response = start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def start_osupgrade(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      response = start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -89,9 +89,9 @@ module Azure::Compute::Mgmt::V2017_03_30
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
+    def start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       # Send request
-      promise = begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers)
+      promise = begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -101,7 +101,7 @@ module Azure::Compute::Mgmt::V2017_03_30
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
       promise
@@ -117,8 +117,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [RollingUpgradeStatusInfo] operation results.
     #
-    def get_latest(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      response = get_latest_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def get_latest(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      response = get_latest_async(resource_group_name, vm_scale_set_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -132,8 +132,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_latest_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      get_latest_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def get_latest_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      get_latest_async(resource_group_name, vm_scale_set_name, custom_headers).value!
     end
 
     #
@@ -146,7 +146,7 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_latest_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
+    def get_latest_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -154,7 +154,6 @@ module Azure::Compute::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -209,8 +208,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_cancel(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      response = begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def begin_cancel(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      response = begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -224,8 +223,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_cancel_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def begin_cancel_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers).value!
     end
 
     #
@@ -238,7 +237,7 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
+    def begin_cancel_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -246,7 +245,6 @@ module Azure::Compute::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -303,8 +301,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_start_osupgrade(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      response = begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def begin_start_osupgrade(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      response = begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -320,8 +318,8 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_start_osupgrade_with_http_info(resource_group_name, vm_scale_set_name, custom_headers:nil)
-      begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers:custom_headers).value!
+    def begin_start_osupgrade_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers).value!
     end
 
     #
@@ -336,7 +334,7 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers:nil)
+    def begin_start_osupgrade_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -344,7 +342,6 @@ module Azure::Compute::Mgmt::V2017_03_30
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

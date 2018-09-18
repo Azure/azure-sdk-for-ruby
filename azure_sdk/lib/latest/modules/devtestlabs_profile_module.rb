@@ -16,8 +16,8 @@ module Azure::Profiles::Latest
       Costs = Azure::DevTestLabs::Mgmt::V2016_05_15::Costs
       CustomImages = Azure::DevTestLabs::Mgmt::V2016_05_15::CustomImages
       Formulas = Azure::DevTestLabs::Mgmt::V2016_05_15::Formulas
-      NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
       GalleryImages = Azure::DevTestLabs::Mgmt::V2016_05_15::GalleryImages
+      NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
       PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
       Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
       ServiceRunners = Azure::DevTestLabs::Mgmt::V2016_05_15::ServiceRunners
@@ -191,7 +191,7 @@ module Azure::Profiles::Latest
       end
 
       class DevTestLabsManagementClass
-        attr_reader :provider_operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :notification_channels, :gallery_images, :policy_sets, :schedules, :service_runners, :users, :environments, :secrets, :virtual_machine_schedules, :virtual_networks, :disks, :virtual_machines, :operations, :policies, :configurable, :base_url, :options, :model_classes
+        attr_reader :provider_operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :schedules, :service_runners, :users, :environments, :secrets, :virtual_machine_schedules, :virtual_networks, :disks, :virtual_machines, :operations, :policies, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -210,8 +210,8 @@ module Azure::Profiles::Latest
           @costs = @client_0.costs
           @custom_images = @client_0.custom_images
           @formulas = @client_0.formulas
-          @notification_channels = @client_0.notification_channels
           @gallery_images = @client_0.gallery_images
+          @notification_channels = @client_0.notification_channels
           @policy_sets = @client_0.policy_sets
           @schedules = @client_0.schedules
           @service_runners = @client_0.service_runners

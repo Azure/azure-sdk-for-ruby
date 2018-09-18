@@ -39,7 +39,6 @@ module Azure::Compute::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiskUpdate',
           type: {
@@ -47,7 +46,6 @@ module Azure::Compute::Mgmt::V2018_04_01
             class_name: 'DiskUpdate',
             model_properties: {
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osType',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskSizeGB',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               encryption_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionSettings',
                 type: {
@@ -73,13 +69,11 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -89,7 +83,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
