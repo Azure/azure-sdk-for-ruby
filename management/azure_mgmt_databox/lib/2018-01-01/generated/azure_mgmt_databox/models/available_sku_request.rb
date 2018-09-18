@@ -24,6 +24,9 @@ module Azure::Compute::Mgmt::V2018_01_01
       # https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01
       attr_accessor :location
 
+      # @return [Array<SkuName>] Sku Names to filter for available skus
+      attr_accessor :sku_names
+
 
       #
       # Mapper for AvailableSkuRequest class as Ruby Hash.
@@ -58,6 +61,21 @@ module Azure::Compute::Mgmt::V2018_01_01
                 serialized_name: 'location',
                 type: {
                   name: 'String'
+                }
+              },
+              sku_names: {
+                required: false,
+                serialized_name: 'skuNames',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SkuNameElementType',
+                      type: {
+                        name: 'Enum',
+                        module: 'SkuName'
+                      }
+                  }
                 }
               }
             }
