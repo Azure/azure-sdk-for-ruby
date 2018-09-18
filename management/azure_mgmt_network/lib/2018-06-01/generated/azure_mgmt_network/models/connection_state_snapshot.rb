@@ -26,6 +26,21 @@ module Azure::Network::Mgmt::V2018_06_01
       # Possible values include: 'NotStarted', 'InProgress', 'Completed'
       attr_accessor :evaluation_state
 
+      # @return [Integer] Average latency in ms.
+      attr_accessor :avg_latency_in_ms
+
+      # @return [Integer] Minimum latency in ms.
+      attr_accessor :min_latency_in_ms
+
+      # @return [Integer] Maximum latency in ms.
+      attr_accessor :max_latency_in_ms
+
+      # @return [Integer] The number of sent probes.
+      attr_accessor :probes_sent
+
+      # @return [Integer] The number of failed probes.
+      attr_accessor :probes_failed
+
       # @return [Array<ConnectivityHop>] List of hops between the source and
       # the destination.
       attr_accessor :hops
@@ -74,6 +89,46 @@ module Azure::Network::Mgmt::V2018_06_01
                 serialized_name: 'evaluationState',
                 type: {
                   name: 'String'
+                }
+              },
+              avg_latency_in_ms: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'avgLatencyInMs',
+                type: {
+                  name: 'Number'
+                }
+              },
+              min_latency_in_ms: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'minLatencyInMs',
+                type: {
+                  name: 'Number'
+                }
+              },
+              max_latency_in_ms: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'maxLatencyInMs',
+                type: {
+                  name: 'Number'
+                }
+              },
+              probes_sent: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'probesSent',
+                type: {
+                  name: 'Number'
+                }
+              },
+              probes_failed: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'probesFailed',
+                type: {
+                  name: 'Number'
                 }
               },
               hops: {

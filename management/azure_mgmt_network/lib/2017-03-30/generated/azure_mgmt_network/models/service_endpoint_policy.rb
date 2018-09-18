@@ -16,6 +16,9 @@ module Azure::Network::Mgmt::V2017_03_30
       # service endpoint policy definitions of the service endpoint policy.
       attr_accessor :service_endpoint_policy_definitions
 
+      # @return [Array<Subnet>] A collection of references to subnets.
+      attr_accessor :subnets
+
       # @return [String] The resource GUID property of the service endpoint
       # policy resource.
       attr_accessor :resource_guid
@@ -109,9 +112,28 @@ module Azure::Network::Mgmt::V2017_03_30
                   }
                 }
               },
+              subnets: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.subnets',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'SubnetElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Subnet'
+                      }
+                  }
+                }
+              },
               resource_guid: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.resourceGuid',
                 type: {
                   name: 'String'
@@ -120,6 +142,7 @@ module Azure::Network::Mgmt::V2017_03_30
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
