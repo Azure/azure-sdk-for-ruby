@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetectorInfo',
           type: {
@@ -39,7 +38,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DetectorInfo',
             model_properties: {
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -48,7 +46,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'category',
@@ -57,7 +54,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               sub_category: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subCategory',
@@ -66,7 +62,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               support_topic_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportTopicId',

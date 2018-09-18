@@ -26,7 +26,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutoHealCustomAction',
           type: {
@@ -34,7 +33,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'AutoHealCustomAction',
             model_properties: {
               exe: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exe',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
