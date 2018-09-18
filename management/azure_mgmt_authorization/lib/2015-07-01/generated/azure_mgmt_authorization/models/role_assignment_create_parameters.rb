@@ -22,7 +22,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleAssignmentCreateParameters',
           type: {
@@ -30,8 +29,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleAssignmentCreateParameters',
             model_properties: {
               properties: {
-                client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',

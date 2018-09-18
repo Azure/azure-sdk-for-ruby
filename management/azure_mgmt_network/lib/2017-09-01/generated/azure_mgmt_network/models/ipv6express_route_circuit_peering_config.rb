@@ -37,7 +37,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Ipv6ExpressRouteCircuitPeeringConfig',
           type: {
@@ -45,7 +44,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'Ipv6ExpressRouteCircuitPeeringConfig',
             model_properties: {
               primary_peer_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryPeerAddressPrefix',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               secondary_peer_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryPeerAddressPrefix',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               microsoft_peering_config: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'microsoftPeeringConfig',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               route_filter: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'routeFilter',
                 type: {
@@ -79,7 +74,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {

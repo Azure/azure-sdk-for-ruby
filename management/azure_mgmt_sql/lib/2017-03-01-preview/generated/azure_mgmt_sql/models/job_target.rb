@@ -47,7 +47,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobTarget',
           type: {
@@ -55,7 +54,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobTarget',
             model_properties: {
               membership_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'membershipType',
                 default_value: 'Include',
@@ -65,7 +63,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -73,7 +70,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serverName',
                 type: {
@@ -81,7 +77,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'databaseName',
                 type: {
@@ -89,7 +84,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               elastic_pool_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'elasticPoolName',
                 type: {
@@ -97,7 +91,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               shard_map_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'shardMapName',
                 type: {
@@ -105,7 +98,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               refresh_credential: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'refreshCredential',
                 type: {

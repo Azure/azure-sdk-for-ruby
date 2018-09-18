@@ -32,10 +32,6 @@ module Azure::Network::Mgmt::V2017_03_30
       # associated with the public IP address.
       attr_accessor :dns_settings
 
-      # @return [Array<IpTag>] The list of tags associated with the public IP
-      # address.
-      attr_accessor :ip_tags
-
       # @return [String] The IP address associated with the public IP address
       # resource.
       attr_accessor :ip_address
@@ -65,7 +61,6 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PublicIPAddress',
           type: {
@@ -73,7 +68,6 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'PublicIPAddress',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -81,7 +75,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -90,7 +83,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -99,7 +91,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -107,13 +98,11 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -123,7 +112,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -132,7 +120,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               public_ipallocation_method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicIPAllocationMethod',
                 type: {
@@ -140,7 +127,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               public_ipaddress_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicIPAddressVersion',
                 type: {
@@ -148,7 +134,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               ip_configuration: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.ipConfiguration',
@@ -158,7 +143,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               dns_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -166,25 +150,7 @@ module Azure::Network::Mgmt::V2017_03_30
                   class_name: 'PublicIPAddressDnsSettings'
                 }
               },
-              ip_tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.ipTags',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'IpTagElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'IpTag'
-                      }
-                  }
-                }
-              },
               ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipAddress',
                 type: {
@@ -192,7 +158,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               idle_timeout_in_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -200,7 +165,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               resource_guid: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -208,7 +172,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -216,7 +179,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -224,13 +186,11 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               zones: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'zones',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

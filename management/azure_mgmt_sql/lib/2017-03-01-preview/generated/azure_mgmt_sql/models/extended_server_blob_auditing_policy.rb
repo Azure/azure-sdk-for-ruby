@@ -122,7 +122,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExtendedServerBlobAuditingPolicy',
           type: {
@@ -130,7 +129,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ExtendedServerBlobAuditingPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -139,7 +137,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -148,7 +145,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -157,7 +153,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               predicate_expression: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.predicateExpression',
                 type: {
@@ -165,7 +160,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.state',
                 type: {
@@ -174,7 +168,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageEndpoint',
                 type: {
@@ -182,7 +175,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_account_access_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountAccessKey',
                 type: {
@@ -190,7 +182,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               retention_days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionDays',
                 type: {
@@ -198,13 +189,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               audit_actions_and_groups: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.auditActionsAndGroups',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -214,7 +203,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_account_subscription_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountSubscriptionId',
                 type: {
@@ -222,7 +210,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               is_storage_secondary_key_in_use: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isStorageSecondaryKeyInUse',
                 type: {

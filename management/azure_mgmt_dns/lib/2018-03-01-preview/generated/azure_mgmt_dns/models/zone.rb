@@ -8,7 +8,7 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     # Describes a DNS zone.
     #
-    class Zone < Resource
+    class Zone < TrackedResource
 
       include MsRestAzure
 
@@ -50,7 +50,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Zone',
           type: {
@@ -58,7 +57,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
             class_name: 'Zone',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -67,7 +65,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -76,7 +73,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -84,22 +80,12 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                   name: 'String'
                 }
               },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,8 +94,14 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                   }
                 }
               },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -117,7 +109,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               max_number_of_record_sets: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxNumberOfRecordSets',
@@ -126,7 +117,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               number_of_record_sets: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.numberOfRecordSets',
@@ -135,14 +125,12 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               name_servers: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nameServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -152,7 +140,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               zone_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.zoneType',
                 default_value: 'Public',
@@ -162,13 +149,11 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               registration_virtual_networks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.registrationVirtualNetworks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -179,13 +164,11 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               resolution_virtual_networks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resolutionVirtualNetworks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {

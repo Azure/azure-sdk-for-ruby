@@ -8,24 +8,24 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
-      SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
-      SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
-      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
-      MatchRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
-      ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
-      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
-      EntityRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
-      EntitiesBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
-      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
       EntitiesBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
       DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
       Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
-      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
       LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
       KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
       LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
+      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
+      SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
+      SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
+      MatchRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
+      ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
+      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+      EntityRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
+      EntitiesBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
+      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
     end
 
     class TextAnalyticsDataClass
@@ -57,33 +57,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def sentiment_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
-        end
-        def sentiment_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
-        end
-        def batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
-        end
-        def match_record
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
-        end
-        def error_record
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
-        end
-        def key_phrase_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
-        end
-        def entity_record
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
-        end
-        def entities_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
-        end
-        def internal_error
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
-        end
         def entities_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
         end
@@ -99,9 +72,6 @@ module Azure::Profiles::Latest
         def multi_language_input
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
         end
-        def error_response
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
-        end
         def language_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
         end
@@ -110,6 +80,36 @@ module Azure::Profiles::Latest
         end
         def language_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
+        end
+        def key_phrase_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
+        end
+        def sentiment_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
+        end
+        def sentiment_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+        end
+        def batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
+        end
+        def match_record
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
+        end
+        def error_record
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
+        end
+        def error_response
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+        end
+        def entity_record
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
+        end
+        def entities_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
+        end
+        def internal_error
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
         end
       end
     end

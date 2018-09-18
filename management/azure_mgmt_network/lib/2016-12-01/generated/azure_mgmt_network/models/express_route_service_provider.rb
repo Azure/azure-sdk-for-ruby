@@ -29,7 +29,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteServiceProvider',
           type: {
@@ -37,7 +36,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ExpressRouteServiceProvider',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,7 +51,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,7 +59,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -71,13 +66,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,13 +80,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               peering_locations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peeringLocations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -103,13 +94,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               bandwidths_offered: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bandwidthsOffered',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteServiceProviderBandwidthsOfferedElementType',
                       type: {
@@ -120,7 +109,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {

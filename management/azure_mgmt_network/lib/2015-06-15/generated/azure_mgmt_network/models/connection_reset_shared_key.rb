@@ -24,7 +24,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionResetSharedKey',
           type: {
@@ -32,7 +31,6 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ConnectionResetSharedKey',
             model_properties: {
               key_length: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyLength',
                 type: {

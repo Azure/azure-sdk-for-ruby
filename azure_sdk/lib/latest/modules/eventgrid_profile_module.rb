@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
       DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
       ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
       DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
@@ -44,7 +45,6 @@ module Azure::Profiles::Latest
       DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
       StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
       DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
     end
 
     class EventGridDataClass
@@ -76,6 +76,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def resource_write_success_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+        end
         def device_twin_info_x509_thumbprint
           Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
         end
@@ -181,9 +184,6 @@ module Azure::Profiles::Latest
         def device_twin_info_properties
           Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
         end
-        def resource_write_success_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
-        end
       end
     end
     module Mgmt
@@ -193,8 +193,9 @@ module Azure::Profiles::Latest
       Operations = Azure::EventGrid::Mgmt::V2018_05_01_preview::Operations
 
       module Models
-        EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
+        TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
         Operation = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
+        EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
         EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
         InputSchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
@@ -229,7 +230,6 @@ module Azure::Profiles::Latest
         JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonInputSchemaMapping
         Topic = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Topic
         EventType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
-        TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
       end
 
       class EventGridManagementClass
@@ -265,11 +265,14 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def event_subscription_provisioning_state
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
+          def topic_type_info
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
           end
           def operation
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
+          end
+          def event_subscription_provisioning_state
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
           end
           def event_delivery_schema
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
@@ -372,9 +375,6 @@ module Azure::Profiles::Latest
           end
           def event_type
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
-          end
-          def topic_type_info
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
           end
         end
       end

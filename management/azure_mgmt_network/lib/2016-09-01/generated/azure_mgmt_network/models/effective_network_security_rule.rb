@@ -59,7 +59,6 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EffectiveNetworkSecurityRule',
           type: {
@@ -67,7 +66,6 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'EffectiveNetworkSecurityRule',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -75,7 +73,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -83,7 +80,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               source_port_range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourcePortRange',
                 type: {
@@ -91,7 +87,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               destination_port_range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'destinationPortRange',
                 type: {
@@ -99,7 +94,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               source_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceAddressPrefix',
                 type: {
@@ -107,7 +101,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               destination_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'destinationAddressPrefix',
                 type: {
@@ -115,13 +108,11 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               expanded_source_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expandedSourceAddressPrefix',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -131,13 +122,11 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               expanded_destination_address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expandedDestinationAddressPrefix',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -147,7 +136,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               access: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'access',
                 type: {
@@ -155,7 +143,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'priority',
                 type: {
@@ -163,7 +150,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               direction: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'direction',
                 type: {

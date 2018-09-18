@@ -12,6 +12,7 @@ module Azure::Profiles::Latest
       PolicySetDefinitions = Azure::Policy::Mgmt::V2018_03_01::PolicySetDefinitions
 
       module Models
+        PolicyDefinitionReference = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
         PolicySetDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
         PolicySku = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
@@ -22,7 +23,6 @@ module Azure::Profiles::Latest
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
         PolicyType = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
         ErrorResponse = Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
-        PolicyDefinitionReference = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
       end
 
       class PolicyManagementClass
@@ -57,6 +57,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def policy_definition_reference
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
+          end
           def policy_set_definition
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
           end
@@ -86,9 +89,6 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
-          end
-          def policy_definition_reference
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
           end
         end
       end
