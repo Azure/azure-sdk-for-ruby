@@ -39,7 +39,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       # @return [TimeAggregationType] time aggregation type. How the data that
       # is collected should be combined over time. The default value is
       # Average. Possible values include: 'Average', 'Minimum', 'Maximum',
-      # 'Total', 'Last', 'Count'
+      # 'Total', 'Count', 'Last'
       attr_accessor :time_aggregation
 
       # @return [ComparisonOperationType] the operator that is used to compare
