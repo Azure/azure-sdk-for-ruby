@@ -7,21 +7,24 @@ require 'azure_mgmt_api_management'
 module Azure::Profiles::Latest
   module ApiManagement
     module Mgmt
+      OpenIdConnectProvider = Azure::ApiManagement::Mgmt::V2018_01_01_preview::OpenIdConnectProvider
+      SignInSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::SignInSettings
+      SignUpSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::SignUpSettings
       DelegationSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::DelegationSettings
       Product = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Product
+      Group = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Group
       ProductApi = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductApi
       ProductGroup = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductGroup
       ProductSubscriptions = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductSubscriptions
-      Group = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Group
       ProductPolicy = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductPolicy
       Property = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Property
       QuotaByCounterKeys = Azure::ApiManagement::Mgmt::V2018_01_01_preview::QuotaByCounterKeys
       QuotaByPeriodKeys = Azure::ApiManagement::Mgmt::V2018_01_01_preview::QuotaByPeriodKeys
       Reports = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Reports
       TagResource = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TagResource
-      OpenIdConnectProvider = Azure::ApiManagement::Mgmt::V2018_01_01_preview::OpenIdConnectProvider
-      OperationOperations = Azure::ApiManagement::Mgmt::V2018_01_01_preview::OperationOperations
       TagDescription = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TagDescription
+      OperationOperations = Azure::ApiManagement::Mgmt::V2018_01_01_preview::OperationOperations
+      Notification = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Notification
       TenantAccessGit = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TenantAccessGit
       TenantAccess = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TenantAccess
       User = Azure::ApiManagement::Mgmt::V2018_01_01_preview::User
@@ -57,12 +60,9 @@ module Azure::Profiles::Latest
       GroupUser = Azure::ApiManagement::Mgmt::V2018_01_01_preview::GroupUser
       IdentityProvider = Azure::ApiManagement::Mgmt::V2018_01_01_preview::IdentityProvider
       Certificate = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Certificate
-      Notification = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Notification
+      NotificationRecipientUser = Azure::ApiManagement::Mgmt::V2018_01_01_preview::NotificationRecipientUser
       NotificationRecipientEmail = Azure::ApiManagement::Mgmt::V2018_01_01_preview::NotificationRecipientEmail
       NetworkStatus = Azure::ApiManagement::Mgmt::V2018_01_01_preview::NetworkStatus
-      NotificationRecipientUser = Azure::ApiManagement::Mgmt::V2018_01_01_preview::NotificationRecipientUser
-      SignInSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::SignInSettings
-      SignUpSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::SignUpSettings
 
       module Models
         SubscriptionState = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Models::SubscriptionState
@@ -266,7 +266,7 @@ module Azure::Profiles::Latest
       end
 
       class ApiManagementManagementClass
-        attr_reader :delegation_settings, :product, :product_api, :product_group, :product_subscriptions, :group, :product_policy, :property, :quota_by_counter_keys, :quota_by_period_keys, :reports, :tag_resource, :open_id_connect_provider, :operation_operations, :tag_description, :tenant_access_git, :tenant_access, :user, :tenant_configuration, :user_subscription, :user_group, :api_version_set, :user_identities, :subscription, :api_export, :policy, :tag, :logger, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_diagnostic_logger, :authorization_server, :backend, :api_management_operations, :api_management_service, :diagnostic, :diagnostic_logger, :email_template, :group_user, :identity_provider, :certificate, :notification, :notification_recipient_email, :network_status, :notification_recipient_user, :sign_in_settings, :sign_up_settings, :configurable, :base_url, :options, :model_classes
+        attr_reader :open_id_connect_provider, :sign_in_settings, :sign_up_settings, :delegation_settings, :product, :group, :product_api, :product_group, :product_subscriptions, :product_policy, :property, :quota_by_counter_keys, :quota_by_period_keys, :reports, :tag_resource, :tag_description, :operation_operations, :notification, :tenant_access_git, :tenant_access, :user, :tenant_configuration, :user_subscription, :user_group, :api_version_set, :user_identities, :subscription, :api_export, :policy, :tag, :logger, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_diagnostic_logger, :authorization_server, :backend, :api_management_operations, :api_management_service, :diagnostic, :diagnostic_logger, :email_template, :group_user, :identity_provider, :certificate, :notification_recipient_user, :notification_recipient_email, :network_status, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -276,21 +276,24 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @open_id_connect_provider = @client_0.open_id_connect_provider
+          @sign_in_settings = @client_0.sign_in_settings
+          @sign_up_settings = @client_0.sign_up_settings
           @delegation_settings = @client_0.delegation_settings
           @product = @client_0.product
+          @group = @client_0.group
           @product_api = @client_0.product_api
           @product_group = @client_0.product_group
           @product_subscriptions = @client_0.product_subscriptions
-          @group = @client_0.group
           @product_policy = @client_0.product_policy
           @property = @client_0.property
           @quota_by_counter_keys = @client_0.quota_by_counter_keys
           @quota_by_period_keys = @client_0.quota_by_period_keys
           @reports = @client_0.reports
           @tag_resource = @client_0.tag_resource
-          @open_id_connect_provider = @client_0.open_id_connect_provider
-          @operation_operations = @client_0.operation_operations
           @tag_description = @client_0.tag_description
+          @operation_operations = @client_0.operation_operations
+          @notification = @client_0.notification
           @tenant_access_git = @client_0.tenant_access_git
           @tenant_access = @client_0.tenant_access
           @user = @client_0.user
@@ -326,12 +329,9 @@ module Azure::Profiles::Latest
           @group_user = @client_0.group_user
           @identity_provider = @client_0.identity_provider
           @certificate = @client_0.certificate
-          @notification = @client_0.notification
+          @notification_recipient_user = @client_0.notification_recipient_user
           @notification_recipient_email = @client_0.notification_recipient_email
           @network_status = @client_0.network_status
-          @notification_recipient_user = @client_0.notification_recipient_user
-          @sign_in_settings = @client_0.sign_in_settings
-          @sign_up_settings = @client_0.sign_up_settings
 
           @model_classes = ModelClasses.new
         end

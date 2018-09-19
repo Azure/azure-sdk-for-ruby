@@ -11,37 +11,37 @@ module Azure::Profiles::Latest
       Vaults = Azure::KeyVault::Mgmt::V2016_10_01::Vaults
 
       module Models
+        ResourceListResult = Azure::KeyVault::Mgmt::V2016_10_01::Models::ResourceListResult
+        Sku = Azure::KeyVault::Mgmt::V2016_10_01::Models::Sku
         DeletedVault = Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVault
         VaultListResult = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultListResult
         DeletedVaultListResult = Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultListResult
+        Permissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::Permissions
         VaultProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultProperties
         VaultAccessPolicyProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyProperties
-        VaultCreateOrUpdateParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCreateOrUpdateParameters
         VaultCheckNameAvailabilityParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCheckNameAvailabilityParameters
-        Permissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::Permissions
         VaultAccessPolicyParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyParameters
+        VaultCreateOrUpdateParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCreateOrUpdateParameters
         VaultPatchProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchProperties
-        Sku = Azure::KeyVault::Mgmt::V2016_10_01::Models::Sku
-        VaultPatchParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters
         LogSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::LogSpecification
-        AccessPolicyEntry = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
-        ServiceSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
-        Vault = Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault
-        DeletedVaultProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties
-        SecretPermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::SecretPermissions
         CheckNameAvailabilityResult = Azure::KeyVault::Mgmt::V2016_10_01::Models::CheckNameAvailabilityResult
         Resource = Azure::KeyVault::Mgmt::V2016_10_01::Models::Resource
-        CertificatePermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::CertificatePermissions
-        SkuName = Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
-        CreateMode = Azure::KeyVault::Mgmt::V2016_10_01::Models::CreateMode
-        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
-        StoragePermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::StoragePermissions
+        DeletedVaultProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties
+        ServiceSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
+        AccessPolicyEntry = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
+        VaultPatchParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters
+        Vault = Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault
         KeyPermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::KeyPermissions
+        SecretPermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::SecretPermissions
+        SkuName = Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
+        StoragePermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::StoragePermissions
+        CreateMode = Azure::KeyVault::Mgmt::V2016_10_01::Models::CreateMode
+        CertificatePermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::CertificatePermissions
         Reason = Azure::KeyVault::Mgmt::V2016_10_01::Models::Reason
+        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
         OperationDisplay = Azure::KeyVault::Mgmt::V2016_10_01::Models::OperationDisplay
         OperationListResult = Azure::KeyVault::Mgmt::V2016_10_01::Models::OperationListResult
         Operation = Azure::KeyVault::Mgmt::V2016_10_01::Models::Operation
-        ResourceListResult = Azure::KeyVault::Mgmt::V2016_10_01::Models::ResourceListResult
       end
 
       class KeyVaultManagementClass
@@ -75,6 +75,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource_list_result
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::ResourceListResult
+          end
+          def sku
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::Sku
+          end
           def deleted_vault
             Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVault
           end
@@ -84,50 +90,29 @@ module Azure::Profiles::Latest
           def deleted_vault_list_result
             Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultListResult
           end
+          def permissions
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::Permissions
+          end
           def vault_properties
             Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultProperties
           end
           def vault_access_policy_properties
             Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyProperties
           end
-          def vault_create_or_update_parameters
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCreateOrUpdateParameters
-          end
           def vault_check_name_availability_parameters
             Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCheckNameAvailabilityParameters
-          end
-          def permissions
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::Permissions
           end
           def vault_access_policy_parameters
             Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyParameters
           end
+          def vault_create_or_update_parameters
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCreateOrUpdateParameters
+          end
           def vault_patch_properties
             Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchProperties
           end
-          def sku
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::Sku
-          end
-          def vault_patch_parameters
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters
-          end
           def log_specification
             Azure::KeyVault::Mgmt::V2016_10_01::Models::LogSpecification
-          end
-          def access_policy_entry
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
-          end
-          def service_specification
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
-          end
-          def vault
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault
-          end
-          def deleted_vault_properties
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties
-          end
-          def secret_permissions
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::SecretPermissions
           end
           def check_name_availability_result
             Azure::KeyVault::Mgmt::V2016_10_01::Models::CheckNameAvailabilityResult
@@ -135,26 +120,44 @@ module Azure::Profiles::Latest
           def resource
             Azure::KeyVault::Mgmt::V2016_10_01::Models::Resource
           end
-          def certificate_permissions
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::CertificatePermissions
+          def deleted_vault_properties
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties
           end
-          def sku_name
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
+          def service_specification
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
           end
-          def create_mode
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::CreateMode
+          def access_policy_entry
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
           end
-          def access_policy_update_kind
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
+          def vault_patch_parameters
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters
           end
-          def storage_permissions
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::StoragePermissions
+          def vault
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault
           end
           def key_permissions
             Azure::KeyVault::Mgmt::V2016_10_01::Models::KeyPermissions
           end
+          def secret_permissions
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::SecretPermissions
+          end
+          def sku_name
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
+          end
+          def storage_permissions
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::StoragePermissions
+          end
+          def create_mode
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::CreateMode
+          end
+          def certificate_permissions
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::CertificatePermissions
+          end
           def reason
             Azure::KeyVault::Mgmt::V2016_10_01::Models::Reason
+          end
+          def access_policy_update_kind
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
           end
           def operation_display
             Azure::KeyVault::Mgmt::V2016_10_01::Models::OperationDisplay
@@ -164,9 +167,6 @@ module Azure::Profiles::Latest
           end
           def operation
             Azure::KeyVault::Mgmt::V2016_10_01::Models::Operation
-          end
-          def resource_list_result
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::ResourceListResult
           end
         end
       end

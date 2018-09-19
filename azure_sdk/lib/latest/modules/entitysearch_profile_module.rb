@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
+      Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
+      License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
       EntertainmentBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
       MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
@@ -52,9 +55,6 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
-      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
-      Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
-      License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def tourist_attraction
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
+        end
+        def airport
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
+        end
+        def license
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::License
+        end
         def structured_value
           Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
         end
@@ -215,15 +224,6 @@ module Azure::Profiles::Latest
         end
         def local_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
-        end
-        def tourist_attraction
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
-        end
-        def airport
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
-        end
-        def license
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::License
         end
       end
     end

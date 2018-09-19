@@ -17,10 +17,10 @@ module Azure::Profiles::Latest
         ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
         ManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
         ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
-        ManagementGroup = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
         CreateGroupRequest = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
         OperationDisplay = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
         OperationListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
+        ManagementGroup = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
         ErrorResponse = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
         ErrorDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
         Operation = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
@@ -73,9 +73,6 @@ module Azure::Profiles::Latest
           def management_group_info
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
           end
-          def management_group
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
-          end
           def create_group_request
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
           end
@@ -84,6 +81,9 @@ module Azure::Profiles::Latest
           end
           def operation_list_result
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
+          end
+          def management_group
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
           end
           def error_response
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
