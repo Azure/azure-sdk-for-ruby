@@ -7,13 +7,13 @@ require 'azure_mgmt_mobile_engagement'
 module Azure::Profiles::Latest
   module MobileEngagement
     module Mgmt
+      ExportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ExportTasks
+      ImportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ImportTasks
       AppCollections = Azure::MobileEngagement::Mgmt::V2014_12_01::AppCollections
       Apps = Azure::MobileEngagement::Mgmt::V2014_12_01::Apps
       SupportedPlatforms = Azure::MobileEngagement::Mgmt::V2014_12_01::SupportedPlatforms
       Campaigns = Azure::MobileEngagement::Mgmt::V2014_12_01::Campaigns
       Devices = Azure::MobileEngagement::Mgmt::V2014_12_01::Devices
-      ExportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ExportTasks
-      ImportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ImportTasks
 
       module Models
         ProvisioningStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
@@ -30,11 +30,11 @@ module Azure::Profiles::Latest
         ApiError = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
         SupportedPlatformsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::SupportedPlatformsListResult
         ExportOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportOptions
-        CampaignTestSavedParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTestSavedParameters
         DateRangeExportTaskParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter
-        NotificationOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
-        CampaignsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
         DeviceMeta = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
+        CampaignTestSavedParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTestSavedParameters
+        CampaignsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
+        PollQuestionLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
         CampaignStatisticsResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
         CampaignLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
         PollQuestionChoiceLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
@@ -104,11 +104,11 @@ module Azure::Profiles::Latest
         ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
         JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
         CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
-        PollQuestionLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
+        NotificationOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
       end
 
       class MobileEngagementManagementClass
-        attr_reader :app_collections, :apps, :supported_platforms, :campaigns, :devices, :export_tasks, :import_tasks, :configurable, :base_url, :options, :model_classes
+        attr_reader :export_tasks, :import_tasks, :app_collections, :apps, :supported_platforms, :campaigns, :devices, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -118,13 +118,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @export_tasks = @client_0.export_tasks
+          @import_tasks = @client_0.import_tasks
           @app_collections = @client_0.app_collections
           @apps = @client_0.apps
           @supported_platforms = @client_0.supported_platforms
           @campaigns = @client_0.campaigns
           @devices = @client_0.devices
-          @export_tasks = @client_0.export_tasks
-          @import_tasks = @client_0.import_tasks
 
           @model_classes = ModelClasses.new
         end
@@ -185,20 +185,20 @@ module Azure::Profiles::Latest
           def export_options
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportOptions
           end
-          def campaign_test_saved_parameters
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTestSavedParameters
-          end
           def date_range_export_task_parameter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter
           end
-          def notification_options
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
+          def device_meta
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
+          end
+          def campaign_test_saved_parameters
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTestSavedParameters
           end
           def campaigns_list_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
           end
-          def device_meta
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
+          def poll_question_localization
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
           end
           def campaign_statistics_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
@@ -407,8 +407,8 @@ module Azure::Profiles::Latest
           def campaign_kinds
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
           end
-          def poll_question_localization
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
+          def notification_options
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
           end
         end
       end
