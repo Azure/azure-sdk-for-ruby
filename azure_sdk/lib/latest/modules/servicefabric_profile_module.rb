@@ -9,13 +9,16 @@ module Azure::Profiles::Latest
     module Mgmt
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
       Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
-      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
 
       module Models
+        ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
+        ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
+        ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
         ClientCertificateThumbprint = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateThumbprint
         ClusterUpgradeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradeDeltaHealthPolicy
         ClusterVersionDetails = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterVersionDetails
@@ -70,13 +73,10 @@ module Azure::Profiles::Latest
         ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
         AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
         ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
-        ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
-        ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
-        ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :clusters, :cluster_versions, :application_type, :service, :application, :version, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :version, :application_type, :service, :application, :cluster_versions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -88,11 +88,11 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @operations = @client_0.operations
           @clusters = @client_0.clusters
-          @cluster_versions = @client_0.cluster_versions
+          @version = @client_0.version
           @application_type = @client_0.application_type
           @service = @client_0.service
           @application = @client_0.application
-          @version = @client_0.version
+          @cluster_versions = @client_0.cluster_versions
 
           @model_classes = ModelClasses.new
         end
@@ -111,6 +111,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def application_type_resource_list
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
+          end
+          def client_certificate_common_name
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
+          end
+          def application_resource_list
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
+          end
           def client_certificate_thumbprint
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateThumbprint
           end
@@ -272,15 +281,6 @@ module Azure::Profiles::Latest
           end
           def service_type_health_policy
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
-          end
-          def application_type_resource_list
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
-          end
-          def client_certificate_common_name
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
-          end
-          def application_resource_list
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
           end
         end
       end

@@ -33,11 +33,11 @@ module Azure::Profiles::Latest
         ApiError = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
         DateRangeExportTaskParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter
         DeviceMeta = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
-        NotificationOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
         CampaignsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
-        CampaignStatisticsResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
-        CampaignLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
         PollQuestionLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
+        NotificationOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
+        CampaignLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
+        PollQuestionChoiceLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
         FeedbackByDateRangeParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
         ExportTaskListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult
         CampaignPushParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushParameters
@@ -103,8 +103,8 @@ module Azure::Profiles::Latest
         ExportState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
         ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
         JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
-        PollQuestionChoiceLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
         CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
+        CampaignStatisticsResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
       end
 
       class MobileEngagementManagementClass
@@ -194,20 +194,20 @@ module Azure::Profiles::Latest
           def device_meta
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
           end
-          def notification_options
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
-          end
           def campaigns_list_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
           end
-          def campaign_statistics_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
+          def poll_question_localization
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
+          end
+          def notification_options
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
           end
           def campaign_localization
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
           end
-          def poll_question_localization
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
+          def poll_question_choice_localization
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
           end
           def feedback_by_date_range_parameter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
@@ -404,11 +404,11 @@ module Azure::Profiles::Latest
           def job_states
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
           end
-          def poll_question_choice_localization
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
-          end
           def campaign_kinds
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
+          end
+          def campaign_statistics_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
           end
         end
       end
