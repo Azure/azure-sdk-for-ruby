@@ -29,10 +29,10 @@ module Azure::Profiles::Latest
       PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
-      SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
+      SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
       ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
       TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
@@ -133,9 +133,6 @@ module Azure::Profiles::Latest
         def answer
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
         end
-        def search_results_answer
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
-        end
         def thing
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
         end
@@ -144,6 +141,9 @@ module Azure::Profiles::Latest
         end
         def error_code
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
+        end
+        def search_results_answer
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
         end
         def error_sub_code
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode

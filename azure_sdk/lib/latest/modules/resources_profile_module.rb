@@ -10,9 +10,9 @@ module Azure::Profiles::Latest
       Deployments = Azure::Resources::Mgmt::V2017_05_10::Deployments
       Providers = Azure::Resources::Mgmt::V2017_05_10::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2017_05_10::ResourceGroups
+      Resources = Azure::Resources::Mgmt::V2017_05_10::Resources
       Tags = Azure::Resources::Mgmt::V2017_05_10::Tags
       DeploymentOperations = Azure::Resources::Mgmt::V2017_05_10::DeploymentOperations
-      Resources = Azure::Resources::Mgmt::V2017_05_10::Resources
 
       module Models
         Plan = Azure::Resources::Mgmt::V2017_05_10::Models::Plan
@@ -30,11 +30,11 @@ module Azure::Profiles::Latest
         AliasType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasType
         ResourceGroupListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupListResult
         Provider = Azure::Resources::Mgmt::V2017_05_10::Models::Provider
+        Sku = Azure::Resources::Mgmt::V2017_05_10::Models::Sku
         ResourcesMoveInfo = Azure::Resources::Mgmt::V2017_05_10::Models::ResourcesMoveInfo
         ExportTemplateRequest = Azure::Resources::Mgmt::V2017_05_10::Models::ExportTemplateRequest
-        DeploymentValidateResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
-        Sku = Azure::Resources::Mgmt::V2017_05_10::Models::Sku
         TagCount = Azure::Resources::Mgmt::V2017_05_10::Models::TagCount
+        DeploymentListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
         TagValue = Azure::Resources::Mgmt::V2017_05_10::Models::TagValue
         TagDetails = Azure::Resources::Mgmt::V2017_05_10::Models::TagDetails
         ParametersLink = Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
@@ -55,17 +55,17 @@ module Azure::Profiles::Latest
         DeploymentExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
         AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
         DeploymentOperationsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
-        DeploymentListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
+        Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
         GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
-        Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
         SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
+        DeploymentValidateResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
         ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
         DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
       end
 
       class ResourcesManagementClass
-        attr_reader :deployments, :providers, :resource_groups, :tags, :deployment_operations, :resources, :configurable, :base_url, :options, :model_classes
+        attr_reader :deployments, :providers, :resource_groups, :resources, :tags, :deployment_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -78,9 +78,9 @@ module Azure::Profiles::Latest
           @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
+          @resources = @client_0.resources
           @tags = @client_0.tags
           @deployment_operations = @client_0.deployment_operations
-          @resources = @client_0.resources
 
           @model_classes = ModelClasses.new
         end
@@ -144,20 +144,20 @@ module Azure::Profiles::Latest
           def provider
             Azure::Resources::Mgmt::V2017_05_10::Models::Provider
           end
+          def sku
+            Azure::Resources::Mgmt::V2017_05_10::Models::Sku
+          end
           def resources_move_info
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourcesMoveInfo
           end
           def export_template_request
             Azure::Resources::Mgmt::V2017_05_10::Models::ExportTemplateRequest
           end
-          def deployment_validate_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
-          end
-          def sku
-            Azure::Resources::Mgmt::V2017_05_10::Models::Sku
-          end
           def tag_count
             Azure::Resources::Mgmt::V2017_05_10::Models::TagCount
+          end
+          def deployment_list_result
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
           end
           def tag_value
             Azure::Resources::Mgmt::V2017_05_10::Models::TagValue
@@ -219,8 +219,8 @@ module Azure::Profiles::Latest
           def deployment_operations_list_result
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
           end
-          def deployment_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
+          def resource
+            Azure::Resources::Mgmt::V2017_05_10::Models::Resource
           end
           def generic_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
@@ -228,11 +228,11 @@ module Azure::Profiles::Latest
           def resource_group_export_result
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
           end
-          def resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::Resource
-          end
           def sub_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
+          end
+          def deployment_validate_result
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
           end
           def resource_identity_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
