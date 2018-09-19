@@ -9,8 +9,11 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::CustomSearch::V1_0::CustomInstance
 
     module Models
-      Answer = Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
+      SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
       SearchResultsAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
+      Identifiable = Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
+      Answer = Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
+      WebPage = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
       Thing = Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
@@ -22,12 +25,9 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
       Query = Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
-      WebMetaTag = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
-      WebPage = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
-      WebWebAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
-      SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
-      Identifiable = Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
+      WebMetaTag = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
+      WebWebAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
     end
 
     class CustomSearchDataClass
@@ -60,11 +60,20 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def answer
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
+        def search_response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
         end
         def search_results_answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
+        end
+        def identifiable
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
+        end
+        def answer
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
+        end
+        def web_page
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
         end
         def thing
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
@@ -99,23 +108,14 @@ module Azure::Profiles::Latest
         def query
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
         end
-        def web_meta_tag
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
-        end
-        def web_page
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
-        end
-        def web_web_answer
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
-        end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
         end
-        def search_response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
+        def web_meta_tag
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
         end
-        def identifiable
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
+        def web_web_answer
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
         end
       end
     end

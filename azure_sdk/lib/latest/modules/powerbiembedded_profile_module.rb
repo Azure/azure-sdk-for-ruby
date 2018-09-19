@@ -11,6 +11,9 @@ module Azure::Profiles::Latest
       WorkspaceCollections = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::WorkspaceCollections
 
       module Models
+        CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
+        AccessKeyName = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AccessKeyName
+        CheckNameReason = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
         OperationList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
         WorkspaceCollectionAccessKeys = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys
         WorkspaceCollection = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection
@@ -24,12 +27,9 @@ module Azure::Profiles::Latest
         WorkspaceList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
         CheckNameRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
         WorkspaceCollectionList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
-        CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
+        Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
         ErrorDetail = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::ErrorDetail
         MigrateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest
-        Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
-        AccessKeyName = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AccessKeyName
-        CheckNameReason = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
       end
 
       class PowerBiEmbeddedManagementClass
@@ -63,6 +63,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_name_response
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
+          end
+          def access_key_name
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AccessKeyName
+          end
+          def check_name_reason
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
+          end
           def operation_list
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
           end
@@ -102,23 +111,14 @@ module Azure::Profiles::Latest
           def workspace_collection_list
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
           end
-          def check_name_response
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
+          def error
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
           end
           def error_detail
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::ErrorDetail
           end
           def migrate_workspace_collection_request
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest
-          end
-          def error
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
-          end
-          def access_key_name
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AccessKeyName
-          end
-          def check_name_reason
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
           end
         end
       end

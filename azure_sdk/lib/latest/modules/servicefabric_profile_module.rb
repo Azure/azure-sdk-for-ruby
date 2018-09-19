@@ -8,12 +8,12 @@ module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
-      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
 
       module Models
         ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
@@ -76,7 +76,7 @@ module Azure::Profiles::Latest
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :clusters, :cluster_versions, :version, :application, :service, :application_type, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :version, :clusters, :cluster_versions, :application_type, :application, :service, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -87,12 +87,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
+          @version = @client_0.version
           @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
-          @version = @client_0.version
+          @application_type = @client_0.application_type
           @application = @client_0.application
           @service = @client_0.service
-          @application_type = @client_0.application_type
 
           @model_classes = ModelClasses.new
         end
