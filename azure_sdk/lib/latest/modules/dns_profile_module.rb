@@ -18,17 +18,17 @@ module Azure::Profiles::Latest
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
         RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
         SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
+        SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
         CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         MxRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
-        SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
         TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
         ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
         PtrRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
-        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
-        Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
         Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
+        Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
+        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
         ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
       end
@@ -85,6 +85,9 @@ module Azure::Profiles::Latest
           def srv_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
           end
+          def sub_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
+          end
           def cname_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
           end
@@ -93,9 +96,6 @@ module Azure::Profiles::Latest
           end
           def mx_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
-          end
-          def sub_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
           end
           def zone_update
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
@@ -109,14 +109,14 @@ module Azure::Profiles::Latest
           def ptr_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
           end
-          def arecord
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
+          def resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
           end
           def zone
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
           end
-          def resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
+          def arecord
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
           end
           def record_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
