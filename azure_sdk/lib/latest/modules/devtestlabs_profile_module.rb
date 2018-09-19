@@ -7,12 +7,15 @@ require 'azure_mgmt_devtestlabs'
 module Azure::Profiles::Latest
   module DevTestLabs
     module Mgmt
-      VirtualMachineSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachineSchedules
+      Users = Azure::DevTestLabs::Mgmt::V2016_05_15::Users
       Environments = Azure::DevTestLabs::Mgmt::V2016_05_15::Environments
+      Secrets = Azure::DevTestLabs::Mgmt::V2016_05_15::Secrets
+      VirtualMachineSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachineSchedules
       VirtualNetworks = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualNetworks
       Disks = Azure::DevTestLabs::Mgmt::V2016_05_15::Disks
       VirtualMachines = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachines
       Operations = Azure::DevTestLabs::Mgmt::V2016_05_15::Operations
+      Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
       ProviderOperations = Azure::DevTestLabs::Mgmt::V2016_05_15::ProviderOperations
       Labs = Azure::DevTestLabs::Mgmt::V2016_05_15::Labs
       GlobalSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::GlobalSchedules
@@ -27,9 +30,6 @@ module Azure::Profiles::Latest
       PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
       Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
       ServiceRunners = Azure::DevTestLabs::Mgmt::V2016_05_15::ServiceRunners
-      Users = Azure::DevTestLabs::Mgmt::V2016_05_15::Users
-      Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
-      Secrets = Azure::DevTestLabs::Mgmt::V2016_05_15::Secrets
 
       module Models
         ExternalSubnetFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ExternalSubnetFragment
@@ -117,9 +117,9 @@ module Azure::Profiles::Latest
         PortFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PortFragment
         ProviderOperationResult = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ProviderOperationResult
         CostThresholdProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdProperties
-        DetachDiskProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DetachDiskProperties
-        ResponseWithContinuationArmTemplate = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArmTemplate
         Resource = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Resource
+        ResponseWithContinuationArmTemplate = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArmTemplate
+        DetachDiskProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DetachDiskProperties
         Port = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Port
         EvaluatePoliciesResponse = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesResponse
         ResponseWithContinuationArtifact = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact
@@ -191,7 +191,7 @@ module Azure::Profiles::Latest
       end
 
       class DevTestLabsManagementClass
-        attr_reader :virtual_machine_schedules, :environments, :virtual_networks, :disks, :virtual_machines, :operations, :provider_operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :schedules, :service_runners, :users, :policies, :secrets, :configurable, :base_url, :options, :model_classes
+        attr_reader :users, :environments, :secrets, :virtual_machine_schedules, :virtual_networks, :disks, :virtual_machines, :operations, :policies, :provider_operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :schedules, :service_runners, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -201,12 +201,15 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @virtual_machine_schedules = @client_0.virtual_machine_schedules
+          @users = @client_0.users
           @environments = @client_0.environments
+          @secrets = @client_0.secrets
+          @virtual_machine_schedules = @client_0.virtual_machine_schedules
           @virtual_networks = @client_0.virtual_networks
           @disks = @client_0.disks
           @virtual_machines = @client_0.virtual_machines
           @operations = @client_0.operations
+          @policies = @client_0.policies
           @provider_operations = @client_0.provider_operations
           @labs = @client_0.labs
           @global_schedules = @client_0.global_schedules
@@ -221,9 +224,6 @@ module Azure::Profiles::Latest
           @policy_sets = @client_0.policy_sets
           @schedules = @client_0.schedules
           @service_runners = @client_0.service_runners
-          @users = @client_0.users
-          @policies = @client_0.policies
-          @secrets = @client_0.secrets
 
           @model_classes = ModelClasses.new
         end
@@ -497,14 +497,14 @@ module Azure::Profiles::Latest
           def cost_threshold_properties
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdProperties
           end
-          def detach_disk_properties
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DetachDiskProperties
+          def resource
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Resource
           end
           def response_with_continuation_arm_template
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArmTemplate
           end
-          def resource
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Resource
+          def detach_disk_properties
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DetachDiskProperties
           end
           def port
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Port
