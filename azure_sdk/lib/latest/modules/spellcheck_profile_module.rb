@@ -20,8 +20,8 @@ module Azure::Profiles::Latest
       SpellCheck = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellCheck
       Response = Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
       ResponseBase = Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
-      ErrorResponse = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
+      ErrorResponse = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
     end
 
     class SpellCheckDataClass
@@ -89,11 +89,11 @@ module Azure::Profiles::Latest
         def response_base
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
         end
-        def error_response
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
-        end
         def error
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
+        end
+        def error_response
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
         end
       end
     end

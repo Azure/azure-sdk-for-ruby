@@ -11,11 +11,14 @@ module Azure::Profiles::Latest
       Workspaces = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Workspaces
 
       module Models
+        WorkspaceCollectionAccessKey = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey
+        CreateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CreateWorkspaceCollectionRequest
+        Display = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Display
         UpdateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
         Operation = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
         AzureSku = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AzureSku
         CheckNameRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
-        CreateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CreateWorkspaceCollectionRequest
+        Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
         CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
         Workspace = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
         MigrateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest
@@ -27,9 +30,6 @@ module Azure::Profiles::Latest
         OperationList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
         WorkspaceCollectionAccessKeys = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys
         WorkspaceCollection = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection
-        Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
-        WorkspaceCollectionAccessKey = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey
-        Display = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Display
       end
 
       class PowerBiEmbeddedManagementClass
@@ -63,6 +63,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def workspace_collection_access_key
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey
+          end
+          def create_workspace_collection_request
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CreateWorkspaceCollectionRequest
+          end
+          def display
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Display
+          end
           def update_workspace_collection_request
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
           end
@@ -75,8 +84,8 @@ module Azure::Profiles::Latest
           def check_name_request
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
           end
-          def create_workspace_collection_request
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CreateWorkspaceCollectionRequest
+          def error
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
           end
           def check_name_response
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
@@ -110,15 +119,6 @@ module Azure::Profiles::Latest
           end
           def workspace_collection
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection
-          end
-          def error
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
-          end
-          def workspace_collection_access_key
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey
-          end
-          def display
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Display
           end
         end
       end

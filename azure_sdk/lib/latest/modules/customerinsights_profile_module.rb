@@ -8,6 +8,7 @@ module Azure::Profiles::Latest
   module CustomerInsights
     module Mgmt
       Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
+      Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
       Profiles = Azure::CustomerInsights::Mgmt::V2017_04_26::Profiles
       RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
       Operations = Azure::CustomerInsights::Mgmt::V2017_04_26::Operations
@@ -21,11 +22,13 @@ module Azure::Profiles::Latest
       Kpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Kpi
       WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
       Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
-      Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
-      Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
       Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
+      Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
 
       module Models
+        InteractionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionResourceFormat
+        KpiResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
+        EnrichingKpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EnrichingKpi
         ConnectorResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorResourceFormat
         ConnectorMappingResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingResourceFormat
         AuthorizationPolicyResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyResourceFormat
@@ -39,10 +42,10 @@ module Azure::Profiles::Latest
         PredictionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat
         EntityTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypes
         DataSourceType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourceType
+        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
         ProvisioningStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
         PermissionTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
         ConnectorTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
-        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
         ConnectorStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
         ErrorManagementTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
         FrequencyTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
@@ -127,13 +130,10 @@ module Azure::Profiles::Latest
         Hub = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
         EntityTypeDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
         ProfileResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
-        InteractionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionResourceFormat
-        KpiResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
-        EnrichingKpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EnrichingKpi
       end
 
       class CustomerInsightsManagementClass
-        attr_reader :images, :profiles, :role_assignments, :operations, :hubs, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :roles, :predictions, :links, :configurable, :base_url, :options, :model_classes
+        attr_reader :images, :predictions, :profiles, :role_assignments, :operations, :hubs, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :roles, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -144,6 +144,7 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @images = @client_0.images
+          @predictions = @client_0.predictions
           @profiles = @client_0.profiles
           @role_assignments = @client_0.role_assignments
           @operations = @client_0.operations
@@ -157,9 +158,8 @@ module Azure::Profiles::Latest
           @kpi = @client_0.kpi
           @widget_types = @client_0.widget_types
           @views = @client_0.views
-          @roles = @client_0.roles
-          @predictions = @client_0.predictions
           @links = @client_0.links
+          @roles = @client_0.roles
 
           @model_classes = ModelClasses.new
         end
@@ -178,6 +178,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def interaction_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionResourceFormat
+          end
+          def kpi_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
+          end
+          def enriching_kpi
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EnrichingKpi
+          end
           def connector_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorResourceFormat
           end
@@ -217,6 +226,9 @@ module Azure::Profiles::Latest
           def data_source_type
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourceType
           end
+          def status
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
+          end
           def provisioning_states
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
           end
@@ -225,9 +237,6 @@ module Azure::Profiles::Latest
           end
           def connector_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
-          end
-          def status
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
           end
           def connector_states
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
@@ -480,15 +489,6 @@ module Azure::Profiles::Latest
           end
           def profile_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
-          end
-          def interaction_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionResourceFormat
-          end
-          def kpi_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
-          end
-          def enriching_kpi
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EnrichingKpi
           end
         end
       end

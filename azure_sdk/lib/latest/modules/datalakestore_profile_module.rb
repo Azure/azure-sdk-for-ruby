@@ -7,14 +7,15 @@ require 'azure_mgmt_datalake_store'
 module Azure::Profiles::Latest
   module DataLakeStore
     module Mgmt
+      Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
       FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
       Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
       VirtualNetworkRules = Azure::DataLakeStore::Mgmt::V2016_11_01::VirtualNetworkRules
       TrustedIdProviders = Azure::DataLakeStore::Mgmt::V2016_11_01::TrustedIdProviders
       Accounts = Azure::DataLakeStore::Mgmt::V2016_11_01::Accounts
-      Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
 
       module Models
+        CreateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
         CreateOrUpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
         UpdateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleWithAccountParameters
         FirewallRuleListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallRuleListResult
@@ -43,29 +44,28 @@ module Azure::Profiles::Latest
         UpdateVirtualNetworkRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateVirtualNetworkRuleWithAccountParameters
         VirtualNetworkRuleListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRuleListResult
         UpdateTrustedIdProviderWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
+        Resource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
         UpdateDataLakeStoreAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
         DataLakeStoreAccountListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
         CreateOrUpdateVirtualNetworkRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
-        Resource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
-        VirtualNetworkRule = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRule
+        TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
         DataLakeStoreAccount = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
-        SubResource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
+        VirtualNetworkRule = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRule
         DataLakeStoreAccountBasic = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
         EncryptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
         EncryptionProvisioningState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
-        EncryptionConfigType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
+        SubResource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
         TrustedIdProviderState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
         DataLakeStoreAccountStatus = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
+        EncryptionConfigType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
         DataLakeStoreAccountState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
-        TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
         CapabilityInformation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CapabilityInformation
         NameAvailabilityInformation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::NameAvailabilityInformation
         UpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
-        CreateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
       end
 
       class DataLakeStoreManagementClass
-        attr_reader :firewall_rules, :locations, :virtual_network_rules, :trusted_id_providers, :accounts, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :firewall_rules, :locations, :virtual_network_rules, :trusted_id_providers, :accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -75,12 +75,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @firewall_rules = @client_0.firewall_rules
           @locations = @client_0.locations
           @virtual_network_rules = @client_0.virtual_network_rules
           @trusted_id_providers = @client_0.trusted_id_providers
           @accounts = @client_0.accounts
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -99,6 +99,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def create_firewall_rule_with_account_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
+          end
           def create_or_update_firewall_rule_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
           end
@@ -183,6 +186,9 @@ module Azure::Profiles::Latest
           def update_trusted_id_provider_with_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
           end
+          def resource
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
+          end
           def update_data_lake_store_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
           end
@@ -192,17 +198,14 @@ module Azure::Profiles::Latest
           def create_or_update_virtual_network_rule_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
           end
-          def resource
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
-          end
-          def virtual_network_rule
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRule
+          def trusted_id_provider
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
           end
           def data_lake_store_account
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
           end
-          def sub_resource
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
+          def virtual_network_rule
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRule
           end
           def data_lake_store_account_basic
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
@@ -213,8 +216,8 @@ module Azure::Profiles::Latest
           def encryption_provisioning_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
           end
-          def encryption_config_type
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
+          def sub_resource
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
           end
           def trusted_id_provider_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
@@ -222,11 +225,11 @@ module Azure::Profiles::Latest
           def data_lake_store_account_status
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
           end
+          def encryption_config_type
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
+          end
           def data_lake_store_account_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
-          end
-          def trusted_id_provider
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
           end
           def capability_information
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CapabilityInformation
@@ -236,9 +239,6 @@ module Azure::Profiles::Latest
           end
           def update_firewall_rule_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
-          end
-          def create_firewall_rule_with_account_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
           end
         end
       end

@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     VideosOperations = Azure::CognitiveServices::VideoSearch::V1_0::VideosOperations
 
     module Models
+      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+      PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
+      SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
@@ -36,11 +39,8 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
       Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
-      VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
-      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-      PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
-      SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
+      VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
     end
 
     class VideoSearchDataClass
@@ -73,6 +73,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error_response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+        end
+        def pivot_suggestions
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
+        end
+        def search_results_answer
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
+        end
         def identifiable
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
         end
@@ -154,20 +163,11 @@ module Azure::Profiles::Latest
         def query
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
         end
-        def video_object
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
-        end
-        def error_response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
         end
-        def pivot_suggestions
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
-        end
-        def search_results_answer
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
+        def video_object
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
         end
       end
     end

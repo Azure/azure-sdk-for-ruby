@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
+      TextOperationResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
+      OcrWord = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
       CelebritiesModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebritiesModel
       OcrLine = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLine
       CategoryDetail = Azure::CognitiveServices::ComputerVision::V2_0::Models::CategoryDetail
@@ -43,9 +46,6 @@ module Azure::Profiles::Latest
       FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
       ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
       Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
-      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
-      TextOperationResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
-      OcrWord = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_analysis
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
+        end
+        def text_operation_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
+        end
+        def ocr_word
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
+        end
         def celebrities_model
           Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebritiesModel
         end
@@ -181,15 +190,6 @@ module Azure::Profiles::Latest
         end
         def line
           Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
-        end
-        def image_analysis
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
-        end
-        def text_operation_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
-        end
-        def ocr_word
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
         end
       end
     end

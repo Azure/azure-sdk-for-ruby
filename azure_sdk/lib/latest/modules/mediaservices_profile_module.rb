@@ -11,16 +11,19 @@ module Azure::Profiles::Latest
       Assets = Azure::MediaServices::Mgmt::V2018_06_01_preview::Assets
       ContentKeyPolicies = Azure::MediaServices::Mgmt::V2018_06_01_preview::ContentKeyPolicies
       Transforms = Azure::MediaServices::Mgmt::V2018_06_01_preview::Transforms
+      Operations = Azure::MediaServices::Mgmt::V2018_06_01_preview::Operations
       Jobs = Azure::MediaServices::Mgmt::V2018_06_01_preview::Jobs
-      StreamingPolicies = Azure::MediaServices::Mgmt::V2018_06_01_preview::StreamingPolicies
       Locations = Azure::MediaServices::Mgmt::V2018_06_01_preview::Locations
       StreamingLocators = Azure::MediaServices::Mgmt::V2018_06_01_preview::StreamingLocators
+      StreamingPolicies = Azure::MediaServices::Mgmt::V2018_06_01_preview::StreamingPolicies
       LiveOutputs = Azure::MediaServices::Mgmt::V2018_06_01_preview::LiveOutputs
-      StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_06_01_preview::StreamingEndpoints
       LiveEvents = Azure::MediaServices::Mgmt::V2018_06_01_preview::LiveEvents
-      Operations = Azure::MediaServices::Mgmt::V2018_06_01_preview::Operations
+      StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_06_01_preview::StreamingEndpoints
 
       module Models
+        ContentKeyPolicyCollection = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyCollection
+        ODataError = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ODataError
+        Preset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Preset
         Codec = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Codec
         LiveOutputListResult = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::LiveOutputListResult
         CbcsDrmConfiguration = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CbcsDrmConfiguration
@@ -104,56 +107,56 @@ module Azure::Profiles::Latest
         ContentKeyPolicyFairPlayConfiguration = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyFairPlayConfiguration
         ContentKeyPolicyWidevineConfiguration = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyWidevineConfiguration
         AudioOverlay = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AudioOverlay
-        AacAudio = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudio
+        CopyVideo = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CopyVideo
         ContentKeyPolicy = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicy
         ImageFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ImageFormat
         JpgFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgFormat
         AudioAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AudioAnalyzerPreset
+        PngFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngFormat
         CopyAudio = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CopyAudio
-        VideoLayer = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoLayer
         Video = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Video
         H264Layer = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::H264Layer
         H264Video = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::H264Video
-        PngFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngFormat
-        JpgImage = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgImage
-        MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::MultiBitrateFormat
-        Mp4Format = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Mp4Format
-        PngImage = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngImage
-        CopyVideo = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CopyVideo
-        BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::BuiltInStandardEncoderPreset
-        StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StandardEncoderPreset
-        TransportStreamFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::TransportStreamFormat
         JpgLayer = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgLayer
-        VideoOverlay = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoOverlay
-        Transform = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Transform
-        JobInputs = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputs
+        MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::MultiBitrateFormat
+        AacAudio = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudio
+        Mp4Format = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Mp4Format
         PngLayer = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngLayer
-        JobInputAsset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputAsset
-        JobInputHttp = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputHttp
-        StreamingPolicy = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingPolicy
+        BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::BuiltInStandardEncoderPreset
+        VideoLayer = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoLayer
+        StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StandardEncoderPreset
         VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoAnalyzerPreset
+        VideoOverlay = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoOverlay
+        JpgImage = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgImage
+        Transform = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Transform
+        JobInputClip = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputClip
+        JobInputAsset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputAsset
+        PngImage = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngImage
+        JobInputHttp = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputHttp
+        JobOutputAsset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobOutputAsset
         StreamingLocator = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingLocator
+        TransportStreamFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::TransportStreamFormat
         LiveOutput = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::LiveOutput
         LiveEvent = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::LiveEvent
-        JobInputClip = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputClip
         AssetStorageEncryptionFormat = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AssetStorageEncryptionFormat
-        StreamingEndpoint = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingEndpoint
+        JobInputs = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputs
+        AssetContainerPermission = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AssetContainerPermission
         ContentKeyPolicyPlayReadyUnknownOutputPassingOption = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyUnknownOutputPassingOption
-        JobOutputAsset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobOutputAsset
+        ContentKeyPolicyPlayReadyContentType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyContentType
         Job = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Job
         ContentKeyPolicyFairPlayRentalAndLeaseKeyType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyFairPlayRentalAndLeaseKeyType
-        ContentKeyPolicyPlayReadyContentType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyContentType
+        AacAudioProfile = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudioProfile
         ContentKeyPolicyRestrictionTokenType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyRestrictionTokenType
-        ContentKeyPolicyPlayReadyLicenseType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyLicenseType
-        DeinterlaceParity = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::DeinterlaceParity
-        AssetContainerPermission = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AssetContainerPermission
+        StreamingEndpoint = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingEndpoint
+        StreamingPolicy = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingPolicy
+        Rotation = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Rotation
         ApiError = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ApiError
         StorageAccountType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StorageAccountType
-        Rotation = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Rotation
-        H264Complexity = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::H264Complexity
-        DeinterlaceMode = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::DeinterlaceMode
-        AacAudioProfile = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudioProfile
         StretchMode = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StretchMode
+        DeinterlaceParity = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::DeinterlaceParity
+        DeinterlaceMode = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::DeinterlaceMode
+        H264Complexity = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::H264Complexity
+        ContentKeyPolicyPlayReadyLicenseType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyLicenseType
         OnErrorType = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::OnErrorType
         JobErrorCategory = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobErrorCategory
         EncoderNamedPreset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::EncoderNamedPreset
@@ -191,13 +194,10 @@ module Azure::Profiles::Latest
         NoEncryption = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::NoEncryption
         SyncStorageKeysInput = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::SyncStorageKeysInput
         EnabledProtocols = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::EnabledProtocols
-        ContentKeyPolicyCollection = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyCollection
-        ODataError = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ODataError
-        Preset = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Preset
       end
 
       class MediaServicesManagementClass
-        attr_reader :mediaservices, :assets, :content_key_policies, :transforms, :jobs, :streaming_policies, :locations, :streaming_locators, :live_outputs, :streaming_endpoints, :live_events, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :mediaservices, :assets, :content_key_policies, :transforms, :operations, :jobs, :locations, :streaming_locators, :streaming_policies, :live_outputs, :live_events, :streaming_endpoints, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -211,14 +211,14 @@ module Azure::Profiles::Latest
           @assets = @client_0.assets
           @content_key_policies = @client_0.content_key_policies
           @transforms = @client_0.transforms
+          @operations = @client_0.operations
           @jobs = @client_0.jobs
-          @streaming_policies = @client_0.streaming_policies
           @locations = @client_0.locations
           @streaming_locators = @client_0.streaming_locators
+          @streaming_policies = @client_0.streaming_policies
           @live_outputs = @client_0.live_outputs
-          @streaming_endpoints = @client_0.streaming_endpoints
           @live_events = @client_0.live_events
-          @operations = @client_0.operations
+          @streaming_endpoints = @client_0.streaming_endpoints
 
           @model_classes = ModelClasses.new
         end
@@ -237,6 +237,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def content_key_policy_collection
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyCollection
+          end
+          def odata_error
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ODataError
+          end
+          def preset
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Preset
+          end
           def codec
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Codec
           end
@@ -486,8 +495,8 @@ module Azure::Profiles::Latest
           def audio_overlay
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AudioOverlay
           end
-          def aac_audio
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudio
+          def copy_video
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CopyVideo
           end
           def content_key_policy
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicy
@@ -501,11 +510,11 @@ module Azure::Profiles::Latest
           def audio_analyzer_preset
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AudioAnalyzerPreset
           end
+          def png_format
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngFormat
+          end
           def copy_audio
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CopyAudio
-          end
-          def video_layer
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoLayer
           end
           def video
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Video
@@ -516,62 +525,62 @@ module Azure::Profiles::Latest
           def h264_video
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::H264Video
           end
-          def png_format
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngFormat
-          end
-          def jpg_image
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgImage
+          def jpg_layer
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgLayer
           end
           def multi_bitrate_format
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::MultiBitrateFormat
           end
+          def aac_audio
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudio
+          end
           def mp4_format
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Mp4Format
-          end
-          def png_image
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngImage
-          end
-          def copy_video
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CopyVideo
-          end
-          def built_in_standard_encoder_preset
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::BuiltInStandardEncoderPreset
-          end
-          def standard_encoder_preset
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StandardEncoderPreset
-          end
-          def transport_stream_format
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::TransportStreamFormat
-          end
-          def jpg_layer
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgLayer
-          end
-          def video_overlay
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoOverlay
-          end
-          def transform
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Transform
-          end
-          def job_inputs
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputs
           end
           def png_layer
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngLayer
           end
-          def job_input_asset
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputAsset
+          def built_in_standard_encoder_preset
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::BuiltInStandardEncoderPreset
           end
-          def job_input_http
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputHttp
+          def video_layer
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoLayer
           end
-          def streaming_policy
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingPolicy
+          def standard_encoder_preset
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StandardEncoderPreset
           end
           def video_analyzer_preset
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoAnalyzerPreset
           end
+          def video_overlay
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::VideoOverlay
+          end
+          def jpg_image
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JpgImage
+          end
+          def transform
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Transform
+          end
+          def job_input_clip
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputClip
+          end
+          def job_input_asset
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputAsset
+          end
+          def png_image
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::PngImage
+          end
+          def job_input_http
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputHttp
+          end
+          def job_output_asset
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobOutputAsset
+          end
           def streaming_locator
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingLocator
+          end
+          def transport_stream_format
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::TransportStreamFormat
           end
           def live_output
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::LiveOutput
@@ -579,20 +588,20 @@ module Azure::Profiles::Latest
           def live_event
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::LiveEvent
           end
-          def job_input_clip
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputClip
-          end
           def asset_storage_encryption_format
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AssetStorageEncryptionFormat
           end
-          def streaming_endpoint
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingEndpoint
+          def job_inputs
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobInputs
+          end
+          def asset_container_permission
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AssetContainerPermission
           end
           def content_key_policy_play_ready_unknown_output_passing_option
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyUnknownOutputPassingOption
           end
-          def job_output_asset
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::JobOutputAsset
+          def content_key_policy_play_ready_content_type
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyContentType
           end
           def job
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Job
@@ -600,20 +609,20 @@ module Azure::Profiles::Latest
           def content_key_policy_fair_play_rental_and_lease_key_type
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyFairPlayRentalAndLeaseKeyType
           end
-          def content_key_policy_play_ready_content_type
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyContentType
+          def aac_audio_profile
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudioProfile
           end
           def content_key_policy_restriction_token_type
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyRestrictionTokenType
           end
-          def content_key_policy_play_ready_license_type
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyLicenseType
+          def streaming_endpoint
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingEndpoint
           end
-          def deinterlace_parity
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::DeinterlaceParity
+          def streaming_policy
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StreamingPolicy
           end
-          def asset_container_permission
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AssetContainerPermission
+          def rotation
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Rotation
           end
           def api_error
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ApiError
@@ -621,20 +630,20 @@ module Azure::Profiles::Latest
           def storage_account_type
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StorageAccountType
           end
-          def rotation
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Rotation
+          def stretch_mode
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StretchMode
           end
-          def h264_complexity
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::H264Complexity
+          def deinterlace_parity
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::DeinterlaceParity
           end
           def deinterlace_mode
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::DeinterlaceMode
           end
-          def aac_audio_profile
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::AacAudioProfile
+          def h264_complexity
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::H264Complexity
           end
-          def stretch_mode
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::StretchMode
+          def content_key_policy_play_ready_license_type
+            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyPlayReadyLicenseType
           end
           def on_error_type
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::OnErrorType
@@ -746,15 +755,6 @@ module Azure::Profiles::Latest
           end
           def enabled_protocols
             Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::EnabledProtocols
-          end
-          def content_key_policy_collection
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ContentKeyPolicyCollection
-          end
-          def odata_error
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::ODataError
-          end
-          def preset
-            Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::Preset
           end
         end
       end

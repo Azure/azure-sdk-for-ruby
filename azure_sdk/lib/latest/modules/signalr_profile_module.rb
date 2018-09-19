@@ -7,10 +7,11 @@ require 'azure_mgmt_signalr'
 module Azure::Profiles::Latest
   module Signalr
     module Mgmt
-      SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
       Operations = Azure::Signalr::Mgmt::V2018_03_01_preview::Operations
+      SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
 
       module Models
+        ResourceSku = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
         Operation = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
         SignalRResourceList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
         SignalRUpdateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
@@ -30,12 +31,11 @@ module Azure::Profiles::Latest
         KeyType = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
         Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
         OperationList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
-        ResourceSku = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
         ProvisioningState = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState
       end
 
       class SignalrManagementClass
-        attr_reader :signal_r, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :signal_r, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -45,8 +45,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @signal_r = @client_0.signal_r
           @operations = @client_0.operations
+          @signal_r = @client_0.signal_r
 
           @model_classes = ModelClasses.new
         end
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource_sku
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
+          end
           def operation
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
           end
@@ -121,9 +124,6 @@ module Azure::Profiles::Latest
           end
           def operation_list
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
-          end
-          def resource_sku
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
           end
           def provisioning_state
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState

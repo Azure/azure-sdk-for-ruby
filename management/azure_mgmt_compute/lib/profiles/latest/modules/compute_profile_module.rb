@@ -29,6 +29,9 @@ module Azure::Compute::Profiles::Latest
     VirtualMachineRunCommands = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineRunCommands
 
     module Models
+      ResourceSkuRestrictionInfo = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionInfo
+      ResourceSkuCapacityScaleType = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacityScaleType
+      ResourceSkuRestrictionsType = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsType
       ResourceSkuRestrictionsReasonCode = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
       ResourceSkuRestrictions = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictions
       ResourceSkuCapacity = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
@@ -37,11 +40,9 @@ module Azure::Compute::Profiles::Latest
       ResourceSku = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSku
       ResourceSkuCosts = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCosts
       ResourceSkusResult = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
-      ResourceSkuRestrictionInfo = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionInfo
-      ResourceSkuCapacityScaleType = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacityScaleType
-      ResourceSkuRestrictionsType = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsType
       OperationStatusResponse = Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
       ComputeLongRunningOperationProperties = Azure::Compute::Mgmt::V2017_12_01::Models::ComputeLongRunningOperationProperties
+      AccessLevel = Azure::Compute::Mgmt::V2018_04_01::Models::AccessLevel
       EncryptionSettings = Azure::Compute::Mgmt::V2018_04_01::Models::EncryptionSettings
       DiskSku = Azure::Compute::Mgmt::V2018_04_01::Models::DiskSku
       DiskUpdate = Azure::Compute::Mgmt::V2018_04_01::Models::DiskUpdate
@@ -60,7 +61,6 @@ module Azure::Compute::Profiles::Latest
       Snapshot = Azure::Compute::Mgmt::V2018_04_01::Models::Snapshot
       DiskCreateOption = Azure::Compute::Mgmt::V2018_04_01::Models::DiskCreateOption
       SnapshotStorageAccountTypes = Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotStorageAccountTypes
-      AccessLevel = Azure::Compute::Mgmt::V2018_04_01::Models::AccessLevel
       ComputeOperationValue = Azure::Compute::Mgmt::V2018_06_01::Models::ComputeOperationValue
       VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateOSProfile
       VirtualMachineScaleSetManagedDiskParameters = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetManagedDiskParameters
@@ -344,6 +344,15 @@ module Azure::Compute::Profiles::Latest
     end
 
     class ModelClasses
+      def resource_sku_restriction_info
+        Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionInfo
+      end
+      def resource_sku_capacity_scale_type
+        Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacityScaleType
+      end
+      def resource_sku_restrictions_type
+        Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsType
+      end
       def resource_sku_restrictions_reason_code
         Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
       end
@@ -368,20 +377,14 @@ module Azure::Compute::Profiles::Latest
       def resource_skus_result
         Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
       end
-      def resource_sku_restriction_info
-        Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionInfo
-      end
-      def resource_sku_capacity_scale_type
-        Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacityScaleType
-      end
-      def resource_sku_restrictions_type
-        Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsType
-      end
       def operation_status_response
         Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
       end
       def compute_long_running_operation_properties
         Azure::Compute::Mgmt::V2017_12_01::Models::ComputeLongRunningOperationProperties
+      end
+      def access_level
+        Azure::Compute::Mgmt::V2018_04_01::Models::AccessLevel
       end
       def encryption_settings
         Azure::Compute::Mgmt::V2018_04_01::Models::EncryptionSettings
@@ -436,9 +439,6 @@ module Azure::Compute::Profiles::Latest
       end
       def snapshot_storage_account_types
         Azure::Compute::Mgmt::V2018_04_01::Models::SnapshotStorageAccountTypes
-      end
-      def access_level
-        Azure::Compute::Mgmt::V2018_04_01::Models::AccessLevel
       end
       def compute_operation_value
         Azure::Compute::Mgmt::V2018_06_01::Models::ComputeOperationValue

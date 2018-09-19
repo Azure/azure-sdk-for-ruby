@@ -7,15 +7,18 @@ require 'azure_mgmt_stream_analytics'
 module Azure::Profiles::Latest
   module StreamAnalytics
     module Mgmt
-      Subscriptions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Subscriptions
+      Operations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Operations
       StreamingJobs = Azure::StreamAnalytics::Mgmt::V2016_03_01::StreamingJobs
       Inputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Inputs
       Outputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Outputs
       Transformations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Transformations
       Functions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Functions
-      Operations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Operations
+      Subscriptions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Subscriptions
 
       module Models
+        DiagnosticCondition = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::DiagnosticCondition
+        OutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputDataSource
+        InputProperties = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::InputProperties
         FunctionProperties = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionProperties
         ServiceBusDataSourceProperties = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ServiceBusDataSourceProperties
         OutputListResult = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputListResult
@@ -76,22 +79,19 @@ module Azure::Profiles::Latest
         Operation = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Operation
         Sku = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Sku
         SubResource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SubResource
-        Resource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
         StorageAccount = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
         SkuName = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SkuName
+        Resource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
         AzureMachineLearningWebServiceInputColumn = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputColumn
         AzureMachineLearningWebServiceInputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputs
         ReferenceInputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ReferenceInputDataSource
         FunctionBinding = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionBinding
         Diagnostics = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Diagnostics
         FunctionOutput = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionOutput
-        DiagnosticCondition = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::DiagnosticCondition
-        OutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputDataSource
-        InputProperties = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::InputProperties
       end
 
       class StreamAnalyticsManagementClass
-        attr_reader :subscriptions, :streaming_jobs, :inputs, :outputs, :transformations, :functions, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :streaming_jobs, :inputs, :outputs, :transformations, :functions, :subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -101,13 +101,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @subscriptions = @client_0.subscriptions
+          @operations = @client_0.operations
           @streaming_jobs = @client_0.streaming_jobs
           @inputs = @client_0.inputs
           @outputs = @client_0.outputs
           @transformations = @client_0.transformations
           @functions = @client_0.functions
-          @operations = @client_0.operations
+          @subscriptions = @client_0.subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -126,6 +126,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def diagnostic_condition
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::DiagnosticCondition
+          end
+          def output_data_source
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputDataSource
+          end
+          def input_properties
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::InputProperties
+          end
           def function_properties
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionProperties
           end
@@ -306,14 +315,14 @@ module Azure::Profiles::Latest
           def sub_resource
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SubResource
           end
-          def resource
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
-          end
           def storage_account
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
           end
           def sku_name
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SkuName
+          end
+          def resource
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
           end
           def azure_machine_learning_web_service_input_column
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputColumn
@@ -332,15 +341,6 @@ module Azure::Profiles::Latest
           end
           def function_output
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionOutput
-          end
-          def diagnostic_condition
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::DiagnosticCondition
-          end
-          def output_data_source
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputDataSource
-          end
-          def input_properties
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::InputProperties
           end
         end
       end
