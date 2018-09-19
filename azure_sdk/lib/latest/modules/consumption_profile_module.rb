@@ -7,13 +7,13 @@ require 'azure_mgmt_consumption'
 module Azure::Profiles::Latest
   module Consumption
     module Mgmt
+      PriceSheet = Azure::Consumption::Mgmt::V2018_01_31::PriceSheet
       UsageDetails = Azure::Consumption::Mgmt::V2018_01_31::UsageDetails
+      Operations = Azure::Consumption::Mgmt::V2018_01_31::Operations
       Marketplaces = Azure::Consumption::Mgmt::V2018_01_31::Marketplaces
       ReservationsSummaries = Azure::Consumption::Mgmt::V2018_01_31::ReservationsSummaries
       ReservationsDetails = Azure::Consumption::Mgmt::V2018_01_31::ReservationsDetails
       Budgets = Azure::Consumption::Mgmt::V2018_01_31::Budgets
-      PriceSheet = Azure::Consumption::Mgmt::V2018_01_31::PriceSheet
-      Operations = Azure::Consumption::Mgmt::V2018_01_31::Operations
 
       module Models
         Resource = Azure::Consumption::Mgmt::V2018_01_31::Models::Resource
@@ -47,7 +47,7 @@ module Azure::Profiles::Latest
       end
 
       class ConsumptionManagementClass
-        attr_reader :usage_details, :marketplaces, :reservations_summaries, :reservations_details, :budgets, :price_sheet, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :price_sheet, :usage_details, :operations, :marketplaces, :reservations_summaries, :reservations_details, :budgets, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -57,13 +57,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @price_sheet = @client_0.price_sheet
           @usage_details = @client_0.usage_details
+          @operations = @client_0.operations
           @marketplaces = @client_0.marketplaces
           @reservations_summaries = @client_0.reservations_summaries
           @reservations_details = @client_0.reservations_details
           @budgets = @client_0.budgets
-          @price_sheet = @client_0.price_sheet
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end

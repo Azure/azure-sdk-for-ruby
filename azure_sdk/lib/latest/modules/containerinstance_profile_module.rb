@@ -7,14 +7,17 @@ require 'azure_mgmt_container_instance'
 module Azure::Profiles::Latest
   module ContainerInstance
     module Mgmt
+      ContainerLogs = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::ContainerLogs
+      StartContainer = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::StartContainer
       Operations = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Operations
       ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::ContainerGroups
       ContainerGroupUsage = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::ContainerGroupUsage
-      ContainerLogs = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::ContainerLogs
-      StartContainer = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::StartContainer
 
       module Models
+        Logs = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Logs
+        Port = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Port
         ContainerExecRequestTerminalSize = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerExecRequestTerminalSize
+        ResourceLimits = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ResourceLimits
         VolumeMount = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::VolumeMount
         ContainerExecRequest = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerExecRequest
         ContainerPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerPropertiesInstanceView
@@ -43,16 +46,13 @@ module Azure::Profiles::Latest
         GitRepoVolume = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::GitRepoVolume
         ImageRegistryCredential = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ImageRegistryCredential
         EnvironmentVariable = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::EnvironmentVariable
-        ResourceLimits = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ResourceLimits
         Operation = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Operation
         ContainerGroupListResult = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerGroupListResult
-        Logs = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Logs
-        Port = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Port
         AzureFileVolume = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::AzureFileVolume
       end
 
       class ContainerInstanceManagementClass
-        attr_reader :operations, :container_groups, :container_group_usage, :container_logs, :start_container, :configurable, :base_url, :options, :model_classes
+        attr_reader :container_logs, :start_container, :operations, :container_groups, :container_group_usage, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -62,11 +62,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @container_logs = @client_0.container_logs
+          @start_container = @client_0.start_container
           @operations = @client_0.operations
           @container_groups = @client_0.container_groups
           @container_group_usage = @client_0.container_group_usage
-          @container_logs = @client_0.container_logs
-          @start_container = @client_0.start_container
 
           @model_classes = ModelClasses.new
         end
@@ -85,8 +85,17 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def logs
+            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Logs
+          end
+          def port
+            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Port
+          end
           def container_exec_request_terminal_size
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerExecRequestTerminalSize
+          end
+          def resource_limits
+            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ResourceLimits
           end
           def volume_mount
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::VolumeMount
@@ -172,20 +181,11 @@ module Azure::Profiles::Latest
           def environment_variable
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::EnvironmentVariable
           end
-          def resource_limits
-            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ResourceLimits
-          end
           def operation
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Operation
           end
           def container_group_list_result
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerGroupListResult
-          end
-          def logs
-            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Logs
-          end
-          def port
-            Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Port
           end
           def azure_file_volume
             Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::AzureFileVolume

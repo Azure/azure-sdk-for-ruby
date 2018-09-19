@@ -7,9 +7,9 @@ require 'azure_mgmt_resources_management'
 module Azure::Profiles::Latest
   module ResourcesManagement
     module Mgmt
-      Operations = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Operations
       ManagementGroups = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::ManagementGroups
       ManagementGroupSubscriptions = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::ManagementGroupSubscriptions
+      Operations = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Operations
 
       module Models
         ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
@@ -27,7 +27,7 @@ module Azure::Profiles::Latest
       end
 
       class ResourcesManagementManagementClass
-        attr_reader :operations, :management_groups, :management_group_subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :management_groups, :management_group_subscriptions, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,9 +37,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @management_groups = @client_0.management_groups
           @management_group_subscriptions = @client_0.management_group_subscriptions
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end

@@ -16,6 +16,9 @@ module Azure::Profiles::Latest
       Operations = Azure::CDN::Mgmt::V2017_10_12::Operations
 
       module Models
+        ValidateCustomDomainInput = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainInput
+        IpAddressGroup = Azure::CDN::Mgmt::V2017_10_12::Models::IpAddressGroup
+        ValidateCustomDomainOutput = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
         CheckNameAvailabilityInput = Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityInput
         DeliveryRuleCondition = Azure::CDN::Mgmt::V2017_10_12::Models::DeliveryRuleCondition
         CheckNameAvailabilityOutput = Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityOutput
@@ -72,9 +75,6 @@ module Azure::Profiles::Latest
         CustomDomainParameters = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomainParameters
         EdgenodeResult = Azure::CDN::Mgmt::V2017_10_12::Models::EdgenodeResult
         CustomDomainListResult = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomainListResult
-        ValidateCustomDomainInput = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainInput
-        IpAddressGroup = Azure::CDN::Mgmt::V2017_10_12::Models::IpAddressGroup
-        ValidateCustomDomainOutput = Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
       end
 
       class CDNManagementClass
@@ -113,6 +113,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def validate_custom_domain_input
+            Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainInput
+          end
+          def ip_address_group
+            Azure::CDN::Mgmt::V2017_10_12::Models::IpAddressGroup
+          end
+          def validate_custom_domain_output
+            Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
+          end
           def check_name_availability_input
             Azure::CDN::Mgmt::V2017_10_12::Models::CheckNameAvailabilityInput
           end
@@ -280,15 +289,6 @@ module Azure::Profiles::Latest
           end
           def custom_domain_list_result
             Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomainListResult
-          end
-          def validate_custom_domain_input
-            Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainInput
-          end
-          def ip_address_group
-            Azure::CDN::Mgmt::V2017_10_12::Models::IpAddressGroup
-          end
-          def validate_custom_domain_output
-            Azure::CDN::Mgmt::V2017_10_12::Models::ValidateCustomDomainOutput
           end
         end
       end

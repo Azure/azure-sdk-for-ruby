@@ -16,6 +16,9 @@ module Azure::Profiles::Latest
       PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
 
       module Models
+        CheckNameAvailabilityParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
+        TaskSchedulingPolicy = Azure::Batch::Mgmt::V2017_09_01::Models::TaskSchedulingPolicy
+        CloudServiceConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::CloudServiceConfiguration
         LinuxUserConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::LinuxUserConfiguration
         UserAccount = Azure::Batch::Mgmt::V2017_09_01::Models::UserAccount
         OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
@@ -92,9 +95,6 @@ module Azure::Profiles::Latest
         PoolEndpointConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::PoolEndpointConfiguration
         DeleteCertificateError = Azure::Batch::Mgmt::V2017_09_01::Models::DeleteCertificateError
         NetworkConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::NetworkConfiguration
-        CheckNameAvailabilityParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
-        TaskSchedulingPolicy = Azure::Batch::Mgmt::V2017_09_01::Models::TaskSchedulingPolicy
-        CloudServiceConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::CloudServiceConfiguration
       end
 
       class BatchManagementClass
@@ -133,6 +133,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_name_availability_parameters
+            Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
+          end
+          def task_scheduling_policy
+            Azure::Batch::Mgmt::V2017_09_01::Models::TaskSchedulingPolicy
+          end
+          def cloud_service_configuration
+            Azure::Batch::Mgmt::V2017_09_01::Models::CloudServiceConfiguration
+          end
           def linux_user_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::LinuxUserConfiguration
           end
@@ -360,15 +369,6 @@ module Azure::Profiles::Latest
           end
           def network_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::NetworkConfiguration
-          end
-          def check_name_availability_parameters
-            Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
-          end
-          def task_scheduling_policy
-            Azure::Batch::Mgmt::V2017_09_01::Models::TaskSchedulingPolicy
-          end
-          def cloud_service_configuration
-            Azure::Batch::Mgmt::V2017_09_01::Models::CloudServiceConfiguration
           end
         end
       end
