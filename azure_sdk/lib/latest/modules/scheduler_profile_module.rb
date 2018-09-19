@@ -28,13 +28,13 @@ module Azure::Profiles::Latest
         JobHistoryListResult = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryListResult
         JobHistoryFilter = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryFilter
         JobMaxRecurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobMaxRecurrence
-        JobErrorAction = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobErrorAction
+        JobStateFilter = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStateFilter
         JobRecurrenceScheduleMonthlyOccurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrenceScheduleMonthlyOccurrence
         ServiceBusMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusMessage
+        JobErrorAction = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobErrorAction
         JobCollectionListResult = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionListResult
         ServiceBusAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusAuthentication
         ServiceBusQueueMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusQueueMessage
-        JobStateFilter = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStateFilter
         ServiceBusTopicMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
         ClientCertAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::ClientCertAuthentication
         OAuthAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
@@ -139,14 +139,17 @@ module Azure::Profiles::Latest
           def job_max_recurrence
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobMaxRecurrence
           end
-          def job_error_action
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobErrorAction
+          def job_state_filter
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStateFilter
           end
           def job_recurrence_schedule_monthly_occurrence
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrenceScheduleMonthlyOccurrence
           end
           def service_bus_message
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusMessage
+          end
+          def job_error_action
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobErrorAction
           end
           def job_collection_list_result
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionListResult
@@ -156,9 +159,6 @@ module Azure::Profiles::Latest
           end
           def service_bus_queue_message
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusQueueMessage
-          end
-          def job_state_filter
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStateFilter
           end
           def service_bus_topic_message
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage

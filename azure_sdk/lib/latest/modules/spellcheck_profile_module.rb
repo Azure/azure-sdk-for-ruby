@@ -8,6 +8,7 @@ module Azure::Profiles::Latest
   module SpellCheck
 
     module Models
+      Identifiable = Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
       ErrorCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
@@ -21,7 +22,6 @@ module Azure::Profiles::Latest
       Response = Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
       ResponseBase = Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
       Error = Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
-      Identifiable = Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
     end
 
     class SpellCheckDataClass
@@ -53,6 +53,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def identifiable
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
+        end
         def answer
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
         end
@@ -91,9 +94,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
-        end
-        def identifiable
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
         end
       end
     end

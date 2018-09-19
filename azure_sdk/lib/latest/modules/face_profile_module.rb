@@ -7,14 +7,15 @@ require 'azure_cognitiveservices_face'
 module Azure::Profiles::Latest
   module Face
     PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
+    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
-    Face = Azure::CognitiveServices::Face::V1_0::Face
 
     module Models
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
-      FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
+      SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
       GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
       FaceLandmarks = Azure::CognitiveServices::Face::V1_0::Models::FaceLandmarks
       GroupResult = Azure::CognitiveServices::Face::V1_0::Models::GroupResult
@@ -36,9 +37,9 @@ module Azure::Profiles::Latest
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
+      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
-      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
       UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
@@ -48,21 +49,20 @@ module Azure::Profiles::Latest
       FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
       Person = Azure::CognitiveServices::Face::V1_0::Models::Person
-      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
-      NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
+      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
-      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
+      NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
       AzureRegions = Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
-      SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
     end
 
     class FaceDataClass
-      attr_reader :person_group_person, :person_group_operations, :face_list_operations, :face, :configurable, :base_url, :options, :model_classes
+      attr_reader :person_group_person, :face, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -73,9 +73,9 @@ module Azure::Profiles::Latest
         end
         add_telemetry(@client_0)
         @person_group_person = @client_0.person_group_person
+        @face = @client_0.face
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
-        @face = @client_0.face
 
         @model_classes = ModelClasses.new
       end
@@ -97,11 +97,14 @@ module Azure::Profiles::Latest
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
         def find_similar_request
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
         end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
+        def similar_face
+          Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
         end
         def group_request
           Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
@@ -166,14 +169,14 @@ module Azure::Profiles::Latest
         def occlusion
           Azure::CognitiveServices::Face::V1_0::Models::Occlusion
         end
+        def noise
+          Azure::CognitiveServices::Face::V1_0::Models::Noise
+        end
         def hair
           Azure::CognitiveServices::Face::V1_0::Models::Hair
         end
         def name_and_user_data_contract
           Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
-        end
-        def noise
-          Azure::CognitiveServices::Face::V1_0::Models::Noise
         end
         def detected_face
           Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
@@ -202,8 +205,8 @@ module Azure::Profiles::Latest
         def person
           Azure::CognitiveServices::Face::V1_0::Models::Person
         end
-        def blur_level
-          Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+        def accessory_type
+          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
         end
         def hair_color_type
           Azure::CognitiveServices::Face::V1_0::Models::HairColorType
@@ -211,14 +214,14 @@ module Azure::Profiles::Latest
         def gender
           Azure::CognitiveServices::Face::V1_0::Models::Gender
         end
-        def noise_level
-          Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
+        def blur_level
+          Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
         end
         def exposure_level
           Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
-        def accessory_type
-          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
+        def noise_level
+          Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
         def find_similar_match_mode
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
@@ -231,9 +234,6 @@ module Azure::Profiles::Latest
         end
         def azure_regions
           Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
-        end
-        def similar_face
-          Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
         end
       end
     end
