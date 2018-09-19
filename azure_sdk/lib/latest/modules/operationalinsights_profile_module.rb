@@ -9,10 +9,10 @@ module Azure::Profiles::Latest
     module Mgmt
       StorageInsights = Azure::OperationalInsights::Mgmt::V2015_03_20::StorageInsights
       SavedSearches = Azure::OperationalInsights::Mgmt::V2015_03_20::SavedSearches
-      Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
-      Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
       LinkedServices = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::LinkedServices
       DataSources = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::DataSources
+      Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
+      Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
 
       module Models
         Tag = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
@@ -66,7 +66,7 @@ module Azure::Profiles::Latest
       end
 
       class OperationalInsightsManagementClass
-        attr_reader :storage_insights, :saved_searches, :operations, :workspaces, :linked_services, :data_sources, :configurable, :base_url, :options, :model_classes
+        attr_reader :storage_insights, :saved_searches, :linked_services, :data_sources, :operations, :workspaces, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -84,10 +84,10 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @operations = @client_1.operations
-          @workspaces = @client_1.workspaces
           @linked_services = @client_1.linked_services
           @data_sources = @client_1.data_sources
+          @operations = @client_1.operations
+          @workspaces = @client_1.workspaces
 
           @model_classes = ModelClasses.new
         end

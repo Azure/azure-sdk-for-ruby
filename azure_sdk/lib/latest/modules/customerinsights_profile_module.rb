@@ -7,8 +7,11 @@ require 'azure_mgmt_customer_insights'
 module Azure::Profiles::Latest
   module CustomerInsights
     module Mgmt
+      WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
+      Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
       Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
       Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
+      Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
       Profiles = Azure::CustomerInsights::Mgmt::V2017_04_26::Profiles
       Operations = Azure::CustomerInsights::Mgmt::V2017_04_26::Operations
       RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
@@ -21,11 +24,11 @@ module Azure::Profiles::Latest
       Connectors = Azure::CustomerInsights::Mgmt::V2017_04_26::Connectors
       ConnectorMappings = Azure::CustomerInsights::Mgmt::V2017_04_26::ConnectorMappings
       Kpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Kpi
-      WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
-      Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
-      Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
 
       module Models
+        ImageDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
+        Hub = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
+        EntityTypeDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
         ProfileResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
         InteractionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionResourceFormat
         KpiResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
@@ -48,10 +51,10 @@ module Azure::Profiles::Latest
         ConnectorTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
         ConnectorStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
         ErrorManagementTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
+        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
         FrequencyTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
         CompletionOperationTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CompletionOperationTypes
         ConnectorMappingStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStates
-        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
         CalculationWindowTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
         KpiFunctions = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiFunctions
         EntityType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityType
@@ -127,13 +130,10 @@ module Azure::Profiles::Latest
         ConnectorMappingStructure = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStructure
         GetImageUploadUrlInput = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::GetImageUploadUrlInput
         ParticipantProfilePropertyReference = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantProfilePropertyReference
-        ImageDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
-        Hub = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
-        EntityTypeDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
       end
 
       class CustomerInsightsManagementClass
-        attr_reader :roles, :predictions, :profiles, :operations, :role_assignments, :images, :hubs, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :configurable, :base_url, :options, :model_classes
+        attr_reader :widget_types, :views, :roles, :predictions, :links, :profiles, :operations, :role_assignments, :images, :hubs, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -143,8 +143,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @widget_types = @client_0.widget_types
+          @views = @client_0.views
           @roles = @client_0.roles
           @predictions = @client_0.predictions
+          @links = @client_0.links
           @profiles = @client_0.profiles
           @operations = @client_0.operations
           @role_assignments = @client_0.role_assignments
@@ -157,9 +160,6 @@ module Azure::Profiles::Latest
           @connectors = @client_0.connectors
           @connector_mappings = @client_0.connector_mappings
           @kpi = @client_0.kpi
-          @widget_types = @client_0.widget_types
-          @views = @client_0.views
-          @links = @client_0.links
 
           @model_classes = ModelClasses.new
         end
@@ -178,6 +178,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def image_definition
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
+          end
+          def hub
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
+          end
+          def entity_type_definition
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
+          end
           def profile_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
           end
@@ -244,6 +253,9 @@ module Azure::Profiles::Latest
           def error_management_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
           end
+          def status
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
+          end
           def frequency_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
           end
@@ -252,9 +264,6 @@ module Azure::Profiles::Latest
           end
           def connector_mapping_states
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStates
-          end
-          def status
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
           end
           def calculation_window_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
@@ -480,15 +489,6 @@ module Azure::Profiles::Latest
           end
           def participant_profile_property_reference
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantProfilePropertyReference
-          end
-          def image_definition
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
-          end
-          def hub
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
-          end
-          def entity_type_definition
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
           end
         end
       end

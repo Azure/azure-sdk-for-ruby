@@ -39,9 +39,9 @@ module Azure::Profiles::Latest
         CampaignStatisticsResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
         CampaignLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
         PollQuestionChoiceLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
-        FeedbackByDateRangeParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
         ExportTaskListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult
         CampaignPushParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushParameters
+        CampaignPushResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushResult
         ImportTask = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTask
         AppCollectionNameAvailability = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppCollectionNameAvailability
         DeviceQueryResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceQueryResult
@@ -104,7 +104,7 @@ module Azure::Profiles::Latest
         ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
         JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
         CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
-        CampaignPushResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushResult
+        FeedbackByDateRangeParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
       end
 
       class MobileEngagementManagementClass
@@ -212,14 +212,14 @@ module Azure::Profiles::Latest
           def poll_question_choice_localization
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
           end
-          def feedback_by_date_range_parameter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
-          end
           def export_task_list_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult
           end
           def campaign_push_parameters
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushParameters
+          end
+          def campaign_push_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushResult
           end
           def import_task
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTask
@@ -407,8 +407,8 @@ module Azure::Profiles::Latest
           def campaign_kinds
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
           end
-          def campaign_push_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushResult
+          def feedback_by_date_range_parameter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
           end
         end
       end
