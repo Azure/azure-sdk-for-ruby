@@ -11,7 +11,9 @@ module Azure::Profiles::Latest
       Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
 
       module Models
+        ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
         Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+        ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
         AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
         AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
         AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
@@ -56,8 +58,14 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_details
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
+          end
           def operation
             Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+          end
+          def error_response_body
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
           end
           def app_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
