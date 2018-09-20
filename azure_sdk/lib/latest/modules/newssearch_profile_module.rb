@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
       ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
@@ -30,9 +31,8 @@ module Azure::Profiles::Latest
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
-      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-      NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
+      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
     end
 
     class NewsSearchDataClass
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def news_article
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
+        end
         def news
           Azure::CognitiveServices::NewsSearch::V1_0::Models::News
         end
@@ -128,14 +131,11 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
         end
-        def error_response
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
-        end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
         end
-        def news_article
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
+        def error_response
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
         end
       end
     end

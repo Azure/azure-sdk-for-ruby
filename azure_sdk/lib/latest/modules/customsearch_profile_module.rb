@@ -26,8 +26,8 @@ module Azure::Profiles::Latest
       SafeSearch = Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
       TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
       Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
-      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
+      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
     end
 
     class CustomSearchDataClass
@@ -111,11 +111,11 @@ module Azure::Profiles::Latest
         def response
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
         end
-        def error_response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-        end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
+        end
+        def error_response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
         end
       end
     end
