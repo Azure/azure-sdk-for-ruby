@@ -7,11 +7,12 @@ require 'azure_mgmt_cognitive_services'
 module Azure::Profiles::Latest
   module CognitiveServices
     module Mgmt
-      Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
       Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
       CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
+      Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
 
       module Models
+        Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
         CognitiveServicesAccountEnumerateSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
         ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
         CognitiveServicesAccountCreateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
@@ -28,7 +29,6 @@ module Azure::Profiles::Latest
         CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
         CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
         KeyName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
-        Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
         SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
         SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
         Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
@@ -37,7 +37,7 @@ module Azure::Profiles::Latest
       end
 
       class CognitiveServicesManagementClass
-        attr_reader :operations, :accounts, :check_sku_availability, :configurable, :base_url, :options, :model_classes
+        attr_reader :accounts, :check_sku_availability, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -47,9 +47,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @accounts = @client_0.accounts
           @check_sku_availability = @client_0.check_sku_availability
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -68,6 +68,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
+          end
           def cognitive_services_account_enumerate_skus_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
           end
@@ -115,9 +118,6 @@ module Azure::Profiles::Latest
           end
           def key_name
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
-          end
-          def sku
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
           end
           def sku_name
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName

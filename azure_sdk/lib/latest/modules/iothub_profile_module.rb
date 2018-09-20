@@ -7,9 +7,9 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
+      Certificates = Azure::IotHub::Mgmt::V2017_07_01::Certificates
       Operations = Azure::IotHub::Mgmt::V2017_07_01::Operations
       IotHubResource = Azure::IotHub::Mgmt::V2017_07_01::IotHubResource
-      Certificates = Azure::IotHub::Mgmt::V2017_07_01::Certificates
 
       module Models
         IotHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubProperties
@@ -48,13 +48,13 @@ module Azure::Profiles::Latest
         IotHubSkuDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
         OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
         IotHubDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
+        IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
         Operation = Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
-        CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
         CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
         RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
-        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
+        CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
-        IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
+        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
         ImportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
         IotHubDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
         IpFilterActionType = Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
@@ -73,7 +73,7 @@ module Azure::Profiles::Latest
       end
 
       class IotHubManagementClass
-        attr_reader :operations, :iot_hub_resource, :certificates, :configurable, :base_url, :options, :model_classes
+        attr_reader :certificates, :operations, :iot_hub_resource, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -83,9 +83,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @certificates = @client_0.certificates
           @operations = @client_0.operations
           @iot_hub_resource = @client_0.iot_hub_resource
-          @certificates = @client_0.certificates
 
           @model_classes = ModelClasses.new
         end
@@ -212,11 +212,11 @@ module Azure::Profiles::Latest
           def iot_hub_description_list_result
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
           end
+          def iot_hub_name_availability_info
+            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
+          end
           def operation
             Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
-          end
-          def cloud_to_device_properties
-            Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
           end
           def certificate_properties_with_nonce
             Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
@@ -224,14 +224,14 @@ module Azure::Profiles::Latest
           def routing_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
           end
-          def routing_storage_container_properties
-            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
+          def cloud_to_device_properties
+            Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
           end
           def export_devices_request
             Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
           end
-          def iot_hub_name_availability_info
-            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
+          def routing_storage_container_properties
+            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
           end
           def import_devices_request
             Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest

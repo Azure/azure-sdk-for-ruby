@@ -14,11 +14,12 @@ module Azure::Profiles::Latest
       ConsumerGroups = Azure::EventHub::Mgmt::V2017_04_01::ConsumerGroups
 
       module Models
-        KeyType = Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
         Sku = Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+        KeyType = Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
         CheckNameAvailabilityResult = Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
         Resource = Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
         SkuName = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
+        SkuTier = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
         CaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
         Destination = Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
         EventHubListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
@@ -30,22 +31,21 @@ module Azure::Profiles::Latest
         EHNamespaceListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
         RegenerateAccessKeyParameters = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         OperationListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
-        OperationDisplay = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
         AuthorizationRule = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
-        EHNamespace = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
-        ConsumerGroup = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
         Eventhub = Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
-        AccessRights = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
+        EHNamespace = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
+        OperationDisplay = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
+        ArmDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+        ConsumerGroup = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
         TrackedResource = Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
         ErrorResponse = Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
         EntityStatus = Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
-        ArmDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
-        SkuTier = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
+        EncodingCaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
+        AccessRights = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
         ProvisioningStateDR = Azure::EventHub::Mgmt::V2017_04_01::Models::ProvisioningStateDR
         Operation = Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
         UnavailableReason = Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
         RoleDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
-        EncodingCaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
       end
 
       class EventHubManagementClass
@@ -82,11 +82,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def key_type
-            Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
-          end
           def sku
             Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+          end
+          def key_type
+            Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
           end
           def check_name_availability_result
             Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
@@ -96,6 +96,9 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
+          end
+          def sku_tier
+            Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
           end
           def capture_description
             Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
@@ -130,23 +133,23 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
           end
-          def operation_display
-            Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
-          end
           def authorization_rule
             Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
-          end
-          def ehnamespace
-            Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
-          end
-          def consumer_group
-            Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
           end
           def eventhub
             Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
           end
-          def access_rights
-            Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
+          def ehnamespace
+            Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
+          end
+          def operation_display
+            Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
+          end
+          def arm_disaster_recovery
+            Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+          end
+          def consumer_group
+            Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
           end
           def tracked_resource
             Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
@@ -157,11 +160,11 @@ module Azure::Profiles::Latest
           def entity_status
             Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
           end
-          def arm_disaster_recovery
-            Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+          def encoding_capture_description
+            Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
           end
-          def sku_tier
-            Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
+          def access_rights
+            Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
           end
           def provisioning_state_dr
             Azure::EventHub::Mgmt::V2017_04_01::Models::ProvisioningStateDR
@@ -174,9 +177,6 @@ module Azure::Profiles::Latest
           end
           def role_disaster_recovery
             Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
-          end
-          def encoding_capture_description
-            Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
           end
         end
       end

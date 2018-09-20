@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
+      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+      ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
       StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
       MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
       ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
@@ -38,9 +41,6 @@ module Azure::Profiles::Latest
       DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
       EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
       SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
-      SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
-      ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
     end
 
     class EventGridDataClass
@@ -72,6 +72,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def subscription_validation_response
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
+        end
+        def subscription_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+        end
+        def service_bus_active_messages_available_with_no_listeners_event_data
+          Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
+        end
         def storage_blob_created_event_data
           Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
         end
@@ -159,24 +168,17 @@ module Azure::Profiles::Latest
         def subscription_validation_event_data
           Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
         end
-        def subscription_validation_response
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-        end
-        def subscription_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
-        end
-        def service_bus_active_messages_available_with_no_listeners_event_data
-          Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
-        end
       end
     end
     module Mgmt
+      EventSubscriptions = Azure::EventGrid::Mgmt::V2018_05_01_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_05_01_preview::Topics
       Operations = Azure::EventGrid::Mgmt::V2018_05_01_preview::Operations
       TopicTypes = Azure::EventGrid::Mgmt::V2018_05_01_preview::TopicTypes
-      EventSubscriptions = Azure::EventGrid::Mgmt::V2018_05_01_preview::EventSubscriptions
 
       module Models
+        ResourceRegionType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::ResourceRegionType
+        TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
         Resource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
         EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFilter
         InputSchemaMapping = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchemaMapping
@@ -212,12 +214,10 @@ module Azure::Profiles::Latest
         EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
         InputSchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
-        ResourceRegionType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::ResourceRegionType
-        TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
       end
 
       class EventGridManagementClass
-        attr_reader :topics, :operations, :topic_types, :event_subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :event_subscriptions, :topics, :operations, :topic_types, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -227,10 +227,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @operations = @client_0.operations
           @topic_types = @client_0.topic_types
-          @event_subscriptions = @client_0.event_subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -249,6 +249,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource_region_type
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::ResourceRegionType
+          end
+          def topic_type_provisioning_state
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
+          end
           def resource
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
           end
@@ -353,12 +359,6 @@ module Azure::Profiles::Latest
           end
           def input_schema
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
-          end
-          def resource_region_type
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::ResourceRegionType
-          end
-          def topic_type_provisioning_state
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
           end
         end
       end

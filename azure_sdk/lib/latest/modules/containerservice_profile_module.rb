@@ -21,10 +21,10 @@ module Azure::Profiles::Latest
         ContainerServiceDiagnosticsProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
         ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorProfile
         ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
+        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
         ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
         ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
         ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
-        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
         ContainerServiceVMSizeTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
       end
 
@@ -91,6 +91,9 @@ module Azure::Profiles::Latest
           def container_service_agent_pool_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
           end
+          def resource
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
+          end
           def container_service_custom_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
           end
@@ -99,9 +102,6 @@ module Azure::Profiles::Latest
           end
           def container_service_orchestrator_types
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
-          end
-          def resource
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
           end
           def container_service_vmsize_types
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
