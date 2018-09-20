@@ -9,9 +9,11 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
-      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
+      ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
+      ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
-      Thing = Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
+      Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
@@ -20,19 +22,17 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
       ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
-      ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
-      Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
-      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
-      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
-      TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
+      Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
+      TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
+      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
+      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+      ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
+      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
       Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
-      Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
-      CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
-      ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
-      ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
+      Thing = Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
     end
 
     class NewsSearchDataClass
@@ -65,14 +65,20 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def error
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        def creative_work
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
+        end
+        def error_code
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
+        end
+        def error_sub_code
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
         end
         def safe_search
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
         end
-        def thing
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
+        def answer
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
         end
         def text_format
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
@@ -98,44 +104,38 @@ module Azure::Profiles::Latest
         def news_article
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
         end
-        def response_base
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-        end
         def news
           Azure::CognitiveServices::NewsSearch::V1_0::Models::News
-        end
-        def query
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
-        end
-        def article
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
-        end
-        def video_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
-        end
-        def trending_topics
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
         end
         def news_topic
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
         end
+        def query
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
+        end
+        def trending_topics
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
+        end
+        def video_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
+        end
+        def article
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+        end
+        def response_base
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
+        end
         def search_results_answer
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
+        end
+        def error
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
         end
         def identifiable
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
         end
-        def answer
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
-        end
-        def creative_work
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
-        end
-        def error_code
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
-        end
-        def error_sub_code
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
+        def thing
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
         end
       end
     end

@@ -7,13 +7,13 @@ require 'azure_mgmt_service_fabric'
 module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
-      Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
-      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
-      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
+      Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
+      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
 
       module Models
         ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
@@ -76,7 +76,7 @@ module Azure::Profiles::Latest
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :application, :version, :clusters, :cluster_versions, :application_type, :service, :configurable, :base_url, :options, :model_classes
+        attr_reader :application_type, :service, :operations, :version, :application, :clusters, :cluster_versions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -86,13 +86,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
-          @application = @client_0.application
-          @version = @client_0.version
-          @clusters = @client_0.clusters
-          @cluster_versions = @client_0.cluster_versions
           @application_type = @client_0.application_type
           @service = @client_0.service
+          @operations = @client_0.operations
+          @version = @client_0.version
+          @application = @client_0.application
+          @clusters = @client_0.clusters
+          @cluster_versions = @client_0.cluster_versions
 
           @model_classes = ModelClasses.new
         end

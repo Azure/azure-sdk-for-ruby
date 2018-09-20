@@ -8,20 +8,20 @@ module Azure::Profiles::Latest
   module SpellCheck
 
     module Models
+      ErrorCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
+      ErrorSubCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
       SpellingTokenSuggestion = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
       SpellingFlaggedToken = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingFlaggedToken
       ErrorType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
       ActionType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ActionType
       Mode = Azure::CognitiveServices::SpellCheck::V1_0::Models::Mode
       ErrorResponse = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
-      ResponseBase = Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
       SpellCheck = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellCheck
+      ResponseBase = Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
       Response = Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
       Identifiable = Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
-      Answer = Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
       Error = Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
-      ErrorCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
-      ErrorSubCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
+      Answer = Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
     end
 
     class SpellCheckDataClass
@@ -53,6 +53,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error_code
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
+        end
+        def error_sub_code
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
+        end
         def spelling_token_suggestion
           Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
         end
@@ -71,11 +77,11 @@ module Azure::Profiles::Latest
         def error_response
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
         end
-        def response_base
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
-        end
         def spell_check
           Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellCheck
+        end
+        def response_base
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
         end
         def response
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
@@ -83,17 +89,11 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
         end
-        def answer
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
-        end
         def error
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
         end
-        def error_code
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
-        end
-        def error_sub_code
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
+        def answer
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
         end
       end
     end

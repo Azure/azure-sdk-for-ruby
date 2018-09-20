@@ -7,12 +7,14 @@ require 'azure_mgmt_server_management'
 module Azure::Profiles::Latest
   module ServerManagement
     module Mgmt
+      PowerShell = Azure::ServerManagement::Mgmt::V2016_07_01_preview::PowerShell
       Gateway = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Gateway
       Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
       Node = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Node
-      PowerShell = Azure::ServerManagement::Mgmt::V2016_07_01_preview::PowerShell
 
       module Models
+        PowerShellExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
+        GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
         UpgradeMode = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
         Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
         EncryptionJwkResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::EncryptionJwkResource
@@ -32,21 +34,19 @@ module Azure::Profiles::Latest
         PowerShellTabCompletionParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionParameters
         PromptMessageResponse = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptMessageResponse
         GatewayResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResource
+        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         NodeResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResource
         SessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
         PowerShellSessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
-        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
-        CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
-        PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
-        GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
         Error = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
-        PowerShellExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
+        PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
+        CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
       end
 
       class ServerManagementManagementClass
-        attr_reader :gateway, :session, :node, :power_shell, :configurable, :base_url, :options, :model_classes
+        attr_reader :power_shell, :gateway, :session, :node, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,10 +56,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @power_shell = @client_0.power_shell
           @gateway = @client_0.gateway
           @session = @client_0.session
           @node = @client_0.node
-          @power_shell = @client_0.power_shell
 
           @model_classes = ModelClasses.new
         end
@@ -78,6 +78,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def power_shell_expand_option
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
+          end
+          def gateway_expand_option
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
+          end
           def upgrade_mode
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
           end
@@ -135,6 +141,9 @@ module Azure::Profiles::Latest
           def gateway_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResource
           end
+          def version
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
+          end
           def node_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResource
           end
@@ -144,29 +153,20 @@ module Azure::Profiles::Latest
           def power_shell_session_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
           end
-          def version
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
-          end
           def power_shell_command_status
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
           end
           def retention_period
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
           end
-          def credential_data_format
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
+          def error
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
           end
           def prompt_field_type
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
           end
-          def gateway_expand_option
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
-          end
-          def error
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
-          end
-          def power_shell_expand_option
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
+          def credential_data_format
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
           end
         end
       end
