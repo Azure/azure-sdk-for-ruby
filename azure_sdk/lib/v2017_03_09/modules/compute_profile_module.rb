@@ -7,13 +7,13 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2017_03_09
   module Compute
     module Mgmt
-      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
       UsageOperations = Azure::Compute::Mgmt::V2016_03_30::UsageOperations
+      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
       VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensionImages
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensions
+      VirtualMachines = Azure::Compute::Mgmt::V2016_03_30::VirtualMachines
       VirtualMachineImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineImages
       VirtualMachineSizes = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineSizes
-      VirtualMachines = Azure::Compute::Mgmt::V2016_03_30::VirtualMachines
       VirtualMachineScaleSets = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSets
       VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSetVMs
 
@@ -21,8 +21,8 @@ module Azure::Profiles::V2017_03_09
         Sku = Azure::Compute::Mgmt::V2016_03_30::Models::Sku
         UsageName = Azure::Compute::Mgmt::V2016_03_30::Models::UsageName
         Usage = Azure::Compute::Mgmt::V2016_03_30::Models::Usage
-        SubResource = Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
         Resource = Azure::Compute::Mgmt::V2016_03_30::Models::Resource
+        SubResource = Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
         DiagnosticsProfile = Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile
         InstanceViewStatus = Azure::Compute::Mgmt::V2016_03_30::Models::InstanceViewStatus
         VirtualMachineExtensionHandlerInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
@@ -122,7 +122,7 @@ module Azure::Profiles::V2017_03_09
       end
 
       class ComputeManagementClass
-        attr_reader :availability_sets, :usage_operations, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machine_images, :virtual_machine_sizes, :virtual_machines, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_operations, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :virtual_machine_sizes, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -132,13 +132,13 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @availability_sets = @client_0.availability_sets
           @usage_operations = @client_0.usage_operations
+          @availability_sets = @client_0.availability_sets
           @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
           @virtual_machine_extensions = @client_0.virtual_machine_extensions
+          @virtual_machines = @client_0.virtual_machines
           @virtual_machine_images = @client_0.virtual_machine_images
           @virtual_machine_sizes = @client_0.virtual_machine_sizes
-          @virtual_machines = @client_0.virtual_machines
           @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
           @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
 
@@ -168,11 +168,11 @@ module Azure::Profiles::V2017_03_09
           def usage
             Azure::Compute::Mgmt::V2016_03_30::Models::Usage
           end
-          def sub_resource
-            Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
-          end
           def resource
             Azure::Compute::Mgmt::V2016_03_30::Models::Resource
+          end
+          def sub_resource
+            Azure::Compute::Mgmt::V2016_03_30::Models::SubResource
           end
           def diagnostics_profile
             Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile

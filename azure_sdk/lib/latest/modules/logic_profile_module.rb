@@ -27,6 +27,9 @@ module Azure::Profiles::Latest
       Sessions = Azure::Logic::Mgmt::V2016_06_01::Sessions
 
       module Models
+        RecurrenceFrequency = Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
+        DaysOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
+        DayOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
         IntegrationAccountSkuName = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSkuName
         SchemaType = Azure::Logic::Mgmt::V2016_06_01::Models::SchemaType
         MapType = Azure::Logic::Mgmt::V2016_06_01::Models::MapType
@@ -56,8 +59,8 @@ module Azure::Profiles::Latest
         ErrorResponse = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
         Operation = Azure::Logic::Mgmt::V2016_06_01::Models::Operation
         Sku = Azure::Logic::Mgmt::V2016_06_01::Models::Sku
-        SubResource = Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
         Resource = Azure::Logic::Mgmt::V2016_06_01::Models::Resource
+        SubResource = Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
         SkuName = Azure::Logic::Mgmt::V2016_06_01::Models::SkuName
         OperationResult = Azure::Logic::Mgmt::V2016_06_01::Models::OperationResult
         KeyType = Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
@@ -195,9 +198,6 @@ module Azure::Profiles::Latest
         ParameterType = Azure::Logic::Mgmt::V2016_06_01::Models::ParameterType
         WorkflowTriggerProvisioningState = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerProvisioningState
         WorkflowStatus = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
-        RecurrenceFrequency = Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
-        DaysOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
-        DayOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
       end
 
       class LogicManagementClass
@@ -247,6 +247,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def recurrence_frequency
+            Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
+          end
+          def days_of_week
+            Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
+          end
+          def day_of_week
+            Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
+          end
           def integration_account_sku_name
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSkuName
           end
@@ -334,11 +343,11 @@ module Azure::Profiles::Latest
           def sku
             Azure::Logic::Mgmt::V2016_06_01::Models::Sku
           end
-          def sub_resource
-            Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
-          end
           def resource
             Azure::Logic::Mgmt::V2016_06_01::Models::Resource
+          end
+          def sub_resource
+            Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
           end
           def sku_name
             Azure::Logic::Mgmt::V2016_06_01::Models::SkuName
@@ -750,15 +759,6 @@ module Azure::Profiles::Latest
           end
           def workflow_status
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
-          end
-          def recurrence_frequency
-            Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
-          end
-          def days_of_week
-            Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
-          end
-          def day_of_week
-            Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
           end
         end
       end

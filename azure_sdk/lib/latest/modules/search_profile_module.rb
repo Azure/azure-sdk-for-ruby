@@ -7,9 +7,9 @@ require 'azure_mgmt_search'
 module Azure::Profiles::Latest
   module Search
     module Mgmt
+      Operations = Azure::Search::Mgmt::V2015_08_19::Operations
       QueryKeys = Azure::Search::Mgmt::V2015_08_19::QueryKeys
       Services = Azure::Search::Mgmt::V2015_08_19::Services
-      Operations = Azure::Search::Mgmt::V2015_08_19::Operations
       AdminKeys = Azure::Search::Mgmt::V2015_08_19::AdminKeys
 
       module Models
@@ -19,13 +19,13 @@ module Azure::Profiles::Latest
         QueryKey = Azure::Search::Mgmt::V2015_08_19::Models::QueryKey
         SearchManagementRequestOptions = Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
         SearchService = Azure::Search::Mgmt::V2015_08_19::Models::SearchService
-        Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
+        Sku = Azure::Search::Mgmt::V2015_08_19::Models::Sku
         UnavailableNameReason = Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
         HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
-        Sku = Azure::Search::Mgmt::V2015_08_19::Models::Sku
-        AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
-        SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
         AdminKeyResult = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
+        Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
+        SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
+        AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
         OperationDisplay = Azure::Search::Mgmt::V2015_08_19::Models::OperationDisplay
         OperationListResult = Azure::Search::Mgmt::V2015_08_19::Models::OperationListResult
         Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
@@ -34,7 +34,7 @@ module Azure::Profiles::Latest
       end
 
       class SearchManagementClass
-        attr_reader :query_keys, :services, :operations, :admin_keys, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :query_keys, :services, :admin_keys, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -44,9 +44,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @query_keys = @client_0.query_keys
           @services = @client_0.services
-          @operations = @client_0.operations
           @admin_keys = @client_0.admin_keys
 
           @model_classes = ModelClasses.new
@@ -84,8 +84,8 @@ module Azure::Profiles::Latest
           def search_service
             Azure::Search::Mgmt::V2015_08_19::Models::SearchService
           end
-          def operation
-            Azure::Search::Mgmt::V2015_08_19::Models::Operation
+          def sku
+            Azure::Search::Mgmt::V2015_08_19::Models::Sku
           end
           def unavailable_name_reason
             Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
@@ -93,17 +93,17 @@ module Azure::Profiles::Latest
           def hosting_mode
             Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
           end
-          def sku
-            Azure::Search::Mgmt::V2015_08_19::Models::Sku
+          def admin_key_result
+            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
           end
-          def admin_key_kind
-            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
+          def operation
+            Azure::Search::Mgmt::V2015_08_19::Models::Operation
           end
           def search_service_status
             Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
           end
-          def admin_key_result
-            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
+          def admin_key_kind
+            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
           end
           def operation_display
             Azure::Search::Mgmt::V2015_08_19::Models::OperationDisplay

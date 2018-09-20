@@ -7,13 +7,13 @@ require 'azure_mgmt_stream_analytics'
 module Azure::Profiles::Latest
   module StreamAnalytics
     module Mgmt
+      Transformations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Transformations
+      Functions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Functions
+      Operations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Operations
       Subscriptions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Subscriptions
       StreamingJobs = Azure::StreamAnalytics::Mgmt::V2016_03_01::StreamingJobs
       Inputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Inputs
       Outputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Outputs
-      Transformations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Transformations
-      Functions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Functions
-      Operations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Operations
 
       module Models
         AzureMachineLearningWebServiceInputColumn = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputColumn
@@ -80,18 +80,18 @@ module Azure::Profiles::Latest
         CompatibilityLevel = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::CompatibilityLevel
         JsonOutputSerializationFormat = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::JsonOutputSerializationFormat
         OutputErrorPolicy = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputErrorPolicy
-        Encoding = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Encoding
         Operation = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Operation
+        Encoding = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Encoding
         UdfType = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::UdfType
         Sku = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Sku
         SubResource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SubResource
-        Resource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
         StorageAccount = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
         SkuName = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SkuName
+        Resource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
       end
 
       class StreamAnalyticsManagementClass
-        attr_reader :subscriptions, :streaming_jobs, :inputs, :outputs, :transformations, :functions, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :transformations, :functions, :operations, :subscriptions, :streaming_jobs, :inputs, :outputs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -101,13 +101,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @transformations = @client_0.transformations
+          @functions = @client_0.functions
+          @operations = @client_0.operations
           @subscriptions = @client_0.subscriptions
           @streaming_jobs = @client_0.streaming_jobs
           @inputs = @client_0.inputs
           @outputs = @client_0.outputs
-          @transformations = @client_0.transformations
-          @functions = @client_0.functions
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -318,11 +318,11 @@ module Azure::Profiles::Latest
           def output_error_policy
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputErrorPolicy
           end
-          def encoding
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Encoding
-          end
           def operation
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Operation
+          end
+          def encoding
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Encoding
           end
           def udf_type
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::UdfType
@@ -333,14 +333,14 @@ module Azure::Profiles::Latest
           def sub_resource
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SubResource
           end
-          def resource
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
-          end
           def storage_account
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
           end
           def sku_name
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SkuName
+          end
+          def resource
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
           end
         end
       end
