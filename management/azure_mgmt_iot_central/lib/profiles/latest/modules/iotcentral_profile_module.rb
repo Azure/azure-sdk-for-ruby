@@ -23,7 +23,6 @@ module Azure::IotCentral::Profiles::Latest
       AppNameAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameAvailabilityInfo
       App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
       AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
-      AppNameUnavailabilityReason = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameUnavailabilityReason
     end
 
     #
@@ -110,9 +109,6 @@ module Azure::IotCentral::Profiles::Latest
       end
       def app_sku
         Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
-      end
-      def app_name_unavailability_reason
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameUnavailabilityReason
       end
     end
   end

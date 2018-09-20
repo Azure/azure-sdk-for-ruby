@@ -17,8 +17,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # is available.
       attr_accessor :name_available
 
-      # @return [AppNameUnavailabilityReason] The reason for unavailability.
-      # Possible values include: 'Invalid', 'AlreadyExists'
+      # @return [String] The reason for unavailability.
       attr_accessor :reason
 
       # @return [String] The detailed reason message.
@@ -50,12 +49,12 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 read_only: true,
                 serialized_name: 'reason',
                 type: {
-                  name: 'Enum',
-                  module: 'AppNameUnavailabilityReason'
+                  name: 'String'
                 }
               },
               message: {
                 required: false,
+                read_only: true,
                 serialized_name: 'message',
                 type: {
                   name: 'String'

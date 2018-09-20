@@ -94,8 +94,8 @@ module Azure::Profiles::Latest
       DeletedStorageBundle = Azure::KeyVault::V7_0::Models::DeletedStorageBundle
       DeletedStorageAccountItem = Azure::KeyVault::V7_0::Models::DeletedStorageAccountItem
       DeletedSasDefinitionBundle = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionBundle
-      Error = Azure::KeyVault::V7_0::Models::Error
       DeletedSasDefinitionItem = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionItem
+      Error = Azure::KeyVault::V7_0::Models::Error
       JsonWebKeyType = Azure::KeyVault::V7_0::Models::JsonWebKeyType
       JsonWebKeyCurveName = Azure::KeyVault::V7_0::Models::JsonWebKeyCurveName
       DeletionRecoveryLevel = Azure::KeyVault::V7_0::Models::DeletionRecoveryLevel
@@ -393,11 +393,11 @@ module Azure::Profiles::Latest
         def deleted_sas_definition_bundle
           Azure::KeyVault::V7_0::Models::DeletedSasDefinitionBundle
         end
-        def error
-          Azure::KeyVault::V7_0::Models::Error
-        end
         def deleted_sas_definition_item
           Azure::KeyVault::V7_0::Models::DeletedSasDefinitionItem
+        end
+        def error
+          Azure::KeyVault::V7_0::Models::Error
         end
         def json_web_key_type
           Azure::KeyVault::V7_0::Models::JsonWebKeyType
@@ -439,7 +439,6 @@ module Azure::Profiles::Latest
       Operations = Azure::KeyVault::Mgmt::V2018_02_14::Operations
 
       module Models
-        DeletedVaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
         VaultPatchProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchProperties
         DeletedVaultProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultProperties
         VaultPatchParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchParameters
@@ -448,16 +447,16 @@ module Azure::Profiles::Latest
         VaultProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultProperties
         VaultCreateOrUpdateParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCreateOrUpdateParameters
         LogSpecification = Azure::KeyVault::Mgmt::V2018_02_14::Models::LogSpecification
-        ResourceListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
         ServiceSpecification = Azure::KeyVault::Mgmt::V2018_02_14::Models::ServiceSpecification
+        ResourceListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
         Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
         Vault = Azure::KeyVault::Mgmt::V2018_02_14::Models::Vault
         VaultAccessPolicyProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyProperties
-        Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
-        KeyPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
         SecretPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
-        CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
+        Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
         StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+        CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
+        KeyPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
         CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
         NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
         NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
@@ -475,6 +474,7 @@ module Azure::Profiles::Latest
         IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
         VaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultListResult
         NetworkRuleSet = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
+        DeletedVaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
       end
 
       class KeyVaultManagementClass
@@ -508,9 +508,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def deleted_vault_list_result
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
-          end
           def vault_patch_properties
             Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchProperties
           end
@@ -535,11 +532,11 @@ module Azure::Profiles::Latest
           def log_specification
             Azure::KeyVault::Mgmt::V2018_02_14::Models::LogSpecification
           end
-          def resource_list_result
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
-          end
           def service_specification
             Azure::KeyVault::Mgmt::V2018_02_14::Models::ServiceSpecification
+          end
+          def resource_list_result
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
           end
           def sku
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
@@ -550,20 +547,20 @@ module Azure::Profiles::Latest
           def vault_access_policy_properties
             Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyProperties
           end
+          def secret_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
+          end
           def operation
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
           end
-          def key_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
-          end
-          def secret_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
+          def storage_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
           end
           def certificate_permissions
             Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
           end
-          def storage_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+          def key_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
           end
           def create_mode
             Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
@@ -615,6 +612,9 @@ module Azure::Profiles::Latest
           end
           def network_rule_set
             Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
+          end
+          def deleted_vault_list_result
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
           end
         end
       end
