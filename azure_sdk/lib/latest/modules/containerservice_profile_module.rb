@@ -22,10 +22,10 @@ module Azure::Profiles::Latest
         ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorProfile
         ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
         ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
+        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
         ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
         ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
         ContainerServiceVMSizeTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
-        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
       end
 
       class ContainerServiceManagementClass
@@ -94,6 +94,9 @@ module Azure::Profiles::Latest
           def container_service_custom_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
           end
+          def resource
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
+          end
           def container_service_list_result
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
           end
@@ -102,9 +105,6 @@ module Azure::Profiles::Latest
           end
           def container_service_vmsize_types
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
-          end
-          def resource
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
           end
         end
       end
