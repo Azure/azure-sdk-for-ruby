@@ -43,6 +43,9 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [SignalR] signal_r
     attr_reader :signal_r
 
+    # @return [Usages] usages
+    attr_reader :usages
+
     #
     # Creates initializes a new instance of the SignalRManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -58,6 +61,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
 
       @operations = Operations.new(self)
       @signal_r = SignalR.new(self)
+      @usages = Usages.new(self)
       @api_version = '2018-03-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -130,7 +134,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_signalr'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

@@ -6,70 +6,69 @@
 module Azure::Signalr::Mgmt::V2018_03_01_preview
   module Models
     #
-    # A class represents the access keys of SignalR service.
+    # Specifications of the Dimension of metrics.
     #
-    class SignalRKeys
+    class Dimension
 
       include MsRestAzure
 
-      # @return [String] The primary access key.
-      attr_accessor :primary_key
+      # @return [String] The public facing name of the dimension.
+      attr_accessor :name
 
-      # @return [String] The secondary access key.
-      attr_accessor :secondary_key
+      # @return [String] Localized friendly display name of the dimension.
+      attr_accessor :display_name
 
-      # @return [String] SignalR connection string constructed via the
-      # primaryKey
-      attr_accessor :primary_connection_string
+      # @return [String] Name of the dimension as it appears in MDM.
+      attr_accessor :internal_name
 
-      # @return [String] SignalR connection string constructed via the
-      # secondaryKey
-      attr_accessor :secondary_connection_string
+      # @return [Boolean] A Boolean flag indicating whether this dimension
+      # should be included for the shoebox export scenario.
+      attr_accessor :to_be_exported_for_shoebox
 
 
       #
-      # Mapper for SignalRKeys class as Ruby Hash.
+      # Mapper for Dimension class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SignalRKeys',
+          serialized_name: 'Dimension',
           type: {
             name: 'Composite',
-            class_name: 'SignalRKeys',
+            class_name: 'Dimension',
             model_properties: {
-              primary_key: {
+              name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'primaryKey',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              secondary_key: {
+              display_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'secondaryKey',
+                serialized_name: 'displayName',
                 type: {
                   name: 'String'
                 }
               },
-              primary_connection_string: {
+              internal_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'primaryConnectionString',
+                serialized_name: 'internalName',
                 type: {
                   name: 'String'
                 }
               },
-              secondary_connection_string: {
+              to_be_exported_for_shoebox: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'secondaryConnectionString',
+                serialized_name: 'toBeExportedForShoebox',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               }
             }
