@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      CelebritiesModel = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
+      OcrRegion = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
+      Category = Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
       OcrResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
       ColorInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::ColorInfo
       ModelDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
@@ -43,9 +46,6 @@ module Azure::Profiles::Latest
       OcrWord = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
       TextOperationResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
       OcrLine = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
-      CelebritiesModel = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
-      OcrRegion = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
-      Category = Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def celebrities_model
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
+        end
+        def ocr_region
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
+        end
+        def category
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
+        end
         def ocr_result
           Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
         end
@@ -181,15 +190,6 @@ module Azure::Profiles::Latest
         end
         def ocr_line
           Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
-        end
-        def celebrities_model
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
-        end
-        def ocr_region
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
-        end
-        def category
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
         end
       end
     end

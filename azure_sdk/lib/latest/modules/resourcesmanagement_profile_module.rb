@@ -12,6 +12,8 @@ module Azure::Profiles::Latest
       ManagementGroupSubscriptions = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::ManagementGroupSubscriptions
 
       module Models
+        ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
+        ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
         ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
         ManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
         ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
@@ -22,8 +24,6 @@ module Azure::Profiles::Latest
         ErrorResponse = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
         Operation = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
         ErrorDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
-        ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
-        ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
       end
 
       class ResourcesManagementManagementClass
@@ -58,6 +58,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def management_group_list_result
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
+          end
+          def parent_group_info
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
+          end
           def management_group_details
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
           end
@@ -87,12 +93,6 @@ module Azure::Profiles::Latest
           end
           def error_details
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
-          end
-          def management_group_list_result
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
-          end
-          def parent_group_info
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
           end
         end
       end

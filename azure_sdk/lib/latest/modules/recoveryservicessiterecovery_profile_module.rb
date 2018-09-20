@@ -7,6 +7,9 @@ require 'azure_mgmt_recovery_services_site_recovery'
 module Azure::Profiles::Latest
   module RecoveryServicesSiteRecovery
     module Mgmt
+      ReplicationNetworkMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationNetworkMappings
+      ReplicationFabrics = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationFabrics
+      ReplicationvCenters = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationvCenters
       ReplicationStorageClassificationMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationStorageClassificationMappings
       ReplicationStorageClassifications = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationStorageClassifications
       ReplicationRecoveryServicesProviders = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationRecoveryServicesProviders
@@ -24,11 +27,11 @@ module Azure::Profiles::Latest
       ReplicationAlertSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationAlertSettings
       ReplicationVaultHealth = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationVaultHealth
       ReplicationProtectedItems = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationProtectedItems
-      ReplicationNetworkMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationNetworkMappings
-      ReplicationFabrics = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationFabrics
-      ReplicationvCenters = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::ReplicationvCenters
 
       module Models
+        VmmToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureCreateNetworkMappingInput
+        AzureFabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricSpecificDetails
+        VmmDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmDetails
         VmmToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureUpdateNetworkMappingInput
         VmmToVmmUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmUpdateNetworkMappingInput
         VMwareV2FabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VMwareV2FabricSpecificDetails
@@ -320,44 +323,41 @@ module Azure::Profiles::Latest
         InMageVolumeExclusionOptions = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InMageVolumeExclusionOptions
         ReplicationProviderSpecificContainerMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProviderSpecificContainerMappingInput
         AzureToAzureVmSyncedConfigDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureVmSyncedConfigDetails
-        ASRTask = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ASRTask
-        InputEndpoint = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InputEndpoint
-        A2AProtectedManagedDiskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedManagedDiskDetails
         Resource = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Resource
-        MobilityServiceUpdate = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
-        PolicyProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyProperties
+        InputEndpoint = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InputEndpoint
+        ASRTask = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ASRTask
         SwitchProtectionInputProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionInputProperties
+        A2AProtectedManagedDiskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedManagedDiskDetails
+        PolicyProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyProperties
+        MobilityServiceUpdate = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
         Alert = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Alert
         Fabric = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric
         LogicalNetwork = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::LogicalNetwork
         NetworkMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMapping
-        Policy = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Policy
+        Network = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
         ProtectionContainerMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectionContainerMapping
         RecoveryPlan = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlan
-        Network = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
+        ProtectableItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItem
         ReplicationProtectedItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem
         StorageClassification = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassification
         ProtectionContainer = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectionContainer
-        ProtectableItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItem
-        VaultHealthDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
+        VCenter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VCenter
+        Policy = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Policy
         StorageClassificationMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassificationMapping
         EncryptionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EncryptionDetails
-        VmmToVmmNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmNetworkMappingSettings
+        VaultHealthDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
         RecoveryPoint = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPoint
         VmmToAzureNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureNetworkMappingSettings
-        VCenter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VCenter
+        VmmToVmmNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmNetworkMappingSettings
         RecoveryServicesProvider = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryServicesProvider
         AzureToAzureNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureNetworkMappingSettings
         VmmToVmmCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmCreateNetworkMappingInput
         AzureToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureUpdateNetworkMappingInput
         AzureToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureCreateNetworkMappingInput
-        VmmToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureCreateNetworkMappingInput
-        AzureFabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricSpecificDetails
-        VmmDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmDetails
       end
 
       class RecoveryServicesSiteRecoveryManagementClass
-        attr_reader :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_services_providers, :replication_recovery_plans, :replication_protection_containers, :replication_protection_container_mappings, :replication_protectable_items, :recovery_points, :replication_policies, :replication_networks, :replication_logical_networks, :operations, :replication_events, :replication_jobs, :replication_alert_settings, :replication_vault_health, :replication_protected_items, :replication_network_mappings, :replication_fabrics, :replicationv_centers, :configurable, :base_url, :options, :model_classes
+        attr_reader :replication_network_mappings, :replication_fabrics, :replicationv_centers, :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_services_providers, :replication_recovery_plans, :replication_protection_containers, :replication_protection_container_mappings, :replication_protectable_items, :recovery_points, :replication_policies, :replication_networks, :replication_logical_networks, :operations, :replication_events, :replication_jobs, :replication_alert_settings, :replication_vault_health, :replication_protected_items, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -367,6 +367,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @replication_network_mappings = @client_0.replication_network_mappings
+          @replication_fabrics = @client_0.replication_fabrics
+          @replicationv_centers = @client_0.replicationv_centers
           @replication_storage_classification_mappings = @client_0.replication_storage_classification_mappings
           @replication_storage_classifications = @client_0.replication_storage_classifications
           @replication_recovery_services_providers = @client_0.replication_recovery_services_providers
@@ -384,9 +387,6 @@ module Azure::Profiles::Latest
           @replication_alert_settings = @client_0.replication_alert_settings
           @replication_vault_health = @client_0.replication_vault_health
           @replication_protected_items = @client_0.replication_protected_items
-          @replication_network_mappings = @client_0.replication_network_mappings
-          @replication_fabrics = @client_0.replication_fabrics
-          @replicationv_centers = @client_0.replicationv_centers
 
           @model_classes = ModelClasses.new
         end
@@ -405,6 +405,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def vmm_to_azure_create_network_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureCreateNetworkMappingInput
+          end
+          def azure_fabric_specific_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricSpecificDetails
+          end
+          def vmm_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmDetails
+          end
           def vmm_to_azure_update_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureUpdateNetworkMappingInput
           end
@@ -1278,26 +1287,26 @@ module Azure::Profiles::Latest
           def azure_to_azure_vm_synced_config_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureVmSyncedConfigDetails
           end
-          def asrtask
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ASRTask
+          def resource
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Resource
           end
           def input_endpoint
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::InputEndpoint
           end
+          def asrtask
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ASRTask
+          end
+          def switch_protection_input_properties
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionInputProperties
+          end
           def a2_aprotected_managed_disk_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::A2AProtectedManagedDiskDetails
-          end
-          def resource
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Resource
-          end
-          def mobility_service_update
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
           end
           def policy_properties
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PolicyProperties
           end
-          def switch_protection_input_properties
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::SwitchProtectionInputProperties
+          def mobility_service_update
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::MobilityServiceUpdate
           end
           def alert
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Alert
@@ -1311,8 +1320,8 @@ module Azure::Profiles::Latest
           def network_mapping
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::NetworkMapping
           end
-          def policy
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Policy
+          def network
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
           end
           def protection_container_mapping
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectionContainerMapping
@@ -1320,8 +1329,8 @@ module Azure::Profiles::Latest
           def recovery_plan
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPlan
           end
-          def network
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Network
+          def protectable_item
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItem
           end
           def replication_protected_item
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem
@@ -1332,11 +1341,11 @@ module Azure::Profiles::Latest
           def protection_container
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectionContainer
           end
-          def protectable_item
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItem
+          def vcenter
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VCenter
           end
-          def vault_health_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
+          def policy
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Policy
           end
           def storage_classification_mapping
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassificationMapping
@@ -1344,8 +1353,8 @@ module Azure::Profiles::Latest
           def encryption_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EncryptionDetails
           end
-          def vmm_to_vmm_network_mapping_settings
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmNetworkMappingSettings
+          def vault_health_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VaultHealthDetails
           end
           def recovery_point
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryPoint
@@ -1353,8 +1362,8 @@ module Azure::Profiles::Latest
           def vmm_to_azure_network_mapping_settings
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureNetworkMappingSettings
           end
-          def vcenter
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VCenter
+          def vmm_to_vmm_network_mapping_settings
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToVmmNetworkMappingSettings
           end
           def recovery_services_provider
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RecoveryServicesProvider
@@ -1370,15 +1379,6 @@ module Azure::Profiles::Latest
           end
           def azure_to_azure_create_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureToAzureCreateNetworkMappingInput
-          end
-          def vmm_to_azure_create_network_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmToAzureCreateNetworkMappingInput
-          end
-          def azure_fabric_specific_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::AzureFabricSpecificDetails
-          end
-          def vmm_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::VmmDetails
           end
         end
       end
