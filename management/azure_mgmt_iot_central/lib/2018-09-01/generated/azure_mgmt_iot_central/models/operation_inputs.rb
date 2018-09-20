@@ -36,6 +36,9 @@ module Azure::IotCentral::Mgmt::V2018_09_01
               name: {
                 required: true,
                 serialized_name: 'name',
+                constraints: {
+                  Pattern: '^[a-z0-9-]{1,63}$'
+                },
                 type: {
                   name: 'String'
                 }
