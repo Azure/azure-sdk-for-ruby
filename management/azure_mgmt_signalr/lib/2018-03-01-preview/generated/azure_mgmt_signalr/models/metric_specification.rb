@@ -40,6 +40,9 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # belongs to. A metric can only belong to a single category.
       attr_accessor :category
 
+      # @return [Array<Dimension>] The dimensions of the metrics.
+      attr_accessor :dimensions
+
 
       #
       # Mapper for MetricSpecification class as Ruby Hash.
@@ -47,7 +50,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricSpecification',
           type: {
@@ -55,7 +57,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'MetricSpecification',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -63,7 +64,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -71,7 +71,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               display_description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayDescription',
                 type: {
@@ -79,7 +78,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -87,7 +85,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregationType',
                 type: {
@@ -95,7 +92,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               fill_gap_with_zero: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fillGapWithZero',
                 type: {
@@ -103,11 +99,25 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 type: {
                   name: 'String'
+                }
+              },
+              dimensions: {
+                required: false,
+                serialized_name: 'dimensions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'DimensionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Dimension'
+                      }
+                  }
                 }
               }
             }

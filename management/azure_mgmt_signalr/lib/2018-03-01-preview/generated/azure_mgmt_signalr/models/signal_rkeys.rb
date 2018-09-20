@@ -18,6 +18,14 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # @return [String] The secondary access key.
       attr_accessor :secondary_key
 
+      # @return [String] SignalR connection string constructed via the
+      # primaryKey
+      attr_accessor :primary_connection_string
+
+      # @return [String] SignalR connection string constructed via the
+      # secondaryKey
+      attr_accessor :secondary_connection_string
+
 
       #
       # Mapper for SignalRKeys class as Ruby Hash.
@@ -25,7 +33,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SignalRKeys',
           type: {
@@ -33,7 +40,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'SignalRKeys',
             model_properties: {
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -41,9 +47,22 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              primary_connection_string: {
+                required: false,
+                serialized_name: 'primaryConnectionString',
+                type: {
+                  name: 'String'
+                }
+              },
+              secondary_connection_string: {
+                required: false,
+                serialized_name: 'secondaryConnectionString',
                 type: {
                   name: 'String'
                 }

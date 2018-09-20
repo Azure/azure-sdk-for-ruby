@@ -6,43 +6,41 @@
 module Azure::Signalr::Mgmt::V2018_03_01_preview
   module Models
     #
-    # Data POST-ed to the nameAvailability action
+    # Localizable String object containing the name and a localized value.
     #
-    class NameAvailabilityParameters
+    class SignalRUsageName
 
       include MsRestAzure
 
-      # @return [String] The resource type. Should be always
-      # "Microsoft.SignalRService/SignalR".
-      attr_accessor :type
+      # @return [String] The indentifier of the usage.
+      attr_accessor :value
 
-      # @return [String] The SignalR service name to validate.
-      # e.g."my-signalR-name-here"
-      attr_accessor :name
+      # @return [String] Localized name of the usage.
+      attr_accessor :localized_value
 
 
       #
-      # Mapper for NameAvailabilityParameters class as Ruby Hash.
+      # Mapper for SignalRUsageName class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'NameAvailabilityParameters',
+          serialized_name: 'SignalRUsageName',
           type: {
             name: 'Composite',
-            class_name: 'NameAvailabilityParameters',
+            class_name: 'SignalRUsageName',
             model_properties: {
-              type: {
-                required: true,
-                serialized_name: 'type',
+              value: {
+                required: false,
+                serialized_name: 'value',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
-                required: true,
-                serialized_name: 'name',
+              localized_value: {
+                required: false,
+                serialized_name: 'localizedValue',
                 type: {
                   name: 'String'
                 }
