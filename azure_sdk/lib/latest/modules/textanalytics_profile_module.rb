@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
+      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
+      LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
+      LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
@@ -20,9 +23,6 @@ module Azure::Profiles::Latest
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
       BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
       KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
-      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
-      LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
-      LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
     end
 
     class TextAnalyticsDataClass
@@ -54,6 +54,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def key_phrase_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
+        end
+        def language_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
+        end
+        def language_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
+        end
         def error_record
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
         end
@@ -89,15 +98,6 @@ module Azure::Profiles::Latest
         end
         def key_phrase_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
-        end
-        def key_phrase_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
-        end
-        def language_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
-        end
-        def language_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
         end
       end
     end

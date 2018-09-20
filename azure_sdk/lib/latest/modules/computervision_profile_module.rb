@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      ImageType = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageType
+      ComputerVisionError = Azure::CognitiveServices::ComputerVision::V1_0::Models::ComputerVisionError
+      CategoryDetail = Azure::CognitiveServices::ComputerVision::V1_0::Models::CategoryDetail
       ImageUrl = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageUrl
       ImageDescriptionDetails = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescriptionDetails
       TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationStatusCodes
@@ -43,9 +46,6 @@ module Azure::Profiles::Latest
       ImageDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
       RecognitionResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::RecognitionResult
       TagResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TagResult
-      ImageType = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageType
-      ComputerVisionError = Azure::CognitiveServices::ComputerVision::V1_0::Models::ComputerVisionError
-      CategoryDetail = Azure::CognitiveServices::ComputerVision::V1_0::Models::CategoryDetail
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_type
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageType
+        end
+        def computer_vision_error
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ComputerVisionError
+        end
+        def category_detail
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::CategoryDetail
+        end
         def image_url
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageUrl
         end
@@ -181,15 +190,6 @@ module Azure::Profiles::Latest
         end
         def tag_result
           Azure::CognitiveServices::ComputerVision::V1_0::Models::TagResult
-        end
-        def image_type
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageType
-        end
-        def computer_vision_error
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ComputerVisionError
-        end
-        def category_detail
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::CategoryDetail
         end
       end
     end
