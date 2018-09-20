@@ -8,12 +8,12 @@ module Azure::Profiles::Latest
   module Batch
     module Mgmt
       Location = Azure::Batch::Mgmt::V2017_09_01::Location
+      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
+      Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
       BatchAccountOperations = Azure::Batch::Mgmt::V2017_09_01::BatchAccountOperations
       ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationPackageOperations
       ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
       PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
-      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
-      Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
 
       module Models
         OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
@@ -50,13 +50,13 @@ module Azure::Profiles::Latest
         UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
         StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
         DataDisk = Azure::Batch::Mgmt::V2017_09_01::Models::DataDisk
+        ImageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ImageReference
         VirtualMachineConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
-        ApplicationPackageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
         AutoUserSpecification = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
         ApplicationCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
-        ResizeError = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
+        ApplicationPackageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
         CertificateReference = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
-        ImageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ImageReference
+        ResizeError = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
         CertificateBaseProperties = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties
         ResizeOperationStatus = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeOperationStatus
         ApplicationUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationUpdateParameters
@@ -91,14 +91,14 @@ module Azure::Profiles::Latest
         AutoUserScope = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserScope
         CheckNameAvailabilityResult = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityResult
         Resource = Azure::Batch::Mgmt::V2017_09_01::Models::Resource
-        NameAvailabilityReason = Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
         ProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
+        NameAvailabilityReason = Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
         CertificateCreateOrUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
         Certificate = Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
       end
 
       class BatchManagementClass
-        attr_reader :location, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :certificate_operations, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :location, :certificate_operations, :operations, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -109,12 +109,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @location = @client_0.location
+          @certificate_operations = @client_0.certificate_operations
+          @operations = @client_0.operations
           @batch_account_operations = @client_0.batch_account_operations
           @application_package_operations = @client_0.application_package_operations
           @application_operations = @client_0.application_operations
           @pool_operations = @client_0.pool_operations
-          @certificate_operations = @client_0.certificate_operations
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -235,11 +235,11 @@ module Azure::Profiles::Latest
           def data_disk
             Azure::Batch::Mgmt::V2017_09_01::Models::DataDisk
           end
+          def image_reference
+            Azure::Batch::Mgmt::V2017_09_01::Models::ImageReference
+          end
           def virtual_machine_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
-          end
-          def application_package_reference
-            Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
           end
           def auto_user_specification
             Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
@@ -247,14 +247,14 @@ module Azure::Profiles::Latest
           def application_create_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
           end
-          def resize_error
-            Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
+          def application_package_reference
+            Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
           end
           def certificate_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
           end
-          def image_reference
-            Azure::Batch::Mgmt::V2017_09_01::Models::ImageReference
+          def resize_error
+            Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
           end
           def certificate_base_properties
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties
@@ -358,11 +358,11 @@ module Azure::Profiles::Latest
           def resource
             Azure::Batch::Mgmt::V2017_09_01::Models::Resource
           end
-          def name_availability_reason
-            Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
-          end
           def provisioning_state
             Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
+          end
+          def name_availability_reason
+            Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
           end
           def certificate_create_or_update_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters

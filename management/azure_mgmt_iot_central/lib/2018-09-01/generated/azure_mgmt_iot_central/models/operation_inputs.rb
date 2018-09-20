@@ -16,6 +16,10 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # check.
       attr_accessor :name
 
+      # @return [String] The name of the IoT Central resource name to query.
+      # Default value: 'IoTApps' .
+      attr_accessor :type
+
 
       #
       # Mapper for OperationInputs class as Ruby Hash.
@@ -32,6 +36,14 @@ module Azure::IotCentral::Mgmt::V2018_09_01
               name: {
                 required: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
+                default_value: 'IoTApps',
                 type: {
                   name: 'String'
                 }
