@@ -1,3 +1,7 @@
+## 2018.09.21 - Azure Ruby SDK Release
+* Released 0.17.2 version of azure_mgmt_signalr to include the latest changes to 2018-03-01-preview version.
+* Released 0.18.5 version of azure_sdk to include the latest changes in azure_mgmt_signalr. 
+
 ## 2018.09.18 - Azure Ruby SDK Release
 * Released 0.17.3 version of azure_mgmt_network to include the latest version of 2018-08-01.
 * Released 0.18.4 version of azure_sdk to include the latest version changes in azure_mgmt_network.
