@@ -7,6 +7,7 @@ require 'azure_mgmt_media_services'
 module Azure::Profiles::Latest
   module MediaServices
     module Mgmt
+      Locations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Locations
       Operations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Operations
       Mediaservices = Azure::MediaServices::Mgmt::V2018_03_30_preview::Mediaservices
       Assets = Azure::MediaServices::Mgmt::V2018_03_30_preview::Assets
@@ -18,7 +19,6 @@ module Azure::Profiles::Latest
       LiveEvents = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveEvents
       LiveOutputs = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveOutputs
       StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_03_30_preview::StreamingEndpoints
-      Locations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Locations
 
       module Models
         StorageAccountType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StorageAccountType
@@ -133,9 +133,9 @@ module Azure::Profiles::Latest
         H264Video = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Video
         JpgLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JpgLayer
         JpgImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JpgImage
-        MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MultiBitrateFormat
         Mp4Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Mp4Format
         PngLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
+        PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
         BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
         StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
         VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
@@ -185,8 +185,8 @@ module Azure::Profiles::Latest
         StreamOptionsFlag = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
         StreamingEndpointResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
         ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
+        MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MultiBitrateFormat
         TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
-        PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
         Resource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
         StorageAccount = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StorageAccount
         Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Format
@@ -198,7 +198,7 @@ module Azure::Profiles::Latest
       end
 
       class MediaServicesManagementClass
-        attr_reader :operations, :mediaservices, :assets, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :live_outputs, :streaming_endpoints, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :locations, :operations, :mediaservices, :assets, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :live_outputs, :streaming_endpoints, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -208,6 +208,7 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @locations = @client_0.locations
           @operations = @client_0.operations
           @mediaservices = @client_0.mediaservices
           @assets = @client_0.assets
@@ -219,7 +220,6 @@ module Azure::Profiles::Latest
           @live_events = @client_0.live_events
           @live_outputs = @client_0.live_outputs
           @streaming_endpoints = @client_0.streaming_endpoints
-          @locations = @client_0.locations
 
           @model_classes = ModelClasses.new
         end
@@ -574,14 +574,14 @@ module Azure::Profiles::Latest
           def jpg_image
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JpgImage
           end
-          def multi_bitrate_format
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MultiBitrateFormat
-          end
           def mp4_format
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Mp4Format
           end
           def png_layer
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
+          end
+          def png_image
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
           end
           def built_in_standard_encoder_preset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
@@ -730,11 +730,11 @@ module Azure::Profiles::Latest
           def proxy_resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
           end
+          def multi_bitrate_format
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MultiBitrateFormat
+          end
           def tracked_resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
-          end
-          def png_image
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
           end
           def resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource

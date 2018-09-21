@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::MediaServices::Mgmt::V2015_10_01
-    VERSION = '0.16.1'
+    VERSION = '0.17.0'
 end
