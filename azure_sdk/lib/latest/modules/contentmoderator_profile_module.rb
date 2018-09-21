@@ -6,13 +6,13 @@ require 'azure_cognitiveservices_contentmoderator'
 
 module Azure::Profiles::Latest
   module ContentModerator
+    TextModeration = Azure::CognitiveServices::ContentModerator::V1_0::TextModeration
+    ListManagementImageLists = Azure::CognitiveServices::ContentModerator::V1_0::ListManagementImageLists
+    ListManagementTermLists = Azure::CognitiveServices::ContentModerator::V1_0::ListManagementTermLists
     ListManagementImage = Azure::CognitiveServices::ContentModerator::V1_0::ListManagementImage
     ListManagementTerm = Azure::CognitiveServices::ContentModerator::V1_0::ListManagementTerm
     Reviews = Azure::CognitiveServices::ContentModerator::V1_0::Reviews
     ImageModeration = Azure::CognitiveServices::ContentModerator::V1_0::ImageModeration
-    TextModeration = Azure::CognitiveServices::ContentModerator::V1_0::TextModeration
-    ListManagementImageLists = Azure::CognitiveServices::ContentModerator::V1_0::ListManagementImageLists
-    ListManagementTermLists = Azure::CognitiveServices::ContentModerator::V1_0::ListManagementTermLists
 
     module Models
       Image = Azure::CognitiveServices::ContentModerator::V1_0::Models::Image
@@ -30,10 +30,10 @@ module Azure::Profiles::Latest
       JobExecutionReportDetails = Azure::CognitiveServices::ContentModerator::V1_0::Models::JobExecutionReportDetails
       Candidate = Azure::CognitiveServices::ContentModerator::V1_0::Models::Candidate
       Evaluate = Azure::CognitiveServices::ContentModerator::V1_0::Models::Evaluate
+      Face = Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
       JobId = Azure::CognitiveServices::ContentModerator::V1_0::Models::JobId
       MatchResponse = Azure::CognitiveServices::ContentModerator::V1_0::Models::MatchResponse
       ImageListMetadata = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageListMetadata
-      Face = Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
       TermListMetadata = Azure::CognitiveServices::ContentModerator::V1_0::Models::TermListMetadata
       TranscriptModerationBodyItemTermsItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItemTermsItem
       APIError = Azure::CognitiveServices::ContentModerator::V1_0::Models::APIError
@@ -51,9 +51,9 @@ module Azure::Profiles::Latest
       CreateVideoReviewsBodyItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItem
       Match = Azure::CognitiveServices::ContentModerator::V1_0::Models::Match
       BodyMetadata = Azure::CognitiveServices::ContentModerator::V1_0::Models::BodyMetadata
-      ImageList = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageList
       Body = Azure::CognitiveServices::ContentModerator::V1_0::Models::Body
       RefreshIndex = Azure::CognitiveServices::ContentModerator::V1_0::Models::RefreshIndex
+      ImageList = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageList
       Classification = Azure::CognitiveServices::ContentModerator::V1_0::Models::Classification
       VideoFrameBodyItemReviewerResultTagsItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemReviewerResultTagsItem
       Screen = Azure::CognitiveServices::ContentModerator::V1_0::Models::Screen
@@ -70,14 +70,14 @@ module Azure::Profiles::Latest
       ImageUrl = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageUrl
       Error = Azure::CognitiveServices::ContentModerator::V1_0::Models::Error
       Job = Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
-      Address = Azure::CognitiveServices::ContentModerator::V1_0::Models::Address
       Tag = Azure::CognitiveServices::ContentModerator::V1_0::Models::Tag
+      Address = Azure::CognitiveServices::ContentModerator::V1_0::Models::Address
       JobListResult = Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
       Status = Azure::CognitiveServices::ContentModerator::V1_0::Models::Status
     end
 
     class ContentModeratorDataClass
-      attr_reader :list_management_image, :list_management_term, :reviews, :image_moderation, :text_moderation, :list_management_image_lists, :list_management_term_lists, :configurable, :base_url, :options, :model_classes
+      attr_reader :text_moderation, :list_management_image_lists, :list_management_term_lists, :list_management_image, :list_management_term, :reviews, :image_moderation, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -87,13 +87,13 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @text_moderation = @client_0.text_moderation
+        @list_management_image_lists = @client_0.list_management_image_lists
+        @list_management_term_lists = @client_0.list_management_term_lists
         @list_management_image = @client_0.list_management_image
         @list_management_term = @client_0.list_management_term
         @reviews = @client_0.reviews
         @image_moderation = @client_0.image_moderation
-        @text_moderation = @client_0.text_moderation
-        @list_management_image_lists = @client_0.list_management_image_lists
-        @list_management_term_lists = @client_0.list_management_term_lists
 
         @model_classes = ModelClasses.new
       end
@@ -157,6 +157,9 @@ module Azure::Profiles::Latest
         def evaluate
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Evaluate
         end
+        def face
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
+        end
         def job_id
           Azure::CognitiveServices::ContentModerator::V1_0::Models::JobId
         end
@@ -165,9 +168,6 @@ module Azure::Profiles::Latest
         end
         def image_list_metadata
           Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageListMetadata
-        end
-        def face
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
         end
         def term_list_metadata
           Azure::CognitiveServices::ContentModerator::V1_0::Models::TermListMetadata
@@ -220,14 +220,14 @@ module Azure::Profiles::Latest
         def body_metadata
           Azure::CognitiveServices::ContentModerator::V1_0::Models::BodyMetadata
         end
-        def image_list
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageList
-        end
         def body
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Body
         end
         def refresh_index
           Azure::CognitiveServices::ContentModerator::V1_0::Models::RefreshIndex
+        end
+        def image_list
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageList
         end
         def classification
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Classification
@@ -277,11 +277,11 @@ module Azure::Profiles::Latest
         def job
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
         end
-        def address
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Address
-        end
         def tag
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Tag
+        end
+        def address
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Address
         end
         def job_list_result
           Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
