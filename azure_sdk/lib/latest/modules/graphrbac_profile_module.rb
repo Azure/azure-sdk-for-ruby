@@ -14,16 +14,20 @@ module Azure::Profiles::Latest
     Users = Azure::GraphRbac::V1_6::Users
 
     module Models
+      AADObject = Azure::GraphRbac::V1_6::Models::AADObject
+      Domain = Azure::GraphRbac::V1_6::Models::Domain
+      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
+      GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
       PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
       SignInName = Azure::GraphRbac::V1_6::Models::SignInName
       ApplicationAddOwnerParameters = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
       UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
       DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
       UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
+      Application = Azure::GraphRbac::V1_6::Models::Application
       ADGroup = Azure::GraphRbac::V1_6::Models::ADGroup
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
       UserType = Azure::GraphRbac::V1_6::Models::UserType
-      Application = Azure::GraphRbac::V1_6::Models::Application
       UserCreateParameters = Azure::GraphRbac::V1_6::Models::UserCreateParameters
       ApplicationCreateParameters = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
       GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
@@ -52,10 +56,6 @@ module Azure::Profiles::Latest
       PasswordProfile = Azure::GraphRbac::V1_6::Models::PasswordProfile
       DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
       UserBase = Azure::GraphRbac::V1_6::Models::UserBase
-      AADObject = Azure::GraphRbac::V1_6::Models::AADObject
-      Domain = Azure::GraphRbac::V1_6::Models::Domain
-      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
-      GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
     end
 
     class GraphRbacDataClass
@@ -93,6 +93,18 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def aadobject
+          Azure::GraphRbac::V1_6::Models::AADObject
+        end
+        def domain
+          Azure::GraphRbac::V1_6::Models::Domain
+        end
+        def required_resource_access
+          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
+        end
+        def get_objects_parameters
+          Azure::GraphRbac::V1_6::Models::GetObjectsParameters
+        end
         def password_credential_list_result
           Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
         end
@@ -111,6 +123,9 @@ module Azure::Profiles::Latest
         def user_get_member_groups_parameters
           Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
         end
+        def application
+          Azure::GraphRbac::V1_6::Models::Application
+        end
         def adgroup
           Azure::GraphRbac::V1_6::Models::ADGroup
         end
@@ -119,9 +134,6 @@ module Azure::Profiles::Latest
         end
         def user_type
           Azure::GraphRbac::V1_6::Models::UserType
-        end
-        def application
-          Azure::GraphRbac::V1_6::Models::Application
         end
         def user_create_parameters
           Azure::GraphRbac::V1_6::Models::UserCreateParameters
@@ -206,18 +218,6 @@ module Azure::Profiles::Latest
         end
         def user_base
           Azure::GraphRbac::V1_6::Models::UserBase
-        end
-        def aadobject
-          Azure::GraphRbac::V1_6::Models::AADObject
-        end
-        def domain
-          Azure::GraphRbac::V1_6::Models::Domain
-        end
-        def required_resource_access
-          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
-        end
-        def get_objects_parameters
-          Azure::GraphRbac::V1_6::Models::GetObjectsParameters
         end
       end
     end

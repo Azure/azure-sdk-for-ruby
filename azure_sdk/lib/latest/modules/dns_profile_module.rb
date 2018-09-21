@@ -22,15 +22,15 @@ module Azure::Profiles::Latest
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         MxRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
+        SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
         TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
         ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
         PtrRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
         ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
-        SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
         Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
         ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
-        RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
         Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
+        RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
       end
 
       class DnsManagementClass
@@ -97,6 +97,9 @@ module Azure::Profiles::Latest
           def zone_update
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
           end
+          def sub_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
+          end
           def txt_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
           end
@@ -109,20 +112,17 @@ module Azure::Profiles::Latest
           def arecord
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
           end
-          def sub_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
-          end
           def zone
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
           end
           def zone_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
           end
-          def record_type
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
-          end
           def resource
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
+          end
+          def record_type
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
           end
         end
       end
