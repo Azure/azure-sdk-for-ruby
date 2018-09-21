@@ -15,6 +15,7 @@ module Azure::IotCentral::Profiles::Latest
       OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
       AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
       Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+      ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
       OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
       Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
@@ -84,6 +85,9 @@ module Azure::IotCentral::Profiles::Latest
       end
       def operation
         Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+      end
+      def error_response_body
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
       end
       def operation_list_result
         Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
