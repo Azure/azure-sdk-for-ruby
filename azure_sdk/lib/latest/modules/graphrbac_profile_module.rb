@@ -6,14 +6,17 @@ require 'azure_graph_rbac'
 
 module Azure::Profiles::Latest
   module GraphRbac
-    ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
-    Domains = Azure::GraphRbac::V1_6::Domains
-    Users = Azure::GraphRbac::V1_6::Users
     Objects = Azure::GraphRbac::V1_6::Objects
     Applications = Azure::GraphRbac::V1_6::Applications
     Groups = Azure::GraphRbac::V1_6::Groups
+    ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
+    Domains = Azure::GraphRbac::V1_6::Domains
+    Users = Azure::GraphRbac::V1_6::Users
 
     module Models
+      PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
+      SignInName = Azure::GraphRbac::V1_6::Models::SignInName
+      ApplicationAddOwnerParameters = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
       UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
       DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
       UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
@@ -53,13 +56,10 @@ module Azure::Profiles::Latest
       Domain = Azure::GraphRbac::V1_6::Models::Domain
       RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
       GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
-      PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
-      SignInName = Azure::GraphRbac::V1_6::Models::SignInName
-      ApplicationAddOwnerParameters = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
     end
 
     class GraphRbacDataClass
-      attr_reader :service_principals, :domains, :users, :objects, :applications, :groups, :configurable, :base_url, :options, :model_classes
+      attr_reader :objects, :applications, :groups, :service_principals, :domains, :users, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -69,12 +69,12 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @service_principals = @client_0.service_principals
-        @domains = @client_0.domains
-        @users = @client_0.users
         @objects = @client_0.objects
         @applications = @client_0.applications
         @groups = @client_0.groups
+        @service_principals = @client_0.service_principals
+        @domains = @client_0.domains
+        @users = @client_0.users
 
         @model_classes = ModelClasses.new
       end
@@ -93,6 +93,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def password_credential_list_result
+          Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
+        end
+        def sign_in_name
+          Azure::GraphRbac::V1_6::Models::SignInName
+        end
+        def application_add_owner_parameters
+          Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
+        end
         def user_list_result
           Azure::GraphRbac::V1_6::Models::UserListResult
         end
@@ -209,15 +218,6 @@ module Azure::Profiles::Latest
         end
         def get_objects_parameters
           Azure::GraphRbac::V1_6::Models::GetObjectsParameters
-        end
-        def password_credential_list_result
-          Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
-        end
-        def sign_in_name
-          Azure::GraphRbac::V1_6::Models::SignInName
-        end
-        def application_add_owner_parameters
-          Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
         end
       end
     end
