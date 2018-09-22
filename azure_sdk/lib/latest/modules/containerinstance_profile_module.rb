@@ -7,12 +7,15 @@ require 'azure_mgmt_container_instance'
 module Azure::Profiles::Latest
   module ContainerInstance
     module Mgmt
-      ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroups
       ContainerGroupUsage = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroupUsage
       ContainerOperations = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerOperations
       Operations = Azure::ContainerInstance::Mgmt::V2018_06_01::Operations
+      ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroups
 
       module Models
+        AzureFileVolume = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::AzureFileVolume
+        ContainerExecRequestTerminalSize = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequestTerminalSize
+        ContainerExec = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExec
         ContainerExecRequest = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequest
         Operation = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Operation
         ContainerExecResponse = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecResponse
@@ -26,8 +29,8 @@ module Azure::Profiles::Latest
         ContainerInstanceOperationsOrigin = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerInstanceOperationsOrigin
         UsageName = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::UsageName
         Usage = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Usage
-        LogAnalytics = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::LogAnalytics
         UsageListResult = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::UsageListResult
+        LogAnalytics = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::LogAnalytics
         Resource = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Resource
         Port = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Port
         IpAddress = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::IpAddress
@@ -50,13 +53,10 @@ module Azure::Profiles::Latest
         ContainerGroupListResult = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupListResult
         ContainerPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerPropertiesInstanceView
         Logs = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Logs
-        AzureFileVolume = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::AzureFileVolume
-        ContainerExecRequestTerminalSize = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequestTerminalSize
-        ContainerExec = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExec
       end
 
       class ContainerInstanceManagementClass
-        attr_reader :container_groups, :container_group_usage, :container_operations, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :container_group_usage, :container_operations, :operations, :container_groups, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -66,10 +66,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @container_groups = @client_0.container_groups
           @container_group_usage = @client_0.container_group_usage
           @container_operations = @client_0.container_operations
           @operations = @client_0.operations
+          @container_groups = @client_0.container_groups
 
           @model_classes = ModelClasses.new
         end
@@ -88,6 +88,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def azure_file_volume
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::AzureFileVolume
+          end
+          def container_exec_request_terminal_size
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequestTerminalSize
+          end
+          def container_exec
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExec
+          end
           def container_exec_request
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequest
           end
@@ -127,11 +136,11 @@ module Azure::Profiles::Latest
           def usage
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Usage
           end
-          def log_analytics
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::LogAnalytics
-          end
           def usage_list_result
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::UsageListResult
+          end
+          def log_analytics
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::LogAnalytics
           end
           def resource
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Resource
@@ -198,15 +207,6 @@ module Azure::Profiles::Latest
           end
           def logs
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Logs
-          end
-          def azure_file_volume
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::AzureFileVolume
-          end
-          def container_exec_request_terminal_size
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequestTerminalSize
-          end
-          def container_exec
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExec
           end
         end
       end

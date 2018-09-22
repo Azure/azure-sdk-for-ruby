@@ -11,6 +11,9 @@ module Azure::Profiles::Latest
       Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
 
       module Models
+        ResourceSku = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
+        OperationStatus = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
+        ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
         SkuEnumerationForNewResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
         Operation = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
         SkuDetailsForExistingResource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuDetailsForExistingResource
@@ -35,9 +38,6 @@ module Azure::Profiles::Latest
         CheckServerNameAvailabilityResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
         IPv4FirewallSettings = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
         ErrorResponse = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
-        ResourceSku = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
-        OperationStatus = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
-        ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
       end
 
       class AnalysisServicesManagementClass
@@ -71,6 +71,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource_sku
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
+          end
+          def operation_status
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
+          end
+          def server_administrators
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
+          end
           def sku_enumeration_for_new_resource_result
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
           end
@@ -142,15 +151,6 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
-          end
-          def resource_sku
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
-          end
-          def operation_status
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
-          end
-          def server_administrators
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
           end
         end
       end
