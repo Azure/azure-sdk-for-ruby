@@ -83,7 +83,7 @@ module MsRest
             yield(req) if block_given?
           end
 
-          break if (@response.status != 429 && @response.headers['retry-after'].nil?)
+          break if ((@response.status != 429) || (@response.status == 429 && @response.headers['retry-after'].nil?))
 
           if(@response.status == 429 && !@response.headers['retry-after'].nil?)
             sleep(@response.headers['retry-after'].to_i)
