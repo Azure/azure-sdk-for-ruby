@@ -33,6 +33,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             model_properties: {
               console_screenshot_blob_uri: {
                 required: false,
+                read_only: true,
                 serialized_name: 'consoleScreenshotBlobUri',
                 type: {
                   name: 'String'
@@ -40,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
               },
               serial_console_log_blob_uri: {
                 required: false,
+                read_only: true,
                 serialized_name: 'serialConsoleLogBlobUri',
                 type: {
                   name: 'String'
