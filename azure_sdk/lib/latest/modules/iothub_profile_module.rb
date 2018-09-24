@@ -7,9 +7,9 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
-      Operations = Azure::IotHub::Mgmt::V2017_07_01::Operations
       IotHubResource = Azure::IotHub::Mgmt::V2017_07_01::IotHubResource
       Certificates = Azure::IotHub::Mgmt::V2017_07_01::Certificates
+      Operations = Azure::IotHub::Mgmt::V2017_07_01::Operations
 
       module Models
         IotHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubProperties
@@ -45,13 +45,13 @@ module Azure::Profiles::Latest
         IotHubSkuDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
         EventHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
         IotHubDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
-        RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
-        OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
-        CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
-        IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
         OperationDisplay = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationDisplay
-        CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+        RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
         OperationListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationListResult
+        CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
+        OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
+        CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+        IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
         RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
         IotHubDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
@@ -60,20 +60,20 @@ module Azure::Profiles::Latest
         IpFilterActionType = Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
         Capabilities = Azure::IotHub::Mgmt::V2017_07_01::Models::Capabilities
         OperationMonitoringLevel = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel
-        IotHubSkuTier = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuTier
-        IotHubSku = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
-        IotHubScaleType = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
-        JobType = Azure::IotHub::Mgmt::V2017_07_01::Models::JobType
         Operation = Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
-        IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
+        IotHubSku = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
+        IotHubSkuTier = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuTier
+        JobType = Azure::IotHub::Mgmt::V2017_07_01::Models::JobType
         JobStatus = Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
+        IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
+        IotHubScaleType = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
         Resource = Azure::IotHub::Mgmt::V2017_07_01::Models::Resource
         AccessRights = Azure::IotHub::Mgmt::V2017_07_01::Models::AccessRights
         ErrorDetails = Azure::IotHub::Mgmt::V2017_07_01::Models::ErrorDetails
       end
 
       class IotHubManagementClass
-        attr_reader :operations, :iot_hub_resource, :certificates, :configurable, :base_url, :options, :model_classes
+        attr_reader :iot_hub_resource, :certificates, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -83,9 +83,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @iot_hub_resource = @client_0.iot_hub_resource
           @certificates = @client_0.certificates
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -203,26 +203,26 @@ module Azure::Profiles::Latest
           def iot_hub_description_list_result
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
           end
+          def operation_display
+            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationDisplay
+          end
           def routing_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
           end
-          def operation_inputs
-            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
+          def operation_list_result
+            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationListResult
           end
           def certificate_properties_with_nonce
             Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
           end
-          def iot_hub_name_availability_info
-            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
-          end
-          def operation_display
-            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationDisplay
+          def operation_inputs
+            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
           end
           def cloud_to_device_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
           end
-          def operation_list_result
-            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationListResult
+          def iot_hub_name_availability_info
+            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
           end
           def routing_storage_container_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
@@ -248,26 +248,26 @@ module Azure::Profiles::Latest
           def operation_monitoring_level
             Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel
           end
-          def iot_hub_sku_tier
-            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuTier
+          def operation
+            Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
           end
           def iot_hub_sku
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
           end
-          def iot_hub_scale_type
-            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
+          def iot_hub_sku_tier
+            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuTier
           end
           def job_type
             Azure::IotHub::Mgmt::V2017_07_01::Models::JobType
           end
-          def operation
-            Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
+          def job_status
+            Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
           end
           def iot_hub_name_unavailability_reason
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
           end
-          def job_status
-            Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
+          def iot_hub_scale_type
+            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
           end
           def resource
             Azure::IotHub::Mgmt::V2017_07_01::Models::Resource
