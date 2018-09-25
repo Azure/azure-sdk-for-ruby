@@ -8,10 +8,10 @@ module Azure::OperationalInsights::Profiles::Latest
   module Mgmt
     StorageInsights = Azure::OperationalInsights::Mgmt::V2015_03_20::StorageInsights
     SavedSearches = Azure::OperationalInsights::Mgmt::V2015_03_20::SavedSearches
+    Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
+    Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
     LinkedServices = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::LinkedServices
     DataSources = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::DataSources
-    Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
-    Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
 
     module Models
       SearchGetSchemaResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchGetSchemaResponse
@@ -68,7 +68,7 @@ module Azure::OperationalInsights::Profiles::Latest
     # OperationalInsightsManagementClass
     #
     class OperationalInsightsManagementClass
-      attr_reader :storage_insights, :saved_searches, :linked_services, :data_sources, :workspaces, :operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :storage_insights, :saved_searches, :operations, :workspaces, :linked_services, :data_sources, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -96,10 +96,10 @@ module Azure::OperationalInsights::Profiles::Latest
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
+        @operations = @client_1.operations
+        @workspaces = @client_1.workspaces
         @linked_services = @client_1.linked_services
         @data_sources = @client_1.data_sources
-        @workspaces = @client_1.workspaces
-        @operations = @client_1.operations
 
         @model_classes = ModelClasses.new
       end

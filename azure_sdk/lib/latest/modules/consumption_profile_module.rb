@@ -7,6 +7,8 @@ require 'azure_mgmt_consumption'
 module Azure::Profiles::Latest
   module Consumption
     module Mgmt
+      UsageDetails = Azure::Consumption::Mgmt::V2018_06_30::UsageDetails
+      Marketplaces = Azure::Consumption::Mgmt::V2018_06_30::Marketplaces
       Balances = Azure::Consumption::Mgmt::V2018_06_30::Balances
       ReservationsSummaries = Azure::Consumption::Mgmt::V2018_06_30::ReservationsSummaries
       ReservationsDetails = Azure::Consumption::Mgmt::V2018_06_30::ReservationsDetails
@@ -15,10 +17,8 @@ module Azure::Profiles::Latest
       PriceSheet = Azure::Consumption::Mgmt::V2018_06_30::PriceSheet
       CostTags = Azure::Consumption::Mgmt::V2018_06_30::CostTags
       Forecasts = Azure::Consumption::Mgmt::V2018_06_30::Forecasts
-      Marketplaces = Azure::Consumption::Mgmt::V2018_06_30::Marketplaces
-      Operations = Azure::Consumption::Mgmt::V2018_06_30::Operations
       Tags = Azure::Consumption::Mgmt::V2018_06_30::Tags
-      UsageDetails = Azure::Consumption::Mgmt::V2018_06_30::UsageDetails
+      Operations = Azure::Consumption::Mgmt::V2018_06_30::Operations
 
       module Models
         ErrorDetails = Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorDetails
@@ -37,16 +37,16 @@ module Azure::Profiles::Latest
         ReservationRecommendation = Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationRecommendation
         BudgetsListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::BudgetsListResult
         CostTagProperties = Azure::Consumption::Mgmt::V2018_06_30::Models::CostTagProperties
-        BalancePropertiesNewPurchasesDetailsItem = Azure::Consumption::Mgmt::V2018_06_30::Models::BalancePropertiesNewPurchasesDetailsItem
+        Tag = Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
         QueryOptions = Azure::Consumption::Mgmt::V2018_06_30::Models::QueryOptions
         ReservationSummariesListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationSummariesListResult
-        Tag = Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
+        BalancePropertiesNewPurchasesDetailsItem = Azure::Consumption::Mgmt::V2018_06_30::Models::BalancePropertiesNewPurchasesDetailsItem
         PriceSheetProperties = Azure::Consumption::Mgmt::V2018_06_30::Models::PriceSheetProperties
         ReservationRecommendationsListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationRecommendationsListResult
         ProxyResource = Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
-        Resource = Azure::Consumption::Mgmt::V2018_06_30::Models::Resource
-        ForecastPropertiesConfidenceLevelsItem = Azure::Consumption::Mgmt::V2018_06_30::Models::ForecastPropertiesConfidenceLevelsItem
         ResourceAttributes = Azure::Consumption::Mgmt::V2018_06_30::Models::ResourceAttributes
+        ForecastPropertiesConfidenceLevelsItem = Azure::Consumption::Mgmt::V2018_06_30::Models::ForecastPropertiesConfidenceLevelsItem
+        Resource = Azure::Consumption::Mgmt::V2018_06_30::Models::Resource
         ReservationDetailsListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationDetailsListResult
         ForecastsListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::ForecastsListResult
         UsageDetail = Azure::Consumption::Mgmt::V2018_06_30::Models::UsageDetail
@@ -70,7 +70,7 @@ module Azure::Profiles::Latest
       end
 
       class ConsumptionManagementClass
-        attr_reader :balances, :reservations_summaries, :reservations_details, :reservation_recommendations, :budgets, :price_sheet, :cost_tags, :forecasts, :marketplaces, :operations, :tags, :usage_details, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_details, :marketplaces, :balances, :reservations_summaries, :reservations_details, :reservation_recommendations, :budgets, :price_sheet, :cost_tags, :forecasts, :tags, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -80,6 +80,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @usage_details = @client_0.usage_details
+          @marketplaces = @client_0.marketplaces
           @balances = @client_0.balances
           @reservations_summaries = @client_0.reservations_summaries
           @reservations_details = @client_0.reservations_details
@@ -88,10 +90,8 @@ module Azure::Profiles::Latest
           @price_sheet = @client_0.price_sheet
           @cost_tags = @client_0.cost_tags
           @forecasts = @client_0.forecasts
-          @marketplaces = @client_0.marketplaces
-          @operations = @client_0.operations
           @tags = @client_0.tags
-          @usage_details = @client_0.usage_details
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -158,8 +158,8 @@ module Azure::Profiles::Latest
           def cost_tag_properties
             Azure::Consumption::Mgmt::V2018_06_30::Models::CostTagProperties
           end
-          def balance_properties_new_purchases_details_item
-            Azure::Consumption::Mgmt::V2018_06_30::Models::BalancePropertiesNewPurchasesDetailsItem
+          def tag
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
           end
           def query_options
             Azure::Consumption::Mgmt::V2018_06_30::Models::QueryOptions
@@ -167,8 +167,8 @@ module Azure::Profiles::Latest
           def reservation_summaries_list_result
             Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationSummariesListResult
           end
-          def tag
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
+          def balance_properties_new_purchases_details_item
+            Azure::Consumption::Mgmt::V2018_06_30::Models::BalancePropertiesNewPurchasesDetailsItem
           end
           def price_sheet_properties
             Azure::Consumption::Mgmt::V2018_06_30::Models::PriceSheetProperties
@@ -179,14 +179,14 @@ module Azure::Profiles::Latest
           def proxy_resource
             Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
           end
-          def resource
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Resource
+          def resource_attributes
+            Azure::Consumption::Mgmt::V2018_06_30::Models::ResourceAttributes
           end
           def forecast_properties_confidence_levels_item
             Azure::Consumption::Mgmt::V2018_06_30::Models::ForecastPropertiesConfidenceLevelsItem
           end
-          def resource_attributes
-            Azure::Consumption::Mgmt::V2018_06_30::Models::ResourceAttributes
+          def resource
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Resource
           end
           def reservation_details_list_result
             Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationDetailsListResult

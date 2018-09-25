@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     VideosOperations = Azure::CognitiveServices::VideoSearch::V1_0::VideosOperations
 
     module Models
+      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
+      Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
+      TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
       VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
       VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
@@ -36,11 +39,8 @@ module Azure::Profiles::Latest
       TrendingVideosSubcategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosSubcategory
       VideosModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideosModule
       TrendingVideosTile = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
-      Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
-      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
-      TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
+      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
     end
 
     class VideoSearchDataClass
@@ -73,6 +73,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def video_details
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
+        end
+        def videos
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
+        end
+        def trending_videos
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
+        end
         def video_length
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
         end
@@ -154,20 +163,11 @@ module Azure::Profiles::Latest
         def trending_videos_tile
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
         end
-        def videos
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
-        end
-        def error_response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
         end
-        def video_details
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
-        end
-        def trending_videos
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
+        def error_response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
         end
       end
     end

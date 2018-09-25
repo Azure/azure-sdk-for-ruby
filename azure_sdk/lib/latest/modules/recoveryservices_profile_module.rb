@@ -7,13 +7,13 @@ require 'azure_mgmt_recovery_services'
 module Azure::Profiles::Latest
   module RecoveryServices
     module Mgmt
+      ReplicationUsages = Azure::RecoveryServices::Mgmt::V2016_06_01::ReplicationUsages
+      VaultExtendedInfoOperations = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultExtendedInfoOperations
+      Operations = Azure::RecoveryServices::Mgmt::V2016_06_01::Operations
       Usages = Azure::RecoveryServices::Mgmt::V2016_06_01::Usages
       Vaults = Azure::RecoveryServices::Mgmt::V2016_06_01::Vaults
       VaultCertificates = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultCertificates
       RegisteredIdentities = Azure::RecoveryServices::Mgmt::V2016_06_01::RegisteredIdentities
-      ReplicationUsages = Azure::RecoveryServices::Mgmt::V2016_06_01::ReplicationUsages
-      VaultExtendedInfoOperations = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultExtendedInfoOperations
-      Operations = Azure::RecoveryServices::Mgmt::V2016_06_01::Operations
 
       module Models
         ClientDiscoveryValueForSingleApi = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
@@ -38,10 +38,10 @@ module Azure::Profiles::Latest
         NameInfo = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
         ResourceCertificateDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
         ResourceCertificateAndAcsDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
-        ResourceCertificateAndAadDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
+        Resource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
         TrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
         PatchTrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
-        Resource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
+        ResourceCertificateAndAadDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
         VaultExtendedInfoResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
         AuthType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
         PatchVault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
@@ -53,7 +53,7 @@ module Azure::Profiles::Latest
       end
 
       class RecoveryServicesManagementClass
-        attr_reader :usages, :vaults, :vault_certificates, :registered_identities, :replication_usages, :vault_extended_info_operations, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :replication_usages, :vault_extended_info_operations, :operations, :usages, :vaults, :vault_certificates, :registered_identities, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -63,13 +63,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @replication_usages = @client_0.replication_usages
+          @vault_extended_info_operations = @client_0.vault_extended_info_operations
+          @operations = @client_0.operations
           @usages = @client_0.usages
           @vaults = @client_0.vaults
           @vault_certificates = @client_0.vault_certificates
           @registered_identities = @client_0.registered_identities
-          @replication_usages = @client_0.replication_usages
-          @vault_extended_info_operations = @client_0.vault_extended_info_operations
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -154,8 +154,8 @@ module Azure::Profiles::Latest
           def resource_certificate_and_acs_details
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
           end
-          def resource_certificate_and_aad_details
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
+          def resource
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
           end
           def tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
@@ -163,8 +163,8 @@ module Azure::Profiles::Latest
           def patch_tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
           end
-          def resource
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
+          def resource_certificate_and_aad_details
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
           end
           def vault_extended_info_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource

@@ -12,7 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
-      # @return Not used.
+      # @return [SearchMetadata] The metadata from search results.
       attr_accessor :metadata
 
       # @return [Array<SavedSearch>] The array of result values.
@@ -35,7 +35,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 required: false,
                 serialized_name: '__metadata',
                 type: {
-                  name: 'Object'
+                  name: 'Composite',
+                  class_name: 'SearchMetadata'
                 }
               },
               value: {

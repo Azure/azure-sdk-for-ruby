@@ -14,6 +14,9 @@ module Azure::Profiles::Latest
       TrafficManagerUserMetricsKeys = Azure::TrafficManager::Mgmt::V2018_04_01::TrafficManagerUserMetricsKeys
 
       module Models
+        UserMetricsModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
+        TrafficManagerNameAvailability = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
+        ProfileMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
         EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus
         ProfileStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileStatus
         MonitorProtocol = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorProtocol
@@ -25,24 +28,21 @@ module Azure::Profiles::Latest
         Resource = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Resource
         MonitorConfigCustomHeadersItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigCustomHeadersItem
         MonitorConfigExpectedStatusCodeRangesItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigExpectedStatusCodeRangesItem
-        EndpointPropertiesSubnetsItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesSubnetsItem
-        MonitorConfig = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfig
-        HeatMapEndpoint = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapEndpoint
-        EndpointPropertiesCustomHeadersItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesCustomHeadersItem
-        QueryExperience = Azure::TrafficManager::Mgmt::V2018_04_01::Models::QueryExperience
-        DeleteOperationResult = Azure::TrafficManager::Mgmt::V2018_04_01::Models::DeleteOperationResult
-        TrafficFlow = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficFlow
-        Region = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Region
-        DnsConfig = Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
-        CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-        TrafficManagerNameAvailability = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
-        HeatMapModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
-        UserMetricsModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
-        TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
-        EndpointStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
         Profile = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
         Endpoint = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
-        ProfileMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
+        MonitorConfig = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfig
+        EndpointPropertiesSubnetsItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesSubnetsItem
+        EndpointPropertiesCustomHeadersItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesCustomHeadersItem
+        HeatMapEndpoint = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapEndpoint
+        DeleteOperationResult = Azure::TrafficManager::Mgmt::V2018_04_01::Models::DeleteOperationResult
+        QueryExperience = Azure::TrafficManager::Mgmt::V2018_04_01::Models::QueryExperience
+        Region = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Region
+        TrafficFlow = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficFlow
+        CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+        DnsConfig = Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
+        HeatMapModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
+        TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
+        EndpointStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
       end
 
       class TrafficManagerManagementClass
@@ -79,6 +79,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def user_metrics_model
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
+          end
+          def traffic_manager_name_availability
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
+          end
+          def profile_monitor_status
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
+          end
           def endpoint_monitor_status
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus
           end
@@ -112,59 +121,50 @@ module Azure::Profiles::Latest
           def monitor_config_expected_status_code_ranges_item
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigExpectedStatusCodeRangesItem
           end
-          def endpoint_properties_subnets_item
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesSubnetsItem
-          end
-          def monitor_config
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfig
-          end
-          def heat_map_endpoint
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapEndpoint
-          end
-          def endpoint_properties_custom_headers_item
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesCustomHeadersItem
-          end
-          def query_experience
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::QueryExperience
-          end
-          def delete_operation_result
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::DeleteOperationResult
-          end
-          def traffic_flow
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficFlow
-          end
-          def region
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Region
-          end
-          def dns_config
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
-          end
-          def check_traffic_manager_relative_dns_name_availability_parameters
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-          end
-          def traffic_manager_name_availability
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
-          end
-          def heat_map_model
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
-          end
-          def user_metrics_model
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
-          end
-          def traffic_manager_geographic_hierarchy
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
-          end
-          def endpoint_status
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
-          end
           def profile
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
           end
           def endpoint
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
           end
-          def profile_monitor_status
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
+          def monitor_config
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfig
+          end
+          def endpoint_properties_subnets_item
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesSubnetsItem
+          end
+          def endpoint_properties_custom_headers_item
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesCustomHeadersItem
+          end
+          def heat_map_endpoint
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapEndpoint
+          end
+          def delete_operation_result
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::DeleteOperationResult
+          end
+          def query_experience
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::QueryExperience
+          end
+          def region
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Region
+          end
+          def traffic_flow
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficFlow
+          end
+          def check_traffic_manager_relative_dns_name_availability_parameters
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+          end
+          def dns_config
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
+          end
+          def heat_map_model
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
+          end
+          def traffic_manager_geographic_hierarchy
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
+          end
+          def endpoint_status
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
           end
         end
       end

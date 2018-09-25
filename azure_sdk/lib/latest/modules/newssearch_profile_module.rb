@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
-      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
     end
 
     class NewsSearchDataClass
@@ -131,11 +131,11 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
         end
-        def error_response
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
-        end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        end
+        def error_response
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
         end
       end
     end
