@@ -41,27 +41,27 @@ module Azure::Profiles::Latest
         TagsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
         DeploymentExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
         TargetResource = Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
-        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
         ProviderResourceType = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
+        HttpMessage = Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
         DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
         DeploymentOperationProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
+        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
         ProviderListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
-        DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
         DeploymentProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
-        HttpMessage = Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
+        DeploymentOperationsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
         BasicDependency = Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
         ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
         GenericResourceFilter = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
         DeploymentExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
         AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
-        DeploymentOperationsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
-        Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
-        GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
+        Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
+        DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
+        DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
+        GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
         SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
         DeploymentValidateResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
         ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
-        DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
       end
 
       class ResourcesManagementClass
@@ -177,11 +177,11 @@ module Azure::Profiles::Latest
           def target_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
           end
-          def resource_group_patchable
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
-          end
           def provider_resource_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
+          end
+          def http_message
+            Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
           end
           def deployment_properties_extended
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
@@ -189,17 +189,17 @@ module Azure::Profiles::Latest
           def deployment_operation_properties
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
           end
+          def resource_group_patchable
+            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
+          end
           def provider_list_result
             Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
-          end
-          def deployment_operation
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
           end
           def deployment_properties
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
           end
-          def http_message
-            Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
+          def deployment_operations_list_result
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
           end
           def basic_dependency
             Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
@@ -216,17 +216,20 @@ module Azure::Profiles::Latest
           def alias_path_type
             Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
           end
-          def deployment_operations_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
+          def resource_group_export_result
+            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
           end
           def resource
             Azure::Resources::Mgmt::V2017_05_10::Models::Resource
           end
+          def deployment_operation
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
+          end
+          def deployment_mode
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
+          end
           def generic_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
-          end
-          def resource_group_export_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
           end
           def sub_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
@@ -236,9 +239,6 @@ module Azure::Profiles::Latest
           end
           def resource_identity_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
-          end
-          def deployment_mode
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
           end
         end
       end
