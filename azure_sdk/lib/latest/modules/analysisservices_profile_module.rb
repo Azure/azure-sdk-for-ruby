@@ -11,12 +11,16 @@ module Azure::Profiles::Latest
       Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
 
       module Models
+        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
+        Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
+        SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
+        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
+        ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
         AnalysisServicesServerUpdateParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
         OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
         GatewayListStatusLive = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
         OperationListResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
         GatewayError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
-        Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
         GatewayListStatusError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
         AnalysisServicesServers = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServers
         CheckServerNameAvailabilityParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
@@ -33,11 +37,7 @@ module Azure::Profiles::Latest
         IPv4FirewallRule = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallRule
         SkuEnumerationForExistingResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
         AnalysisServicesServer = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer
-        SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
-        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
-        ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
-        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
       end
 
       class AnalysisServicesManagementClass
@@ -71,6 +71,21 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def status
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
+          end
+          def resource
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
+          end
+          def sku_tier
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
+          end
+          def state
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
+          end
+          def provisioning_state
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
+          end
           def analysis_services_server_update_parameters
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
           end
@@ -85,9 +100,6 @@ module Azure::Profiles::Latest
           end
           def gateway_error
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
-          end
-          def resource
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
           end
           def gateway_list_status_error
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
@@ -137,20 +149,8 @@ module Azure::Profiles::Latest
           def analysis_services_server
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer
           end
-          def sku_tier
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
-          end
-          def state
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
-          end
-          def provisioning_state
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
-          end
           def connection_mode
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
-          end
-          def status
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
           end
         end
       end
