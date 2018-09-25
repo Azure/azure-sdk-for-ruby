@@ -12,11 +12,11 @@ module Azure::Profiles::Latest
 
       module Models
         Identity = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
-        OperationDisplay = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
-        Operation = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
         UserAssignedIdentitiesListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
         OperationListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationListResult
         UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
+        Operation = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
+        OperationDisplay = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
       end
 
       class ManagedServiceIdentityManagementClass
@@ -53,12 +53,6 @@ module Azure::Profiles::Latest
           def identity
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
           end
-          def operation_display
-            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
-          end
-          def operation
-            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
-          end
           def user_assigned_identities_list_result
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
           end
@@ -67,6 +61,12 @@ module Azure::Profiles::Latest
           end
           def user_assigned_identities
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
+          end
+          def operation
+            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
+          end
+          def operation_display
+            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
           end
         end
       end

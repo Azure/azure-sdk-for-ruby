@@ -7,15 +7,15 @@ require 'azure_mgmt_subscriptions'
 module Azure::Profiles::Latest
   module Subscriptions
     module Mgmt
-      Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
       Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
+      Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
 
       module Models
+        Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
         Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
         SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
         LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-        Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
@@ -23,7 +23,7 @@ module Azure::Profiles::Latest
       end
 
       class SubscriptionsManagementClass
-        attr_reader :subscriptions, :tenants, :configurable, :base_url, :options, :model_classes
+        attr_reader :tenants, :subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -33,8 +33,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @subscriptions = @client_0.subscriptions
           @tenants = @client_0.tenants
+          @subscriptions = @client_0.subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -53,6 +53,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def location
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+          end
           def subscription
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
           end
@@ -64,9 +67,6 @@ module Azure::Profiles::Latest
           end
           def tenant_id_description
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-          end
-          def location
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
           end
           def tenant_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
