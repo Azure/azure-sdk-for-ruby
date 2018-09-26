@@ -27,16 +27,16 @@ module Azure::Profiles::Latest
       Offer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Offer
       AggregateOffer = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
       ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
-      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+      Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
       NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
+      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
       RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
-      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
       TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
-      Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
+      Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
-      Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
@@ -153,11 +153,14 @@ module Azure::Profiles::Latest
         def image_gallery
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
         end
-        def response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+        def recipe
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
         end
         def normalized_rectangle
           Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
+        end
+        def response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
         end
         def recognized_entity
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
@@ -165,23 +168,20 @@ module Azure::Profiles::Latest
         def recognized_entity_region
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
         end
-        def image_insights
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
-        end
         def trending_images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
         end
-        def recipe
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
+        def rating
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+        end
+        def image_insights
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
         end
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
         end
         def currency
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
-        end
-        def rating
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
         end
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
