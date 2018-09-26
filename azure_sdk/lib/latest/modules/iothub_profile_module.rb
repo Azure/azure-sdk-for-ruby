@@ -49,8 +49,8 @@ module Azure::Profiles::Latest
         EventHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
         CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
         RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
-        Operation = Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
         CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+        Operation = Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
         IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
         OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
@@ -215,11 +215,11 @@ module Azure::Profiles::Latest
           def routing_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
           end
-          def operation
-            Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
-          end
           def cloud_to_device_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+          end
+          def operation
+            Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
           end
           def iot_hub_name_availability_info
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo

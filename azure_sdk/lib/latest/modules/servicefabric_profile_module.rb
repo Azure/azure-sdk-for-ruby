@@ -9,13 +9,16 @@ module Azure::Profiles::Latest
     module Mgmt
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
-      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
 
       module Models
+        ErrorModel = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
+        ServiceTypeHealthPolicyMapItem = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
+        ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
         ServiceCorrelationDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
         ServicePlacementPolicyDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
         ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeDeltaHealthPolicy
@@ -70,13 +73,10 @@ module Azure::Profiles::Latest
         Resource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::Resource
         ProvisioningState = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProvisioningState
         ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
-        ErrorModel = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
-        ServiceTypeHealthPolicyMapItem = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
-        ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :version, :cluster_versions, :application_type, :application, :service, :clusters, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :version, :application, :clusters, :cluster_versions, :application_type, :service, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -88,11 +88,11 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @operations = @client_0.operations
           @version = @client_0.version
+          @application = @client_0.application
+          @clusters = @client_0.clusters
           @cluster_versions = @client_0.cluster_versions
           @application_type = @client_0.application_type
-          @application = @client_0.application
           @service = @client_0.service
-          @clusters = @client_0.clusters
 
           @model_classes = ModelClasses.new
         end
@@ -111,6 +111,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_model
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
+          end
+          def service_type_health_policy_map_item
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
+          end
+          def application_metric_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
+          end
           def service_correlation_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
           end
@@ -272,15 +281,6 @@ module Azure::Profiles::Latest
           end
           def service_properties_base
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
-          end
-          def error_model
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ErrorModel
-          end
-          def service_type_health_policy_map_item
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
-          end
-          def application_metric_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
           end
         end
       end

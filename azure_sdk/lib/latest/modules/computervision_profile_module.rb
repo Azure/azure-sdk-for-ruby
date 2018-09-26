@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      ColorInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::ColorInfo
+      ModelDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
+      ImageTag = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::ListModelsResult
       ImageMetadata = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
       DomainModelResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
@@ -43,9 +46,6 @@ module Azure::Profiles::Latest
       OcrRegion = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
       Category = Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
       OcrResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
-      ColorInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::ColorInfo
-      ModelDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
-      ImageTag = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def color_info
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ColorInfo
+        end
+        def model_description
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
+        end
+        def image_tag
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
+        end
         def list_models_result
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ListModelsResult
         end
@@ -181,15 +190,6 @@ module Azure::Profiles::Latest
         end
         def ocr_result
           Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
-        end
-        def color_info
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ColorInfo
-        end
-        def model_description
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
-        end
-        def image_tag
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
         end
       end
     end

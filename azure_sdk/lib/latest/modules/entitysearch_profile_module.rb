@@ -17,11 +17,11 @@ module Azure::Profiles::Latest
       PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
       Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
-      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
+      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
+      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
-      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
@@ -111,8 +111,8 @@ module Azure::Profiles::Latest
         def organization
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
         end
-        def intangible
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
+        def response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
         end
         def contractual_rules_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
@@ -120,11 +120,11 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
         end
+        def intangible
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
+        end
         def civic_structure
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
-        end
-        def response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
         end
         def local_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
