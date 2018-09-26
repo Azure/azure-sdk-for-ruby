@@ -29,12 +29,12 @@ module Azure::Profiles::Latest
       Exposure = Azure::CognitiveServices::Face::V1_0::Models::Exposure
       VerifyFaceToFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
-      FaceAttributes = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
       VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
       PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
+      FaceAttributes = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
       Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
@@ -144,9 +144,6 @@ module Azure::Profiles::Latest
         def face_rectangle
           Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
-        def face_attributes
-          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
-        end
         def verify_result
           Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
         end
@@ -161,6 +158,9 @@ module Azure::Profiles::Latest
         end
         def emotion
           Azure::CognitiveServices::Face::V1_0::Models::Emotion
+        end
+        def face_attributes
+          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
         end
         def occlusion
           Azure::CognitiveServices::Face::V1_0::Models::Occlusion

@@ -8,13 +8,9 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     #
     # Input values.
     #
-    class OperationInputs
+    class SubdomainAvailabilityInputs
 
       include MsRestAzure
-
-      # @return [String] The name of the IoT Central application instance to
-      # check.
-      attr_accessor :name
 
       # @return [String] The subdomain of the IoT Central application instance
       # to check.
@@ -26,27 +22,17 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
 
       #
-      # Mapper for OperationInputs class as Ruby Hash.
+      # Mapper for SubdomainAvailabilityInputs class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'OperationInputs',
+          serialized_name: 'SubdomainAvailabilityInputs',
           type: {
             name: 'Composite',
-            class_name: 'OperationInputs',
+            class_name: 'SubdomainAvailabilityInputs',
             model_properties: {
-              name: {
-                required: false,
-                serialized_name: 'name',
-                constraints: {
-                  Pattern: '^[a-z0-9-]{1,63}$'
-                },
-                type: {
-                  name: 'String'
-                }
-              },
               subdomain: {
                 required: false,
                 serialized_name: 'subdomain',

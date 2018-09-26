@@ -9,10 +9,18 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
+      Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
+      Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
+      EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
+      EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
+      ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
+      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+      ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
-      ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+      ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
@@ -29,10 +37,10 @@ module Azure::Profiles::Latest
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       Places = Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
-      PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
-      Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
-      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
+      Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
+      PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
+      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
@@ -43,18 +51,10 @@ module Azure::Profiles::Latest
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
       EntertainmentBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
       MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
-      ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
       ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
       ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
       ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
       FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
-      LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
-      Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
-      Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
-      EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
-      EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
-      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-      ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
     end
 
     class EntitySearchDataClass
@@ -87,17 +87,41 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def lodging_business
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
+        end
+        def restaurant
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
+        end
+        def hotel
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
+        end
+        def entity_query_scenario
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
+        end
+        def entity_scenario
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
+        end
+        def contractual_rules_license_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
+        end
+        def answer_type
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+        end
+        def response_format
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+        end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
         end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
         end
-        def error_response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
-        end
         def error
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+        end
+        def error_response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
         end
         def response_base
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
@@ -147,17 +171,17 @@ module Azure::Profiles::Latest
         def places
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
         end
-        def postal_address
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
+        def place
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
         end
         def organization
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
         end
+        def postal_address
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
+        end
         def intangible
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
-        end
-        def place
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
         end
         def contractual_rules_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
@@ -189,9 +213,6 @@ module Azure::Profiles::Latest
         def movie_theater
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
         end
-        def contractual_rules_license_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
-        end
         def contractual_rules_link_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
         end
@@ -203,27 +224,6 @@ module Azure::Profiles::Latest
         end
         def food_establishment
           Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
-        end
-        def lodging_business
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
-        end
-        def restaurant
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
-        end
-        def hotel
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
-        end
-        def entity_query_scenario
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
-        end
-        def entity_scenario
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
-        end
-        def answer_type
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-        end
-        def response_format
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
         end
       end
     end

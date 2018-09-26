@@ -12,9 +12,9 @@ module Azure::Profiles::Latest
       AutoscaleSettings = Azure::Monitor::Mgmt::V2015_04_01::AutoscaleSettings
       EventCategories = Azure::Monitor::Mgmt::V2015_04_01::EventCategories
       TenantActivityLogs = Azure::Monitor::Mgmt::V2015_04_01::TenantActivityLogs
+      LogProfiles = Azure::Monitor::Mgmt::V2016_03_01::LogProfiles
       AlertRules = Azure::Monitor::Mgmt::V2016_03_01::AlertRules
       AlertRuleIncidents = Azure::Monitor::Mgmt::V2016_03_01::AlertRuleIncidents
-      LogProfiles = Azure::Monitor::Mgmt::V2016_03_01::LogProfiles
       ActivityLogAlerts = Azure::Monitor::Mgmt::V2017_04_01::ActivityLogAlerts
       DiagnosticSettingsOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsOperations
       DiagnosticSettingsCategoryOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsCategoryOperations
@@ -22,8 +22,8 @@ module Azure::Profiles::Latest
       MetricDefinitions = Azure::Monitor::Mgmt::V2018_01_01::MetricDefinitions
       Metrics = Azure::Monitor::Mgmt::V2018_01_01::Metrics
       MetricAlertsStatus = Azure::Monitor::Mgmt::V2018_03_01::MetricAlertsStatus
-      MetricAlerts = Azure::Monitor::Mgmt::V2018_03_01::MetricAlerts
       ActionGroups = Azure::Monitor::Mgmt::V2018_03_01::ActionGroups
+      MetricAlerts = Azure::Monitor::Mgmt::V2018_03_01::MetricAlerts
       ScheduledQueryRules = Azure::Monitor::Mgmt::V2018_04_16::ScheduledQueryRules
 
       module Models
@@ -50,11 +50,16 @@ module Azure::Profiles::Latest
         MetricStatisticType = Azure::Monitor::Mgmt::V2015_04_01::Models::MetricStatisticType
         EventLevel = Azure::Monitor::Mgmt::V2015_04_01::Models::EventLevel
         TimeAggregationType = Azure::Monitor::Mgmt::V2015_04_01::Models::TimeAggregationType
-        ScaleDirection = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleDirection
         ComparisonOperationType = Azure::Monitor::Mgmt::V2015_04_01::Models::ComparisonOperationType
+        ScaleDirection = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleDirection
         ScaleType = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleType
         OperationDisplay = Azure::Monitor::Mgmt::V2015_04_01::Models::OperationDisplay
         OperationListResult = Azure::Monitor::Mgmt::V2015_04_01::Models::OperationListResult
+        RuleCondition = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleCondition
+        AlertRuleResourcePatch = Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourcePatch
+        RuleManagementEventClaimsDataSource = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleManagementEventClaimsDataSource
+        AlertRuleResourceCollection = Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourceCollection
+        RuleDataSource = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleDataSource
         LogProfileResourcePatch = Azure::Monitor::Mgmt::V2016_03_01::Models::LogProfileResourcePatch
         ManagementEventAggregationCondition = Azure::Monitor::Mgmt::V2016_03_01::Models::ManagementEventAggregationCondition
         LogProfileCollection = Azure::Monitor::Mgmt::V2016_03_01::Models::LogProfileCollection
@@ -72,18 +77,15 @@ module Azure::Profiles::Latest
         LogProfileResource = Azure::Monitor::Mgmt::V2016_03_01::Models::LogProfileResource
         ConditionOperator = Azure::Monitor::Mgmt::V2016_03_01::Models::ConditionOperator
         TimeAggregationOperator = Azure::Monitor::Mgmt::V2016_03_01::Models::TimeAggregationOperator
-        RuleCondition = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleCondition
-        AlertRuleResourcePatch = Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourcePatch
-        RuleManagementEventClaimsDataSource = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleManagementEventClaimsDataSource
-        RuleDataSource = Azure::Monitor::Mgmt::V2016_03_01::Models::RuleDataSource
-        AlertRuleResourceCollection = Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourceCollection
+        ActivityLogAlertPatchBody = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertPatchBody
+        ActivityLogAlertList = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList
+        ActivityLogAlertResource = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource
         ActivityLogAlertLeafCondition = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertLeafCondition
         ActivityLogAlertAllOfCondition = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertAllOfCondition
         ActivityLogAlertActionGroup = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertActionGroup
         ActivityLogAlertActionList = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertActionList
-        ActivityLogAlertPatchBody = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertPatchBody
-        ActivityLogAlertList = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList
-        ActivityLogAlertResource = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource
+        DiagnosticSettingsResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource
+        DiagnosticSettingsCategoryResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResource
         RetentionPolicy = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::RetentionPolicy
         CategoryType = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::CategoryType
         ProxyOnlyResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::ProxyOnlyResource
@@ -91,26 +93,33 @@ module Azure::Profiles::Latest
         LogSettings = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::LogSettings
         DiagnosticSettingsCategoryResourceCollection = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResourceCollection
         DiagnosticSettingsResourceCollection = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResourceCollection
-        DiagnosticSettingsResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource
-        DiagnosticSettingsCategoryResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResource
-        Baseline = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::Baseline
-        BaselineResponse = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::BaselineResponse
         BaselineMetadataValue = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::BaselineMetadataValue
         TimeSeriesInformation = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::TimeSeriesInformation
         CalculateBaselineResponse = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::CalculateBaselineResponse
         Sensitivity = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::Sensitivity
-        MetricAvailability = Azure::Monitor::Mgmt::V2018_01_01::Models::MetricAvailability
-        MetricValue = Azure::Monitor::Mgmt::V2018_01_01::Models::MetricValue
-        MetadataValue = Azure::Monitor::Mgmt::V2018_01_01::Models::MetadataValue
-        TimeSeriesElement = Azure::Monitor::Mgmt::V2018_01_01::Models::TimeSeriesElement
-        Metric = Azure::Monitor::Mgmt::V2018_01_01::Models::Metric
-        Response = Azure::Monitor::Mgmt::V2018_01_01::Models::Response
-        AggregationType = Azure::Monitor::Mgmt::V2018_01_01::Models::AggregationType
+        Baseline = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::Baseline
+        BaselineResponse = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::BaselineResponse
         ResultType = Azure::Monitor::Mgmt::V2018_01_01::Models::ResultType
-        Unit = Azure::Monitor::Mgmt::V2018_01_01::Models::Unit
+        AggregationType = Azure::Monitor::Mgmt::V2018_01_01::Models::AggregationType
         LocalizableString = Azure::Monitor::Mgmt::V2018_01_01::Models::LocalizableString
         MetricDefinition = Azure::Monitor::Mgmt::V2018_01_01::Models::MetricDefinition
         MetricDefinitionCollection = Azure::Monitor::Mgmt::V2018_01_01::Models::MetricDefinitionCollection
+        MetricAvailability = Azure::Monitor::Mgmt::V2018_01_01::Models::MetricAvailability
+        Response = Azure::Monitor::Mgmt::V2018_01_01::Models::Response
+        MetricValue = Azure::Monitor::Mgmt::V2018_01_01::Models::MetricValue
+        Unit = Azure::Monitor::Mgmt::V2018_01_01::Models::Unit
+        MetadataValue = Azure::Monitor::Mgmt::V2018_01_01::Models::MetadataValue
+        TimeSeriesElement = Azure::Monitor::Mgmt::V2018_01_01::Models::TimeSeriesElement
+        Metric = Azure::Monitor::Mgmt::V2018_01_01::Models::Metric
+        ActionGroupList = Azure::Monitor::Mgmt::V2018_03_01::Models::ActionGroupList
+        MetricAlertCriteria = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertCriteria
+        MetricAlertResourcePatch = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertResourcePatch
+        MetricAlertStatusProperties = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusProperties
+        MetricAlertStatusCollection = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusCollection
+        MetricCriteria = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricCriteria
+        VoiceReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::VoiceReceiver
+        LogicAppReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::LogicAppReceiver
+        MetricAlertAction = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertAction
         MetricAlertResourceCollection = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertResourceCollection
         MetricDimension = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricDimension
         AzureFunctionReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::AzureFunctionReceiver
@@ -127,37 +136,28 @@ module Azure::Profiles::Latest
         AutomationRunbookReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::AutomationRunbookReceiver
         ItsmReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::ItsmReceiver
         SmsReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::SmsReceiver
-        ActionGroupList = Azure::Monitor::Mgmt::V2018_03_01::Models::ActionGroupList
-        MetricAlertCriteria = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertCriteria
-        MetricAlertResourcePatch = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertResourcePatch
-        MetricAlertStatusProperties = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusProperties
-        MetricAlertStatusCollection = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusCollection
-        MetricCriteria = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricCriteria
-        VoiceReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::VoiceReceiver
-        LogicAppReceiver = Azure::Monitor::Mgmt::V2018_03_01::Models::LogicAppReceiver
-        MetricAlertAction = Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertAction
-        ProvisioningState = Azure::Monitor::Mgmt::V2018_04_16::Models::ProvisioningState
-        AlertSeverity = Azure::Monitor::Mgmt::V2018_04_16::Models::AlertSeverity
+        LogSearchRuleResource = Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResource
+        AlertingAction = Azure::Monitor::Mgmt::V2018_04_16::Models::AlertingAction
+        Source = Azure::Monitor::Mgmt::V2018_04_16::Models::Source
+        QueryType = Azure::Monitor::Mgmt::V2018_04_16::Models::QueryType
         Action = Azure::Monitor::Mgmt::V2018_04_16::Models::Action
+        ProvisioningState = Azure::Monitor::Mgmt::V2018_04_16::Models::ProvisioningState
+        ConditionalOperator = Azure::Monitor::Mgmt::V2018_04_16::Models::ConditionalOperator
+        Enabled = Azure::Monitor::Mgmt::V2018_04_16::Models::Enabled
+        AlertSeverity = Azure::Monitor::Mgmt::V2018_04_16::Models::AlertSeverity
+        MetricTriggerType = Azure::Monitor::Mgmt::V2018_04_16::Models::MetricTriggerType
+        Schedule = Azure::Monitor::Mgmt::V2018_04_16::Models::Schedule
+        Resource = Azure::Monitor::Mgmt::V2018_04_16::Models::Resource
         LogSearchRuleResourceCollection = Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResourceCollection
         LogMetricTrigger = Azure::Monitor::Mgmt::V2018_04_16::Models::LogMetricTrigger
         TriggerCondition = Azure::Monitor::Mgmt::V2018_04_16::Models::TriggerCondition
         AzNsActionGroup = Azure::Monitor::Mgmt::V2018_04_16::Models::AzNsActionGroup
-        Schedule = Azure::Monitor::Mgmt::V2018_04_16::Models::Schedule
-        LogSearchRuleResource = Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResource
-        AlertingAction = Azure::Monitor::Mgmt::V2018_04_16::Models::AlertingAction
         LogSearchRuleResourcePatch = Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResourcePatch
-        Resource = Azure::Monitor::Mgmt::V2018_04_16::Models::Resource
-        QueryType = Azure::Monitor::Mgmt::V2018_04_16::Models::QueryType
-        Enabled = Azure::Monitor::Mgmt::V2018_04_16::Models::Enabled
         ErrorResponse = Azure::Monitor::Mgmt::V2018_04_16::Models::ErrorResponse
-        ConditionalOperator = Azure::Monitor::Mgmt::V2018_04_16::Models::ConditionalOperator
-        MetricTriggerType = Azure::Monitor::Mgmt::V2018_04_16::Models::MetricTriggerType
-        Source = Azure::Monitor::Mgmt::V2018_04_16::Models::Source
       end
 
       class MonitorManagementClass
-        attr_reader :operations, :activity_logs, :autoscale_settings, :event_categories, :tenant_activity_logs, :alert_rules, :alert_rule_incidents, :log_profiles, :activity_log_alerts, :diagnostic_settings_operations, :diagnostic_settings_category_operations, :metric_baseline, :metric_definitions, :metrics, :metric_alerts_status, :metric_alerts, :action_groups, :scheduled_query_rules, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :activity_logs, :autoscale_settings, :event_categories, :tenant_activity_logs, :log_profiles, :alert_rules, :alert_rule_incidents, :activity_log_alerts, :diagnostic_settings_operations, :diagnostic_settings_category_operations, :metric_baseline, :metric_definitions, :metrics, :metric_alerts_status, :action_groups, :metric_alerts, :scheduled_query_rules, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -178,9 +178,9 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
+          @log_profiles = @client_1.log_profiles
           @alert_rules = @client_1.alert_rules
           @alert_rule_incidents = @client_1.alert_rule_incidents
-          @log_profiles = @client_1.log_profiles
 
           @client_2 = Azure::Monitor::Mgmt::V2017_04_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
@@ -218,8 +218,8 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_6)
           @metric_alerts_status = @client_6.metric_alerts_status
-          @metric_alerts = @client_6.metric_alerts
           @action_groups = @client_6.action_groups
+          @metric_alerts = @client_6.metric_alerts
 
           @client_7 = Azure::Monitor::Mgmt::V2018_04_16::MonitorClient.new(configurable.credentials, base_url, options)
           if(@client_7.respond_to?(:subscription_id))
@@ -328,11 +328,11 @@ module Azure::Profiles::Latest
           def time_aggregation_type
             Azure::Monitor::Mgmt::V2015_04_01::Models::TimeAggregationType
           end
-          def scale_direction
-            Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleDirection
-          end
           def comparison_operation_type
             Azure::Monitor::Mgmt::V2015_04_01::Models::ComparisonOperationType
+          end
+          def scale_direction
+            Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleDirection
           end
           def scale_type
             Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleType
@@ -342,6 +342,21 @@ module Azure::Profiles::Latest
           end
           def operation_list_result
             Azure::Monitor::Mgmt::V2015_04_01::Models::OperationListResult
+          end
+          def rule_condition
+            Azure::Monitor::Mgmt::V2016_03_01::Models::RuleCondition
+          end
+          def alert_rule_resource_patch
+            Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourcePatch
+          end
+          def rule_management_event_claims_data_source
+            Azure::Monitor::Mgmt::V2016_03_01::Models::RuleManagementEventClaimsDataSource
+          end
+          def alert_rule_resource_collection
+            Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourceCollection
+          end
+          def rule_data_source
+            Azure::Monitor::Mgmt::V2016_03_01::Models::RuleDataSource
           end
           def log_profile_resource_patch
             Azure::Monitor::Mgmt::V2016_03_01::Models::LogProfileResourcePatch
@@ -394,20 +409,14 @@ module Azure::Profiles::Latest
           def time_aggregation_operator
             Azure::Monitor::Mgmt::V2016_03_01::Models::TimeAggregationOperator
           end
-          def rule_condition
-            Azure::Monitor::Mgmt::V2016_03_01::Models::RuleCondition
+          def activity_log_alert_patch_body
+            Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertPatchBody
           end
-          def alert_rule_resource_patch
-            Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourcePatch
+          def activity_log_alert_list
+            Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList
           end
-          def rule_management_event_claims_data_source
-            Azure::Monitor::Mgmt::V2016_03_01::Models::RuleManagementEventClaimsDataSource
-          end
-          def rule_data_source
-            Azure::Monitor::Mgmt::V2016_03_01::Models::RuleDataSource
-          end
-          def alert_rule_resource_collection
-            Azure::Monitor::Mgmt::V2016_03_01::Models::AlertRuleResourceCollection
+          def activity_log_alert_resource
+            Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource
           end
           def activity_log_alert_leaf_condition
             Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertLeafCondition
@@ -421,14 +430,11 @@ module Azure::Profiles::Latest
           def activity_log_alert_action_list
             Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertActionList
           end
-          def activity_log_alert_patch_body
-            Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertPatchBody
+          def diagnostic_settings_resource
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource
           end
-          def activity_log_alert_list
-            Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList
-          end
-          def activity_log_alert_resource
-            Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource
+          def diagnostic_settings_category_resource
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResource
           end
           def retention_policy
             Azure::Monitor::Mgmt::V2017_05_01_preview::Models::RetentionPolicy
@@ -451,18 +457,6 @@ module Azure::Profiles::Latest
           def diagnostic_settings_resource_collection
             Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResourceCollection
           end
-          def diagnostic_settings_resource
-            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource
-          end
-          def diagnostic_settings_category_resource
-            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResource
-          end
-          def baseline
-            Azure::Monitor::Mgmt::V2017_11_01_preview::Models::Baseline
-          end
-          def baseline_response
-            Azure::Monitor::Mgmt::V2017_11_01_preview::Models::BaselineResponse
-          end
           def baseline_metadata_value
             Azure::Monitor::Mgmt::V2017_11_01_preview::Models::BaselineMetadataValue
           end
@@ -475,11 +469,38 @@ module Azure::Profiles::Latest
           def sensitivity
             Azure::Monitor::Mgmt::V2017_11_01_preview::Models::Sensitivity
           end
+          def baseline
+            Azure::Monitor::Mgmt::V2017_11_01_preview::Models::Baseline
+          end
+          def baseline_response
+            Azure::Monitor::Mgmt::V2017_11_01_preview::Models::BaselineResponse
+          end
+          def result_type
+            Azure::Monitor::Mgmt::V2018_01_01::Models::ResultType
+          end
+          def aggregation_type
+            Azure::Monitor::Mgmt::V2018_01_01::Models::AggregationType
+          end
+          def localizable_string
+            Azure::Monitor::Mgmt::V2018_01_01::Models::LocalizableString
+          end
+          def metric_definition
+            Azure::Monitor::Mgmt::V2018_01_01::Models::MetricDefinition
+          end
+          def metric_definition_collection
+            Azure::Monitor::Mgmt::V2018_01_01::Models::MetricDefinitionCollection
+          end
           def metric_availability
             Azure::Monitor::Mgmt::V2018_01_01::Models::MetricAvailability
           end
+          def response
+            Azure::Monitor::Mgmt::V2018_01_01::Models::Response
+          end
           def metric_value
             Azure::Monitor::Mgmt::V2018_01_01::Models::MetricValue
+          end
+          def unit
+            Azure::Monitor::Mgmt::V2018_01_01::Models::Unit
           end
           def metadata_value
             Azure::Monitor::Mgmt::V2018_01_01::Models::MetadataValue
@@ -490,26 +511,32 @@ module Azure::Profiles::Latest
           def metric
             Azure::Monitor::Mgmt::V2018_01_01::Models::Metric
           end
-          def response
-            Azure::Monitor::Mgmt::V2018_01_01::Models::Response
+          def action_group_list
+            Azure::Monitor::Mgmt::V2018_03_01::Models::ActionGroupList
           end
-          def aggregation_type
-            Azure::Monitor::Mgmt::V2018_01_01::Models::AggregationType
+          def metric_alert_criteria
+            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertCriteria
           end
-          def result_type
-            Azure::Monitor::Mgmt::V2018_01_01::Models::ResultType
+          def metric_alert_resource_patch
+            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertResourcePatch
           end
-          def unit
-            Azure::Monitor::Mgmt::V2018_01_01::Models::Unit
+          def metric_alert_status_properties
+            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusProperties
           end
-          def localizable_string
-            Azure::Monitor::Mgmt::V2018_01_01::Models::LocalizableString
+          def metric_alert_status_collection
+            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusCollection
           end
-          def metric_definition
-            Azure::Monitor::Mgmt::V2018_01_01::Models::MetricDefinition
+          def metric_criteria
+            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricCriteria
           end
-          def metric_definition_collection
-            Azure::Monitor::Mgmt::V2018_01_01::Models::MetricDefinitionCollection
+          def voice_receiver
+            Azure::Monitor::Mgmt::V2018_03_01::Models::VoiceReceiver
+          end
+          def logic_app_receiver
+            Azure::Monitor::Mgmt::V2018_03_01::Models::LogicAppReceiver
+          end
+          def metric_alert_action
+            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertAction
           end
           def metric_alert_resource_collection
             Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertResourceCollection
@@ -559,41 +586,41 @@ module Azure::Profiles::Latest
           def sms_receiver
             Azure::Monitor::Mgmt::V2018_03_01::Models::SmsReceiver
           end
-          def action_group_list
-            Azure::Monitor::Mgmt::V2018_03_01::Models::ActionGroupList
+          def log_search_rule_resource
+            Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResource
           end
-          def metric_alert_criteria
-            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertCriteria
+          def alerting_action
+            Azure::Monitor::Mgmt::V2018_04_16::Models::AlertingAction
           end
-          def metric_alert_resource_patch
-            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertResourcePatch
+          def source
+            Azure::Monitor::Mgmt::V2018_04_16::Models::Source
           end
-          def metric_alert_status_properties
-            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusProperties
+          def query_type
+            Azure::Monitor::Mgmt::V2018_04_16::Models::QueryType
           end
-          def metric_alert_status_collection
-            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertStatusCollection
-          end
-          def metric_criteria
-            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricCriteria
-          end
-          def voice_receiver
-            Azure::Monitor::Mgmt::V2018_03_01::Models::VoiceReceiver
-          end
-          def logic_app_receiver
-            Azure::Monitor::Mgmt::V2018_03_01::Models::LogicAppReceiver
-          end
-          def metric_alert_action
-            Azure::Monitor::Mgmt::V2018_03_01::Models::MetricAlertAction
+          def action
+            Azure::Monitor::Mgmt::V2018_04_16::Models::Action
           end
           def provisioning_state
             Azure::Monitor::Mgmt::V2018_04_16::Models::ProvisioningState
           end
+          def conditional_operator
+            Azure::Monitor::Mgmt::V2018_04_16::Models::ConditionalOperator
+          end
+          def enabled
+            Azure::Monitor::Mgmt::V2018_04_16::Models::Enabled
+          end
           def alert_severity
             Azure::Monitor::Mgmt::V2018_04_16::Models::AlertSeverity
           end
-          def action
-            Azure::Monitor::Mgmt::V2018_04_16::Models::Action
+          def metric_trigger_type
+            Azure::Monitor::Mgmt::V2018_04_16::Models::MetricTriggerType
+          end
+          def schedule
+            Azure::Monitor::Mgmt::V2018_04_16::Models::Schedule
+          end
+          def resource
+            Azure::Monitor::Mgmt::V2018_04_16::Models::Resource
           end
           def log_search_rule_resource_collection
             Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResourceCollection
@@ -607,38 +634,11 @@ module Azure::Profiles::Latest
           def az_ns_action_group
             Azure::Monitor::Mgmt::V2018_04_16::Models::AzNsActionGroup
           end
-          def schedule
-            Azure::Monitor::Mgmt::V2018_04_16::Models::Schedule
-          end
-          def log_search_rule_resource
-            Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResource
-          end
-          def alerting_action
-            Azure::Monitor::Mgmt::V2018_04_16::Models::AlertingAction
-          end
           def log_search_rule_resource_patch
             Azure::Monitor::Mgmt::V2018_04_16::Models::LogSearchRuleResourcePatch
           end
-          def resource
-            Azure::Monitor::Mgmt::V2018_04_16::Models::Resource
-          end
-          def query_type
-            Azure::Monitor::Mgmt::V2018_04_16::Models::QueryType
-          end
-          def enabled
-            Azure::Monitor::Mgmt::V2018_04_16::Models::Enabled
-          end
           def error_response
             Azure::Monitor::Mgmt::V2018_04_16::Models::ErrorResponse
-          end
-          def conditional_operator
-            Azure::Monitor::Mgmt::V2018_04_16::Models::ConditionalOperator
-          end
-          def metric_trigger_type
-            Azure::Monitor::Mgmt::V2018_04_16::Models::MetricTriggerType
-          end
-          def source
-            Azure::Monitor::Mgmt::V2018_04_16::Models::Source
           end
         end
       end
