@@ -27,7 +27,6 @@ module Azure::Profiles::Latest
       Sessions = Azure::Logic::Mgmt::V2016_06_01::Sessions
 
       module Models
-        RecurrenceFrequency = Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
         DaysOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
         DayOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
         IntegrationAccountSkuName = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSkuName
@@ -42,11 +41,11 @@ module Azure::Profiles::Latest
         X12CharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::X12CharacterSet
         SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
         X12DateFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
-        KeyVaultReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultReference
-        UsageIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
         X12TimeFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
-        ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
+        KeyVaultReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultReference
         MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+        UsageIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
+        ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
         EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
         EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
         TrackEventsOperationOptions = Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
@@ -147,8 +146,8 @@ module Azure::Profiles::Latest
         AS2AcknowledgementConnectionSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2AcknowledgementConnectionSettings
         IntegrationAccountCertificateListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
         AS2EnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
-        KeyVaultKeyReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
         IntegrationAccountSessionFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
+        KeyVaultKeyReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
         ExpressionTraces = Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
         BatchConfigurationCollection = Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfigurationCollection
         IntegrationAccountSessionListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
@@ -198,6 +197,7 @@ module Azure::Profiles::Latest
         ParameterType = Azure::Logic::Mgmt::V2016_06_01::Models::ParameterType
         WorkflowTriggerProvisioningState = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerProvisioningState
         WorkflowStatus = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
+        RecurrenceFrequency = Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
       end
 
       class LogicManagementClass
@@ -247,9 +247,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def recurrence_frequency
-            Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
-          end
           def days_of_week
             Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
           end
@@ -292,20 +289,20 @@ module Azure::Profiles::Latest
           def x12_date_format
             Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
           end
+          def x12_time_format
+            Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
+          end
           def key_vault_reference
             Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultReference
+          end
+          def message_filter_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
           end
           def usage_indicator
             Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
           end
-          def x12_time_format
-            Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
-          end
           def content_hash
             Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
-          end
-          def message_filter_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
           end
           def edifact_character_set
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
@@ -607,11 +604,11 @@ module Azure::Profiles::Latest
           def as2_envelope_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
           end
-          def key_vault_key_reference
-            Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
-          end
           def integration_account_session_filter
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
+          end
+          def key_vault_key_reference
+            Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
           end
           def expression_traces
             Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
@@ -759,6 +756,9 @@ module Azure::Profiles::Latest
           end
           def workflow_status
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
+          end
+          def recurrence_frequency
+            Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
           end
         end
       end

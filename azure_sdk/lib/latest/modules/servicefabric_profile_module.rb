@@ -8,8 +8,8 @@ module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
       Operations = Azure::ServiceFabric::Mgmt::V2018_02_01::Operations
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2018_02_01::ClusterVersions
@@ -46,12 +46,10 @@ module Azure::Profiles::Latest
         ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
         ServiceCorrelationDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
         ServicePlacementPolicyDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
-        ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
-        ServerCertificateCommonNames = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
         ApplicationDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
         ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
-        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
         ServerCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
+        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
         ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
         ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
         DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::DiagnosticsStorageAccountConfig
@@ -61,6 +59,7 @@ module Azure::Profiles::Latest
         ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterHealthPolicy
         AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
         ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
+        ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
         ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
         ClientCertificateThumbprint = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateThumbprint
         ClusterUpgradeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradeDeltaHealthPolicy
@@ -77,10 +76,11 @@ module Azure::Profiles::Latest
         CertificateDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::CertificateDescription
         OperationListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
         ErrorModel = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModel
+        ServerCertificateCommonNames = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
       end
 
       class ServiceFabricManagementClass
-        attr_reader :application, :application_type, :version, :service, :operations, :cluster_versions, :clusters, :configurable, :base_url, :options, :model_classes
+        attr_reader :application, :version, :application_type, :service, :operations, :cluster_versions, :clusters, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -91,8 +91,8 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @application = @client_0.application
-          @application_type = @client_0.application_type
           @version = @client_0.version
+          @application_type = @client_0.application_type
           @service = @client_0.service
 
           @client_1 = Azure::ServiceFabric::Mgmt::V2018_02_01::ServiceFabricManagementClient.new(configurable.credentials, base_url, options)
@@ -213,23 +213,17 @@ module Azure::Profiles::Latest
           def service_placement_policy_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
           end
-          def service_type_delta_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
-          end
-          def server_certificate_common_names
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
-          end
           def application_delta_health_policy
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
           end
           def cluster_update_parameters
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
           end
-          def cluster_code_versions_list_result
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
-          end
           def server_certificate_common_name
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
+          end
+          def cluster_code_versions_list_result
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
           end
           def cluster_code_versions_result
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
@@ -257,6 +251,9 @@ module Azure::Profiles::Latest
           end
           def service_type_health_policy
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
+          end
+          def service_type_delta_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
           end
           def client_certificate_common_name
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
@@ -305,6 +302,9 @@ module Azure::Profiles::Latest
           end
           def error_model
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModel
+          end
+          def server_certificate_common_names
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
           end
         end
       end

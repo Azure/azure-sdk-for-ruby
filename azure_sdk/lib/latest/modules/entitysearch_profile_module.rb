@@ -10,7 +10,6 @@ module Azure::Profiles::Latest
 
     module Models
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
-      Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
@@ -51,9 +50,10 @@ module Azure::Profiles::Latest
       ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
       FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
       LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
-      Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
+      Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
+      Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
     end
 
@@ -89,9 +89,6 @@ module Azure::Profiles::Latest
       class ModelClasses
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
-        end
-        def restaurant
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
         end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
@@ -213,14 +210,17 @@ module Azure::Profiles::Latest
         def lodging_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
         end
-        def hotel
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
+        def restaurant
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
         end
         def entity_query_scenario
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
         end
         def entity_scenario
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
+        end
+        def hotel
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
         end
         def answer_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
