@@ -13,7 +13,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       include MsRestAzure
 
       # @return [String] The name of the IoT Central application instance to
-      # check.
+      # check. Default value: 'abc' .
       attr_accessor :name
 
 
@@ -30,8 +30,9 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'OperationInputs',
             model_properties: {
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
+                default_value: 'abc',
                 constraints: {
                   Pattern: '^[a-z0-9-]{1,63}$'
                 },
