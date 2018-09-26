@@ -443,7 +443,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppNameAvailabilityInfo] operation results.
+    # @return [AppAvailabilityInfo] operation results.
     #
     def check_name_availability(operation_inputs, custom_headers = nil)
       response = check_name_availability_async(operation_inputs, custom_headers).value!
@@ -523,7 +523,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameAvailabilityInfo.mapper()
+            result_mapper = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -35,7 +35,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     autoload :Resource,                                           '2018-09-01/generated/azure_mgmt_iot_central/models/resource.rb'
     autoload :OperationInputs,                                    '2018-09-01/generated/azure_mgmt_iot_central/models/operation_inputs.rb'
     autoload :ErrorDetails,                                       '2018-09-01/generated/azure_mgmt_iot_central/models/error_details.rb'
-    autoload :AppNameAvailabilityInfo,                            '2018-09-01/generated/azure_mgmt_iot_central/models/app_name_availability_info.rb'
+    autoload :AppAvailabilityInfo,                                '2018-09-01/generated/azure_mgmt_iot_central/models/app_availability_info.rb'
     autoload :App,                                                '2018-09-01/generated/azure_mgmt_iot_central/models/app.rb'
     autoload :AppSku,                                             '2018-09-01/generated/azure_mgmt_iot_central/models/app_sku.rb'
     autoload :AppNameUnavailabilityReason,                        '2018-09-01/generated/azure_mgmt_iot_central/models/app_name_unavailability_reason.rb'
