@@ -540,8 +540,8 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # Check if an IoT Central application subdomain is available.
     #
     # @param subdomain_availability_inputs [SubdomainAvailabilityInputs] Set the
-    # subdomain parameter in the SubdomainAvailabilityInputs structure to the
-    # subdomain of the IoT Central application to check.
+    # subdomain parameter in the SubdomainAvailabilityInputs model to the subdomain
+    # of the IoT Central application to check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -556,8 +556,8 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # Check if an IoT Central application subdomain is available.
     #
     # @param subdomain_availability_inputs [SubdomainAvailabilityInputs] Set the
-    # subdomain parameter in the SubdomainAvailabilityInputs structure to the
-    # subdomain of the IoT Central application to check.
+    # subdomain parameter in the SubdomainAvailabilityInputs model to the subdomain
+    # of the IoT Central application to check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -571,8 +571,8 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # Check if an IoT Central application subdomain is available.
     #
     # @param subdomain_availability_inputs [SubdomainAvailabilityInputs] Set the
-    # subdomain parameter in the SubdomainAvailabilityInputs structure to the
-    # subdomain of the IoT Central application to check.
+    # subdomain parameter in the SubdomainAvailabilityInputs model to the subdomain
+    # of the IoT Central application to check.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
