@@ -15,9 +15,10 @@ module Azure::Profiles::Latest
         Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
         ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
         AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
-        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
         AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
-        OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+        NameAvailabilityInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::NameAvailabilityInputs
+        SubdomainAvailabilityInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::SubdomainAvailabilityInputs
         AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
         App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
         AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
@@ -69,14 +70,17 @@ module Azure::Profiles::Latest
           def app_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
           end
-          def app_sku_info
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
-          end
           def app_patch
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
           end
-          def operation_inputs
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+          def app_sku_info
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+          end
+          def name_availability_inputs
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::NameAvailabilityInputs
+          end
+          def subdomain_availability_inputs
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::SubdomainAvailabilityInputs
           end
           def app_availability_info
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo

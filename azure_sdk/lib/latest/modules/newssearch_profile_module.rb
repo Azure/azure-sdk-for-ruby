@@ -11,8 +11,8 @@ module Azure::Profiles::Latest
     module Models
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
-      ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
+      ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
       Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
@@ -24,9 +24,9 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
+      Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
-      Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
@@ -71,11 +71,11 @@ module Azure::Profiles::Latest
         def news
           Azure::CognitiveServices::NewsSearch::V1_0::Models::News
         end
-        def response_base
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-        end
         def news_topic
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
+        end
+        def response_base
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
         end
         def query
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
@@ -110,14 +110,14 @@ module Azure::Profiles::Latest
         def error_sub_code
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
         end
+        def response
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+        end
         def safe_search
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
         end
         def text_format
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
-        end
-        def response
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
         end
         def freshness
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness

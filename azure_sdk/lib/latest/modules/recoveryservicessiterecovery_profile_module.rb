@@ -7,14 +7,17 @@ require 'azure_mgmt_recovery_services_site_recovery'
 module Azure::Profiles::Latest
   module RecoveryServicesSiteRecovery
     module Mgmt
+      ReplicationStorageClassifications = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationStorageClassifications
+      ReplicationStorageClassificationMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationStorageClassificationMappings
+      ReplicationvCenters = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationvCenters
+      ReplicationJobs = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationJobs
       ReplicationPolicies = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationPolicies
       ReplicationRecoveryPlans = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationRecoveryPlans
       ReplicationVaultHealth = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationVaultHealth
-      ReplicationStorageClassifications = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationStorageClassifications
-      ReplicationStorageClassificationMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationStorageClassificationMappings
+      RecoveryPoints = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::RecoveryPoints
+      Operations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Operations
       ReplicationAlertSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationAlertSettings
       ReplicationEvents = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationEvents
-      Operations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Operations
       ReplicationFabrics = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationFabrics
       ReplicationLogicalNetworks = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationLogicalNetworks
       ReplicationNetworks = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationNetworks
@@ -23,13 +26,14 @@ module Azure::Profiles::Latest
       ReplicationProtectableItems = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationProtectableItems
       ReplicationProtectedItems = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationProtectedItems
       TargetComputeSizes = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::TargetComputeSizes
-      RecoveryPoints = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::RecoveryPoints
-      ReplicationRecoveryServicesProviders = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationRecoveryServicesProviders
       ReplicationProtectionContainerMappings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationProtectionContainerMappings
-      ReplicationvCenters = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationvCenters
-      ReplicationJobs = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationJobs
+      ReplicationRecoveryServicesProviders = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::ReplicationRecoveryServicesProviders
 
       module Models
+        DisableProtectionReason = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DisableProtectionReason
+        HealthErrorCategory = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthErrorCategory
+        PresenceStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PresenceStatus
+        AgentVersionStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AgentVersionStatus
         RecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPointType
         MultiVmSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncStatus
         A2ARpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2ARpRecoveryPointType
@@ -370,14 +374,10 @@ module Azure::Profiles::Latest
         RecoveryPlanGroupType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanGroupType
         ReplicationProtectedItemOperation = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ReplicationProtectedItemOperation
         PossibleOperationsDirections = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PossibleOperationsDirections
-        DisableProtectionReason = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DisableProtectionReason
-        HealthErrorCategory = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthErrorCategory
-        PresenceStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PresenceStatus
-        AgentVersionStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AgentVersionStatus
       end
 
       class RecoveryServicesSiteRecoveryManagementClass
-        attr_reader :replication_policies, :replication_recovery_plans, :replication_vault_health, :replication_storage_classifications, :replication_storage_classification_mappings, :replication_alert_settings, :replication_events, :operations, :replication_fabrics, :replication_logical_networks, :replication_networks, :replication_network_mappings, :replication_protection_containers, :replication_protectable_items, :replication_protected_items, :target_compute_sizes, :recovery_points, :replication_recovery_services_providers, :replication_protection_container_mappings, :replicationv_centers, :replication_jobs, :configurable, :base_url, :options, :model_classes
+        attr_reader :replication_storage_classifications, :replication_storage_classification_mappings, :replicationv_centers, :replication_jobs, :replication_policies, :replication_recovery_plans, :replication_vault_health, :recovery_points, :operations, :replication_alert_settings, :replication_events, :replication_fabrics, :replication_logical_networks, :replication_networks, :replication_network_mappings, :replication_protection_containers, :replication_protectable_items, :replication_protected_items, :target_compute_sizes, :replication_protection_container_mappings, :replication_recovery_services_providers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -387,14 +387,17 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @replication_storage_classifications = @client_0.replication_storage_classifications
+          @replication_storage_classification_mappings = @client_0.replication_storage_classification_mappings
+          @replicationv_centers = @client_0.replicationv_centers
+          @replication_jobs = @client_0.replication_jobs
           @replication_policies = @client_0.replication_policies
           @replication_recovery_plans = @client_0.replication_recovery_plans
           @replication_vault_health = @client_0.replication_vault_health
-          @replication_storage_classifications = @client_0.replication_storage_classifications
-          @replication_storage_classification_mappings = @client_0.replication_storage_classification_mappings
+          @recovery_points = @client_0.recovery_points
+          @operations = @client_0.operations
           @replication_alert_settings = @client_0.replication_alert_settings
           @replication_events = @client_0.replication_events
-          @operations = @client_0.operations
           @replication_fabrics = @client_0.replication_fabrics
           @replication_logical_networks = @client_0.replication_logical_networks
           @replication_networks = @client_0.replication_networks
@@ -403,11 +406,8 @@ module Azure::Profiles::Latest
           @replication_protectable_items = @client_0.replication_protectable_items
           @replication_protected_items = @client_0.replication_protected_items
           @target_compute_sizes = @client_0.target_compute_sizes
-          @recovery_points = @client_0.recovery_points
-          @replication_recovery_services_providers = @client_0.replication_recovery_services_providers
           @replication_protection_container_mappings = @client_0.replication_protection_container_mappings
-          @replicationv_centers = @client_0.replicationv_centers
-          @replication_jobs = @client_0.replication_jobs
+          @replication_recovery_services_providers = @client_0.replication_recovery_services_providers
 
           @model_classes = ModelClasses.new
         end
@@ -426,6 +426,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def disable_protection_reason
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DisableProtectionReason
+          end
+          def health_error_category
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthErrorCategory
+          end
+          def presence_status
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PresenceStatus
+          end
+          def agent_version_status
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AgentVersionStatus
+          end
           def recovery_point_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPointType
           end
@@ -1445,18 +1457,6 @@ module Azure::Profiles::Latest
           end
           def possible_operations_directions
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PossibleOperationsDirections
-          end
-          def disable_protection_reason
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DisableProtectionReason
-          end
-          def health_error_category
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthErrorCategory
-          end
-          def presence_status
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PresenceStatus
-          end
-          def agent_version_status
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AgentVersionStatus
           end
         end
       end
