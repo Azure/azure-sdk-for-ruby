@@ -25,6 +25,11 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       # @return [String] Name to access Standard Namespace after migration
       attr_accessor :post_migration_name
 
+      # @return [String] State in which Standard to Premium Migration is,
+      # possible values : Unknown, Reverting, Completing, Initiating, Syncing,
+      # Active
+      attr_accessor :migration_state
+
 
       #
       # Mapper for MigrationConfigProperties class as Ruby Hash.
@@ -88,6 +93,14 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
               post_migration_name: {
                 required: false,
                 serialized_name: 'properties.postMigrationName',
+                type: {
+                  name: 'String'
+                }
+              },
+              migration_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.migrationState',
                 type: {
                   name: 'String'
                 }
