@@ -29,13 +29,13 @@ module Azure::Profiles::Latest
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
       NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
-      RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
-      RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
-      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
       ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
+      RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
+      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
+      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+      RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
-      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
@@ -159,26 +159,26 @@ module Azure::Profiles::Latest
         def normalized_rectangle
           Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
         end
+        def image_gallery
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
+        end
         def recognized_entity
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
-        end
-        def recognized_entity_region
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
         end
         def image_insights
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
         end
-        def image_gallery
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
+        def trending_images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+        end
+        def recognized_entity_region
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
         end
         def rating
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
         end
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
-        end
-        def trending_images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
         end
         def currency
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
