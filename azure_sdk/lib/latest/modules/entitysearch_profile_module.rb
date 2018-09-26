@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
+      FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
+      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
@@ -34,9 +37,9 @@ module Azure::Profiles::Latest
       Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
-      ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
+      ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
@@ -48,13 +51,10 @@ module Azure::Profiles::Latest
       ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
       ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
       ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
-      FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
       LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
       Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
-      EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
-      EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
-      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+      EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def entity_scenario
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
+        end
+        def food_establishment
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
+        end
+        def answer_type
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+        end
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
         end
@@ -162,14 +171,14 @@ module Azure::Profiles::Latest
         def place
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
         end
-        def contractual_rules_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
-        end
         def media_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
         end
         def civic_structure
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
+        end
+        def contractual_rules_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
         end
         def local_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
@@ -204,26 +213,17 @@ module Azure::Profiles::Latest
         def contractual_rules_text_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
         end
-        def food_establishment
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
-        end
         def lodging_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
         end
         def restaurant
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
         end
-        def entity_query_scenario
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
-        end
-        def entity_scenario
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
-        end
         def hotel
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
         end
-        def answer_type
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+        def entity_query_scenario
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
         end
       end
     end
