@@ -14,10 +14,10 @@ module Azure::Profiles::Latest
       Jobs = Azure::MediaServices::Mgmt::V2018_03_30_preview::Jobs
       StreamingPolicies = Azure::MediaServices::Mgmt::V2018_03_30_preview::StreamingPolicies
       StreamingLocators = Azure::MediaServices::Mgmt::V2018_03_30_preview::StreamingLocators
-      LiveEvents = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveEvents
+      Operations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Operations
       LiveOutputs = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveOutputs
       StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_03_30_preview::StreamingEndpoints
-      Operations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Operations
+      LiveEvents = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveEvents
       Locations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Locations
 
       module Models
@@ -114,11 +114,11 @@ module Azure::Profiles::Latest
         ContentKeyPolicyClearKeyConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyClearKeyConfiguration
         ContentKeyPolicyUnknownConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyUnknownConfiguration
         ContentKeyPolicyWidevineConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyWidevineConfiguration
+        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
         ContentKeyPolicyPlayReadyConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyConfiguration
         ContentKeyPolicyFairPlayConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyFairPlayConfiguration
         ContentKeyPolicy = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicy
         Audio = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Audio
-        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
         AacAudio = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AacAudio
         AudioAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AudioAnalyzerPreset
         AudioOverlay = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AudioOverlay
@@ -137,10 +137,10 @@ module Azure::Profiles::Latest
         Mp4Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Mp4Format
         PngLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngLayer
         PngImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
-        BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
         StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
         VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
         TransportStreamFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransportStreamFormat
+        VideoOverlay = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
         Transform = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Transform
         JobInputClip = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputClip
         JobInputs = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputs
@@ -181,10 +181,10 @@ module Azure::Profiles::Latest
         LiveOutputResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveOutputResourceState
         LiveEventInputProtocol = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventInputProtocol
         LiveEventEncodingType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
+        BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
         LiveEventResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
         StreamOptionsFlag = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
         StreamingEndpointResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
-        VideoOverlay = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
         ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
         TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
         Resource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
@@ -198,7 +198,7 @@ module Azure::Profiles::Latest
       end
 
       class MediaServicesManagementClass
-        attr_reader :mediaservices, :assets, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :live_outputs, :streaming_endpoints, :operations, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :mediaservices, :assets, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :operations, :live_outputs, :streaming_endpoints, :live_events, :locations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -215,10 +215,10 @@ module Azure::Profiles::Latest
           @jobs = @client_0.jobs
           @streaming_policies = @client_0.streaming_policies
           @streaming_locators = @client_0.streaming_locators
-          @live_events = @client_0.live_events
+          @operations = @client_0.operations
           @live_outputs = @client_0.live_outputs
           @streaming_endpoints = @client_0.streaming_endpoints
-          @operations = @client_0.operations
+          @live_events = @client_0.live_events
           @locations = @client_0.locations
 
           @model_classes = ModelClasses.new
@@ -517,6 +517,9 @@ module Azure::Profiles::Latest
           def content_key_policy_widevine_configuration
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyWidevineConfiguration
           end
+          def operation_collection
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
+          end
           def content_key_policy_play_ready_configuration
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyConfiguration
           end
@@ -528,9 +531,6 @@ module Azure::Profiles::Latest
           end
           def audio
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Audio
-          end
-          def operation_collection
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
           end
           def aac_audio
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AacAudio
@@ -586,9 +586,6 @@ module Azure::Profiles::Latest
           def png_image
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngImage
           end
-          def built_in_standard_encoder_preset
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
-          end
           def standard_encoder_preset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
           end
@@ -597,6 +594,9 @@ module Azure::Profiles::Latest
           end
           def transport_stream_format
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransportStreamFormat
+          end
+          def video_overlay
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
           end
           def transform
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Transform
@@ -718,6 +718,9 @@ module Azure::Profiles::Latest
           def live_event_encoding_type
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
           end
+          def built_in_standard_encoder_preset
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::BuiltInStandardEncoderPreset
+          end
           def live_event_resource_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
           end
@@ -726,9 +729,6 @@ module Azure::Profiles::Latest
           end
           def streaming_endpoint_resource_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
-          end
-          def video_overlay
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
           end
           def proxy_resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource

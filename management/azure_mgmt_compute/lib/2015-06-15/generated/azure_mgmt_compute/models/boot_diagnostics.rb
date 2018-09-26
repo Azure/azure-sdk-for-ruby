@@ -7,10 +7,9 @@ module Azure::Compute::Mgmt::V2015_06_15
   module Models
     #
     # Boot Diagnostics is a debugging feature which allows you to view Console
-    # Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
-    # Machines, you can easily view the output of your console log. <br><br>
-    # For both Windows and Linux virtual machines, Azure also enables you to
-    # see a screenshot of the VM from the hypervisor.
+    # Output and Screenshot to diagnose VM status. <br><br> You can easily view
+    # the output of your console log. <br><br> Azure also enables you to see a
+    # screenshot of the VM from the hypervisor.
     #
     class BootDiagnostics
 

@@ -31,14 +31,14 @@ module Azure::Profiles::Latest
         ExportOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportOptions
         CampaignTestSavedParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTestSavedParameters
         DateRangeExportTaskParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter
+        ApiError = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
         DeviceMeta = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
         NotificationOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
-        CampaignsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
         PollQuestionLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
-        ApiError = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
         CampaignStatisticsResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
-        CampaignLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
+        CampaignsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
         PollQuestionChoiceLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
+        FeedbackByDateRangeParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
         ExportTaskListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult
         CampaignPushParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushParameters
         CampaignPushResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignPushResult
@@ -102,9 +102,9 @@ module Azure::Profiles::Latest
         CampaignType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignType
         ExportState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
         ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
+        CampaignLocalization = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
         JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
         CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
-        FeedbackByDateRangeParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
       end
 
       class MobileEngagementManagementClass
@@ -188,29 +188,29 @@ module Azure::Profiles::Latest
           def date_range_export_task_parameter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter
           end
+          def api_error
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
+          end
           def device_meta
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceMeta
           end
           def notification_options
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationOptions
           end
-          def campaigns_list_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
-          end
           def poll_question_localization
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionLocalization
-          end
-          def api_error
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ApiError
           end
           def campaign_statistics_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStatisticsResult
           end
-          def campaign_localization
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
+          def campaigns_list_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignsListResult
           end
           def poll_question_choice_localization
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PollQuestionChoiceLocalization
+          end
+          def feedback_by_date_range_parameter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
           end
           def export_task_list_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult
@@ -401,14 +401,14 @@ module Azure::Profiles::Latest
           def export_type
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
           end
+          def campaign_localization
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignLocalization
+          end
           def job_states
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
           end
           def campaign_kinds
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
-          end
-          def feedback_by_date_range_parameter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter
           end
         end
       end
