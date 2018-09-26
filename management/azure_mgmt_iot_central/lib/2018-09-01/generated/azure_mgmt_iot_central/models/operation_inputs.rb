@@ -16,6 +16,14 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # check.
       attr_accessor :name
 
+      # @return [String] The subdomain of the IoT Central application instance
+      # to check.
+      attr_accessor :subdomain
+
+      # @return [String] The name of the IoT Central resource name to query.
+      # Default value: 'IoTApps' .
+      attr_accessor :type
+
 
       #
       # Mapper for OperationInputs class as Ruby Hash.
@@ -30,8 +38,29 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'OperationInputs',
             model_properties: {
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
+                constraints: {
+                  Pattern: '^[a-z0-9-]{1,63}$'
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              subdomain: {
+                required: false,
+                serialized_name: 'subdomain',
+                constraints: {
+                  Pattern: '^[a-z0-9-]{1,63}$'
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
+                default_value: 'IoTApps',
                 type: {
                   name: 'String'
                 }
