@@ -540,7 +540,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # Check if an IoT Central application subdomain is available.
     #
     # @param operation_inputs [OperationInputs] Set the subdomain parameter in the
-    # OperationInputs model to the subdomain of the IoT Central application to
+    # OperationInputs structure to the subdomain of the IoT Central application to
     # check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -556,7 +556,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # Check if an IoT Central application subdomain is available.
     #
     # @param operation_inputs [OperationInputs] Set the subdomain parameter in the
-    # OperationInputs model to the subdomain of the IoT Central application to
+    # OperationInputs structure to the subdomain of the IoT Central application to
     # check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -571,7 +571,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # Check if an IoT Central application subdomain is available.
     #
     # @param operation_inputs [OperationInputs] Set the subdomain parameter in the
-    # OperationInputs model to the subdomain of the IoT Central application to
+    # OperationInputs structure to the subdomain of the IoT Central application to
     # check.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

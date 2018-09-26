@@ -17,10 +17,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # is available.
       attr_accessor :name_available
 
-      # @return [String] The value which indicates whether the provided
-      # subdomain is available.
-      attr_accessor :subdomain
-
       # @return [String] The reason for unavailability.
       attr_accessor :reason
 
@@ -46,14 +42,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 serialized_name: 'nameAvailable',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              subdomain: {
-                required: false,
-                read_only: true,
-                serialized_name: 'subdomain',
-                type: {
-                  name: 'String'
                 }
               },
               reason: {
