@@ -34,7 +34,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'NameAvailabilityInputs',
             model_properties: {
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 constraints: {
                   Pattern: '^[a-z0-9-]{1,63}$'

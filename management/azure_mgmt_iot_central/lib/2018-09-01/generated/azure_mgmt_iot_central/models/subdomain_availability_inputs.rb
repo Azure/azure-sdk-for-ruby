@@ -34,7 +34,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'SubdomainAvailabilityInputs',
             model_properties: {
               subdomain: {
-                required: false,
+                required: true,
                 serialized_name: 'subdomain',
                 constraints: {
                   Pattern: '^[a-z0-9-]{1,63}$'
