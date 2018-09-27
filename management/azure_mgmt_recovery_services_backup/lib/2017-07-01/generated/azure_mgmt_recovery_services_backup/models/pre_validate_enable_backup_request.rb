@@ -31,9 +31,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # @return [String] ARM Virtual Machine Id
       attr_accessor :resource_id
 
-      # @return [String] ARM id of the Recovery Services Vault
-      attr_accessor :vault_id
-
       # @return [String] Configuration of VM if any needs to be validated like
       # OS type etc
       attr_accessor :properties
@@ -61,13 +58,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
               resource_id: {
                 required: false,
                 serialized_name: 'resourceId',
-                type: {
-                  name: 'String'
-                }
-              },
-              vault_id: {
-                required: false,
-                serialized_name: 'vaultId',
                 type: {
                   name: 'String'
                 }

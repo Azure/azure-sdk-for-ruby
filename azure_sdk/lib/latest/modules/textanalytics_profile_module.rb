@@ -8,6 +8,8 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
+      SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
       AzureRegions = Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
       Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
@@ -21,8 +23,6 @@ module Azure::Profiles::Latest
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
-      SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
-      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
     end
 
     class TextAnalyticsDataClass
@@ -54,6 +54,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def sentiment_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+        end
+        def internal_error
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
+        end
         def azure_regions
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
         end
@@ -92,12 +98,6 @@ module Azure::Profiles::Latest
         end
         def multi_language_batch_input
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
-        end
-        def sentiment_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
-        end
-        def internal_error
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
         end
       end
     end

@@ -21,9 +21,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # 'Protecting', 'Protected', 'ProtectionFailed'
       attr_accessor :protection_status
 
-      # @return [String] Specifies the arm resource id of the vault
-      attr_accessor :vault_id
-
       # @return [FabricName] Specifies the fabric name - Azure or AD. Possible
       # values include: 'Invalid', 'Azure'
       attr_accessor :fabric_name
@@ -64,13 +61,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
               protection_status: {
                 required: false,
                 serialized_name: 'protectionStatus',
-                type: {
-                  name: 'String'
-                }
-              },
-              vault_id: {
-                required: false,
-                serialized_name: 'vaultId',
                 type: {
                   name: 'String'
                 }

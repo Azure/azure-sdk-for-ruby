@@ -69,9 +69,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # include: 'Invalid', 'Default', 'Recover'
       attr_accessor :create_mode
 
-      # @return [String] ID of the vault which protects this item
-      attr_accessor :vault_id
-
 
       #
       # Mapper for ProtectedItem class as Ruby Hash.
@@ -139,13 +136,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
               create_mode: {
                 required: false,
                 serialized_name: 'createMode',
-                type: {
-                  name: 'String'
-                }
-              },
-              vault_id: {
-                required: false,
-                serialized_name: 'vaultId',
                 type: {
                   name: 'String'
                 }

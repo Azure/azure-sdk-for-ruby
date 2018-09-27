@@ -163,10 +163,11 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [ProtectedItemResource] operation results.
     #
     def create_or_update(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, parameters, custom_headers = nil)
       response = create_or_update_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, parameters, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -253,12 +254,22 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ProtectedItemResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end

@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      FaceDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
+      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
+      Line = Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
       OcrWord = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
       TextOperationResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
       OcrLine = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
@@ -43,9 +46,6 @@ module Azure::Profiles::Latest
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLanguages
       AzureRegions = Azure::CognitiveServices::ComputerVision::V1_0::Models::AzureRegions
       Details = Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
-      FaceDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
-      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
-      Line = Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def face_description
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
+        end
+        def image_analysis
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
+        end
+        def line
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
+        end
         def ocr_word
           Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
         end
@@ -181,15 +190,6 @@ module Azure::Profiles::Latest
         end
         def details
           Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
-        end
-        def face_description
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
-        end
-        def image_analysis
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
-        end
-        def line
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
         end
       end
     end
