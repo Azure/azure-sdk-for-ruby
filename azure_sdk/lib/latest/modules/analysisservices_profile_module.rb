@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
 
       module Models
+        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
         SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
         State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
@@ -37,7 +38,6 @@ module Azure::Profiles::Latest
         SkuEnumerationForExistingResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
         AnalysisServicesServer = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
-        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
       end
 
       class AnalysisServicesManagementClass
@@ -71,6 +71,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def status
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
+          end
           def resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
           end
@@ -148,9 +151,6 @@ module Azure::Profiles::Latest
           end
           def connection_mode
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
-          end
-          def status
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
           end
         end
       end
