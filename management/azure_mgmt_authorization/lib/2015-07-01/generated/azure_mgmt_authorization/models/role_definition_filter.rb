@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2015_07_01
+module Azure::Authorization::Mgmt::V2015_07_01_preview
   module Models
     #
     # Role Definitions filter
@@ -22,7 +22,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleDefinitionFilter',
           type: {
@@ -30,7 +29,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleDefinitionFilter',
             model_properties: {
               role_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'roleName',
                 type: {

@@ -13,8 +13,8 @@ module Azure::Authorization::Profiles::Latest
     RoleDefinitions = Azure::Authorization::Mgmt::V2018_01_01_preview::RoleDefinitions
 
     module Models
-      ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       ClassicAdministrator = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
+      ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       RoleDefinitionFilter = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
       RoleDefinition = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
       ResourceType = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
@@ -87,11 +87,11 @@ module Azure::Authorization::Profiles::Latest
     end
 
     class ModelClasses
-      def classic_administrator_list_result
-        Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
-      end
       def classic_administrator
         Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
+      end
+      def classic_administrator_list_result
+        Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       end
       def role_definition_filter
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter

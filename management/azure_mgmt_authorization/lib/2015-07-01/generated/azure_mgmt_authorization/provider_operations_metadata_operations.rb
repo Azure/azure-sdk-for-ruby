@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2015_07_01
+module Azure::Authorization::Mgmt::V2015_07_01_preview
   #
   # Role based access control provides you a way to apply granular level policy
   # administration down to individual resources or resource groups. These
@@ -37,8 +37,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [ProviderOperationsMetadata] operation results.
     #
-    def get(resource_provider_namespace, api_version, expand:'resourceTypes', custom_headers:nil)
-      response = get_async(resource_provider_namespace, api_version, expand:expand, custom_headers:custom_headers).value!
+    def get(resource_provider_namespace, api_version, expand = 'resourceTypes', custom_headers = nil)
+      response = get_async(resource_provider_namespace, api_version, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -54,8 +54,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_provider_namespace, api_version, expand:'resourceTypes', custom_headers:nil)
-      get_async(resource_provider_namespace, api_version, expand:expand, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_provider_namespace, api_version, expand = 'resourceTypes', custom_headers = nil)
+      get_async(resource_provider_namespace, api_version, expand, custom_headers).value!
     end
 
     #
@@ -70,13 +70,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_provider_namespace, api_version, expand:'resourceTypes', custom_headers:nil)
+    def get_async(resource_provider_namespace, api_version, expand = 'resourceTypes', custom_headers = nil)
       fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -108,7 +107,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadata.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01_preview::Models::ProviderOperationsMetadata.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -131,8 +130,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [Array<ProviderOperationsMetadata>] operation results.
     #
-    def list(api_version, expand:'resourceTypes', custom_headers:nil)
-      first_page = list_as_lazy(api_version, expand:expand, custom_headers:custom_headers)
+    def list(api_version, expand = 'resourceTypes', custom_headers = nil)
+      first_page = list_as_lazy(api_version, expand, custom_headers)
       first_page.get_all_items
     end
 
@@ -146,8 +145,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(api_version, expand:'resourceTypes', custom_headers:nil)
-      list_async(api_version, expand:expand, custom_headers:custom_headers).value!
+    def list_with_http_info(api_version, expand = 'resourceTypes', custom_headers = nil)
+      list_async(api_version, expand, custom_headers).value!
     end
 
     #
@@ -160,12 +159,11 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(api_version, expand:'resourceTypes', custom_headers:nil)
+    def list_async(api_version, expand = 'resourceTypes', custom_headers = nil)
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -196,7 +194,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadataListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01_preview::Models::ProviderOperationsMetadataListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -219,8 +217,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [ProviderOperationsMetadataListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -234,8 +232,8 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -248,12 +246,11 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -284,7 +281,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadataListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01_preview::Models::ProviderOperationsMetadataListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -308,12 +305,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     # @return [ProviderOperationsMetadataListResult] which provide lazy access to
     # pages of the response.
     #
-    def list_as_lazy(api_version, expand:'resourceTypes', custom_headers:nil)
-      response = list_async(api_version, expand:expand, custom_headers:custom_headers).value!
+    def list_as_lazy(api_version, expand = 'resourceTypes', custom_headers = nil)
+      response = list_async(api_version, expand, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

@@ -8,11 +8,11 @@ module Azure::Profiles::Latest
   module Batch
     module Mgmt
       Location = Azure::Batch::Mgmt::V2017_09_01::Location
-      Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
       CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
       BatchAccountOperations = Azure::Batch::Mgmt::V2017_09_01::BatchAccountOperations
       ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationPackageOperations
       ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
+      Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
       PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
 
       module Models
@@ -22,15 +22,15 @@ module Azure::Profiles::Latest
         LinuxUserConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::LinuxUserConfiguration
         UserAccount = Azure::Batch::Mgmt::V2017_09_01::Models::UserAccount
         OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
-        MetadataItem = Azure::Batch::Mgmt::V2017_09_01::Models::MetadataItem
-        ResourceFile = Azure::Batch::Mgmt::V2017_09_01::Models::ResourceFile
-        BatchAccountKeys = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
         DeploymentConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
+        ResourceFile = Azure::Batch::Mgmt::V2017_09_01::Models::ResourceFile
+        MetadataItem = Azure::Batch::Mgmt::V2017_09_01::Models::MetadataItem
         EnvironmentSetting = Azure::Batch::Mgmt::V2017_09_01::Models::EnvironmentSetting
-        AutoUserSpecification = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
-        UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
         Application = Azure::Batch::Mgmt::V2017_09_01::Models::Application
+        BatchAccountKeys = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
+        UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
         StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
+        AutoUserSpecification = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
         VirtualMachineConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
         ApplicationPackageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
         CertificateReference = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
@@ -55,24 +55,24 @@ module Azure::Profiles::Latest
         PackageState = Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
         AllocationState = Azure::Batch::Mgmt::V2017_09_01::Models::AllocationState
         CertificateProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
-        OperationDisplay = Azure::Batch::Mgmt::V2017_09_01::Models::OperationDisplay
-        ComputeNodeDeallocationOption = Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeDeallocationOption
-        OperationListResult = Azure::Batch::Mgmt::V2017_09_01::Models::OperationListResult
         CertificateCreateOrUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
-        PoolProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState
-        AccountKeyType = Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
+        ComputeNodeDeallocationOption = Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeDeallocationOption
         CachingType = Azure::Batch::Mgmt::V2017_09_01::Models::CachingType
         StorageAccountType = Azure::Batch::Mgmt::V2017_09_01::Models::StorageAccountType
+        PoolProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState
+        AccountKeyType = Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
+        InboundEndpointProtocol = Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
+        OperationDisplay = Azure::Batch::Mgmt::V2017_09_01::Models::OperationDisplay
         ComputeNodeFillType = Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeFillType
-        InterNodeCommunicationState = Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
+        OperationListResult = Azure::Batch::Mgmt::V2017_09_01::Models::OperationListResult
         ProxyResource = Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
         NetworkSecurityGroupRuleAccess = Azure::Batch::Mgmt::V2017_09_01::Models::NetworkSecurityGroupRuleAccess
         CertificateVisibility = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateVisibility
         ElevationLevel = Azure::Batch::Mgmt::V2017_09_01::Models::ElevationLevel
+        InterNodeCommunicationState = Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
+        CertificateStoreLocation = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateStoreLocation
         AutoUserScope = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserScope
         Operation = Azure::Batch::Mgmt::V2017_09_01::Models::Operation
-        CertificateStoreLocation = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateStoreLocation
-        InboundEndpointProtocol = Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
         NameAvailabilityReason = Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
         CheckNameAvailabilityResult = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityResult
         Resource = Azure::Batch::Mgmt::V2017_09_01::Models::Resource
@@ -98,7 +98,7 @@ module Azure::Profiles::Latest
       end
 
       class BatchManagementClass
-        attr_reader :location, :operations, :certificate_operations, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :location, :certificate_operations, :batch_account_operations, :application_package_operations, :application_operations, :operations, :pool_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -109,11 +109,11 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @location = @client_0.location
-          @operations = @client_0.operations
           @certificate_operations = @client_0.certificate_operations
           @batch_account_operations = @client_0.batch_account_operations
           @application_package_operations = @client_0.application_package_operations
           @application_operations = @client_0.application_operations
+          @operations = @client_0.operations
           @pool_operations = @client_0.pool_operations
 
           @model_classes = ModelClasses.new
@@ -151,32 +151,32 @@ module Azure::Profiles::Latest
           def osdisk
             Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
           end
-          def metadata_item
-            Azure::Batch::Mgmt::V2017_09_01::Models::MetadataItem
+          def deployment_configuration
+            Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
           end
           def resource_file
             Azure::Batch::Mgmt::V2017_09_01::Models::ResourceFile
           end
-          def batch_account_keys
-            Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
-          end
-          def deployment_configuration
-            Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
+          def metadata_item
+            Azure::Batch::Mgmt::V2017_09_01::Models::MetadataItem
           end
           def environment_setting
             Azure::Batch::Mgmt::V2017_09_01::Models::EnvironmentSetting
           end
-          def auto_user_specification
-            Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
+          def application
+            Azure::Batch::Mgmt::V2017_09_01::Models::Application
+          end
+          def batch_account_keys
+            Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
           end
           def user_identity
             Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
           end
-          def application
-            Azure::Batch::Mgmt::V2017_09_01::Models::Application
-          end
           def start_task
             Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
+          end
+          def auto_user_specification
+            Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
           end
           def virtual_machine_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
@@ -250,23 +250,11 @@ module Azure::Profiles::Latest
           def certificate_provisioning_state
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
           end
-          def operation_display
-            Azure::Batch::Mgmt::V2017_09_01::Models::OperationDisplay
-          end
-          def compute_node_deallocation_option
-            Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeDeallocationOption
-          end
-          def operation_list_result
-            Azure::Batch::Mgmt::V2017_09_01::Models::OperationListResult
-          end
           def certificate_create_or_update_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
           end
-          def pool_provisioning_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState
-          end
-          def account_key_type
-            Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
+          def compute_node_deallocation_option
+            Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeDeallocationOption
           end
           def caching_type
             Azure::Batch::Mgmt::V2017_09_01::Models::CachingType
@@ -274,11 +262,23 @@ module Azure::Profiles::Latest
           def storage_account_type
             Azure::Batch::Mgmt::V2017_09_01::Models::StorageAccountType
           end
+          def pool_provisioning_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState
+          end
+          def account_key_type
+            Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
+          end
+          def inbound_endpoint_protocol
+            Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
+          end
+          def operation_display
+            Azure::Batch::Mgmt::V2017_09_01::Models::OperationDisplay
+          end
           def compute_node_fill_type
             Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeFillType
           end
-          def inter_node_communication_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
+          def operation_list_result
+            Azure::Batch::Mgmt::V2017_09_01::Models::OperationListResult
           end
           def proxy_resource
             Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
@@ -292,17 +292,17 @@ module Azure::Profiles::Latest
           def elevation_level
             Azure::Batch::Mgmt::V2017_09_01::Models::ElevationLevel
           end
+          def inter_node_communication_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
+          end
+          def certificate_store_location
+            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateStoreLocation
+          end
           def auto_user_scope
             Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserScope
           end
           def operation
             Azure::Batch::Mgmt::V2017_09_01::Models::Operation
-          end
-          def certificate_store_location
-            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateStoreLocation
-          end
-          def inbound_endpoint_protocol
-            Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
           end
           def name_availability_reason
             Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason

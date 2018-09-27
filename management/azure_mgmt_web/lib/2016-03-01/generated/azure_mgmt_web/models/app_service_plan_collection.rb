@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppServicePlanCollection',
           type: {
@@ -33,13 +32,11 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'AppServicePlanCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AppServicePlanElementType',
                       type: {
@@ -50,7 +47,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -12,14 +12,14 @@ module Azure::Profiles::Latest
 
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+        SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+        SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
         Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
         SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
         LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
-        SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
-        SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
       end
 
       class SubscriptionsManagementClass
@@ -56,6 +56,12 @@ module Azure::Profiles::Latest
           def location
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
           end
+          def subscription_state
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+          end
+          def spending_limit
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
+          end
           def subscription
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
           end
@@ -73,12 +79,6 @@ module Azure::Profiles::Latest
           end
           def subscription_policies
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
-          end
-          def subscription_state
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
-          end
-          def spending_limit
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
           end
         end
       end

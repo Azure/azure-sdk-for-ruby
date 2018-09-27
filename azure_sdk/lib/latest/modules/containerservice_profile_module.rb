@@ -10,6 +10,7 @@ module Azure::Profiles::Latest
       ContainerServices = Azure::ContainerService::Mgmt::V2017_01_31::ContainerServices
 
       module Models
+        ContainerServiceVMSizeTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
         ContainerService = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerService
         ContainerServiceSshPublicKey = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshPublicKey
         ContainerServiceSshConfiguration = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshConfiguration
@@ -18,14 +19,13 @@ module Azure::Profiles::Latest
         ContainerServiceMasterProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceMasterProfile
         ContainerServiceVMDiagnostics = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMDiagnostics
         ContainerServiceWindowsProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceWindowsProfile
+        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
         ContainerServiceDiagnosticsProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
         ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorProfile
         ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
         ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
-        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
         ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
         ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
-        ContainerServiceVMSizeTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
       end
 
       class ContainerServiceManagementClass
@@ -58,6 +58,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def container_service_vmsize_types
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
+          end
           def container_service
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerService
           end
@@ -82,6 +85,9 @@ module Azure::Profiles::Latest
           def container_service_windows_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceWindowsProfile
           end
+          def resource
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
+          end
           def container_service_diagnostics_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
           end
@@ -94,17 +100,11 @@ module Azure::Profiles::Latest
           def container_service_custom_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
           end
-          def resource
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
-          end
           def container_service_list_result
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
           end
           def container_service_orchestrator_types
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
-          end
-          def container_service_vmsize_types
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
           end
         end
       end

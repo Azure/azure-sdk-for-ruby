@@ -7,15 +7,16 @@ require 'azure_mgmt_consumption'
 module Azure::Profiles::Latest
   module Consumption
     module Mgmt
-      Operations = Azure::Consumption::Mgmt::V2018_01_31::Operations
-      UsageDetails = Azure::Consumption::Mgmt::V2018_01_31::UsageDetails
-      Marketplaces = Azure::Consumption::Mgmt::V2018_01_31::Marketplaces
       ReservationsSummaries = Azure::Consumption::Mgmt::V2018_01_31::ReservationsSummaries
       ReservationsDetails = Azure::Consumption::Mgmt::V2018_01_31::ReservationsDetails
       Budgets = Azure::Consumption::Mgmt::V2018_01_31::Budgets
       PriceSheet = Azure::Consumption::Mgmt::V2018_01_31::PriceSheet
+      Operations = Azure::Consumption::Mgmt::V2018_01_31::Operations
+      UsageDetails = Azure::Consumption::Mgmt::V2018_01_31::UsageDetails
+      Marketplaces = Azure::Consumption::Mgmt::V2018_01_31::Marketplaces
 
       module Models
+        Datagrain = Azure::Consumption::Mgmt::V2018_01_31::Models::Datagrain
         Resource = Azure::Consumption::Mgmt::V2018_01_31::Models::Resource
         MeterDetails = Azure::Consumption::Mgmt::V2018_01_31::Models::MeterDetails
         Filters = Azure::Consumption::Mgmt::V2018_01_31::Models::Filters
@@ -25,29 +26,28 @@ module Azure::Profiles::Latest
         ReservationSummariesListResult = Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationSummariesListResult
         ReservationDetailsListResult = Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationDetailsListResult
         BudgetsListResult = Azure::Consumption::Mgmt::V2018_01_31::Models::BudgetsListResult
-        OperationListResult = Azure::Consumption::Mgmt::V2018_01_31::Models::OperationListResult
         PriceSheetProperties = Azure::Consumption::Mgmt::V2018_01_31::Models::PriceSheetProperties
-        BudgetTimePeriod = Azure::Consumption::Mgmt::V2018_01_31::Models::BudgetTimePeriod
-        UsageDetail = Azure::Consumption::Mgmt::V2018_01_31::Models::UsageDetail
         OperationDisplay = Azure::Consumption::Mgmt::V2018_01_31::Models::OperationDisplay
-        ReservationSummaries = Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationSummaries
-        Marketplace = Azure::Consumption::Mgmt::V2018_01_31::Models::Marketplace
-        Budget = Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
-        ErrorResponse = Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorResponse
+        BudgetTimePeriod = Azure::Consumption::Mgmt::V2018_01_31::Models::BudgetTimePeriod
+        OperationListResult = Azure::Consumption::Mgmt::V2018_01_31::Models::OperationListResult
         ProxyResource = Azure::Consumption::Mgmt::V2018_01_31::Models::ProxyResource
-        PriceSheetResult = Azure::Consumption::Mgmt::V2018_01_31::Models::PriceSheetResult
+        UsageDetail = Azure::Consumption::Mgmt::V2018_01_31::Models::UsageDetail
+        Marketplace = Azure::Consumption::Mgmt::V2018_01_31::Models::Marketplace
+        ReservationSummaries = Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationSummaries
         ReservationDetails = Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationDetails
-        Notification = Azure::Consumption::Mgmt::V2018_01_31::Models::Notification
-        Operation = Azure::Consumption::Mgmt::V2018_01_31::Models::Operation
-        CategoryType = Azure::Consumption::Mgmt::V2018_01_31::Models::CategoryType
+        Budget = Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
+        PriceSheetResult = Azure::Consumption::Mgmt::V2018_01_31::Models::PriceSheetResult
+        ErrorResponse = Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorResponse
         TimeGrainType = Azure::Consumption::Mgmt::V2018_01_31::Models::TimeGrainType
         OperatorType = Azure::Consumption::Mgmt::V2018_01_31::Models::OperatorType
-        Datagrain = Azure::Consumption::Mgmt::V2018_01_31::Models::Datagrain
+        CategoryType = Azure::Consumption::Mgmt::V2018_01_31::Models::CategoryType
+        Notification = Azure::Consumption::Mgmt::V2018_01_31::Models::Notification
         ErrorDetails = Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorDetails
+        Operation = Azure::Consumption::Mgmt::V2018_01_31::Models::Operation
       end
 
       class ConsumptionManagementClass
-        attr_reader :operations, :usage_details, :marketplaces, :reservations_summaries, :reservations_details, :budgets, :price_sheet, :configurable, :base_url, :options, :model_classes
+        attr_reader :reservations_summaries, :reservations_details, :budgets, :price_sheet, :operations, :usage_details, :marketplaces, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -57,13 +57,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
-          @usage_details = @client_0.usage_details
-          @marketplaces = @client_0.marketplaces
           @reservations_summaries = @client_0.reservations_summaries
           @reservations_details = @client_0.reservations_details
           @budgets = @client_0.budgets
           @price_sheet = @client_0.price_sheet
+          @operations = @client_0.operations
+          @usage_details = @client_0.usage_details
+          @marketplaces = @client_0.marketplaces
 
           @model_classes = ModelClasses.new
         end
@@ -82,6 +82,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def datagrain
+            Azure::Consumption::Mgmt::V2018_01_31::Models::Datagrain
+          end
           def resource
             Azure::Consumption::Mgmt::V2018_01_31::Models::Resource
           end
@@ -109,50 +112,41 @@ module Azure::Profiles::Latest
           def budgets_list_result
             Azure::Consumption::Mgmt::V2018_01_31::Models::BudgetsListResult
           end
-          def operation_list_result
-            Azure::Consumption::Mgmt::V2018_01_31::Models::OperationListResult
-          end
           def price_sheet_properties
             Azure::Consumption::Mgmt::V2018_01_31::Models::PriceSheetProperties
-          end
-          def budget_time_period
-            Azure::Consumption::Mgmt::V2018_01_31::Models::BudgetTimePeriod
-          end
-          def usage_detail
-            Azure::Consumption::Mgmt::V2018_01_31::Models::UsageDetail
           end
           def operation_display
             Azure::Consumption::Mgmt::V2018_01_31::Models::OperationDisplay
           end
-          def reservation_summaries
-            Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationSummaries
+          def budget_time_period
+            Azure::Consumption::Mgmt::V2018_01_31::Models::BudgetTimePeriod
           end
-          def marketplace
-            Azure::Consumption::Mgmt::V2018_01_31::Models::Marketplace
-          end
-          def budget
-            Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
-          end
-          def error_response
-            Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorResponse
+          def operation_list_result
+            Azure::Consumption::Mgmt::V2018_01_31::Models::OperationListResult
           end
           def proxy_resource
             Azure::Consumption::Mgmt::V2018_01_31::Models::ProxyResource
           end
-          def price_sheet_result
-            Azure::Consumption::Mgmt::V2018_01_31::Models::PriceSheetResult
+          def usage_detail
+            Azure::Consumption::Mgmt::V2018_01_31::Models::UsageDetail
+          end
+          def marketplace
+            Azure::Consumption::Mgmt::V2018_01_31::Models::Marketplace
+          end
+          def reservation_summaries
+            Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationSummaries
           end
           def reservation_details
             Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationDetails
           end
-          def notification
-            Azure::Consumption::Mgmt::V2018_01_31::Models::Notification
+          def budget
+            Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
           end
-          def operation
-            Azure::Consumption::Mgmt::V2018_01_31::Models::Operation
+          def price_sheet_result
+            Azure::Consumption::Mgmt::V2018_01_31::Models::PriceSheetResult
           end
-          def category_type
-            Azure::Consumption::Mgmt::V2018_01_31::Models::CategoryType
+          def error_response
+            Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorResponse
           end
           def time_grain_type
             Azure::Consumption::Mgmt::V2018_01_31::Models::TimeGrainType
@@ -160,11 +154,17 @@ module Azure::Profiles::Latest
           def operator_type
             Azure::Consumption::Mgmt::V2018_01_31::Models::OperatorType
           end
-          def datagrain
-            Azure::Consumption::Mgmt::V2018_01_31::Models::Datagrain
+          def category_type
+            Azure::Consumption::Mgmt::V2018_01_31::Models::CategoryType
+          end
+          def notification
+            Azure::Consumption::Mgmt::V2018_01_31::Models::Notification
           end
           def error_details
             Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorDetails
+          end
+          def operation
+            Azure::Consumption::Mgmt::V2018_01_31::Models::Operation
           end
         end
       end

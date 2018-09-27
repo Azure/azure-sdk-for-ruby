@@ -7,10 +7,10 @@ require 'azure_mgmt_server_management'
 module Azure::Profiles::Latest
   module ServerManagement
     module Mgmt
-      PowerShell = Azure::ServerManagement::Mgmt::V2016_07_01_preview::PowerShell
-      Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
-      Node = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Node
       Gateway = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Gateway
+      Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
+      PowerShell = Azure::ServerManagement::Mgmt::V2016_07_01_preview::PowerShell
+      Node = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Node
 
       module Models
         UpgradeMode = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
@@ -18,12 +18,12 @@ module Azure::Profiles::Latest
         GatewayStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayStatus
         GatewayResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResources
         PromptFieldDescription = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldDescription
-        GatewayParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayParameters
+        Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
         PowerShellCommandResult = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResult
         NodeResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResources
-        PowerShellCommandResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResults
-        Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
+        GatewayParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayParameters
         PowerShellTabCompletionResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionResults
+        SessionParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
         GatewayProfile = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayProfile
         PowerShellSessionResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResources
         NodeParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeParameters
@@ -33,10 +33,10 @@ module Azure::Profiles::Latest
         GatewayResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResource
         NodeResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResource
         SessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
-        SessionParameters = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
         PowerShellSessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
+        PowerShellCommandResults = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResults
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
         PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
         GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
@@ -46,7 +46,7 @@ module Azure::Profiles::Latest
       end
 
       class ServerManagementManagementClass
-        attr_reader :power_shell, :session, :node, :gateway, :configurable, :base_url, :options, :model_classes
+        attr_reader :gateway, :session, :power_shell, :node, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,10 +56,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @power_shell = @client_0.power_shell
-          @session = @client_0.session
-          @node = @client_0.node
           @gateway = @client_0.gateway
+          @session = @client_0.session
+          @power_shell = @client_0.power_shell
+          @node = @client_0.node
 
           @model_classes = ModelClasses.new
         end
@@ -93,8 +93,8 @@ module Azure::Profiles::Latest
           def prompt_field_description
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldDescription
           end
-          def gateway_parameters
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayParameters
+          def resource
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
           end
           def power_shell_command_result
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResult
@@ -102,14 +102,14 @@ module Azure::Profiles::Latest
           def node_resources
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResources
           end
-          def power_shell_command_results
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResults
-          end
-          def resource
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
+          def gateway_parameters
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayParameters
           end
           def power_shell_tab_completion_results
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellTabCompletionResults
+          end
+          def session_parameters
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
           end
           def gateway_profile
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayProfile
@@ -138,9 +138,6 @@ module Azure::Profiles::Latest
           def session_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
           end
-          def session_parameters
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionParameters
-          end
           def power_shell_session_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
           end
@@ -149,6 +146,9 @@ module Azure::Profiles::Latest
           end
           def retention_period
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
+          end
+          def power_shell_command_results
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandResults
           end
           def credential_data_format
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat

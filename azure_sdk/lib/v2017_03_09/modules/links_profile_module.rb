@@ -10,11 +10,11 @@ module Azure::Profiles::V2017_03_09
       ResourceLinks = Azure::Links::Mgmt::V2016_09_01::ResourceLinks
 
       module Models
-        Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
         ResourceLink = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
         ResourceLinkFilter = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
         ResourceLinkResult = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
         ResourceLinkProperties = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
+        Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
       end
 
       class LinksManagementClass
@@ -47,9 +47,6 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
-          def filter
-            Azure::Links::Mgmt::V2016_09_01::Models::Filter
-          end
           def resource_link
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
           end
@@ -61,6 +58,9 @@ module Azure::Profiles::V2017_03_09
           end
           def resource_link_properties
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
+          end
+          def filter
+            Azure::Links::Mgmt::V2016_09_01::Models::Filter
           end
         end
       end
