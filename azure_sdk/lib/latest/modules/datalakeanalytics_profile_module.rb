@@ -7,15 +7,18 @@ require 'azure_mgmt_datalake_analytics'
 module Azure::Profiles::Latest
   module DataLakeAnalytics
     module Mgmt
-      FirewallRules = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::FirewallRules
-      Locations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Locations
-      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
-      StorageAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::StorageAccounts
-      Accounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Accounts
       DataLakeStoreAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::DataLakeStoreAccounts
+      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
       Operations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Operations
+      StorageAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::StorageAccounts
+      Locations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Locations
+      FirewallRules = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::FirewallRules
+      Accounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Accounts
 
       module Models
+        CreateComputePolicyWithAccountParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateComputePolicyWithAccountParameters
+        ComputePolicyListResult = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult
+        CreateFirewallRuleWithAccountParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
         CreateDataLakeAnalyticsAccountParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateDataLakeAnalyticsAccountParameters
         CreateOrUpdateFirewallRuleParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
         UpdateDataLakeStoreWithAccountParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreWithAccountParameters
@@ -49,8 +52,8 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationDisplay
         OperationListResult = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationListResult
         Operation = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::Operation
-        SubResource = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubResource
         Resource = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::Resource
+        SubResource = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubResource
         CapabilityInformation = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CapabilityInformation
         NameAvailabilityInformation = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::NameAvailabilityInformation
         UpdateFirewallRuleParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
@@ -61,13 +64,10 @@ module Azure::Profiles::Latest
         CreateOrUpdateComputePolicyParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateOrUpdateComputePolicyParameters
         AddStorageAccountWithAccountParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::AddStorageAccountWithAccountParameters
         SasTokenInformation = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SasTokenInformation
-        CreateComputePolicyWithAccountParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateComputePolicyWithAccountParameters
-        ComputePolicyListResult = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult
-        CreateFirewallRuleWithAccountParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
       end
 
       class DataLakeAnalyticsManagementClass
-        attr_reader :firewall_rules, :locations, :compute_policies, :storage_accounts, :accounts, :data_lake_store_accounts, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :data_lake_store_accounts, :compute_policies, :operations, :storage_accounts, :locations, :firewall_rules, :accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -77,13 +77,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @firewall_rules = @client_0.firewall_rules
-          @locations = @client_0.locations
-          @compute_policies = @client_0.compute_policies
-          @storage_accounts = @client_0.storage_accounts
-          @accounts = @client_0.accounts
           @data_lake_store_accounts = @client_0.data_lake_store_accounts
+          @compute_policies = @client_0.compute_policies
           @operations = @client_0.operations
+          @storage_accounts = @client_0.storage_accounts
+          @locations = @client_0.locations
+          @firewall_rules = @client_0.firewall_rules
+          @accounts = @client_0.accounts
 
           @model_classes = ModelClasses.new
         end
@@ -102,6 +102,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def create_compute_policy_with_account_parameters
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateComputePolicyWithAccountParameters
+          end
+          def compute_policy_list_result
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult
+          end
+          def create_firewall_rule_with_account_parameters
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
+          end
           def create_data_lake_analytics_account_parameters
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateDataLakeAnalyticsAccountParameters
           end
@@ -201,11 +210,11 @@ module Azure::Profiles::Latest
           def operation
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::Operation
           end
-          def sub_resource
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubResource
-          end
           def resource
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::Resource
+          end
+          def sub_resource
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubResource
           end
           def capability_information
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CapabilityInformation
@@ -236,15 +245,6 @@ module Azure::Profiles::Latest
           end
           def sas_token_information
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SasTokenInformation
-          end
-          def create_compute_policy_with_account_parameters
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateComputePolicyWithAccountParameters
-          end
-          def compute_policy_list_result
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult
-          end
-          def create_firewall_rule_with_account_parameters
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
           end
         end
       end

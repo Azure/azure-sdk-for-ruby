@@ -12,14 +12,8 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
       include MsRestAzure
 
-      # @return [String] The error code.
-      attr_accessor :code
-
-      # @return [String] The error message.
-      attr_accessor :message
-
-      # @return [String] The target of the particular error.
-      attr_accessor :target
+      # @return [ErrorResponseBody]
+      attr_accessor :error
 
 
       #
@@ -34,28 +28,12 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             name: 'Composite',
             class_name: 'ErrorDetails',
             model_properties: {
-              code: {
+              error: {
                 required: false,
-                read_only: true,
-                serialized_name: 'code',
+                serialized_name: 'error',
                 type: {
-                  name: 'String'
-                }
-              },
-              message: {
-                required: false,
-                read_only: true,
-                serialized_name: 'message',
-                type: {
-                  name: 'String'
-                }
-              },
-              target: {
-                required: false,
-                read_only: true,
-                serialized_name: 'target',
-                type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'ErrorResponseBody'
                 }
               }
             }
