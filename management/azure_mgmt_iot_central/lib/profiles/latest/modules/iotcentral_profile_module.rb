@@ -11,16 +11,15 @@ module Azure::IotCentral::Profiles::Latest
 
     module Models
       AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+      AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
       OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
       AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
       Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
       ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
       OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
-      AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
-      NameAvailabilityInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::NameAvailabilityInputs
-      ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
-      SubdomainAvailabilityInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::SubdomainAvailabilityInputs
       Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
+      OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+      ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
       AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
       App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
       AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
@@ -75,6 +74,9 @@ module Azure::IotCentral::Profiles::Latest
       def app_list_result
         Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
       end
+      def app_sku_info
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+      end
       def operation_display
         Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
       end
@@ -90,20 +92,14 @@ module Azure::IotCentral::Profiles::Latest
       def operation_list_result
         Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
       end
-      def app_sku_info
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+      def resource
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       end
-      def name_availability_inputs
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::NameAvailabilityInputs
+      def operation_inputs
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
       end
       def error_details
         Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
-      end
-      def subdomain_availability_inputs
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::SubdomainAvailabilityInputs
-      end
-      def resource
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       end
       def app_availability_info
         Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo

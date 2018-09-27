@@ -16,6 +16,10 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # check.
       attr_accessor :name
 
+      # @return [String] The type of the IoT Central resource to query. Default
+      # value: 'IoTApps' .
+      attr_accessor :type
+
 
       #
       # Mapper for OperationInputs class as Ruby Hash.
@@ -32,6 +36,17 @@ module Azure::IotCentral::Mgmt::V2018_09_01
               name: {
                 required: true,
                 serialized_name: 'name',
+                constraints: {
+                  Pattern: '^[a-z0-9-]{1,63}$'
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
+                default_value: 'IoTApps',
                 type: {
                   name: 'String'
                 }

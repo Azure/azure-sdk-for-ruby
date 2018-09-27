@@ -437,49 +437,49 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     #
     # Check if an IoT Central application name is available.
     #
-    # @param name_availability_inputs [NameAvailabilityInputs] Set the name
-    # parameter in the NameAvailabilityInputs structure to the name of the IoT
-    # Central application to check.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the name of the IoT Central application to
+    # check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AppAvailabilityInfo] operation results.
     #
-    def check_name_availability(name_availability_inputs, custom_headers = nil)
-      response = check_name_availability_async(name_availability_inputs, custom_headers).value!
+    def check_name_availability(operation_inputs, custom_headers = nil)
+      response = check_name_availability_async(operation_inputs, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Check if an IoT Central application name is available.
     #
-    # @param name_availability_inputs [NameAvailabilityInputs] Set the name
-    # parameter in the NameAvailabilityInputs structure to the name of the IoT
-    # Central application to check.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the name of the IoT Central application to
+    # check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(name_availability_inputs, custom_headers = nil)
-      check_name_availability_async(name_availability_inputs, custom_headers).value!
+    def check_name_availability_with_http_info(operation_inputs, custom_headers = nil)
+      check_name_availability_async(operation_inputs, custom_headers).value!
     end
 
     #
     # Check if an IoT Central application name is available.
     #
-    # @param name_availability_inputs [NameAvailabilityInputs] Set the name
-    # parameter in the NameAvailabilityInputs structure to the name of the IoT
-    # Central application to check.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the name of the IoT Central application to
+    # check.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(name_availability_inputs, custom_headers = nil)
+    def check_name_availability_async(operation_inputs, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'name_availability_inputs is nil' if name_availability_inputs.nil?
+      fail ArgumentError, 'operation_inputs is nil' if operation_inputs.nil?
 
 
       request_headers = {}
@@ -491,8 +491,8 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::IotCentral::Mgmt::V2018_09_01::Models::NameAvailabilityInputs.mapper()
-      request_content = @client.serialize(request_mapper,  name_availability_inputs)
+      request_mapper = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs.mapper()
+      request_content = @client.serialize(request_mapper,  operation_inputs)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/checkNameAvailability'
@@ -539,49 +539,49 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     #
     # Check if an IoT Central application subdomain is available.
     #
-    # @param subdomain_availability_inputs [SubdomainAvailabilityInputs] Set the
-    # subdomain parameter in the SubdomainAvailabilityInputs structure to the
-    # subdomain of the IoT Central application to check.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the subdomain of the IoT Central application to
+    # check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AppAvailabilityInfo] operation results.
     #
-    def check_subdomain_availability(subdomain_availability_inputs, custom_headers = nil)
-      response = check_subdomain_availability_async(subdomain_availability_inputs, custom_headers).value!
+    def check_subdomain_availability(operation_inputs, custom_headers = nil)
+      response = check_subdomain_availability_async(operation_inputs, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Check if an IoT Central application subdomain is available.
     #
-    # @param subdomain_availability_inputs [SubdomainAvailabilityInputs] Set the
-    # subdomain parameter in the SubdomainAvailabilityInputs structure to the
-    # subdomain of the IoT Central application to check.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the subdomain of the IoT Central application to
+    # check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_subdomain_availability_with_http_info(subdomain_availability_inputs, custom_headers = nil)
-      check_subdomain_availability_async(subdomain_availability_inputs, custom_headers).value!
+    def check_subdomain_availability_with_http_info(operation_inputs, custom_headers = nil)
+      check_subdomain_availability_async(operation_inputs, custom_headers).value!
     end
 
     #
     # Check if an IoT Central application subdomain is available.
     #
-    # @param subdomain_availability_inputs [SubdomainAvailabilityInputs] Set the
-    # subdomain parameter in the SubdomainAvailabilityInputs structure to the
-    # subdomain of the IoT Central application to check.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the subdomain of the IoT Central application to
+    # check.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_subdomain_availability_async(subdomain_availability_inputs, custom_headers = nil)
+    def check_subdomain_availability_async(operation_inputs, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'subdomain_availability_inputs is nil' if subdomain_availability_inputs.nil?
+      fail ArgumentError, 'operation_inputs is nil' if operation_inputs.nil?
 
 
       request_headers = {}
@@ -593,8 +593,8 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::IotCentral::Mgmt::V2018_09_01::Models::SubdomainAvailabilityInputs.mapper()
-      request_content = @client.serialize(request_mapper,  subdomain_availability_inputs)
+      request_mapper = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs.mapper()
+      request_content = @client.serialize(request_mapper,  operation_inputs)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/checkSubdomainAvailability'

@@ -26,17 +26,17 @@ module Azure::Profiles::Latest
       AggregateRating = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateRating
       Offer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Offer
       AggregateOffer = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
+      ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
-      Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
       NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
       RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
       RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
       ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
       TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
-      Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+      Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
-      ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
+      Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
@@ -58,10 +58,10 @@ module Azure::Profiles::Latest
       Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
-      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
+      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
@@ -150,11 +150,11 @@ module Azure::Profiles::Latest
         def aggregate_offer
           Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
         end
+        def image_gallery
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
+        end
         def response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
-        end
-        def recipe
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
         end
         def normalized_rectangle
           Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
@@ -171,8 +171,8 @@ module Azure::Profiles::Latest
         def trending_images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
         end
-        def rating
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+        def recipe
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
         end
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
@@ -180,8 +180,8 @@ module Azure::Profiles::Latest
         def currency
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
         end
-        def image_gallery
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
+        def rating
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
         end
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
@@ -246,9 +246,6 @@ module Azure::Profiles::Latest
         def creative_work
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
         end
-        def images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-        end
         def error_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
         end
@@ -257,6 +254,9 @@ module Azure::Profiles::Latest
         end
         def safe_search
           Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
+        end
+        def images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
         end
         def image_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
