@@ -7,10 +7,10 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
+      Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
       Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
       WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
-      Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
 
       module Models
         RelayNamespaceListResult = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
         SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
         AccessKeys = Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
         AuthorizationRuleListResult = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-        RegenerateAccessKeyParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         OperationDisplay = Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
+        RegenerateAccessKeyParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         OperationListResult = Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
         AuthorizationRule = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
         AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
@@ -43,7 +43,7 @@ module Azure::Profiles::Latest
       end
 
       class RelayManagementClass
-        attr_reader :operations, :hybrid_connections, :wcfrelays, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :namespaces, :operations, :hybrid_connections, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @namespaces = @client_0.namespaces
           @operations = @client_0.operations
           @hybrid_connections = @client_0.hybrid_connections
           @wcfrelays = @client_0.wcfrelays
-          @namespaces = @client_0.namespaces
 
           @model_classes = ModelClasses.new
         end
@@ -129,11 +129,11 @@ module Azure::Profiles::Latest
           def authorization_rule_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
           end
-          def regenerate_access_key_parameters
-            Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
-          end
           def operation_display
             Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
+          end
+          def regenerate_access_key_parameters
+            Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
           end
           def operation_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
