@@ -1,3 +1,7 @@
+## 2018.09.28 - Azure Ruby SDK Release
+* Released 0.17.2 version of azure_mgmt_storage to include latest changes to 2018-07-01 version.
+* Released 0.18.6 version of azure_sdk to include the latest changes in azure_mgmt_storage.
+
 ## 2018.09.21 - Azure Ruby SDK Release
 * Released 0.17.2 version of azure_mgmt_signalr to include the latest changes to 2018-03-01-preview version.
 * Released 0.18.5 version of azure_sdk to include the latest changes in azure_mgmt_signalr. 

@@ -1,6 +1,6 @@
 {
     "management": [
-        "azure_mgmt_signalr"
+        "azure_mgmt_storage"
     ],
     "rollup": [
         "azure_sdk"

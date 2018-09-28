@@ -21,6 +21,9 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
       # @return [String] Type of operation: get, read, delete, etc.
       attr_accessor :operation
 
+      # @return [String] Description of the operation.
+      attr_accessor :description
+
 
       #
       # Mapper for OperationDisplay class as Ruby Hash.
@@ -55,6 +58,14 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
+                type: {
+                  name: 'String'
+                }
+              },
+              description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }

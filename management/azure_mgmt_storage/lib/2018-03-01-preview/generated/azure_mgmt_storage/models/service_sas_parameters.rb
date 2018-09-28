@@ -100,7 +100,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
               },
               resource: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'signedResource',
                 type: {
                   name: 'String'
