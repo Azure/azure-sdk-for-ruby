@@ -7,6 +7,9 @@ require 'azure_mgmt_logic'
 module Azure::Profiles::Latest
   module Logic
     module Mgmt
+      WorkflowRunActions = Azure::Logic::Mgmt::V2016_06_01::WorkflowRunActions
+      IntegrationAccounts = Azure::Logic::Mgmt::V2016_06_01::IntegrationAccounts
+      Schemas = Azure::Logic::Mgmt::V2016_06_01::Schemas
       Maps = Azure::Logic::Mgmt::V2016_06_01::Maps
       Partners = Azure::Logic::Mgmt::V2016_06_01::Partners
       Agreements = Azure::Logic::Mgmt::V2016_06_01::Agreements
@@ -17,9 +20,6 @@ module Azure::Profiles::Latest
       WorkflowTriggers = Azure::Logic::Mgmt::V2016_06_01::WorkflowTriggers
       WorkflowTriggerHistories = Azure::Logic::Mgmt::V2016_06_01::WorkflowTriggerHistories
       WorkflowRuns = Azure::Logic::Mgmt::V2016_06_01::WorkflowRuns
-      WorkflowRunActions = Azure::Logic::Mgmt::V2016_06_01::WorkflowRunActions
-      IntegrationAccounts = Azure::Logic::Mgmt::V2016_06_01::IntegrationAccounts
-      Schemas = Azure::Logic::Mgmt::V2016_06_01::Schemas
 
       module Models
         ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
@@ -27,8 +27,8 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult
         ErrorResponse = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
         Operation = Azure::Logic::Mgmt::V2016_06_01::Models::Operation
-        KeyType = Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
         Sku = Azure::Logic::Mgmt::V2016_06_01::Models::Sku
+        KeyType = Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
         SubResource = Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
         Resource = Azure::Logic::Mgmt::V2016_06_01::Models::Resource
         SkuName = Azure::Logic::Mgmt::V2016_06_01::Models::SkuName
@@ -160,7 +160,7 @@ module Azure::Profiles::Latest
       end
 
       class LogicManagementClass
-        attr_reader :maps, :partners, :agreements, :sessions, :certificates, :workflows, :workflow_versions, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :integration_accounts, :schemas, :configurable, :base_url, :options, :model_classes
+        attr_reader :workflow_run_actions, :integration_accounts, :schemas, :maps, :partners, :agreements, :sessions, :certificates, :workflows, :workflow_versions, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -170,6 +170,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @workflow_run_actions = @client_0.workflow_run_actions
+          @integration_accounts = @client_0.integration_accounts
+          @schemas = @client_0.schemas
           @maps = @client_0.maps
           @partners = @client_0.partners
           @agreements = @client_0.agreements
@@ -180,9 +183,6 @@ module Azure::Profiles::Latest
           @workflow_triggers = @client_0.workflow_triggers
           @workflow_trigger_histories = @client_0.workflow_trigger_histories
           @workflow_runs = @client_0.workflow_runs
-          @workflow_run_actions = @client_0.workflow_run_actions
-          @integration_accounts = @client_0.integration_accounts
-          @schemas = @client_0.schemas
 
           @model_classes = ModelClasses.new
         end
@@ -216,11 +216,11 @@ module Azure::Profiles::Latest
           def operation
             Azure::Logic::Mgmt::V2016_06_01::Models::Operation
           end
-          def key_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
-          end
           def sku
             Azure::Logic::Mgmt::V2016_06_01::Models::Sku
+          end
+          def key_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
           end
           def sub_resource
             Azure::Logic::Mgmt::V2016_06_01::Models::SubResource

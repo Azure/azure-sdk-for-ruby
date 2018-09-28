@@ -7,10 +7,10 @@ require 'azure_mgmt_server_management'
 module Azure::Profiles::Latest
   module ServerManagement
     module Mgmt
-      Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
-      Node = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Node
-      Gateway = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Gateway
       PowerShell = Azure::ServerManagement::Mgmt::V2016_07_01_preview::PowerShell
+      Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
+      Gateway = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Gateway
+      Node = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Node
 
       module Models
         UpgradeMode = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
@@ -38,15 +38,15 @@ module Azure::Profiles::Latest
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
+        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
         GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
         PowerShellExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
-        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         Error = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
       end
 
       class ServerManagementManagementClass
-        attr_reader :session, :node, :gateway, :power_shell, :configurable, :base_url, :options, :model_classes
+        attr_reader :power_shell, :session, :gateway, :node, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,10 +56,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @session = @client_0.session
-          @node = @client_0.node
-          @gateway = @client_0.gateway
           @power_shell = @client_0.power_shell
+          @session = @client_0.session
+          @gateway = @client_0.gateway
+          @node = @client_0.node
 
           @model_classes = ModelClasses.new
         end
@@ -153,6 +153,9 @@ module Azure::Profiles::Latest
           def credential_data_format
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
           end
+          def version
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
+          end
           def prompt_field_type
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
           end
@@ -161,9 +164,6 @@ module Azure::Profiles::Latest
           end
           def power_shell_expand_option
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
-          end
-          def version
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
           end
           def error
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error

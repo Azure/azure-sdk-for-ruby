@@ -7,12 +7,12 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::Latest
   module Resources
     module Mgmt
-      Tags = Azure::Resources::Mgmt::V2017_05_10::Tags
-      DeploymentOperations = Azure::Resources::Mgmt::V2017_05_10::DeploymentOperations
-      Resources = Azure::Resources::Mgmt::V2017_05_10::Resources
       Deployments = Azure::Resources::Mgmt::V2017_05_10::Deployments
       Providers = Azure::Resources::Mgmt::V2017_05_10::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2017_05_10::ResourceGroups
+      Tags = Azure::Resources::Mgmt::V2017_05_10::Tags
+      DeploymentOperations = Azure::Resources::Mgmt::V2017_05_10::DeploymentOperations
+      Resources = Azure::Resources::Mgmt::V2017_05_10::Resources
 
       module Models
         Plan = Azure::Resources::Mgmt::V2017_05_10::Models::Plan
@@ -37,26 +37,26 @@ module Azure::Profiles::Latest
         DeploymentListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
         TagValue = Azure::Resources::Mgmt::V2017_05_10::Models::TagValue
         TagDetails = Azure::Resources::Mgmt::V2017_05_10::Models::TagDetails
-        ParametersLink = Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
-        TagsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
-        DeploymentExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
         Sku = Azure::Resources::Mgmt::V2017_05_10::Models::Sku
+        ParametersLink = Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
+        DeploymentExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
+        TargetResource = Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
         ProviderResourceType = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
         HttpMessage = Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
         DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
-        DeploymentOperationProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
+        TagsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
         ProviderListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
-        TargetResource = Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
+        DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
         DeploymentProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
         DeploymentOperationsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
         BasicDependency = Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
-        ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
+        DeploymentOperationProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
         GenericResourceFilter = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
         DeploymentExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
         AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
         Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
-        DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
+        ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
         DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
         GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
         SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
@@ -65,7 +65,7 @@ module Azure::Profiles::Latest
       end
 
       class ResourcesManagementClass
-        attr_reader :tags, :deployment_operations, :resources, :deployments, :providers, :resource_groups, :configurable, :base_url, :options, :model_classes
+        attr_reader :deployments, :providers, :resource_groups, :tags, :deployment_operations, :resources, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -75,12 +75,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @tags = @client_0.tags
-          @deployment_operations = @client_0.deployment_operations
-          @resources = @client_0.resources
           @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
+          @tags = @client_0.tags
+          @deployment_operations = @client_0.deployment_operations
+          @resources = @client_0.resources
 
           @model_classes = ModelClasses.new
         end
@@ -165,17 +165,17 @@ module Azure::Profiles::Latest
           def tag_details
             Azure::Resources::Mgmt::V2017_05_10::Models::TagDetails
           end
+          def sku
+            Azure::Resources::Mgmt::V2017_05_10::Models::Sku
+          end
           def parameters_link
             Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
-          end
-          def tags_list_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
           end
           def deployment_export_result
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
           end
-          def sku
-            Azure::Resources::Mgmt::V2017_05_10::Models::Sku
+          def target_resource
+            Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
           end
           def provider_resource_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
@@ -186,14 +186,14 @@ module Azure::Profiles::Latest
           def deployment_properties_extended
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
           end
-          def deployment_operation_properties
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
+          def tags_list_result
+            Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
           end
           def provider_list_result
             Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
           end
-          def target_resource
-            Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
+          def deployment_operation
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
           end
           def deployment_properties
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
@@ -204,8 +204,8 @@ module Azure::Profiles::Latest
           def basic_dependency
             Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
           end
-          def resource_provider_operation_display_properties
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
+          def deployment_operation_properties
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
           end
           def generic_resource_filter
             Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
@@ -222,8 +222,8 @@ module Azure::Profiles::Latest
           def resource
             Azure::Resources::Mgmt::V2017_05_10::Models::Resource
           end
-          def deployment_operation
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
+          def resource_provider_operation_display_properties
+            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
           end
           def deployment_mode
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
