@@ -8,6 +8,10 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      DomainModelResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
+      Word = Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
+      CelebrityResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
+      FaceRectangle = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
       LandmarkResultsLandmarksItem = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
       AdultInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
       LandmarkResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
@@ -42,10 +46,6 @@ module Azure::Profiles::Latest
       ImageTag = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::ListModelsResult
       ImageMetadata = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
-      DomainModelResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
-      Word = Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
-      CelebrityResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
-      FaceRectangle = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,18 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def domain_model_results
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
+        end
+        def word
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
+        end
+        def celebrity_results
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
+        end
+        def face_rectangle
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
+        end
         def landmark_results_landmarks_item
           Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
         end
@@ -178,18 +190,6 @@ module Azure::Profiles::Latest
         end
         def image_metadata
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
-        end
-        def domain_model_results
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
-        end
-        def word
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
-        end
-        def celebrity_results
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
-        end
-        def face_rectangle
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
         end
       end
     end
