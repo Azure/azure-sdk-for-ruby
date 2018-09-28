@@ -7,27 +7,23 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
-      Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
+      Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
       WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
 
       module Models
+        Operation = Azure::Relay::Mgmt::V2017_04_01::Models::Operation
+        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+        TrackedResource = Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
+        AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
         RelayNamespaceListResult = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
-        OperationDisplay = Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
-        Resource = Azure::Relay::Mgmt::V2017_04_01::Models::Resource
         CheckNameAvailability = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
         HybridConnectionListResult = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
         CheckNameAvailabilityResult = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
-        WcfRelaysListResult = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
-        ErrorResponse = Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
-        OperationListResult = Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
         AuthorizationRuleListResult = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
         AccessKeys = Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
-        Operation = Azure::Relay::Mgmt::V2017_04_01::Models::Operation
-        RegenerateAccessKeyParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
-        TrackedResource = Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
+        WcfRelaysListResult = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
         ResourceNamespacePatch = Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
         HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
         WcfRelay = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
@@ -35,15 +31,19 @@ module Azure::Profiles::Latest
         RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
         AuthorizationRule = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
         Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
-        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
+        Resource = Azure::Relay::Mgmt::V2017_04_01::Models::Resource
         ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
-        AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
+        RegenerateAccessKeyParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
+        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
         KeyType = Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
         UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
+        OperationDisplay = Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
+        OperationListResult = Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
+        ErrorResponse = Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
       end
 
       class RelayManagementClass
-        attr_reader :operations, :namespaces, :hybrid_connections, :wcfrelays, :configurable, :base_url, :options, :model_classes
+        attr_reader :namespaces, :operations, :hybrid_connections, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,8 +53,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @namespaces = @client_0.namespaces
+          @operations = @client_0.operations
           @hybrid_connections = @client_0.hybrid_connections
           @wcfrelays = @client_0.wcfrelays
 
@@ -75,14 +75,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def operation
+            Azure::Relay::Mgmt::V2017_04_01::Models::Operation
+          end
+          def sku
+            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+          end
+          def tracked_resource
+            Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
+          end
+          def access_rights
+            Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
+          end
           def relay_namespace_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
-          end
-          def operation_display
-            Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
-          end
-          def resource
-            Azure::Relay::Mgmt::V2017_04_01::Models::Resource
           end
           def check_name_availability
             Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
@@ -93,32 +99,14 @@ module Azure::Profiles::Latest
           def check_name_availability_result
             Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
           end
-          def wcf_relays_list_result
-            Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
-          end
-          def error_response
-            Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
-          end
-          def operation_list_result
-            Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
-          end
           def authorization_rule_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-          end
-          def sku
-            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
           end
           def access_keys
             Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
           end
-          def operation
-            Azure::Relay::Mgmt::V2017_04_01::Models::Operation
-          end
-          def regenerate_access_key_parameters
-            Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
-          end
-          def tracked_resource
-            Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
+          def wcf_relays_list_result
+            Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
           end
           def resource_namespace_patch
             Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
@@ -141,20 +129,32 @@ module Azure::Profiles::Latest
           def relaytype
             Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
           end
-          def sku_tier
-            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
+          def resource
+            Azure::Relay::Mgmt::V2017_04_01::Models::Resource
           end
           def provisioning_state_enum
             Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
           end
-          def access_rights
-            Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
+          def regenerate_access_key_parameters
+            Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
+          end
+          def sku_tier
+            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
           end
           def key_type
             Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
           end
           def unavailable_reason
             Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
+          end
+          def operation_display
+            Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
+          end
+          def operation_list_result
+            Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
+          end
+          def error_response
+            Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
           end
         end
       end
