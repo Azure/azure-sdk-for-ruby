@@ -7,23 +7,26 @@ require 'azure_mgmt_datalake_store'
 module Azure::Profiles::Latest
   module DataLakeStore
     module Mgmt
+      FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
+      Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
       TrustedIdProviders = Azure::DataLakeStore::Mgmt::V2016_11_01::TrustedIdProviders
       Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
       Accounts = Azure::DataLakeStore::Mgmt::V2016_11_01::Accounts
-      FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
-      Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
 
       module Models
-        DataLakeStoreAccountStatus = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
-        DataLakeStoreAccountState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
+        CheckNameAvailabilityParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
         FirewallAllowAzureIpsState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallAllowAzureIpsState
+        TierType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TierType
+        DataLakeStoreAccountStatus = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
+        FirewallState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallState
+        DataLakeStoreAccountState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
         OperationOrigin = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationOrigin
+        SubResource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
         CapabilityInformation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CapabilityInformation
         NameAvailabilityInformation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::NameAvailabilityInformation
         UpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
-        SubResource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
-        SubscriptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
         Resource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
+        SubscriptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
         CreateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
         CreateOrUpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
         EncryptionIdentity = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionIdentity
@@ -34,31 +37,28 @@ module Azure::Profiles::Latest
         UpdateTrustedIdProviderParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderParameters
         FirewallRuleListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallRuleListResult
         CreateDataLakeStoreAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateDataLakeStoreAccountParameters
-        OperationDisplay = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
-        UpdateEncryptionConfig = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateEncryptionConfig
         UpdateKeyVaultMetaInfo = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateKeyVaultMetaInfo
-        UpdateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleWithAccountParameters
+        OperationListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationListResult
         TrustedIdProviderListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderListResult
-        UpdateTrustedIdProviderWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
+        OperationDisplay = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
         UpdateDataLakeStoreAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
+        UpdateTrustedIdProviderWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
+        UpdateEncryptionConfig = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateEncryptionConfig
         DataLakeStoreAccountListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
-        TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
+        UpdateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleWithAccountParameters
         Operation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Operation
         DataLakeStoreAccountBasic = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
-        OperationListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationListResult
+        TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
         DataLakeStoreAccount = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
         FirewallRule = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallRule
         EncryptionConfigType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
         EncryptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
         EncryptionProvisioningState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
         TrustedIdProviderState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
-        FirewallState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallState
-        CheckNameAvailabilityParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
-        TierType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TierType
       end
 
       class DataLakeStoreManagementClass
-        attr_reader :trusted_id_providers, :operations, :accounts, :firewall_rules, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :firewall_rules, :locations, :trusted_id_providers, :operations, :accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -68,11 +68,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @firewall_rules = @client_0.firewall_rules
+          @locations = @client_0.locations
           @trusted_id_providers = @client_0.trusted_id_providers
           @operations = @client_0.operations
           @accounts = @client_0.accounts
-          @firewall_rules = @client_0.firewall_rules
-          @locations = @client_0.locations
 
           @model_classes = ModelClasses.new
         end
@@ -91,17 +91,29 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def data_lake_store_account_status
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
-          end
-          def data_lake_store_account_state
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
+          def check_name_availability_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
           end
           def firewall_allow_azure_ips_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallAllowAzureIpsState
           end
+          def tier_type
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TierType
+          end
+          def data_lake_store_account_status
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
+          end
+          def firewall_state
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallState
+          end
+          def data_lake_store_account_state
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
+          end
           def operation_origin
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationOrigin
+          end
+          def sub_resource
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
           end
           def capability_information
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CapabilityInformation
@@ -112,14 +124,11 @@ module Azure::Profiles::Latest
           def update_firewall_rule_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
           end
-          def sub_resource
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
+          def resource
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
           end
           def subscription_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
-          end
-          def resource
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
           end
           def create_firewall_rule_with_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
@@ -151,32 +160,32 @@ module Azure::Profiles::Latest
           def create_data_lake_store_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateDataLakeStoreAccountParameters
           end
-          def operation_display
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
-          end
-          def update_encryption_config
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateEncryptionConfig
-          end
           def update_key_vault_meta_info
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateKeyVaultMetaInfo
           end
-          def update_firewall_rule_with_account_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleWithAccountParameters
+          def operation_list_result
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationListResult
           end
           def trusted_id_provider_list_result
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderListResult
           end
-          def update_trusted_id_provider_with_account_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
+          def operation_display
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
           end
           def update_data_lake_store_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
           end
+          def update_trusted_id_provider_with_account_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
+          end
+          def update_encryption_config
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateEncryptionConfig
+          end
           def data_lake_store_account_list_result
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
           end
-          def trusted_id_provider
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
+          def update_firewall_rule_with_account_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleWithAccountParameters
           end
           def operation
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Operation
@@ -184,8 +193,8 @@ module Azure::Profiles::Latest
           def data_lake_store_account_basic
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
           end
-          def operation_list_result
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationListResult
+          def trusted_id_provider
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
           end
           def data_lake_store_account
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
@@ -204,15 +213,6 @@ module Azure::Profiles::Latest
           end
           def trusted_id_provider_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
-          end
-          def firewall_state
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallState
-          end
-          def check_name_availability_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
-          end
-          def tier_type
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TierType
           end
         end
       end

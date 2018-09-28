@@ -11,6 +11,10 @@ module Azure::Profiles::Latest
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
+        RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
+        SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
+        CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
+        SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         MxRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
         TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
@@ -19,18 +23,14 @@ module Azure::Profiles::Latest
         ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
         ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
-        Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
         SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
+        Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
         CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
         RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
         AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-        RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
-        SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
-        CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
-        SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
       end
 
       class DnsManagementClass
@@ -64,6 +64,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def record_set_list_result
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
+          end
+          def srv_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
+          end
+          def cname_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
+          end
+          def soa_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
+          end
           def mx_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
           end
@@ -88,14 +100,14 @@ module Azure::Profiles::Latest
           def zone_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
           end
-          def resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
-          end
           def record_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
           end
           def sub_resource
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
+          end
+          def resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
           end
           def caa_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
@@ -111,18 +123,6 @@ module Azure::Profiles::Latest
           end
           def ns_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-          end
-          def record_set_list_result
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
-          end
-          def srv_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
-          end
-          def cname_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
-          end
-          def soa_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
           end
         end
       end
