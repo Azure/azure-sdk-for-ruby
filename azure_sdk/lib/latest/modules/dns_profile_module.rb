@@ -7,18 +7,11 @@ require 'azure_mgmt_dns'
 module Azure::Profiles::Latest
   module Dns
     module Mgmt
-      RecordSets = Azure::Dns::Mgmt::V2018_03_01_preview::RecordSets
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
+      RecordSets = Azure::Dns::Mgmt::V2018_03_01_preview::RecordSets
 
       module Models
-        CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
-        RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-        AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
-        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
-        NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-        RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
         SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
-        SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
         CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         MxRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
@@ -31,10 +24,17 @@ module Azure::Profiles::Latest
         Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
         ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
+        SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
+        CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
+        RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
+        AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
+        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
+        NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
+        RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
       end
 
       class DnsManagementClass
-        attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
+        attr_reader :zones, :record_sets, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -44,8 +44,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @record_sets = @client_0.record_sets
           @zones = @client_0.zones
+          @record_sets = @client_0.record_sets
 
           @model_classes = ModelClasses.new
         end
@@ -64,29 +64,8 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def caa_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
-          end
-          def record_set
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-          end
-          def aaaa_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
-          end
-          def record_set_update_parameters
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
-          end
-          def ns_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-          end
-          def record_set_list_result
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
-          end
           def srv_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
-          end
-          def sub_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
           end
           def cname_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
@@ -123,6 +102,27 @@ module Azure::Profiles::Latest
           end
           def record_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
+          end
+          def sub_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
+          end
+          def caa_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
+          end
+          def record_set
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
+          end
+          def aaaa_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
+          end
+          def record_set_update_parameters
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
+          end
+          def ns_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
+          end
+          def record_set_list_result
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
           end
         end
       end

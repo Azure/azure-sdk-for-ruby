@@ -27,7 +27,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RetentionPolicy',
           type: {
@@ -35,7 +34,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
             class_name: 'RetentionPolicy',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -43,7 +41,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               days: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'days',
                 constraints: {

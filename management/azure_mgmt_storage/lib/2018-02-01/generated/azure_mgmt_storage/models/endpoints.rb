@@ -38,7 +38,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Endpoints',
           type: {
@@ -46,7 +45,6 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'Endpoints',
             model_properties: {
               blob: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'blob',
@@ -55,7 +53,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               queue: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queue',
@@ -64,7 +61,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               table: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'table',
@@ -73,7 +69,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               file: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'file',
@@ -82,7 +77,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               web: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'web',
@@ -91,7 +85,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               dfs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dfs',

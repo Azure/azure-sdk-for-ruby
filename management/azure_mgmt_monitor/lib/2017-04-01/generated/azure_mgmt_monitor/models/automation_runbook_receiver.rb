@@ -38,7 +38,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutomationRunbookReceiver',
           type: {
@@ -46,7 +45,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'AutomationRunbookReceiver',
             model_properties: {
               automation_account_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'automationAccountId',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               runbook_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'runbookName',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               webhook_resource_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'webhookResourceId',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               is_global_runbook: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'isGlobalRunbook',
                 type: {
@@ -78,7 +73,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -86,7 +80,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               service_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceUri',
                 type: {

@@ -19,7 +19,6 @@ module Azure::Profiles::Latest
         ComplianceSegment = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceSegment
         SecurityContactList = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContactList
         ComplianceList = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
         SecurityContact = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
         Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
@@ -28,6 +27,7 @@ module Azure::Profiles::Latest
         Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
         AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
         AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
+        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
         AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
       end
@@ -81,9 +81,6 @@ module Azure::Profiles::Latest
           def compliance_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
           end
-          def resource
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
-          end
           def workspace_setting_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
           end
@@ -107,6 +104,9 @@ module Azure::Profiles::Latest
           end
           def alerts_to_admins
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
+          end
+          def resource
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
           end
           def pricing_tier
             Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier

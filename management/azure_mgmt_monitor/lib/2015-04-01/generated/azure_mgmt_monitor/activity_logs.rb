@@ -53,8 +53,8 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [Array<EventData>] operation results.
     #
-    def list(filter:nil, select:nil, custom_headers:nil)
-      first_page = list_as_lazy(filter:filter, select:select, custom_headers:custom_headers)
+    def list(filter = nil, select = nil, custom_headers = nil)
+      first_page = list_as_lazy(filter, select, custom_headers)
       first_page.get_all_items
     end
 
@@ -90,8 +90,8 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter:nil, select:nil, custom_headers:nil)
-      list_async(filter:filter, select:select, custom_headers:custom_headers).value!
+    def list_with_http_info(filter = nil, select = nil, custom_headers = nil)
+      list_async(filter, select, custom_headers).value!
     end
 
     #
@@ -126,13 +126,12 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter:nil, select:nil, custom_headers:nil)
+    def list_async(filter = nil, select = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -187,8 +186,8 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [EventDataCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -202,8 +201,8 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -216,12 +215,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -298,12 +296,12 @@ module Azure::Monitor::Mgmt::V2015_04_01
     # @return [EventDataCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(filter:nil, select:nil, custom_headers:nil)
-      response = list_async(filter:filter, select:select, custom_headers:custom_headers).value!
+    def list_as_lazy(filter = nil, select = nil, custom_headers = nil)
+      response = list_async(filter, select, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

@@ -51,7 +51,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricDefinition',
           type: {
@@ -59,7 +58,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'MetricDefinition',
             model_properties: {
               is_dimension_required: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isDimensionRequired',
                 type: {
@@ -67,7 +65,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -75,7 +72,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -84,7 +80,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -93,7 +88,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               primary_aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryAggregationType',
                 type: {
@@ -102,13 +96,11 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               metric_availabilities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricAvailabilities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricAvailabilityElementType',
                       type: {
@@ -119,7 +111,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -127,13 +118,11 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               dimensions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dimensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LocalizableStringElementType',
                       type: {

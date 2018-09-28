@@ -7,10 +7,9 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
   module Models
     #
     # Boot Diagnostics is a debugging feature which allows you to view Console
-    # Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
-    # Machines, you can easily view the output of your console log. <br><br>
-    # For both Windows and Linux virtual machines, Azure also enables you to
-    # see a screenshot of the VM from the hypervisor.
+    # Output and Screenshot to diagnose VM status. <br><br> You can easily view
+    # the output of your console log. <br><br> Azure also enables you to see a
+    # screenshot of the VM from the hypervisor.
     #
     class BootDiagnostics
 
@@ -31,7 +30,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BootDiagnostics',
           type: {
@@ -39,7 +37,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'BootDiagnostics',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -47,7 +44,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               storage_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUri',
                 type: {

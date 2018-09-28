@@ -37,10 +37,9 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       # @return [BootDiagnosticsInstanceView] Boot Diagnostics is a debugging
       # feature which allows you to view Console Output and Screenshot to
-      # diagnose VM status. <br><br> For Linux Virtual Machines, you can easily
-      # view the output of your console log. <br><br> For both Windows and
-      # Linux virtual machines, Azure also enables you to see a screenshot of
-      # the VM from the hypervisor.
+      # diagnose VM status. <br><br> You can easily view the output of your
+      # console log. <br><br> Azure also enables you to see a screenshot of the
+      # VM from the hypervisor.
       attr_accessor :boot_diagnostics
 
       # @return [Array<InstanceViewStatus>] The resource status information.
@@ -57,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetVMInstanceView',
           type: {
@@ -65,7 +63,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetVMInstanceView',
             model_properties: {
               platform_update_domain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'platformUpdateDomain',
                 type: {
@@ -73,7 +70,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               platform_fault_domain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'platformFaultDomain',
                 type: {
@@ -81,7 +77,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               rdp_thumb_print: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rdpThumbPrint',
                 type: {
@@ -89,7 +84,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               vm_agent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmAgent',
                 type: {
@@ -98,13 +92,11 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               disks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'disks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiskInstanceViewElementType',
                       type: {
@@ -115,13 +107,11 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               extensions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineExtensionInstanceViewElementType',
                       type: {
@@ -132,7 +122,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               vm_health: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'vmHealth',
@@ -142,7 +131,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               boot_diagnostics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bootDiagnostics',
                 type: {
@@ -151,13 +139,11 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               statuses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
@@ -168,7 +154,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               placement_group_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'placementGroupId',
                 type: {

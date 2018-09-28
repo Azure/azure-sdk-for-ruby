@@ -30,8 +30,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [MetricDefinitionCollection] operation results.
     #
-    def list(resource_uri, custom_headers:nil)
-      response = list_async(resource_uri, custom_headers:custom_headers).value!
+    def list(resource_uri, custom_headers = nil)
+      response = list_async(resource_uri, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -44,8 +44,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_uri, custom_headers:nil)
-      list_async(resource_uri, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_uri, custom_headers = nil)
+      list_async(resource_uri, custom_headers).value!
     end
 
     #
@@ -57,13 +57,12 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_uri, custom_headers:nil)
+    def list_async(resource_uri, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
