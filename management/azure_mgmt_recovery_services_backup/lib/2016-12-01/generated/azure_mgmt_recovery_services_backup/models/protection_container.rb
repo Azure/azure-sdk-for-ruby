@@ -25,7 +25,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       @@discriminatorMap["AzureSqlContainer"] = "AzureSqlContainer"
       @@discriminatorMap["StorageContainer"] = "AzureStorageContainer"
       @@discriminatorMap["VMAppContainer"] = "AzureVMAppContainerProtectionContainer"
-      @@discriminatorMap["AzureWorkloadContainer"] = "AzureWorkloadContainer"
+      @@discriminatorMap["AzureWorkloadBackupRequest"] = "AzureWorkloadContainer"
       @@discriminatorMap["DPMContainer"] = "DpmContainer"
       @@discriminatorMap["GenericContainer"] = "GenericContainer"
       @@discriminatorMap["IaaSVMContainer"] = "IaaSVMContainer"

@@ -19,7 +19,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
 
       def initialize
-        @containerType = "AzureWorkloadContainer"
+        @containerType = "AzureWorkloadBackupRequest"
       end
 
       attr_accessor :containerType
@@ -49,7 +49,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AzureWorkloadContainer',
+          serialized_name: 'AzureWorkloadBackupRequest',
           type: {
             name: 'Composite',
             class_name: 'AzureWorkloadContainer',
