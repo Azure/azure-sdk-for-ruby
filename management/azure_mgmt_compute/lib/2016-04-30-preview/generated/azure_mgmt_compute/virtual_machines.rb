@@ -971,6 +971,201 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     end
 
     #
+    # Lists all of the In-Guest software items of virtual machines in the specified
+    # subscription. Use the nextLink property in the response to get the next page
+    # of items.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<InGuestSoftwareItem>] operation results.
+    #
+    def list_in_guest_software_items(resource_group_name, vm_name, custom_headers = nil)
+      first_page = list_in_guest_software_items_as_lazy(resource_group_name, vm_name, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists all of the In-Guest software items of virtual machines in the specified
+    # subscription. Use the nextLink property in the response to get the next page
+    # of items.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_in_guest_software_items_with_http_info(resource_group_name, vm_name, custom_headers = nil)
+      list_in_guest_software_items_async(resource_group_name, vm_name, custom_headers).value!
+    end
+
+    #
+    # Lists all of the In-Guest software items of virtual machines in the specified
+    # subscription. Use the nextLink property in the response to get the next page
+    # of items.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_in_guest_software_items_async(resource_group_name, vm_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_name is nil' if vm_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/guestResourceTypes/software/items'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmName' => vm_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Compute::Mgmt::V2016_04_30_preview::Models::InGuestSoftwareItemsListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get the In-Guest software item of the virtual machine in the specified
+    # subscription
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param item_id [String] Identifier of the In-Guest resource type.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [InGuestSoftwareItem] operation results.
+    #
+    def get_in_guest_software_item(resource_group_name, vm_name, item_id, custom_headers = nil)
+      response = get_in_guest_software_item_async(resource_group_name, vm_name, item_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the In-Guest software item of the virtual machine in the specified
+    # subscription
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param item_id [String] Identifier of the In-Guest resource type.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_in_guest_software_item_with_http_info(resource_group_name, vm_name, item_id, custom_headers = nil)
+      get_in_guest_software_item_async(resource_group_name, vm_name, item_id, custom_headers).value!
+    end
+
+    #
+    # Get the In-Guest software item of the virtual machine in the specified
+    # subscription
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param item_id [String] Identifier of the In-Guest resource type.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_in_guest_software_item_async(resource_group_name, vm_name, item_id, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_name is nil' if vm_name.nil?
+      fail ArgumentError, 'item_id is nil' if item_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/guestResourceTypes/software/items/{itemId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmName' => vm_name,'itemId' => item_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Compute::Mgmt::V2016_04_30_preview::Models::InGuestSoftwareItem.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Captures the VM by copying virtual hard disks of the VM and outputs a
     # template that can be used to create similar VMs.
     #
@@ -2027,6 +2222,99 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
     end
 
     #
+    # Lists all of the In-Guest software items of virtual machines in the specified
+    # subscription. Use the nextLink property in the response to get the next page
+    # of items.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [InGuestSoftwareItemsListResult] operation results.
+    #
+    def list_in_guest_software_items_next(next_page_link, custom_headers = nil)
+      response = list_in_guest_software_items_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists all of the In-Guest software items of virtual machines in the specified
+    # subscription. Use the nextLink property in the response to get the next page
+    # of items.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_in_guest_software_items_next_with_http_info(next_page_link, custom_headers = nil)
+      list_in_guest_software_items_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Lists all of the In-Guest software items of virtual machines in the specified
+    # subscription. Use the nextLink property in the response to get the next page
+    # of items.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_in_guest_software_items_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Compute::Mgmt::V2016_04_30_preview::Models::InGuestSoftwareItemsListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Lists all of the virtual machines in the specified resource group. Use the
     # nextLink property in the response to get the next page of virtual machines.
     #
@@ -2064,6 +2352,30 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_all_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Lists all of the In-Guest software items of virtual machines in the specified
+    # subscription. Use the nextLink property in the response to get the next page
+    # of items.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [InGuestSoftwareItemsListResult] which provide lazy access to pages
+    # of the response.
+    #
+    def list_in_guest_software_items_as_lazy(resource_group_name, vm_name, custom_headers = nil)
+      response = list_in_guest_software_items_async(resource_group_name, vm_name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_in_guest_software_items_next_async(next_page_link, custom_headers)
         end
         page
       end
