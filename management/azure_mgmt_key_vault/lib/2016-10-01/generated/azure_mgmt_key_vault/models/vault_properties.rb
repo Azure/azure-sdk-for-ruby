@@ -69,7 +69,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultProperties',
           type: {
@@ -77,7 +76,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'VaultProperties',
             model_properties: {
               tenant_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'tenantId',
                 type: {
@@ -85,7 +83,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 default_value: {},
@@ -95,13 +92,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               access_policies: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessPolicies',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessPolicyEntryElementType',
                       type: {
@@ -112,7 +107,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               vault_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vaultUri',
                 type: {
@@ -120,7 +114,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               enabled_for_deployment: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabledForDeployment',
                 type: {
@@ -128,7 +121,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               enabled_for_disk_encryption: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabledForDiskEncryption',
                 type: {
@@ -136,7 +128,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               enabled_for_template_deployment: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabledForTemplateDeployment',
                 type: {
@@ -144,7 +135,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               enable_soft_delete: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableSoftDelete',
                 type: {
@@ -152,7 +142,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               create_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'createMode',
                 type: {
@@ -161,7 +150,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               enable_purge_protection: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enablePurgeProtection',
                 type: {

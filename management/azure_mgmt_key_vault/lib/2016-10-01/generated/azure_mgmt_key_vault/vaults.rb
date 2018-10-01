@@ -35,8 +35,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Vault] operation results.
     #
-    def create_or_update(resource_group_name, vault_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, vault_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, vault_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, vault_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -53,8 +53,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, vault_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, vault_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, vault_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, vault_name, parameters, custom_headers).value!
     end
 
     #
@@ -70,21 +70,21 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, vault_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, vault_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
-      fail ArgumentError, "'vault_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{3,24}$'" if !vault_name.nil? && vault_name.match(Regexp.new('^^[a-zA-Z0-9-]{3,24}$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCreateOrUpdateParameters.mapper()
@@ -154,8 +154,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Vault] operation results.
     #
-    def update(resource_group_name, vault_name, parameters, custom_headers:nil)
-      response = update_async(resource_group_name, vault_name, parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, vault_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, vault_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -171,8 +171,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, vault_name, parameters, custom_headers:nil)
-      update_async(resource_group_name, vault_name, parameters, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, vault_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, vault_name, parameters, custom_headers).value!
     end
 
     #
@@ -187,21 +187,21 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, vault_name, parameters, custom_headers:nil)
+    def update_async(resource_group_name, vault_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
-      fail ArgumentError, "'vault_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{3,24}$'" if !vault_name.nil? && vault_name.match(Regexp.new('^^[a-zA-Z0-9-]{3,24}$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters.mapper()
@@ -269,8 +269,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, vault_name, custom_headers:nil)
-      response = delete_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, vault_name, custom_headers = nil)
+      response = delete_async(resource_group_name, vault_name, custom_headers).value!
       nil
     end
 
@@ -285,8 +285,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, vault_name, custom_headers:nil)
-      delete_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, vault_name, custom_headers = nil)
+      delete_async(resource_group_name, vault_name, custom_headers).value!
     end
 
     #
@@ -300,7 +300,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, vault_name, custom_headers:nil)
+    def delete_async(resource_group_name, vault_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -308,7 +308,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -354,8 +353,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Vault] operation results.
     #
-    def get(resource_group_name, vault_name, custom_headers:nil)
-      response = get_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, vault_name, custom_headers = nil)
+      response = get_async(resource_group_name, vault_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -370,8 +369,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, vault_name, custom_headers:nil)
-      get_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, vault_name, custom_headers = nil)
+      get_async(resource_group_name, vault_name, custom_headers).value!
     end
 
     #
@@ -385,7 +384,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, vault_name, custom_headers:nil)
+    def get_async(resource_group_name, vault_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -393,7 +392,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -453,8 +451,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [VaultAccessPolicyParameters] operation results.
     #
-    def update_access_policy(resource_group_name, vault_name, operation_kind, parameters, custom_headers:nil)
-      response = update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers:custom_headers).value!
+    def update_access_policy(resource_group_name, vault_name, operation_kind, parameters, custom_headers = nil)
+      response = update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -473,8 +471,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_access_policy_with_http_info(resource_group_name, vault_name, operation_kind, parameters, custom_headers:nil)
-      update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers:custom_headers).value!
+    def update_access_policy_with_http_info(resource_group_name, vault_name, operation_kind, parameters, custom_headers = nil)
+      update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers).value!
     end
 
     #
@@ -492,10 +490,9 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers:nil)
+    def update_access_policy_async(resource_group_name, vault_name, operation_kind, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
-      fail ArgumentError, "'vault_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{3,24}$'" if !vault_name.nil? && vault_name.match(Regexp.new('^^[a-zA-Z0-9-]{3,24}$$')).nil?
       fail ArgumentError, 'operation_kind is nil' if operation_kind.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -503,11 +500,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultAccessPolicyParameters.mapper()
@@ -577,8 +575,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Array<Vault>] operation results.
     #
-    def list_by_resource_group(resource_group_name, top:nil, custom_headers:nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, top:top, custom_headers:custom_headers)
+    def list_by_resource_group(resource_group_name, top = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, top, custom_headers)
       first_page.get_all_items
     end
 
@@ -594,8 +592,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, top:nil, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, top:top, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, top = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, top, custom_headers).value!
     end
 
     #
@@ -610,14 +608,13 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, top:nil, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -672,8 +669,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Array<Vault>] operation results.
     #
-    def list_by_subscription(top:nil, custom_headers:nil)
-      first_page = list_by_subscription_as_lazy(top:top, custom_headers:custom_headers)
+    def list_by_subscription(top = nil, custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(top, custom_headers)
       first_page.get_all_items
     end
 
@@ -687,8 +684,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(top:nil, custom_headers:nil)
-      list_by_subscription_async(top:top, custom_headers:custom_headers).value!
+    def list_by_subscription_with_http_info(top = nil, custom_headers = nil)
+      list_by_subscription_async(top, custom_headers).value!
     end
 
     #
@@ -701,13 +698,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(top:nil, custom_headers:nil)
+    def list_by_subscription_async(top = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -760,8 +756,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Array<DeletedVault>] operation results.
     #
-    def list_deleted(custom_headers:nil)
-      first_page = list_deleted_as_lazy(custom_headers:custom_headers)
+    def list_deleted(custom_headers = nil)
+      first_page = list_deleted_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -773,8 +769,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_deleted_with_http_info(custom_headers:nil)
-      list_deleted_async(custom_headers:custom_headers).value!
+    def list_deleted_with_http_info(custom_headers = nil)
+      list_deleted_async(custom_headers).value!
     end
 
     #
@@ -785,13 +781,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_deleted_async(custom_headers:nil)
+    def list_deleted_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -846,8 +841,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [DeletedVault] operation results.
     #
-    def get_deleted(vault_name, location, custom_headers:nil)
-      response = get_deleted_async(vault_name, location, custom_headers:custom_headers).value!
+    def get_deleted(vault_name, location, custom_headers = nil)
+      response = get_deleted_async(vault_name, location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -861,8 +856,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_deleted_with_http_info(vault_name, location, custom_headers:nil)
-      get_deleted_async(vault_name, location, custom_headers:custom_headers).value!
+    def get_deleted_with_http_info(vault_name, location, custom_headers = nil)
+      get_deleted_async(vault_name, location, custom_headers).value!
     end
 
     #
@@ -875,7 +870,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_deleted_async(vault_name, location, custom_headers:nil)
+    def get_deleted_async(vault_name, location, custom_headers = nil)
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -883,7 +878,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -937,8 +931,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def purge_deleted(vault_name, location, custom_headers:nil)
-      response = purge_deleted_async(vault_name, location, custom_headers:custom_headers).value!
+    def purge_deleted(vault_name, location, custom_headers = nil)
+      response = purge_deleted_async(vault_name, location, custom_headers).value!
       nil
     end
 
@@ -951,9 +945,9 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def purge_deleted_async(vault_name, location, custom_headers:nil)
+    def purge_deleted_async(vault_name, location, custom_headers = nil)
       # Send request
-      promise = begin_purge_deleted_async(vault_name, location, custom_headers:custom_headers)
+      promise = begin_purge_deleted_async(vault_name, location, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -977,8 +971,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Array<Resource>] operation results.
     #
-    def list(top:nil, custom_headers:nil)
-      first_page = list_as_lazy(top:top, custom_headers:custom_headers)
+    def list(top = nil, custom_headers = nil)
+      first_page = list_as_lazy(top, custom_headers)
       first_page.get_all_items
     end
 
@@ -992,8 +986,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(top:nil, custom_headers:nil)
-      list_async(top:top, custom_headers:custom_headers).value!
+    def list_with_http_info(top = nil, custom_headers = nil)
+      list_async(top, custom_headers).value!
     end
 
     #
@@ -1006,14 +1000,13 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(top:nil, custom_headers:nil)
+    def list_async(top = nil, custom_headers = nil)
       filter = 'resourceType eq \'Microsoft.KeyVault/vaults\''
       api_version = '2015-11-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1068,8 +1061,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [CheckNameAvailabilityResult] operation results.
     #
-    def check_name_availability(vault_name, custom_headers:nil)
-      response = check_name_availability_async(vault_name, custom_headers:custom_headers).value!
+    def check_name_availability(vault_name, custom_headers = nil)
+      response = check_name_availability_async(vault_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1083,8 +1076,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(vault_name, custom_headers:nil)
-      check_name_availability_async(vault_name, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(vault_name, custom_headers = nil)
+      check_name_availability_async(vault_name, custom_headers).value!
     end
 
     #
@@ -1097,18 +1090,19 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(vault_name, custom_headers:nil)
+    def check_name_availability_async(vault_name, custom_headers = nil)
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultCheckNameAvailabilityParameters.mapper()
@@ -1166,8 +1160,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # will be added to the HTTP request.
     #
     #
-    def begin_purge_deleted(vault_name, location, custom_headers:nil)
-      response = begin_purge_deleted_async(vault_name, location, custom_headers:custom_headers).value!
+    def begin_purge_deleted(vault_name, location, custom_headers = nil)
+      response = begin_purge_deleted_async(vault_name, location, custom_headers).value!
       nil
     end
 
@@ -1182,8 +1176,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_purge_deleted_with_http_info(vault_name, location, custom_headers:nil)
-      begin_purge_deleted_async(vault_name, location, custom_headers:custom_headers).value!
+    def begin_purge_deleted_with_http_info(vault_name, location, custom_headers = nil)
+      begin_purge_deleted_async(vault_name, location, custom_headers).value!
     end
 
     #
@@ -1197,7 +1191,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_purge_deleted_async(vault_name, location, custom_headers:nil)
+    def begin_purge_deleted_async(vault_name, location, custom_headers = nil)
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1205,7 +1199,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1251,8 +1244,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [VaultListResult] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers:nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1267,8 +1260,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1282,12 +1275,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1342,8 +1334,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [VaultListResult] operation results.
     #
-    def list_by_subscription_next(next_page_link, custom_headers:nil)
-      response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1358,8 +1350,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1373,12 +1365,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_next_async(next_page_link, custom_headers:nil)
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1432,8 +1423,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [DeletedVaultListResult] operation results.
     #
-    def list_deleted_next(next_page_link, custom_headers:nil)
-      response = list_deleted_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_deleted_next(next_page_link, custom_headers = nil)
+      response = list_deleted_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1447,8 +1438,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_deleted_next_with_http_info(next_page_link, custom_headers:nil)
-      list_deleted_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_deleted_next_with_http_info(next_page_link, custom_headers = nil)
+      list_deleted_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1461,12 +1452,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_deleted_next_async(next_page_link, custom_headers:nil)
+    def list_deleted_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1521,8 +1511,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [ResourceListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1537,8 +1527,8 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1552,12 +1542,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1613,12 +1602,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [VaultListResult] which provide lazy access to pages of the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, top:nil, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, top:top, custom_headers:custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, top = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1634,12 +1623,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     #
     # @return [VaultListResult] which provide lazy access to pages of the response.
     #
-    def list_by_subscription_as_lazy(top:nil, custom_headers:nil)
-      response = list_by_subscription_async(top:top, custom_headers:custom_headers).value!
+    def list_by_subscription_as_lazy(top = nil, custom_headers = nil)
+      response = list_by_subscription_async(top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1654,12 +1643,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # @return [DeletedVaultListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_deleted_as_lazy(custom_headers:nil)
-      response = list_deleted_async(custom_headers:custom_headers).value!
+    def list_deleted_as_lazy(custom_headers = nil)
+      response = list_deleted_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_deleted_next_async(next_page_link, custom_headers:custom_headers)
+          list_deleted_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1676,12 +1665,12 @@ module Azure::KeyVault::Mgmt::V2016_10_01
     # @return [ResourceListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(top:nil, custom_headers:nil)
-      response = list_async(top:top, custom_headers:custom_headers).value!
+    def list_as_lazy(top = nil, custom_headers = nil)
+      response = list_async(top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
