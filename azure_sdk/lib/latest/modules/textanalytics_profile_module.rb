@@ -8,6 +8,7 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
+      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
       DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
       BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
@@ -22,7 +23,6 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
       InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
       AzureRegions = Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
-      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
     end
 
     class TextAnalyticsDataClass
@@ -54,6 +54,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
+        end
         def detected_language
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
         end
@@ -95,9 +98,6 @@ module Azure::Profiles::Latest
         end
         def azure_regions
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
-        end
-        def input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
         end
       end
     end

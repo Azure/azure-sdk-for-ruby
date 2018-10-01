@@ -6,14 +6,17 @@ require 'azure_graph_rbac'
 
 module Azure::Profiles::Latest
   module GraphRbac
+    Users = Azure::GraphRbac::V1_6::Users
     Objects = Azure::GraphRbac::V1_6::Objects
     Applications = Azure::GraphRbac::V1_6::Applications
     Groups = Azure::GraphRbac::V1_6::Groups
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
     Domains = Azure::GraphRbac::V1_6::Domains
-    Users = Azure::GraphRbac::V1_6::Users
 
     module Models
+      ResourceAccess = Azure::GraphRbac::V1_6::Models::ResourceAccess
+      GroupListResult = Azure::GraphRbac::V1_6::Models::GroupListResult
+      GroupGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
       UserGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
       ApplicationListResult = Azure::GraphRbac::V1_6::Models::ApplicationListResult
       GroupGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsResult
@@ -53,13 +56,10 @@ module Azure::Profiles::Latest
       GroupAddMemberParameters = Azure::GraphRbac::V1_6::Models::GroupAddMemberParameters
       GraphError = Azure::GraphRbac::V1_6::Models::GraphError
       KeyCredential = Azure::GraphRbac::V1_6::Models::KeyCredential
-      ResourceAccess = Azure::GraphRbac::V1_6::Models::ResourceAccess
-      GroupListResult = Azure::GraphRbac::V1_6::Models::GroupListResult
-      GroupGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
     end
 
     class GraphRbacDataClass
-      attr_reader :objects, :applications, :groups, :service_principals, :domains, :users, :configurable, :base_url, :options, :model_classes
+      attr_reader :users, :objects, :applications, :groups, :service_principals, :domains, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -69,12 +69,12 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @users = @client_0.users
         @objects = @client_0.objects
         @applications = @client_0.applications
         @groups = @client_0.groups
         @service_principals = @client_0.service_principals
         @domains = @client_0.domains
-        @users = @client_0.users
 
         @model_classes = ModelClasses.new
       end
@@ -93,6 +93,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def resource_access
+          Azure::GraphRbac::V1_6::Models::ResourceAccess
+        end
+        def group_list_result
+          Azure::GraphRbac::V1_6::Models::GroupListResult
+        end
+        def group_get_member_groups_parameters
+          Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
+        end
         def user_get_member_groups_result
           Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
         end
@@ -209,15 +218,6 @@ module Azure::Profiles::Latest
         end
         def key_credential
           Azure::GraphRbac::V1_6::Models::KeyCredential
-        end
-        def resource_access
-          Azure::GraphRbac::V1_6::Models::ResourceAccess
-        end
-        def group_list_result
-          Azure::GraphRbac::V1_6::Models::GroupListResult
-        end
-        def group_get_member_groups_parameters
-          Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
         end
       end
     end

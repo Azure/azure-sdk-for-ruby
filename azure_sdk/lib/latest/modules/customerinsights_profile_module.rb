@@ -22,10 +22,13 @@ module Azure::Profiles::Latest
       Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
       RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
       Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
-      Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
       Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
+      Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
 
       module Models
+        PredictionTrainingResults = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionTrainingResults
+        ConnectorMappingFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingFormat
+        RelationshipLinkListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkListResult
         ConnectorMappingProperties = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingProperties
         CanonicalProfileDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalProfileDefinition
         KpiAlias = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiAlias
@@ -69,22 +72,22 @@ module Azure::Profiles::Latest
         RoleResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleResourceFormat
         DataSourceType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourceType
         ProvisioningStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
-        PermissionTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
+        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
         PredictionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat
-        ConnectorStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
+        PermissionTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
         ProxyResource = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProxyResource
-        FrequencyTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
+        ConnectorStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
         ErrorManagementTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
         ConnectorTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
         CompletionOperationTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CompletionOperationTypes
         Operation = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Operation
-        CalculationWindowTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
+        FrequencyTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
         KpiFunctions = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiFunctions
         ConnectorMappingStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStates
-        LinkTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkTypes
+        CalculationWindowTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
         InstanceOperationType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InstanceOperationType
         EntityType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityType
-        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
+        LinkTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkTypes
         CanonicalPropertyValueType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalPropertyValueType
         CardinalityTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CardinalityTypes
         RoleTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleTypes
@@ -127,13 +130,10 @@ module Azure::Profiles::Latest
         PropertyDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PropertyDefinition
         RelationshipListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipListResult
         SalesforceConnectorProperties = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceConnectorProperties
-        PredictionTrainingResults = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionTrainingResults
-        ConnectorMappingFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingFormat
-        RelationshipLinkListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkListResult
       end
 
       class CustomerInsightsManagementClass
-        attr_reader :operations, :profiles, :hubs, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :roles, :role_assignments, :predictions, :images, :links, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :profiles, :hubs, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :roles, :role_assignments, :predictions, :links, :images, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -158,8 +158,8 @@ module Azure::Profiles::Latest
           @roles = @client_0.roles
           @role_assignments = @client_0.role_assignments
           @predictions = @client_0.predictions
-          @images = @client_0.images
           @links = @client_0.links
+          @images = @client_0.images
 
           @model_classes = ModelClasses.new
         end
@@ -178,6 +178,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def prediction_training_results
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionTrainingResults
+          end
+          def connector_mapping_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingFormat
+          end
+          def relationship_link_list_result
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkListResult
+          end
           def connector_mapping_properties
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingProperties
           end
@@ -307,20 +316,20 @@ module Azure::Profiles::Latest
           def provisioning_states
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
           end
-          def permission_types
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
+          def status
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
           end
           def prediction_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat
           end
-          def connector_states
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
+          def permission_types
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
           end
           def proxy_resource
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProxyResource
           end
-          def frequency_types
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
+          def connector_states
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
           end
           def error_management_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
@@ -334,8 +343,8 @@ module Azure::Profiles::Latest
           def operation
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Operation
           end
-          def calculation_window_types
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
+          def frequency_types
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
           end
           def kpi_functions
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiFunctions
@@ -343,8 +352,8 @@ module Azure::Profiles::Latest
           def connector_mapping_states
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStates
           end
-          def link_types
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkTypes
+          def calculation_window_types
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
           end
           def instance_operation_type
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InstanceOperationType
@@ -352,8 +361,8 @@ module Azure::Profiles::Latest
           def entity_type
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityType
           end
-          def status
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
+          def link_types
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkTypes
           end
           def canonical_property_value_type
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalPropertyValueType
@@ -480,15 +489,6 @@ module Azure::Profiles::Latest
           end
           def salesforce_connector_properties
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceConnectorProperties
-          end
-          def prediction_training_results
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionTrainingResults
-          end
-          def connector_mapping_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingFormat
-          end
-          def relationship_link_list_result
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkListResult
           end
         end
       end

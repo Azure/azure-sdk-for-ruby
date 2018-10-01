@@ -13,17 +13,19 @@ module Azure::Profiles::Latest
       Webhooks = Azure::ContainerRegistry::Mgmt::V2017_10_01::Webhooks
 
       module Models
-        QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
-        EventResponseMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
+        Replication = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
+        ImportMode = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportMode
         Source = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
-        ProvisioningState = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
+        OperationServiceSpecificationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
+        RegistryListCredentialsResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
+        EventContent = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
         Request = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
+        PolicyStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PolicyStatus
         PasswordName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
         RegistryUsageUnit = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
-        PolicyStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PolicyStatus
+        WebhookAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
         Event = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
         WebhookStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
-        WebhookAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
         TrustPolicyType = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicyType
         OperationListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationListResult
         Webhook = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
@@ -31,6 +33,7 @@ module Azure::Profiles::Latest
         Resource = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Resource
         SkuName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
         SkuTier = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
+        ProvisioningState = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
         TrustPolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy
         ImportSource = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSource
         RegistryPolicies = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPolicies
@@ -42,10 +45,10 @@ module Azure::Profiles::Latest
         ReplicationUpdateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationUpdateParameters
         ReplicationListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationListResult
         StorageAccountProperties = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::StorageAccountProperties
+        Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
         RegistryUpdateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUpdateParameters
         WebhookCreateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookCreateParameters
         RegistryPassword = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPassword
-        Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
         RegenerateCredentialParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegenerateCredentialParameters
         RegistryUsageListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageListResult
         OperationDisplayDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDisplayDefinition
@@ -58,13 +61,10 @@ module Azure::Profiles::Latest
         RegistryListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
         Target = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Target
         Actor = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Actor
-        OperationServiceSpecificationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
-        RegistryListCredentialsResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
-        EventContent = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
-        Registry = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
-        Replication = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
-        ImportMode = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportMode
         EventRequestMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
+        QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+        EventResponseMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
+        Registry = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
       end
 
       class ContainerRegistryManagementClass
@@ -100,20 +100,29 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def quarantine_policy
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+          def replication
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
           end
-          def event_response_message
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
+          def import_mode
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportMode
           end
           def source
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
           end
-          def provisioning_state
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
+          def operation_service_specification_definition
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
+          end
+          def registry_list_credentials_result
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
+          end
+          def event_content
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
           end
           def request
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
+          end
+          def policy_status
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PolicyStatus
           end
           def password_name
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
@@ -121,17 +130,14 @@ module Azure::Profiles::Latest
           def registry_usage_unit
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
           end
-          def policy_status
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PolicyStatus
+          def webhook_action
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
           end
           def event
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
           end
           def webhook_status
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
-          end
-          def webhook_action
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
           end
           def trust_policy_type
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicyType
@@ -153,6 +159,9 @@ module Azure::Profiles::Latest
           end
           def sku_tier
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
+          end
+          def provisioning_state
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
           end
           def trust_policy
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy
@@ -187,6 +196,9 @@ module Azure::Profiles::Latest
           def storage_account_properties
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::StorageAccountProperties
           end
+          def status
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
+          end
           def registry_update_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUpdateParameters
           end
@@ -195,9 +207,6 @@ module Azure::Profiles::Latest
           end
           def registry_password
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPassword
-          end
-          def status
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
           end
           def regenerate_credential_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegenerateCredentialParameters
@@ -235,26 +244,17 @@ module Azure::Profiles::Latest
           def actor
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Actor
           end
-          def operation_service_specification_definition
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
+          def event_request_message
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
           end
-          def registry_list_credentials_result
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
+          def quarantine_policy
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
           end
-          def event_content
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
+          def event_response_message
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
           end
           def registry
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
-          end
-          def replication
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
-          end
-          def import_mode
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportMode
-          end
-          def event_request_message
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
           end
         end
       end

@@ -7,18 +7,20 @@ require 'azure_mgmt_service_bus'
 module Azure::Profiles::Latest
   module ServiceBus
     module Mgmt
+      Rules = Azure::ServiceBus::Mgmt::V2017_04_01::Rules
+      Regions = Azure::ServiceBus::Mgmt::V2017_04_01::Regions
+      PremiumMessagingRegionsOperations = Azure::ServiceBus::Mgmt::V2017_04_01::PremiumMessagingRegionsOperations
       Operations = Azure::ServiceBus::Mgmt::V2017_04_01::Operations
-      Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
       Namespaces = Azure::ServiceBus::Mgmt::V2017_04_01::Namespaces
       DisasterRecoveryConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::DisasterRecoveryConfigs
       Topics = Azure::ServiceBus::Mgmt::V2017_04_01::Topics
       EventHubs = Azure::ServiceBus::Mgmt::V2017_04_01::EventHubs
-      Regions = Azure::ServiceBus::Mgmt::V2017_04_01::Regions
+      Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
       Queues = Azure::ServiceBus::Mgmt::V2017_04_01::Queues
-      Rules = Azure::ServiceBus::Mgmt::V2017_04_01::Rules
-      PremiumMessagingRegionsOperations = Azure::ServiceBus::Mgmt::V2017_04_01::PremiumMessagingRegionsOperations
 
       module Models
+        ProvisioningStateDR = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
+        RoleDisasterRecovery = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
         OperationDisplay = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
         OperationListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationListResult
         ErrorResponse = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ErrorResponse
@@ -45,15 +47,15 @@ module Azure::Profiles::Latest
         SBSubscription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBSubscription
         Rule = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Rule
         SqlRuleAction = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlRuleAction
-        CheckNameAvailability = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
-        PremiumMessagingRegions = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
-        KeyType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
         CheckNameAvailabilityResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
         Resource = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Resource
+        KeyType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
+        CheckNameAvailability = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
         ResourceNamespacePatch = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
-        SkuName = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName
         SkuTier = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuTier
+        PremiumMessagingRegions = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
         FilterType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
+        SkuName = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName
         Action = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
         CaptureDescription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CaptureDescription
         Destination = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Destination
@@ -67,12 +69,10 @@ module Azure::Profiles::Latest
         EntityStatus = Azure::ServiceBus::Mgmt::V2017_04_01::Models::EntityStatus
         EncodingCaptureDescription = Azure::ServiceBus::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
         UnavailableReason = Azure::ServiceBus::Mgmt::V2017_04_01::Models::UnavailableReason
-        ProvisioningStateDR = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
-        RoleDisasterRecovery = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
       end
 
       class ServiceBusManagementClass
-        attr_reader :operations, :subscriptions, :namespaces, :disaster_recovery_configs, :topics, :event_hubs, :regions, :queues, :rules, :premium_messaging_regions_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :rules, :regions, :premium_messaging_regions_operations, :operations, :namespaces, :disaster_recovery_configs, :topics, :event_hubs, :subscriptions, :queues, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -82,16 +82,16 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @rules = @client_0.rules
+          @regions = @client_0.regions
+          @premium_messaging_regions_operations = @client_0.premium_messaging_regions_operations
           @operations = @client_0.operations
-          @subscriptions = @client_0.subscriptions
           @namespaces = @client_0.namespaces
           @disaster_recovery_configs = @client_0.disaster_recovery_configs
           @topics = @client_0.topics
           @event_hubs = @client_0.event_hubs
-          @regions = @client_0.regions
+          @subscriptions = @client_0.subscriptions
           @queues = @client_0.queues
-          @rules = @client_0.rules
-          @premium_messaging_regions_operations = @client_0.premium_messaging_regions_operations
 
           @model_classes = ModelClasses.new
         end
@@ -110,6 +110,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def provisioning_state_dr
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
+          end
+          def role_disaster_recovery
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
+          end
           def operation_display
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
           end
@@ -188,32 +194,32 @@ module Azure::Profiles::Latest
           def sql_rule_action
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlRuleAction
           end
-          def check_name_availability
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
-          end
-          def premium_messaging_regions
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
-          end
-          def key_type
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
-          end
           def check_name_availability_result
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
           end
           def resource
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::Resource
           end
+          def key_type
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::KeyType
+          end
+          def check_name_availability
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
+          end
           def resource_namespace_patch
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
-          end
-          def sku_name
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName
           end
           def sku_tier
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuTier
           end
+          def premium_messaging_regions
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
+          end
           def filter_type
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
+          end
+          def sku_name
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName
           end
           def action
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
@@ -253,12 +259,6 @@ module Azure::Profiles::Latest
           end
           def unavailable_reason
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::UnavailableReason
-          end
-          def provisioning_state_dr
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::ProvisioningStateDR
-          end
-          def role_disaster_recovery
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
           end
         end
       end
