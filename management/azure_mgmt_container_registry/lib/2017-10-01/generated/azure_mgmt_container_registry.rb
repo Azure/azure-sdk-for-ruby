@@ -27,6 +27,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
   autoload :ContainerRegistryManagementClient,                  '2017-10-01/generated/azure_mgmt_container_registry/container_registry_management_client.rb'
 
   module Models
+    autoload :QuarantinePolicy,                                   '2017-10-01/generated/azure_mgmt_container_registry/models/quarantine_policy.rb'
     autoload :TrustPolicy,                                        '2017-10-01/generated/azure_mgmt_container_registry/models/trust_policy.rb'
     autoload :ImportSource,                                       '2017-10-01/generated/azure_mgmt_container_registry/models/import_source.rb'
     autoload :RegistryPolicies,                                   '2017-10-01/generated/azure_mgmt_container_registry/models/registry_policies.rb'
@@ -63,7 +64,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
     autoload :EventContent,                                       '2017-10-01/generated/azure_mgmt_container_registry/models/event_content.rb'
     autoload :Status,                                             '2017-10-01/generated/azure_mgmt_container_registry/models/status.rb'
     autoload :EventRequestMessage,                                '2017-10-01/generated/azure_mgmt_container_registry/models/event_request_message.rb'
-    autoload :QuarantinePolicy,                                   '2017-10-01/generated/azure_mgmt_container_registry/models/quarantine_policy.rb'
+    autoload :ImportSourceCredentials,                            '2017-10-01/generated/azure_mgmt_container_registry/models/import_source_credentials.rb'
     autoload :EventResponseMessage,                               '2017-10-01/generated/azure_mgmt_container_registry/models/event_response_message.rb'
     autoload :Registry,                                           '2017-10-01/generated/azure_mgmt_container_registry/models/registry.rb'
     autoload :Replication,                                        '2017-10-01/generated/azure_mgmt_container_registry/models/replication.rb'
