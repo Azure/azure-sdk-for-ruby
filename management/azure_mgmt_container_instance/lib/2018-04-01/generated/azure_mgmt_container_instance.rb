@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2018-04-01/generated/azure_mgmt_container_instance/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
+module Azure::ContainerInstance::Mgmt::V2018_04_01
   autoload :ContainerGroups,                                    '2018-04-01/generated/azure_mgmt_container_instance/container_groups.rb'
   autoload :Operations,                                         '2018-04-01/generated/azure_mgmt_container_instance/operations.rb'
   autoload :ContainerGroupUsage,                                '2018-04-01/generated/azure_mgmt_container_instance/container_group_usage.rb'

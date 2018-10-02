@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
+module Azure::ContainerInstance::Mgmt::V2018_09_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -134,8 +134,8 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_instance'
-        if defined? Azure::ContainerInstance::Mgmt::V2018_02_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ContainerInstance::Mgmt::V2018_02_01_preview::VERSION}"
+        if defined? Azure::ContainerInstance::Mgmt::V2018_09_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ContainerInstance::Mgmt::V2018_09_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end
