@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
+module Azure::ContainerInstance::Mgmt::V2018_09_01
   #
   # ContainerOperations
   #
@@ -121,7 +121,7 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::Logs.mapper()
+            result_mapper = Azure::ContainerInstance::Mgmt::V2018_09_01::Models::Logs.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -209,7 +209,7 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerExecRequest.mapper()
+      request_mapper = Azure::ContainerInstance::Mgmt::V2018_09_01::Models::ContainerExecRequest.mapper()
       request_content = @client.serialize(request_mapper,  container_exec_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -241,7 +241,7 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2018_02_01_preview::Models::ContainerExecResponse.mapper()
+            result_mapper = Azure::ContainerInstance::Mgmt::V2018_09_01::Models::ContainerExecResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

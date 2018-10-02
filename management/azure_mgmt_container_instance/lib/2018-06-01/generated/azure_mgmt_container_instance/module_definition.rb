@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ContainerInstance end
 module Azure::ContainerInstance::Mgmt end
-module Azure::ContainerInstance::Mgmt::V2018_02_01_preview end
+module Azure::ContainerInstance::Mgmt::V2018_06_01 end

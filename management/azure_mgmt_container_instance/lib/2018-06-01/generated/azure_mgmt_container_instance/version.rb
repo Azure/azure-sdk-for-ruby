@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
+module Azure::ContainerInstance::Mgmt::V2018_06_01
     VERSION = '0.16.0'
 end
