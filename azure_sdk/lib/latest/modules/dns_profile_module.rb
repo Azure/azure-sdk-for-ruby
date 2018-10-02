@@ -27,10 +27,10 @@ module Azure::Profiles::Latest
         ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
         PtrRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
         Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
-        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
-        ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
+        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
+        ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
       end
 
       class DnsManagementClass
@@ -112,17 +112,17 @@ module Azure::Profiles::Latest
           def resource
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
           end
-          def arecord
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
-          end
           def zone
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
           end
-          def zone_type
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
+          def arecord
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
           end
           def record_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
+          end
+          def zone_type
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
           end
         end
       end
