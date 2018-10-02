@@ -35,7 +35,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeleteCertificateError',
           type: {
@@ -43,7 +42,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'DeleteCertificateError',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -67,13 +63,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DeleteCertificateErrorElementType',
                       type: {
