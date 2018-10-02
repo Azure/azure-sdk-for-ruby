@@ -12,8 +12,18 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
       include MsRestAzure
 
-      # @return [ErrorResponseBody]
-      attr_accessor :error
+      # @return [String] The error code.
+      attr_accessor :code
+
+      # @return [String] The error message.
+      attr_accessor :message
+
+      # @return [String] The target of the particular error.
+      attr_accessor :target
+
+      # @return [Array<ErrorResponseBody>] A list of additional details about
+      # the error.
+      attr_accessor :details
 
 
       #
@@ -28,12 +38,43 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             name: 'Composite',
             class_name: 'ErrorDetails',
             model_properties: {
-              error: {
+              code: {
                 required: false,
-                serialized_name: 'error',
+                read_only: true,
+                serialized_name: 'error.code',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ErrorResponseBody'
+                  name: 'String'
+                }
+              },
+              message: {
+                required: false,
+                read_only: true,
+                serialized_name: 'error.message',
+                type: {
+                  name: 'String'
+                }
+              },
+              target: {
+                required: false,
+                read_only: true,
+                serialized_name: 'error.target',
+                type: {
+                  name: 'String'
+                }
+              },
+              details: {
+                required: false,
+                serialized_name: 'error.details',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ErrorResponseBodyElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ErrorResponseBody'
+                      }
+                  }
                 }
               }
             }
