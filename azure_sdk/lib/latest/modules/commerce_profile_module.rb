@@ -20,9 +20,9 @@ module Azure::Profiles::Latest
         RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
         MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
         ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+        MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
         RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
         AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
-        MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
       end
 
       class CommerceManagementClass
@@ -83,14 +83,14 @@ module Azure::Profiles::Latest
           def error_response
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
           end
+          def monetary_commitment
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
+          end
           def recurring_charge
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
           end
           def aggregation_granularity
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
-          end
-          def monetary_commitment
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
           end
         end
       end
