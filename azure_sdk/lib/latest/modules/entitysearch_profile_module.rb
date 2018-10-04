@@ -22,8 +22,8 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
-      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
@@ -126,11 +126,11 @@ module Azure::Profiles::Latest
         def local_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
         end
-        def tourist_attraction
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
-        end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
+        def tourist_attraction
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
         end
         def airport
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport

@@ -15,6 +15,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [Sku] The SKU of the container registry.
       attr_accessor :sku
 
+      # @return [RegistryIdentity] The Identity of the container registry.
+      attr_accessor :identity
+
       # @return [String] The URL that can be used to log into the container
       # registry.
       attr_accessor :login_server
@@ -104,6 +107,14 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RegistryIdentity'
                 }
               },
               login_server: {

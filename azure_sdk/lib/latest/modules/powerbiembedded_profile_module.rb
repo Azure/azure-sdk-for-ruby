@@ -18,9 +18,9 @@ module Azure::Profiles::Latest
         CreateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CreateWorkspaceCollectionRequest
         Display = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Display
         Workspace = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
+        UpdateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
         AzureSku = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AzureSku
         CheckNameRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
-        UpdateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
         WorkspaceList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
         CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
         WorkspaceCollectionList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
@@ -84,14 +84,14 @@ module Azure::Profiles::Latest
           def workspace
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
           end
+          def update_workspace_collection_request
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
+          end
           def azure_sku
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AzureSku
           end
           def check_name_request
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
-          end
-          def update_workspace_collection_request
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
           end
           def workspace_list
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList

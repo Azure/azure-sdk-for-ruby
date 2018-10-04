@@ -18,6 +18,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [Sku] The SKU of the container registry.
       attr_accessor :sku
 
+      # @return [RegistryIdentity] The Identity of the container registry.
+      attr_accessor :identity
+
       # @return [Boolean] The value that indicates whether the admin user is
       # enabled.
       attr_accessor :admin_user_enabled
@@ -61,6 +64,14 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RegistryIdentity'
                 }
               },
               admin_user_enabled: {
