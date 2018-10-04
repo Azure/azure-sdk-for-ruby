@@ -19,7 +19,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
       # @return [Array<String>] Specifies an array of alerts that are disabled.
       # Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
-      # Access_Anomaly
+      # Access_Anomaly, Data_Exfiltration, Unsafe_Action
       attr_accessor :disabled_alerts
 
       # @return [Array<String>] Specifies an array of e-mail addresses to which
