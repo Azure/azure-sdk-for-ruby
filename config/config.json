@@ -1268,6 +1268,18 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Subscriptions::Mgmt::V2015_11_01",
       "tag": "package-subscriptions-2015-11"
+    },
+    "azure_mgmt_subscriptions_2017_11_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/64266364a9517d82448d09622b70ff753a9fbaa9/specification/subscription/resource-manager/readme.md",
+      "namespace": "Azure::Subscriptions::Mgmt::V2017_11_01_preview",
+      "tag": "package-2017-11-preview"
+    },
+    "azure_mgmt_subscriptions_2018_03_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/64266364a9517d82448d09622b70ff753a9fbaa9/specification/subscription/resource-manager/Microsoft.Subscription/preview/2018-03-01-preview/subscriptions.json"
+      ],
+      "namespace": "Azure::Subscriptions::Mgmt::V2018_03_01_preview",
+      "title": "SubscriptionClient"
     }
   },
   "azure_mgmt_traffic_manager": {
