@@ -5,4 +5,6 @@
 require '2018-02-14/generated/azure_mgmt_key_vault'
 require '2016-10-01/generated/azure_mgmt_key_vault'
 require '2015-06-01/generated/azure_mgmt_key_vault'
+require 'profiles/v2017_03_09/keyvault_v2017_03_09_profile_client'
 require 'profiles/latest/keyvault_latest_profile_client'
+require 'profiles/v2018_03_01/keyvault_v2018_03_01_profile_client'
