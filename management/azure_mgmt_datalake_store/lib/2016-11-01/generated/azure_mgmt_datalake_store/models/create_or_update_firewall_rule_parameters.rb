@@ -27,7 +27,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateOrUpdateFirewallRuleParameters',
           type: {
@@ -35,7 +34,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'CreateOrUpdateFirewallRuleParameters',
             model_properties: {
               start_ip_address: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.startIpAddress',
                 type: {
@@ -43,7 +41,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               end_ip_address: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.endIpAddress',
                 type: {
