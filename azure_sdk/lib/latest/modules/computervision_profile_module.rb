@@ -8,9 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
-      ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
-      Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
       ImageAnalysis = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
       TextOperationResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
       OcrWord = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
@@ -46,6 +43,9 @@ module Azure::Profiles::Latest
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
       TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
       Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+      FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
+      ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
+      Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
     end
 
     class ComputerVisionDataClass
@@ -77,15 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def face_description
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
-        end
-        def image_metadata
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
-        end
-        def line
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
-        end
         def image_analysis
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
         end
@@ -190,6 +181,15 @@ module Azure::Profiles::Latest
         end
         def details
           Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+        end
+        def face_description
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
+        end
+        def image_metadata
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
+        end
+        def line
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
         end
       end
     end

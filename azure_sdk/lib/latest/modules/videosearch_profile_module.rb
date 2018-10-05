@@ -9,15 +9,7 @@ module Azure::Profiles::Latest
     VideosOperations = Azure::CognitiveServices::VideoSearch::V1_0::VideosOperations
 
     module Models
-      VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
-      VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
-      VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
-      VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
-      ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
-      QueryContext = Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
-      Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
-      VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
-      VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
+      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
       PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
       SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
@@ -39,8 +31,16 @@ module Azure::Profiles::Latest
       Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
       TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
       VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
+      VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
+      VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+      VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
+      VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
+      VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
+      ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
+      QueryContext = Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
+      Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-      ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+      VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
     end
 
     class VideoSearchDataClass
@@ -73,32 +73,8 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def video_length
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
-        end
-        def video_query_scenario
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
-        end
-        def video_resolution
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
-        end
-        def video_pricing
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
-        end
-        def response_base
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
-        end
-        def query_context
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
-        end
-        def query
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
-        end
-        def video_object
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
-        end
-        def video_insight_module
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
+        def error_response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
         end
         def pivot_suggestions
           Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
@@ -163,11 +139,35 @@ module Azure::Profiles::Latest
         def video_details
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
         end
+        def video_query_scenario
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
+        end
+        def video_length
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+        end
+        def video_pricing
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
+        end
+        def video_resolution
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
+        end
+        def video_insight_module
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
+        end
+        def response_base
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
+        end
+        def query_context
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
+        end
+        def query
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
+        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
         end
-        def error_response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+        def video_object
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
         end
       end
     end
