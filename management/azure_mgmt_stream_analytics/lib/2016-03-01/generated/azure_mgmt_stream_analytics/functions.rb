@@ -43,8 +43,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Function] operation results.
     #
-    def create_or_replace(function, resource_group_name, job_name, function_name, if_match:nil, if_none_match:nil, custom_headers:nil)
-      response = create_or_replace_async(function, resource_group_name, job_name, function_name, if_match:if_match, if_none_match:if_none_match, custom_headers:custom_headers).value!
+    def create_or_replace(function, resource_group_name, job_name, function_name, if_match = nil, if_none_match = nil, custom_headers = nil)
+      response = create_or_replace_async(function, resource_group_name, job_name, function_name, if_match, if_none_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -70,8 +70,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_replace_with_http_info(function, resource_group_name, job_name, function_name, if_match:nil, if_none_match:nil, custom_headers:nil)
-      create_or_replace_async(function, resource_group_name, job_name, function_name, if_match:if_match, if_none_match:if_none_match, custom_headers:custom_headers).value!
+    def create_or_replace_with_http_info(function, resource_group_name, job_name, function_name, if_match = nil, if_none_match = nil, custom_headers = nil)
+      create_or_replace_async(function, resource_group_name, job_name, function_name, if_match, if_none_match, custom_headers).value!
     end
 
     #
@@ -96,7 +96,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_replace_async(function, resource_group_name, job_name, function_name, if_match:nil, if_none_match:nil, custom_headers:nil)
+    def create_or_replace_async(function, resource_group_name, job_name, function_name, if_match = nil, if_none_match = nil, custom_headers = nil)
       fail ArgumentError, 'function is nil' if function.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -106,13 +106,14 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['If-None-Match'] = if_none_match unless if_none_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
@@ -193,8 +194,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Function] operation results.
     #
-    def update(function, resource_group_name, job_name, function_name, if_match:nil, custom_headers:nil)
-      response = update_async(function, resource_group_name, job_name, function_name, if_match:if_match, custom_headers:custom_headers).value!
+    def update(function, resource_group_name, job_name, function_name, if_match = nil, custom_headers = nil)
+      response = update_async(function, resource_group_name, job_name, function_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -221,8 +222,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(function, resource_group_name, job_name, function_name, if_match:nil, custom_headers:nil)
-      update_async(function, resource_group_name, job_name, function_name, if_match:if_match, custom_headers:custom_headers).value!
+    def update_with_http_info(function, resource_group_name, job_name, function_name, if_match = nil, custom_headers = nil)
+      update_async(function, resource_group_name, job_name, function_name, if_match, custom_headers).value!
     end
 
     #
@@ -248,7 +249,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(function, resource_group_name, job_name, function_name, if_match:nil, custom_headers:nil)
+    def update_async(function, resource_group_name, job_name, function_name, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'function is nil' if function.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -258,12 +259,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
@@ -323,8 +325,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, job_name, function_name, custom_headers:nil)
-      response = delete_async(resource_group_name, job_name, function_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, job_name, function_name, custom_headers = nil)
+      response = delete_async(resource_group_name, job_name, function_name, custom_headers).value!
       nil
     end
 
@@ -341,8 +343,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, job_name, function_name, custom_headers:nil)
-      delete_async(resource_group_name, job_name, function_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, job_name, function_name, custom_headers = nil)
+      delete_async(resource_group_name, job_name, function_name, custom_headers).value!
     end
 
     #
@@ -358,7 +360,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, job_name, function_name, custom_headers:nil)
+    def delete_async(resource_group_name, job_name, function_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -367,7 +369,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -415,8 +416,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Function] operation results.
     #
-    def get(resource_group_name, job_name, function_name, custom_headers:nil)
-      response = get_async(resource_group_name, job_name, function_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, job_name, function_name, custom_headers = nil)
+      response = get_async(resource_group_name, job_name, function_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -433,8 +434,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, job_name, function_name, custom_headers:nil)
-      get_async(resource_group_name, job_name, function_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, job_name, function_name, custom_headers = nil)
+      get_async(resource_group_name, job_name, function_name, custom_headers).value!
     end
 
     #
@@ -450,7 +451,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, job_name, function_name, custom_headers:nil)
+    def get_async(resource_group_name, job_name, function_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -459,7 +460,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -520,8 +520,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Array<Function>] operation results.
     #
-    def list_by_streaming_job(resource_group_name, job_name, select:nil, custom_headers:nil)
-      first_page = list_by_streaming_job_as_lazy(resource_group_name, job_name, select:select, custom_headers:custom_headers)
+    def list_by_streaming_job(resource_group_name, job_name, select = nil, custom_headers = nil)
+      first_page = list_by_streaming_job_as_lazy(resource_group_name, job_name, select, custom_headers)
       first_page.get_all_items
     end
 
@@ -541,8 +541,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_streaming_job_with_http_info(resource_group_name, job_name, select:nil, custom_headers:nil)
-      list_by_streaming_job_async(resource_group_name, job_name, select:select, custom_headers:custom_headers).value!
+    def list_by_streaming_job_with_http_info(resource_group_name, job_name, select = nil, custom_headers = nil)
+      list_by_streaming_job_async(resource_group_name, job_name, select, custom_headers).value!
     end
 
     #
@@ -561,7 +561,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_streaming_job_async(resource_group_name, job_name, select:nil, custom_headers:nil)
+    def list_by_streaming_job_async(resource_group_name, job_name, select = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -569,7 +569,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -636,8 +635,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [ResourceTestStatus] operation results.
     #
-    def test(resource_group_name, job_name, function_name, function:nil, custom_headers:nil)
-      response = test_async(resource_group_name, job_name, function_name, function:function, custom_headers:custom_headers).value!
+    def test(resource_group_name, job_name, function_name, function = nil, custom_headers = nil)
+      response = test_async(resource_group_name, job_name, function_name, function, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -660,9 +659,9 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def test_async(resource_group_name, job_name, function_name, function:nil, custom_headers:nil)
+    def test_async(resource_group_name, job_name, function_name, function = nil, custom_headers = nil)
       # Send request
-      promise = begin_test_async(resource_group_name, job_name, function_name, function:function, custom_headers:custom_headers)
+      promise = begin_test_async(resource_group_name, job_name, function_name, function, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -695,8 +694,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Function] operation results.
     #
-    def retrieve_default_definition(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters:nil, custom_headers:nil)
-      response = retrieve_default_definition_async(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters:function_retrieve_default_definition_parameters, custom_headers:custom_headers).value!
+    def retrieve_default_definition(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters = nil, custom_headers = nil)
+      response = retrieve_default_definition_async(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -717,8 +716,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def retrieve_default_definition_with_http_info(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters:nil, custom_headers:nil)
-      retrieve_default_definition_async(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters:function_retrieve_default_definition_parameters, custom_headers:custom_headers).value!
+    def retrieve_default_definition_with_http_info(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters = nil, custom_headers = nil)
+      retrieve_default_definition_async(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters, custom_headers).value!
     end
 
     #
@@ -738,7 +737,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def retrieve_default_definition_async(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters:nil, custom_headers:nil)
+    def retrieve_default_definition_async(resource_group_name, job_name, function_name, function_retrieve_default_definition_parameters = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -747,11 +746,12 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionRetrieveDefaultDefinitionParameters.mapper()
@@ -821,8 +821,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [ResourceTestStatus] operation results.
     #
-    def begin_test(resource_group_name, job_name, function_name, function:nil, custom_headers:nil)
-      response = begin_test_async(resource_group_name, job_name, function_name, function:function, custom_headers:custom_headers).value!
+    def begin_test(resource_group_name, job_name, function_name, function = nil, custom_headers = nil)
+      response = begin_test_async(resource_group_name, job_name, function_name, function, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -848,8 +848,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_test_with_http_info(resource_group_name, job_name, function_name, function:nil, custom_headers:nil)
-      begin_test_async(resource_group_name, job_name, function_name, function:function, custom_headers:custom_headers).value!
+    def begin_test_with_http_info(resource_group_name, job_name, function_name, function = nil, custom_headers = nil)
+      begin_test_async(resource_group_name, job_name, function_name, function, custom_headers).value!
     end
 
     #
@@ -874,7 +874,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_test_async(resource_group_name, job_name, function_name, function:nil, custom_headers:nil)
+    def begin_test_async(resource_group_name, job_name, function_name, function = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -883,11 +883,12 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
@@ -945,8 +946,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [FunctionListResult] operation results.
     #
-    def list_by_streaming_job_next(next_page_link, custom_headers:nil)
-      response = list_by_streaming_job_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_streaming_job_next(next_page_link, custom_headers = nil)
+      response = list_by_streaming_job_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -960,8 +961,8 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_streaming_job_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_streaming_job_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_streaming_job_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_streaming_job_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -974,12 +975,11 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_streaming_job_next_async(next_page_link, custom_headers:nil)
+    def list_by_streaming_job_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1040,12 +1040,12 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
     # @return [FunctionListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_streaming_job_as_lazy(resource_group_name, job_name, select:nil, custom_headers:nil)
-      response = list_by_streaming_job_async(resource_group_name, job_name, select:select, custom_headers:custom_headers).value!
+    def list_by_streaming_job_as_lazy(resource_group_name, job_name, select = nil, custom_headers = nil)
+      response = list_by_streaming_job_async(resource_group_name, job_name, select, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_streaming_job_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_streaming_job_next_async(next_page_link, custom_headers)
         end
         page
       end

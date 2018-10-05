@@ -30,7 +30,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FunctionInput',
           type: {
@@ -38,7 +37,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'FunctionInput',
             model_properties: {
               data_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataType',
                 type: {
@@ -46,7 +44,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               is_configuration_parameter: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isConfigurationParameter',
                 type: {
