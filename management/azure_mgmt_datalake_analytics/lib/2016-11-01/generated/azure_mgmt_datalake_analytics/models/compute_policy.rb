@@ -35,7 +35,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ComputePolicy',
           type: {
@@ -43,7 +42,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'ComputePolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,7 +50,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,7 +58,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -70,7 +66,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.objectId',
@@ -79,7 +74,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               object_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.objectType',
@@ -88,7 +82,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               max_degree_of_parallelism_per_job: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxDegreeOfParallelismPerJob',
@@ -100,7 +93,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               min_priority_per_job: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.minPriorityPerJob',

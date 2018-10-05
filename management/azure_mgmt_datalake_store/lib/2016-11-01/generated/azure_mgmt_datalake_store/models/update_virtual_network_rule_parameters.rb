@@ -22,7 +22,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateVirtualNetworkRuleParameters',
           type: {
@@ -30,7 +29,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'UpdateVirtualNetworkRuleParameters',
             model_properties: {
               subnet_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnetId',
                 type: {

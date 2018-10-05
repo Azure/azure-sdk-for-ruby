@@ -31,8 +31,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     #
     # @return [CapabilityInformation] operation results.
     #
-    def get_capability(location, custom_headers:nil)
-      response = get_capability_async(location, custom_headers:custom_headers).value!
+    def get_capability(location, custom_headers = nil)
+      response = get_capability_async(location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_capability_with_http_info(location, custom_headers:nil)
-      get_capability_async(location, custom_headers:custom_headers).value!
+    def get_capability_with_http_info(location, custom_headers = nil)
+      get_capability_async(location, custom_headers).value!
     end
 
     #
@@ -60,14 +60,13 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_capability_async(location, custom_headers:nil)
+    def get_capability_async(location, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

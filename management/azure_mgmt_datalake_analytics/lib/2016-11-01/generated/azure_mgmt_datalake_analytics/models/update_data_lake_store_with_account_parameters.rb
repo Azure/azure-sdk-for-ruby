@@ -27,7 +27,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateDataLakeStoreWithAccountParameters',
           type: {
@@ -35,7 +34,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'UpdateDataLakeStoreWithAccountParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -43,7 +41,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               suffix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.suffix',
                 type: {
