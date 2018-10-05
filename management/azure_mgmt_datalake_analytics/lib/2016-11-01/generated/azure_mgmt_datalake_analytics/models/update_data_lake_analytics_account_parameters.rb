@@ -78,7 +78,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateDataLakeAnalyticsAccountParameters',
           type: {
@@ -86,13 +85,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'UpdateDataLakeAnalyticsAccountParameters',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -102,13 +99,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               data_lake_store_accounts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dataLakeStoreAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UpdateDataLakeStoreWithAccountParametersElementType',
                       type: {
@@ -119,13 +114,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               storage_accounts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UpdateStorageAccountWithAccountParametersElementType',
                       type: {
@@ -136,13 +129,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               compute_policies: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.computePolicies',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UpdateComputePolicyWithAccountParametersElementType',
                       type: {
@@ -153,13 +144,11 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               firewall_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UpdateFirewallRuleWithAccountParametersElementType',
                       type: {
@@ -170,7 +159,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               firewall_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallState',
                 type: {
@@ -179,7 +167,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               firewall_allow_azure_ips: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallAllowAzureIps',
                 type: {
@@ -188,7 +175,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               new_tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.newTier',
                 type: {
@@ -197,7 +183,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               max_job_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxJobCount',
                 constraints: {
@@ -208,7 +193,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               max_degree_of_parallelism: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxDegreeOfParallelism',
                 constraints: {
@@ -219,7 +203,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               max_degree_of_parallelism_per_job: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxDegreeOfParallelismPerJob',
                 constraints: {
@@ -230,7 +213,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               min_priority_per_job: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.minPriorityPerJob',
                 constraints: {
@@ -241,7 +223,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               query_store_retention: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.queryStoreRetention',
                 constraints: {

@@ -41,7 +41,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataLakeStoreAccount',
           type: {
@@ -49,7 +48,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
             class_name: 'DataLakeStoreAccount',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -57,7 +55,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -65,7 +62,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -74,7 +70,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -83,7 +78,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               identity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {
@@ -92,13 +86,11 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,7 +100,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

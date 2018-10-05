@@ -23,7 +23,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SasTokenInformation',
           type: {
@@ -31,7 +30,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'SasTokenInformation',
             model_properties: {
               access_token: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'accessToken',
