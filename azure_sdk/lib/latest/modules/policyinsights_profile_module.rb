@@ -7,11 +7,14 @@ require 'azure_mgmt_policy_insights'
 module Azure::Profiles::Latest
   module PolicyInsights
     module Mgmt
+      PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
       PolicyStates = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyStates
       Operations = Azure::PolicyInsights::Mgmt::V2018_04_04::Operations
-      PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
 
       module Models
+        Summary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Summary
+        QueryFailure = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
+        SummarizeResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
         PolicyStatesQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
         PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
         PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
@@ -25,13 +28,10 @@ module Azure::Profiles::Latest
         PolicyDefinitionSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyDefinitionSummary
         PolicyAssignmentSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyAssignmentSummary
         PolicyEventsQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
-        Summary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Summary
-        QueryFailure = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
-        SummarizeResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
       end
 
       class PolicyInsightsManagementClass
-        attr_reader :policy_states, :operations, :policy_events, :configurable, :base_url, :options, :model_classes
+        attr_reader :policy_events, :policy_states, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -41,9 +41,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @policy_events = @client_0.policy_events
           @policy_states = @client_0.policy_states
           @operations = @client_0.operations
-          @policy_events = @client_0.policy_events
 
           @model_classes = ModelClasses.new
         end
@@ -62,6 +62,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def summary
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Summary
+          end
+          def query_failure
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
+          end
+          def summarize_results
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
+          end
           def policy_states_query_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
           end
@@ -100,15 +109,6 @@ module Azure::Profiles::Latest
           end
           def policy_events_query_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
-          end
-          def summary
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Summary
-          end
-          def query_failure
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
-          end
-          def summarize_results
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
           end
         end
       end

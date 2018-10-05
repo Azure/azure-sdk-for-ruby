@@ -7,9 +7,9 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
+      IotHubResource = Azure::IotHub::Mgmt::V2017_07_01::IotHubResource
       Certificates = Azure::IotHub::Mgmt::V2017_07_01::Certificates
       Operations = Azure::IotHub::Mgmt::V2017_07_01::Operations
-      IotHubResource = Azure::IotHub::Mgmt::V2017_07_01::IotHubResource
 
       module Models
         IotHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubProperties
@@ -45,20 +45,20 @@ module Azure::Profiles::Latest
         MessagingEndpointProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::MessagingEndpointProperties
         EventHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
         CertificateVerificationDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
+        RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
         Operation = Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
-        OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
         IotHubDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
         IotHubSkuDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
-        CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+        OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
         CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
         IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
-        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
+        CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
-        IotHubDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
-        RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
-        RoutingSource = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
-        IpFilterActionType = Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
+        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
         ImportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
+        IotHubDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
+        IpFilterActionType = Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
+        RoutingSource = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
         OperationMonitoringLevel = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel
         Capabilities = Azure::IotHub::Mgmt::V2017_07_01::Models::Capabilities
         IotHubSku = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
@@ -73,7 +73,7 @@ module Azure::Profiles::Latest
       end
 
       class IotHubManagementClass
-        attr_reader :certificates, :operations, :iot_hub_resource, :configurable, :base_url, :options, :model_classes
+        attr_reader :iot_hub_resource, :certificates, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -83,9 +83,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @iot_hub_resource = @client_0.iot_hub_resource
           @certificates = @client_0.certificates
           @operations = @client_0.operations
-          @iot_hub_resource = @client_0.iot_hub_resource
 
           @model_classes = ModelClasses.new
         end
@@ -203,11 +203,11 @@ module Azure::Profiles::Latest
           def certificate_verification_description
             Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
           end
+          def routing_properties
+            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
+          end
           def operation
             Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
-          end
-          def operation_inputs
-            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
           end
           def iot_hub_description_list_result
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
@@ -215,8 +215,8 @@ module Azure::Profiles::Latest
           def iot_hub_sku_description_list_result
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
           end
-          def cloud_to_device_properties
-            Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+          def operation_inputs
+            Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
           end
           def certificate_properties_with_nonce
             Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
@@ -224,26 +224,26 @@ module Azure::Profiles::Latest
           def iot_hub_name_availability_info
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
           end
-          def routing_storage_container_properties
-            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
+          def cloud_to_device_properties
+            Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
           end
           def export_devices_request
             Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
           end
+          def routing_storage_container_properties
+            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
+          end
+          def import_devices_request
+            Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
+          end
           def iot_hub_description
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
-          end
-          def routing_properties
-            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
-          end
-          def routing_source
-            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
           end
           def ip_filter_action_type
             Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
           end
-          def import_devices_request
-            Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
+          def routing_source
+            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
           end
           def operation_monitoring_level
             Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel
