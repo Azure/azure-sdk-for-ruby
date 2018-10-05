@@ -73,8 +73,8 @@
             "resourceTypes": {
                 "Microsoft.Authorization": {
                     "management": {
-                        "2015-07-01": ["*"],
-                        "2015-07-01-preview": ["*"]
+                        "2015-07-01-preview": ["*"],
+                        "2015-07-01": ["*"]
                     }
                 },
                 "Microsoft.Locks" : {
@@ -585,8 +585,8 @@
             "resourceTypes": {
                 "Microsoft.Authorization": {
                     "management": {
-                        "2015-07-01": ["*"],
-                        "2015-07-01-preview": ["*"]
+                        "2015-07-01-preview": ["*"],
+                        "2015-07-01": ["*"]
                     }
                 }
             },

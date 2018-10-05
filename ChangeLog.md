@@ -1,3 +1,10 @@
+## 2018.10.08 - Azure Ruby SDK Release
+* Released 0.18.7 of azure_sdk. Updated azure_sdk to include new profile V2018_03_01 & updated the existing profile 
+  V2017_03_09 to include Authorization & KeyVault.
+* Released azure_mgmt_authorization, azure_mgmt_locks, azure_mgmt_policy, azure_mgmt_compute, azure_mgmt_key_vault, 
+  azure_mgmt_network, azure_mgmt_dns, azure_mgmt_resources, azure_mgmt_subscriptions, azure_mgmt_storage, azure_mgmt_web,
+  azure_mgmt_links, azure_mgmt_features & azure_key_vault gems with minor version updates to include latest changes.
+
 ## 2018.09.28 - Azure Ruby SDK Release
 * Released 0.17.2 version of azure_mgmt_storage to include latest changes to 2018-07-01 version.
 * Released 0.18.6 version of azure_sdk to include the latest changes in azure_mgmt_storage.
