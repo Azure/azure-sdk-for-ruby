@@ -30,8 +30,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -52,8 +52,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -73,8 +73,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -313,8 +313,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # recommendations. The default is <code>true</code>, which returns only expired
     # recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -338,8 +338,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # recommendations. The default is <code>true</code>, which returns only expired
     # recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -362,8 +362,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # recommendations. The default is <code>true</code>, which returns only expired
     # recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -439,7 +439,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Return only channels specified in the filter. Filter
-    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # is specified by using OData syntax. Example: $filter=channel eq 'Api' or
     # channel eq 'Notification'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -463,7 +463,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Return only channels specified in the filter. Filter
-    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # is specified by using OData syntax. Example: $filter=channel eq 'Api' or
     # channel eq 'Notification'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -486,7 +486,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Return only channels specified in the filter. Filter
-    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # is specified by using OData syntax. Example: $filter=channel eq 'Api' or
     # channel eq 'Notification'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1244,8 +1244,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1276,8 +1276,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # recommendations. The default is <code>true</code>, which returns only expired
     # recommendations.
     # @param filter [String] Filter is specified by using OData syntax. Example:
-    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1308,7 +1308,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # critical recommendations. The default is <code>false</code>, which returns
     # all recommendations.
     # @param filter [String] Return only channels specified in the filter. Filter
-    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # is specified by using OData syntax. Example: $filter=channel eq 'Api' or
     # channel eq 'Notification'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

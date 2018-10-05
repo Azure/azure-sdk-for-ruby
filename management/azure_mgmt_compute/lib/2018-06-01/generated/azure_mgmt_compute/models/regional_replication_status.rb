@@ -12,8 +12,8 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       include MsRestAzure
 
-      # @return [String] The region where the gallery image version is
-      # published to.
+      # @return [String] The region to which the gallery Image Version is being
+      # replicated to.
       attr_accessor :region
 
       # @return [ReplicationState] This is the regional replication state.

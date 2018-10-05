@@ -26,7 +26,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,7 +43,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -57,7 +59,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -211,7 +214,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -227,7 +231,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -242,7 +247,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -592,7 +598,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -639,7 +646,8 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # Get available application frameworks and their versions
     #
-    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux'
+    # @param os_type_selected [Enum] Possible values include: 'Windows', 'Linux',
+    # 'WindowsFunctions', 'LinuxFunctions'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

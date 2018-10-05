@@ -18,6 +18,11 @@ module Azure::Compute::Mgmt::V2018_04_01
       # @return [String] The Linux serial console log blob Uri.
       attr_accessor :serial_console_log_blob_uri
 
+      # @return [InstanceViewStatus] The boot diagnostics status information
+      # for the VM. <br><br> NOTE: It will be set only if there are errors
+      # encountered in enabling boot diagnostics.
+      attr_accessor :status
+
 
       #
       # Mapper for BootDiagnosticsInstanceView class as Ruby Hash.
@@ -35,6 +40,7 @@ module Azure::Compute::Mgmt::V2018_04_01
               console_screenshot_blob_uri: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'consoleScreenshotBlobUri',
                 type: {
                   name: 'String'
@@ -43,9 +49,20 @@ module Azure::Compute::Mgmt::V2018_04_01
               serial_console_log_blob_uri: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'serialConsoleLogBlobUri',
                 type: {
                   name: 'String'
+                }
+              },
+              status: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'status',
+                type: {
+                  name: 'Composite',
+                  class_name: 'InstanceViewStatus'
                 }
               }
             }

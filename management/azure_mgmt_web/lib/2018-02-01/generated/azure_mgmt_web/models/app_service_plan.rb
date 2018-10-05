@@ -42,6 +42,10 @@ module Azure::Web::Mgmt::V2018_02_01
       # scale to all instances of the plan. Default value: false .
       attr_accessor :per_site_scaling
 
+      # @return [Integer] Maximum number of total workers allowed for this
+      # ElasticScaleEnabled App Service Plan
+      attr_accessor :maximum_elastic_worker_count
+
       # @return [Integer] Number of apps assigned to this App Service plan.
       attr_accessor :number_of_sites
 
@@ -63,9 +67,13 @@ module Azure::Web::Mgmt::V2018_02_01
       # <code>false</code> otherwise. Default value: false .
       attr_accessor :reserved
 
-      # @return [Boolean] If Hyper-V container app service plan
+      # @return [Boolean] Obsolete: If Hyper-V container app service plan
       # <code>true</code>, <code>false</code> otherwise. Default value: false .
       attr_accessor :is_xenon
+
+      # @return [Boolean] If Hyper-V container app service plan
+      # <code>true</code>, <code>false</code> otherwise. Default value: false .
+      attr_accessor :hyper_v
 
       # @return [Integer] Scaling worker count.
       attr_accessor :target_worker_count
@@ -225,6 +233,14 @@ module Azure::Web::Mgmt::V2018_02_01
                   name: 'Boolean'
                 }
               },
+              maximum_elastic_worker_count: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.maximumElasticWorkerCount',
+                type: {
+                  name: 'Number'
+                }
+              },
               number_of_sites: {
                 client_side_validation: true,
                 required: false,
@@ -280,6 +296,15 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isXenon',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              hyper_v: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.hyperV',
                 default_value: false,
                 type: {
                   name: 'Boolean'

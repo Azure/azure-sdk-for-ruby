@@ -6,19 +6,19 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # This is the gallery image identifier.
+    # This is the gallery Image Definition identifier.
     #
     class GalleryImageIdentifier
 
       include MsRestAzure
 
-      # @return [String] The gallery image publisher name.
+      # @return [String] The name of the gallery Image Definition publisher.
       attr_accessor :publisher
 
-      # @return [String] The gallery image offer name.
+      # @return [String] The name of the gallery Image Definition offer.
       attr_accessor :offer
 
-      # @return [String] The gallery image sku name.
+      # @return [String] The name of the gallery Image Definition SKU.
       attr_accessor :sku
 
 

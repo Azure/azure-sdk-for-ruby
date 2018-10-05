@@ -6,17 +6,18 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # Specifies information about the gallery image that you want to create or
-    # update.
+    # Specifies information about the gallery Image Definition that you want to
+    # create or update.
     #
     class GalleryImage < Resource
 
       include MsRestAzure
 
-      # @return [String] The description of this gallery image resource.
+      # @return [String] The description of this gallery Image Definition
+      # resource. This property is updateable.
       attr_accessor :description
 
-      # @return [String] The Eula agreement for the gallery image.
+      # @return [String] The Eula agreement for the gallery Image Definition.
       attr_accessor :eula
 
       # @return [String] The privacy statement uri.
@@ -26,17 +27,18 @@ module Azure::Compute::Mgmt::V2018_06_01
       attr_accessor :release_note_uri
 
       # @return [OperatingSystemTypes] This property allows you to specify the
-      # type of the OS that is included in the disk if creating a VM from
-      # user-image or a specialized VHD. <br><br> Possible values are: <br><br>
-      # **Windows** <br><br> **Linux**. Possible values include: 'Windows',
-      # 'Linux'
+      # type of the OS that is included in the disk when creating a VM from a
+      # managed image. <br><br> Possible values are: <br><br> **Windows**
+      # <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
       attr_accessor :os_type
 
-      # @return [OperatingSystemStateTypes] The OS State. Possible values
-      # include: 'Generalized', 'Specialized'
+      # @return [OperatingSystemStateTypes] The allowed values for OS State are
+      # 'Generalized'. Possible values include: 'Generalized', 'Specialized'
       attr_accessor :os_state
 
-      # @return [DateTime] The end of life of this gallery image.
+      # @return [DateTime] The end of life date of the gallery Image
+      # Definition. This property can be used for decommissioning purposes.
+      # This property is updateable.
       attr_accessor :end_of_life_date
 
       # @return [GalleryImageIdentifier]
@@ -51,9 +53,10 @@ module Azure::Compute::Mgmt::V2018_06_01
       # @return [ImagePurchasePlan]
       attr_accessor :purchase_plan
 
-      # @return [Enum] The current state of the gallery image. The provisioning
-      # state, which only appears in the response. Possible values include:
-      # 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'
+      # @return [Enum] The current state of the gallery Image Definition. The
+      # provisioning state, which only appears in the response. Possible values
+      # include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+      # 'Migrating'
       attr_accessor :provisioning_state
 
 

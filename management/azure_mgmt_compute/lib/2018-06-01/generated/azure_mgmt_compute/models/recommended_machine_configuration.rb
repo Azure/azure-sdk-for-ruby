@@ -6,7 +6,8 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # Describes the recommended machine configuration.
+    # The properties describe the recommended machine configuration for this
+    # Image Definition. These properties are updateable.
     #
     class RecommendedMachineConfiguration
 

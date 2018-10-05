@@ -55,14 +55,14 @@ module Azure::Compute::Mgmt::V2018_06_01
     # @return [UsageOperations] usage_operations
     attr_reader :usage_operations
 
+    # @return [VirtualMachines] virtual_machines
+    attr_reader :virtual_machines
+
     # @return [VirtualMachineSizes] virtual_machine_sizes
     attr_reader :virtual_machine_sizes
 
     # @return [Images] images
     attr_reader :images
-
-    # @return [VirtualMachines] virtual_machines
-    attr_reader :virtual_machines
 
     # @return [VirtualMachineScaleSets] virtual_machine_scale_sets
     attr_reader :virtual_machine_scale_sets
@@ -118,9 +118,9 @@ module Azure::Compute::Mgmt::V2018_06_01
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
       @virtual_machine_images = VirtualMachineImages.new(self)
       @usage_operations = UsageOperations.new(self)
+      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_sizes = VirtualMachineSizes.new(self)
       @images = Images.new(self)
-      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_extensions = VirtualMachineScaleSetExtensions.new(self)
       @virtual_machine_scale_set_rolling_upgrades = VirtualMachineScaleSetRollingUpgrades.new(self)
@@ -204,7 +204,7 @@ module Azure::Compute::Mgmt::V2018_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.18.2"
+        sdk_information = "#{sdk_information}/0.18.3"
         add_user_agent_information(sdk_information)
     end
   end

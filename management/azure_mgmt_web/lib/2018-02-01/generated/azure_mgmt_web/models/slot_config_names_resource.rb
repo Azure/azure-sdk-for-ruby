@@ -18,6 +18,10 @@ module Azure::Web::Mgmt::V2018_02_01
       # @return [Array<String>] List of application settings names.
       attr_accessor :app_setting_names
 
+      # @return [Array<String>] List of external Azure storage account
+      # identifiers.
+      attr_accessor :azure_storage_config_names
+
 
       #
       # Mapper for SlotConfigNamesResource class as Ruby Hash.
@@ -87,6 +91,22 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.appSettingNames',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              azure_storage_config_names: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.azureStorageConfigNames',
                 type: {
                   name: 'Sequence',
                   element: {

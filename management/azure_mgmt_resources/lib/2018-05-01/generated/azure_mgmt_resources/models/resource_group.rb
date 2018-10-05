@@ -60,6 +60,7 @@ module Azure::Resources::Mgmt::V2018_05_01
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

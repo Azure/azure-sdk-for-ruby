@@ -6,8 +6,8 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # Describes the gallery image purchase plan. This is used by marketplace
-    # images.
+    # Describes the gallery Image Definition purchase plan. This is used by
+    # marketplace images.
     #
     class ImagePurchasePlan
 

@@ -1996,6 +1996,228 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param azure_storage_accounts [AzureStoragePropertyDictionaryResource] Azure
+    # storage accounts of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AzureStoragePropertyDictionaryResource] operation results.
+    #
+    def update_azure_storage_accounts(resource_group_name, name, azure_storage_accounts, custom_headers:nil)
+      response = update_azure_storage_accounts_async(resource_group_name, name, azure_storage_accounts, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param azure_storage_accounts [AzureStoragePropertyDictionaryResource] Azure
+    # storage accounts of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_azure_storage_accounts_with_http_info(resource_group_name, name, azure_storage_accounts, custom_headers:nil)
+      update_azure_storage_accounts_async(resource_group_name, name, azure_storage_accounts, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param azure_storage_accounts [AzureStoragePropertyDictionaryResource] Azure
+    # storage accounts of the app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_azure_storage_accounts_async(resource_group_name, name, azure_storage_accounts, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'azure_storage_accounts is nil' if azure_storage_accounts.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource.mapper()
+      request_content = @client.serialize(request_mapper,  azure_storage_accounts)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AzureStoragePropertyDictionaryResource] operation results.
+    #
+    def list_azure_storage_accounts(resource_group_name, name, custom_headers:nil)
+      response = list_azure_storage_accounts_async(resource_group_name, name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_azure_storage_accounts_with_http_info(resource_group_name, name, custom_headers:nil)
+      list_azure_storage_accounts_async(resource_group_name, name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_azure_storage_accounts_async(resource_group_name, name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts/list'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Updates the backup configuration of an app.
     #
     # Updates the backup configuration of an app.
@@ -10773,8 +10995,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10797,8 +11019,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10820,8 +11042,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11208,9 +11430,149 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
-    # Start capturing network packets for the site.
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
     #
-    # Start capturing network packets for the site.
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def get_network_trace_operation(resource_group_name, name, operation_id, custom_headers:nil)
+      response = get_network_trace_operation_async(resource_group_name, name, operation_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_network_trace_operation_with_http_info(resource_group_name, name, operation_id, custom_headers:nil)
+      get_network_trace_operation_async(resource_group_name, name, operation_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_network_trace_operation_async(resource_group_name, name, operation_id, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/operationresults/{operationId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'NetworkTraceElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'NetworkTrace'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::Operation.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Start capturing network packets for the site (To be deprecated).
+    #
+    # Start capturing network packets for the site (To be deprecated).
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -11231,9 +11593,9 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -11253,9 +11615,9 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -11334,6 +11696,69 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def start_web_site_network_trace_operation(resource_group_name, name, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      response = start_web_site_network_trace_operation_async(resource_group_name, name, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def start_web_site_network_trace_operation_async(resource_group_name, name, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      # Send request
+      promise = begin_start_web_site_network_trace_operation_async(resource_group_name, name, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = {
+            client_side_validation: true,
+            required: false,
+            serialized_name: 'parsed_response',
+            type: {
+              name: 'Object'
+            }
+          }
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Stop ongoing capturing network packets for the site.
     #
     # Stop ongoing capturing network packets for the site.
@@ -11344,11 +11769,10 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [String] operation results.
     #
     def stop_web_site_network_trace(resource_group_name, name, custom_headers:nil)
       response = stop_web_site_network_trace_async(resource_group_name, name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -11414,6 +11838,110 @@ module Azure::Web::Mgmt::V2018_02_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def get_network_traces(resource_group_name, name, operation_id, custom_headers:nil)
+      response = get_network_traces_async(resource_group_name, name, operation_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_network_traces_with_http_info(resource_group_name, name, operation_id, custom_headers:nil)
+      get_network_traces_async(resource_group_name, name, operation_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_network_traces_async(resource_group_name, name, operation_id, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/{operationId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
@@ -11429,7 +11957,16 @@ module Azure::Web::Mgmt::V2018_02_01
               required: false,
               serialized_name: 'parsed_response',
               type: {
-                name: 'String'
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'NetworkTraceElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'NetworkTrace'
+                    }
+                }
               }
             }
             result.body = @client.deserialize(result_mapper, parsed_response)
@@ -11553,7 +12090,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of web app.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -11575,7 +12112,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of web app.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -11596,7 +12133,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of web app.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -16716,6 +17253,248 @@ module Azure::Web::Mgmt::V2018_02_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::SiteAuthSettings.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param azure_storage_accounts [AzureStoragePropertyDictionaryResource] Azure
+    # storage accounts of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the Azure storage account configurations for the
+    # production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AzureStoragePropertyDictionaryResource] operation results.
+    #
+    def update_azure_storage_accounts_slot(resource_group_name, name, azure_storage_accounts, slot, custom_headers:nil)
+      response = update_azure_storage_accounts_slot_async(resource_group_name, name, azure_storage_accounts, slot, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param azure_storage_accounts [AzureStoragePropertyDictionaryResource] Azure
+    # storage accounts of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the Azure storage account configurations for the
+    # production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_azure_storage_accounts_slot_with_http_info(resource_group_name, name, azure_storage_accounts, slot, custom_headers:nil)
+      update_azure_storage_accounts_slot_async(resource_group_name, name, azure_storage_accounts, slot, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # Updates the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param azure_storage_accounts [AzureStoragePropertyDictionaryResource] Azure
+    # storage accounts of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the Azure storage account configurations for the
+    # production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_azure_storage_accounts_slot_async(resource_group_name, name, azure_storage_accounts, slot, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'azure_storage_accounts is nil' if azure_storage_accounts.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource.mapper()
+      request_content = @client.serialize(request_mapper,  azure_storage_accounts)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the Azure storage account configurations for the
+    # production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AzureStoragePropertyDictionaryResource] operation results.
+    #
+    def list_azure_storage_accounts_slot(resource_group_name, name, slot, custom_headers:nil)
+      response = list_azure_storage_accounts_slot_async(resource_group_name, name, slot, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the Azure storage account configurations for the
+    # production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_azure_storage_accounts_slot_with_http_info(resource_group_name, name, slot, custom_headers:nil)
+      list_azure_storage_accounts_slot_async(resource_group_name, name, slot, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # Gets the Azure storage account configurations of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the Azure storage account configurations for the
+    # production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_azure_storage_accounts_slot_async(resource_group_name, name, slot, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts/list'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -25797,8 +26576,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -25823,8 +26602,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -25848,8 +26627,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -26146,9 +26925,156 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
-    # Start capturing network packets for the site.
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
     #
-    # Start capturing network packets for the site.
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get an operation for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def get_network_trace_operation_slot(resource_group_name, name, operation_id, slot, custom_headers:nil)
+      response = get_network_trace_operation_slot_async(resource_group_name, name, operation_id, slot, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get an operation for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_network_trace_operation_slot_with_http_info(resource_group_name, name, operation_id, slot, custom_headers:nil)
+      get_network_trace_operation_slot_async(resource_group_name, name, operation_id, slot, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get an operation for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_network_trace_operation_slot_async(resource_group_name, name, operation_id, slot, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/operationresults/{operationId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'NetworkTraceElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'NetworkTrace'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::Operation.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Start capturing network packets for the site (To be deprecated).
+    #
+    # Start capturing network packets for the site (To be deprecated).
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -26170,9 +27096,9 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -26193,9 +27119,9 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
-    # Start capturing network packets for the site.
+    # Start capturing network packets for the site (To be deprecated).
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -26276,6 +27202,71 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param slot [String] The name of the slot for this web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def start_web_site_network_trace_operation_slot(resource_group_name, name, slot, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      response = start_web_site_network_trace_operation_slot_async(resource_group_name, name, slot, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param slot [String] The name of the slot for this web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def start_web_site_network_trace_operation_slot_async(resource_group_name, name, slot, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      # Send request
+      promise = begin_start_web_site_network_trace_operation_slot_async(resource_group_name, name, slot, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = {
+            client_side_validation: true,
+            required: false,
+            serialized_name: 'parsed_response',
+            type: {
+              name: 'Object'
+            }
+          }
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Stop ongoing capturing network packets for the site.
     #
     # Stop ongoing capturing network packets for the site.
@@ -26287,11 +27278,10 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [String] operation results.
     #
     def stop_web_site_network_trace_slot(resource_group_name, name, slot, custom_headers:nil)
       response = stop_web_site_network_trace_slot_async(resource_group_name, name, slot, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -26360,6 +27350,117 @@ module Azure::Web::Mgmt::V2018_02_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get an operation for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def get_network_traces_slot(resource_group_name, name, operation_id, slot, custom_headers:nil)
+      response = get_network_traces_slot_async(resource_group_name, name, operation_id, slot, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get an operation for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_network_traces_slot_with_http_info(resource_group_name, name, operation_id, slot, custom_headers:nil)
+      get_network_traces_slot_async(resource_group_name, name, operation_id, slot, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # Gets a named operation for a network trace capturing (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param operation_id [String] GUID of the operation.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get an operation for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_network_traces_slot_async(resource_group_name, name, operation_id, slot, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/{operationId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
@@ -26375,7 +27476,16 @@ module Azure::Web::Mgmt::V2018_02_01
               required: false,
               serialized_name: 'parsed_response',
               type: {
-                name: 'String'
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'NetworkTraceElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'NetworkTrace'
+                    }
+                }
               }
             }
             result.body = @client.deserialize(result_mapper, parsed_response)
@@ -26508,7 +27618,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -26532,7 +27642,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -26555,7 +27665,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -31689,8 +32799,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # the API will get quota information of the production slot.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -31715,8 +32825,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # the API will get quota information of the production slot.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -31740,8 +32850,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # the API will get quota information of the production slot.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -34742,8 +35852,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of the app.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -34766,8 +35876,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of the app.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -34789,8 +35899,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of the app.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -36968,6 +38078,151 @@ module Azure::Web::Mgmt::V2018_02_01
     end
 
     #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def begin_start_web_site_network_trace_operation(resource_group_name, name, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      response = begin_start_web_site_network_trace_operation_async(resource_group_name, name, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_start_web_site_network_trace_operation_with_http_info(resource_group_name, name, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      begin_start_web_site_network_trace_operation_async(resource_group_name, name, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_start_web_site_network_trace_operation_async(resource_group_name, name, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/startOperation'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'durationInSeconds' => duration_in_seconds,'maxFrameLength' => max_frame_length,'sasUrl' => sas_url,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'NetworkTraceElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'NetworkTrace'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::Operation.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Restores an app from a backup blob in Azure Storage.
     #
     # Restores an app from a backup blob in Azure Storage.
@@ -38138,6 +39393,155 @@ module Azure::Web::Mgmt::V2018_02_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param slot [String] The name of the slot for this web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def begin_start_web_site_network_trace_operation_slot(resource_group_name, name, slot, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      response = begin_start_web_site_network_trace_operation_slot_async(resource_group_name, name, slot, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param slot [String] The name of the slot for this web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_start_web_site_network_trace_operation_slot_with_http_info(resource_group_name, name, slot, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      begin_start_web_site_network_trace_operation_slot_async(resource_group_name, name, slot, duration_in_seconds:duration_in_seconds, max_frame_length:max_frame_length, sas_url:sas_url, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Start capturing network packets for the site.
+    #
+    # Start capturing network packets for the site.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] The name of the web app.
+    # @param slot [String] The name of the slot for this web app.
+    # @param duration_in_seconds [Integer] The duration to keep capturing in
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_start_web_site_network_trace_operation_slot_async(resource_group_name, name, slot, duration_in_seconds:nil, max_frame_length:nil, sas_url:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/startOperation'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'durationInSeconds' => duration_in_seconds,'maxFrameLength' => max_frame_length,'sasUrl' => sas_url,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'NetworkTraceElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'NetworkTrace'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2018_02_01::Models::Operation.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -44792,8 +46196,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -44821,7 +46225,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of web app.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -45382,8 +46786,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # response. It is "false" by default.
     # @param filter [String] Return only metrics specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -45413,7 +46817,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
     # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -45699,8 +47103,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # the API will get quota information of the production slot.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -45860,8 +47264,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # @param name [String] Name of the app.
     # @param filter [String] Return only information specified in the filter (using
     # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
-    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
-    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

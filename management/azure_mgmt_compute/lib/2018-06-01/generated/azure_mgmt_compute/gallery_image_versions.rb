@@ -22,17 +22,19 @@ module Azure::Compute::Mgmt::V2018_06_01
     attr_reader :client
 
     #
-    # Create or update a gallery image version.
+    # Create or update a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version. Needs to follow semantic version name pattern: The allowed
-    # characters are digit and period. Digits must be within the range of a 32-bit
-    # integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version is to be created.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be created. Needs to follow semantic version name pattern: The
+    # allowed characters are digit and period. Digits must be within the range of a
+    # 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
     # @param gallery_image_version [GalleryImageVersion] Parameters supplied to the
-    # create or update gallery image version operation.
+    # create or update gallery Image Version operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -45,14 +47,16 @@ module Azure::Compute::Mgmt::V2018_06_01
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version. Needs to follow semantic version name pattern: The allowed
-    # characters are digit and period. Digits must be within the range of a 32-bit
-    # integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version is to be created.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be created. Needs to follow semantic version name pattern: The
+    # allowed characters are digit and period. Digits must be within the range of a
+    # 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
     # @param gallery_image_version [GalleryImageVersion] Parameters supplied to the
-    # create or update gallery image version operation.
+    # create or update gallery Image Version operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -78,13 +82,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Retrieves information about a gallery image version.
+    # Retrieves information about a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be retrieved.
     # @param expand [ReplicationStatusTypes] The expand expression to apply on the
     # operation. Possible values include: 'ReplicationStatus'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -98,13 +104,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Retrieves information about a gallery image version.
+    # Retrieves information about a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be retrieved.
     # @param expand [ReplicationStatusTypes] The expand expression to apply on the
     # operation. Possible values include: 'ReplicationStatus'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -117,13 +125,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Retrieves information about a gallery image version.
+    # Retrieves information about a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be retrieved.
     # @param expand [ReplicationStatusTypes] The expand expression to apply on the
     # operation. Possible values include: 'ReplicationStatus'
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -187,13 +197,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery image version.
+    # Delete a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -204,10 +216,12 @@ module Azure::Compute::Mgmt::V2018_06_01
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -231,11 +245,13 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # List gallery image versions under a gallery image.
+    # List gallery Image Versions in a gallery Image Definition.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the Shared Image Gallery Image
+    # Definition from which the Image Versions are to be listed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -247,11 +263,13 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # List gallery image versions under a gallery image.
+    # List gallery Image Versions in a gallery Image Definition.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the Shared Image Gallery Image
+    # Definition from which the Image Versions are to be listed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -262,11 +280,13 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # List gallery image versions under a gallery image.
+    # List gallery Image Versions in a gallery Image Definition.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the Shared Image Gallery Image
+    # Definition from which the Image Versions are to be listed.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -327,17 +347,19 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Create or update a gallery image version.
+    # Create or update a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version. Needs to follow semantic version name pattern: The allowed
-    # characters are digit and period. Digits must be within the range of a 32-bit
-    # integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version is to be created.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be created. Needs to follow semantic version name pattern: The
+    # allowed characters are digit and period. Digits must be within the range of a
+    # 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
     # @param gallery_image_version [GalleryImageVersion] Parameters supplied to the
-    # create or update gallery image version operation.
+    # create or update gallery Image Version operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -349,17 +371,19 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Create or update a gallery image version.
+    # Create or update a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version. Needs to follow semantic version name pattern: The allowed
-    # characters are digit and period. Digits must be within the range of a 32-bit
-    # integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version is to be created.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be created. Needs to follow semantic version name pattern: The
+    # allowed characters are digit and period. Digits must be within the range of a
+    # 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
     # @param gallery_image_version [GalleryImageVersion] Parameters supplied to the
-    # create or update gallery image version operation.
+    # create or update gallery Image Version operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -370,17 +394,19 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Create or update a gallery image version.
+    # Create or update a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version. Needs to follow semantic version name pattern: The allowed
-    # characters are digit and period. Digits must be within the range of a 32-bit
-    # integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version is to be created.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be created. Needs to follow semantic version name pattern: The
+    # allowed characters are digit and period. Digits must be within the range of a
+    # 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
     # @param gallery_image_version [GalleryImageVersion] Parameters supplied to the
-    # create or update gallery image version operation.
+    # create or update gallery Image Version operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -470,13 +496,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery image version.
+    # Delete a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -487,13 +515,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery image version.
+    # Delete a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -504,13 +534,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery image version.
+    # Delete a gallery Image Version.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
-    # @param gallery_image_version_name [String] The name of the gallery image
-    # version.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the gallery Image Definition
+    # in which the Image Version resides.
+    # @param gallery_image_version_name [String] The name of the gallery Image
+    # Version to be deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -562,7 +594,7 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # List gallery image versions under a gallery image.
+    # List gallery Image Versions in a gallery Image Definition.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -577,7 +609,7 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # List gallery image versions under a gallery image.
+    # List gallery Image Versions in a gallery Image Definition.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -591,7 +623,7 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # List gallery image versions under a gallery image.
+    # List gallery Image Versions in a gallery Image Definition.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -650,11 +682,13 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # List gallery image versions under a gallery image.
+    # List gallery Image Versions in a gallery Image Definition.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery_image_name [String] The name of the gallery image.
+    # @param gallery_name [String] The name of the Shared Image Gallery in which
+    # the Image Definition resides.
+    # @param gallery_image_name [String] The name of the Shared Image Gallery Image
+    # Definition from which the Image Versions are to be listed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

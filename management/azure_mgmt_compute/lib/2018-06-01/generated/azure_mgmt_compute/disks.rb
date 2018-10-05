@@ -477,7 +477,7 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
       end
 
       promise
@@ -519,7 +519,7 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
       end
 
       promise

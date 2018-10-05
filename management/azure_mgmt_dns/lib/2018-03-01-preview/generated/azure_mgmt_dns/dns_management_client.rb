@@ -17,11 +17,10 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Specifies the Azure subscription ID, which uniquely
-    # identifies the Microsoft Azure subscription.
+    # @return [String] The ID of the target subscription.
     attr_accessor :subscription_id
 
-    # @return [String] Specifies the API version.
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -129,7 +128,7 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_dns'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

@@ -15,8 +15,8 @@ module Azure::Compute::Mgmt::V2018_06_01
       # @return [String] The name of the region.
       attr_accessor :name
 
-      # @return [Integer] This is the number of source blob copies in this
-      # specific region.
+      # @return [Integer] The number of replicas of the Image Version to be
+      # created per region. This property is updateable.
       attr_accessor :regional_replica_count
 
 
@@ -35,7 +35,7 @@ module Azure::Compute::Mgmt::V2018_06_01
             model_properties: {
               name: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

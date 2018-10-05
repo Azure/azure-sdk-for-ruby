@@ -49,6 +49,10 @@ module Azure::Compute::Mgmt::V2018_06_01
       # or disabled on the disk.
       attr_accessor :write_accelerator_enabled
 
+      # @return [DiffDiskSettings] Specifies the differencing Disk Settings for
+      # the operating system disk used by the virtual machine.
+      attr_accessor :diff_disk_settings
+
       # @return [DiskCreateOptionTypes] Specifies how the virtual machine
       # should be created.<br><br> Possible values are:<br><br> **Attach**
       # \u2013 This value is used when you are using a specialized disk to
@@ -142,6 +146,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                 serialized_name: 'writeAcceleratorEnabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              diff_disk_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'diffDiskSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DiffDiskSettings'
                 }
               },
               create_option: {

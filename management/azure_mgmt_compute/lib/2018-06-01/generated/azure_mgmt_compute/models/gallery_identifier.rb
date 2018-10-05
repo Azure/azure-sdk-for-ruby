@@ -12,7 +12,8 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       include MsRestAzure
 
-      # @return [String] The unique name of the gallery
+      # @return [String] The unique name of the Shared Image Gallery. This name
+      # is generated automatically by Azure.
       attr_accessor :unique_name
 
 

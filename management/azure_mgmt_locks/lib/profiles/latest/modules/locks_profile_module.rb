@@ -6,12 +6,16 @@ require 'azure_mgmt_locks'
 
 module Azure::Locks::Profiles::Latest
   module Mgmt
+    AuthorizationOperations = Azure::Locks::Mgmt::V2016_09_01::AuthorizationOperations
     ManagementLocks = Azure::Locks::Mgmt::V2016_09_01::ManagementLocks
 
     module Models
-      ManagementLockObject = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
-      ManagementLockListResult = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
+      OperationDisplay = Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
       ManagementLockOwner = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
+      Operation = Azure::Locks::Mgmt::V2016_09_01::Models::Operation
+      ManagementLockListResult = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
+      OperationListResult = Azure::Locks::Mgmt::V2016_09_01::Models::OperationListResult
+      ManagementLockObject = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
       LockLevel = Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
     end
 
@@ -19,7 +23,7 @@ module Azure::Locks::Profiles::Latest
     # LocksManagementClass
     #
     class LocksManagementClass
-      attr_reader :management_locks, :configurable, :base_url, :options, :model_classes
+      attr_reader :authorization_operations, :management_locks, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -39,6 +43,7 @@ module Azure::Locks::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @authorization_operations = @client_0.authorization_operations
         @management_locks = @client_0.management_locks
 
         @model_classes = ModelClasses.new
@@ -60,14 +65,23 @@ module Azure::Locks::Profiles::Latest
     end
 
     class ModelClasses
-      def management_lock_object
-        Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
+      def operation_display
+        Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
+      end
+      def management_lock_owner
+        Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
+      end
+      def operation
+        Azure::Locks::Mgmt::V2016_09_01::Models::Operation
       end
       def management_lock_list_result
         Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
       end
-      def management_lock_owner
-        Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
+      def operation_list_result
+        Azure::Locks::Mgmt::V2016_09_01::Models::OperationListResult
+      end
+      def management_lock_object
+        Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
       end
       def lock_level
         Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel

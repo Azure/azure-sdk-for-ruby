@@ -40,7 +40,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
             model_properties: {
               role_definition_id: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.roleDefinitionId',
                 type: {
                   name: 'String'
@@ -48,7 +48,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
               },
               principal_id: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.principalId',
                 type: {
                   name: 'String'

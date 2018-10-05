@@ -17,6 +17,8 @@ module Azure::Web::Mgmt::V2018_02_01
       Dynamic = "Dynamic"
       Isolated = "Isolated"
       PremiumV2 = "PremiumV2"
+      ElasticPremium = "ElasticPremium"
+      ElasticIsolated = "ElasticIsolated"
     end
   end
 end

@@ -12,7 +12,7 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       include MsRestAzure
 
-      # @return [String] A relative uri containing either a Platform Imgage
+      # @return [String] A relative uri containing either a Platform Image
       # Repository or user image reference.
       attr_accessor :id
 

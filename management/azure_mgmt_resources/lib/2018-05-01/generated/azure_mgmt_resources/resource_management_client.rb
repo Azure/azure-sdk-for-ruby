@@ -35,6 +35,9 @@ module Azure::Resources::Mgmt::V2018_05_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [Deployments] deployments
     attr_reader :deployments
 
@@ -66,6 +69,7 @@ module Azure::Resources::Mgmt::V2018_05_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @deployments = Deployments.new(self)
       @providers = Providers.new(self)
       @resources = Resources.new(self)
@@ -144,7 +148,7 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_resources'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

@@ -6,7 +6,7 @@
 module Azure::Resources::Mgmt::V2018_05_01
   module Models
     #
-    # Resource.
+    # Specified resource.
     #
     class Resource
 

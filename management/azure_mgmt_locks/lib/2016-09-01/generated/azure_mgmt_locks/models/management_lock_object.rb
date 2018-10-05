@@ -104,6 +104,7 @@ module Azure::Locks::Mgmt::V2016_09_01
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

@@ -18,6 +18,9 @@ module Azure::Links::Mgmt::V2016_09_01
       # @return [String] The name of the resource link.
       attr_accessor :name
 
+      # @return The resource link object.
+      attr_accessor :type
+
       # @return [ResourceLinkProperties] Properties for resource link.
       attr_accessor :properties
 
@@ -51,6 +54,15 @@ module Azure::Links::Mgmt::V2016_09_01
                 serialized_name: 'name',
                 type: {
                   name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'Object'
                 }
               },
               properties: {

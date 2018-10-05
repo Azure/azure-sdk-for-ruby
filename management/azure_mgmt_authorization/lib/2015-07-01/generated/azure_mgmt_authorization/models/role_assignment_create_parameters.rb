@@ -31,7 +31,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             model_properties: {
               properties: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',

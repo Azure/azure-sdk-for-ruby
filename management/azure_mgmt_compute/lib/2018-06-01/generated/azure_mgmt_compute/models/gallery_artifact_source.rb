@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # The source of the gallery artifact.
+    # The source image from which the Image Version is going to be created.
     #
     class GalleryArtifactSource
 
