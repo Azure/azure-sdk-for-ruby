@@ -29,7 +29,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -37,7 +36,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -46,7 +44,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -55,7 +52,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               origin: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'origin',

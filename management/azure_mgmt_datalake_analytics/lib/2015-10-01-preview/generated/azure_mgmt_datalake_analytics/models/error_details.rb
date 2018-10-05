@@ -30,7 +30,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -38,7 +37,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -47,7 +45,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -56,7 +53,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'target',

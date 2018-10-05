@@ -39,7 +39,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CapabilityInformation',
           type: {
@@ -47,7 +46,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'CapabilityInformation',
             model_properties: {
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subscriptionId',
@@ -56,7 +54,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -65,7 +62,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               max_account_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maxAccountCount',
@@ -74,7 +70,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               account_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'accountCount',
@@ -83,7 +78,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               migration_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'migrationState',
