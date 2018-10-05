@@ -320,7 +320,7 @@
                 },
                 "Microsoft.MediaServices": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2018-07-01": ["*"]
                     }
                 },
                 "Microsoft.Monitor": {
@@ -1144,7 +1144,7 @@
             "resourceTypes": {
                 "Microsoft.MediaServices" : {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2018-07-01": ["*"]
                     }
                 }
             },

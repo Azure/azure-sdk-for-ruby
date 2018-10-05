@@ -52,7 +52,7 @@
         "azure_mgmt_machine_learning": "0.17.1",
         "azure_mgmt_managed_applications": "0.17.1",
         "azure_mgmt_marketplace_ordering": "0.17.1",
-        "azure_mgmt_media_services": "0.17.1",
+        "azure_mgmt_media_services": "0.17.2",
         "azure_mgmt_monitor": "0.17.1",
         "azure_mgmt_msi": "0.17.0",
         "azure_mgmt_network": "0.17.4",

@@ -12,7 +12,8 @@
         "azure_mgmt_storage",
         "azure_mgmt_web",
         "azure_mgmt_links",
-        "azure_mgmt_features"
+        "azure_mgmt_features",
+        "azure_mgmt_media_services"
     ],
     "data": [
         "azure_key_vault"
