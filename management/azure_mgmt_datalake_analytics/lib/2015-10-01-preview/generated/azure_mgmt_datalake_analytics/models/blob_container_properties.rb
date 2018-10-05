@@ -22,7 +22,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BlobContainerProperties',
           type: {
@@ -30,7 +29,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'BlobContainerProperties',
             model_properties: {
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastModifiedTime',

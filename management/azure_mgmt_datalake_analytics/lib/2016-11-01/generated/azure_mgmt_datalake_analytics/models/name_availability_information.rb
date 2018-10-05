@@ -31,7 +31,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NameAvailabilityInformation',
           type: {
@@ -39,7 +38,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'NameAvailabilityInformation',
             model_properties: {
               name_available: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nameAvailable',
@@ -48,7 +46,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reason',
@@ -57,7 +54,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
