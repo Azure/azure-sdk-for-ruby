@@ -41,7 +41,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateComputePolicyWithAccountParameters',
           type: {
@@ -49,7 +48,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'UpdateComputePolicyWithAccountParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -57,7 +55,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.objectId',
                 type: {
@@ -65,7 +62,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               object_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.objectType',
                 type: {
@@ -73,7 +69,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               max_degree_of_parallelism_per_job: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxDegreeOfParallelismPerJob',
                 constraints: {
@@ -84,7 +79,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               min_priority_per_job: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.minPriorityPerJob',
                 constraints: {

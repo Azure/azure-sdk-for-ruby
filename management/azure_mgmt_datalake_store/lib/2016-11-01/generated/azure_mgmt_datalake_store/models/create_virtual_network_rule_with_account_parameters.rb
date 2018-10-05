@@ -27,7 +27,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateVirtualNetworkRuleWithAccountParameters',
           type: {
@@ -35,7 +34,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'CreateVirtualNetworkRuleWithAccountParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -43,7 +41,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               subnet_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.subnetId',
                 type: {
