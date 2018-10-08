@@ -6,24 +6,28 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # The publishing profile of a gallery image version.
+    # The publishing profile of a gallery Image Version.
     #
     class GalleryImageVersionPublishingProfile < GalleryArtifactPublishingProfileBase
 
       include MsRestAzure
 
-      # @return [Integer] This is the number of source blob copies in a region.
+      # @return [Integer] The number of replicas of the Image Version to be
+      # created per region. This property would take effect for a region when
+      # regionalReplicaCount is not specified. This property is updateable.
       attr_accessor :replica_count
 
-      # @return [Boolean] The flag means that if it is set to true, people
-      # deploying VMs with 'latest' as version will not use this version.
+      # @return [Boolean] If set to true, Virtual Machines deployed from the
+      # latest version of the Image Definition won't use this Image Version.
       attr_accessor :exclude_from_latest
 
-      # @return [DateTime] The time when the gallery image version is
+      # @return [DateTime] The timestamp for when the gallery Image Version is
       # published.
       attr_accessor :published_date
 
-      # @return [DateTime] The end of life date of the gallery image version.
+      # @return [DateTime] The end of life date of the gallery Image Version.
+      # This property can be used for decommissioning purposes. This property
+      # is updateable.
       attr_accessor :end_of_life_date
 
 

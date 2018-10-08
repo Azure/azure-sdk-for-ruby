@@ -12,6 +12,9 @@ module Azure::Web::Mgmt::V2018_02_01
 
       include MsRestAzure
 
+      # @return [String] Name of the backup.
+      attr_accessor :backup_name
+
       # @return [Boolean] True if the backup schedule is enabled (must be
       # included in that case), false if the backup schedule should be
       # disabled.
@@ -73,6 +76,14 @@ module Azure::Web::Mgmt::V2018_02_01
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              backup_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.backupName',
                 type: {
                   name: 'String'
                 }

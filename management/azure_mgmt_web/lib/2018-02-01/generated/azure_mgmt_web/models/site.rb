@@ -53,8 +53,11 @@ module Azure::Web::Mgmt::V2018_02_01
       # <code>false</code>. Default value: false .
       attr_accessor :reserved
 
-      # @return [Boolean] Hyper-V sandbox. Default value: false .
+      # @return [Boolean] Obsolete: Hyper-V sandbox. Default value: false .
       attr_accessor :is_xenon
+
+      # @return [Boolean] Hyper-V sandbox. Default value: false .
+      attr_accessor :hyper_v
 
       # @return [DateTime] Last time the app was modified, in UTC. Read-only.
       attr_accessor :last_modified_time_utc
@@ -339,6 +342,15 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isXenon',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              hyper_v: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.hyperV',
                 default_value: false,
                 type: {
                   name: 'Boolean'

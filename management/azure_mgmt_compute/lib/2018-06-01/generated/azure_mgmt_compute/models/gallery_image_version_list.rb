@@ -13,12 +13,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<GalleryImageVersion>] A list of gallery image versions.
+      # @return [Array<GalleryImageVersion>] A list of gallery Image Versions.
       attr_accessor :value
 
-      # @return [String] The uri to fetch the next page of gallery image
-      # versions. Call ListNext() with this to fetch the next page of gallery
-      # image versions.
+      # @return [String] The uri to fetch the next page of gallery Image
+      # Versions. Call ListNext() with this to fetch the next page of gallery
+      # Image Versions.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

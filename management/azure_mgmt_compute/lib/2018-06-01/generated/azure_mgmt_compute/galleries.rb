@@ -22,12 +22,14 @@ module Azure::Compute::Mgmt::V2018_06_01
     attr_reader :client
 
     #
-    # Create or update a gallery.
+    # Create or update a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery [Gallery] Parameters supplied to the create or update gallery
-    # operation.
+    # @param gallery_name [String] The name of the Shared Image Gallery. The
+    # allowed characters are alphabets and numbers with dots and periods allowed in
+    # the middle. The maximum length is 80 characters.
+    # @param gallery [Gallery] Parameters supplied to the create or update Shared
+    # Image Gallery operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,9 +42,11 @@ module Azure::Compute::Mgmt::V2018_06_01
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery [Gallery] Parameters supplied to the create or update gallery
-    # operation.
+    # @param gallery_name [String] The name of the Shared Image Gallery. The
+    # allowed characters are alphabets and numbers with dots and periods allowed in
+    # the middle. The maximum length is 80 characters.
+    # @param gallery [Gallery] Parameters supplied to the create or update Shared
+    # Image Gallery operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -68,10 +72,10 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Retrieves information about a gallery.
+    # Retrieves information about a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -83,10 +87,10 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Retrieves information about a gallery.
+    # Retrieves information about a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -97,10 +101,10 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Retrieves information about a gallery.
+    # Retrieves information about a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -160,10 +164,11 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery.
+    # Delete a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery to be
+    # deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -174,7 +179,8 @@ module Azure::Compute::Mgmt::V2018_06_01
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery to be
+    # deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -370,12 +376,14 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Create or update a gallery.
+    # Create or update a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery [Gallery] Parameters supplied to the create or update gallery
-    # operation.
+    # @param gallery_name [String] The name of the Shared Image Gallery. The
+    # allowed characters are alphabets and numbers with dots and periods allowed in
+    # the middle. The maximum length is 80 characters.
+    # @param gallery [Gallery] Parameters supplied to the create or update Shared
+    # Image Gallery operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -387,12 +395,14 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Create or update a gallery.
+    # Create or update a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery [Gallery] Parameters supplied to the create or update gallery
-    # operation.
+    # @param gallery_name [String] The name of the Shared Image Gallery. The
+    # allowed characters are alphabets and numbers with dots and periods allowed in
+    # the middle. The maximum length is 80 characters.
+    # @param gallery [Gallery] Parameters supplied to the create or update Shared
+    # Image Gallery operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -403,12 +413,14 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Create or update a gallery.
+    # Create or update a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
-    # @param gallery [Gallery] Parameters supplied to the create or update gallery
-    # operation.
+    # @param gallery_name [String] The name of the Shared Image Gallery. The
+    # allowed characters are alphabets and numbers with dots and periods allowed in
+    # the middle. The maximum length is 80 characters.
+    # @param gallery [Gallery] Parameters supplied to the create or update Shared
+    # Image Gallery operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -496,10 +508,11 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery.
+    # Delete a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery to be
+    # deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -510,10 +523,11 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery.
+    # Delete a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery to be
+    # deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -524,10 +538,11 @@ module Azure::Compute::Mgmt::V2018_06_01
     end
 
     #
-    # Delete a gallery.
+    # Delete a Shared Image Gallery.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param gallery_name [String] The name of the gallery.
+    # @param gallery_name [String] The name of the Shared Image Gallery to be
+    # deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

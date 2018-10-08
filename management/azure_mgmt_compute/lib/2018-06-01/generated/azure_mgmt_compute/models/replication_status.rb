@@ -6,15 +6,15 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # This is the replication status of the gallery image version.
+    # This is the replication status of the gallery Image Version.
     #
     class ReplicationStatus
 
       include MsRestAzure
 
       # @return [AggregatedReplicationState] This is the aggregated replication
-      # status based on the regional replication status. Possible values
-      # include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+      # status based on all the regional replication status flags. Possible
+      # values include: 'Unknown', 'InProgress', 'Completed', 'Failed'
       attr_accessor :aggregated_state
 
       # @return [Array<RegionalReplicationStatus>] This is a summary of

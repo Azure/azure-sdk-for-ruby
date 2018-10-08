@@ -35,6 +35,9 @@ module Azure::Links::Mgmt::V2016_09_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [ResourceLinks] resource_links
     attr_reader :resource_links
 
@@ -51,6 +54,7 @@ module Azure::Links::Mgmt::V2016_09_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @resource_links = ResourceLinks.new(self)
       @api_version = '2016-09-01'
       @accept_language = 'en-US'
@@ -124,7 +128,7 @@ module Azure::Links::Mgmt::V2016_09_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_links'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

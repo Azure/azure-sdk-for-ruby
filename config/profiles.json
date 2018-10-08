@@ -2,31 +2,79 @@
     "rollup": {
         "azure_sdk": [
         {
-            "name": "V2017_03_09",
+            "name": "V2018_03_01",
             "resourceTypes": {
-                "Microsoft.Storage": {
+                "Microsoft.Authorization" : {
                     "management": {
-                        "2016-01-01": ["*"]
+                        "2015-07-01": ["*"]
                     }
                 },
-                "Microsoft.Network" : {
+                "Microsoft.Locks" : {
                     "management": {
-                        "2015-06-15": ["*"]
+                        "2016-09-01": ["*"]
+                    }
+                },
+                "Microsoft.Policy" : {
+                    "management": {
+                        "2016-12-01": ["*"]
                     }
                 },
                 "Microsoft.Compute" : {
                     "management": {
-                        "2016-03-30": ["*"]
+                        "2017-03-30": ["*"]
                     }
                 },
-                "Microsoft.Features" : {
+                "Microsoft.KeyVault" : {
                     "management": {
-                        "2015-12-01": ["*"]
+                        "2016-10-01": ["*"]
+                    },
+                    "data": {
+                        "2016-10-01": ["*"]
                     }
                 },
-                "Microsoft.Links" : {
+                "Microsoft.Network" : {
                     "management": {
+                        "2017-03-30": ["*"],
+                        "2017-10-01": ["*"]
+                    }
+                },
+                "Microsoft.Dns": {
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
+                },
+                "Microsoft.Resources" : {
+                    "management": {
+                        "2018-02-01": ["*"]
+                    }
+                },
+                "Microsoft.Subscriptions" : {
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
+                },
+                "Microsoft.Storage" : {
+                    "management": {
+                        "2016-01-01": ["*"]
+                    }
+                },
+                "Microsoft.Web" : {
+                    "management": {
+                        "2016-03-01": ["*"],
+                        "2016-08-01": ["*"],
                         "2016-09-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "azure_sdk/lib"
+        },
+        {
+            "name": "V2017_03_09",
+            "resourceTypes": {
+                "Microsoft.Authorization": {
+                    "management": {
+                        "2015-07-01-preview": ["*"],
+                        "2015-07-01": ["*"]
                     }
                 },
                 "Microsoft.Locks" : {
@@ -39,14 +87,52 @@
                         "2015-10-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Compute" : {
+                    "management": {
+                        "2016-03-30": ["*"]
+                    }
+                },
+                "Microsoft.KeyVault" : {
+                    "management": {
+                        "2016-10-01": ["*"]
+                    },
+                    "data": {
+                        "2016-10-01": ["*"]
+                    }
+                },
+                "Microsoft.Network" : {
+                    "management": {
+                        "2015-06-15": ["*"]
+                    }
+                },
+                "Microsoft.Dns": {
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
+                },
                 "Microsoft.Resources" : {
                     "management": {
                         "2016-02-01": ["*"]
                     }
                 },
+                "Microsoft.Links" : {
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
+                },
                 "Microsoft.Subscriptions" : {
                     "management": {
                         "2016-06-01": ["*"]
+                    }
+                },
+                "Microsoft.Storage": {
+                    "management": {
+                        "2016-01-01": ["*"]
+                    }
+                },
+                "Microsoft.Features" : {
+                    "management": {
+                        "2015-12-01": ["*"]
                     }
                 }
             },
@@ -234,7 +320,7 @@
                 },
                 "Microsoft.MediaServices": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2018-07-01": ["*"]
                     }
                 },
                 "Microsoft.Monitor": {
@@ -483,6 +569,31 @@
         ],
         "azure_mgmt_authorization": [
         {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Authorization" : {
+                    "management": {
+                        "2015-07-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_authorization/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
+            "name": "V2017_03_09",
+            "resourceTypes": {
+                "Microsoft.Authorization": {
+                    "management": {
+                        "2015-07-01-preview": ["*"],
+                        "2015-07-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_authorization/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Authorization" : {
@@ -581,6 +692,18 @@
         }
         ],
         "azure_mgmt_compute": [
+        {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Compute" : {
+                    "management": {
+                        "2017-03-30": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_compute/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2017_03_09",
             "resourceTypes": {
@@ -739,6 +862,30 @@
         ],
         "azure_mgmt_dns": [
         {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Dns": {
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_dns/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
+            "name": "V2017_03_09",
+            "resourceTypes": {
+                "Microsoft.Dns": {
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_dns/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Dns" : {
@@ -835,6 +982,30 @@
         ],
         "azure_mgmt_key_vault": [
         {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.KeyVault" : {
+                    "management": {
+                        "2016-10-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
+            "name": "V2017_03_09",
+            "resourceTypes": {
+                "Microsoft.KeyVault" : {
+                    "management": {
+                        "2016-10-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.KeyVault" : {
@@ -874,6 +1045,18 @@
         }
         ],
         "azure_mgmt_locks": [
+        {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Locks" : {
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_locks/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2017_03_09",
             "resourceTypes": {
@@ -961,7 +1144,7 @@
             "resourceTypes": {
                 "Microsoft.MediaServices" : {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2018-07-01": ["*"]
                     }
                 }
             },
@@ -1002,6 +1185,19 @@
         }
          ],
         "azure_mgmt_network": [
+        {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Network" : {
+                    "management": {
+                        "2017-03-30": ["*"],
+                        "2017-10-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_network/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2017_03_09",
             "resourceTypes": {
@@ -1063,6 +1259,18 @@
                 "Microsoft.Policy" : {
                     "management": {
                         "2015-10-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_policy/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Policy" : {
+                    "management": {
+                        "2016-12-01": ["*"]
                     }
                 }
             },
@@ -1197,6 +1405,18 @@
         }
         ],
         "azure_mgmt_resources": [
+        {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Resources" : {
+                    "management": {
+                        "2018-02-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_resources/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2017_03_09",
             "resourceTypes": {
@@ -1340,6 +1560,18 @@
         ],
         "azure_mgmt_storage": [
         {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Storage" : {
+                    "management": {
+                        "2016-01-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_storage/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Storage" : {
@@ -1381,6 +1613,18 @@
         ],
         "azure_mgmt_subscriptions": [
         {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+                "Microsoft.Subscriptions" : {
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Subscriptions" : {
@@ -1420,6 +1664,20 @@
         }
         ],
         "azure_mgmt_web": [
+        {
+          "name": "V2018_03_01",
+          "resourceTypes": {
+            "Microsoft.Web" : {
+              "management": {
+                "2016-03-01": ["*"],
+                "2016-08-01": ["*"],
+                "2016-09-01": ["*"]
+              }
+            }
+          },
+          "output_dir": "management/azure_mgmt_web/lib/profiles",
+          "individual_gem_profile": true
+        },
         {
             "name": "Latest",
             "resourceTypes": {
@@ -1618,18 +1876,42 @@
             }
         ],
         "azure_key_vault": [
-            {
-                "name": "Latest",
-                "resourceTypes": {
+        {
+            "name": "V2018_03_01",
+            "resourceTypes": {
+              "Microsoft.KeyVault" : {
+                "data": {
+                  "2016-10-01": ["*"]
+                }
+              }
+            },
+            "output_dir": "data/azure_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
+            "name": "V2017_03_09",
+            "resourceTypes": {
+                "Microsoft.KeyVault" : {
+                    "data": {
+                        "2016-10-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "data/azure_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
+            "name": "Latest",
+            "resourceTypes": {
                     "Microsoft.KeyVault" : {
                         "data": {
                             "7.0": ["*"]
                         }
                     }
                 },
-                "output_dir": "data/azure_key_vault/lib/profiles",
-                "individual_gem_profile": true
-            }
+            "output_dir": "data/azure_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        }
         ]
     }
 }

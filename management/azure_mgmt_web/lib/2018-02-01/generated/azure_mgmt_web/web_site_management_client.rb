@@ -76,6 +76,10 @@ module Azure::Web::Mgmt::V2018_02_01
     # @return [AppServicePlans] app_service_plans
     attr_reader :app_service_plans
 
+    # @return [ResourceHealthMetadataOperations]
+    # resource_health_metadata_operations
+    attr_reader :resource_health_metadata_operations
+
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -102,6 +106,7 @@ module Azure::Web::Mgmt::V2018_02_01
       @web_apps = WebApps.new(self)
       @app_service_environments = AppServiceEnvironments.new(self)
       @app_service_plans = AppServicePlans.new(self)
+      @resource_health_metadata_operations = ResourceHealthMetadataOperations.new(self)
       @api_version = '2018-02-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -955,18 +960,20 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
-    # 'Isolated', 'PremiumV2'
+    # 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param xenon_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Xenon workers.
+    # @param linux_dynamic_workers_enabled [Boolean] Specify <code>true</code> if
+    # you want to filter to only regions that support Linux Consumption Workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<GeoRegion>] operation results.
     #
-    def list_geo_regions(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, custom_headers:nil)
-      first_page = list_geo_regions_as_lazy(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, custom_headers:custom_headers)
+    def list_geo_regions(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, linux_dynamic_workers_enabled:nil, custom_headers:nil)
+      first_page = list_geo_regions_as_lazy(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, linux_dynamic_workers_enabled:linux_dynamic_workers_enabled, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -977,18 +984,20 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
-    # 'Isolated', 'PremiumV2'
+    # 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param xenon_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Xenon workers.
+    # @param linux_dynamic_workers_enabled [Boolean] Specify <code>true</code> if
+    # you want to filter to only regions that support Linux Consumption Workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_geo_regions_with_http_info(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, custom_headers:nil)
-      list_geo_regions_async(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, custom_headers:custom_headers).value!
+    def list_geo_regions_with_http_info(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, linux_dynamic_workers_enabled:nil, custom_headers:nil)
+      list_geo_regions_async(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, linux_dynamic_workers_enabled:linux_dynamic_workers_enabled, custom_headers:custom_headers).value!
     end
 
     #
@@ -998,17 +1007,19 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
-    # 'Isolated', 'PremiumV2'
+    # 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param xenon_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Xenon workers.
+    # @param linux_dynamic_workers_enabled [Boolean] Specify <code>true</code> if
+    # you want to filter to only regions that support Linux Consumption Workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_geo_regions_async(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, custom_headers:nil)
+    def list_geo_regions_async(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, linux_dynamic_workers_enabled:nil, custom_headers:nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
@@ -1026,7 +1037,7 @@ module Azure::Web::Mgmt::V2018_02_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => subscription_id},
-          query_params: {'sku' => sku,'linuxWorkersEnabled' => linux_workers_enabled,'xenonWorkersEnabled' => xenon_workers_enabled,'api-version' => api_version},
+          query_params: {'sku' => sku,'linuxWorkersEnabled' => linux_workers_enabled,'xenonWorkersEnabled' => xenon_workers_enabled,'linuxDynamicWorkersEnabled' => linux_dynamic_workers_enabled,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -2415,18 +2426,20 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
-    # 'Isolated', 'PremiumV2'
+    # 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param xenon_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Xenon workers.
+    # @param linux_dynamic_workers_enabled [Boolean] Specify <code>true</code> if
+    # you want to filter to only regions that support Linux Consumption Workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [GeoRegionCollection] operation results.
     #
-    def list_geo_regions_as_lazy(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, custom_headers:nil)
-      first_page = list_geo_regions_as_lazy_as_lazy(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, custom_headers:custom_headers)
+    def list_geo_regions_as_lazy(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, linux_dynamic_workers_enabled:nil, custom_headers:nil)
+      first_page = list_geo_regions_as_lazy_as_lazy(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, linux_dynamic_workers_enabled:linux_dynamic_workers_enabled, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2437,18 +2450,20 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
-    # 'Isolated', 'PremiumV2'
+    # 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param xenon_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Xenon workers.
+    # @param linux_dynamic_workers_enabled [Boolean] Specify <code>true</code> if
+    # you want to filter to only regions that support Linux Consumption Workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_geo_regions_as_lazy_with_http_info(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, custom_headers:nil)
-      list_geo_regions_as_lazy_async(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, custom_headers:custom_headers).value!
+    def list_geo_regions_as_lazy_with_http_info(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, linux_dynamic_workers_enabled:nil, custom_headers:nil)
+      list_geo_regions_as_lazy_async(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, linux_dynamic_workers_enabled:linux_dynamic_workers_enabled, custom_headers:custom_headers).value!
     end
 
     #
@@ -2458,17 +2473,19 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
-    # 'Isolated', 'PremiumV2'
+    # 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param xenon_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Xenon workers.
+    # @param linux_dynamic_workers_enabled [Boolean] Specify <code>true</code> if
+    # you want to filter to only regions that support Linux Consumption Workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_geo_regions_as_lazy_async(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, custom_headers:nil)
+    def list_geo_regions_as_lazy_async(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, linux_dynamic_workers_enabled:nil, custom_headers:nil)
 
 
       request_headers = {}
@@ -2479,7 +2496,7 @@ module Azure::Web::Mgmt::V2018_02_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'sku' => sku,'linuxWorkersEnabled' => linux_workers_enabled,'xenonWorkersEnabled' => xenon_workers_enabled},
+          query_params: {'sku' => sku,'linuxWorkersEnabled' => linux_workers_enabled,'xenonWorkersEnabled' => xenon_workers_enabled,'linuxDynamicWorkersEnabled' => linux_dynamic_workers_enabled},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -2694,7 +2711,7 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

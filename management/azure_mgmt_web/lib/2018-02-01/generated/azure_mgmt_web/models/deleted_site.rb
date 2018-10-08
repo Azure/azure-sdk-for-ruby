@@ -8,7 +8,7 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     # A deleted app.
     #
-    class DeletedSite
+    class DeletedSite < ProxyOnlyResource
 
       include MsRestAzure
 
@@ -30,6 +30,9 @@ module Azure::Web::Mgmt::V2018_02_01
       # @return [String] Slot of the deleted site
       attr_accessor :slot
 
+      # @return [String] Kind of site that was deleted
+      attr_accessor :deleted_site_kind
+
 
       #
       # Mapper for DeletedSite class as Ruby Hash.
@@ -44,11 +47,46 @@ module Azure::Web::Mgmt::V2018_02_01
             name: 'Composite',
             class_name: 'DeletedSite',
             model_properties: {
+              id: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
               deleted_site_id: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'deletedSiteId',
+                serialized_name: 'properties.deletedSiteId',
                 type: {
                   name: 'Number'
                 }
@@ -57,7 +95,7 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'deletedTimestamp',
+                serialized_name: 'properties.deletedTimestamp',
                 type: {
                   name: 'String'
                 }
@@ -66,7 +104,7 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'subscription',
+                serialized_name: 'properties.subscription',
                 type: {
                   name: 'String'
                 }
@@ -75,7 +113,7 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'resourceGroup',
+                serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
                 }
@@ -84,7 +122,7 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'deletedSiteName',
+                serialized_name: 'properties.deletedSiteName',
                 type: {
                   name: 'String'
                 }
@@ -93,7 +131,16 @@ module Azure::Web::Mgmt::V2018_02_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'slot',
+                serialized_name: 'properties.slot',
+                type: {
+                  name: 'String'
+                }
+              },
+              deleted_site_kind: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.kind',
                 type: {
                   name: 'String'
                 }

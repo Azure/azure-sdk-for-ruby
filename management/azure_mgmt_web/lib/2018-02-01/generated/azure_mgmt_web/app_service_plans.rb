@@ -1483,8 +1483,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1507,8 +1507,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1530,8 +1530,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4231,8 +4231,8 @@ module Azure::Web::Mgmt::V2018_02_01
     # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+    # 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

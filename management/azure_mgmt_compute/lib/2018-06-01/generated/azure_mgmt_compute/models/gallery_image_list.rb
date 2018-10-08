@@ -13,11 +13,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<GalleryImage>] A list of gallery images.
+      # @return [Array<GalleryImage>] A list of Shared Image Gallery images.
       attr_accessor :value
 
-      # @return [String] The uri to fetch the next page of gallery images. Call
-      # ListNext() with this to fetch the next page of gallery images.
+      # @return [String] The uri to fetch the next page of Image Definitions in
+      # the Shared Image Gallery. Call ListNext() with this to fetch the next
+      # page of gallery Image Definitions.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

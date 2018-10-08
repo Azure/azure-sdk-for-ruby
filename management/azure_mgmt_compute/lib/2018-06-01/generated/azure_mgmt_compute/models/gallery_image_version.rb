@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # Specifies information about the gallery image version that you want to
+    # Specifies information about the gallery Image Version that you want to
     # create or update.
     #
     class GalleryImageVersion < Resource
@@ -16,7 +16,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       # @return [GalleryImageVersionPublishingProfile]
       attr_accessor :publishing_profile
 
-      # @return [Enum] The current state of the gallery image version. The
+      # @return [Enum] The current state of the gallery Image Version. The
       # provisioning state, which only appears in the response. Possible values
       # include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
       # 'Migrating'

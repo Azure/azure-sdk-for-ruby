@@ -35,6 +35,10 @@ module Azure::Compute::Mgmt::V2018_06_01
       # Possible values include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
+      # @return [DiffDiskSettings] Specifies the differencing Disk Settings for
+      # the operating system disk used by the virtual machine scale set.
+      attr_accessor :diff_disk_settings
+
       # @return [Integer] Specifies the size of the operating system disk in
       # gigabytes. This element can be used to overwrite the size of the disk
       # in a virtual machine image. <br><br> This value cannot be larger than
@@ -105,6 +109,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                 serialized_name: 'createOption',
                 type: {
                   name: 'String'
+                }
+              },
+              diff_disk_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'diffDiskSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DiffDiskSettings'
                 }
               },
               disk_size_gb: {

@@ -6,14 +6,15 @@
 module Azure::Compute::Mgmt::V2018_06_01
   module Models
     #
-    # Specifies information about the gallery that you want to create or
-    # update.
+    # Specifies information about the Shared Image Gallery that you want to
+    # create or update.
     #
     class Gallery < Resource
 
       include MsRestAzure
 
-      # @return [String] The description of this gallery resource.
+      # @return [String] The description of this Shared Image Gallery resource.
+      # This property is updateable.
       attr_accessor :description
 
       # @return [GalleryIdentifier]

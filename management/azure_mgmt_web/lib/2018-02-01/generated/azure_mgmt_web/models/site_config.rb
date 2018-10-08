@@ -67,6 +67,10 @@ module Azure::Web::Mgmt::V2018_02_01
       # @return [Array<NameValuePair>] Application settings.
       attr_accessor :app_settings
 
+      # @return [Hash{String => AzureStorageInfoValue}] User-provided Azure
+      # storage accounts.
+      attr_accessor :azure_storage_accounts
+
       # @return [Array<ConnStringInfo>] Connection strings.
       attr_accessor :connection_strings
 
@@ -347,6 +351,23 @@ module Azure::Web::Mgmt::V2018_02_01
                       type: {
                         name: 'Composite',
                         class_name: 'NameValuePair'
+                      }
+                  }
+                }
+              },
+              azure_storage_accounts: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'azureStorageAccounts',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'AzureStorageInfoValueElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AzureStorageInfoValue'
                       }
                   }
                 }

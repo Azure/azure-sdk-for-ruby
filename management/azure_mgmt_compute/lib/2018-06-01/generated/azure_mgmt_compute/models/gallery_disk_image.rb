@@ -12,7 +12,8 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       include MsRestAzure
 
-      # @return [Integer] It indicates the size of the VHD to create.
+      # @return [Integer] This property indicates the size of the VHD to be
+      # created.
       attr_accessor :size_in_gb
 
       # @return [HostCaching] The host caching of the disk. Valid values are

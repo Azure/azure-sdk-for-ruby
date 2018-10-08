@@ -1,6 +1,22 @@
 {
     "management": [
-        "azure_mgmt_storage"
+        "azure_mgmt_authorization",
+        "azure_mgmt_locks",
+        "azure_mgmt_policy",
+        "azure_mgmt_compute",
+        "azure_mgmt_key_vault",
+        "azure_mgmt_network",
+        "azure_mgmt_dns",
+        "azure_mgmt_resources",
+        "azure_mgmt_subscriptions",
+        "azure_mgmt_storage",
+        "azure_mgmt_web",
+        "azure_mgmt_links",
+        "azure_mgmt_features",
+        "azure_mgmt_media_services"
+    ],
+    "data": [
+        "azure_key_vault"
     ],
     "rollup": [
         "azure_sdk"
