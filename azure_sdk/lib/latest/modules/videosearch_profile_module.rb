@@ -39,8 +39,8 @@ module Azure::Profiles::Latest
       ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
-      TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
+      TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
     end
 
     class VideoSearchDataClass
@@ -163,11 +163,11 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
         end
-        def text_format
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
+        end
+        def text_format
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
         end
       end
     end

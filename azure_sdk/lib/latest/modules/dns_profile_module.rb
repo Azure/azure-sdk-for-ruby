@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
+        NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
         RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
         SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
         CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
@@ -30,7 +31,6 @@ module Azure::Profiles::Latest
         RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
         AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
-        NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
       end
 
       class DnsManagementClass
@@ -64,6 +64,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def ns_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
+          end
           def record_set_list_result
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
           end
@@ -120,9 +123,6 @@ module Azure::Profiles::Latest
           end
           def record_set_update_parameters
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
-          end
-          def ns_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
           end
         end
       end

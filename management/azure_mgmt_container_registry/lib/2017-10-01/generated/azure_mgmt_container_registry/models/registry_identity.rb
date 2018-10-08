@@ -6,7 +6,7 @@
 module Azure::ContainerRegistry::Mgmt::V2017_10_01
   module Models
     #
-    # The Identity of the container registry.
+    # The identity of the container registry.
     #
     class RegistryIdentity
 
@@ -15,10 +15,10 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [String] The type of identity used for the registry.
       attr_accessor :type
 
-      # @return [String] The principal id of registry identity.
+      # @return [String] The principal ID of registry identity.
       attr_accessor :principal_id
 
-      # @return [String] The tenant id associated with the registry.
+      # @return [String] The tenant ID associated with the registry.
       attr_accessor :tenant_id
 
 

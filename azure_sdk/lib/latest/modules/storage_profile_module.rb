@@ -7,13 +7,14 @@ require 'azure_mgmt_storage'
 module Azure::Profiles::Latest
   module Storage
     module Mgmt
-      Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
       Operations = Azure::Storage::Mgmt::V2018_03_01_preview::Operations
+      Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
       StorageAccounts = Azure::Storage::Mgmt::V2018_03_01_preview::StorageAccounts
       BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
       Usages = Azure::Storage::Mgmt::V2018_03_01_preview::Usages
 
       module Models
+        ListContainerItems = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
         LegalHold = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold
         LegalHoldProperties = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHoldProperties
         Restriction = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Restriction
@@ -66,8 +67,8 @@ module Azure::Profiles::Latest
         EncryptionServices = Azure::Storage::Mgmt::V2018_03_01_preview::Models::EncryptionServices
         UsageListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::UsageListResult
         CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
-        Resource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Resource
         VirtualNetworkRule = Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
+        Resource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Resource
         StorageAccount = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccount
         SkuName = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SkuName
         SkuTier = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SkuTier
@@ -90,11 +91,10 @@ module Azure::Profiles::Latest
         IPRule = Azure::Storage::Mgmt::V2018_03_01_preview::Models::IPRule
         ManagementPoliciesRulesSetParameter = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ManagementPoliciesRulesSetParameter
         StorageSkuListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageSkuListResult
-        ListContainerItems = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
       end
 
       class StorageManagementClass
-        attr_reader :skus, :operations, :storage_accounts, :blob_containers, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :skus, :storage_accounts, :blob_containers, :usages, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -104,8 +104,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @skus = @client_0.skus
           @operations = @client_0.operations
+          @skus = @client_0.skus
           @storage_accounts = @client_0.storage_accounts
           @blob_containers = @client_0.blob_containers
           @usages = @client_0.usages
@@ -127,6 +127,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def list_container_items
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
+          end
           def legal_hold
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold
           end
@@ -283,11 +286,11 @@ module Azure::Profiles::Latest
           def check_name_availability_result
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
           end
-          def resource
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Resource
-          end
           def virtual_network_rule
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
+          end
+          def resource
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Resource
           end
           def storage_account
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccount
@@ -354,9 +357,6 @@ module Azure::Profiles::Latest
           end
           def storage_sku_list_result
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageSkuListResult
-          end
-          def list_container_items
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
           end
         end
       end

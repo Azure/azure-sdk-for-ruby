@@ -28,6 +28,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
   module Models
     autoload :QuarantinePolicy,                                   '2017-10-01/generated/azure_mgmt_container_registry/models/quarantine_policy.rb'
+    autoload :ImportSourceCredentials,                            '2017-10-01/generated/azure_mgmt_container_registry/models/import_source_credentials.rb'
     autoload :TrustPolicy,                                        '2017-10-01/generated/azure_mgmt_container_registry/models/trust_policy.rb'
     autoload :ImportImageParameters,                              '2017-10-01/generated/azure_mgmt_container_registry/models/import_image_parameters.rb'
     autoload :RegistryPolicies,                                   '2017-10-01/generated/azure_mgmt_container_registry/models/registry_policies.rb'

@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Operations = Azure::Signalr::Mgmt::V2018_03_01_preview::Operations
 
       module Models
+        KeyType = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
         OperationList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
         OperationDisplay = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
         MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
@@ -18,19 +19,18 @@ module Azure::Profiles::Latest
         SignalRUpdateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
         ServiceSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
         NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
-        OperationProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
         SignalRCreateOrUpdateProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateOrUpdateProperties
         SignalRKeys = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys
-        NameAvailabilityParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
+        OperationProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
         ResourceSku = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
-        SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
         SignalRResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
+        NameAvailabilityParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
         RegenerateKeyParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
         Operation = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
         TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
         Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
-        KeyType = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
         SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
+        SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
         ProvisioningState = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState
       end
 
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def key_type
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
+          end
           def operation_list
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
           end
@@ -86,26 +89,23 @@ module Azure::Profiles::Latest
           def name_availability
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
           end
-          def operation_properties
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
-          end
           def signal_rcreate_or_update_properties
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateOrUpdateProperties
           end
           def signal_rkeys
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys
           end
-          def name_availability_parameters
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
+          def operation_properties
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
           end
           def resource_sku
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
           end
-          def signal_rcreate_parameters
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
-          end
           def signal_rresource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
+          end
+          def name_availability_parameters
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
           end
           def regenerate_key_parameters
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
@@ -119,11 +119,11 @@ module Azure::Profiles::Latest
           def resource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
           end
-          def key_type
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
-          end
           def signal_rsku_tier
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
+          end
+          def signal_rcreate_parameters
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
           end
           def provisioning_state
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState

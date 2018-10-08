@@ -13,6 +13,7 @@ module Azure::ContainerRegistry::Profiles::Latest
 
     module Models
       QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      ImportSourceCredentials = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
       TrustPolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy
       ImportImageParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportImageParameters
       RegistryPolicies = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPolicies
@@ -117,6 +118,9 @@ module Azure::ContainerRegistry::Profiles::Latest
     class ModelClasses
       def quarantine_policy
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      end
+      def import_source_credentials
+        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
       end
       def trust_policy
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy

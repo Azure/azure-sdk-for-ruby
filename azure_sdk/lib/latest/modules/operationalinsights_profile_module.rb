@@ -11,10 +11,11 @@ module Azure::Profiles::Latest
       SavedSearches = Azure::OperationalInsights::Mgmt::V2015_03_20::SavedSearches
       LinkedServices = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::LinkedServices
       DataSources = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::DataSources
-      Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
       Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
+      Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
 
       module Models
+        SavedSearch = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
         SavedSearchesListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
         SearchResultsResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse
         StorageInsightListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightListResult
@@ -39,7 +40,7 @@ module Azure::Profiles::Latest
         CoreSummary = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::CoreSummary
         SearchMetadataSchema = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadataSchema
         StorageInsightStatus = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightStatus
-        SavedSearch = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
+        DataSourceFilter = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
         WorkspaceListManagementGroupsResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
         IntelligencePack = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
         SharedKeys = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
@@ -49,8 +50,8 @@ module Azure::Profiles::Latest
         DataSource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSource
         Workspace = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace
         DataSourceKind = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
-        SkuNameEnum = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
         Sku = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
+        SkuNameEnum = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
         EntityStatus = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
         Resource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Resource
         OperationDisplay = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::OperationDisplay
@@ -62,11 +63,10 @@ module Azure::Profiles::Latest
         WorkspaceListUsagesResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListUsagesResult
         LinkedServiceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedServiceListResult
         ManagementGroup = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ManagementGroup
-        DataSourceFilter = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
       end
 
       class OperationalInsightsManagementClass
-        attr_reader :storage_insights, :saved_searches, :linked_services, :data_sources, :workspaces, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :storage_insights, :saved_searches, :linked_services, :data_sources, :operations, :workspaces, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -86,8 +86,8 @@ module Azure::Profiles::Latest
           add_telemetry(@client_1)
           @linked_services = @client_1.linked_services
           @data_sources = @client_1.data_sources
-          @workspaces = @client_1.workspaces
           @operations = @client_1.operations
+          @workspaces = @client_1.workspaces
 
           @model_classes = ModelClasses.new
         end
@@ -108,6 +108,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def saved_search
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
+          end
           def saved_searches_list_result
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
           end
@@ -180,8 +183,8 @@ module Azure::Profiles::Latest
           def storage_insight_status
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightStatus
           end
-          def saved_search
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
+          def data_source_filter
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
           end
           def workspace_list_management_groups_result
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
@@ -210,11 +213,11 @@ module Azure::Profiles::Latest
           def data_source_kind
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
           end
-          def sku_name_enum
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
-          end
           def sku
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
+          end
+          def sku_name_enum
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
           end
           def entity_status
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
@@ -248,9 +251,6 @@ module Azure::Profiles::Latest
           end
           def management_group
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ManagementGroup
-          end
-          def data_source_filter
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
           end
         end
       end

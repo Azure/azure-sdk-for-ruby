@@ -8,6 +8,7 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      ImageMetadata = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
       DomainModelResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
       Word = Azure::CognitiveServices::ComputerVision::V1_0::Models::Word
       CelebrityResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
@@ -45,7 +46,6 @@ module Azure::Profiles::Latest
       ModelDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
       ImageTag = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::ListModelsResult
-      ImageMetadata = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_metadata
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
+        end
         def domain_model_results
           Azure::CognitiveServices::ComputerVision::V1_0::Models::DomainModelResults
         end
@@ -187,9 +190,6 @@ module Azure::Profiles::Latest
         end
         def list_models_result
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ListModelsResult
-        end
-        def image_metadata
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageMetadata
         end
       end
     end

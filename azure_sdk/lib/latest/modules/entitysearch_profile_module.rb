@@ -21,8 +21,8 @@ module Azure::Profiles::Latest
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
-      LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+      LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
@@ -123,11 +123,11 @@ module Azure::Profiles::Latest
         def civic_structure
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
         end
-        def local_business
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
-        end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
+        def local_business
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
         end
         def tourist_attraction
           Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction

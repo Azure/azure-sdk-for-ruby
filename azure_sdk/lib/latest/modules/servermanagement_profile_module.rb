@@ -7,10 +7,10 @@ require 'azure_mgmt_server_management'
 module Azure::Profiles::Latest
   module ServerManagement
     module Mgmt
+      Gateway = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Gateway
       PowerShell = Azure::ServerManagement::Mgmt::V2016_07_01_preview::PowerShell
       Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
       Node = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Node
-      Gateway = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Gateway
 
       module Models
         UpgradeMode = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
@@ -36,8 +36,8 @@ module Azure::Profiles::Latest
         SessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
         PowerShellSessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
-        RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
+        RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
         PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
         GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
@@ -46,7 +46,7 @@ module Azure::Profiles::Latest
       end
 
       class ServerManagementManagementClass
-        attr_reader :power_shell, :session, :node, :gateway, :configurable, :base_url, :options, :model_classes
+        attr_reader :gateway, :power_shell, :session, :node, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,10 +56,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @gateway = @client_0.gateway
           @power_shell = @client_0.power_shell
           @session = @client_0.session
           @node = @client_0.node
-          @gateway = @client_0.gateway
 
           @model_classes = ModelClasses.new
         end
@@ -147,11 +147,11 @@ module Azure::Profiles::Latest
           def power_shell_command_status
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
           end
-          def retention_period
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
-          end
           def version
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
+          end
+          def retention_period
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
           end
           def credential_data_format
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat

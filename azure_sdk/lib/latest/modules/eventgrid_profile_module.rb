@@ -173,13 +173,14 @@ module Azure::Profiles::Latest
     module Mgmt
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_05_01_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_05_01_preview::Topics
-      TopicTypes = Azure::EventGrid::Mgmt::V2018_05_01_preview::TopicTypes
       Operations = Azure::EventGrid::Mgmt::V2018_05_01_preview::Operations
+      TopicTypes = Azure::EventGrid::Mgmt::V2018_05_01_preview::TopicTypes
 
       module Models
+        WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::WebHookEventSubscriptionDestination
+        TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypesListResult
         EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventHubEventSubscriptionDestination
-        JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonFieldWithDefault
-        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionUpdateParameters
+        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
         HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::HybridConnectionEventSubscriptionDestination
         StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageQueueEventSubscriptionDestination
         JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonInputSchemaMapping
@@ -187,10 +188,10 @@ module Azure::Profiles::Latest
         EventType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
         Topic = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Topic
         EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
-        TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
         TrackedResource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TrackedResource
-        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
+        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
+        TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
         InputSchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
         ResourceRegionType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::ResourceRegionType
         TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
@@ -203,21 +204,20 @@ module Azure::Profiles::Latest
         OperationInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationInfo
         EventTypesListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventTypesListResult
         EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionDestination
-        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
         Operation = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
-        RetryPolicy = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::RetryPolicy
+        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationsListResult
-        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
         EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFullUrl
-        TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypesListResult
+        RetryPolicy = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::RetryPolicy
         TopicsListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicsListResult
+        JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonFieldWithDefault
+        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionUpdateParameters
         TopicUpdateParameters = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicUpdateParameters
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageBlobDeadLetterDestination
-        WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::WebHookEventSubscriptionDestination
       end
 
       class EventGridManagementClass
-        attr_reader :event_subscriptions, :topics, :topic_types, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :event_subscriptions, :topics, :operations, :topic_types, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -229,8 +229,8 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
-          @topic_types = @client_0.topic_types
           @operations = @client_0.operations
+          @topic_types = @client_0.topic_types
 
           @model_classes = ModelClasses.new
         end
@@ -249,14 +249,17 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def web_hook_event_subscription_destination
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::WebHookEventSubscriptionDestination
+          end
+          def topic_types_list_result
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypesListResult
+          end
           def event_hub_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventHubEventSubscriptionDestination
           end
-          def json_field_with_default
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonFieldWithDefault
-          end
-          def event_subscription_update_parameters
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionUpdateParameters
+          def topic_regenerate_key_request
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
           end
           def hybrid_connection_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::HybridConnectionEventSubscriptionDestination
@@ -279,17 +282,17 @@ module Azure::Profiles::Latest
           def event_subscription_provisioning_state
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
           end
-          def topic_type_info
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
-          end
           def tracked_resource
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TrackedResource
+          end
+          def topic_provisioning_state
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
           end
           def event_delivery_schema
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
           end
-          def topic_provisioning_state
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
+          def topic_type_info
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
           end
           def input_schema
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
@@ -327,38 +330,35 @@ module Azure::Profiles::Latest
           def event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionDestination
           end
-          def topic_shared_access_keys
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
-          end
           def operation
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
           end
-          def retry_policy
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::RetryPolicy
+          def topic_shared_access_keys
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
           end
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationsListResult
           end
-          def topic_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
-          end
           def event_subscription_full_url
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFullUrl
           end
-          def topic_types_list_result
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypesListResult
+          def retry_policy
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::RetryPolicy
           end
           def topics_list_result
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicsListResult
+          end
+          def json_field_with_default
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonFieldWithDefault
+          end
+          def event_subscription_update_parameters
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionUpdateParameters
           end
           def topic_update_parameters
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicUpdateParameters
           end
           def storage_blob_dead_letter_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageBlobDeadLetterDestination
-          end
-          def web_hook_event_subscription_destination
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::WebHookEventSubscriptionDestination
           end
         end
       end

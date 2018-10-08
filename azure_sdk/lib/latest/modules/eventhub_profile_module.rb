@@ -14,6 +14,7 @@ module Azure::Profiles::Latest
       ConsumerGroups = Azure::EventHub::Mgmt::V2017_04_01::ConsumerGroups
 
       module Models
+        ArmDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
         AccessRights = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
         EntityStatus = Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
         EncodingCaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
@@ -30,22 +31,21 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
         CaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
         Destination = Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
-        EventHubListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
         ErrorResponse = Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
+        EventHubListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
         AccessKeys = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
         ArmDisasterRecoveryListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
         ConsumerGroupListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
-        AuthorizationRuleListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
         Operation = Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
-        EHNamespaceListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
         CheckNameAvailabilityParameter = Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
+        AuthorizationRuleListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
         TrackedResource = Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
-        RegenerateAccessKeyParameters = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
+        EHNamespaceListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
+        Eventhub = Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
         ConsumerGroup = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
         AuthorizationRule = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
-        Eventhub = Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
+        RegenerateAccessKeyParameters = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         EHNamespace = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
-        ArmDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
       end
 
       class EventHubManagementClass
@@ -82,6 +82,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def arm_disaster_recovery
+            Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+          end
           def access_rights
             Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
           end
@@ -130,11 +133,11 @@ module Azure::Profiles::Latest
           def destination
             Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
           end
-          def event_hub_list_result
-            Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
-          end
           def error_response
             Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
+          end
+          def event_hub_list_result
+            Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
           end
           def access_keys
             Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
@@ -145,23 +148,23 @@ module Azure::Profiles::Latest
           def consumer_group_list_result
             Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
           end
-          def authorization_rule_list_result
-            Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-          end
           def operation
             Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
-          end
-          def ehnamespace_list_result
-            Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
           end
           def check_name_availability_parameter
             Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
           end
+          def authorization_rule_list_result
+            Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
+          end
           def tracked_resource
             Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
           end
-          def regenerate_access_key_parameters
-            Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
+          def ehnamespace_list_result
+            Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
+          end
+          def eventhub
+            Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
           end
           def consumer_group
             Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
@@ -169,14 +172,11 @@ module Azure::Profiles::Latest
           def authorization_rule
             Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
           end
-          def eventhub
-            Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
+          def regenerate_access_key_parameters
+            Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
           end
           def ehnamespace
             Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
-          end
-          def arm_disaster_recovery
-            Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
           end
         end
       end
