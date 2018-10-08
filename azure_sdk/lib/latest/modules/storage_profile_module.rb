@@ -8,12 +8,13 @@ module Azure::Profiles::Latest
   module Storage
     module Mgmt
       Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
-      BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
       Operations = Azure::Storage::Mgmt::V2018_03_01_preview::Operations
       StorageAccounts = Azure::Storage::Mgmt::V2018_03_01_preview::StorageAccounts
+      BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
       Usages = Azure::Storage::Mgmt::V2018_03_01_preview::Usages
 
       module Models
+        LegalHold = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold
         LegalHoldProperties = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHoldProperties
         Restriction = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Restriction
         TagProperty = Azure::Storage::Mgmt::V2018_03_01_preview::Models::TagProperty
@@ -29,8 +30,8 @@ module Azure::Profiles::Latest
         Bypass = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Bypass
         DefaultAction = Azure::Storage::Mgmt::V2018_03_01_preview::Models::DefaultAction
         SignedResourceTypes = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResourceTypes
-        HttpProtocol = Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
         Permissions = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
+        HttpProtocol = Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
         SignedResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
         PublicAccess = Azure::Storage::Mgmt::V2018_03_01_preview::Models::PublicAccess
         LeaseStatus = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseStatus
@@ -65,8 +66,8 @@ module Azure::Profiles::Latest
         EncryptionServices = Azure::Storage::Mgmt::V2018_03_01_preview::Models::EncryptionServices
         UsageListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::UsageListResult
         CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
-        VirtualNetworkRule = Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
         Resource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Resource
+        VirtualNetworkRule = Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
         StorageAccount = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccount
         SkuName = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SkuName
         SkuTier = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SkuTier
@@ -90,11 +91,10 @@ module Azure::Profiles::Latest
         ManagementPoliciesRulesSetParameter = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ManagementPoliciesRulesSetParameter
         StorageSkuListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageSkuListResult
         ListContainerItems = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
-        LegalHold = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold
       end
 
       class StorageManagementClass
-        attr_reader :skus, :blob_containers, :operations, :storage_accounts, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :skus, :operations, :storage_accounts, :blob_containers, :usages, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -105,9 +105,9 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @skus = @client_0.skus
-          @blob_containers = @client_0.blob_containers
           @operations = @client_0.operations
           @storage_accounts = @client_0.storage_accounts
+          @blob_containers = @client_0.blob_containers
           @usages = @client_0.usages
 
           @model_classes = ModelClasses.new
@@ -127,6 +127,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def legal_hold
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold
+          end
           def legal_hold_properties
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHoldProperties
           end
@@ -172,11 +175,11 @@ module Azure::Profiles::Latest
           def signed_resource_types
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResourceTypes
           end
-          def http_protocol
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
-          end
           def permissions
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
+          end
+          def http_protocol
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
           end
           def signed_resource
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
@@ -280,11 +283,11 @@ module Azure::Profiles::Latest
           def check_name_availability_result
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
           end
-          def virtual_network_rule
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
-          end
           def resource
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Resource
+          end
+          def virtual_network_rule
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
           end
           def storage_account
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccount
@@ -354,9 +357,6 @@ module Azure::Profiles::Latest
           end
           def list_container_items
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItems
-          end
-          def legal_hold
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold
           end
         end
       end

@@ -17,8 +17,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # Registry.
       attr_accessor :resource_id
 
-      # @return [String] The address of the source registry.
+      # @return [String] The address of the source registry (e.g.
+      # 'mcr.microsoft.com').
       attr_accessor :registry_uri
+
+      # @return [ImportSourceCredentials] Credentials used when importing from
+      # a registry uri.
+      attr_accessor :credentials
 
       # @return [String] Repository name of the source image.
       # Specify an image by repository ('hello-world'). This will use the
@@ -53,6 +58,14 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 serialized_name: 'registryUri',
                 type: {
                   name: 'String'
+                }
+              },
+              credentials: {
+                required: false,
+                serialized_name: 'credentials',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ImportSourceCredentials'
                 }
               },
               source_image: {

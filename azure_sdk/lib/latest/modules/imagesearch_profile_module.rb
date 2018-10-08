@@ -19,8 +19,8 @@ module Azure::Profiles::Latest
       InsightsTag = Azure::CognitiveServices::ImageSearch::V1_0::Models::InsightsTag
       RecognizedEntitiesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
       PropertiesItem = Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
-      RecognizedEntityGroup = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityGroup
       ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+      RecognizedEntityGroup = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityGroup
       TrendingImagesCategory = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesCategory
       PivotSuggestions = Azure::CognitiveServices::ImageSearch::V1_0::Models::PivotSuggestions
       RelatedCollectionsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedCollectionsModule
@@ -42,11 +42,11 @@ module Azure::Profiles::Latest
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
       AggregateOffer = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
-      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
-      ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
-      ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
+      ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
+      ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
+      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
       Freshness = Azure::CognitiveServices::ImageSearch::V1_0::Models::Freshness
       ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
@@ -54,8 +54,8 @@ module Azure::Profiles::Latest
       Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
       ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-      ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
+      ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
@@ -129,11 +129,11 @@ module Azure::Profiles::Latest
         def properties_item
           Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
         end
-        def recognized_entity_group
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityGroup
-        end
         def error_response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+        end
+        def recognized_entity_group
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityGroup
         end
         def trending_images_category
           Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesCategory
@@ -198,20 +198,20 @@ module Azure::Profiles::Latest
         def aggregate_offer
           Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
         end
-        def error
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        def currency
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
         end
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
         end
-        def currency
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+        def image_aspect
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
         end
         def image_color
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
         end
-        def image_aspect
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
+        def error
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
         end
         def image_content
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
@@ -234,11 +234,11 @@ module Azure::Profiles::Latest
         def image_insight_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
         end
-        def image_type
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
-        end
         def images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
+        end
+        def image_type
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
         end
         def response_base
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase

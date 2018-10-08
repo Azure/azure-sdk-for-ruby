@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Profiles::Latest
     Webhooks = Azure::ContainerRegistry::Mgmt::V2017_10_01::Webhooks
 
     module Models
+      QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
       TrustPolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy
       ImportSource = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSource
       RegistryPolicies = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPolicies
@@ -45,9 +46,9 @@ module Azure::ContainerRegistry::Profiles::Latest
       OperationServiceSpecificationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
       RegistryListCredentialsResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
       EventContent = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
-      EventRequestMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
       Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
-      QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      EventRequestMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
+      ImportSourceCredentials = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
       EventResponseMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
       Registry = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
       Replication = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
@@ -114,6 +115,9 @@ module Azure::ContainerRegistry::Profiles::Latest
     end
 
     class ModelClasses
+      def quarantine_policy
+        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      end
       def trust_policy
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy
       end
@@ -213,14 +217,14 @@ module Azure::ContainerRegistry::Profiles::Latest
       def event_content
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
       end
-      def event_request_message
-        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
-      end
       def status
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
       end
-      def quarantine_policy
-        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      def event_request_message
+        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
+      end
+      def import_source_credentials
+        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
       end
       def event_response_message
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage

@@ -7,10 +7,11 @@ require 'azure_mgmt_dns'
 module Azure::Profiles::Latest
   module Dns
     module Mgmt
-      Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
       RecordSets = Azure::Dns::Mgmt::V2018_03_01_preview::RecordSets
+      Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
+        RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
         SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
         CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
@@ -30,11 +31,10 @@ module Azure::Profiles::Latest
         AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-        RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
       end
 
       class DnsManagementClass
-        attr_reader :zones, :record_sets, :configurable, :base_url, :options, :model_classes
+        attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -44,8 +44,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @zones = @client_0.zones
           @record_sets = @client_0.record_sets
+          @zones = @client_0.zones
 
           @model_classes = ModelClasses.new
         end
@@ -64,6 +64,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def record_set_list_result
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
+          end
           def srv_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
           end
@@ -120,9 +123,6 @@ module Azure::Profiles::Latest
           end
           def ns_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-          end
-          def record_set_list_result
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
           end
         end
       end
