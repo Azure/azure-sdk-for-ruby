@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
+      MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
+      CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
@@ -52,9 +55,6 @@ module Azure::Profiles::Latest
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
       Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
-      ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
-      MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
-      CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def contractual_rules_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
+        end
+        def media_object
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
+        end
+        def civic_structure
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
+        end
         def local_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
         end
@@ -215,15 +224,6 @@ module Azure::Profiles::Latest
         end
         def intangible
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
-        end
-        def contractual_rules_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
-        end
-        def media_object
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
-        end
-        def civic_structure
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
         end
       end
     end
