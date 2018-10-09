@@ -6,17 +6,20 @@ require 'azure_graph_rbac'
 
 module Azure::Profiles::Latest
   module GraphRbac
+    SignedInUser = Azure::GraphRbac::V1_6::SignedInUser
+    Applications = Azure::GraphRbac::V1_6::Applications
+    DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
     Groups = Azure::GraphRbac::V1_6::Groups
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
     Objects = Azure::GraphRbac::V1_6::Objects
     Domains = Azure::GraphRbac::V1_6::Domains
     OAuth2 = Azure::GraphRbac::V1_6::OAuth2
     Users = Azure::GraphRbac::V1_6::Users
-    SignedInUser = Azure::GraphRbac::V1_6::SignedInUser
-    Applications = Azure::GraphRbac::V1_6::Applications
-    DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
 
     module Models
+      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
+      DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
+      SignInName = Azure::GraphRbac::V1_6::Models::SignInName
       PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
       Domain = Azure::GraphRbac::V1_6::Models::Domain
       RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
@@ -57,13 +60,10 @@ module Azure::Profiles::Latest
       UserBase = Azure::GraphRbac::V1_6::Models::UserBase
       DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
       GroupAddMemberParameters = Azure::GraphRbac::V1_6::Models::GroupAddMemberParameters
-      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
-      DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
-      SignInName = Azure::GraphRbac::V1_6::Models::SignInName
     end
 
     class GraphRbacDataClass
-      attr_reader :groups, :service_principals, :objects, :domains, :oauth2, :users, :signed_in_user, :applications, :deleted_applications, :configurable, :base_url, :options, :model_classes
+      attr_reader :signed_in_user, :applications, :deleted_applications, :groups, :service_principals, :objects, :domains, :oauth2, :users, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -73,15 +73,15 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @signed_in_user = @client_0.signed_in_user
+        @applications = @client_0.applications
+        @deleted_applications = @client_0.deleted_applications
         @groups = @client_0.groups
         @service_principals = @client_0.service_principals
         @objects = @client_0.objects
         @domains = @client_0.domains
         @oauth2 = @client_0.oauth2
         @users = @client_0.users
-        @signed_in_user = @client_0.signed_in_user
-        @applications = @client_0.applications
-        @deleted_applications = @client_0.deleted_applications
 
         @model_classes = ModelClasses.new
       end
@@ -100,6 +100,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def domain_list_result
+          Azure::GraphRbac::V1_6::Models::DomainListResult
+        end
+        def directory_object
+          Azure::GraphRbac::V1_6::Models::DirectoryObject
+        end
+        def sign_in_name
+          Azure::GraphRbac::V1_6::Models::SignInName
+        end
         def password_credential_list_result
           Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
         end
@@ -219,15 +228,6 @@ module Azure::Profiles::Latest
         end
         def group_add_member_parameters
           Azure::GraphRbac::V1_6::Models::GroupAddMemberParameters
-        end
-        def domain_list_result
-          Azure::GraphRbac::V1_6::Models::DomainListResult
-        end
-        def directory_object
-          Azure::GraphRbac::V1_6::Models::DirectoryObject
-        end
-        def sign_in_name
-          Azure::GraphRbac::V1_6::Models::SignInName
         end
       end
     end

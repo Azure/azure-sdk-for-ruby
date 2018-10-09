@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+      ContainerRegistryEventActor = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
+      ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
       ContainerRegistryEventSource = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
       ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
       ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
@@ -38,9 +41,6 @@ module Azure::Profiles::Latest
       ContainerRegistryEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
       ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
       ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
-      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-      ContainerRegistryEventActor = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
-      ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
     end
 
     class EventGridDataClass
@@ -72,6 +72,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def event_hub_capture_file_created_event_data
+          Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+        end
+        def container_registry_event_actor
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
+        end
+        def service_bus_deadletter_messages_available_with_no_listeners_event_data
+          Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+        end
         def container_registry_event_source
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
         end
@@ -159,36 +168,27 @@ module Azure::Profiles::Latest
         def container_registry_event_request
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
         end
-        def event_hub_capture_file_created_event_data
-          Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-        end
-        def container_registry_event_actor
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
-        end
-        def service_bus_deadletter_messages_available_with_no_listeners_event_data
-          Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
-        end
       end
     end
     module Mgmt
-      TopicTypes = Azure::EventGrid::Mgmt::V2018_05_01_preview::TopicTypes
-      Operations = Azure::EventGrid::Mgmt::V2018_05_01_preview::Operations
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_05_01_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_05_01_preview::Topics
+      TopicTypes = Azure::EventGrid::Mgmt::V2018_05_01_preview::TopicTypes
+      Operations = Azure::EventGrid::Mgmt::V2018_05_01_preview::Operations
 
       module Models
         EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFilter
         InputSchemaMapping = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchemaMapping
         DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::DeadLetterDestination
         JsonField = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonField
+        Resource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
         EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionsListResult
         OperationInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationInfo
         EventTypesListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventTypesListResult
-        Resource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
-        EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionDestination
+        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
         RetryPolicy = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::RetryPolicy
         EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFullUrl
-        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
+        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
         TopicsListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicsListResult
         TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypesListResult
         JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonFieldWithDefault
@@ -198,8 +198,8 @@ module Azure::Profiles::Latest
         WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::WebHookEventSubscriptionDestination
         EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventHubEventSubscriptionDestination
         StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageQueueEventSubscriptionDestination
-        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
         HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::HybridConnectionEventSubscriptionDestination
+        EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionDestination
         EventSubscription = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscription
         JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonInputSchemaMapping
         Topic = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Topic
@@ -217,7 +217,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :topic_types, :operations, :event_subscriptions, :topics, :configurable, :base_url, :options, :model_classes
+        attr_reader :event_subscriptions, :topics, :topic_types, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -227,10 +227,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @topic_types = @client_0.topic_types
-          @operations = @client_0.operations
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
+          @topic_types = @client_0.topic_types
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -261,6 +261,9 @@ module Azure::Profiles::Latest
           def json_field
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::JsonField
           end
+          def resource
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
+          end
           def event_subscriptions_list_result
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionsListResult
           end
@@ -270,11 +273,8 @@ module Azure::Profiles::Latest
           def event_types_list_result
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventTypesListResult
           end
-          def resource
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
-          end
-          def event_subscription_destination
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionDestination
+          def topic_shared_access_keys
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
           end
           def retry_policy
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::RetryPolicy
@@ -282,8 +282,8 @@ module Azure::Profiles::Latest
           def event_subscription_full_url
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFullUrl
           end
-          def topic_shared_access_keys
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicSharedAccessKeys
+          def topic_regenerate_key_request
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
           end
           def topics_list_result
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicsListResult
@@ -312,11 +312,11 @@ module Azure::Profiles::Latest
           def storage_queue_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageQueueEventSubscriptionDestination
           end
-          def topic_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicRegenerateKeyRequest
-          end
           def hybrid_connection_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::HybridConnectionEventSubscriptionDestination
+          end
+          def event_subscription_destination
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionDestination
           end
           def event_subscription
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscription
