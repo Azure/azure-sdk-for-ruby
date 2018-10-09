@@ -26,6 +26,9 @@ module Azure::Logic::Profiles::Latest
     Sessions = Azure::Logic::Mgmt::V2016_06_01::Sessions
 
     module Models
+      EventLevel = Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
+      TrackingRecordType = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
+      AccessKeyType = Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
       X12SecuritySettings = Azure::Logic::Mgmt::V2016_06_01::Models::X12SecuritySettings
       Resource = Azure::Logic::Mgmt::V2016_06_01::Models::Resource
       X12ProcessingSettings = Azure::Logic::Mgmt::V2016_06_01::Models::X12ProcessingSettings
@@ -194,9 +197,6 @@ module Azure::Logic::Profiles::Latest
       EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
       EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
       TrackEventsOperationOptions = Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
-      EventLevel = Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
-      TrackingRecordType = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
-      AccessKeyType = Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
     end
 
     #
@@ -261,6 +261,15 @@ module Azure::Logic::Profiles::Latest
     end
 
     class ModelClasses
+      def event_level
+        Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
+      end
+      def tracking_record_type
+        Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
+      end
+      def access_key_type
+        Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
+      end
       def x12_security_settings
         Azure::Logic::Mgmt::V2016_06_01::Models::X12SecuritySettings
       end
@@ -764,15 +773,6 @@ module Azure::Logic::Profiles::Latest
       end
       def track_events_operation_options
         Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
-      end
-      def event_level
-        Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
-      end
-      def tracking_record_type
-        Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
-      end
-      def access_key_type
-        Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
       end
     end
   end
