@@ -7,6 +7,7 @@ require 'azure_mgmt_media_services'
 module Azure::Profiles::Latest
   module MediaServices
     module Mgmt
+      Locations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Locations
       Operations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Operations
       Mediaservices = Azure::MediaServices::Mgmt::V2018_03_30_preview::Mediaservices
       Assets = Azure::MediaServices::Mgmt::V2018_03_30_preview::Assets
@@ -18,7 +19,6 @@ module Azure::Profiles::Latest
       LiveEvents = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveEvents
       LiveOutputs = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveOutputs
       StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_03_30_preview::StreamingEndpoints
-      Locations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Locations
 
       module Models
         StorageAccountType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StorageAccountType
@@ -38,9 +38,7 @@ module Azure::Profiles::Latest
         Preset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Preset
         Codec = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Codec
         MediaServiceCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaServiceCollection
-        JobError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobError
         SubscriptionMediaServiceCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaServiceCollection
-        JobErrorDetail = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorDetail
         LiveEventEndpoint = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEndpoint
         AssetContainerSas = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AssetContainerSas
         CencDrmConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CencDrmConfiguration
@@ -90,24 +88,22 @@ module Azure::Profiles::Latest
         LiveEventActionInput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventActionInput
         TrackSelection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackSelection
         CrossSiteAccessPolicies = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CrossSiteAccessPolicies
-        JobOutput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutput
+        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
         LiveEventEncoding = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncoding
-        StreamingPolicyFairPlayConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyFairPlayConfiguration
         LiveEventPreview = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventPreview
         Hls = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Hls
         TransformOutput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransformOutput
-        OperationCollection = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
         ContentKeyPolicyRestrictionTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRestrictionTokenKey
         LiveEventPreviewAccessControl = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventPreviewAccessControl
+        EnabledProtocols = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EnabledProtocols
         JobInput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInput
         MediaService = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaService
-        EnabledProtocols = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EnabledProtocols
+        SubscriptionMediaService = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
         Asset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader
         ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier
         ContentKeyPolicyOpenRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyOpenRestriction
         ContentKeyPolicyUnknownRestriction = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyUnknownRestriction
-        SubscriptionMediaService = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
         ContentKeyPolicySymmetricTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicySymmetricTokenKey
         ContentKeyPolicyRsaTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRsaTokenKey
         ContentKeyPolicyX509CertificateTokenKey = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyX509CertificateTokenKey
@@ -129,6 +125,7 @@ module Azure::Profiles::Latest
         PngFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::PngFormat
         CopyAudio = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CopyAudio
         VideoLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoLayer
+        H264Layer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Layer
         H264Video = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Video
         JpgLayer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JpgLayer
         JpgImage = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JpgImage
@@ -146,59 +143,62 @@ module Azure::Profiles::Latest
         JobInputs = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputs
         JobInputAsset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputAsset
         JobInputHttp = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputHttp
-        JobOutputAsset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutputAsset
         StreamingPolicy = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicy
         StreamingLocator = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingLocator
         LiveOutput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveOutput
         LiveEvent = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEvent
         StreamingEndpoint = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpoint
         AssetStorageEncryptionFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AssetStorageEncryptionFormat
+        ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
         AssetContainerPermission = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AssetContainerPermission
-        ContentKeyPolicyPlayReadyUnknownOutputPassingOption = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyUnknownOutputPassingOption
         ContentKeyPolicyPlayReadyLicenseType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyLicenseType
         ContentKeyPolicyPlayReadyContentType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyContentType
         ContentKeyPolicyRestrictionTokenType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRestrictionTokenType
+        TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
         ContentKeyPolicyFairPlayRentalAndLeaseKeyType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyFairPlayRentalAndLeaseKeyType
-        AacAudioProfile = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AacAudioProfile
+        ContentKeyPolicyPlayReadyUnknownOutputPassingOption = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyUnknownOutputPassingOption
         StretchMode = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StretchMode
-        DeinterlaceParity = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::DeinterlaceParity
         DeinterlaceMode = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::DeinterlaceMode
         Rotation = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Rotation
-        H264VideoProfile = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264VideoProfile
+        DeinterlaceParity = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::DeinterlaceParity
+        AacAudioProfile = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AacAudioProfile
         EntropyMode = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EntropyMode
-        H264Complexity = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Complexity
         EncoderNamedPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EncoderNamedPreset
         OnErrorType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OnErrorType
-        Priority = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Priority
-        JobErrorCode = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCode
-        JobErrorCategory = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCategory
-        JobRetry = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobRetry
+        H264Complexity = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Complexity
+        H264VideoProfile = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264VideoProfile
         TrackPropertyType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackPropertyType
-        TrackPropertyCompareOperation = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackPropertyCompareOperation
+        Priority = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Priority
         StreamingLocatorContentKeyType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingLocatorContentKeyType
-        StreamingPolicyStreamingProtocol = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyStreamingProtocol
+        TrackPropertyCompareOperation = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackPropertyCompareOperation
         EncryptionScheme = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EncryptionScheme
-        ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
-        LiveOutputResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveOutputResourceState
-        LiveEventEncodingType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
-        LiveEventResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
+        StreamingPolicyStreamingProtocol = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyStreamingProtocol
         LiveEventInputProtocol = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventInputProtocol
-        TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
+        LiveOutputResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveOutputResourceState
+        LiveEventResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
+        LiveEventEncodingType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
         StreamingEndpointResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
         StreamOptionsFlag = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
-        H264Layer = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Layer
+        StreamingPolicyFairPlayConfiguration = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyFairPlayConfiguration
         Resource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
         StorageAccount = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StorageAccount
         Format = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Format
         Location = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Location
         Image = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Image
+        JobErrorDetail = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorDetail
+        JobError = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobError
         Provider = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Provider
-        JobState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobState
+        JobOutput = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutput
         Filters = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Filters
+        JobOutputAsset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutputAsset
+        JobState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobState
+        JobErrorCode = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCode
+        JobErrorCategory = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCategory
+        JobRetry = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobRetry
       end
 
       class MediaServicesManagementClass
-        attr_reader :operations, :mediaservices, :assets, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :live_outputs, :streaming_endpoints, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :locations, :operations, :mediaservices, :assets, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :live_outputs, :streaming_endpoints, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -208,6 +208,7 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @locations = @client_0.locations
           @operations = @client_0.operations
           @mediaservices = @client_0.mediaservices
           @assets = @client_0.assets
@@ -219,7 +220,6 @@ module Azure::Profiles::Latest
           @live_events = @client_0.live_events
           @live_outputs = @client_0.live_outputs
           @streaming_endpoints = @client_0.streaming_endpoints
-          @locations = @client_0.locations
 
           @model_classes = ModelClasses.new
         end
@@ -289,14 +289,8 @@ module Azure::Profiles::Latest
           def media_service_collection
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaServiceCollection
           end
-          def job_error
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobError
-          end
           def subscription_media_service_collection
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaServiceCollection
-          end
-          def job_error_detail
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorDetail
           end
           def live_event_endpoint
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEndpoint
@@ -445,14 +439,11 @@ module Azure::Profiles::Latest
           def cross_site_access_policies
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::CrossSiteAccessPolicies
           end
-          def job_output
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutput
+          def operation_collection
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
           end
           def live_event_encoding
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncoding
-          end
-          def streaming_policy_fair_play_configuration
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyFairPlayConfiguration
           end
           def live_event_preview
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventPreview
@@ -463,14 +454,14 @@ module Azure::Profiles::Latest
           def transform_output
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransformOutput
           end
-          def operation_collection
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OperationCollection
-          end
           def content_key_policy_restriction_token_key
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRestrictionTokenKey
           end
           def live_event_preview_access_control
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventPreviewAccessControl
+          end
+          def enabled_protocols
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EnabledProtocols
           end
           def job_input
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInput
@@ -478,8 +469,8 @@ module Azure::Profiles::Latest
           def media_service
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::MediaService
           end
-          def enabled_protocols
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EnabledProtocols
+          def subscription_media_service
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
           end
           def asset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Asset
@@ -495,9 +486,6 @@ module Azure::Profiles::Latest
           end
           def content_key_policy_unknown_restriction
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyUnknownRestriction
-          end
-          def subscription_media_service
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::SubscriptionMediaService
           end
           def content_key_policy_symmetric_token_key
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicySymmetricTokenKey
@@ -562,6 +550,9 @@ module Azure::Profiles::Latest
           def video_layer
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoLayer
           end
+          def h264_layer
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Layer
+          end
           def h264_video
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Video
           end
@@ -613,9 +604,6 @@ module Azure::Profiles::Latest
           def job_input_http
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputHttp
           end
-          def job_output_asset
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutputAsset
-          end
           def streaming_policy
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicy
           end
@@ -634,11 +622,11 @@ module Azure::Profiles::Latest
           def asset_storage_encryption_format
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AssetStorageEncryptionFormat
           end
+          def proxy_resource
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
+          end
           def asset_container_permission
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AssetContainerPermission
-          end
-          def content_key_policy_play_ready_unknown_output_passing_option
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyUnknownOutputPassingOption
           end
           def content_key_policy_play_ready_license_type
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyLicenseType
@@ -649,17 +637,17 @@ module Azure::Profiles::Latest
           def content_key_policy_restriction_token_type
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyRestrictionTokenType
           end
+          def tracked_resource
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
+          end
           def content_key_policy_fair_play_rental_and_lease_key_type
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyFairPlayRentalAndLeaseKeyType
           end
-          def aac_audio_profile
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AacAudioProfile
+          def content_key_policy_play_ready_unknown_output_passing_option
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ContentKeyPolicyPlayReadyUnknownOutputPassingOption
           end
           def stretch_mode
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StretchMode
-          end
-          def deinterlace_parity
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::DeinterlaceParity
           end
           def deinterlace_mode
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::DeinterlaceMode
@@ -667,14 +655,14 @@ module Azure::Profiles::Latest
           def rotation
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Rotation
           end
-          def h264_video_profile
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264VideoProfile
+          def deinterlace_parity
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::DeinterlaceParity
+          end
+          def aac_audio_profile
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::AacAudioProfile
           end
           def entropy_mode
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EntropyMode
-          end
-          def h264_complexity
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Complexity
           end
           def encoder_named_preset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EncoderNamedPreset
@@ -682,50 +670,41 @@ module Azure::Profiles::Latest
           def on_error_type
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::OnErrorType
           end
-          def priority
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Priority
+          def h264_complexity
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Complexity
           end
-          def job_error_code
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCode
-          end
-          def job_error_category
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCategory
-          end
-          def job_retry
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobRetry
+          def h264_video_profile
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264VideoProfile
           end
           def track_property_type
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackPropertyType
           end
-          def track_property_compare_operation
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackPropertyCompareOperation
+          def priority
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Priority
           end
           def streaming_locator_content_key_type
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingLocatorContentKeyType
           end
-          def streaming_policy_streaming_protocol
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyStreamingProtocol
+          def track_property_compare_operation
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackPropertyCompareOperation
           end
           def encryption_scheme
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::EncryptionScheme
           end
-          def proxy_resource
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
-          end
-          def live_output_resource_state
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveOutputResourceState
-          end
-          def live_event_encoding_type
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
-          end
-          def live_event_resource_state
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
+          def streaming_policy_streaming_protocol
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyStreamingProtocol
           end
           def live_event_input_protocol
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventInputProtocol
           end
-          def tracked_resource
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
+          def live_output_resource_state
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveOutputResourceState
+          end
+          def live_event_resource_state
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
+          end
+          def live_event_encoding_type
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventEncodingType
           end
           def streaming_endpoint_resource_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
@@ -733,8 +712,8 @@ module Azure::Profiles::Latest
           def stream_options_flag
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
           end
-          def h264_layer
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::H264Layer
+          def streaming_policy_fair_play_configuration
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingPolicyFairPlayConfiguration
           end
           def resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
@@ -751,14 +730,35 @@ module Azure::Profiles::Latest
           def image
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Image
           end
+          def job_error_detail
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorDetail
+          end
+          def job_error
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobError
+          end
           def provider
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Provider
+          end
+          def job_output
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutput
+          end
+          def filters
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Filters
+          end
+          def job_output_asset
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutputAsset
           end
           def job_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobState
           end
-          def filters
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Filters
+          def job_error_code
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCode
+          end
+          def job_error_category
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobErrorCategory
+          end
+          def job_retry
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobRetry
           end
         end
       end
