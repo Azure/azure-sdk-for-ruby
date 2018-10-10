@@ -11,13 +11,13 @@ module Azure::Profiles::Latest
       MarketplaceAgreements = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::MarketplaceAgreements
 
       module Models
+        ErrorResponse = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
         Operation = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation
         OperationDisplay = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
         ErrorResponseError = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponseError
         OperationListResult = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationListResult
-        AgreementTerms = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::AgreementTerms
         Resource = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Resource
-        ErrorResponse = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+        AgreementTerms = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::AgreementTerms
       end
 
       class MarketplaceOrderingManagementClass
@@ -51,6 +51,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_response
+            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+          end
           def operation
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation
           end
@@ -63,14 +66,11 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationListResult
           end
-          def agreement_terms
-            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::AgreementTerms
-          end
           def resource
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Resource
           end
-          def error_response
-            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+          def agreement_terms
+            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::AgreementTerms
           end
         end
       end
