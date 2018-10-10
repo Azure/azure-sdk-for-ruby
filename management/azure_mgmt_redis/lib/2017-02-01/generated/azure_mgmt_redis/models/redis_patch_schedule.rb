@@ -35,7 +35,6 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisPatchSchedule',
           type: {
@@ -43,7 +42,6 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'RedisPatchSchedule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,7 +50,6 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,7 +58,6 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -70,7 +66,6 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -79,13 +74,11 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               schedule_entries: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.scheduleEntries',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ScheduleEntryElementType',
                       type: {
