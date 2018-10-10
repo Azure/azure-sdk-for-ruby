@@ -39,8 +39,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccount] operation results.
     #
-    def create(resource_group_name, account_name, parameters, custom_headers:nil)
-      response = create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def create(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -62,8 +62,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, account_name, parameters, custom_headers:nil)
-      create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, account_name, parameters, custom_headers = nil)
+      create_async(resource_group_name, account_name, parameters, custom_headers).value!
     end
 
     #
@@ -84,23 +84,21 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, account_name, parameters, custom_headers:nil)
+    def create_async(resource_group_name, account_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Mgmt::V2016_02_01_preview::Models::CognitiveServicesAccountCreateParameters.mapper()
@@ -178,8 +176,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccount] operation results.
     #
-    def update(resource_group_name, account_name, sku:nil, tags:nil, custom_headers:nil)
-      response = update_async(resource_group_name, account_name, sku:sku, tags:tags, custom_headers:custom_headers).value!
+    def update(resource_group_name, account_name, sku = nil, tags = nil, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, sku, tags, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -203,8 +201,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, sku:nil, tags:nil, custom_headers:nil)
-      update_async(resource_group_name, account_name, sku:sku, tags:tags, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, sku = nil, tags = nil, custom_headers = nil)
+      update_async(resource_group_name, account_name, sku, tags, custom_headers).value!
     end
 
     #
@@ -227,12 +225,9 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, sku:nil, tags:nil, custom_headers:nil)
+    def update_async(resource_group_name, account_name, sku = nil, tags = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -243,11 +238,12 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Mgmt::V2016_02_01_preview::Models::CognitiveServicesAccountUpdateParameters.mapper()
@@ -308,8 +304,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, custom_headers:nil)
-      response = delete_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, account_name, custom_headers = nil)
+      response = delete_async(resource_group_name, account_name, custom_headers).value!
       nil
     end
 
@@ -327,8 +323,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      delete_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      delete_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -345,18 +341,14 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, custom_headers:nil)
+    def delete_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -405,8 +397,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccount] operation results.
     #
-    def get_properties(resource_group_name, account_name, custom_headers:nil)
-      response = get_properties_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def get_properties(resource_group_name, account_name, custom_headers = nil)
+      response = get_properties_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -424,8 +416,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_properties_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      get_properties_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def get_properties_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      get_properties_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -442,18 +434,14 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_properties_async(resource_group_name, account_name, custom_headers:nil)
+    def get_properties_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -508,8 +496,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccountListResult] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -523,8 +511,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -537,14 +525,13 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -597,8 +584,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccountListResult] operation results.
     #
-    def list(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list(custom_headers = nil)
+      response = list_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -610,8 +597,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
@@ -622,13 +609,12 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -687,8 +673,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccountKeys] operation results.
     #
-    def list_keys(resource_group_name, account_name, custom_headers:nil)
-      response = list_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_keys(resource_group_name, account_name, custom_headers = nil)
+      response = list_keys_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -706,8 +692,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      list_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_keys_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      list_keys_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -724,18 +710,14 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, account_name, custom_headers:nil)
+    def list_keys_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -797,8 +779,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccountKeys] operation results.
     #
-    def regenerate_key(resource_group_name, account_name, key_name:nil, custom_headers:nil)
-      response = regenerate_key_async(resource_group_name, account_name, key_name:key_name, custom_headers:custom_headers).value!
+    def regenerate_key(resource_group_name, account_name, key_name = nil, custom_headers = nil)
+      response = regenerate_key_async(resource_group_name, account_name, key_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -819,8 +801,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_key_with_http_info(resource_group_name, account_name, key_name:nil, custom_headers:nil)
-      regenerate_key_async(resource_group_name, account_name, key_name:key_name, custom_headers:custom_headers).value!
+    def regenerate_key_with_http_info(resource_group_name, account_name, key_name = nil, custom_headers = nil)
+      regenerate_key_async(resource_group_name, account_name, key_name, custom_headers).value!
     end
 
     #
@@ -840,12 +822,9 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_key_async(resource_group_name, account_name, key_name:nil, custom_headers:nil)
+    def regenerate_key_async(resource_group_name, account_name, key_name = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -855,11 +834,12 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Mgmt::V2016_02_01_preview::Models::RegenerateKeyParameters.mapper()
@@ -921,8 +901,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [CognitiveServicesAccountEnumerateSkusResult] operation results.
     #
-    def list_skus(resource_group_name, account_name, custom_headers:nil)
-      response = list_skus_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_skus(resource_group_name, account_name, custom_headers = nil)
+      response = list_skus_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -940,8 +920,8 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_skus_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      list_skus_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_skus_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      list_skus_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -958,18 +938,14 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_skus_async(resource_group_name, account_name, custom_headers:nil)
+    def list_skus_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

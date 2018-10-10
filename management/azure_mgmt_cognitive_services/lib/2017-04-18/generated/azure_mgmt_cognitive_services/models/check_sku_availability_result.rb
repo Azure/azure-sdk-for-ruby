@@ -45,7 +45,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckSkuAvailabilityResult',
           type: {
@@ -53,7 +52,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CheckSkuAvailabilityResult',
             model_properties: {
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -61,7 +59,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -69,7 +66,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               sku_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuName',
                 type: {
@@ -77,7 +73,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               sku_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuAvailable',
                 type: {
@@ -85,7 +80,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -93,7 +87,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

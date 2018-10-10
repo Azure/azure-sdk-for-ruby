@@ -23,7 +23,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeyParameters',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
             class_name: 'RegenerateKeyParameters',
             model_properties: {
               key_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyName',
                 type: {
