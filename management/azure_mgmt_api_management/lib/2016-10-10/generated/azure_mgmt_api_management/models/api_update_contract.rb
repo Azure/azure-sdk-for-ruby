@@ -39,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiUpdateContract',
           type: {
@@ -47,7 +46,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'ApiUpdateContract',
             model_properties: {
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -55,7 +53,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               authentication_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authenticationSettings',
                 type: {
@@ -64,7 +61,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               subscription_key_parameter_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionKeyParameterNames',
                 type: {
@@ -73,7 +69,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -82,7 +77,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -91,7 +85,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -103,7 +96,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               service_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceUrl',
                 constraints: {
@@ -115,7 +107,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 constraints: {
@@ -127,13 +118,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               protocols: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocols',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApiProtocolContractElementType',
                       type: {
