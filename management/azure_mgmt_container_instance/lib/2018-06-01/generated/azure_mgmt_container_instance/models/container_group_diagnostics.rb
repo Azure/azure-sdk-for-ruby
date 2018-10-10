@@ -22,7 +22,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerGroupDiagnostics',
           type: {
@@ -30,7 +29,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ContainerGroupDiagnostics',
             model_properties: {
               log_analytics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'logAnalytics',
                 type: {

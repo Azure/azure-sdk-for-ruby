@@ -25,7 +25,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerExecRequest',
           type: {
@@ -33,7 +32,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
             class_name: 'ContainerExecRequest',
             model_properties: {
               command: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'command',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               terminal_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'terminalSize',
                 type: {

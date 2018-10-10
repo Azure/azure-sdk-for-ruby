@@ -26,7 +26,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerGroup_properties_instanceView',
           type: {
@@ -34,14 +33,12 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ContainerGroupPropertiesInstanceView',
             model_properties: {
               events: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'events',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EventElementType',
                       type: {
@@ -52,7 +49,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
