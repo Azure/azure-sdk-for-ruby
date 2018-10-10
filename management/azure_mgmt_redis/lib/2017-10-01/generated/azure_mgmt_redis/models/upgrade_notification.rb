@@ -29,7 +29,6 @@ module Azure::Redis::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradeNotification',
           type: {
@@ -37,7 +36,6 @@ module Azure::Redis::Mgmt::V2017_10_01
             class_name: 'UpgradeNotification',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -46,7 +44,6 @@ module Azure::Redis::Mgmt::V2017_10_01
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -55,14 +52,12 @@ module Azure::Redis::Mgmt::V2017_10_01
                 }
               },
               upsell_notification: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'upsellNotification',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
