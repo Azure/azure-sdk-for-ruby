@@ -25,7 +25,6 @@ module Azure::Redis::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisFirewallRuleCreateParameters',
           type: {
@@ -33,7 +32,6 @@ module Azure::Redis::Mgmt::V2017_10_01
             class_name: 'RedisFirewallRuleCreateParameters',
             model_properties: {
               start_ip: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.startIP',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Redis::Mgmt::V2017_10_01
                 }
               },
               end_ip: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.endIP',
                 type: {
