@@ -8,10 +8,6 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
-      MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
-      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
-      KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
-      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
       LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
       LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
@@ -19,10 +15,14 @@ module Azure::Profiles::Latest
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
       InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
-      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
       AzureRegions = Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
+      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
       Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
       DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
+      MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
+      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
+      KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
+      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
     end
 
     class TextAnalyticsDataClass
@@ -54,18 +54,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def multi_language_input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
-        end
-        def batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
-        end
-        def key_phrase_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
-        end
-        def key_phrase_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
-        end
         def language_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
         end
@@ -87,17 +75,29 @@ module Azure::Profiles::Latest
         def internal_error
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
         end
-        def error_response
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
-        end
         def azure_regions
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
+        end
+        def error_response
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
         end
         def input
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
         end
         def detected_language
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
+        end
+        def multi_language_input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
+        end
+        def batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
+        end
+        def key_phrase_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
+        end
+        def key_phrase_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
         end
       end
     end

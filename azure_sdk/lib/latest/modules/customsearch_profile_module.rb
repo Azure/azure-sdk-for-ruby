@@ -18,15 +18,15 @@ module Azure::Profiles::Latest
       SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
       SearchResultsAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
-      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
       Answer = Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
-      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
       TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
+      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
+      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
     end
 
@@ -87,9 +87,6 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
         end
-        def error_response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-        end
         def answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
         end
@@ -108,11 +105,14 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
         end
-        def response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
-        end
         def text_format
           Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
+        end
+        def error_response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
+        end
+        def response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
         end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
