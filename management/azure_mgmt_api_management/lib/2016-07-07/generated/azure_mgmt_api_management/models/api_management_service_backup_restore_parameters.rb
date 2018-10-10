@@ -36,7 +36,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceBackupRestoreParameters',
           type: {
@@ -44,7 +43,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ApiManagementServiceBackupRestoreParameters',
             model_properties: {
               storage_account: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageAccount',
                 type: {
@@ -52,7 +50,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               access_key: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'accessKey',
                 type: {
@@ -60,7 +57,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               container_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'containerName',
                 type: {
@@ -68,7 +64,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               backup_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'backupName',
                 type: {
