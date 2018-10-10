@@ -27,7 +27,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSku',
           type: {
@@ -35,7 +34,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
             class_name: 'ResourceSku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -43,7 +41,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {

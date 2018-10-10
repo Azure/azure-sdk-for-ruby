@@ -28,7 +28,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckServerNameAvailabilityResult',
           type: {
@@ -36,7 +35,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
             class_name: 'CheckServerNameAvailabilityResult',
             model_properties: {
               name_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -44,7 +42,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -52,7 +49,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

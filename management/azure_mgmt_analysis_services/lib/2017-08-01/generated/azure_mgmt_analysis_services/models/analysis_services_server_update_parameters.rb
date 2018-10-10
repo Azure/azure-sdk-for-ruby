@@ -49,7 +49,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AnalysisServicesServerUpdateParameters',
           type: {
@@ -57,7 +56,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
             class_name: 'AnalysisServicesServerUpdateParameters',
             model_properties: {
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -66,13 +64,11 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -82,7 +78,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               as_administrators: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.asAdministrators',
                 type: {
@@ -91,7 +86,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               backup_blob_container_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backupBlobContainerUri',
                 type: {
@@ -99,7 +93,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               gateway_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayDetails',
                 type: {
@@ -108,7 +101,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               ip_v4firewall_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipV4FirewallSettings',
                 type: {
@@ -117,7 +109,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               querypool_connection_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.querypoolConnectionMode',
                 default_value: 'All',

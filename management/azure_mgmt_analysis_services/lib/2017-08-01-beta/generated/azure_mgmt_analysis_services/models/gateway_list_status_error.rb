@@ -22,7 +22,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayListStatusError',
           type: {
@@ -30,7 +29,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
             class_name: 'GatewayListStatusError',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

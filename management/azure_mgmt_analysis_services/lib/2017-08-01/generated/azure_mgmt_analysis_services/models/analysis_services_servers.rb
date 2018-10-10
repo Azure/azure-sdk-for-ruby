@@ -23,7 +23,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AnalysisServicesServers',
           type: {
@@ -31,13 +30,11 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
             class_name: 'AnalysisServicesServers',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AnalysisServicesServerElementType',
                       type: {

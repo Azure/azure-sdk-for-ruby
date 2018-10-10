@@ -36,8 +36,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [AnalysisServicesServer] operation results.
     #
-    def get_details(resource_group_name, server_name, custom_headers:nil)
-      response = get_details_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def get_details(resource_group_name, server_name, custom_headers = nil)
+      response = get_details_async(resource_group_name, server_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -54,8 +54,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_details_with_http_info(resource_group_name, server_name, custom_headers:nil)
-      get_details_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def get_details_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      get_details_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -71,21 +71,14 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_details_async(resource_group_name, server_name, custom_headers:nil)
+    def get_details_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -146,8 +139,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [AnalysisServicesServer] operation results.
     #
-    def create(resource_group_name, server_name, server_parameters, custom_headers:nil)
-      response = create_async(resource_group_name, server_name, server_parameters, custom_headers:custom_headers).value!
+    def create(resource_group_name, server_name, server_parameters, custom_headers = nil)
+      response = create_async(resource_group_name, server_name, server_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -165,9 +158,9 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, server_name, server_parameters, custom_headers:nil)
+    def create_async(resource_group_name, server_name, server_parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_async(resource_group_name, server_name, server_parameters, custom_headers:custom_headers)
+      promise = begin_create_async(resource_group_name, server_name, server_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -194,8 +187,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, server_name, custom_headers:nil)
-      response = delete_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, server_name, custom_headers = nil)
+      response = delete_async(resource_group_name, server_name, custom_headers).value!
       nil
     end
 
@@ -211,9 +204,9 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, server_name, custom_headers:nil)
+    def delete_async(resource_group_name, server_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, server_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, server_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -242,8 +235,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [AnalysisServicesServer] operation results.
     #
-    def update(resource_group_name, server_name, server_update_parameters, custom_headers:nil)
-      response = update_async(resource_group_name, server_name, server_update_parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
+      response = update_async(resource_group_name, server_name, server_update_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -261,9 +254,9 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(resource_group_name, server_name, server_update_parameters, custom_headers:nil)
+    def update_async(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
       # Send request
-      promise = begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers:custom_headers)
+      promise = begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -290,8 +283,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def suspend(resource_group_name, server_name, custom_headers:nil)
-      response = suspend_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def suspend(resource_group_name, server_name, custom_headers = nil)
+      response = suspend_async(resource_group_name, server_name, custom_headers).value!
       nil
     end
 
@@ -307,9 +300,9 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def suspend_async(resource_group_name, server_name, custom_headers:nil)
+    def suspend_async(resource_group_name, server_name, custom_headers = nil)
       # Send request
-      promise = begin_suspend_async(resource_group_name, server_name, custom_headers:custom_headers)
+      promise = begin_suspend_async(resource_group_name, server_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -334,8 +327,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def resume(resource_group_name, server_name, custom_headers:nil)
-      response = resume_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def resume(resource_group_name, server_name, custom_headers = nil)
+      response = resume_async(resource_group_name, server_name, custom_headers).value!
       nil
     end
 
@@ -351,9 +344,9 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def resume_async(resource_group_name, server_name, custom_headers:nil)
+    def resume_async(resource_group_name, server_name, custom_headers = nil)
       # Send request
-      promise = begin_resume_async(resource_group_name, server_name, custom_headers:custom_headers)
+      promise = begin_resume_async(resource_group_name, server_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -378,8 +371,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [AnalysisServicesServers] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -394,8 +387,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -409,17 +402,13 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -472,8 +461,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [AnalysisServicesServers] operation results.
     #
-    def list(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list(custom_headers = nil)
+      response = list_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -485,8 +474,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
@@ -497,13 +486,12 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -556,8 +544,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [SkuEnumerationForNewResourceResult] operation results.
     #
-    def list_skus_for_new(custom_headers:nil)
-      response = list_skus_for_new_async(custom_headers:custom_headers).value!
+    def list_skus_for_new(custom_headers = nil)
+      response = list_skus_for_new_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -569,8 +557,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_skus_for_new_with_http_info(custom_headers:nil)
-      list_skus_for_new_async(custom_headers:custom_headers).value!
+    def list_skus_for_new_with_http_info(custom_headers = nil)
+      list_skus_for_new_async(custom_headers).value!
     end
 
     #
@@ -581,13 +569,12 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_skus_for_new_async(custom_headers:nil)
+    def list_skus_for_new_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -645,8 +632,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [SkuEnumerationForExistingResourceResult] operation results.
     #
-    def list_skus_for_existing(resource_group_name, server_name, custom_headers:nil)
-      response = list_skus_for_existing_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def list_skus_for_existing(resource_group_name, server_name, custom_headers = nil)
+      response = list_skus_for_existing_async(resource_group_name, server_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -663,8 +650,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_skus_for_existing_with_http_info(resource_group_name, server_name, custom_headers:nil)
-      list_skus_for_existing_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def list_skus_for_existing_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      list_skus_for_existing_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -680,21 +667,14 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_skus_for_existing_async(resource_group_name, server_name, custom_headers:nil)
+    def list_skus_for_existing_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -751,8 +731,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [GatewayListStatusLive] operation results.
     #
-    def list_gateway_status(resource_group_name, server_name, custom_headers:nil)
-      response = list_gateway_status_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def list_gateway_status(resource_group_name, server_name, custom_headers = nil)
+      response = list_gateway_status_async(resource_group_name, server_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -768,8 +748,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_gateway_status_with_http_info(resource_group_name, server_name, custom_headers:nil)
-      list_gateway_status_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def list_gateway_status_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      list_gateway_status_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -784,21 +764,14 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_gateway_status_async(resource_group_name, server_name, custom_headers:nil)
+    def list_gateway_status_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -855,8 +828,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # will be added to the HTTP request.
     #
     #
-    def dissociate_gateway(resource_group_name, server_name, custom_headers:nil)
-      response = dissociate_gateway_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def dissociate_gateway(resource_group_name, server_name, custom_headers = nil)
+      response = dissociate_gateway_async(resource_group_name, server_name, custom_headers).value!
       nil
     end
 
@@ -873,8 +846,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def dissociate_gateway_with_http_info(resource_group_name, server_name, custom_headers:nil)
-      dissociate_gateway_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def dissociate_gateway_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      dissociate_gateway_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -890,21 +863,14 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def dissociate_gateway_async(resource_group_name, server_name, custom_headers:nil)
+    def dissociate_gateway_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -951,8 +917,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [CheckServerNameAvailabilityResult] operation results.
     #
-    def check_name_availability(location, server_parameters, custom_headers:nil)
-      response = check_name_availability_async(location, server_parameters, custom_headers:custom_headers).value!
+    def check_name_availability(location, server_parameters, custom_headers = nil)
+      response = check_name_availability_async(location, server_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -968,8 +934,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(location, server_parameters, custom_headers:nil)
-      check_name_availability_async(location, server_parameters, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(location, server_parameters, custom_headers = nil)
+      check_name_availability_async(location, server_parameters, custom_headers).value!
     end
 
     #
@@ -984,7 +950,7 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(location, server_parameters, custom_headers:nil)
+    def check_name_availability_async(location, server_parameters, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'server_parameters is nil' if server_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -992,11 +958,12 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters.mapper()
@@ -1054,8 +1021,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # will be added to the HTTP request.
     #
     #
-    def list_operation_results(location, operation_id, custom_headers:nil)
-      response = list_operation_results_async(location, operation_id, custom_headers:custom_headers).value!
+    def list_operation_results(location, operation_id, custom_headers = nil)
+      response = list_operation_results_async(location, operation_id, custom_headers).value!
       nil
     end
 
@@ -1070,8 +1037,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_operation_results_with_http_info(location, operation_id, custom_headers:nil)
-      list_operation_results_async(location, operation_id, custom_headers:custom_headers).value!
+    def list_operation_results_with_http_info(location, operation_id, custom_headers = nil)
+      list_operation_results_async(location, operation_id, custom_headers).value!
     end
 
     #
@@ -1085,7 +1052,7 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_operation_results_async(location, operation_id, custom_headers:nil)
+    def list_operation_results_async(location, operation_id, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'operation_id is nil' if operation_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1093,7 +1060,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1139,8 +1105,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [OperationStatus] operation results.
     #
-    def list_operation_statuses(location, operation_id, custom_headers:nil)
-      response = list_operation_statuses_async(location, operation_id, custom_headers:custom_headers).value!
+    def list_operation_statuses(location, operation_id, custom_headers = nil)
+      response = list_operation_statuses_async(location, operation_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1155,8 +1121,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_operation_statuses_with_http_info(location, operation_id, custom_headers:nil)
-      list_operation_statuses_async(location, operation_id, custom_headers:custom_headers).value!
+    def list_operation_statuses_with_http_info(location, operation_id, custom_headers = nil)
+      list_operation_statuses_async(location, operation_id, custom_headers).value!
     end
 
     #
@@ -1170,7 +1136,7 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_operation_statuses_async(location, operation_id, custom_headers:nil)
+    def list_operation_statuses_async(location, operation_id, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'operation_id is nil' if operation_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1178,7 +1144,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1249,8 +1214,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [AnalysisServicesServer] operation results.
     #
-    def begin_create(resource_group_name, server_name, server_parameters, custom_headers:nil)
-      response = begin_create_async(resource_group_name, server_name, server_parameters, custom_headers:custom_headers).value!
+    def begin_create(resource_group_name, server_name, server_parameters, custom_headers = nil)
+      response = begin_create_async(resource_group_name, server_name, server_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1270,8 +1235,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, server_name, server_parameters, custom_headers:nil)
-      begin_create_async(resource_group_name, server_name, server_parameters, custom_headers:custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, server_name, server_parameters, custom_headers = nil)
+      begin_create_async(resource_group_name, server_name, server_parameters, custom_headers).value!
     end
 
     #
@@ -1290,26 +1255,21 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, server_name, server_parameters, custom_headers:nil)
+    def begin_create_async(resource_group_name, server_name, server_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, 'server_parameters is nil' if server_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer.mapper()
@@ -1379,8 +1339,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, server_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, server_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, server_name, custom_headers).value!
       nil
     end
 
@@ -1397,8 +1357,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, server_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -1414,21 +1374,14 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, server_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1478,8 +1431,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [AnalysisServicesServer] operation results.
     #
-    def begin_update(resource_group_name, server_name, server_update_parameters, custom_headers:nil)
-      response = begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers:custom_headers).value!
+    def begin_update(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
+      response = begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1498,8 +1451,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(resource_group_name, server_name, server_update_parameters, custom_headers:nil)
-      begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers:custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
+      begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers).value!
     end
 
     #
@@ -1517,26 +1470,21 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers:nil)
+    def begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, 'server_update_parameters is nil' if server_update_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters.mapper()
@@ -1606,8 +1554,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # will be added to the HTTP request.
     #
     #
-    def begin_suspend(resource_group_name, server_name, custom_headers:nil)
-      response = begin_suspend_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def begin_suspend(resource_group_name, server_name, custom_headers = nil)
+      response = begin_suspend_async(resource_group_name, server_name, custom_headers).value!
       nil
     end
 
@@ -1624,8 +1572,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_suspend_with_http_info(resource_group_name, server_name, custom_headers:nil)
-      begin_suspend_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def begin_suspend_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      begin_suspend_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -1641,21 +1589,14 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_suspend_async(resource_group_name, server_name, custom_headers:nil)
+    def begin_suspend_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1702,8 +1643,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     # will be added to the HTTP request.
     #
     #
-    def begin_resume(resource_group_name, server_name, custom_headers:nil)
-      response = begin_resume_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def begin_resume(resource_group_name, server_name, custom_headers = nil)
+      response = begin_resume_async(resource_group_name, server_name, custom_headers).value!
       nil
     end
 
@@ -1720,8 +1661,8 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_resume_with_http_info(resource_group_name, server_name, custom_headers:nil)
-      begin_resume_async(resource_group_name, server_name, custom_headers:custom_headers).value!
+    def begin_resume_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      begin_resume_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -1737,21 +1678,14 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_resume_async(resource_group_name, server_name, custom_headers:nil)
+    def begin_resume_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
-      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

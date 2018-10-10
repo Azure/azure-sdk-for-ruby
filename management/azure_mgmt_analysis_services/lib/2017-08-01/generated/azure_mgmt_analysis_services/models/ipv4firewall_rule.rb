@@ -28,7 +28,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IPv4FirewallRule',
           type: {
@@ -36,7 +35,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
             class_name: 'IPv4FirewallRule',
             model_properties: {
               firewall_rule_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'firewallRuleName',
                 type: {
@@ -44,7 +42,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               range_start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rangeStart',
                 type: {
@@ -52,7 +49,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               range_end: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rangeEnd',
                 type: {
