@@ -11,11 +11,11 @@ module Azure::Profiles::Latest
       Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
 
       module Models
+        Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
         Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
         SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
         LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-        Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
@@ -53,6 +53,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def location
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+          end
           def subscription
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
           end
@@ -64,9 +67,6 @@ module Azure::Profiles::Latest
           end
           def tenant_id_description
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-          end
-          def location
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
           end
           def tenant_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
