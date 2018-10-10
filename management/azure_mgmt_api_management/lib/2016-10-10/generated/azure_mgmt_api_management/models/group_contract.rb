@@ -44,7 +44,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupContract',
           type: {
@@ -52,7 +51,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'GroupContract',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -61,7 +59,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -73,7 +70,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 constraints: {
@@ -84,7 +80,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               built_in: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'builtIn',
@@ -93,7 +88,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -103,7 +97,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               external_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'externalId',
