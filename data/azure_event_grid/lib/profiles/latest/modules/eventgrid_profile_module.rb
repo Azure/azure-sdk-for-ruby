@@ -29,11 +29,11 @@ module Azure::EventGrid::Profiles::Latest
     ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
     MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
     ResourceActionFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
-    JobErrorDetail = Azure::EventGrid::V2018_01_01::Models::JobErrorDetail
+    MediaJobErrorDetail = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
     EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
-    JobError = Azure::EventGrid::V2018_01_01::Models::JobError
+    MediaJobError = Azure::EventGrid::V2018_01_01::Models::MediaJobError
     SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-    JobOutput = Azure::EventGrid::V2018_01_01::Models::JobOutput
+    MediaJobOutput = Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
     ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
     StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
     MediaLiveEventIngestHeartbeatEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIngestHeartbeatEventData
@@ -68,7 +68,7 @@ module Azure::EventGrid::Profiles::Latest
     IotHubDeviceDisconnectedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDisconnectedEventData
     ContainerRegistryImagePushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
     ContainerRegistryImageDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
-    JobOutputAsset = Azure::EventGrid::V2018_01_01::Models::JobOutputAsset
+    MediaJobOutputAsset = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputAsset
     MediaJobScheduledEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobScheduledEventData
     MediaJobProcessingEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobProcessingEventData
     MediaJobCancelingEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobCancelingEventData
@@ -187,20 +187,20 @@ module Azure::EventGrid::Profiles::Latest
     def resource_action_failure_data
       Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
     end
-    def job_error_detail
-      Azure::EventGrid::V2018_01_01::Models::JobErrorDetail
+    def media_job_error_detail
+      Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
     end
     def event_grid_event
       Azure::EventGrid::V2018_01_01::Models::EventGridEvent
     end
-    def job_error
-      Azure::EventGrid::V2018_01_01::Models::JobError
+    def media_job_error
+      Azure::EventGrid::V2018_01_01::Models::MediaJobError
     end
     def subscription_validation_response
       Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
     end
-    def job_output
-      Azure::EventGrid::V2018_01_01::Models::JobOutput
+    def media_job_output
+      Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
     end
     def container_registry_event_request
       Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
@@ -304,8 +304,8 @@ module Azure::EventGrid::Profiles::Latest
     def container_registry_image_deleted_event_data
       Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
     end
-    def job_output_asset
-      Azure::EventGrid::V2018_01_01::Models::JobOutputAsset
+    def media_job_output_asset
+      Azure::EventGrid::V2018_01_01::Models::MediaJobOutputAsset
     end
     def media_job_scheduled_event_data
       Azure::EventGrid::V2018_01_01::Models::MediaJobScheduledEventData

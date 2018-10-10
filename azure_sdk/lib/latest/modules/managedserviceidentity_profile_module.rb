@@ -7,20 +7,20 @@ require 'azure_mgmt_msi'
 module Azure::Profiles::Latest
   module ManagedServiceIdentity
     module Mgmt
-      UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::UserAssignedIdentities
       Operations = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Operations
+      UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::UserAssignedIdentities
 
       module Models
         Identity = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
         OperationListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationListResult
-        UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
         UserAssignedIdentitiesListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
+        UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
         Operation = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
         OperationDisplay = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
       end
 
       class ManagedServiceIdentityManagementClass
-        attr_reader :user_assigned_identities, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :user_assigned_identities, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -30,8 +30,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @user_assigned_identities = @client_0.user_assigned_identities
           @operations = @client_0.operations
+          @user_assigned_identities = @client_0.user_assigned_identities
 
           @model_classes = ModelClasses.new
         end
@@ -56,11 +56,11 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationListResult
           end
-          def user_assigned_identities
-            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
-          end
           def user_assigned_identities_list_result
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
+          end
+          def user_assigned_identities
+            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
           end
           def operation
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation

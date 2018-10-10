@@ -18,7 +18,7 @@ module Azure::EventGrid::V2018_01_01
       # 'Queued', 'Scheduled'
       attr_accessor :previous_state
 
-      # @return [JobOutput] Gets the output.
+      # @return [MediaJobOutput] Gets the output.
       attr_accessor :output
 
       # @return [Hash{String => String}] Gets the Job correlation data.
@@ -51,7 +51,7 @@ module Azure::EventGrid::V2018_01_01
                 serialized_name: 'output',
                 type: {
                   name: 'Composite',
-                  class_name: 'JobOutput'
+                  class_name: 'MediaJobOutput'
                 }
               },
               job_correlation_data: {

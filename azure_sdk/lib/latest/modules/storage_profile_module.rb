@@ -8,10 +8,10 @@ module Azure::Profiles::Latest
   module Storage
     module Mgmt
       Operations = Azure::Storage::Mgmt::V2018_03_01_preview::Operations
-      Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
       StorageAccounts = Azure::Storage::Mgmt::V2018_03_01_preview::StorageAccounts
-      BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
+      Skus = Azure::Storage::Mgmt::V2018_03_01_preview::Skus
       Usages = Azure::Storage::Mgmt::V2018_03_01_preview::Usages
+      BlobContainers = Azure::Storage::Mgmt::V2018_03_01_preview::BlobContainers
 
       module Models
         SKUCapability = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SKUCapability
@@ -38,23 +38,23 @@ module Azure::Profiles::Latest
         ListContainerItem = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ListContainerItem
         ReasonCode = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ReasonCode
         KeySource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::KeySource
-        State = Azure::Storage::Mgmt::V2018_03_01_preview::Models::State
         Bypass = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Bypass
-        DefaultAction = Azure::Storage::Mgmt::V2018_03_01_preview::Models::DefaultAction
-        SignedResourceTypes = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResourceTypes
-        HttpProtocol = Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
-        SignedResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
+        State = Azure::Storage::Mgmt::V2018_03_01_preview::Models::State
         Reason = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Reason
-        Permissions = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
-        PublicAccess = Azure::Storage::Mgmt::V2018_03_01_preview::Models::PublicAccess
+        SignedResourceTypes = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResourceTypes
+        DefaultAction = Azure::Storage::Mgmt::V2018_03_01_preview::Models::DefaultAction
         OperationDisplay = Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationDisplay
-        LeaseState = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseState
+        HttpProtocol = Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
         OperationListResult = Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationListResult
+        PublicAccess = Azure::Storage::Mgmt::V2018_03_01_preview::Models::PublicAccess
         LeaseStatus = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseStatus
-        ImmutabilityPolicyUpdateType = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicyUpdateType
+        Permissions = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
         LeaseDuration = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseDuration
         ImmutabilityPolicyState = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicyState
+        LeaseState = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseState
+        SignedResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
         ProxyResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ProxyResource
+        ImmutabilityPolicyUpdateType = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicyUpdateType
         Operation = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Operation
         Identity = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Identity
         TrackedResource = Azure::Storage::Mgmt::V2018_03_01_preview::Models::TrackedResource
@@ -86,15 +86,15 @@ module Azure::Profiles::Latest
         AccountStatus = Azure::Storage::Mgmt::V2018_03_01_preview::Models::AccountStatus
         KeyPermission = Azure::Storage::Mgmt::V2018_03_01_preview::Models::KeyPermission
         UsageUnit = Azure::Storage::Mgmt::V2018_03_01_preview::Models::UsageUnit
+        Action = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Action
         Services = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Services
         VirtualNetworkRule = Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
-        Action = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Action
         Dimension = Azure::Storage::Mgmt::V2018_03_01_preview::Models::Dimension
         MetricSpecification = Azure::Storage::Mgmt::V2018_03_01_preview::Models::MetricSpecification
       end
 
       class StorageManagementClass
-        attr_reader :operations, :skus, :storage_accounts, :blob_containers, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :storage_accounts, :skus, :usages, :blob_containers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -105,10 +105,10 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @skus = @client_0.skus
           @storage_accounts = @client_0.storage_accounts
-          @blob_containers = @client_0.blob_containers
+          @skus = @client_0.skus
           @usages = @client_0.usages
+          @blob_containers = @client_0.blob_containers
 
           @model_classes = ModelClasses.new
         end
@@ -199,47 +199,38 @@ module Azure::Profiles::Latest
           def key_source
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::KeySource
           end
-          def state
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::State
-          end
           def bypass
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Bypass
           end
-          def default_action
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::DefaultAction
-          end
-          def signed_resource_types
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResourceTypes
-          end
-          def http_protocol
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
-          end
-          def signed_resource
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
+          def state
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::State
           end
           def reason
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Reason
           end
-          def permissions
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
+          def signed_resource_types
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResourceTypes
           end
-          def public_access
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::PublicAccess
+          def default_action
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::DefaultAction
           end
           def operation_display
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationDisplay
           end
-          def lease_state
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseState
+          def http_protocol
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::HttpProtocol
           end
           def operation_list_result
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::OperationListResult
           end
+          def public_access
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::PublicAccess
+          end
           def lease_status
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseStatus
           end
-          def immutability_policy_update_type
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicyUpdateType
+          def permissions
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Permissions
           end
           def lease_duration
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseDuration
@@ -247,8 +238,17 @@ module Azure::Profiles::Latest
           def immutability_policy_state
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicyState
           end
+          def lease_state
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::LeaseState
+          end
+          def signed_resource
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::SignedResource
+          end
           def proxy_resource
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::ProxyResource
+          end
+          def immutability_policy_update_type
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicyUpdateType
           end
           def operation
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Operation
@@ -343,14 +343,14 @@ module Azure::Profiles::Latest
           def usage_unit
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::UsageUnit
           end
+          def action
+            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Action
+          end
           def services
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Services
           end
           def virtual_network_rule
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::VirtualNetworkRule
-          end
-          def action
-            Azure::Storage::Mgmt::V2018_03_01_preview::Models::Action
           end
           def dimension
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::Dimension

@@ -12,7 +12,7 @@ module Azure::EventGrid::V2018_01_01
 
       include MsRestAzure
 
-      # @return [Array<JobOutput>] Gets the Job outputs.
+      # @return [Array<MediaJobOutput>] Gets the Job outputs.
       attr_accessor :outputs
 
 
@@ -67,10 +67,10 @@ module Azure::EventGrid::V2018_01_01
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'JobOutputElementType',
+                      serialized_name: 'MediaJobOutputElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'JobOutput'
+                        class_name: 'MediaJobOutput'
                       }
                   }
                 }

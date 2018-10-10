@@ -39,7 +39,7 @@ module Azure::EventGrid::V2018_01_01
                 serialized_name: 'output',
                 type: {
                   name: 'Composite',
-                  class_name: 'JobOutput'
+                  class_name: 'MediaJobOutput'
                 }
               },
               job_correlation_data: {
