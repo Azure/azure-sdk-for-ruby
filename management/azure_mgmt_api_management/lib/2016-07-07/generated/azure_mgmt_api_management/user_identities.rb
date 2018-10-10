@@ -33,8 +33,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Array] operation results.
     #
-    def list_by_user(resource_group_name, service_name, uid, custom_headers:nil)
-      response = list_by_user_async(resource_group_name, service_name, uid, custom_headers:custom_headers).value!
+    def list_by_user(resource_group_name, service_name, uid, custom_headers = nil)
+      response = list_by_user_async(resource_group_name, service_name, uid, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_user_with_http_info(resource_group_name, service_name, uid, custom_headers:nil)
-      list_by_user_async(resource_group_name, service_name, uid, custom_headers:custom_headers).value!
+    def list_by_user_with_http_info(resource_group_name, service_name, uid, custom_headers = nil)
+      list_by_user_async(resource_group_name, service_name, uid, custom_headers).value!
     end
 
     #
@@ -66,22 +66,15 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_user_async(resource_group_name, service_name, uid, custom_headers:nil)
+    def list_by_user_async(resource_group_name, service_name, uid, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'uid is nil' if uid.nil?
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MaxLength': '256'" if !uid.nil? && uid.length > 256
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MinLength': '1'" if !uid.nil? && uid.length < 1
-      fail ArgumentError, "'uid' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !uid.nil? && uid.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -114,13 +107,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'UserIdentityContractElementType',
                     type: {

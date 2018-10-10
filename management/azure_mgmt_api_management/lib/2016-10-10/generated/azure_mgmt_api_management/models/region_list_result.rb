@@ -22,7 +22,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegionListResult',
           type: {
@@ -30,13 +29,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'RegionListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RegionContractElementType',
                       type: {
