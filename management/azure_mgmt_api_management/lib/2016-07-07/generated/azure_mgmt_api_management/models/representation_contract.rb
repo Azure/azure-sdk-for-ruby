@@ -26,7 +26,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RepresentationContract',
           type: {
@@ -34,7 +33,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'RepresentationContract',
             model_properties: {
               content_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'contentType',
                 type: {
@@ -42,7 +40,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               sample: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sample',
                 type: {

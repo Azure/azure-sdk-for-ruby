@@ -22,7 +22,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PatchParameters',
           type: {
@@ -30,7 +29,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'PatchParameters',
             model_properties: {
               raw_json: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'RawJson',
                 type: {
