@@ -31,7 +31,6 @@ module Azure::Redis::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ScheduleEntry',
           type: {
@@ -39,7 +38,6 @@ module Azure::Redis::Mgmt::V2016_04_01
             class_name: 'ScheduleEntry',
             model_properties: {
               day_of_week: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dayOfWeek',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               start_hour_utc: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'startHourUtc',
                 type: {
@@ -56,7 +53,6 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               maintenance_window: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maintenanceWindow',
                 type: {
