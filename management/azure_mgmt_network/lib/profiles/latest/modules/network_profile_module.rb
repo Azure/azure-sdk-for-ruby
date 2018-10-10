@@ -176,10 +176,10 @@ module Azure::Network::Profiles::Latest
       PatchRouteFilterRule = Azure::Network::Mgmt::V2018_01_01::Models::PatchRouteFilterRule
       PatchRouteFilter = Azure::Network::Mgmt::V2018_01_01::Models::PatchRouteFilter
       BgpServiceCommunity = Azure::Network::Mgmt::V2018_01_01::Models::BgpServiceCommunity
+      Error = Azure::Network::Mgmt::V2018_01_01::Models::Error
       VirtualNetworkPeering = Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkPeering
       VirtualNetworkGatewayConnectionListEntity = Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewayConnectionListEntity
       IPVersion = Azure::Network::Mgmt::V2018_01_01::Models::IPVersion
-      Error = Azure::Network::Mgmt::V2018_01_01::Models::Error
       PublicIPAddressSkuName = Azure::Network::Mgmt::V2018_01_01::Models::PublicIPAddressSkuName
       ApplicationGatewayBackendHealthServerHealth = Azure::Network::Mgmt::V2018_01_01::Models::ApplicationGatewayBackendHealthServerHealth
       ApplicationGatewaySslProtocol = Azure::Network::Mgmt::V2018_01_01::Models::ApplicationGatewaySslProtocol
@@ -324,14 +324,14 @@ module Azure::Network::Profiles::Latest
       ProbeProtocol = Azure::Network::Mgmt::V2018_01_01::Models::ProbeProtocol
       NetworkOperationStatus = Azure::Network::Mgmt::V2018_01_01::Models::NetworkOperationStatus
       VirtualNetworkGatewayType = Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewayType
-      Protocol = Azure::Network::Mgmt::V2018_01_01::Models::Protocol
       VpnType = Azure::Network::Mgmt::V2018_01_01::Models::VpnType
       VirtualNetworkGatewaySkuName = Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewaySkuName
       VirtualNetworkGatewaySkuTier = Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewaySkuTier
+      Protocol = Azure::Network::Mgmt::V2018_01_01::Models::Protocol
       ProcessorArchitecture = Azure::Network::Mgmt::V2018_01_01::Models::ProcessorArchitecture
-      Severity = Azure::Network::Mgmt::V2018_01_01::Models::Severity
       VirtualNetworkGatewayConnectionStatus = Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewayConnectionStatus
       VirtualNetworkGatewayConnectionType = Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewayConnectionType
+      Severity = Azure::Network::Mgmt::V2018_01_01::Models::Severity
     end
 
     #
@@ -808,6 +808,9 @@ module Azure::Network::Profiles::Latest
       def bgp_service_community
         Azure::Network::Mgmt::V2018_01_01::Models::BgpServiceCommunity
       end
+      def error
+        Azure::Network::Mgmt::V2018_01_01::Models::Error
+      end
       def virtual_network_peering
         Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkPeering
       end
@@ -816,9 +819,6 @@ module Azure::Network::Profiles::Latest
       end
       def ipversion
         Azure::Network::Mgmt::V2018_01_01::Models::IPVersion
-      end
-      def error
-        Azure::Network::Mgmt::V2018_01_01::Models::Error
       end
       def public_ipaddress_sku_name
         Azure::Network::Mgmt::V2018_01_01::Models::PublicIPAddressSkuName
@@ -1252,9 +1252,6 @@ module Azure::Network::Profiles::Latest
       def virtual_network_gateway_type
         Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewayType
       end
-      def protocol
-        Azure::Network::Mgmt::V2018_01_01::Models::Protocol
-      end
       def vpn_type
         Azure::Network::Mgmt::V2018_01_01::Models::VpnType
       end
@@ -1264,17 +1261,20 @@ module Azure::Network::Profiles::Latest
       def virtual_network_gateway_sku_tier
         Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewaySkuTier
       end
+      def protocol
+        Azure::Network::Mgmt::V2018_01_01::Models::Protocol
+      end
       def processor_architecture
         Azure::Network::Mgmt::V2018_01_01::Models::ProcessorArchitecture
-      end
-      def severity
-        Azure::Network::Mgmt::V2018_01_01::Models::Severity
       end
       def virtual_network_gateway_connection_status
         Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewayConnectionStatus
       end
       def virtual_network_gateway_connection_type
         Azure::Network::Mgmt::V2018_01_01::Models::VirtualNetworkGatewayConnectionType
+      end
+      def severity
+        Azure::Network::Mgmt::V2018_01_01::Models::Severity
       end
     end
   end
