@@ -16,6 +16,11 @@ module Azure::GraphRbac::V1_6
       # collection
       attr_accessor :additional_properties
 
+      # @return [Array<AppRole>] The collection of application roles that an
+      # application may declare. These roles can be assigned to users, groups
+      # or service principals.
+      attr_accessor :app_roles
+
       # @return [Boolean] Whether the application is available to other
       # tenants.
       attr_accessor :available_to_other_tenants
@@ -71,6 +76,21 @@ module Azure::GraphRbac::V1_6
                       serialized_name: 'ObjectElementType',
                       type: {
                         name: 'Object'
+                      }
+                  }
+                }
+              },
+              app_roles: {
+                required: false,
+                serialized_name: 'appRoles',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AppRoleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AppRole'
                       }
                   }
                 }

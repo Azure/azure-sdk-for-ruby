@@ -120,8 +120,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Permissions] operation results.
     #
-    def post(body = nil, custom_headers = nil)
-      response = post_async(body, custom_headers).value!
+    def grant(body = nil, custom_headers = nil)
+      response = grant_async(body, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -135,8 +135,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def post_with_http_info(body = nil, custom_headers = nil)
-      post_async(body, custom_headers).value!
+    def grant_with_http_info(body = nil, custom_headers = nil)
+      grant_async(body, custom_headers).value!
     end
 
     #
@@ -149,7 +149,7 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def post_async(body = nil, custom_headers = nil)
+    def grant_async(body = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 

@@ -7,11 +7,11 @@ module Azure::GraphRbac::V1_6
   #
   # The Graph RBAC Management Client
   #
-  class Objects
+  class SignedInUser
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Objects class.
+    # Creates and initializes a new instance of the SignedInUser class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,49 +22,39 @@ module Azure::GraphRbac::V1_6
     attr_reader :client
 
     #
-    # Gets the directory objects specified in a list of object IDs. You can also
-    # specify which resource collections (users, groups, etc.) should be searched
-    # by specifying the optional types parameter.
+    # Gets the details for the currently logged-in user.
     #
-    # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<DirectoryObject>] operation results.
+    # @return [User] operation results.
     #
-    def get_objects_by_object_ids(parameters, custom_headers = nil)
-      first_page = get_objects_by_object_ids_as_lazy(parameters, custom_headers)
-      first_page.get_all_items
+    def get(custom_headers = nil)
+      response = get_async(custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
-    # Gets the directory objects specified in a list of object IDs. You can also
-    # specify which resource collections (users, groups, etc.) should be searched
-    # by specifying the optional types parameter.
+    # Gets the details for the currently logged-in user.
     #
-    # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_objects_by_object_ids_with_http_info(parameters, custom_headers = nil)
-      get_objects_by_object_ids_async(parameters, custom_headers).value!
+    def get_with_http_info(custom_headers = nil)
+      get_async(custom_headers).value!
     end
 
     #
-    # Gets the directory objects specified in a list of object IDs. You can also
-    # specify which resource collections (users, groups, etc.) should be searched
-    # by specifying the optional types parameter.
+    # Gets the details for the currently logged-in user.
     #
-    # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_objects_by_object_ids_async(parameters, custom_headers = nil)
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
+    def get_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
@@ -74,15 +64,7 @@ module Azure::GraphRbac::V1_6
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = Azure::GraphRbac::V1_6::Models::GetObjectsParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '{tenantID}/getObjectsByObjectIds'
+      path_template = '{tenantID}/me'
 
       request_url = @base_url || @client.base_url
 
@@ -90,11 +72,10 @@ module Azure::GraphRbac::V1_6
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           query_params: {'api-version' => @client.api_version},
-          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -102,7 +83,90 @@ module Azure::GraphRbac::V1_6
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::GraphRbac::V1_6::Models::User.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get the list of directory objects that are owned by the user.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<DirectoryObject>] operation results.
+    #
+    def list_owned_objects(custom_headers = nil)
+      first_page = list_owned_objects_as_lazy(custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Get the list of directory objects that are owned by the user.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_owned_objects_with_http_info(custom_headers = nil)
+      list_owned_objects_async(custom_headers).value!
+    end
+
+    #
+    # Get the list of directory objects that are owned by the user.
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_owned_objects_async(custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{tenantID}/me/ownedObjects'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'tenantID' => @client.tenant_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -124,7 +188,7 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets AD group membership for the specified AD object IDs.
+    # Get the list of directory objects that are owned by the user.
     #
     # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -132,13 +196,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Array<DirectoryObject>] operation results.
     #
-    def get_objects_by_object_ids_next(next_link, custom_headers = nil)
-      response = get_objects_by_object_ids_next_async(next_link, custom_headers).value!
+    def list_owned_objects_next(next_link, custom_headers = nil)
+      response = list_owned_objects_next_async(next_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets AD group membership for the specified AD object IDs.
+    # Get the list of directory objects that are owned by the user.
     #
     # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -146,12 +210,12 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_objects_by_object_ids_next_with_http_info(next_link, custom_headers = nil)
-      get_objects_by_object_ids_next_async(next_link, custom_headers).value!
+    def list_owned_objects_next_with_http_info(next_link, custom_headers = nil)
+      list_owned_objects_next_async(next_link, custom_headers).value!
     end
 
     #
-    # Gets AD group membership for the specified AD object IDs.
+    # Get the list of directory objects that are owned by the user.
     #
     # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -159,7 +223,7 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_objects_by_object_ids_next_async(next_link, custom_headers = nil)
+    def list_owned_objects_next_async(next_link, custom_headers = nil)
       fail ArgumentError, 'next_link is nil' if next_link.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
@@ -182,7 +246,7 @@ module Azure::GraphRbac::V1_6
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -190,7 +254,7 @@ module Azure::GraphRbac::V1_6
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -212,23 +276,20 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Gets the directory objects specified in a list of object IDs. You can also
-    # specify which resource collections (users, groups, etc.) should be searched
-    # by specifying the optional types parameter.
+    # Get the list of directory objects that are owned by the user.
     #
-    # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DirectoryObjectListResult] which provide lazy access to pages of the
     # response.
     #
-    def get_objects_by_object_ids_as_lazy(parameters, custom_headers = nil)
-      response = get_objects_by_object_ids_async(parameters, custom_headers).value!
+    def list_owned_objects_as_lazy(custom_headers = nil)
+      response = list_owned_objects_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_link|
-          get_objects_by_object_ids_next_async(next_link, custom_headers)
+          list_owned_objects_next_async(next_link, custom_headers)
         end
         page
       end

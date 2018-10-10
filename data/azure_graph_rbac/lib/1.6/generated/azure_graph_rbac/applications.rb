@@ -472,11 +472,11 @@ module Azure::GraphRbac::V1_6
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DirectoryObjectListResult] operation results.
+    # @return [Array<DirectoryObject>] operation results.
     #
     def list_owners(application_object_id, custom_headers = nil)
-      response = list_owners_async(application_object_id, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_owners_as_lazy(application_object_id, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -565,8 +565,7 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -582,8 +581,7 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -599,8 +597,7 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -623,7 +620,7 @@ module Azure::GraphRbac::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters.mapper()
+      request_mapper = Azure::GraphRbac::V1_6::Models::AddOwnerParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1105,6 +1102,102 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DirectoryObjectListResult] operation results.
+    #
+    def list_owners_next(next_page_link, custom_headers = nil)
+      response = list_owners_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_owners_next_with_http_info(next_page_link, custom_headers = nil)
+      list_owners_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_owners_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Lists applications by filter parameters.
     #
     # @param filter [String] The filters to apply to the operation.
@@ -1120,6 +1213,31 @@ module Azure::GraphRbac::V1_6
         page = response.body
         page.next_method = Proc.new do |next_link|
           list_next_async(next_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param application_object_id [String] The object ID of the application for
+    # which to get owners.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DirectoryObjectListResult] which provide lazy access to pages of the
+    # response.
+    #
+    def list_owners_as_lazy(application_object_id, custom_headers = nil)
+      response = list_owners_async(application_object_id, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_owners_next_async(next_page_link, custom_headers)
         end
         page
       end
