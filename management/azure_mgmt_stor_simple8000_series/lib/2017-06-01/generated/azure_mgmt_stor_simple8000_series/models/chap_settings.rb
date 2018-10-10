@@ -31,7 +31,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ChapSettings',
           type: {
@@ -39,7 +38,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ChapSettings',
             model_properties: {
               initiator_user: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'initiatorUser',
                 type: {
@@ -47,7 +45,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               initiator_secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'initiatorSecret',
                 type: {
@@ -56,7 +53,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               target_user: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetUser',
                 type: {
@@ -64,7 +60,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               target_secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetSecret',
                 type: {

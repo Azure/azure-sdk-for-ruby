@@ -51,7 +51,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricFilter',
           type: {
@@ -59,7 +58,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'MetricFilter',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -68,7 +66,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -76,7 +73,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -84,7 +80,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               time_grain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -92,7 +87,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               category: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'category',
                 type: {
@@ -100,7 +94,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               dimensions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dimensions',
                 type: {

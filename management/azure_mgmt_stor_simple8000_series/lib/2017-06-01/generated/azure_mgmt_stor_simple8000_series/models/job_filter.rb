@@ -37,7 +37,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobFilter',
           type: {
@@ -45,7 +44,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'JobFilter',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -53,7 +51,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               job_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobType',
                 type: {
@@ -61,7 +58,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
