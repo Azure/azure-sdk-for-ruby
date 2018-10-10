@@ -18,6 +18,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [Sku] The SKU of the container registry.
       attr_accessor :sku
 
+      # @return [RegistryIdentity] The identity of the container registry.
+      attr_accessor :identity
+
       # @return [Boolean] The value that indicates whether the admin user is
       # enabled.
       attr_accessor :admin_user_enabled
@@ -35,7 +38,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryUpdateParameters',
           type: {
@@ -43,13 +45,11 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'RegistryUpdateParameters',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -59,7 +59,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -67,8 +66,15 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                   class_name: 'Sku'
                 }
               },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RegistryIdentity'
+                }
+              },
               admin_user_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.adminUserEnabled',
                 type: {
@@ -76,7 +82,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               storage_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccount',
                 type: {

@@ -15,6 +15,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [Sku] The SKU of the container registry.
       attr_accessor :sku
 
+      # @return [RegistryIdentity] The identity of the container registry.
+      attr_accessor :identity
+
       # @return [String] The URL that can be used to log into the container
       # registry.
       attr_accessor :login_server
@@ -47,7 +50,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Registry',
           type: {
@@ -55,7 +57,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Registry',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -64,7 +65,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,7 +73,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,7 +81,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -90,13 +88,11 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -106,7 +102,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -114,8 +109,15 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                   class_name: 'Sku'
                 }
               },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RegistryIdentity'
+                }
+              },
               login_server: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.loginServer',
@@ -124,7 +126,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               creation_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationDate',
@@ -133,7 +134,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -142,7 +142,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -152,7 +151,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               admin_user_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.adminUserEnabled',
                 default_value: false,
@@ -161,7 +159,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               storage_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccount',
                 type: {
