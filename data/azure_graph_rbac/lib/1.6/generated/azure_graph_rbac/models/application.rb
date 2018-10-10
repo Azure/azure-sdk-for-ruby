@@ -22,6 +22,11 @@ module Azure::GraphRbac::V1_6
       # @return [String] The application ID.
       attr_accessor :app_id
 
+      # @return [Array<AppRole>] The collection of application roles that an
+      # application may declare. These roles can be assigned to users, groups
+      # or service principals.
+      attr_accessor :app_roles
+
       # @return [Array<String>] The application permissions.
       attr_accessor :app_permissions
 
@@ -98,6 +103,21 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'appId',
                 type: {
                   name: 'String'
+                }
+              },
+              app_roles: {
+                required: false,
+                serialized_name: 'appRoles',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AppRoleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AppRole'
+                      }
+                  }
                 }
               },
               app_permissions: {

@@ -81,7 +81,7 @@ module Azure::GraphRbac::V1_6
                 }
               },
               include_directory_object_references: {
-                required: true,
+                required: false,
                 serialized_name: 'includeDirectoryObjectReferences',
                 type: {
                   name: 'Boolean'

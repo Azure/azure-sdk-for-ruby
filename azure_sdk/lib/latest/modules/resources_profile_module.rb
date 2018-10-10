@@ -53,15 +53,15 @@ module Azure::Profiles::Latest
         DeploymentOperationProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
         GenericResourceFilter = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
         DeploymentExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
-        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
         AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
+        ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
         Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
         ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
-        ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
-        GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
         DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
+        GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
         SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
         ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
+        ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
       end
 
       class ResourcesManagementClass
@@ -213,11 +213,11 @@ module Azure::Profiles::Latest
           def deployment_extended
             Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
           end
-          def resource_group_patchable
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
-          end
           def alias_path_type
             Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
+          end
+          def resource_group_export_result
+            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
           end
           def resource
             Azure::Resources::Mgmt::V2017_05_10::Models::Resource
@@ -225,20 +225,20 @@ module Azure::Profiles::Latest
           def resource_provider_operation_display_properties
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
           end
-          def resource_group_export_result
-            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
+          def deployment_mode
+            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
           end
           def generic_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
-          end
-          def deployment_mode
-            Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
           end
           def sub_resource
             Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
           end
           def resource_identity_type
             Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
+          end
+          def resource_group_patchable
+            Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
           end
         end
       end

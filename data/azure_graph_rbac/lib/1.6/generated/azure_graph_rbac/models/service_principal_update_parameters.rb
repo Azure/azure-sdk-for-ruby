@@ -8,7 +8,7 @@ module Azure::GraphRbac::V1_6
     #
     # Request parameters for creating a new service principal.
     #
-    class ServicePrincipalCreateParameters
+    class ServicePrincipalUpdateParameters
 
       include MsRestAzure
 
@@ -62,16 +62,16 @@ module Azure::GraphRbac::V1_6
 
 
       #
-      # Mapper for ServicePrincipalCreateParameters class as Ruby Hash.
+      # Mapper for ServicePrincipalUpdateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServicePrincipalCreateParameters',
+          serialized_name: 'ServicePrincipalUpdateParameters',
           type: {
             name: 'Composite',
-            class_name: 'ServicePrincipalCreateParameters',
+            class_name: 'ServicePrincipalUpdateParameters',
             model_properties: {
               additional_properties: {
                 required: false,
@@ -94,7 +94,7 @@ module Azure::GraphRbac::V1_6
                 }
               },
               app_id: {
-                required: true,
+                required: false,
                 serialized_name: 'appId',
                 type: {
                   name: 'String'

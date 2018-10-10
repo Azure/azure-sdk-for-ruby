@@ -22,6 +22,14 @@ module Azure::GraphRbac::V1_6
       # @return [String] The display name of the group.
       attr_accessor :display_name
 
+      # @return [Boolean] Whether the group is mail-enabled. Must be false.
+      # This is because only pure security groups can be created using the
+      # Graph API.
+      attr_accessor :mail_enabled
+
+      # @return [String] The mail alias for the group.
+      attr_accessor :mail_nickname
+
       # @return [Boolean] Whether the group is security-enable.
       attr_accessor :security_enabled
 
@@ -80,6 +88,20 @@ module Azure::GraphRbac::V1_6
               display_name: {
                 required: false,
                 serialized_name: 'displayName',
+                type: {
+                  name: 'String'
+                }
+              },
+              mail_enabled: {
+                required: false,
+                serialized_name: 'mailEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              mail_nickname: {
+                required: false,
+                serialized_name: 'mailNickname',
                 type: {
                   name: 'String'
                 }
