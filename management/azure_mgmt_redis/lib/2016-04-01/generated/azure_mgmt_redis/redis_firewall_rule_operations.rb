@@ -34,8 +34,8 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [RedisFirewallRule] operation results.
     #
-    def create_or_update(resource_group_name, cache_name, rule_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,8 +52,8 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, cache_name, rule_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'cache_name is nil' if cache_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
@@ -79,11 +79,12 @@ module Azure::Redis::Mgmt::V2016_04_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Redis::Mgmt::V2016_04_01::Models::RedisFirewallRule.mapper()
@@ -152,8 +153,8 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [RedisFirewallRule] operation results.
     #
-    def get(resource_group_name, cache_name, rule_name, custom_headers:nil)
-      response = get_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      response = get_async(resource_group_name, cache_name, rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -168,8 +169,8 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, cache_name, rule_name, custom_headers:nil)
-      get_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      get_async(resource_group_name, cache_name, rule_name, custom_headers).value!
     end
 
     #
@@ -183,7 +184,7 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, cache_name, rule_name, custom_headers:nil)
+    def get_async(resource_group_name, cache_name, rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'cache_name is nil' if cache_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
@@ -192,7 +193,6 @@ module Azure::Redis::Mgmt::V2016_04_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -247,8 +247,8 @@ module Azure::Redis::Mgmt::V2016_04_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, cache_name, rule_name, custom_headers:nil)
-      response = delete_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      response = delete_async(resource_group_name, cache_name, rule_name, custom_headers).value!
       nil
     end
 
@@ -263,8 +263,8 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, cache_name, rule_name, custom_headers:nil)
-      delete_async(resource_group_name, cache_name, rule_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      delete_async(resource_group_name, cache_name, rule_name, custom_headers).value!
     end
 
     #
@@ -278,7 +278,7 @@ module Azure::Redis::Mgmt::V2016_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, cache_name, rule_name, custom_headers:nil)
+    def delete_async(resource_group_name, cache_name, rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'cache_name is nil' if cache_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
@@ -287,7 +287,6 @@ module Azure::Redis::Mgmt::V2016_04_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
