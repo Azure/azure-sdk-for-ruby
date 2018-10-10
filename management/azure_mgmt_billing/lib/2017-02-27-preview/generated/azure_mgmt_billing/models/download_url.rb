@@ -27,7 +27,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DownloadUrl',
           type: {
@@ -35,7 +34,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
             class_name: 'DownloadUrl',
             model_properties: {
               expiry_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'expiryTime',
@@ -44,7 +42,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
