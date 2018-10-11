@@ -31,7 +31,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppNameAvailabilityInfo',
           type: {
@@ -39,7 +38,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
             class_name: 'AppNameAvailabilityInfo',
             model_properties: {
               name_available: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nameAvailable',
@@ -48,7 +46,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reason',
@@ -58,7 +55,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

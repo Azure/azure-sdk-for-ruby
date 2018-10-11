@@ -37,7 +37,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppPatch',
           type: {
@@ -45,13 +44,11 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'AppPatch',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -61,7 +58,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               application_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.applicationId',
@@ -70,7 +66,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 constraints: {
@@ -81,7 +76,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               subdomain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subdomain',
                 constraints: {
@@ -92,7 +86,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.template',
                 type: {
