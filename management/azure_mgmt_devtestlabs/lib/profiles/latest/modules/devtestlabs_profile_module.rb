@@ -19,7 +19,6 @@ module Azure::DevTestLabs::Profiles::Latest
     GalleryImages = Azure::DevTestLabs::Mgmt::V2016_05_15::GalleryImages
     NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
     PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
-    Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
     Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
     ServiceRunners = Azure::DevTestLabs::Mgmt::V2016_05_15::ServiceRunners
     Users = Azure::DevTestLabs::Mgmt::V2016_05_15::Users
@@ -29,6 +28,7 @@ module Azure::DevTestLabs::Profiles::Latest
     VirtualMachines = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachines
     VirtualMachineSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachineSchedules
     VirtualNetworks = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualNetworks
+    Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
 
     module Models
       ExternalSubnetFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ExternalSubnetFragment
@@ -157,12 +157,12 @@ module Azure::DevTestLabs::Profiles::Latest
       LabVirtualMachineFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineFragment
       NotificationChannel = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel
       NotificationChannelFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelFragment
-      Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
       PolicyFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
       Secret = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Secret
       ServiceRunner = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ServiceRunner
       User = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
       VirtualNetwork = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetwork
+      Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
       UserFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserFragment
       VirtualNetworkFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetworkFragment
       EnableStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EnableStatus
@@ -193,7 +193,7 @@ module Azure::DevTestLabs::Profiles::Latest
     # DevTestLabsManagementClass
     #
     class DevTestLabsManagementClass
-      attr_reader :provider_operations, :labs, :operations, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :policies, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :configurable, :base_url, :options, :model_classes
+      attr_reader :provider_operations, :labs, :operations, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :policies, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -226,7 +226,6 @@ module Azure::DevTestLabs::Profiles::Latest
         @gallery_images = @client_0.gallery_images
         @notification_channels = @client_0.notification_channels
         @policy_sets = @client_0.policy_sets
-        @policies = @client_0.policies
         @schedules = @client_0.schedules
         @service_runners = @client_0.service_runners
         @users = @client_0.users
@@ -236,6 +235,7 @@ module Azure::DevTestLabs::Profiles::Latest
         @virtual_machines = @client_0.virtual_machines
         @virtual_machine_schedules = @client_0.virtual_machine_schedules
         @virtual_networks = @client_0.virtual_networks
+        @policies = @client_0.policies
 
         @model_classes = ModelClasses.new
       end
@@ -634,9 +634,6 @@ module Azure::DevTestLabs::Profiles::Latest
       def notification_channel_fragment
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelFragment
       end
-      def policy
-        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
-      end
       def policy_fragment
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
       end
@@ -651,6 +648,9 @@ module Azure::DevTestLabs::Profiles::Latest
       end
       def virtual_network
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetwork
+      end
+      def policy
+        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
       end
       def user_fragment
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserFragment

@@ -23,7 +23,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SharedPublicIpAddressConfiguration',
           type: {
@@ -31,13 +30,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'SharedPublicIpAddressConfiguration',
             model_properties: {
               inbound_nat_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inboundNatRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InboundNatRuleElementType',
                       type: {
