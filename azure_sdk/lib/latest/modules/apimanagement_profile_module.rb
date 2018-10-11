@@ -7,12 +7,15 @@ require 'azure_mgmt_api_management'
 module Azure::Profiles::Latest
   module ApiManagement
     module Mgmt
+      Diagnostic = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Diagnostic
+      EmailTemplate = Azure::ApiManagement::Mgmt::V2018_06_01_preview::EmailTemplate
+      GroupUser = Azure::ApiManagement::Mgmt::V2018_06_01_preview::GroupUser
       IdentityProvider = Azure::ApiManagement::Mgmt::V2018_06_01_preview::IdentityProvider
       Notification = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Notification
+      Group = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Group
       NotificationRecipientUser = Azure::ApiManagement::Mgmt::V2018_06_01_preview::NotificationRecipientUser
       NotificationRecipientEmail = Azure::ApiManagement::Mgmt::V2018_06_01_preview::NotificationRecipientEmail
       NetworkStatus = Azure::ApiManagement::Mgmt::V2018_06_01_preview::NetworkStatus
-      Group = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Group
       OpenIdConnectProvider = Azure::ApiManagement::Mgmt::V2018_06_01_preview::OpenIdConnectProvider
       SignInSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::SignInSettings
       SignUpSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::SignUpSettings
@@ -57,13 +60,10 @@ module Azure::Profiles::Latest
       ApiIssue = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiIssue
       ApiIssueComment = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiIssueComment
       ApiIssueAttachment = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiIssueAttachment
-      AuthorizationServer = Azure::ApiManagement::Mgmt::V2018_06_01_preview::AuthorizationServer
+      Certificate = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Certificate
       Backend = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Backend
       ApiManagementOperations = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiManagementOperations
-      Certificate = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Certificate
-      Diagnostic = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Diagnostic
-      EmailTemplate = Azure::ApiManagement::Mgmt::V2018_06_01_preview::EmailTemplate
-      GroupUser = Azure::ApiManagement::Mgmt::V2018_06_01_preview::GroupUser
+      AuthorizationServer = Azure::ApiManagement::Mgmt::V2018_06_01_preview::AuthorizationServer
 
       module Models
         SubscriptionState = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionState
@@ -253,18 +253,18 @@ module Azure::Profiles::Latest
         SoapApiType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SoapApiType
         ApiType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiType
         SamplingType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingType
-        State = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
-        ProductState = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductState
         AlwaysLog = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AlwaysLog
+        ProductState = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductState
+        Resource = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
         AuthorizationMethod = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationMethod
         GrantType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GrantType
-        Resource = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
-        ClientAuthenticationMethod = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ClientAuthenticationMethod
         BearerTokenSendingMethod = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BearerTokenSendingMethod
-        BackendProtocol = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProtocol
+        ClientAuthenticationMethod = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ClientAuthenticationMethod
         HostnameType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::HostnameType
-        SkuType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SkuType
+        State = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
         VirtualNetworkType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::VirtualNetworkType
+        SkuType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SkuType
+        BackendProtocol = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProtocol
         NameAvailabilityReason = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NameAvailabilityReason
         GroupType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GroupType
         Confirmation = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Confirmation
@@ -281,7 +281,7 @@ module Azure::Profiles::Latest
       end
 
       class ApiManagementManagementClass
-        attr_reader :identity_provider, :notification, :notification_recipient_user, :notification_recipient_email, :network_status, :group, :open_id_connect_provider, :sign_in_settings, :sign_up_settings, :delegation_settings, :product, :product_api, :product_group, :product_subscriptions, :product_policy, :property, :quota_by_counter_keys, :quota_by_period_keys, :reports, :tag_resource, :tag_description, :operation_operations, :tenant_access, :tenant_access_git, :api_management_service, :user, :tenant_configuration, :user_subscription, :user_group, :api_version_set, :subscription, :api_export, :user_identities, :policy, :tag, :logger, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_issue, :api_issue_comment, :api_issue_attachment, :authorization_server, :backend, :api_management_operations, :certificate, :diagnostic, :email_template, :group_user, :configurable, :base_url, :options, :model_classes
+        attr_reader :diagnostic, :email_template, :group_user, :identity_provider, :notification, :group, :notification_recipient_user, :notification_recipient_email, :network_status, :open_id_connect_provider, :sign_in_settings, :sign_up_settings, :delegation_settings, :product, :product_api, :product_group, :product_subscriptions, :product_policy, :property, :quota_by_counter_keys, :quota_by_period_keys, :reports, :tag_resource, :tag_description, :operation_operations, :tenant_access, :tenant_access_git, :api_management_service, :user, :tenant_configuration, :user_subscription, :user_group, :api_version_set, :subscription, :api_export, :user_identities, :policy, :tag, :logger, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_issue, :api_issue_comment, :api_issue_attachment, :certificate, :backend, :api_management_operations, :authorization_server, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -291,12 +291,15 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @diagnostic = @client_0.diagnostic
+          @email_template = @client_0.email_template
+          @group_user = @client_0.group_user
           @identity_provider = @client_0.identity_provider
           @notification = @client_0.notification
+          @group = @client_0.group
           @notification_recipient_user = @client_0.notification_recipient_user
           @notification_recipient_email = @client_0.notification_recipient_email
           @network_status = @client_0.network_status
-          @group = @client_0.group
           @open_id_connect_provider = @client_0.open_id_connect_provider
           @sign_in_settings = @client_0.sign_in_settings
           @sign_up_settings = @client_0.sign_up_settings
@@ -341,13 +344,10 @@ module Azure::Profiles::Latest
           @api_issue = @client_0.api_issue
           @api_issue_comment = @client_0.api_issue_comment
           @api_issue_attachment = @client_0.api_issue_attachment
-          @authorization_server = @client_0.authorization_server
+          @certificate = @client_0.certificate
           @backend = @client_0.backend
           @api_management_operations = @client_0.api_management_operations
-          @certificate = @client_0.certificate
-          @diagnostic = @client_0.diagnostic
-          @email_template = @client_0.email_template
-          @group_user = @client_0.group_user
+          @authorization_server = @client_0.authorization_server
 
           @model_classes = ModelClasses.new
         end
@@ -927,14 +927,14 @@ module Azure::Profiles::Latest
           def sampling_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingType
           end
-          def state
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
+          def always_log
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AlwaysLog
           end
           def product_state
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductState
           end
-          def always_log
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AlwaysLog
+          def resource
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
           end
           def authorization_method
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationMethod
@@ -942,26 +942,26 @@ module Azure::Profiles::Latest
           def grant_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GrantType
           end
-          def resource
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
+          def bearer_token_sending_method
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BearerTokenSendingMethod
           end
           def client_authentication_method
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ClientAuthenticationMethod
           end
-          def bearer_token_sending_method
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BearerTokenSendingMethod
-          end
-          def backend_protocol
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProtocol
-          end
           def hostname_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::HostnameType
+          end
+          def state
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
+          end
+          def virtual_network_type
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::VirtualNetworkType
           end
           def sku_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SkuType
           end
-          def virtual_network_type
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::VirtualNetworkType
+          def backend_protocol
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProtocol
           end
           def name_availability_reason
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NameAvailabilityReason
