@@ -32,7 +32,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GraphPackage',
           type: {
@@ -40,13 +39,11 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'GraphPackage',
             model_properties: {
               nodes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nodes',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GraphNodeElementType',
                       type: {
@@ -57,13 +54,11 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               edges: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'edges',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GraphEdgeElementType',
                       type: {
@@ -74,13 +69,11 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               graph_parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'graphParameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GraphParameterElementType',
                       type: {
