@@ -21,10 +21,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       @@discriminatorMap["#Microsoft.Media.TransportStreamFormat"] = "TransportStreamFormat"
 
       def initialize
-        @odatatype = "Format"
+        @@odatatype = "Format"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The pattern of the file names for the generated output
       # files. The following macros are supported in the file name: {Basename}
@@ -43,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Format',
           type: {
@@ -53,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'Format',
             model_properties: {
               filename_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filenamePattern',
                 type: {

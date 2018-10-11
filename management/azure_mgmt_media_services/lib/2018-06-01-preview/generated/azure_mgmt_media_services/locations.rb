@@ -33,8 +33,8 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
     #
     # @return [EntityNameAvailabilityCheckOutput] operation results.
     #
-    def check_name_availability(location_name, parameters, custom_headers:nil)
-      response = check_name_availability_async(location_name, parameters, custom_headers:custom_headers).value!
+    def check_name_availability(location_name, parameters, custom_headers = nil)
+      response = check_name_availability_async(location_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(location_name, parameters, custom_headers:nil)
-      check_name_availability_async(location_name, parameters, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(location_name, parameters, custom_headers = nil)
+      check_name_availability_async(location_name, parameters, custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(location_name, parameters, custom_headers:nil)
+    def check_name_availability_async(location_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'location_name is nil' if location_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -74,11 +74,12 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::MediaServices::Mgmt::V2018_06_01_preview::Models::CheckNameAvailabilityInput.mapper()

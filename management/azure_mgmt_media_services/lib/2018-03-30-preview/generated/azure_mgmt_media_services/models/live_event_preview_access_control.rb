@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveEventPreviewAccessControl',
           type: {
@@ -30,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'LiveEventPreviewAccessControl',
             model_properties: {
               ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ip',
                 type: {

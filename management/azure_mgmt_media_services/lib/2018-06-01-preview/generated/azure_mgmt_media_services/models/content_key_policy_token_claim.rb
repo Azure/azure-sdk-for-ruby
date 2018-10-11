@@ -25,7 +25,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyTokenClaim',
           type: {
@@ -33,7 +32,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'ContentKeyPolicyTokenClaim',
             model_properties: {
               claim_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'claimType',
                 type: {
@@ -41,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               claim_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'claimValue',
                 type: {

@@ -19,10 +19,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       @@discriminatorMap["#Microsoft.Media.JobInputHttp"] = "JobInputHttp"
 
       def initialize
-        @odatatype = "JobInput"
+        @@odatatype = "JobInput"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] A label that is assigned to a JobInput, that is used
       # to satisfy a reference used in the Transform. For example, a Transform
@@ -39,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobInput',
           type: {
@@ -49,7 +48,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'JobInput',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
