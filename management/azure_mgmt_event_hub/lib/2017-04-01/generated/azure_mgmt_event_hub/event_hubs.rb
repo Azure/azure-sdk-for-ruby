@@ -38,8 +38,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Array<Eventhub>] operation results.
     #
-    def list_by_namespace(resource_group_name, namespace_name, skip:nil, top:nil, custom_headers:nil)
-      first_page = list_by_namespace_as_lazy(resource_group_name, namespace_name, skip:skip, top:top, custom_headers:custom_headers)
+    def list_by_namespace(resource_group_name, namespace_name, skip = nil, top = nil, custom_headers = nil)
+      first_page = list_by_namespace_as_lazy(resource_group_name, namespace_name, skip, top, custom_headers)
       first_page.get_all_items
     end
 
@@ -60,8 +60,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_namespace_with_http_info(resource_group_name, namespace_name, skip:nil, top:nil, custom_headers:nil)
-      list_by_namespace_async(resource_group_name, namespace_name, skip:skip, top:top, custom_headers:custom_headers).value!
+    def list_by_namespace_with_http_info(resource_group_name, namespace_name, skip = nil, top = nil, custom_headers = nil)
+      list_by_namespace_async(resource_group_name, namespace_name, skip, top, custom_headers).value!
     end
 
     #
@@ -81,23 +81,14 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_namespace_async(resource_group_name, namespace_name, skip:nil, top:nil, custom_headers:nil)
+    def list_by_namespace_async(resource_group_name, namespace_name, skip = nil, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !skip.nil? && skip > 1000
-      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -156,8 +147,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Eventhub] operation results.
     #
-    def create_or_update(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -175,8 +166,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers).value!
     end
 
     #
@@ -193,26 +184,22 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, namespace_name, event_hub_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub.mapper()
@@ -271,8 +258,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      response = delete_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
+      response = delete_async(resource_group_name, namespace_name, event_hub_name, custom_headers).value!
       nil
     end
 
@@ -288,8 +275,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      delete_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
+      delete_async(resource_group_name, namespace_name, event_hub_name, custom_headers).value!
     end
 
     #
@@ -304,21 +291,15 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
+    def delete_async(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -365,8 +346,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Eventhub] operation results.
     #
-    def get(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      response = get_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
+      response = get_async(resource_group_name, namespace_name, event_hub_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -382,8 +363,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      get_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
+      get_async(resource_group_name, namespace_name, event_hub_name, custom_headers).value!
     end
 
     #
@@ -398,21 +379,15 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
+    def get_async(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -469,8 +444,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Array<AuthorizationRule>] operation results.
     #
-    def list_authorization_rules(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      first_page = list_authorization_rules_as_lazy(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers)
+    def list_authorization_rules(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
+      first_page = list_authorization_rules_as_lazy(resource_group_name, namespace_name, event_hub_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -486,8 +461,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_authorization_rules_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
+    def list_authorization_rules_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
+      list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers).value!
     end
 
     #
@@ -502,21 +477,15 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
+    def list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -575,8 +544,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [AuthorizationRule] operation results.
     #
-    def create_or_update_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      response = create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers = nil)
+      response = create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -594,8 +563,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers = nil)
+      create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers).value!
     end
 
     #
@@ -612,28 +581,23 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+    def create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule.mapper()
@@ -694,8 +658,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [AuthorizationRule] operation results.
     #
-    def get_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      response = get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def get_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      response = get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -712,8 +676,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def get_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
     end
 
     #
@@ -729,23 +693,16 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+    def get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -802,8 +759,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # will be added to the HTTP request.
     #
     #
-    def delete_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      response = delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def delete_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      response = delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
       nil
     end
 
@@ -820,8 +777,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def delete_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
     end
 
     #
@@ -837,23 +794,16 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+    def delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -901,8 +851,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [AccessKeys] operation results.
     #
-    def list_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      response = list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def list_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      response = list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -919,8 +869,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def list_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
     end
 
     #
@@ -936,23 +886,16 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+    def list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1012,8 +955,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [AccessKeys] operation results.
     #
-    def regenerate_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      response = regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+    def regenerate_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers = nil)
+      response = regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1032,8 +975,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+    def regenerate_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers = nil)
+      regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers).value!
     end
 
     #
@@ -1051,28 +994,23 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+    def regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters.mapper()
@@ -1130,8 +1068,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [EventHubListResult] operation results.
     #
-    def list_by_namespace_next(next_page_link, custom_headers:nil)
-      response = list_by_namespace_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_namespace_next(next_page_link, custom_headers = nil)
+      response = list_by_namespace_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1145,8 +1083,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_namespace_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_namespace_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_namespace_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_namespace_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1159,12 +1097,11 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_namespace_next_async(next_page_link, custom_headers:nil)
+    def list_by_namespace_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1218,8 +1155,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [AuthorizationRuleListResult] operation results.
     #
-    def list_authorization_rules_next(next_page_link, custom_headers:nil)
-      response = list_authorization_rules_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_authorization_rules_next(next_page_link, custom_headers = nil)
+      response = list_authorization_rules_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1233,8 +1170,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_authorization_rules_next_with_http_info(next_page_link, custom_headers:nil)
-      list_authorization_rules_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_authorization_rules_next_with_http_info(next_page_link, custom_headers = nil)
+      list_authorization_rules_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1247,12 +1184,11 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_authorization_rules_next_async(next_page_link, custom_headers:nil)
+    def list_authorization_rules_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1314,12 +1250,12 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # @return [EventHubListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_namespace_as_lazy(resource_group_name, namespace_name, skip:nil, top:nil, custom_headers:nil)
-      response = list_by_namespace_async(resource_group_name, namespace_name, skip:skip, top:top, custom_headers:custom_headers).value!
+    def list_by_namespace_as_lazy(resource_group_name, namespace_name, skip = nil, top = nil, custom_headers = nil)
+      response = list_by_namespace_async(resource_group_name, namespace_name, skip, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_namespace_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_namespace_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1338,12 +1274,12 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # @return [AuthorizationRuleListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_authorization_rules_as_lazy(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      response = list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
+    def list_authorization_rules_as_lazy(resource_group_name, namespace_name, event_hub_name, custom_headers = nil)
+      response = list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_authorization_rules_next_async(next_page_link, custom_headers:custom_headers)
+          list_authorization_rules_next_async(next_page_link, custom_headers)
         end
         page
       end
