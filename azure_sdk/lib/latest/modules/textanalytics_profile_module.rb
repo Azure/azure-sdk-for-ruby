@@ -15,11 +15,11 @@ module Azure::Profiles::Latest
       KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResultItem
       KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
       LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
+      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
       LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
-      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
       InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
       AzureRegions = Azure::CognitiveServices::TextAnalytics::V2_0::Models::AzureRegions
@@ -75,6 +75,9 @@ module Azure::Profiles::Latest
         def language_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResultItem
         end
+        def error_response
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+        end
         def language_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
         end
@@ -86,9 +89,6 @@ module Azure::Profiles::Latest
         end
         def multi_language_batch_input
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
-        end
-        def error_response
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
         end
         def sentiment_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
