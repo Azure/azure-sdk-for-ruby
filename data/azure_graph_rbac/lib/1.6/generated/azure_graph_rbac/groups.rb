@@ -1046,6 +1046,89 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Remove a member from owners.
+    #
+    # @param object_id [String] The object ID of the group from which to remove the
+    # owner.
+    # @param owner_object_id [String] Owner object id
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def remove_owner(object_id, owner_object_id, custom_headers = nil)
+      response = remove_owner_async(object_id, owner_object_id, custom_headers).value!
+      nil
+    end
+
+    #
+    # Remove a member from owners.
+    #
+    # @param object_id [String] The object ID of the group from which to remove the
+    # owner.
+    # @param owner_object_id [String] Owner object id
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def remove_owner_with_http_info(object_id, owner_object_id, custom_headers = nil)
+      remove_owner_async(object_id, owner_object_id, custom_headers).value!
+    end
+
+    #
+    # Remove a member from owners.
+    #
+    # @param object_id [String] The object ID of the group from which to remove the
+    # owner.
+    # @param owner_object_id [String] Owner object id
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def remove_owner_async(object_id, owner_object_id, custom_headers = nil)
+      fail ArgumentError, 'object_id is nil' if object_id.nil?
+      fail ArgumentError, 'owner_object_id is nil' if owner_object_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{tenantID}/groups/{objectId}/$links/owners/{ownerObjectId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'objectId' => object_id,'ownerObjectId' => owner_object_id,'tenantID' => @client.tenant_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets a list of groups for the current tenant.
     #
     # @param next_link [String] Next link for the list operation.

@@ -7,13 +7,13 @@ require 'azure_mgmt_mobile_engagement'
 module Azure::Profiles::Latest
   module MobileEngagement
     module Mgmt
-      ExportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ExportTasks
-      ImportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ImportTasks
-      AppCollections = Azure::MobileEngagement::Mgmt::V2014_12_01::AppCollections
       Apps = Azure::MobileEngagement::Mgmt::V2014_12_01::Apps
       SupportedPlatforms = Azure::MobileEngagement::Mgmt::V2014_12_01::SupportedPlatforms
       Campaigns = Azure::MobileEngagement::Mgmt::V2014_12_01::Campaigns
       Devices = Azure::MobileEngagement::Mgmt::V2014_12_01::Devices
+      ExportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ExportTasks
+      ImportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ImportTasks
+      AppCollections = Azure::MobileEngagement::Mgmt::V2014_12_01::AppCollections
 
       module Models
         ProvisioningStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
@@ -108,7 +108,7 @@ module Azure::Profiles::Latest
       end
 
       class MobileEngagementManagementClass
-        attr_reader :export_tasks, :import_tasks, :app_collections, :apps, :supported_platforms, :campaigns, :devices, :configurable, :base_url, :options, :model_classes
+        attr_reader :apps, :supported_platforms, :campaigns, :devices, :export_tasks, :import_tasks, :app_collections, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -118,13 +118,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @export_tasks = @client_0.export_tasks
-          @import_tasks = @client_0.import_tasks
-          @app_collections = @client_0.app_collections
           @apps = @client_0.apps
           @supported_platforms = @client_0.supported_platforms
           @campaigns = @client_0.campaigns
           @devices = @client_0.devices
+          @export_tasks = @client_0.export_tasks
+          @import_tasks = @client_0.import_tasks
+          @app_collections = @client_0.app_collections
 
           @model_classes = ModelClasses.new
         end
