@@ -7,6 +7,9 @@ require 'azure_mgmt_media_services'
 module Azure::Profiles::Latest
   module MediaServices
     module Mgmt
+      Mediaservices = Azure::MediaServices::Mgmt::V2018_03_30_preview::Mediaservices
+      Assets = Azure::MediaServices::Mgmt::V2018_03_30_preview::Assets
+      ContentKeyPolicies = Azure::MediaServices::Mgmt::V2018_03_30_preview::ContentKeyPolicies
       Transforms = Azure::MediaServices::Mgmt::V2018_03_30_preview::Transforms
       Operations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Operations
       Jobs = Azure::MediaServices::Mgmt::V2018_03_30_preview::Jobs
@@ -16,9 +19,6 @@ module Azure::Profiles::Latest
       StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_03_30_preview::StreamingEndpoints
       LiveEvents = Azure::MediaServices::Mgmt::V2018_03_30_preview::LiveEvents
       Locations = Azure::MediaServices::Mgmt::V2018_03_30_preview::Locations
-      Mediaservices = Azure::MediaServices::Mgmt::V2018_03_30_preview::Mediaservices
-      Assets = Azure::MediaServices::Mgmt::V2018_03_30_preview::Assets
-      ContentKeyPolicies = Azure::MediaServices::Mgmt::V2018_03_30_preview::ContentKeyPolicies
 
       module Models
         StorageAccountType = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StorageAccountType
@@ -141,9 +141,9 @@ module Azure::Profiles::Latest
         StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StandardEncoderPreset
         VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoAnalyzerPreset
         TransportStreamFormat = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransportStreamFormat
-        VideoOverlay = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
         Transform = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Transform
         JobInputClip = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputClip
+        JobInputs = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputs
         JobInputAsset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputAsset
         JobInputHttp = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputHttp
         JobOutputAsset = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobOutputAsset
@@ -184,7 +184,7 @@ module Azure::Profiles::Latest
         LiveEventResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::LiveEventResourceState
         StreamOptionsFlag = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamOptionsFlag
         StreamingEndpointResourceState = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
-        JobInputs = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputs
+        VideoOverlay = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
         ProxyResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
         TrackedResource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TrackedResource
         Resource = Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Resource
@@ -198,7 +198,7 @@ module Azure::Profiles::Latest
       end
 
       class MediaServicesManagementClass
-        attr_reader :transforms, :operations, :jobs, :streaming_policies, :streaming_locators, :live_outputs, :streaming_endpoints, :live_events, :locations, :mediaservices, :assets, :content_key_policies, :configurable, :base_url, :options, :model_classes
+        attr_reader :mediaservices, :assets, :content_key_policies, :transforms, :operations, :jobs, :streaming_policies, :streaming_locators, :live_outputs, :streaming_endpoints, :live_events, :locations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -208,6 +208,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @mediaservices = @client_0.mediaservices
+          @assets = @client_0.assets
+          @content_key_policies = @client_0.content_key_policies
           @transforms = @client_0.transforms
           @operations = @client_0.operations
           @jobs = @client_0.jobs
@@ -217,9 +220,6 @@ module Azure::Profiles::Latest
           @streaming_endpoints = @client_0.streaming_endpoints
           @live_events = @client_0.live_events
           @locations = @client_0.locations
-          @mediaservices = @client_0.mediaservices
-          @assets = @client_0.assets
-          @content_key_policies = @client_0.content_key_policies
 
           @model_classes = ModelClasses.new
         end
@@ -598,14 +598,14 @@ module Azure::Profiles::Latest
           def transport_stream_format
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::TransportStreamFormat
           end
-          def video_overlay
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
-          end
           def transform
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::Transform
           end
           def job_input_clip
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputClip
+          end
+          def job_inputs
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputs
           end
           def job_input_asset
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputAsset
@@ -727,8 +727,8 @@ module Azure::Profiles::Latest
           def streaming_endpoint_resource_state
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::StreamingEndpointResourceState
           end
-          def job_inputs
-            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::JobInputs
+          def video_overlay
+            Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::VideoOverlay
           end
           def proxy_resource
             Azure::MediaServices::Mgmt::V2018_03_30_preview::Models::ProxyResource
