@@ -27,7 +27,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingErrorManagement',
           type: {
@@ -35,7 +34,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'ConnectorMappingErrorManagement',
             model_properties: {
               error_management_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'errorManagementType',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               error_limit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorLimit',
                 type: {

@@ -54,7 +54,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorResourceFormat',
           type: {
@@ -62,7 +61,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'ConnectorResourceFormat',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -71,7 +69,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,7 +77,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -89,7 +85,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               connector_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.connectorId',
@@ -98,7 +93,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               connector_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectorName',
                 type: {
@@ -106,7 +100,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               connector_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.connectorType',
                 type: {
@@ -114,7 +107,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -122,7 +114,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -130,13 +121,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               connector_properties: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.connectorProperties',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -146,7 +135,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -155,7 +143,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -164,7 +151,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -174,7 +160,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.tenantId',
@@ -183,7 +168,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               is_internal: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isInternal',
                 type: {

@@ -30,7 +30,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HubBillingInfoFormat',
           type: {
@@ -38,7 +37,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'HubBillingInfoFormat',
             model_properties: {
               sku_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuName',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               min_units: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minUnits',
                 constraints: {
@@ -58,7 +55,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               max_units: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxUnits',
                 constraints: {

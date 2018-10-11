@@ -25,7 +25,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RelationshipTypeMapping',
           type: {
@@ -33,13 +32,11 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'RelationshipTypeMapping',
             model_properties: {
               field_mappings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'fieldMappings',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RelationshipTypeFieldMappingElementType',
                       type: {

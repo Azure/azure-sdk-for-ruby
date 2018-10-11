@@ -123,7 +123,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InteractionResourceFormat',
           type: {
@@ -131,7 +130,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'InteractionResourceFormat',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -140,7 +138,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -149,7 +146,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -158,19 +154,16 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               attributes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.attributes',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -182,13 +175,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -198,13 +189,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -214,19 +203,16 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               localized_attributes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localizedAttributes',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HashElementType',
                       type: {
                         name: 'Dictionary',
                         value: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -238,7 +224,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               small_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.smallImage',
                 type: {
@@ -246,7 +231,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               medium_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.mediumImage',
                 type: {
@@ -254,7 +238,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               large_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.largeImage',
                 type: {
@@ -262,7 +245,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               api_entity_set_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.apiEntitySetName',
                 type: {
@@ -270,7 +252,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               entity_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.entityType',
                 type: {
@@ -279,13 +260,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               fields: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fields',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PropertyDefinitionElementType',
                       type: {
@@ -296,7 +275,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               instances_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.instancesCount',
                 type: {
@@ -304,7 +282,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               last_changed_utc: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastChangedUtc',
@@ -313,7 +290,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -322,7 +298,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               schema_item_type_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.schemaItemTypeLink',
                 type: {
@@ -330,7 +305,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.tenantId',
@@ -339,7 +313,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               timestamp_field_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timestampFieldName',
                 type: {
@@ -347,7 +320,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               type_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.typeName',
                 type: {
@@ -355,13 +327,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               id_property_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idPropertyNames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -371,13 +341,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               participant_profiles: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.participantProfiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParticipantElementType',
                       type: {
@@ -388,7 +356,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               primary_participant_profile_property_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primaryParticipantProfilePropertyName',
                 type: {
@@ -396,14 +363,12 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               data_source_precedence_rules: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.dataSourcePrecedenceRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataSourcePrecedenceElementType',
                       type: {
@@ -414,7 +379,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               interaction_resource_format_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultDataSource.name',
@@ -423,7 +387,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               data_source_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultDataSource.dataSourceType',
@@ -432,7 +395,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultDataSource.status',
@@ -441,7 +403,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               interaction_resource_format_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultDataSource.id',
@@ -450,7 +411,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               data_source_reference_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultDataSource.dataSourceReferenceId',
@@ -459,7 +419,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               is_activity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isActivity',
                 type: {

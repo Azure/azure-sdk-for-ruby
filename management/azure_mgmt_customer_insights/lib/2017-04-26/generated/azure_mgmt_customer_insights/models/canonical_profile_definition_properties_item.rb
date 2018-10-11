@@ -36,7 +36,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CanonicalProfileDefinition_propertiesItem',
           type: {
@@ -44,7 +43,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'CanonicalProfileDefinitionPropertiesItem',
             model_properties: {
               profile_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'profileName',
                 type: {
@@ -52,7 +50,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               profile_property_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'profilePropertyName',
                 type: {
@@ -60,7 +57,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               rank: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rank',
                 type: {
@@ -68,7 +64,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -76,7 +71,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

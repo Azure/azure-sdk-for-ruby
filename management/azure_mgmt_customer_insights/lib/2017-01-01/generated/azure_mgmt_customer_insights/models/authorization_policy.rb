@@ -32,7 +32,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AuthorizationPolicy',
           type: {
@@ -40,7 +39,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'AuthorizationPolicy',
             model_properties: {
               policy_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'policyName',
@@ -49,7 +47,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               permissions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'permissions',
                 constraints: {
@@ -58,7 +55,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PermissionTypesElementType',
                       type: {
@@ -69,7 +65,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -77,7 +72,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 type: {
