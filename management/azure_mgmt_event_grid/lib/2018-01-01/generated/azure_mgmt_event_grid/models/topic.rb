@@ -27,7 +27,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Topic',
           type: {
@@ -35,7 +34,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
             class_name: 'Topic',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,7 +42,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -53,7 +50,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,7 +58,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -70,13 +65,11 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -86,7 +79,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -95,7 +87,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               endpoint: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endpoint',

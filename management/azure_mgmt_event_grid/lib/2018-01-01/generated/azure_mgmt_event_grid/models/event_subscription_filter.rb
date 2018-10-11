@@ -41,7 +41,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionFilter',
           type: {
@@ -49,7 +48,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
             class_name: 'EventSubscriptionFilter',
             model_properties: {
               subject_begins_with: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subjectBeginsWith',
                 type: {
@@ -57,7 +55,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               subject_ends_with: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subjectEndsWith',
                 type: {
@@ -65,13 +62,11 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               included_event_types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'includedEventTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -81,7 +76,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               is_subject_case_sensitive: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isSubjectCaseSensitive',
                 default_value: false,

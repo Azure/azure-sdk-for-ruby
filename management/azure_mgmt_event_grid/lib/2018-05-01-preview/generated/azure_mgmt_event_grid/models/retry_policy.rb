@@ -25,7 +25,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RetryPolicy',
           type: {
@@ -33,7 +32,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'RetryPolicy',
             model_properties: {
               max_delivery_attempts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDeliveryAttempts',
                 type: {
@@ -41,7 +39,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               event_time_to_live_in_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventTimeToLiveInMinutes',
                 type: {
