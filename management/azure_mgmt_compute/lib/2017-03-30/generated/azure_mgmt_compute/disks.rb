@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2017_03_30
   #
-  # Disks
+  # Compute Client
   #
   class Disks
     include MsRestAzure
@@ -527,7 +527,7 @@ module Azure::Compute::Mgmt::V2017_03_30
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise

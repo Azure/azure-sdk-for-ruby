@@ -8,12 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the dsc node configuration.
     #
-    class DscNodeConfiguration
+    class DscNodeConfiguration < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets or sets the node configuration name.
-      attr_accessor :name
 
       # @return [DateTime] Gets or sets the last modified time.
       attr_accessor :last_modified_time
@@ -24,9 +21,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [DscConfigurationAssociationProperty] Gets or sets the
       # configuration of the node.
       attr_accessor :configuration
-
-      # @return [String] Gets or sets the id of the resource.
-      attr_accessor :id
 
 
       #
@@ -42,10 +36,29 @@ module Azure::Automation::Mgmt::V2015_10_31
             name: 'Composite',
             class_name: 'DscNodeConfiguration',
             model_properties: {
+              id: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -73,14 +86,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 type: {
                   name: 'Composite',
                   class_name: 'DscConfigurationAssociationProperty'
-                }
-              },
-              id: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
                 }
               }
             }

@@ -22,7 +22,8 @@ module Azure::Compute::Mgmt::V2015_06_15
       # to the virtual machine.
       attr_accessor :latest_model_applied
 
-      # @return [VirtualMachineInstanceView] The virtual machine instance view.
+      # @return [VirtualMachineScaleSetVMInstanceView] The virtual machine
+      # instance view.
       attr_accessor :instance_view
 
       # @return [HardwareProfile] Specifies the hardware settings for the
@@ -186,7 +187,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 serialized_name: 'properties.instanceView',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualMachineInstanceView'
+                  class_name: 'VirtualMachineScaleSetVMInstanceView'
                 }
               },
               hardware_profile: {

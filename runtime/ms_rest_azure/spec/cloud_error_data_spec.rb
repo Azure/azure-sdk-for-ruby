@@ -19,6 +19,30 @@ module MsRestAzure
       expect(data.code).to eq('the code')
       expect(data.message).to eq('the message')
     end
+
+    it 'should deserialize CloudErrorData with additionalInfo correctly' do
+      response_json = {
+          'code' => 'the code',
+          'message' => 'the message',
+          'target' => 'the target',
+          'additionalInfo' => [
+              {
+                  'type' => 'someErrorType',
+                  'info' => {
+                      'someProperty' => 'some value'
+                  }
+              }
+          ]
+      }
+
+      data = CloudErrorData.deserialize_object(response_json)
+
+      expect(data.code).to eq('the code')
+      expect(data.message).to eq('the message')
+      expect(data.target).to eq('the target')
+      expect(data.additionalInfo[0].type).to eq('someErrorType')
+      expect(data.additionalInfo[0].info['someProperty']).to eq('some value')
+    end
   end
 
 end

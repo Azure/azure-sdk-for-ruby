@@ -1,3 +1,118 @@
+## 2018.10.08 - Azure Ruby SDK Release
+* Released 0.18.7 of azure_sdk. Updated azure_sdk to include new profile V2018_03_01 & updated the existing profile 
+  V2017_03_09 to include Authorization & KeyVault. Also, updated new versions included in azure_mgmt_media_services.
+* Released azure_mgmt_authorization, azure_mgmt_locks, azure_mgmt_policy, azure_mgmt_compute, azure_mgmt_key_vault, 
+  azure_mgmt_network, azure_mgmt_dns, azure_mgmt_resources, azure_mgmt_subscriptions, azure_mgmt_storage, azure_mgmt_web,
+  azure_mgmt_links, azure_mgmt_features & azure_key_vault gems with minor version updates to include latest changes.
+* Released 0.17.2 version of azure_mgmt_media_services to include new version 2018-07-01.
+
+## 2018.09.28 - Azure Ruby SDK Release
+* Released 0.17.2 version of azure_mgmt_storage to include latest changes to 2018-07-01 version.
+* Released 0.18.6 version of azure_sdk to include the latest changes in azure_mgmt_storage.
+
+## 2018.09.21 - Azure Ruby SDK Release
+* Released 0.17.2 version of azure_mgmt_signalr to include the latest changes to 2018-03-01-preview version.
+* Released 0.18.5 version of azure_sdk to include the latest changes in azure_mgmt_signalr. 
+
+## 2018.09.18 - Azure Ruby SDK Release
+* Released 0.17.3 version of azure_mgmt_network to include the latest version of 2018-08-01.
+* Released 0.18.4 version of azure_sdk to include the latest version changes in azure_mgmt_network.
+
+## 2018.09.17 - Azure Ruby SDK Release
+* Released 0.18.2 version of azure_mgmt_compute & 0.18.3 version of azure_sdk to include the latest changes to gallery.json.
+
+## 2018.09.11 - Azure Ruby SDK Release
+* Released a minor version update of some management gems. In the resource class, a method resource_group is introduced.
+  Refer [Issue #1615](https://github.com/Azure/azure-sdk-for-ruby/issues/1615) for further details.
+
+## 2018.08.29 - Azure Ruby SDK Release
+* Released 0.17.1 version of azure_mgmt_network to include new version 2018-07-01.
+* Released Rollup gem 0.18.2 to include latest version of Management Network.
+
+## 2018.08.18 - Azure Ruby SDK Release
+* Released Rollup gem 0.18.1 to fix [Issue# 1437](https://github.com/Azure/azure-sdk-for-ruby/issues/1437) and add missing azure_mgmt_signalr dependency to its gemspec file. 
+
+## 2018.07.31 - Azure Ruby SDK Release
+* Released Rollup gem, all management gems and data plane gems with all the latest changes. 
+* This specifically includes updates to the compute gem with versions of 2018-04-01 & 2018-06-01 versions.
+* The major versions of all the gems have been updated.
+* Runtime ms_rest_azure (0.11.0) has been released and all gems point to the latest version.
+
+## 2018.06.27 - Azure Ruby SDK Release
+* Released 0.16.3 version of azure_mgmt_storage gem. This includes new features: HDFS & Static Website.
+
+## 2018.06.20 - Azure Ruby SDK Release
+* Released 0.16.0 version of azure_mgmt_security gem. This includes the 2017-08-01-preview version.
+* Released 0.16.0 version of azure_key_vault data plane gem.
+* Released 0.16.0 version of azure_mgmt_dev_spaces gem.
+* Released 0.16.0 version of azure_mgmt_iot_central gem. 
+* Released 0.17.11 version of azure_sdk  rollup gem. This includes reference to the new azure_mgmt_security & azure_key_vault gems.
+
+## 2018.06.15 - Azure Ruby SDK Release
+* Released 0.16.1 version of azure_mgmt_monitor gem. This includes new versions and additions to the old versions.
+* Released 0.17.10 version of azure_sdk  rollup gem. This includes reference to the changes in the azure_mgmt_monitor gem. 
+
+## 2018.06.06 - Azure Ruby SDK Release
+* Released 0.16.0 version of azure_mgmt_policy_insights gem.
+* Released 0.17.9 version of azure_sdk  rollup gem. This includes reference to the new azure_mgmt_policy_insights gem.
+
+## 2018.05.31 - Azure Ruby SDK Release
+* Released 0.16.2 version of azure_mgmt_storage gem. This includes the new version 2018-03-01-preview.
+* Released 0.17.8 version of azure_sdk  rollup gem. This includes reference to the new version of azure_mgmt_storage.
+
+## 2018.05.11 - Azure Ruby SDK Release
+* Released 0.16.1 version of azure_mgmt_storage gem. This includes the new version 2018-02-01.
+* Released 0.17.7 version of azure_sdk  rollup gem. This includes reference to the new version of azure_mgmt_storage.
+
+## 2018.05.10 - Azure Ruby SDK Release
+* Released 0.17.1 version of azure_mgmt_compute gem. This includes the new version 2018-04-01 and patch operations to existing versions.
+* Released 0.17.6 version of azure_sdk which includes changes to compute profile that includes new versions and patch operations.
+
+## 2018.05.09 - Azure Ruby SDK Release
+* Released 0.17.0 version of azure_mgmt_container_service. Bug fix to change ComputeServiceClient to ContainerServiceClient in versions 2016-09-30 & 2017-01-31. 
+* Released 0.17.5 version of azure_sdk rollup gem. The changes include the Bug fix for the container service. 
+
+## 2018.05.08 - Azure Ruby SDK Release
+* Released 0.16.1 version of azure_mgmt_signalr. Minor Bugfix to include the profile files.
+
+## 2018.05.07 - Azure Ruby SDK Release
+* Released 0.16.0 version of azure_mgmt_signalr
+* Released 0.16.1 version of azure_mgmt_event_grid. This includes the latest 2018-05-01-preview version. The latest individual profile also points to the new version.
+* Released 0.17.4 version of azure_sdk rollup gem. This includes the new signalr profile and changes to the event grid profile.
+
+## 2018.04.23 - Azure Ruby SDK Release
+* Released 0.16.1 version of 'azure_mgmt_media_services' gem which includes the latest '2018-03-30-preview' version.
+* Released 0.17.3 version of 'azure_sdk' which points to the latest '2018-03-30-preview' version of 'azure_mgmt_media_services'.
+
+## 2018.03.28 - Azure Ruby SDK Release
+* Released 0.17.0 version of 'azure_mgmt_api_management' gem. This change includes:
+  - Changed namespace 'Azure::ApiManagement::Mgmt::V2018_01_01' to 'Azure::ApiManagement::Mgmt::V2018_01_01_preview'
+* Released 0.17.0 version of 'azure_mgmt_authorization' gem. This change includes:
+  - Changes namespace 'Azure::Authorization::Mgmt::V2015_06_01' to 'Azure::Authorization::Mgmt::V2015_06_01_preview'
+  - Introduced '2015-06-01-preview' version of authorization service. 
+* Released 0.17.2 version of 'azure_sdk' which includes the changes to 'azure_mgmt_api_management' & 'azure_mgmt_authorization' gems.  
+
+## 2018.03.26 - Azure Ruby SDK Release
+* Released 0.16.1 version of 'azure_mgmt_authorization'. This version consists of new versions such as 2018-01-01(preview), 2017-10-01(preview), etc. 
+* Released 0.17.1 version of 'azure_sdk' which points to the latest updates in 'azure_mgmt_authorization'.
+
+## 2018.03.26 - Azure Ruby SDK Release
+* Released 0.17.0 version of 'azure_mgmt_compute'. This version consists of all changes up to the commit [48f795](https://github.com/Azure/azure-rest-api-specs/tree/48f795ee901742ed7c2ac5d4773a812695d2baac).
+* Released 0.17.0 version of 'azure_sdk' which points to the latest updates in the 'azure_mgmt_compute'.
+
+## 2018.03.21 - Azure Ruby SDK Release
+* Released 0.16.1 version of 'azure_mgmt_api_management' to handle a minor fix.
+
+## 2018.03.19 - Azure Ruby SDK Release
+* Released a new gem 'azure_mgmt_api_management' - 0.16.0. 
+* Updated azure_sdk - 0.16.3, rollup profile to use '2018-01-01' version of azure_mgmt_api_management
+
+## 2018.03.15 - Azure Ruby SDK Release
+* Added versions "2017-10-01" & "2018-03-01-preview" to azure_mgmt_dns gem. 
+* Regenerated azure_mgmt_dns SDK and individual profiles and incremented its version to 0.16.1
+* Updated azure_sdk rollup profile to use "2018-03-01-preview" version of management plane DNS service.
+* Regenerated azure_sdk rollup gem and incremented its version to 0.16.2.
+
 ## 2018.02.12 - Azure Ruby SDK Release 0.16.0
 * Regened all azure_* sdks using [Autorest.2.0.4250](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.3.0.20](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of version 0.16.0
 * Introduced Data Plane SDKs with this release. The following data plane SDKs have been introduced:

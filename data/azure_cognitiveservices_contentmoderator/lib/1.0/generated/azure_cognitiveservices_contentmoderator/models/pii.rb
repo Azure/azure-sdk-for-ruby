@@ -15,6 +15,9 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [Array<Email>]
       attr_accessor :email
 
+      # @return [Array<SSN>]
+      attr_accessor :ssn
+
       # @return [Array<IPA>]
       attr_accessor :ipa
 
@@ -51,6 +54,23 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                       type: {
                         name: 'Composite',
                         class_name: 'Email'
+                      }
+                  }
+                }
+              },
+              ssn: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'SSN',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'SSNElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SSN'
                       }
                   }
                 }

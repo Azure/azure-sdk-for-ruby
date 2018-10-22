@@ -255,8 +255,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     #
     # @param group_id [String] Management Group ID.
-    # @param create_group_request [CreateGroupRequest] Management group creation
-    # parameters.
+    # @param create_management_group_request [CreateManagementGroupRequest]
+    # Management group creation parameters.
     # @param cache_control [String] Indicates that the request shouldn't utilize
     # any caches.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -264,8 +264,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     # @return [ManagementGroup] operation results.
     #
-    def create_or_update(group_id, create_group_request, cache_control:'no-cache', custom_headers:nil)
-      response = create_or_update_async(group_id, create_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
+    def create_or_update(group_id, create_management_group_request, cache_control:'no-cache', custom_headers:nil)
+      response = create_or_update_async(group_id, create_management_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -277,8 +277,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     #
     # @param group_id [String] Management Group ID.
-    # @param create_group_request [CreateGroupRequest] Management group creation
-    # parameters.
+    # @param create_management_group_request [CreateManagementGroupRequest]
+    # Management group creation parameters.
     # @param cache_control [String] Indicates that the request shouldn't utilize
     # any caches.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -286,8 +286,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(group_id, create_group_request, cache_control:'no-cache', custom_headers:nil)
-      create_or_update_async(group_id, create_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(group_id, create_management_group_request, cache_control:'no-cache', custom_headers:nil)
+      create_or_update_async(group_id, create_management_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
     end
 
     #
@@ -298,8 +298,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     #
     # @param group_id [String] Management Group ID.
-    # @param create_group_request [CreateGroupRequest] Management group creation
-    # parameters.
+    # @param create_management_group_request [CreateManagementGroupRequest]
+    # Management group creation parameters.
     # @param cache_control [String] Indicates that the request shouldn't utilize
     # any caches.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -307,10 +307,10 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(group_id, create_group_request, cache_control:'no-cache', custom_headers:nil)
+    def create_or_update_async(group_id, create_management_group_request, cache_control:'no-cache', custom_headers:nil)
       fail ArgumentError, 'group_id is nil' if group_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'create_group_request is nil' if create_group_request.nil?
+      fail ArgumentError, 'create_management_group_request is nil' if create_management_group_request.nil?
 
 
       request_headers = {}
@@ -322,8 +322,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest.mapper()
-      request_content = @client.serialize(request_mapper,  create_group_request)
+      request_mapper = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateManagementGroupRequest.mapper()
+      request_content = @client.serialize(request_mapper,  create_management_group_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'providers/Microsoft.Management/managementGroups/{groupId}'
@@ -372,8 +372,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     #
     # @param group_id [String] Management Group ID.
-    # @param create_group_request [CreateGroupRequest] Management group creation
-    # parameters.
+    # @param create_management_group_request [CreateManagementGroupRequest]
+    # Management group creation parameters.
     # @param cache_control [String] Indicates that the request shouldn't utilize
     # any caches.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -381,8 +381,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     # @return [ManagementGroup] operation results.
     #
-    def update(group_id, create_group_request, cache_control:'no-cache', custom_headers:nil)
-      response = update_async(group_id, create_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
+    def update(group_id, create_management_group_request, cache_control:'no-cache', custom_headers:nil)
+      response = update_async(group_id, create_management_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -391,8 +391,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     #
     # @param group_id [String] Management Group ID.
-    # @param create_group_request [CreateGroupRequest] Management group creation
-    # parameters.
+    # @param create_management_group_request [CreateManagementGroupRequest]
+    # Management group creation parameters.
     # @param cache_control [String] Indicates that the request shouldn't utilize
     # any caches.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -400,8 +400,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(group_id, create_group_request, cache_control:'no-cache', custom_headers:nil)
-      update_async(group_id, create_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
+    def update_with_http_info(group_id, create_management_group_request, cache_control:'no-cache', custom_headers:nil)
+      update_async(group_id, create_management_group_request, cache_control:cache_control, custom_headers:custom_headers).value!
     end
 
     #
@@ -409,8 +409,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     #
     # @param group_id [String] Management Group ID.
-    # @param create_group_request [CreateGroupRequest] Management group creation
-    # parameters.
+    # @param create_management_group_request [CreateManagementGroupRequest]
+    # Management group creation parameters.
     # @param cache_control [String] Indicates that the request shouldn't utilize
     # any caches.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -418,10 +418,10 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(group_id, create_group_request, cache_control:'no-cache', custom_headers:nil)
+    def update_async(group_id, create_management_group_request, cache_control:'no-cache', custom_headers:nil)
       fail ArgumentError, 'group_id is nil' if group_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'create_group_request is nil' if create_group_request.nil?
+      fail ArgumentError, 'create_management_group_request is nil' if create_management_group_request.nil?
 
 
       request_headers = {}
@@ -433,8 +433,8 @@ module Azure::ResourcesManagement::Mgmt::V2017_11_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest.mapper()
-      request_content = @client.serialize(request_mapper,  create_group_request)
+      request_mapper = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateManagementGroupRequest.mapper()
+      request_content = @client.serialize(request_mapper,  create_management_group_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'providers/Microsoft.Management/managementGroups/{groupId}'

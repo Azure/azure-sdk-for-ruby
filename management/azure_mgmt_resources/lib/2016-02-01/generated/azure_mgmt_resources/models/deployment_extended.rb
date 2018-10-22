@@ -38,6 +38,7 @@ module Azure::Resources::Mgmt::V2016_02_01
               id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

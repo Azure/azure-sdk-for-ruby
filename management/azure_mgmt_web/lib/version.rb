@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::Web::Mgmt
-    VERSION = '0.16.0'
+    VERSION = '0.17.2'
 end

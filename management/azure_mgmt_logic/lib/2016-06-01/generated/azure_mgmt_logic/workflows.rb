@@ -25,7 +25,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # Gets a list of workflows by subscription.
     #
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,7 +41,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # Gets a list of workflows by subscription.
     #
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -54,7 +56,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # Gets a list of workflows by subscription.
     #
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -116,7 +119,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @param resource_group_name [String] The resource group name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -132,7 +136,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @param resource_group_name [String] The resource group name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -147,7 +152,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @param resource_group_name [String] The resource group name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -853,6 +859,112 @@ module Azure::Logic::Mgmt::V2016_06_01
     end
 
     #
+    # Get the workflow callback Url.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param list_callback_url [GetCallbackUrlParameters] Which callback url to
+    # list.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [WorkflowTriggerCallbackUrl] operation results.
+    #
+    def list_callback_url(resource_group_name, workflow_name, list_callback_url, custom_headers:nil)
+      response = list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the workflow callback Url.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param list_callback_url [GetCallbackUrlParameters] Which callback url to
+    # list.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_callback_url_with_http_info(resource_group_name, workflow_name, list_callback_url, custom_headers:nil)
+      list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Get the workflow callback Url.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param list_callback_url [GetCallbackUrlParameters] Which callback url to
+    # list.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
+      fail ArgumentError, 'list_callback_url is nil' if list_callback_url.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters.mapper()
+      request_content = @client.serialize(request_mapper,  list_callback_url)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listCallbackUrl'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerCallbackUrl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets an OpenAPI definition for the workflow.
     #
     # @param resource_group_name [String] The resource group name.
@@ -935,6 +1047,98 @@ module Azure::Logic::Mgmt::V2016_06_01
     end
 
     #
+    # Moves an existing workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param move [Workflow] The workflow to move.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def move(resource_group_name, workflow_name, move, custom_headers:nil)
+      response = move_async(resource_group_name, workflow_name, move, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Moves an existing workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param move [Workflow] The workflow to move.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def move_with_http_info(resource_group_name, workflow_name, move, custom_headers:nil)
+      move_async(resource_group_name, workflow_name, move, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Moves an existing workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param move [Workflow] The workflow to move.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def move_async(resource_group_name, workflow_name, move, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
+      fail ArgumentError, 'move is nil' if move.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
+      request_content = @client.serialize(request_mapper,  move)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/move'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Regenerates the callback URL access key for request triggers.
     #
     # @param resource_group_name [String] The resource group name.
@@ -996,6 +1200,98 @@ module Azure::Logic::Mgmt::V2016_06_01
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/regenerateAccessKey'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Validates the workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param validate [Workflow] The workflow.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def validate_workflow(resource_group_name, workflow_name, validate, custom_headers:nil)
+      response = validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Validates the workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param validate [Workflow] The workflow.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def validate_workflow_with_http_info(resource_group_name, workflow_name, validate, custom_headers:nil)
+      validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Validates the workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param validate [Workflow] The workflow.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
+      fail ArgumentError, 'validate is nil' if validate.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
+      request_content = @client.serialize(request_mapper,  validate)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/validate'
 
       request_url = @base_url || @client.base_url
 
@@ -1302,7 +1598,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # Gets a list of workflows by subscription.
     #
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1325,7 +1622,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @param resource_group_name [String] The resource group name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Options for
+    # filters include: State, Trigger, and ReferencedResourceId.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

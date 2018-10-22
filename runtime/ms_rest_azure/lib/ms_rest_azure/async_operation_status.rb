@@ -35,7 +35,7 @@ module MsRestAzure
     #
     # @return [Boolean] True if given status is terminal one, false otherwise.
     def self.is_terminal_status(status)
-      TERMINAL_STATUSES.any? { |st| st == status }
+      TERMINAL_STATUSES.any? { |st| st.casecmp(status) == 0 }
     end
 
     #
@@ -44,7 +44,7 @@ module MsRestAzure
     #
     # @return [Boolean] True if given status is failed one, false otherwise.
     def self.is_failed_status(status)
-      FAILED_STATUSES.any? { |st| st == status }
+      FAILED_STATUSES.any? { |st| st.casecmp(status) == 0 }
     end
 
     #
@@ -53,7 +53,7 @@ module MsRestAzure
     #
     # @return [Boolean] True if given status is successful one, false otherwise.
     def self.is_successful_status(status)
-      return status == SUCCESS_STATUS
+      return (status.casecmp(SUCCESS_STATUS) == 0)
     end
 
     #

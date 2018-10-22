@@ -6,7 +6,7 @@
 module Azure::Resources::Mgmt::V2017_05_10
   module Models
     #
-    # Resource.
+    # Basic set of the resource properties.
     #
     class Resource
 
@@ -26,6 +26,15 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
+
+
+      # @return [String] the name of the resource group of the resource.
+      def resource_group
+        unless self.id.nil?
+          groups = self.id.match(/.+\/resourceGroups\/([^\/]+)\/.+/)
+          groups.captures[0].strip if groups
+        end
+      end
 
 
       #

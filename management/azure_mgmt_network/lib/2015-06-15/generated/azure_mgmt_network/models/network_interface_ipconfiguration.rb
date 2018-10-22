@@ -31,6 +31,10 @@ module Azure::Network::Mgmt::V2015_06_15
       # @return [Subnet]
       attr_accessor :subnet
 
+      # @return [Boolean] Gets whether this is a primary customer address on
+      # the network interface.
+      attr_accessor :primary
+
       # @return [PublicIPAddress]
       attr_accessor :public_ipaddress
 
@@ -124,6 +128,14 @@ module Azure::Network::Mgmt::V2015_06_15
                 type: {
                   name: 'Composite',
                   class_name: 'Subnet'
+                }
+              },
+              primary: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.primary',
+                type: {
+                  name: 'Boolean'
                 }
               },
               public_ipaddress: {

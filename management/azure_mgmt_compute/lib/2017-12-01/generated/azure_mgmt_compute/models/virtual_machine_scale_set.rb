@@ -46,6 +46,13 @@ module Azure::Compute::Mgmt::V2017_12_01
       # placement group, of max size 100 virtual machines.
       attr_accessor :single_placement_group
 
+      # @return [Boolean] Whether to force stictly even Virtual Machine
+      # distribution cross x-zones in case there is zone outage.
+      attr_accessor :zone_balance
+
+      # @return [Integer] Fault Domain count for each placement group.
+      attr_accessor :platform_fault_domain_count
+
       # @return [VirtualMachineScaleSetIdentity] The identity of the virtual
       # machine scale set, if configured.
       attr_accessor :identity
@@ -186,6 +193,22 @@ module Azure::Compute::Mgmt::V2017_12_01
                 serialized_name: 'properties.singlePlacementGroup',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              zone_balance: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.zoneBalance',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              platform_fault_domain_count: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.platformFaultDomainCount',
+                type: {
+                  name: 'Number'
                 }
               },
               identity: {

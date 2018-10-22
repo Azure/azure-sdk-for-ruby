@@ -25,18 +25,16 @@ module Azure::Automation::Mgmt::V2015_10_31
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] The resource group name.
-    attr_accessor :resource_group_name
-
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [AutomationAccountOperations] automation_account_operations
@@ -50,6 +48,9 @@ module Azure::Automation::Mgmt::V2015_10_31
 
     # @return [Usages] usages
     attr_reader :usages
+
+    # @return [Keys] keys
+    attr_reader :keys
 
     # @return [CertificateOperations] certificate_operations
     attr_reader :certificate_operations
@@ -65,6 +66,9 @@ module Azure::Automation::Mgmt::V2015_10_31
 
     # @return [DscCompilationJobOperations] dsc_compilation_job_operations
     attr_reader :dsc_compilation_job_operations
+
+    # @return [DscCompilationJobStream] dsc_compilation_job_stream
+    attr_reader :dsc_compilation_job_stream
 
     # @return [DscConfigurationOperations] dsc_configuration_operations
     attr_reader :dsc_configuration_operations
@@ -95,6 +99,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [JobScheduleOperations] job_schedule_operations
     attr_reader :job_schedule_operations
 
+    # @return [LinkedWorkspaceOperations] linked_workspace_operations
+    attr_reader :linked_workspace_operations
+
     # @return [ActivityOperations] activity_operations
     attr_reader :activity_operations
 
@@ -116,8 +123,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [TestJobStreams] test_job_streams
     attr_reader :test_job_streams
 
-    # @return [TestJobs] test_jobs
-    attr_reader :test_jobs
+    # @return [TestJobOperations] test_job_operations
+    attr_reader :test_job_operations
 
     # @return [ScheduleOperations] schedule_operations
     attr_reader :schedule_operations
@@ -145,11 +152,13 @@ module Azure::Automation::Mgmt::V2015_10_31
       @operations = Operations.new(self)
       @statistics_operations = StatisticsOperations.new(self)
       @usages = Usages.new(self)
+      @keys = Keys.new(self)
       @certificate_operations = CertificateOperations.new(self)
       @connection_operations = ConnectionOperations.new(self)
       @connection_type_operations = ConnectionTypeOperations.new(self)
       @credential_operations = CredentialOperations.new(self)
       @dsc_compilation_job_operations = DscCompilationJobOperations.new(self)
+      @dsc_compilation_job_stream = DscCompilationJobStream.new(self)
       @dsc_configuration_operations = DscConfigurationOperations.new(self)
       @agent_registration_information = AgentRegistrationInformation.new(self)
       @dsc_node_operations = DscNodeOperations.new(self)
@@ -159,6 +168,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       @job_operations = JobOperations.new(self)
       @job_stream_operations = JobStreamOperations.new(self)
       @job_schedule_operations = JobScheduleOperations.new(self)
+      @linked_workspace_operations = LinkedWorkspaceOperations.new(self)
       @activity_operations = ActivityOperations.new(self)
       @module_model_operations = ModuleModelOperations.new(self)
       @object_data_types = ObjectDataTypes.new(self)
@@ -166,7 +176,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       @runbook_draft_operations = RunbookDraftOperations.new(self)
       @runbook_operations = RunbookOperations.new(self)
       @test_job_streams = TestJobStreams.new(self)
-      @test_jobs = TestJobs.new(self)
+      @test_job_operations = TestJobOperations.new(self)
       @schedule_operations = ScheduleOperations.new(self)
       @variable_operations = VariableOperations.new(self)
       @webhook_operations = WebhookOperations.new(self)
@@ -242,7 +252,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_automation'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

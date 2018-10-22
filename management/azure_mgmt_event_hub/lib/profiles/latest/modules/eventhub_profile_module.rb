@@ -6,52 +6,39 @@ require 'azure_mgmt_event_hub'
 
 module Azure::EventHub::Profiles::Latest
   module Mgmt
-    Operations = Azure::EventHub::Mgmt::V2017_04_01::Operations
-    Namespaces = Azure::EventHub::Mgmt::V2017_04_01::Namespaces
-    DisasterRecoveryConfigs = Azure::EventHub::Mgmt::V2017_04_01::DisasterRecoveryConfigs
-    EventHubs = Azure::EventHub::Mgmt::V2017_04_01::EventHubs
-    ConsumerGroups = Azure::EventHub::Mgmt::V2017_04_01::ConsumerGroups
+    Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
+    Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
+    Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
+    Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
 
     module Models
-      CaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
-      Destination = Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
-      Resource = Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
-      Operation = Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
-      ErrorResponse = Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
-      OperationListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
-      EventHubListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
-      AccessKeys = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
-      ArmDisasterRecoveryListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
-      Sku = Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
-      ConsumerGroupListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
-      AuthorizationRuleListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-      CheckNameAvailabilityParameter = Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
-      EHNamespaceListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
-      CheckNameAvailabilityResult = Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
-      RegenerateAccessKeyParameters = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
-      OperationDisplay = Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
-      TrackedResource = Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
-      EHNamespace = Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
-      AuthorizationRule = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
-      Eventhub = Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
-      ConsumerGroup = Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
-      ArmDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
-      SkuName = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
-      SkuTier = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
-      AccessRights = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
-      KeyType = Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
-      EntityStatus = Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
-      EncodingCaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
-      UnavailableReason = Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
-      ProvisioningStateDR = Azure::EventHub::Mgmt::V2017_04_01::Models::ProvisioningStateDR
-      RoleDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
+      ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
+      OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
+      ErrorResponse = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
+      OperationListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
+      VirtualNetworkRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
+      Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+      Operation = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
+      Sku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
+      ClusterListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
+      IpFilterRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
+      ClusterSku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
+      EHNamespaceListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
+      TrackedResource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
+      Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
+      EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
+      IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
+      VirtualNetworkRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
+      SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
+      SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
+      IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
     end
 
     #
     # EventHubManagementClass
     #
     class EventHubManagementClass
-      attr_reader :operations, :namespaces, :disaster_recovery_configs, :event_hubs, :consumer_groups, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :clusters, :configuration, :namespaces, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -66,16 +53,15 @@ module Azure::EventHub::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::EventHub::Mgmt::V2017_04_01::EventHubManagementClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::EventHub::Mgmt::V2018_01_01_preview::EventHub2018PreviewManagementClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
         @operations = @client_0.operations
+        @clusters = @client_0.clusters
+        @configuration = @client_0.configuration
         @namespaces = @client_0.namespaces
-        @disaster_recovery_configs = @client_0.disaster_recovery_configs
-        @event_hubs = @client_0.event_hubs
-        @consumer_groups = @client_0.consumer_groups
 
         @model_classes = ModelClasses.new
       end
@@ -96,101 +82,65 @@ module Azure::EventHub::Profiles::Latest
     end
 
     class ModelClasses
-      def capture_description
-        Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
-      end
-      def destination
-        Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
-      end
-      def resource
-        Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
-      end
-      def operation
-        Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
-      end
-      def error_response
-        Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
-      end
-      def operation_list_result
-        Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
-      end
-      def event_hub_list_result
-        Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
-      end
-      def access_keys
-        Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
-      end
-      def arm_disaster_recovery_list_result
-        Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
-      end
-      def sku
-        Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
-      end
-      def consumer_group_list_result
-        Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
-      end
-      def authorization_rule_list_result
-        Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-      end
-      def check_name_availability_parameter
-        Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
-      end
-      def ehnamespace_list_result
-        Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
-      end
-      def check_name_availability_result
-        Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
-      end
-      def regenerate_access_key_parameters
-        Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
+      def cluster_quota_configuration_properties
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
       end
       def operation_display
-        Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
+      end
+      def error_response
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
+      end
+      def operation_list_result
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
+      end
+      def virtual_network_rule_list_result
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
+      end
+      def resource
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+      end
+      def operation
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
+      end
+      def sku
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
+      end
+      def cluster_list_result
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
+      end
+      def ip_filter_rule_list_result
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
+      end
+      def cluster_sku
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
+      end
+      def ehnamespace_list_result
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
       end
       def tracked_resource
-        Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
+      end
+      def cluster
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
       end
       def ehnamespace
-        Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
       end
-      def authorization_rule
-        Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
+      def ip_filter_rule
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
       end
-      def eventhub
-        Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
-      end
-      def consumer_group
-        Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
-      end
-      def arm_disaster_recovery
-        Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+      def virtual_network_rule
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
       end
       def sku_name
-        Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
       end
       def sku_tier
-        Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
       end
-      def access_rights
-        Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
-      end
-      def key_type
-        Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
-      end
-      def entity_status
-        Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
-      end
-      def encoding_capture_description
-        Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
-      end
-      def unavailable_reason
-        Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
-      end
-      def provisioning_state_dr
-        Azure::EventHub::Mgmt::V2017_04_01::Models::ProvisioningStateDR
-      end
-      def role_disaster_recovery
-        Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
+      def ipaction
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
       end
     end
   end

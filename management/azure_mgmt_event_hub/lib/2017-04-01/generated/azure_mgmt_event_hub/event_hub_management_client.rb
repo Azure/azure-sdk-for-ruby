@@ -25,15 +25,16 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # @return [String] Client API Version.
     attr_reader :api_version
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [Operations] operations
@@ -50,6 +51,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
 
     # @return [ConsumerGroups] consumer_groups
     attr_reader :consumer_groups
+
+    # @return [Regions] regions
+    attr_reader :regions
 
     #
     # Creates initializes a new instance of the EventHubManagementClient class.
@@ -69,6 +73,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
       @event_hubs = EventHubs.new(self)
       @consumer_groups = ConsumerGroups.new(self)
+      @regions = Regions.new(self)
       @api_version = '2017-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -141,7 +146,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_hub'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

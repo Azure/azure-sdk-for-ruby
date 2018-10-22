@@ -31,6 +31,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # values include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
       attr_accessor :role
 
+      # @return [Integer] Number of entities pending to be replicated.
+      attr_accessor :pending_replication_operations_count
+
 
       #
       # Mapper for ArmDisasterRecovery class as Ruby Hash.
@@ -106,6 +109,15 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 type: {
                   name: 'Enum',
                   module: 'RoleDisasterRecovery'
+                }
+              },
+              pending_replication_operations_count: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.pendingReplicationOperationsCount',
+                type: {
+                  name: 'Number'
                 }
               }
             }

@@ -77,13 +77,21 @@ module MsRest
           end
         end
 
-        @connection.run_request(:"#{method}", build_path, body, {'User-Agent' => user_agent}.merge(headers)) do |req|
-          req.params = req.params.merge(query_params.reject{|_, v| v.nil?}) unless query_params.nil?
-          yield(req) if block_given?
+        loop do
+          @response = @connection.run_request(:"#{method}", build_path, body, {'User-Agent' => user_agent}.merge(headers)) do |req|
+            req.params = req.params.merge(query_params.reject{|_, v| v.nil?}) unless query_params.nil?
+            yield(req) if block_given?
+          end
+
+          break if ((@response.status != 429) || (@response.status == 429 && @response.headers['retry-after'].nil?))
+
+          if(@response.status == 429 && !@response.headers['retry-after'].nil?)
+            sleep(@response.headers['retry-after'].to_i)
+          end
         end
+        @response
       end
     end
-    
     
     # Creates a path from the path template and the path_params and skip_encoding_path_params
     # @return [URI] body the HTTP response body.

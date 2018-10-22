@@ -681,6 +681,117 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     #
     # @return [SharedAccessAuthorizationRuleResource] operation results.
     #
+    def post_authorization_rule(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers:nil)
+      response = post_authorization_rule_async(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the specified authorization rule.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param topic_name [String] The topic name.
+    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def post_authorization_rule_with_http_info(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers:nil)
+      post_authorization_rule_async(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the specified authorization rule.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param topic_name [String] The topic name.
+    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def post_authorization_rule_async(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
+      fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MaxLength': '50'" if !topic_name.nil? && topic_name.length > 50
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
+      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
+      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MaxLength': '50'" if !authorization_rule_name.nil? && authorization_rule_name.length > 50
+      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'topicName' => topic_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ServiceBus::Mgmt::V2015_08_01::Models::SharedAccessAuthorizationRuleResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the specified authorization rule.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param topic_name [String] The topic name.
+    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SharedAccessAuthorizationRuleResource] operation results.
+    #
     def get_authorization_rule(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers:nil)
       response = get_authorization_rule_async(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers:custom_headers).value!
       response.body unless response.nil?

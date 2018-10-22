@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2017_04_01
   #
-  # ActionGroups
+  # Monitor Management Client
   #
   class ActionGroups
     include MsRestAzure

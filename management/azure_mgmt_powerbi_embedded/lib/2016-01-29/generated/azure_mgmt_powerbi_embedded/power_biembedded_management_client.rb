@@ -25,15 +25,16 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     # @return [String] Client Api Version.
     attr_reader :api_version
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [WorkspaceCollections] workspace_collections
@@ -214,7 +215,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_powerbi_embedded'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

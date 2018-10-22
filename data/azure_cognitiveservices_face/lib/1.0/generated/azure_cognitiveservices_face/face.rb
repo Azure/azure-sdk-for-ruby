@@ -100,7 +100,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def find_similar_async(face_id, face_list_id:nil, face_ids:nil, max_num_of_candidates_returned:20, mode:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_id is nil' if face_id.nil?
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'MaxLength': '64'" if !face_list_id.nil? && face_list_id.length > 64
       fail ArgumentError, "'face_list_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !face_list_id.nil? && face_list_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -132,7 +131,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'findsimilars'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -225,7 +223,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def group_async(face_ids, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_ids is nil' if face_ids.nil?
       fail ArgumentError, "'face_ids' should satisfy the constraint - 'MaxItems': '1000'" if !face_ids.nil? && face_ids.length > 1000
 
@@ -249,7 +246,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'group'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -350,7 +346,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def identify_async(person_group_id, face_ids, max_num_of_candidates_returned:1, confidence_threshold:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
@@ -382,7 +377,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'identify'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -478,7 +472,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def verify_face_to_face_async(face_id1, face_id2, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_id1 is nil' if face_id1.nil?
       fail ArgumentError, 'face_id2 is nil' if face_id2.nil?
 
@@ -503,7 +496,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'verify'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -544,7 +536,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Detect human faces in an image and returns face locations, and optionally
     # with faceIds, landmarks, and attributes.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
@@ -568,7 +560,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Detect human faces in an image and returns face locations, and optionally
     # with faceIds, landmarks, and attributes.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
@@ -591,7 +583,7 @@ module Azure::CognitiveServices::Face::V1_0
     # Detect human faces in an image and returns face locations, and optionally
     # with faceIds, landmarks, and attributes.
     #
-    # @param url [String]
+    # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
     # should return faceIds of detected faces.
     # @param return_face_landmarks [Boolean] A value indicating whether the
@@ -607,7 +599,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def detect_with_url_async(url, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
       image_url = ImageUrl.new
@@ -630,7 +621,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'detect'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -739,7 +729,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def verify_face_to_person_async(face_id, person_group_id, person_id, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'face_id is nil' if face_id.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -768,7 +757,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'verify'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -872,7 +860,6 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def detect_with_stream_async(image, return_face_id:true, return_face_landmarks:false, return_face_attributes:nil, custom_headers:nil)
-      fail ArgumentError, '@client.azure_region is nil' if @client.azure_region.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
 
@@ -897,7 +884,6 @@ module Azure::CognitiveServices::Face::V1_0
       path_template = 'detect'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{AzureRegion}', @client.azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

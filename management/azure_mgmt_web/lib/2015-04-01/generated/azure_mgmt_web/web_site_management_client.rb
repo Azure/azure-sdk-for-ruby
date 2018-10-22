@@ -24,25 +24,26 @@ module Azure::Web::Mgmt::V2015_04_01
     # @return [String] API Version
     attr_reader :api_version
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
-
-    # @return [DomainRegistrationProvider] domain_registration_provider
-    attr_reader :domain_registration_provider
 
     # @return [Domains] domains
     attr_reader :domains
 
     # @return [TopLevelDomains] top_level_domains
     attr_reader :top_level_domains
+
+    # @return [DomainRegistrationProvider] domain_registration_provider
+    attr_reader :domain_registration_provider
 
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
@@ -57,9 +58,9 @@ module Azure::Web::Mgmt::V2015_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @domain_registration_provider = DomainRegistrationProvider.new(self)
       @domains = Domains.new(self)
       @top_level_domains = TopLevelDomains.new(self)
+      @domain_registration_provider = DomainRegistrationProvider.new(self)
       @api_version = '2015-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -132,7 +133,7 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

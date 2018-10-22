@@ -25,15 +25,16 @@ module Azure::Compute::Mgmt::V2017_03_30
     # @return [String] Client Api Version.
     attr_reader :api_version
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [AvailabilitySets] availability_sets
@@ -44,6 +45,9 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     # @return [VirtualMachineExtensions] virtual_machine_extensions
     attr_reader :virtual_machine_extensions
+
+    # @return [VirtualMachines] virtual_machines
+    attr_reader :virtual_machines
 
     # @return [VirtualMachineImages] virtual_machine_images
     attr_reader :virtual_machine_images
@@ -59,9 +63,6 @@ module Azure::Compute::Mgmt::V2017_03_30
 
     # @return [ResourceSkus] resource_skus
     attr_reader :resource_skus
-
-    # @return [VirtualMachines] virtual_machines
-    attr_reader :virtual_machines
 
     # @return [VirtualMachineScaleSets] virtual_machine_scale_sets
     attr_reader :virtual_machine_scale_sets
@@ -102,12 +103,12 @@ module Azure::Compute::Mgmt::V2017_03_30
       @availability_sets = AvailabilitySets.new(self)
       @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
+      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_images = VirtualMachineImages.new(self)
       @usage_operations = UsageOperations.new(self)
       @virtual_machine_sizes = VirtualMachineSizes.new(self)
       @images = Images.new(self)
       @resource_skus = ResourceSkus.new(self)
-      @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_extensions = VirtualMachineScaleSetExtensions.new(self)
       @virtual_machine_scale_set_rolling_upgrades = VirtualMachineScaleSetRollingUpgrades.new(self)
@@ -187,7 +188,7 @@ module Azure::Compute::Mgmt::V2017_03_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.18.3"
         add_user_agent_information(sdk_information)
     end
   end

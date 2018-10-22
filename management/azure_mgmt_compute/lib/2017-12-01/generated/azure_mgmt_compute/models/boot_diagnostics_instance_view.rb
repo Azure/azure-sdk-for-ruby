@@ -35,6 +35,7 @@ module Azure::Compute::Mgmt::V2017_12_01
               console_screenshot_blob_uri: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'consoleScreenshotBlobUri',
                 type: {
                   name: 'String'
@@ -43,6 +44,7 @@ module Azure::Compute::Mgmt::V2017_12_01
               serial_console_log_blob_uri: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'serialConsoleLogBlobUri',
                 type: {
                   name: 'String'

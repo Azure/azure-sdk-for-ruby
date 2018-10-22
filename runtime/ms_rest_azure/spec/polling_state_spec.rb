@@ -20,7 +20,7 @@ module MsRestAzure
 
       polling_state = PollingState.new azure_response, 0
 
-      expect(polling_state.status).to eq('InProgress')
+      expect(polling_state.status.casecmp('InProgress') == 0).to be true
     end
 
     it 'should initialize status from non-flattened response body' do
@@ -36,7 +36,7 @@ module MsRestAzure
 
       polling_state = PollingState.new azure_response, 0
 
-      expect(polling_state.status).to eq('Succeeded')
+      expect(polling_state.status.casecmp('Succeeded') == 0).to be true
     end
 
     it 'should initialize status from response status' do
@@ -49,7 +49,7 @@ module MsRestAzure
 
       polling_state = PollingState.new azure_response, 0
 
-      expect(polling_state.status).to eq(AsyncOperationStatus::SUCCESS_STATUS)
+      expect(polling_state.status.casecmp(AsyncOperationStatus::SUCCESS_STATUS) == 0).to be true
     end
 
     it 'should grab azure headers from response' do
@@ -110,7 +110,7 @@ module MsRestAzure
 
       polling_state = PollingState.new azure_response, 0
 
-      expect(polling_state.status).to eq(AsyncOperationStatus::SUCCESS_STATUS)
+      expect(polling_state.status.casecmp(AsyncOperationStatus::SUCCESS_STATUS) == 0).to be true
     end
 
     it 'should return in progress status for a 201 response and no provisioning status' do
@@ -124,7 +124,7 @@ module MsRestAzure
 
       polling_state = PollingState.new azure_response, 0
 
-      expect(polling_state.status).to eq(AsyncOperationStatus::IN_PROGRESS_STATUS)
+      expect(polling_state.status.casecmp(AsyncOperationStatus::IN_PROGRESS_STATUS) == 0).to be true
     end
 
   end

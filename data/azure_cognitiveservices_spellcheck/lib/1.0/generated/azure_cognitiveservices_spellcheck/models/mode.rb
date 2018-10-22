@@ -9,8 +9,8 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # Defines values for Mode
     #
     module Mode
-      Proof = "Proof"
-      Spell = "Spell"
+      Proof = "proof"
+      Spell = "spell"
     end
   end
 end

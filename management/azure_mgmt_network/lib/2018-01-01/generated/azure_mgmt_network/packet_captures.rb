@@ -5,10 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_01_01
   #
-  # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage your
-  # network resources. The API has entities that capture the relationship
-  # between an end user and the Microsoft Azure Networks service.
+  # Network Client
   #
   class PacketCaptures
     include MsRestAzure
@@ -290,7 +287,7 @@ module Azure::Network::Mgmt::V2018_01_01
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
       end
 
       promise

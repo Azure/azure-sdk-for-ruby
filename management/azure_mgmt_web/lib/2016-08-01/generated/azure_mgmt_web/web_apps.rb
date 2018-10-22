@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2016_08_01
   #
-  # WebApps
+  # WebSite Management Client
   #
   class WebApps
     include MsRestAzure
@@ -337,22 +337,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [Site] A JSON representation of the app properties. See
     # example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Site] operation results.
     #
-    def create_or_update(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, name, site_envelope, skip_dns_registration:skip_dns_registration, skip_custom_domain_verification:skip_custom_domain_verification, force_dns_registration:force_dns_registration, ttl_in_seconds:ttl_in_seconds, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, name, site_envelope, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, name, site_envelope, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -363,24 +354,15 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [Site] A JSON representation of the app properties. See
     # example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
+    def create_or_update_async(resource_group_name, name, site_envelope, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, name, site_envelope, skip_dns_registration:skip_dns_registration, skip_custom_domain_verification:skip_custom_domain_verification, force_dns_registration:force_dns_registration, ttl_in_seconds:ttl_in_seconds, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, name, site_envelope, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -408,13 +390,12 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param delete_empty_server_farm [Boolean] Specify true if the App Service
     # plan will be empty after app deletion and you want to delete the empty App
     # Service plan. By default, the empty App Service plan is not deleted.
-    # @param skip_dns_registration [Boolean] If true, DNS registration is skipped.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, name, delete_metrics:nil, delete_empty_server_farm:nil, skip_dns_registration:nil, custom_headers:nil)
-      response = delete_async(resource_group_name, name, delete_metrics:delete_metrics, delete_empty_server_farm:delete_empty_server_farm, skip_dns_registration:skip_dns_registration, custom_headers:custom_headers).value!
+    def delete(resource_group_name, name, delete_metrics:nil, delete_empty_server_farm:nil, custom_headers:nil)
+      response = delete_async(resource_group_name, name, delete_metrics:delete_metrics, delete_empty_server_farm:delete_empty_server_farm, custom_headers:custom_headers).value!
       nil
     end
 
@@ -430,14 +411,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param delete_empty_server_farm [Boolean] Specify true if the App Service
     # plan will be empty after app deletion and you want to delete the empty App
     # Service plan. By default, the empty App Service plan is not deleted.
-    # @param skip_dns_registration [Boolean] If true, DNS registration is skipped.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, name, delete_metrics:nil, delete_empty_server_farm:nil, skip_dns_registration:nil, custom_headers:nil)
-      delete_async(resource_group_name, name, delete_metrics:delete_metrics, delete_empty_server_farm:delete_empty_server_farm, skip_dns_registration:skip_dns_registration, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, name, delete_metrics:nil, delete_empty_server_farm:nil, custom_headers:nil)
+      delete_async(resource_group_name, name, delete_metrics:delete_metrics, delete_empty_server_farm:delete_empty_server_farm, custom_headers:custom_headers).value!
     end
 
     #
@@ -452,13 +432,12 @@ module Azure::Web::Mgmt::V2016_08_01
     # @param delete_empty_server_farm [Boolean] Specify true if the App Service
     # plan will be empty after app deletion and you want to delete the empty App
     # Service plan. By default, the empty App Service plan is not deleted.
-    # @param skip_dns_registration [Boolean] If true, DNS registration is skipped.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, name, delete_metrics:nil, delete_empty_server_farm:nil, skip_dns_registration:nil, custom_headers:nil)
+    def delete_async(resource_group_name, name, delete_metrics:nil, delete_empty_server_farm:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -481,7 +460,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'deleteMetrics' => delete_metrics,'deleteEmptyServerFarm' => delete_empty_server_farm,'skipDnsRegistration' => skip_dns_registration,'api-version' => @client.api_version},
+          query_params: {'deleteMetrics' => delete_metrics,'deleteEmptyServerFarm' => delete_empty_server_farm,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -517,22 +496,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [SitePatchResource] A JSON representation of the app
     # properties. See example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Site] operation results.
     #
-    def update(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
-      response = update_async(resource_group_name, name, site_envelope, skip_dns_registration:skip_dns_registration, skip_custom_domain_verification:skip_custom_domain_verification, force_dns_registration:force_dns_registration, ttl_in_seconds:ttl_in_seconds, custom_headers:custom_headers).value!
+    def update(resource_group_name, name, site_envelope, custom_headers:nil)
+      response = update_async(resource_group_name, name, site_envelope, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -549,22 +519,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [SitePatchResource] A JSON representation of the app
     # properties. See example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
-      update_async(resource_group_name, name, site_envelope, skip_dns_registration:skip_dns_registration, skip_custom_domain_verification:skip_custom_domain_verification, force_dns_registration:force_dns_registration, ttl_in_seconds:ttl_in_seconds, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, name, site_envelope, custom_headers:nil)
+      update_async(resource_group_name, name, site_envelope, custom_headers:custom_headers).value!
     end
 
     #
@@ -580,21 +541,12 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [SitePatchResource] A JSON representation of the app
     # properties. See example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
+    def update_async(resource_group_name, name, site_envelope, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -624,7 +576,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'skipDnsRegistration' => skip_dns_registration,'skipCustomDomainVerification' => skip_custom_domain_verification,'forceDnsRegistration' => force_dns_registration,'ttlInSeconds' => ttl_in_seconds,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -28488,7 +28440,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 201 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -28496,6 +28448,26 @@ module Azure::Web::Mgmt::V2016_08_01
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
@@ -31601,7 +31573,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 201 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -31609,6 +31581,26 @@ module Azure::Web::Mgmt::V2016_08_01
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
@@ -34207,22 +34199,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [Site] A JSON representation of the app properties. See
     # example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Site] operation results.
     #
-    def begin_create_or_update(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, name, site_envelope, skip_dns_registration:skip_dns_registration, skip_custom_domain_verification:skip_custom_domain_verification, force_dns_registration:force_dns_registration, ttl_in_seconds:ttl_in_seconds, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, name, site_envelope, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, name, site_envelope, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -34239,22 +34222,13 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [Site] A JSON representation of the app properties. See
     # example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, name, site_envelope, skip_dns_registration:skip_dns_registration, skip_custom_domain_verification:skip_custom_domain_verification, force_dns_registration:force_dns_registration, ttl_in_seconds:ttl_in_seconds, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, name, site_envelope, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, name, site_envelope, custom_headers:custom_headers).value!
     end
 
     #
@@ -34270,21 +34244,12 @@ module Azure::Web::Mgmt::V2016_08_01
     # update a deployment slot, use the {slot} parameter.
     # @param site_envelope [Site] A JSON representation of the app properties. See
     # example.
-    # @param skip_dns_registration [Boolean] If true web app hostname is not
-    # registered with DNS on creation. This parameter is
-    # only used for app creation.
-    # @param skip_custom_domain_verification [Boolean] If true, custom (non
-    # *.azurewebsites.net) domains associated with web app are not verified.
-    # @param force_dns_registration [Boolean] If true, web app hostname is force
-    # registered with DNS.
-    # @param ttl_in_seconds [String] Time to live in seconds for web app's default
-    # domain name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, name, site_envelope, skip_dns_registration:nil, skip_custom_domain_verification:nil, force_dns_registration:nil, ttl_in_seconds:nil, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, name, site_envelope, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -34314,7 +34279,7 @@ module Azure::Web::Mgmt::V2016_08_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'skipDnsRegistration' => skip_dns_registration,'skipCustomDomainVerification' => skip_custom_domain_verification,'forceDnsRegistration' => force_dns_registration,'ttlInSeconds' => ttl_in_seconds,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -36642,7 +36607,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 200 || status_code == 201 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -36660,6 +36625,16 @@ module Azure::Web::Mgmt::V2016_08_01
         end
         # Deserialize Response
         if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
@@ -36877,7 +36852,7 @@ module Azure::Web::Mgmt::V2016_08_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 200 || status_code == 201 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -36895,6 +36870,16 @@ module Azure::Web::Mgmt::V2016_08_01
         end
         # Deserialize Response
         if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Web::Mgmt::V2016_08_01::Models::SiteSourceControl.mapper()

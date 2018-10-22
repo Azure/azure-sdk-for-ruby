@@ -24,42 +24,47 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Generates a Uri for use in creating a webhook.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [String] operation results.
     #
-    def generate_uri(automation_account_name, custom_headers:nil)
-      response = generate_uri_async(automation_account_name, custom_headers:custom_headers).value!
+    def generate_uri(resource_group_name, automation_account_name, custom_headers:nil)
+      response = generate_uri_async(resource_group_name, automation_account_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Generates a Uri for use in creating a webhook.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generate_uri_with_http_info(automation_account_name, custom_headers:nil)
-      generate_uri_async(automation_account_name, custom_headers:custom_headers).value!
+    def generate_uri_with_http_info(resource_group_name, automation_account_name, custom_headers:nil)
+      generate_uri_async(resource_group_name, automation_account_name, custom_headers:custom_headers).value!
     end
 
     #
     # Generates a Uri for use in creating a webhook.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generate_uri_async(automation_account_name, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def generate_uri_async(resource_group_name, automation_account_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -77,7 +82,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -121,44 +126,49 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Delete the webhook by name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(automation_account_name, webhook_name, custom_headers:nil)
-      response = delete_async(automation_account_name, webhook_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, automation_account_name, webhook_name, custom_headers:nil)
+      response = delete_async(resource_group_name, automation_account_name, webhook_name, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # Delete the webhook by name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(automation_account_name, webhook_name, custom_headers:nil)
-      delete_async(automation_account_name, webhook_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, automation_account_name, webhook_name, custom_headers:nil)
+      delete_async(resource_group_name, automation_account_name, webhook_name, custom_headers:custom_headers).value!
     end
 
     #
     # Delete the webhook by name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(automation_account_name, webhook_name, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def delete_async(resource_group_name, automation_account_name, webhook_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'webhook_name is nil' if webhook_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -177,7 +187,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -204,45 +214,50 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Webhook] operation results.
     #
-    def get(automation_account_name, webhook_name, custom_headers:nil)
-      response = get_async(automation_account_name, webhook_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, automation_account_name, webhook_name, custom_headers:nil)
+      response = get_async(resource_group_name, automation_account_name, webhook_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(automation_account_name, webhook_name, custom_headers:nil)
-      get_async(automation_account_name, webhook_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, automation_account_name, webhook_name, custom_headers:nil)
+      get_async(resource_group_name, automation_account_name, webhook_name, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(automation_account_name, webhook_name, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def get_async(resource_group_name, automation_account_name, webhook_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'webhook_name is nil' if webhook_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -261,7 +276,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -298,7 +313,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Create the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookCreateOrUpdateParameters] The create or update
     # parameters for webhook.
@@ -307,15 +323,16 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Webhook] operation results.
     #
-    def create_or_update(automation_account_name, webhook_name, parameters, custom_headers:nil)
-      response = create_or_update_async(automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Create the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookCreateOrUpdateParameters] The create or update
     # parameters for webhook.
@@ -324,14 +341,15 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(automation_account_name, webhook_name, parameters, custom_headers:nil)
-      create_or_update_async(automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:nil)
+      create_or_update_async(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
     # Create the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookCreateOrUpdateParameters] The create or update
     # parameters for webhook.
@@ -340,9 +358,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(automation_account_name, webhook_name, parameters, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def create_or_update_async(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'webhook_name is nil' if webhook_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -368,7 +388,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -416,7 +436,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Update the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookUpdateParameters] The update parameters for
     # webhook.
@@ -425,15 +446,16 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Webhook] operation results.
     #
-    def update(automation_account_name, webhook_name, parameters, custom_headers:nil)
-      response = update_async(automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:nil)
+      response = update_async(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Update the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookUpdateParameters] The update parameters for
     # webhook.
@@ -442,14 +464,15 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(automation_account_name, webhook_name, parameters, custom_headers:nil)
-      update_async(automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:nil)
+      update_async(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
     # Update the webhook identified by webhook name.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param webhook_name [String] The webhook name.
     # @param parameters [WebhookUpdateParameters] The update parameters for
     # webhook.
@@ -458,9 +481,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(automation_account_name, webhook_name, parameters, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def update_async(resource_group_name, automation_account_name, webhook_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'webhook_name is nil' if webhook_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -486,7 +511,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'webhookName' => webhook_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -524,45 +549,50 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of webhooks.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Webhook>] operation results.
     #
-    def list_by_automation_account(automation_account_name, filter:nil, custom_headers:nil)
-      first_page = list_by_automation_account_as_lazy(automation_account_name, filter:filter, custom_headers:custom_headers)
+    def list_by_automation_account(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      first_page = list_by_automation_account_as_lazy(resource_group_name, automation_account_name, filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
     # Retrieve a list of webhooks.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_automation_account_with_http_info(automation_account_name, filter:nil, custom_headers:nil)
-      list_by_automation_account_async(automation_account_name, filter:filter, custom_headers:custom_headers).value!
+    def list_by_automation_account_with_http_info(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      list_by_automation_account_async(resource_group_name, automation_account_name, filter:filter, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve a list of webhooks.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_automation_account_async(automation_account_name, filter:nil, custom_headers:nil)
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, "'@client.resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !@client.resource_group_name.nil? && @client.resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
+    def list_by_automation_account_async(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -580,7 +610,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => @client.resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'automationAccountName' => automation_account_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -705,7 +735,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Retrieve a list of webhooks.
     #
-    # @param automation_account_name [String] The automation account name.
+    # @param resource_group_name [String] Name of an Azure Resource group.
+    # @param automation_account_name [String] The name of the automation account.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -713,8 +744,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     # @return [WebhookListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_automation_account_as_lazy(automation_account_name, filter:nil, custom_headers:nil)
-      response = list_by_automation_account_async(automation_account_name, filter:filter, custom_headers:custom_headers).value!
+    def list_by_automation_account_as_lazy(resource_group_name, automation_account_name, filter:nil, custom_headers:nil)
+      response = list_by_automation_account_async(resource_group_name, automation_account_name, filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

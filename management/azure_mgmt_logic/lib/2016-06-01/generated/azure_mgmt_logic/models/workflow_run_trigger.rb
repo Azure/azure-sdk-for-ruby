@@ -27,6 +27,9 @@ module Azure::Logic::Mgmt::V2016_06_01
       # @return [ContentLink] Gets the link to outputs.
       attr_accessor :outputs_link
 
+      # @return [DateTime] Gets the scheduled time.
+      attr_accessor :scheduled_time
+
       # @return [DateTime] Gets the start time.
       attr_accessor :start_time
 
@@ -113,6 +116,15 @@ module Azure::Logic::Mgmt::V2016_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'ContentLink'
+                }
+              },
+              scheduled_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'scheduledTime',
+                type: {
+                  name: 'DateTime'
                 }
               },
               start_time: {

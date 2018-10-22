@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2017_05_01_preview
   #
-  # DiagnosticSettingsCategoryOperations
+  # Monitor Management Client
   #
   class DiagnosticSettingsCategoryOperations
     include MsRestAzure
@@ -78,7 +78,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceUri' => resource_uri,'name' => name},
+          path_params: {'name' => name},
+          skip_encoding_path_params: {'resourceUri' => resource_uri},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -165,7 +166,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceUri' => resource_uri},
+          skip_encoding_path_params: {'resourceUri' => resource_uri},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

@@ -7,7 +7,7 @@ require 'json'
 require_relative 'require_file_generator_options_parser'
 
 class RequireFileGenerator
-  EXCLUDE_GEMS = ['azure_mgmt_insights', 'azure_mgmt_graph']
+  EXCLUDE_GEMS = ['azure_mgmt_insights', 'azure_mgmt_graph', 'azure_mgmt_mobile_engagement', 'azure_mgmt_server_management']
 
   attr_accessor :requires
 
@@ -131,10 +131,17 @@ class RequireFileGenerator
 
   def post_processing_requires
     if(@requires.length > 1)
-      if(@requires[0].start_with?'profiles/')
-        @requires << @requires[0]
-        @requires.shift
+      requires_sdk_array = []
+      requires_profile_array = []
+      @requires.each_with_index do |require, index|
+        if(@requires[index].start_with?'profiles/')
+          requires_profile_array << @requires[index]
+        else
+          requires_sdk_array << @requires[index]
+        end
       end
+
+      @requires = requires_sdk_array + requires_profile_array
     end
   end
 
@@ -193,6 +200,7 @@ class RequireFileGenerator
     end
 
     remove_rb_extension
+    @requires.unshift "azure_sdk/version"
     file = get_require_file
     file.write(get_renderer(get_renderer_template))
   end

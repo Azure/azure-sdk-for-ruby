@@ -19,9 +19,17 @@ module Azure::Network::Mgmt::V2017_03_30
       # NetworkSecurityGroup resource.
       attr_accessor :network_security_group
 
+      # @return [InterfaceEndpoint] A reference to the interface endpoint to
+      # which the network interface is linked.
+      attr_accessor :interface_endpoint
+
       # @return [Array<NetworkInterfaceIPConfiguration>] A list of
       # IPConfigurations of the network interface.
       attr_accessor :ip_configurations
+
+      # @return [Array<NetworkInterfaceTapConfiguration>] A list of
+      # TapConfigurations of the network interface.
+      attr_accessor :tap_configurations
 
       # @return [NetworkInterfaceDnsSettings] The DNS settings in network
       # interface.
@@ -41,6 +49,10 @@ module Azure::Network::Mgmt::V2017_03_30
       # @return [Boolean] Indicates whether IP forwarding is enabled on this
       # network interface.
       attr_accessor :enable_ipforwarding
+
+      # @return [Array<String>] A list of references to linked BareMetal
+      # resources
+      attr_accessor :hosted_workloads
 
       # @return [String] The resource GUID property of the network interface
       # resource.
@@ -136,6 +148,16 @@ module Azure::Network::Mgmt::V2017_03_30
                   class_name: 'NetworkSecurityGroup'
                 }
               },
+              interface_endpoint: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.interfaceEndpoint',
+                type: {
+                  name: 'Composite',
+                  class_name: 'InterfaceEndpoint'
+                }
+              },
               ip_configurations: {
                 client_side_validation: true,
                 required: false,
@@ -149,6 +171,23 @@ module Azure::Network::Mgmt::V2017_03_30
                       type: {
                         name: 'Composite',
                         class_name: 'NetworkInterfaceIPConfiguration'
+                      }
+                  }
+                }
+              },
+              tap_configurations: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.tapConfigurations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'NetworkInterfaceTapConfigurationElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'NetworkInterfaceTapConfiguration'
                       }
                   }
                 }
@@ -192,6 +231,23 @@ module Azure::Network::Mgmt::V2017_03_30
                 serialized_name: 'properties.enableIPForwarding',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              hosted_workloads: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.hostedWorkloads',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               resource_guid: {

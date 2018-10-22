@@ -42,6 +42,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               code: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'code',
                 type: {
                   name: 'String'
@@ -50,6 +51,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               target: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'target',
                 type: {
                   name: 'String'
@@ -58,6 +60,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               message: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'message',
                 type: {
                   name: 'String'
@@ -66,6 +69,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
               details: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',

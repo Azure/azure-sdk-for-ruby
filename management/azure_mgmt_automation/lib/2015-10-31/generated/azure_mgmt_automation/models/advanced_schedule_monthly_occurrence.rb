@@ -17,7 +17,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       attr_accessor :occurrence
 
       # @return [ScheduleDay] Day of the occurrence. Must be one of monday,
-      # tuesday, wednesday,thursday, friday, saturday, sunday. Possible values
+      # tuesday, wednesday, thursday, friday, saturday, sunday. Possible values
       # include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
       # 'Saturday', 'Sunday'
       attr_accessor :day

@@ -8,15 +8,9 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the webhook type.
     #
-    class Webhook
+    class Webhook < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] Gets or sets the id of the resource.
-      attr_accessor :id
-
-      # @return [String] Gets or sets the name of the webhook.
-      attr_accessor :name
 
       # @return [Boolean] Gets or sets the value of the enabled flag of the
       # webhook. Default value: false .
@@ -50,6 +44,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return [DateTime] Gets or sets the last modified time.
       attr_accessor :last_modified_time
 
+      # @return [String] Details of the user who last modified the Webhook
+      attr_accessor :last_modified_by
+
       # @return [String] Gets or sets the description.
       attr_accessor :description
 
@@ -70,6 +67,7 @@ module Azure::Automation::Mgmt::V2015_10_31
               id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -78,7 +76,17 @@ module Azure::Automation::Mgmt::V2015_10_31
               name: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -163,6 +171,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              last_modified_by: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.lastModifiedBy',
+                type: {
+                  name: 'String'
                 }
               },
               description: {

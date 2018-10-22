@@ -26,6 +26,10 @@ module Azure::Automation::Mgmt::V2015_10_31
       # worker group.
       attr_accessor :credential
 
+      # @return [GroupTypeEnum] Type of the HybridWorkerGroup. Possible values
+      # include: 'User', 'System'
+      attr_accessor :group_type
+
 
       #
       # Mapper for HybridRunbookWorkerGroup class as Ruby Hash.
@@ -80,6 +84,14 @@ module Azure::Automation::Mgmt::V2015_10_31
                 type: {
                   name: 'Composite',
                   class_name: 'RunAsCredentialAssociationProperty'
+                }
+              },
+              group_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'groupType',
+                type: {
+                  name: 'String'
                 }
               }
             }

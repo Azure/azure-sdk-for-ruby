@@ -1,7 +1,3 @@
-
-**NOTE**: With 0.15.0 version of Azure SDK, significant changes (Multiple API versions & Profiles) have been introduced.
-The details are available [here](#azure-multiple-api-versions--profiles)
-
 # Microsoft Azure SDK for Ruby - Resource Management (preview)
 [![Build Status](https://api.travis-ci.org/Azure/azure-sdk-for-ruby.svg?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
 

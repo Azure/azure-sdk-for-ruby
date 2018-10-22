@@ -1,3 +1,22 @@
+##2018.07.31 ms_rest_azure version 0.11.0
+* Added USER_DEFINED_IMDS_MAX_RETRY_TIME to msi_token_provider. Refer [PR #1539](https://github.com/Azure/azure-sdk-for-ruby/pull/1539) and [Issue #1344](https://github.com/Azure/azure-sdk-for-ruby/issues/1344) for further details.
+* Modified Long Running Operation Logic to make final calls based on Final State Via value. Refer [PR #1537](https://github.com/Azure/azure-sdk-for-ruby/pull/1537) for further details.
+
+##2018.06.08 ms_rest_azure version 0.10.8
+* Added case insensitive comparison to Operation status.
+
+##2018.05.16 ms_rest_azure version 0.10.7
+* Added new error code 410 for IMDS Support for MSI Token Provider class.
+
+##2018.04.16 ms_rest_azure version 0.10.6
+* Added encoding of client id, object id and msi_id in the MSI Token provider class. Refer[PR #1288](https://github.com/Azure/azure-sdk-for-ruby/pull/1288) for further details.
+
+##2018.04.16 ms_rest_azure version 0.10.5
+* Added new error codes for IMDS Support for MSI Token Provider class. Refer [PR #1286](https://github.com/Azure/azure-sdk-for-ruby/pull/1286) and [Issue #1285](https://github.com/Azure/azure-sdk-for-ruby/issues/1285) for further details.
+
+##2018.04.04 ms_rest_azure version 0.10.4
+* Added IMDS Support for MSI Token Provider class. Refer [PR #1282](https://github.com/Azure/azure-sdk-for-ruby/pull/1282) for further details. 
+
 ##2018.02.06 ms_rest_azure version 0.10.3
 * Removed subscription_id check from configurable. Refer [PR# 1261](https://github.com/Azure/azure-sdk-for-ruby/pull/1261) for further details.
 

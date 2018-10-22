@@ -12,41 +12,36 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
-    attr_reader :base_url
+    attr_accessor :base_url
 
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials1
-
-    # @return [AzureRegions] Supported Azure regions for Cognitive Services
-    # endpoints. Possible values include: 'westus', 'westeurope',
-    # 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus',
-    # 'southcentralus', 'northeurope', 'eastasia', 'australiaeast',
-    # 'brazilsouth'
-    attr_accessor :azure_region
 
     # @return Subscription credentials which uniquely identify client
     # subscription.
     attr_accessor :credentials
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     #
     # Creates initializes a new instance of the TextAnalyticsClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
+    # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
     #
-    def initialize(credentials = nil, options = nil)
+    def initialize(credentials = nil, base_url = nil, options = nil)
       super(credentials, options)
-      @base_url = 'https://{AzureRegion}.api.cognitive.microsoft.com/text/analytics'
+      @base_url = base_url || 'https://api.cognitive.microsoft.com/text/analytics/v2.0'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -119,8 +114,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # The API returns a list of strings denoting the key talking points in the
     # input text.
     #
-    # We employ techniques from Microsoft Office's sophisticated Natural Language
-    # Processing toolkit. See the <a
+    # See the <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
     # Analytics Documentation</a> for details about the languages that are
     # supported by key phrase extraction.
@@ -141,8 +135,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # The API returns a list of strings denoting the key talking points in the
     # input text.
     #
-    # We employ techniques from Microsoft Office's sophisticated Natural Language
-    # Processing toolkit. See the <a
+    # See the <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
     # Analytics Documentation</a> for details about the languages that are
     # supported by key phrase extraction.
@@ -162,8 +155,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # The API returns a list of strings denoting the key talking points in the
     # input text.
     #
-    # We employ techniques from Microsoft Office's sophisticated Natural Language
-    # Processing toolkit. See the <a
+    # See the <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
     # Analytics Documentation</a> for details about the languages that are
     # supported by key phrase extraction.
@@ -176,7 +168,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def key_phrases_async(input, custom_headers:nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'input is nil' if input.nil?
 
 
@@ -192,10 +183,9 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       request_content = self.serialize(request_mapper,  input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'v2.0/keyPhrases'
+      path_template = 'keyPhrases'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -278,7 +268,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def detect_language_async(input, custom_headers:nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'input is nil' if input.nil?
 
 
@@ -294,10 +283,9 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       request_content = self.serialize(request_mapper,  input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'v2.0/languages'
+      path_template = 'languages'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -338,10 +326,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # The API returns a numeric score between 0 and 1.
     #
     # Scores close to 1 indicate positive sentiment, while scores close to 0
-    # indicate negative sentiment. Sentiment score is generated using
-    # classification techniques. The input features to the classifier include
-    # n-grams, features generated from part-of-speech tags, and word embeddings.
-    # See the <a
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
     # Analytics Documentation</a> for details about the languages that are
     # supported by sentiment analysis.
@@ -361,10 +347,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # The API returns a numeric score between 0 and 1.
     #
     # Scores close to 1 indicate positive sentiment, while scores close to 0
-    # indicate negative sentiment. Sentiment score is generated using
-    # classification techniques. The input features to the classifier include
-    # n-grams, features generated from part-of-speech tags, and word embeddings.
-    # See the <a
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
     # Analytics Documentation</a> for details about the languages that are
     # supported by sentiment analysis.
@@ -383,10 +367,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # The API returns a numeric score between 0 and 1.
     #
     # Scores close to 1 indicate positive sentiment, while scores close to 0
-    # indicate negative sentiment. Sentiment score is generated using
-    # classification techniques. The input features to the classifier include
-    # n-grams, features generated from part-of-speech tags, and word embeddings.
-    # See the <a
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
     # Analytics Documentation</a> for details about the languages that are
     # supported by sentiment analysis.
@@ -398,7 +380,6 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def sentiment_async(input, custom_headers:nil)
-      fail ArgumentError, 'azure_region is nil' if azure_region.nil?
       fail ArgumentError, 'input is nil' if input.nil?
 
 
@@ -414,10 +395,9 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       request_content = self.serialize(request_mapper,  input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'v2.0/sentiment'
+      path_template = 'sentiment'
 
       request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{AzureRegion}', azure_region)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -454,6 +434,115 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       promise.execute
     end
 
+    #
+    # The API returns a list of recognized entities in a given document.
+    #
+    # To get even more information on each recognized entity we recommend using the
+    # Bing Entity Search API by querying for the recognized entities names. See the
+    # <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
+    # languages in Text Analytics API</a> for the list of enabled languages.
+    #
+    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [EntitiesBatchResult] operation results.
+    #
+    def entities(input, custom_headers:nil)
+      response = entities_async(input, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The API returns a list of recognized entities in a given document.
+    #
+    # To get even more information on each recognized entity we recommend using the
+    # Bing Entity Search API by querying for the recognized entities names. See the
+    # <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
+    # languages in Text Analytics API</a> for the list of enabled languages.
+    #
+    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def entities_with_http_info(input, custom_headers:nil)
+      entities_async(input, custom_headers:custom_headers).value!
+    end
+
+    #
+    # The API returns a list of recognized entities in a given document.
+    #
+    # To get even more information on each recognized entity we recommend using the
+    # Bing Entity Search API by querying for the recognized entities names. See the
+    # <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
+    # languages in Text Analytics API</a> for the list of enabled languages.
+    #
+    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def entities_async(input, custom_headers:nil)
+      fail ArgumentError, 'input is nil' if input.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput.mapper()
+      request_content = self.serialize(request_mapper,  input)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'entities'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
 
     private
     #
@@ -461,7 +550,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_textanalytics'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

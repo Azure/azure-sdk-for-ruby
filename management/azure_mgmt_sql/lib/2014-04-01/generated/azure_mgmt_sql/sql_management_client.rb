@@ -17,23 +17,27 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
+    # @return [String] The API version to use for the request.
+    attr_reader :api_version
+
     # @return [String] The subscription ID that identifies an Azure
     # subscription.
     attr_accessor :subscription_id
 
-    # @return [String] The API version to use for the request.
-    attr_reader :api_version
-
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
+
+    # @return [ServerAdvisors] server_advisors
+    attr_reader :server_advisors
 
     # @return [DatabaseAdvisors] database_advisors
     attr_reader :database_advisors
@@ -50,9 +54,6 @@ module Azure::SQL::Mgmt::V2014_04_01
 
     # @return [RestorableDroppedDatabases] restorable_dropped_databases
     attr_reader :restorable_dropped_databases
-
-    # @return [RestorePoints] restore_points
-    attr_reader :restore_points
 
     # @return [Capabilities] capabilities
     attr_reader :capabilities
@@ -107,8 +108,14 @@ module Azure::SQL::Mgmt::V2014_04_01
     # @return [QueryTexts] query_texts
     attr_reader :query_texts
 
+    # @return [RecommendedElasticPools] recommended_elastic_pools
+    attr_reader :recommended_elastic_pools
+
     # @return [ReplicationLinks] replication_links
     attr_reader :replication_links
+
+    # @return [RestorePoints] restore_points
+    attr_reader :restore_points
 
     # @return [ServerAzureADAdministrators] server_azure_adadministrators
     attr_reader :server_azure_adadministrators
@@ -124,9 +131,6 @@ module Azure::SQL::Mgmt::V2014_04_01
 
     # @return [ElasticPoolDatabaseActivities] elastic_pool_database_activities
     attr_reader :elastic_pool_database_activities
-
-    # @return [RecommendedElasticPools] recommended_elastic_pools
-    attr_reader :recommended_elastic_pools
 
     # @return [ServiceTierAdvisors] service_tier_advisors
     attr_reader :service_tier_advisors
@@ -166,12 +170,12 @@ module Azure::SQL::Mgmt::V2014_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @server_advisors = ServerAdvisors.new(self)
       @database_advisors = DatabaseAdvisors.new(self)
       @backup_long_term_retention_policies = BackupLongTermRetentionPolicies.new(self)
       @backup_long_term_retention_vaults = BackupLongTermRetentionVaults.new(self)
       @recoverable_databases = RecoverableDatabases.new(self)
       @restorable_dropped_databases = RestorableDroppedDatabases.new(self)
-      @restore_points = RestorePoints.new(self)
       @capabilities = Capabilities.new(self)
       @servers = Servers.new(self)
       @server_connection_policies = ServerConnectionPolicies.new(self)
@@ -189,13 +193,14 @@ module Azure::SQL::Mgmt::V2014_04_01
       @queries = Queries.new(self)
       @query_statistics = QueryStatistics.new(self)
       @query_texts = QueryTexts.new(self)
+      @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @replication_links = ReplicationLinks.new(self)
+      @restore_points = RestorePoints.new(self)
       @server_azure_adadministrators = ServerAzureADAdministrators.new(self)
       @server_communication_links = ServerCommunicationLinks.new(self)
       @service_objectives = ServiceObjectives.new(self)
       @elastic_pool_activities = ElasticPoolActivities.new(self)
       @elastic_pool_database_activities = ElasticPoolDatabaseActivities.new(self)
-      @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @service_tier_advisors = ServiceTierAdvisors.new(self)
       @transparent_data_encryptions = TransparentDataEncryptions.new(self)
       @transparent_data_encryption_activities = TransparentDataEncryptionActivities.new(self)
@@ -276,7 +281,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

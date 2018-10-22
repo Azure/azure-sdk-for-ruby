@@ -6,7 +6,7 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Information about the device twin, which is the cloud represenation of
+    # Information about the device twin, which is the cloud representation of
     # application device metadata.
     #
     class DeviceTwinInfo

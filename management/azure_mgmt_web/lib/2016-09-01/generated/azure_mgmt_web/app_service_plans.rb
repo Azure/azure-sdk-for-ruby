@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2016_09_01
   #
-  # AppServicePlans
+  # WebSite Management Client
   #
   class AppServicePlans
     include MsRestAzure

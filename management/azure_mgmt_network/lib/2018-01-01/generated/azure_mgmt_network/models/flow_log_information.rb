@@ -6,7 +6,8 @@
 module Azure::Network::Mgmt::V2018_01_01
   module Models
     #
-    # Information on the configuration of flow log.
+    # Information on the configuration of flow log and traffic analytics
+    # (optional).
     #
     class FlowLogInformation
 
@@ -24,6 +25,9 @@ module Azure::Network::Mgmt::V2018_01_01
 
       # @return [RetentionPolicyParameters]
       attr_accessor :retention_policy
+
+      # @return [TrafficAnalyticsConfigurationProperties]
+      attr_accessor :network_watcher_flow_analytics_configuration
 
 
       #
@@ -70,6 +74,15 @@ module Azure::Network::Mgmt::V2018_01_01
                 type: {
                   name: 'Composite',
                   class_name: 'RetentionPolicyParameters'
+                }
+              },
+              network_watcher_flow_analytics_configuration: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'TrafficAnalyticsConfigurationProperties'
                 }
               }
             }

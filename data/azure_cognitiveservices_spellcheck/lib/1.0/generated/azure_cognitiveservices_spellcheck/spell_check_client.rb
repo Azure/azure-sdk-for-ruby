@@ -21,15 +21,16 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # subscription.
     attr_accessor :credentials
 
-    # @return [String] Gets or sets the preferred language for the response.
+    # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
+    # @return [Integer] The retry timeout in seconds for Long Running
+    # Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
+    # @return [Boolean] Whether a unique x-ms-client-request-id should be
+    # generated. When set to true a unique x-ms-client-request-id value is
+    # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     #
@@ -278,7 +279,7 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # default is Proof. 1) Proof—Finds most spelling and grammar mistakes. 2)
     # Spell—Finds most spelling mistakes but does not find some of the grammar
     # errors that Proof catches (for example, capitalization and repeated words).
-    # Possible values include: 'Proof', 'Spell'
+    # Possible values include: 'proof', 'spell'
     # @param pre_context_text [String] A string that gives context to the text
     # string. For example, the text string petal is valid. However, if you set
     # preContextText to bike, the context changes and the text string becomes not
@@ -476,7 +477,7 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # default is Proof. 1) Proof—Finds most spelling and grammar mistakes. 2)
     # Spell—Finds most spelling mistakes but does not find some of the grammar
     # errors that Proof catches (for example, capitalization and repeated words).
-    # Possible values include: 'Proof', 'Spell'
+    # Possible values include: 'proof', 'spell'
     # @param pre_context_text [String] A string that gives context to the text
     # string. For example, the text string petal is valid. However, if you set
     # preContextText to bike, the context changes and the text string becomes not
@@ -673,7 +674,7 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     # default is Proof. 1) Proof—Finds most spelling and grammar mistakes. 2)
     # Spell—Finds most spelling mistakes but does not find some of the grammar
     # errors that Proof catches (for example, capitalization and repeated words).
-    # Possible values include: 'Proof', 'Spell'
+    # Possible values include: 'proof', 'spell'
     # @param pre_context_text [String] A string that gives context to the text
     # string. For example, the text string petal is valid. However, if you set
     # preContextText to bike, the context changes and the text string becomes not
@@ -769,7 +770,7 @@ module Azure::CognitiveServices::SpellCheck::V1_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_spellcheck'
-        sdk_information = "#{sdk_information}/0.16.0"
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

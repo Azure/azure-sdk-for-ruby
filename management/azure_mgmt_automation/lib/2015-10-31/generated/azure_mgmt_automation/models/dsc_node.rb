@@ -8,7 +8,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # Definition of the dsc node type.
     #
-    class DscNode < Resource
+    class DscNode < ProxyResource
 
       include MsRestAzure
 
@@ -80,30 +80,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               last_seen: {

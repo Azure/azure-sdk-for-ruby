@@ -14,6 +14,12 @@ module MsRestAzure
     # @return [String] the error message parsed from the body of the http error response.
     attr_accessor :message
 
+    # @return [String] the error target parsed from the body of the http error response.
+    attr_accessor :target
+
+    # @return [Array<TypedErrorInfo>] the list of additional error info parsed from the body of the http error response.
+    attr_accessor :additionalInfo
+
     #
     # Deserializes given hash into CloudErrorData object.
     # @param object [Hash] object to deserialize.
@@ -26,6 +32,15 @@ module MsRestAzure
       output_object.code = object['code']
 
       output_object.message = object['message']
+
+      output_object.target = object['target']
+
+      unless object['additionalInfo'].nil?
+        output_object.additionalInfo = []
+        object['additionalInfo'].each do |info|
+          output_object.additionalInfo << MsRestAzure::TypedErrorInfo.deserialize_object(info)
+        end
+      end
 
       output_object
     end

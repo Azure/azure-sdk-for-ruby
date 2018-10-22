@@ -1,3 +1,6 @@
+##2018.09.25 ms_rest version 0.7.3
+* [Enhancement] Added code to check for service response and retry if the code is 429 and retry header is provided. Refer [PR #1694](https://github.com/Azure/azure-sdk-for-ruby/pull/1694) for more details.
+
 ##2017.11.10 ms_rest version 0.7.2
 * [Enhancement] Added code to check & validate the constraints on the model. Refer [PR #1119](https://github.com/Azure/azure-sdk-for-ruby/pull/1119/files) for more details.
 

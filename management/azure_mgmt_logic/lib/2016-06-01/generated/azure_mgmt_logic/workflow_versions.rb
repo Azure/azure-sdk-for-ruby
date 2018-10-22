@@ -213,7 +213,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     end
 
     #
-    # Lists the callback URL for a trigger of a workflow version.
+    # Get the callback url for a trigger of a workflow version.
     #
     # @param resource_group_name [String] The resource group name.
     # @param workflow_name [String] The workflow name.
@@ -231,7 +231,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     end
 
     #
-    # Lists the callback URL for a trigger of a workflow version.
+    # Get the callback url for a trigger of a workflow version.
     #
     # @param resource_group_name [String] The resource group name.
     # @param workflow_name [String] The workflow name.
@@ -248,7 +248,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     end
 
     #
-    # Lists the callback URL for a trigger of a workflow version.
+    # Get the callback url for a trigger of a workflow version.
     #
     # @param resource_group_name [String] The resource group name.
     # @param workflow_name [String] The workflow name.

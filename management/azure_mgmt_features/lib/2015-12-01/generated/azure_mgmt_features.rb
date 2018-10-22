@@ -24,8 +24,11 @@ module Azure::Features::Mgmt::V2015_12_01
   autoload :FeatureClient,                                      '2015-12-01/generated/azure_mgmt_features/feature_client.rb'
 
   module Models
-    autoload :FeatureResult,                                      '2015-12-01/generated/azure_mgmt_features/models/feature_result.rb'
-    autoload :FeatureOperationsListResult,                        '2015-12-01/generated/azure_mgmt_features/models/feature_operations_list_result.rb'
+    autoload :OperationDisplay,                                   '2015-12-01/generated/azure_mgmt_features/models/operation_display.rb'
     autoload :FeatureProperties,                                  '2015-12-01/generated/azure_mgmt_features/models/feature_properties.rb'
+    autoload :Operation,                                          '2015-12-01/generated/azure_mgmt_features/models/operation.rb'
+    autoload :FeatureOperationsListResult,                        '2015-12-01/generated/azure_mgmt_features/models/feature_operations_list_result.rb'
+    autoload :OperationListResult,                                '2015-12-01/generated/azure_mgmt_features/models/operation_list_result.rb'
+    autoload :FeatureResult,                                      '2015-12-01/generated/azure_mgmt_features/models/feature_result.rb'
   end
 end

@@ -5,7 +5,7 @@
 
 module Azure::Web::Mgmt::V2016_03_01
   #
-  # Certificates
+  # WebSite Management Client
   #
   class Certificates
     include MsRestAzure
