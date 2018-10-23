@@ -8,6 +8,17 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      Details = Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
+      FaceDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
+      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
+      Line = Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
+      OcrWord = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
+      TextOperationResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
+      OcrLine = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
+      CelebritiesModel = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
+      OcrRegion = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
+      Category = Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
+      OcrResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
       ColorInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::ColorInfo
       ModelDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ModelDescription
       ImageTag = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageTag
@@ -35,17 +46,6 @@ module Azure::Profiles::Latest
       VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V1_0::Models::VisualFeatureTypes
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLanguages
       AzureRegions = Azure::CognitiveServices::ComputerVision::V1_0::Models::AzureRegions
-      Details = Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
-      FaceDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
-      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
-      Line = Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
-      OcrWord = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
-      TextOperationResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
-      OcrLine = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
-      CelebritiesModel = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
-      OcrRegion = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
-      Category = Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
-      OcrResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,39 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def details
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
+        end
+        def face_description
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
+        end
+        def image_analysis
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
+        end
+        def line
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
+        end
+        def ocr_word
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
+        end
+        def text_operation_result
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
+        end
+        def ocr_line
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
+        end
+        def celebrities_model
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
+        end
+        def ocr_region
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
+        end
+        def category
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
+        end
+        def ocr_result
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
+        end
         def color_info
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ColorInfo
         end
@@ -157,39 +190,6 @@ module Azure::Profiles::Latest
         end
         def azure_regions
           Azure::CognitiveServices::ComputerVision::V1_0::Models::AzureRegions
-        end
-        def details
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::Details
-        end
-        def face_description
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceDescription
-        end
-        def image_analysis
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageAnalysis
-        end
-        def line
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::Line
-        end
-        def ocr_word
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrWord
-        end
-        def text_operation_result
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::TextOperationResult
-        end
-        def ocr_line
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrLine
-        end
-        def celebrities_model
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebritiesModel
-        end
-        def ocr_region
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrRegion
-        end
-        def category
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::Category
-        end
-        def ocr_result
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::OcrResult
         end
       end
     end
