@@ -14,10 +14,14 @@ module Azure::Profiles::Latest
       TrafficManagerUserMetricsKeys = Azure::TrafficManager::Mgmt::V2017_09_01_preview::TrafficManagerUserMetricsKeys
 
       module Models
-        MonitorProtocol = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorProtocol
+        MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
+        TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
+        EndpointStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
+        EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
         ProfileMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileMonitorStatus
-        TrafficRoutingMethod = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficRoutingMethod
+        MonitorProtocol = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorProtocol
         ProfileStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileStatus
+        TrafficRoutingMethod = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficRoutingMethod
         Profile = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Profile
         ProfileListResult = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
         Endpoint = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Endpoint
@@ -25,19 +29,15 @@ module Azure::Profiles::Latest
         Region = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Region
         CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
         DnsConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
-        MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
-        TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
-        EndpointStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
-        EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
-        TrafficFlow = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficFlow
-        QueryExperience = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::QueryExperience
         ProxyResource = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::ProxyResource
-        HeatMapModel = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel
-        TrafficManagerUserMetricsKeyModel = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
-        TrackedResource = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource
-        DeleteOperationResult = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::DeleteOperationResult
-        Resource = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::Resource
         HeatMapEndpoint = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapEndpoint
+        TrafficFlow = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficFlow
+        TrackedResource = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource
+        QueryExperience = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::QueryExperience
+        HeatMapModel = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel
+        Resource = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::Resource
+        TrafficManagerUserMetricsKeyModel = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
+        DeleteOperationResult = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::DeleteOperationResult
       end
 
       class TrafficManagerManagementClass
@@ -82,17 +82,29 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def monitor_protocol
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorProtocol
+          def monitor_config
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
+          end
+          def traffic_manager_geographic_hierarchy
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
+          end
+          def endpoint_status
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
+          end
+          def endpoint_monitor_status
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
           end
           def profile_monitor_status
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileMonitorStatus
           end
-          def traffic_routing_method
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficRoutingMethod
+          def monitor_protocol
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorProtocol
           end
           def profile_status
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileStatus
+          end
+          def traffic_routing_method
+            Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficRoutingMethod
           end
           def profile
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::Profile
@@ -115,44 +127,32 @@ module Azure::Profiles::Latest
           def dns_config
             Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
           end
-          def monitor_config
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
+          def proxy_resource
+            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::ProxyResource
           end
-          def traffic_manager_geographic_hierarchy
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
-          end
-          def endpoint_status
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
-          end
-          def endpoint_monitor_status
-            Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
+          def heat_map_endpoint
+            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapEndpoint
           end
           def traffic_flow
             Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficFlow
           end
+          def tracked_resource
+            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource
+          end
           def query_experience
             Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::QueryExperience
-          end
-          def proxy_resource
-            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::ProxyResource
           end
           def heat_map_model
             Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel
           end
-          def traffic_manager_user_metrics_key_model
-            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
-          end
-          def tracked_resource
-            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource
-          end
-          def delete_operation_result
-            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::DeleteOperationResult
-          end
           def resource
             Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::Resource
           end
-          def heat_map_endpoint
-            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapEndpoint
+          def traffic_manager_user_metrics_key_model
+            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
+          end
+          def delete_operation_result
+            Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::DeleteOperationResult
           end
         end
       end
