@@ -16,6 +16,16 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       # settings
       attr_accessor :o_auth2
 
+      # @return [OpenIdAuthenticationSettingsContract] OpenID Connect
+      # Authentication Settings
+      attr_accessor :openid
+
+      # @return [Boolean] Specifies whether subscription key is required during
+      # call to this API, true - API is included into closed products only,
+      # false - API is included into open products alone, null - there is a mix
+      # of products.
+      attr_accessor :subscription_key_required
+
 
       #
       # Mapper for AuthenticationSettingsContract class as Ruby Hash.
@@ -35,6 +45,21 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'OAuth2AuthenticationSettingsContract'
+                }
+              },
+              openid: {
+                required: false,
+                serialized_name: 'openid',
+                type: {
+                  name: 'Composite',
+                  class_name: 'OpenIdAuthenticationSettingsContract'
+                }
+              },
+              subscription_key_required: {
+                required: false,
+                serialized_name: 'subscriptionKeyRequired',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
