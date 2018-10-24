@@ -7,15 +7,18 @@ require 'azure_mgmt_service_fabric'
 module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
+      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
+      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
+      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
-      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
-      ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
 
       module Models
+        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
+        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
         DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
         RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
         ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
@@ -70,13 +73,10 @@ module Azure::Profiles::Latest
         ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpdateParameters
         ApplicationParameter = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
         ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
-        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
-        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
-        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
       end
 
       class ServiceFabricManagementClass
-        attr_reader :service, :operations, :version, :application, :clusters, :cluster_versions, :application_type, :configurable, :base_url, :options, :model_classes
+        attr_reader :clusters, :cluster_versions, :application_type, :service, :operations, :version, :application, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -86,13 +86,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @clusters = @client_0.clusters
+          @cluster_versions = @client_0.cluster_versions
+          @application_type = @client_0.application_type
           @service = @client_0.service
           @operations = @client_0.operations
           @version = @client_0.version
           @application = @client_0.application
-          @clusters = @client_0.clusters
-          @cluster_versions = @client_0.cluster_versions
-          @application_type = @client_0.application_type
 
           @model_classes = ModelClasses.new
         end
@@ -111,6 +111,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def service_load_metric_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+          end
+          def cluster_code_versions_result
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
+          end
+          def partition_scheme_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
+          end
           def diagnostics_storage_account_config
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::DiagnosticsStorageAccountConfig
           end
@@ -272,15 +281,6 @@ module Azure::Profiles::Latest
           end
           def cluster_code_versions_list_result
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsListResult
-          end
-          def service_load_metric_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
-          end
-          def cluster_code_versions_result
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterCodeVersionsResult
-          end
-          def partition_scheme_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
           end
         end
       end

@@ -41,24 +41,24 @@ module Azure::Profiles::Latest
         JobResponseListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponseListResult
         IotHubSkuDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescription
         RouteProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RouteProperties
-        EventHubConsumerGroupInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo
-        MessagingEndpointProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::MessagingEndpointProperties
+        CertificateVerificationDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
         IotHubSkuDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
+        EventHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
         IotHubDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
         RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
         OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
         CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
         IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
         CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+        EventHubConsumerGroupInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
-        CertificateVerificationDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
         RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
         EventHubConsumerGroupsListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupsListResult
-        IotHubDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
+        MessagingEndpointProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::MessagingEndpointProperties
         ImportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
-        RoutingSource = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
+        IotHubDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
         IpFilterActionType = Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
-        EventHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
+        RoutingSource = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
         OperationMonitoringLevel = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel
         Capabilities = Azure::IotHub::Mgmt::V2017_07_01::Models::Capabilities
         IotHubSku = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
@@ -191,14 +191,14 @@ module Azure::Profiles::Latest
           def route_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::RouteProperties
           end
-          def event_hub_consumer_group_info
-            Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo
-          end
-          def messaging_endpoint_properties
-            Azure::IotHub::Mgmt::V2017_07_01::Models::MessagingEndpointProperties
+          def certificate_verification_description
+            Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
           end
           def iot_hub_sku_description_list_result
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
+          end
+          def event_hub_properties
+            Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
           end
           def iot_hub_description_list_result
             Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
@@ -218,11 +218,11 @@ module Azure::Profiles::Latest
           def cloud_to_device_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
           end
+          def event_hub_consumer_group_info
+            Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo
+          end
           def export_devices_request
             Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
-          end
-          def certificate_verification_description
-            Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
           end
           def routing_storage_container_properties
             Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
@@ -230,20 +230,20 @@ module Azure::Profiles::Latest
           def event_hub_consumer_groups_list_result
             Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupsListResult
           end
-          def iot_hub_description
-            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
+          def messaging_endpoint_properties
+            Azure::IotHub::Mgmt::V2017_07_01::Models::MessagingEndpointProperties
           end
           def import_devices_request
             Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
           end
-          def routing_source
-            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
+          def iot_hub_description
+            Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
           end
           def ip_filter_action_type
             Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
           end
-          def event_hub_properties
-            Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
+          def routing_source
+            Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
           end
           def operation_monitoring_level
             Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel

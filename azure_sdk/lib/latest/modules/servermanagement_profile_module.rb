@@ -39,9 +39,9 @@ module Azure::Profiles::Latest
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
         PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
+        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
         PowerShellExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
-        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         Error = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
       end
 
@@ -156,14 +156,14 @@ module Azure::Profiles::Latest
           def prompt_field_type
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
           end
+          def version
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
+          end
           def gateway_expand_option
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
           end
           def power_shell_expand_option
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
-          end
-          def version
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
           end
           def error
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
