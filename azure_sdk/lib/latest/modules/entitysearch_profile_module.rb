@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
@@ -54,7 +55,6 @@ module Azure::Profiles::Latest
       PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
       Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
-      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def intangible
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
+        end
         def contractual_rules_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
         end
@@ -221,9 +224,6 @@ module Azure::Profiles::Latest
         end
         def organization
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
-        end
-        def intangible
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
         end
       end
     end
