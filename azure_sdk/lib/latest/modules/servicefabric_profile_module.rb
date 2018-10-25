@@ -8,14 +8,17 @@ module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
       Operations = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Operations
-      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      Clusters = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Clusters
+      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      ClusterVersions = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ClusterVersions
 
       module Models
+        ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
+        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
+        ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
         ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
         ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClientCertificateCommonName
         ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
@@ -70,13 +73,10 @@ module Azure::Profiles::Latest
         RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
         ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterUpgradePolicy
         AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
-        ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
-        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
-        ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
       end
 
       class ServiceFabricManagementClass
-        attr_reader :operations, :clusters, :version, :application_type, :service, :application, :cluster_versions, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :version, :clusters, :cluster_versions, :application_type, :service, :application, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -87,12 +87,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @clusters = @client_0.clusters
           @version = @client_0.version
+          @clusters = @client_0.clusters
+          @cluster_versions = @client_0.cluster_versions
           @application_type = @client_0.application_type
           @service = @client_0.service
           @application = @client_0.application
-          @cluster_versions = @client_0.cluster_versions
 
           @model_classes = ModelClasses.new
         end
@@ -111,6 +111,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def cluster_health_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
+          end
+          def azure_active_directory
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
+          end
+          def service_type_health_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
+          end
           def application_type_resource_list
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
           end
@@ -272,15 +281,6 @@ module Azure::Profiles::Latest
           end
           def available_operation_display
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AvailableOperationDisplay
-          end
-          def cluster_health_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ClusterHealthPolicy
-          end
-          def azure_active_directory
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::AzureActiveDirectory
-          end
-          def service_type_health_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicy
           end
         end
       end
