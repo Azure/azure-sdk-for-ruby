@@ -101,6 +101,10 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # backup_long_term_retention_policies
     attr_reader :backup_long_term_retention_policies
 
+    # @return [ManagedBackupShortTermRetentionPolicies]
+    # managed_backup_short_term_retention_policies
+    attr_reader :managed_backup_short_term_retention_policies
+
     # @return [ManagedDatabases] managed_databases
     attr_reader :managed_databases
 
@@ -150,6 +154,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       @job_versions = JobVersions.new(self)
       @long_term_retention_backups = LongTermRetentionBackups.new(self)
       @backup_long_term_retention_policies = BackupLongTermRetentionPolicies.new(self)
+      @managed_backup_short_term_retention_policies = ManagedBackupShortTermRetentionPolicies.new(self)
       @managed_databases = ManagedDatabases.new(self)
       @restore_points = RestorePoints.new(self)
       @server_automatic_tuning_operations = ServerAutomaticTuningOperations.new(self)
