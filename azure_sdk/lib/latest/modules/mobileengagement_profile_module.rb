@@ -7,15 +7,27 @@ require 'azure_mgmt_mobile_engagement'
 module Azure::Profiles::Latest
   module MobileEngagement
     module Mgmt
+      AppCollections = Azure::MobileEngagement::Mgmt::V2014_12_01::AppCollections
+      Apps = Azure::MobileEngagement::Mgmt::V2014_12_01::Apps
+      SupportedPlatforms = Azure::MobileEngagement::Mgmt::V2014_12_01::SupportedPlatforms
       Campaigns = Azure::MobileEngagement::Mgmt::V2014_12_01::Campaigns
       Devices = Azure::MobileEngagement::Mgmt::V2014_12_01::Devices
       ExportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ExportTasks
       ImportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ImportTasks
-      AppCollections = Azure::MobileEngagement::Mgmt::V2014_12_01::AppCollections
-      Apps = Azure::MobileEngagement::Mgmt::V2014_12_01::Apps
-      SupportedPlatforms = Azure::MobileEngagement::Mgmt::V2014_12_01::SupportedPlatforms
 
       module Models
+        EngageNewUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageNewUsersFilter
+        EngageActiveUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageActiveUsersFilter
+        EngageIdleUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageIdleUsersFilter
+        NativePushEnabledFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NativePushEnabledFilter
+        PushQuotaFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
+        AppInfoFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
+        CampaignListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
+        CampaignResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
+        ImportTaskResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
+        PushModes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
+        CampaignTypes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
+        DeliveryTimes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
         NotificationTypes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationTypes
         CampaignStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignStates
         CampaignFeedbacks = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignFeedbacks
@@ -24,8 +36,8 @@ module Azure::Profiles::Latest
         ExportState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
         ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
         JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
-        CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
         ProvisioningStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
+        CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
         Filter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Filter
         ExportFormat = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportFormat
         Resource = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Resource
@@ -93,22 +105,10 @@ module Azure::Profiles::Latest
         BooleanTagCriterion = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::BooleanTagCriterion
         EngageSubsetFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageSubsetFilter
         EngageOldUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageOldUsersFilter
-        EngageNewUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageNewUsersFilter
-        EngageActiveUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageActiveUsersFilter
-        EngageIdleUsersFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageIdleUsersFilter
-        NativePushEnabledFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NativePushEnabledFilter
-        PushQuotaFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
-        AppInfoFilter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
-        CampaignListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
-        CampaignResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
-        ImportTaskResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
-        PushModes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
-        CampaignTypes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
-        DeliveryTimes = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
       end
 
       class MobileEngagementManagementClass
-        attr_reader :campaigns, :devices, :export_tasks, :import_tasks, :app_collections, :apps, :supported_platforms, :configurable, :base_url, :options, :model_classes
+        attr_reader :app_collections, :apps, :supported_platforms, :campaigns, :devices, :export_tasks, :import_tasks, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -118,13 +118,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @app_collections = @client_0.app_collections
+          @apps = @client_0.apps
+          @supported_platforms = @client_0.supported_platforms
           @campaigns = @client_0.campaigns
           @devices = @client_0.devices
           @export_tasks = @client_0.export_tasks
           @import_tasks = @client_0.import_tasks
-          @app_collections = @client_0.app_collections
-          @apps = @client_0.apps
-          @supported_platforms = @client_0.supported_platforms
 
           @model_classes = ModelClasses.new
         end
@@ -143,6 +143,42 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def engage_new_users_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageNewUsersFilter
+          end
+          def engage_active_users_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageActiveUsersFilter
+          end
+          def engage_idle_users_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageIdleUsersFilter
+          end
+          def native_push_enabled_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NativePushEnabledFilter
+          end
+          def push_quota_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
+          end
+          def app_info_filter
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
+          end
+          def campaign_list_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
+          end
+          def campaign_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
+          end
+          def import_task_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
+          end
+          def push_modes
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
+          end
+          def campaign_types
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
+          end
+          def delivery_times
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
+          end
           def notification_types
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NotificationTypes
           end
@@ -167,11 +203,11 @@ module Azure::Profiles::Latest
           def job_states
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
           end
-          def campaign_kinds
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
-          end
           def provisioning_states
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
+          end
+          def campaign_kinds
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
           end
           def filter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::Filter
@@ -373,42 +409,6 @@ module Azure::Profiles::Latest
           end
           def engage_old_users_filter
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageOldUsersFilter
-          end
-          def engage_new_users_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageNewUsersFilter
-          end
-          def engage_active_users_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageActiveUsersFilter
-          end
-          def engage_idle_users_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::EngageIdleUsersFilter
-          end
-          def native_push_enabled_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::NativePushEnabledFilter
-          end
-          def push_quota_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushQuotaFilter
-          end
-          def app_info_filter
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppInfoFilter
-          end
-          def campaign_list_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignListResult
-          end
-          def campaign_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignResult
-          end
-          def import_task_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ImportTaskResult
-          end
-          def push_modes
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::PushModes
-          end
-          def campaign_types
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignTypes
-          end
-          def delivery_times
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeliveryTimes
           end
         end
       end

@@ -20,14 +20,14 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
-      CreativeWork = Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
-      ErrorCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
-      ErrorSubCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
       ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-      SafeSearch = Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
-      TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
       Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
+      ErrorCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
+      CreativeWork = Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
+      SafeSearch = Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
+      ErrorSubCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
+      TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
     end
 
     class CustomSearchDataClass
@@ -93,29 +93,29 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
         end
-        def creative_work
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
-        end
-        def error_code
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
-        end
-        def error_sub_code
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
-        end
         def error_response
           Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-        end
-        def safe_search
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
-        end
-        def text_format
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
         end
         def response
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
         end
+        def error_code
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
+        end
+        def creative_work
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
+        end
+        def safe_search
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
+        end
+        def error_sub_code
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
+        end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
+        end
+        def text_format
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
         end
       end
     end

@@ -58,6 +58,14 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
     # @return [WorkflowRunActionRepetitions] workflow_run_action_repetitions
     attr_reader :workflow_run_action_repetitions
 
+    # @return [WorkflowRunActionRepetitionsRequestHistories]
+    # workflow_run_action_repetitions_request_histories
+    attr_reader :workflow_run_action_repetitions_request_histories
+
+    # @return [WorkflowRunActionRequestHistories]
+    # workflow_run_action_request_histories
+    attr_reader :workflow_run_action_request_histories
+
     # @return [WorkflowRunActionScopeRepetitions]
     # workflow_run_action_scope_repetitions
     attr_reader :workflow_run_action_scope_repetitions
@@ -117,6 +125,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       @workflow_runs = WorkflowRuns.new(self)
       @workflow_run_actions = WorkflowRunActions.new(self)
       @workflow_run_action_repetitions = WorkflowRunActionRepetitions.new(self)
+      @workflow_run_action_repetitions_request_histories = WorkflowRunActionRepetitionsRequestHistories.new(self)
+      @workflow_run_action_request_histories = WorkflowRunActionRequestHistories.new(self)
       @workflow_run_action_scope_repetitions = WorkflowRunActionScopeRepetitions.new(self)
       @workflow_run_operations = WorkflowRunOperations.new(self)
       @integration_accounts = IntegrationAccounts.new(self)

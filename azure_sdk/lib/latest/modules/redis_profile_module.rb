@@ -8,48 +8,48 @@ module Azure::Profiles::Latest
   module Redis
     module Mgmt
       Operations = Azure::Redis::Mgmt::V2017_10_01::Operations
-      PatchSchedules = Azure::Redis::Mgmt::V2017_10_01::PatchSchedules
-      LinkedServer = Azure::Redis::Mgmt::V2017_10_01::LinkedServer
       FirewallRules = Azure::Redis::Mgmt::V2017_10_01::FirewallRules
       Redis = Azure::Redis::Mgmt::V2017_10_01::Redis
+      PatchSchedules = Azure::Redis::Mgmt::V2017_10_01::PatchSchedules
+      LinkedServer = Azure::Redis::Mgmt::V2017_10_01::LinkedServer
 
       module Models
         Sku = Azure::Redis::Mgmt::V2017_10_01::Models::Sku
+        Resource = Azure::Redis::Mgmt::V2017_10_01::Models::Resource
+        SkuName = Azure::Redis::Mgmt::V2017_10_01::Models::SkuName
         RedisListResult = Azure::Redis::Mgmt::V2017_10_01::Models::RedisListResult
         RedisRegenerateKeyParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisRegenerateKeyParameters
         RedisFirewallRuleListResult = Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRuleListResult
         RedisAccessKeys = Azure::Redis::Mgmt::V2017_10_01::Models::RedisAccessKeys
         RedisLinkedServerCreateParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerCreateParameters
-        Resource = Azure::Redis::Mgmt::V2017_10_01::Models::Resource
-        RedisRebootParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisRebootParameters
-        RedisFirewallRuleCreateParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRuleCreateParameters
         RedisUpdateParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisUpdateParameters
-        ExportRDBParameters = Azure::Redis::Mgmt::V2017_10_01::Models::ExportRDBParameters
-        ImportRDBParameters = Azure::Redis::Mgmt::V2017_10_01::Models::ImportRDBParameters
-        RedisCreateParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisCreateParameters
-        RedisLinkedServerWithPropertiesList = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithPropertiesList
-        RedisLinkedServer = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServer
-        RedisForceRebootResponse = Azure::Redis::Mgmt::V2017_10_01::Models::RedisForceRebootResponse
-        RedisFirewallRule = Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRule
+        RedisRebootParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisRebootParameters
         OperationDisplay = Azure::Redis::Mgmt::V2017_10_01::Models::OperationDisplay
-        RedisResource = Azure::Redis::Mgmt::V2017_10_01::Models::RedisResource
+        RedisFirewallRuleCreateParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRuleCreateParameters
         OperationListResult = Azure::Redis::Mgmt::V2017_10_01::Models::OperationListResult
-        RedisLinkedServerWithProperties = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithProperties
+        ImportRDBParameters = Azure::Redis::Mgmt::V2017_10_01::Models::ImportRDBParameters
+        ExportRDBParameters = Azure::Redis::Mgmt::V2017_10_01::Models::ExportRDBParameters
+        RedisCreateParameters = Azure::Redis::Mgmt::V2017_10_01::Models::RedisCreateParameters
         ScheduleEntry = Azure::Redis::Mgmt::V2017_10_01::Models::ScheduleEntry
-        RedisKeyType = Azure::Redis::Mgmt::V2017_10_01::Models::RedisKeyType
-        SkuName = Azure::Redis::Mgmt::V2017_10_01::Models::SkuName
+        RedisLinkedServer = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServer
+        RedisLinkedServerWithPropertiesList = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithPropertiesList
+        RedisFirewallRule = Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRule
+        RedisForceRebootResponse = Azure::Redis::Mgmt::V2017_10_01::Models::RedisForceRebootResponse
+        ProxyResource = Azure::Redis::Mgmt::V2017_10_01::Models::ProxyResource
+        RedisResource = Azure::Redis::Mgmt::V2017_10_01::Models::RedisResource
         RedisPatchSchedule = Azure::Redis::Mgmt::V2017_10_01::Models::RedisPatchSchedule
+        RedisLinkedServerWithProperties = Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithProperties
+        Operation = Azure::Redis::Mgmt::V2017_10_01::Models::Operation
+        TrackedResource = Azure::Redis::Mgmt::V2017_10_01::Models::TrackedResource
         RebootType = Azure::Redis::Mgmt::V2017_10_01::Models::RebootType
         SkuFamily = Azure::Redis::Mgmt::V2017_10_01::Models::SkuFamily
-        ProxyResource = Azure::Redis::Mgmt::V2017_10_01::Models::ProxyResource
-        DayOfWeek = Azure::Redis::Mgmt::V2017_10_01::Models::DayOfWeek
+        RedisKeyType = Azure::Redis::Mgmt::V2017_10_01::Models::RedisKeyType
         ReplicationRole = Azure::Redis::Mgmt::V2017_10_01::Models::ReplicationRole
-        TrackedResource = Azure::Redis::Mgmt::V2017_10_01::Models::TrackedResource
-        Operation = Azure::Redis::Mgmt::V2017_10_01::Models::Operation
+        DayOfWeek = Azure::Redis::Mgmt::V2017_10_01::Models::DayOfWeek
       end
 
       class RedisManagementClass
-        attr_reader :operations, :patch_schedules, :linked_server, :firewall_rules, :redis, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :firewall_rules, :redis, :patch_schedules, :linked_server, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -60,10 +60,10 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @patch_schedules = @client_0.patch_schedules
-          @linked_server = @client_0.linked_server
           @firewall_rules = @client_0.firewall_rules
           @redis = @client_0.redis
+          @patch_schedules = @client_0.patch_schedules
+          @linked_server = @client_0.linked_server
 
           @model_classes = ModelClasses.new
         end
@@ -85,6 +85,12 @@ module Azure::Profiles::Latest
           def sku
             Azure::Redis::Mgmt::V2017_10_01::Models::Sku
           end
+          def resource
+            Azure::Redis::Mgmt::V2017_10_01::Models::Resource
+          end
+          def sku_name
+            Azure::Redis::Mgmt::V2017_10_01::Models::SkuName
+          end
           def redis_list_result
             Azure::Redis::Mgmt::V2017_10_01::Models::RedisListResult
           end
@@ -100,62 +106,62 @@ module Azure::Profiles::Latest
           def redis_linked_server_create_parameters
             Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerCreateParameters
           end
-          def resource
-            Azure::Redis::Mgmt::V2017_10_01::Models::Resource
+          def redis_update_parameters
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisUpdateParameters
           end
           def redis_reboot_parameters
             Azure::Redis::Mgmt::V2017_10_01::Models::RedisRebootParameters
           end
-          def redis_firewall_rule_create_parameters
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRuleCreateParameters
-          end
-          def redis_update_parameters
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisUpdateParameters
-          end
-          def export_rdbparameters
-            Azure::Redis::Mgmt::V2017_10_01::Models::ExportRDBParameters
-          end
-          def import_rdbparameters
-            Azure::Redis::Mgmt::V2017_10_01::Models::ImportRDBParameters
-          end
-          def redis_create_parameters
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisCreateParameters
-          end
-          def redis_linked_server_with_properties_list
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithPropertiesList
-          end
-          def redis_linked_server
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServer
-          end
-          def redis_force_reboot_response
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisForceRebootResponse
-          end
-          def redis_firewall_rule
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRule
-          end
           def operation_display
             Azure::Redis::Mgmt::V2017_10_01::Models::OperationDisplay
           end
-          def redis_resource
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisResource
+          def redis_firewall_rule_create_parameters
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRuleCreateParameters
           end
           def operation_list_result
             Azure::Redis::Mgmt::V2017_10_01::Models::OperationListResult
           end
-          def redis_linked_server_with_properties
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithProperties
+          def import_rdbparameters
+            Azure::Redis::Mgmt::V2017_10_01::Models::ImportRDBParameters
+          end
+          def export_rdbparameters
+            Azure::Redis::Mgmt::V2017_10_01::Models::ExportRDBParameters
+          end
+          def redis_create_parameters
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisCreateParameters
           end
           def schedule_entry
             Azure::Redis::Mgmt::V2017_10_01::Models::ScheduleEntry
           end
-          def redis_key_type
-            Azure::Redis::Mgmt::V2017_10_01::Models::RedisKeyType
+          def redis_linked_server
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServer
           end
-          def sku_name
-            Azure::Redis::Mgmt::V2017_10_01::Models::SkuName
+          def redis_linked_server_with_properties_list
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithPropertiesList
+          end
+          def redis_firewall_rule
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisFirewallRule
+          end
+          def redis_force_reboot_response
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisForceRebootResponse
+          end
+          def proxy_resource
+            Azure::Redis::Mgmt::V2017_10_01::Models::ProxyResource
+          end
+          def redis_resource
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisResource
           end
           def redis_patch_schedule
             Azure::Redis::Mgmt::V2017_10_01::Models::RedisPatchSchedule
+          end
+          def redis_linked_server_with_properties
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisLinkedServerWithProperties
+          end
+          def operation
+            Azure::Redis::Mgmt::V2017_10_01::Models::Operation
+          end
+          def tracked_resource
+            Azure::Redis::Mgmt::V2017_10_01::Models::TrackedResource
           end
           def reboot_type
             Azure::Redis::Mgmt::V2017_10_01::Models::RebootType
@@ -163,20 +169,14 @@ module Azure::Profiles::Latest
           def sku_family
             Azure::Redis::Mgmt::V2017_10_01::Models::SkuFamily
           end
-          def proxy_resource
-            Azure::Redis::Mgmt::V2017_10_01::Models::ProxyResource
-          end
-          def day_of_week
-            Azure::Redis::Mgmt::V2017_10_01::Models::DayOfWeek
+          def redis_key_type
+            Azure::Redis::Mgmt::V2017_10_01::Models::RedisKeyType
           end
           def replication_role
             Azure::Redis::Mgmt::V2017_10_01::Models::ReplicationRole
           end
-          def tracked_resource
-            Azure::Redis::Mgmt::V2017_10_01::Models::TrackedResource
-          end
-          def operation
-            Azure::Redis::Mgmt::V2017_10_01::Models::Operation
+          def day_of_week
+            Azure::Redis::Mgmt::V2017_10_01::Models::DayOfWeek
           end
         end
       end
