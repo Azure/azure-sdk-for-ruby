@@ -7,24 +7,27 @@ require 'azure_mgmt_api_management'
 module Azure::Profiles::Latest
   module ApiManagement
     module Mgmt
+      ProductSubscriptions = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductSubscriptions
+      ProductPolicy = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductPolicy
+      Property = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Property
       QuotaByCounterKeys = Azure::ApiManagement::Mgmt::V2018_01_01_preview::QuotaByCounterKeys
       QuotaByPeriodKeys = Azure::ApiManagement::Mgmt::V2018_01_01_preview::QuotaByPeriodKeys
-      Reports = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Reports
-      ProductSubscriptions = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductSubscriptions
-      TagResource = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TagResource
       Group = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Group
-      OperationOperations = Azure::ApiManagement::Mgmt::V2018_01_01_preview::OperationOperations
+      Reports = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Reports
+      TagResource = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TagResource
       TagDescription = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TagDescription
-      TenantAccessGit = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TenantAccessGit
+      OperationOperations = Azure::ApiManagement::Mgmt::V2018_01_01_preview::OperationOperations
       TenantAccess = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TenantAccess
-      User = Azure::ApiManagement::Mgmt::V2018_01_01_preview::User
+      DelegationSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::DelegationSettings
       TenantConfiguration = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TenantConfiguration
-      UserSubscription = Azure::ApiManagement::Mgmt::V2018_01_01_preview::UserSubscription
+      TenantAccessGit = Azure::ApiManagement::Mgmt::V2018_01_01_preview::TenantAccessGit
       UserGroup = Azure::ApiManagement::Mgmt::V2018_01_01_preview::UserGroup
-      ApiVersionSet = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ApiVersionSet
+      User = Azure::ApiManagement::Mgmt::V2018_01_01_preview::User
       UserIdentities = Azure::ApiManagement::Mgmt::V2018_01_01_preview::UserIdentities
-      Subscription = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Subscription
+      UserSubscription = Azure::ApiManagement::Mgmt::V2018_01_01_preview::UserSubscription
       ApiExport = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ApiExport
+      Subscription = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Subscription
+      ApiVersionSet = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ApiVersionSet
       Policy = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Policy
       Tag = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Tag
       Logger = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Logger
@@ -57,12 +60,9 @@ module Azure::Profiles::Latest
       SignInSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::SignInSettings
       SignUpSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::SignUpSettings
       Certificate = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Certificate
-      DelegationSettings = Azure::ApiManagement::Mgmt::V2018_01_01_preview::DelegationSettings
+      Product = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Product
       ProductApi = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductApi
       ProductGroup = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductGroup
-      Product = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Product
-      ProductPolicy = Azure::ApiManagement::Mgmt::V2018_01_01_preview::ProductPolicy
-      Property = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Property
 
       module Models
         SubscriptionState = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Models::SubscriptionState
@@ -266,7 +266,7 @@ module Azure::Profiles::Latest
       end
 
       class ApiManagementManagementClass
-        attr_reader :quota_by_counter_keys, :quota_by_period_keys, :reports, :product_subscriptions, :tag_resource, :group, :operation_operations, :tag_description, :tenant_access_git, :tenant_access, :user, :tenant_configuration, :user_subscription, :user_group, :api_version_set, :user_identities, :subscription, :api_export, :policy, :tag, :logger, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_diagnostic_logger, :authorization_server, :backend, :api_management_operations, :api_management_service, :diagnostic, :diagnostic_logger, :email_template, :group_user, :identity_provider, :notification, :notification_recipient_user, :notification_recipient_email, :network_status, :open_id_connect_provider, :sign_in_settings, :sign_up_settings, :certificate, :delegation_settings, :product_api, :product_group, :product, :product_policy, :property, :configurable, :base_url, :options, :model_classes
+        attr_reader :product_subscriptions, :product_policy, :property, :quota_by_counter_keys, :quota_by_period_keys, :group, :reports, :tag_resource, :tag_description, :operation_operations, :tenant_access, :delegation_settings, :tenant_configuration, :tenant_access_git, :user_group, :user, :user_identities, :user_subscription, :api_export, :subscription, :api_version_set, :policy, :tag, :logger, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_diagnostic_logger, :authorization_server, :backend, :api_management_operations, :api_management_service, :diagnostic, :diagnostic_logger, :email_template, :group_user, :identity_provider, :notification, :notification_recipient_user, :notification_recipient_email, :network_status, :open_id_connect_provider, :sign_in_settings, :sign_up_settings, :certificate, :product, :product_api, :product_group, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -276,24 +276,27 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @product_subscriptions = @client_0.product_subscriptions
+          @product_policy = @client_0.product_policy
+          @property = @client_0.property
           @quota_by_counter_keys = @client_0.quota_by_counter_keys
           @quota_by_period_keys = @client_0.quota_by_period_keys
-          @reports = @client_0.reports
-          @product_subscriptions = @client_0.product_subscriptions
-          @tag_resource = @client_0.tag_resource
           @group = @client_0.group
-          @operation_operations = @client_0.operation_operations
+          @reports = @client_0.reports
+          @tag_resource = @client_0.tag_resource
           @tag_description = @client_0.tag_description
-          @tenant_access_git = @client_0.tenant_access_git
+          @operation_operations = @client_0.operation_operations
           @tenant_access = @client_0.tenant_access
-          @user = @client_0.user
+          @delegation_settings = @client_0.delegation_settings
           @tenant_configuration = @client_0.tenant_configuration
-          @user_subscription = @client_0.user_subscription
+          @tenant_access_git = @client_0.tenant_access_git
           @user_group = @client_0.user_group
-          @api_version_set = @client_0.api_version_set
+          @user = @client_0.user
           @user_identities = @client_0.user_identities
-          @subscription = @client_0.subscription
+          @user_subscription = @client_0.user_subscription
           @api_export = @client_0.api_export
+          @subscription = @client_0.subscription
+          @api_version_set = @client_0.api_version_set
           @policy = @client_0.policy
           @tag = @client_0.tag
           @logger = @client_0.logger
@@ -326,12 +329,9 @@ module Azure::Profiles::Latest
           @sign_in_settings = @client_0.sign_in_settings
           @sign_up_settings = @client_0.sign_up_settings
           @certificate = @client_0.certificate
-          @delegation_settings = @client_0.delegation_settings
+          @product = @client_0.product
           @product_api = @client_0.product_api
           @product_group = @client_0.product_group
-          @product = @client_0.product
-          @product_policy = @client_0.product_policy
-          @property = @client_0.property
 
           @model_classes = ModelClasses.new
         end
