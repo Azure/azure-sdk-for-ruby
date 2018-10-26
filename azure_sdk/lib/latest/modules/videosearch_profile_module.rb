@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     VideosOperations = Azure::CognitiveServices::VideoSearch::V1_0::VideosOperations
 
     module Models
+      ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
       TrendingVideosCategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosCategory
       TrendingVideosSubcategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosSubcategory
@@ -16,8 +17,8 @@ module Azure::Profiles::Latest
       TrendingVideosTile = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
       Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
       TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
-      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
       Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
@@ -38,9 +39,8 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
       TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
-      Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-      ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
+      Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
     end
 
     class VideoSearchDataClass
@@ -73,6 +73,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_object
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
+        end
         def media_object
           Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
         end
@@ -94,11 +97,11 @@ module Azure::Profiles::Latest
         def trending_videos
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
         end
-        def video_details
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
-        end
         def response
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        end
+        def video_details
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
         end
         def response_base
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
@@ -160,14 +163,11 @@ module Azure::Profiles::Latest
         def video_resolution
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
         end
-        def freshness
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
         end
-        def image_object
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
+        def freshness
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
         end
       end
     end

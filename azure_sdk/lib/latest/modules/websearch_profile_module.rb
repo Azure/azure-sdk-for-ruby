@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     Web = Azure::CognitiveServices::WebSearch::V1_0::Web
 
     module Models
+      ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
       Places = Azure::CognitiveServices::WebSearch::V1_0::Models::Places
       Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
       MediaObject = Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
@@ -46,10 +47,9 @@ module Azure::Profiles::Latest
       TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
       ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
       ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
+      Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
       Article = Azure::CognitiveServices::WebSearch::V1_0::Models::Article
       Freshness = Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
-      Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-      ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
     end
 
     class WebSearchDataClass
@@ -82,6 +82,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_object
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
+        end
         def places
           Azure::CognitiveServices::WebSearch::V1_0::Models::Places
         end
@@ -193,17 +196,14 @@ module Azure::Profiles::Latest
         def error_sub_code
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
         end
+        def error
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Error
+        end
         def article
           Azure::CognitiveServices::WebSearch::V1_0::Models::Article
         end
         def freshness
           Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
-        end
-        def error
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-        end
-        def image_object
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
         end
       end
     end
