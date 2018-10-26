@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      AdultInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
+      LandmarkResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
+      ImageCaption = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
       ImageDescription = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
       RecognitionResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::RecognitionResult
       TagResult = Azure::CognitiveServices::ComputerVision::V1_0::Models::TagResult
@@ -43,9 +46,6 @@ module Azure::Profiles::Latest
       CelebrityResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::CelebrityResults
       FaceRectangle = Azure::CognitiveServices::ComputerVision::V1_0::Models::FaceRectangle
       LandmarkResultsLandmarksItem = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
-      AdultInfo = Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
-      LandmarkResults = Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
-      ImageCaption = Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def adult_info
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
+        end
+        def landmark_results
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
+        end
+        def image_caption
+          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
+        end
         def image_description
           Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageDescription
         end
@@ -181,15 +190,6 @@ module Azure::Profiles::Latest
         end
         def landmark_results_landmarks_item
           Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResultsLandmarksItem
-        end
-        def adult_info
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::AdultInfo
-        end
-        def landmark_results
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::LandmarkResults
-        end
-        def image_caption
-          Azure::CognitiveServices::ComputerVision::V1_0::Models::ImageCaption
         end
       end
     end

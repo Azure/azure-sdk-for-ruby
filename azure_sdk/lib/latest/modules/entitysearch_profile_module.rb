@@ -27,8 +27,8 @@ module Azure::Profiles::Latest
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
       EntertainmentBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
-      MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+      MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
       ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
       ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
       ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
@@ -141,11 +141,11 @@ module Azure::Profiles::Latest
         def entertainment_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
         end
-        def movie_theater
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
-        end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
+        def movie_theater
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
         end
         def contractual_rules_license_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution

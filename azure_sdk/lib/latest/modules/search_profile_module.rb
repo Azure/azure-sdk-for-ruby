@@ -13,6 +13,8 @@ module Azure::Profiles::Latest
       Services = Azure::Search::Mgmt::V2015_08_19::Services
 
       module Models
+        AdminKeyResult = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
+        SearchManagementRequestOptions = Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
         CheckNameAvailabilityInput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
         QueryKey = Azure::Search::Mgmt::V2015_08_19::Models::QueryKey
         CheckNameAvailabilityOutput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityOutput
@@ -20,16 +22,14 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::Search::Mgmt::V2015_08_19::Models::OperationDisplay
         SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
         OperationListResult = Azure::Search::Mgmt::V2015_08_19::Models::OperationListResult
-        SearchService = Azure::Search::Mgmt::V2015_08_19::Models::SearchService
+        Sku = Azure::Search::Mgmt::V2015_08_19::Models::Sku
         AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
         HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
-        Sku = Azure::Search::Mgmt::V2015_08_19::Models::Sku
-        ProvisioningState = Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
+        SearchService = Azure::Search::Mgmt::V2015_08_19::Models::SearchService
         Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
         Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
         SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-        AdminKeyResult = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
-        SearchManagementRequestOptions = Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
+        ProvisioningState = Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
       end
 
       class SearchManagementClass
@@ -65,6 +65,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def admin_key_result
+            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
+          end
+          def search_management_request_options
+            Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
+          end
           def check_name_availability_input
             Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
           end
@@ -86,8 +92,8 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::Search::Mgmt::V2015_08_19::Models::OperationListResult
           end
-          def search_service
-            Azure::Search::Mgmt::V2015_08_19::Models::SearchService
+          def sku
+            Azure::Search::Mgmt::V2015_08_19::Models::Sku
           end
           def admin_key_kind
             Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
@@ -95,11 +101,8 @@ module Azure::Profiles::Latest
           def hosting_mode
             Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
           end
-          def sku
-            Azure::Search::Mgmt::V2015_08_19::Models::Sku
-          end
-          def provisioning_state
-            Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
+          def search_service
+            Azure::Search::Mgmt::V2015_08_19::Models::SearchService
           end
           def operation
             Azure::Search::Mgmt::V2015_08_19::Models::Operation
@@ -110,11 +113,8 @@ module Azure::Profiles::Latest
           def sku_name
             Azure::Search::Mgmt::V2015_08_19::Models::SkuName
           end
-          def admin_key_result
-            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
-          end
-          def search_management_request_options
-            Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
+          def provisioning_state
+            Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
           end
         end
       end

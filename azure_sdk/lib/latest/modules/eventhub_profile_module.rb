@@ -7,18 +7,20 @@ require 'azure_mgmt_event_hub'
 module Azure::Profiles::Latest
   module EventHub
     module Mgmt
+      Regions = Azure::EventHub::Mgmt::V2017_04_01::Regions
       Operations = Azure::EventHub::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::EventHub::Mgmt::V2017_04_01::Namespaces
       DisasterRecoveryConfigs = Azure::EventHub::Mgmt::V2017_04_01::DisasterRecoveryConfigs
       EventHubs = Azure::EventHub::Mgmt::V2017_04_01::EventHubs
       ConsumerGroups = Azure::EventHub::Mgmt::V2017_04_01::ConsumerGroups
-      Regions = Azure::EventHub::Mgmt::V2017_04_01::Regions
 
       module Models
-        KeyType = Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
         Sku = Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+        KeyType = Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
         CheckNameAvailabilityResult = Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
         Resource = Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
+        SkuName = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
+        SkuTier = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
         MessagingRegionsProperties = Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegionsProperties
         CaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
         ArmDisasterRecoveryListResult = Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
@@ -41,20 +43,18 @@ module Azure::Profiles::Latest
         ErrorResponse = Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
         MessagingRegions = Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegions
         MessagingPlan = Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingPlan
-        SkuTier = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
+        AccessRights = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
         EntityStatus = Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
         Operation = Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
         TrackedResource = Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
         ProvisioningStateDR = Azure::EventHub::Mgmt::V2017_04_01::Models::ProvisioningStateDR
         EncodingCaptureDescription = Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
-        SkuName = Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
-        AccessRights = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
-        RoleDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
         UnavailableReason = Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
+        RoleDisasterRecovery = Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
       end
 
       class EventHubManagementClass
-        attr_reader :operations, :namespaces, :disaster_recovery_configs, :event_hubs, :consumer_groups, :regions, :configurable, :base_url, :options, :model_classes
+        attr_reader :regions, :operations, :namespaces, :disaster_recovery_configs, :event_hubs, :consumer_groups, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -64,12 +64,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @regions = @client_0.regions
           @operations = @client_0.operations
           @namespaces = @client_0.namespaces
           @disaster_recovery_configs = @client_0.disaster_recovery_configs
           @event_hubs = @client_0.event_hubs
           @consumer_groups = @client_0.consumer_groups
-          @regions = @client_0.regions
 
           @model_classes = ModelClasses.new
         end
@@ -88,17 +88,23 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def key_type
-            Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
-          end
           def sku
             Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+          end
+          def key_type
+            Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
           end
           def check_name_availability_result
             Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
           end
           def resource
             Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
+          end
+          def sku_name
+            Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
+          end
+          def sku_tier
+            Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
           end
           def messaging_regions_properties
             Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingRegionsProperties
@@ -166,8 +172,8 @@ module Azure::Profiles::Latest
           def messaging_plan
             Azure::EventHub::Mgmt::V2017_04_01::Models::MessagingPlan
           end
-          def sku_tier
-            Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
+          def access_rights
+            Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
           end
           def entity_status
             Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
@@ -184,17 +190,11 @@ module Azure::Profiles::Latest
           def encoding_capture_description
             Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
           end
-          def sku_name
-            Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
-          end
-          def access_rights
-            Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
+          def unavailable_reason
+            Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
           end
           def role_disaster_recovery
             Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
-          end
-          def unavailable_reason
-            Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
           end
         end
       end

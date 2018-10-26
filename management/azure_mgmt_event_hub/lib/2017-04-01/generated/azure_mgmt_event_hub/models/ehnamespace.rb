@@ -40,6 +40,10 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # AutoInflateEnabled = true)
       attr_accessor :maximum_throughput_units
 
+      # @return [Boolean] Value that indicates whether Kafka is enabled for
+      # eventhub namespace.
+      attr_accessor :kafka_enabled
+
 
       #
       # Mapper for EHNamespace class as Ruby Hash.
@@ -162,6 +166,13 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              kafka_enabled: {
+                required: false,
+                serialized_name: 'properties.kafkaEnabled',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
