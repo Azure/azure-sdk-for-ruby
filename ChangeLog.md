@@ -1,3 +1,7 @@
+## 2018.10.26 - Azure Ruby SDK Release
+* Released 0.17.2 of azure_mgmt_event_grid. Included new API Version 2018-09-15-preview.
+* Released 0.18.8 of azure_Sdk. Includes updates to the new versions of azure_mgmt_event_grid. 
+
 ## 2018.10.08 - Azure Ruby SDK Release
 * Released 0.18.7 of azure_sdk. Updated azure_sdk to include new profile V2018_03_01 & updated the existing profile 
   V2017_03_09 to include Authorization & KeyVault. Also, updated new versions included in azure_mgmt_media_services.
