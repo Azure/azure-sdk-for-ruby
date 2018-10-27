@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -38,20 +37,20 @@ module Azure::Security::Profiles::Latest
       attr_reader :pricings, :security_contacts, :workspace_settings, :auto_provisioning_settings, :compliances, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::Security::Mgmt::V2017_08_01_preview::SecurityManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -70,61 +69,75 @@ module Azure::Security::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def auto_provisioning_setting_list
         Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSettingList
       end
+
       def pricing_list
         Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingList
       end
+
       def compliance_segment
         Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceSegment
       end
+
       def security_contact_list
         Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContactList
       end
+
       def compliance_list
         Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
       end
+
       def resource
         Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
       end
+
       def workspace_setting_list
         Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
       end
+
       def security_contact
         Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
       end
+
       def pricing
         Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
       end
+
       def workspace_setting
         Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
       end
+
       def auto_provisioning_setting
         Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
       end
+
       def compliance
         Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
       end
+
       def alert_notifications
         Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
       end
+
       def alerts_to_admins
         Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
       end
+
       def pricing_tier
         Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
       end
+
       def auto_provision
         Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
       end

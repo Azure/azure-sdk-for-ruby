@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -47,20 +46,20 @@ module Azure::Storage::Profiles::V2017_03_09
       attr_reader :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::Storage::Mgmt::V2016_01_01::StorageManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -76,97 +75,123 @@ module Azure::Storage::Profiles::V2017_03_09
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def storage_account_check_name_availability_parameters
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
       end
+
       def storage_account_key
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountKey
       end
+
       def sku
         Azure::Storage::Mgmt::V2016_01_01::Models::Sku
       end
+
       def storage_account_list_result
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListResult
       end
+
       def encryption_service
         Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionService
       end
+
       def storage_account_list_keys_result
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListKeysResult
       end
+
       def encryption
         Azure::Storage::Mgmt::V2016_01_01::Models::Encryption
       end
+
       def storage_account_regenerate_key_parameters
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
       end
+
       def endpoints
         Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
       end
+
       def storage_account_update_parameters
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountUpdateParameters
       end
+
       def custom_domain
         Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
       end
+
       def usage_name
         Azure::Storage::Mgmt::V2016_01_01::Models::UsageName
       end
+
       def storage_account_create_parameters
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters
       end
+
       def usage
         Azure::Storage::Mgmt::V2016_01_01::Models::Usage
       end
+
       def encryption_services
         Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
       end
+
       def usage_list_result
         Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
       end
+
       def check_name_availability_result
         Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
       end
+
       def resource
         Azure::Storage::Mgmt::V2016_01_01::Models::Resource
       end
+
       def storage_account
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
       end
+
       def reason
         Azure::Storage::Mgmt::V2016_01_01::Models::Reason
       end
+
       def sku_name
         Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
       end
+
       def sku_tier
         Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
       end
+
       def access_tier
         Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
       end
+
       def kind
         Azure::Storage::Mgmt::V2016_01_01::Models::Kind
       end
+
       def provisioning_state
         Azure::Storage::Mgmt::V2016_01_01::Models::ProvisioningState
       end
+
       def account_status
         Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
       end
+
       def key_permission
         Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
       end
+
       def usage_unit
         Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
       end

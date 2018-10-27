@@ -1,11 +1,10 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require 'rspec'
 require 'ms_rest'
 
-module MsRest  
+module MsRest
   describe 'Serialization' do
     it "should fail for a 'nil' object" do
       mapper = {
@@ -20,14 +19,14 @@ module MsRest
 
     it "should fail for an 'ExclusiveMaximum' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
           name: 'Number'
         },
         constraints: {
-        ExclusiveMaximum: 100
+          ExclusiveMaximum: 100
         }
       }
 
@@ -38,14 +37,14 @@ module MsRest
 
     it "should fail for an 'ExclusiveMinimum' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
           name: 'Number'
         },
         constraints: {
-        ExclusiveMinimum: 5
+          ExclusiveMinimum: 5
         }
       }
 
@@ -56,14 +55,14 @@ module MsRest
 
     it "should fail for an 'InclusiveMaximum' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
           name: 'Number'
         },
         constraints: {
-        InclusiveMaximum: 100
+          InclusiveMaximum: 100
         }
       }
 
@@ -74,14 +73,14 @@ module MsRest
 
     it "should fail for an 'InclusiveMinimum' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
           name: 'Number'
         },
         constraints: {
-        InclusiveMinimum: 5
+          InclusiveMinimum: 5
         }
       }
 
@@ -96,7 +95,7 @@ module MsRest
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         constraints: {
-          MaxItems: 2,
+          MaxItems: 2
         },
         type: {
           name: 'Sequence',
@@ -111,7 +110,7 @@ module MsRest
         }
       }
 
-      object = ['One', 'Two', 'Three']
+      object = %w[One Two Three]
       serializer = MsRest::Serialization::Serialization.new(nil)
       expect { serializer.serialize(mapper, object) }.to raise_error(MsRest::ValidationError, "AvailabilitySet with value '[\"One\", \"Two\", \"Three\"]' should satisfy the constraint 'MaxItems': '2'")
     end
@@ -122,7 +121,7 @@ module MsRest
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         constraints: {
-          MinItems: 4,
+          MinItems: 4
         },
         type: {
           name: 'Sequence',
@@ -137,14 +136,14 @@ module MsRest
         }
       }
 
-      object = ['One', 'Two', 'Three']
+      object = %w[One Two Three]
       serializer = MsRest::Serialization::Serialization.new(nil)
       expect { serializer.serialize(mapper, object) }.to raise_error(MsRest::ValidationError, "AvailabilitySet with value '[\"One\", \"Two\", \"Three\"]' should satisfy the constraint 'MinItems': '4'")
     end
 
     it "should fail for a 'maxlength' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
@@ -162,7 +161,7 @@ module MsRest
 
     it "should fail for a 'minlength' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
@@ -180,7 +179,7 @@ module MsRest
 
     it "should fail for a 'multipleof' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
@@ -198,7 +197,7 @@ module MsRest
 
     it "should fail for a 'pattern' violation" do
       mapper = {
-        required:true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         type: {
@@ -210,7 +209,7 @@ module MsRest
       }
 
       object = 'dummy'
-      serializer = MsRest::Serialization::Serialization.new(nil)      
+      serializer = MsRest::Serialization::Serialization.new(nil)
       expect { serializer.serialize(mapper, object) }.to raise_error(MsRest::ValidationError, "AvailabilitySet with value 'dummy' should satisfy the constraint 'Pattern': '\\d{4}-\\d{2}-\\d{2}'")
     end
 
@@ -220,7 +219,7 @@ module MsRest
         serialized_name: 'AvailabilitySet',
         client_side_validation: true,
         constraints: {
-          UniqueItems: true,
+          UniqueItems: true
         },
         type: {
           name: 'Sequence',
@@ -235,10 +234,9 @@ module MsRest
         }
       }
 
-      object = ['One', 'Two', 'Three', 'One']
+      object = %w[One Two Three One]
       serializer = MsRest::Serialization::Serialization.new(nil)
       expect { serializer.serialize(mapper, object) }.to raise_error(MsRest::ValidationError, "AvailabilitySet with value '[\"One\", \"Two\", \"Three\", \"One\"]' should satisfy the constraint 'UniqueItems': 'true'")
     end
-
   end
 end

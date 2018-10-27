@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -36,20 +35,20 @@ module Azure::DevSpaces::Profiles::Latest
       attr_reader :controllers, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::DevSpaces::Mgmt::V2018_06_01_preview::DevSpacesManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -65,64 +64,79 @@ module Azure::DevSpaces::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def controller_connection_details_list
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
       end
+
       def sku
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Sku
       end
+
       def error_response
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
       end
+
       def controller_update_parameters
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
       end
+
       def resource_provider_operation_display
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
       end
+
       def orchestrator_specific_connection_details
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
       end
+
       def resource_provider_operation_definition
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
       end
+
       def resource_provider_operation_list
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationList
       end
+
       def controller_connection_details
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetails
       end
+
       def resource
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
       end
+
       def controller_list
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerList
       end
+
       def error_details
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
       end
+
       def tracked_resource
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
       end
+
       def controller
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
       end
+
       def kubernetes_connection_details
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
       end
+
       def provisioning_state
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
       end
+
       def sku_tier
         Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
       end

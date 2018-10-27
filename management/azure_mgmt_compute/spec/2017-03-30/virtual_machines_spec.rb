@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -51,9 +50,9 @@ describe 'Virtual machine and vm extension api' do
     @resource_group = @resource_helper.create_resource_group
     @location = 'westus'
     @vm_name = 'testvm'
-    @client.create_or_update(@resource_group.name, @vm_name, build_virtual_machine_parameters())
+    @client.create_or_update(@resource_group.name, @vm_name, build_virtual_machine_parameters)
     @ext_name = 'testextension'
-    @extensions_client.create_or_update(@resource_group.name, @vm_name, @ext_name, build_extension_parameter())
+    @extensions_client.create_or_update(@resource_group.name, @vm_name, @ext_name, build_extension_parameter)
   end
 
   after(:each) do
@@ -61,13 +60,13 @@ describe 'Virtual machine and vm extension api' do
   end
 
   it 'should get vm extension' do
-    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, expand:nil).value!
+    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, expand: nil).value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@ext_name)
   end
 
   it 'should get vm extension with expand parameter' do
-    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, expand:'instanceView').value!
+    result = @extensions_client.get_async(@resource_group.name, @vm_name, @ext_name, expand: 'instanceView').value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@ext_name)
   end
@@ -85,7 +84,7 @@ describe 'Virtual machine api' do
     @resource_group = @resource_helper.create_resource_group
     @location = 'westus'
     @vm_name = 'testvm'
-    @client.create_or_update(@resource_group.name, @vm_name, build_virtual_machine_parameters())
+    @client.create_or_update(@resource_group.name, @vm_name, build_virtual_machine_parameters)
   end
 
   after(:each) do
@@ -108,21 +107,21 @@ describe 'Virtual machine api' do
     ni_path = result.body.network_profile.network_interfaces[0].id
     # ni_path "/subscriptions/#{subscription_id}/resourceGroups/RubySDKTest_azure_mgmt_compute/providers/Microsoft.Network/networkInterfaces/testnic53464"
     options = {
-        query_params: {'api-version' => '2016-09-01'}
+      query_params: { 'api-version' => '2016-09-01' }
     }
     ni = network_client.make_request(:get, ni_path, options)
     expect(ni).not_to be_nil
     # user NetworkInterface mapper to deserialize object
-    ni_instance  = network_client.deserialize(NetworkInterface.mapper(), ni)
+    ni_instance = network_client.deserialize(NetworkInterface.mapper, ni)
     # retrieve first IP address for first IP configuration
     ip_address_path = ni_instance.ip_configurations[0].public_ipaddress.id
     ip_address = network_client.make_request(:get, ip_address_path, options)
-    ip_address_instance = network_client.deserialize(PublicIPAddress.mapper(), ip_address)
-    expect(ip_address_instance.dns_settings.fqdn).to eq("testdomain53464.westus.cloudapp.azure.com")
+    ip_address_instance = network_client.deserialize(PublicIPAddress.mapper, ip_address)
+    expect(ip_address_instance.dns_settings.fqdn).to eq('testdomain53464.westus.cloudapp.azure.com')
   end
 
   it 'should get virtual machine with expand parameter' do
-    result = @client.get_async(@resource_group.name, @vm_name, expand:'instanceView').value!
+    result = @client.get_async(@resource_group.name, @vm_name, expand: 'instanceView').value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@vm_name)
   end
@@ -135,7 +134,7 @@ describe 'Virtual machine api' do
 
     result = @resource_helper.network_client.network_interfaces.list_all
     result.each do |network_interface|
-      #Refer specification: https://github.com/Azure/azure-rest-api-specs/blob/ec9a03762fc8fd58fbee71cdbd18d1f4b28f168f/specification/network/resource-manager/Microsoft.Network/2017-09-01/networkInterface.json#L624
+      # Refer specification: https://github.com/Azure/azure-rest-api-specs/blob/ec9a03762fc8fd58fbee71cdbd18d1f4b28f168f/specification/network/resource-manager/Microsoft.Network/2017-09-01/networkInterface.json#L624
       expect(network_interface.virtual_machine).to be_an_instance_of(Azure::Network::Mgmt::V2017_09_01::Models::SubResource)
     end
   end
@@ -183,7 +182,7 @@ describe 'Virtual machine api' do
     result = @client.generalize_async(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
 
-    #capturing VM requires VM to be generalized
+    # capturing VM requires VM to be generalized
     capture_params = VirtualMachineCaptureParameters.new
     capture_params.vhd_prefix = 'test'
     capture_params.destination_container_name = 'test'
@@ -237,7 +236,7 @@ def build_extension_parameter
   vm_extension.type = 'VMAccessAgent'
   vm_extension.type_handler_version = '2.0'
   vm_extension.auto_upgrade_minor_version = true
-  vm_extension.tags = Hash.new
+  vm_extension.tags = ({})
   vm_extension.tags['extensionTag1'] = '1'
   vm_extension.tags['extensionTag2'] = '2'
   vm_extension.location = 'westus'
@@ -247,7 +246,7 @@ end
 def generate_os_vhd_uri(storage_name)
   container_name = 'testcontainer'
   vhd_container = "https://#{storage_name}.blob.core.windows.net/#{container_name}"
-  os_vhduri = "#{vhd_container}/os#{'test'}.vhd"
+  os_vhduri = "#{vhd_container}/ostest.vhd"
   os_vhduri
 end
 
@@ -261,7 +260,7 @@ def get_image_reference
 end
 
 # Storage helpers
-def build_storage_account_create_parameters(name)
+def build_storage_account_create_parameters(_name)
   sku = Azure::Storage::Mgmt::V2017_06_01::Models::Sku.new
   sku.name = 'Standard_GRS'
 
@@ -277,7 +276,7 @@ def create_storage_account
   storage_name = 'teststorage53464'
   params = build_storage_account_create_parameters storage_name
   result = @resource_helper.storage_client.storage_accounts.create(@resource_group.name, storage_name, params)
-  result.name = storage_name #similar problem in dot net tests
+  result.name = storage_name # similar problem in dot net tests
   result
 end
 
@@ -323,7 +322,7 @@ def build_virtual_network_params(location)
   address_space.address_prefixes = ['10.0.0.0/16']
 
   dhcp_options = DhcpOptions.new
-  dhcp_options.dns_servers = %w(10.1.1.1 10.1.2.4)
+  dhcp_options.dns_servers = %w[10.1.1.1 10.1.2.4]
 
   sub2 = Subnet.new
   sub2.name = 'subnet253464'
@@ -337,7 +336,7 @@ def build_virtual_network_params(location)
 end
 
 def create_virtual_network(resource_group_name)
-  virtualNetworkName = "testvnet53464"
+  virtualNetworkName = 'testvnet53464'
   params = build_virtual_network_params('westus')
   @resource_helper.network_client.virtual_networks.create_or_update(resource_group_name, virtualNetworkName, params)
 end

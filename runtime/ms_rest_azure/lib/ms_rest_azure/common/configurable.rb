@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -29,7 +28,7 @@ module MsRestAzure::Common
       # @return [Array] of option keys.
       #
       def keys
-        @keys ||= [:tenant_id, :client_id, :client_secret, :subscription_id, :active_directory_settings]
+        @keys ||= %i[tenant_id client_id client_secret subscription_id active_directory_settings]
       end
     end
 
@@ -50,17 +49,19 @@ module MsRestAzure::Common
         instance_variable_set(:"@#{key}", options.fetch(key, default_value))
       end
 
-      if(options[:credentials].nil?)
+      if options[:credentials].nil?
         # The user has not passed in the credentials. So, the SDK has to
         # build the credentials itself.
-        fail ArgumentError, 'tenant_id is nil' if self.tenant_id.nil?
-        fail ArgumentError, 'client_id is nil' if self.client_id.nil?
-        fail ArgumentError, 'client_secret is nil' if self.client_secret.nil?
-        fail ArgumentError, 'active_directory_settings is nil' if self.active_directory_settings.nil?
+        raise ArgumentError, 'tenant_id is nil' if tenant_id.nil?
+        raise ArgumentError, 'client_id is nil' if client_id.nil?
+        raise ArgumentError, 'client_secret is nil' if client_secret.nil?
+        raise ArgumentError, 'active_directory_settings is nil' if active_directory_settings.nil?
 
         self.credentials = MsRest::TokenCredentials.new(
-            MsRestAzure::ApplicationTokenProvider.new(
-                self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
+          MsRestAzure::ApplicationTokenProvider.new(
+            tenant_id, client_id, client_secret, active_directory_settings
+          )
+        )
       else
         self.credentials = options[:credentials]
       end

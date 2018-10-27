@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 require 'json'
@@ -8,7 +7,6 @@ module MsRest
   # Class which represents an error meaning that either HTTP request or HTTP response was invalid.
   #
   class HttpOperationError < RestError
-
     # @return [Hash] the HTTP request data (uri, body, headers).
     attr_accessor :request
 
@@ -51,22 +49,19 @@ module MsRest
         @msg = args[3]
         super(args[3])
       else
-        fail ArgumentError, 'Invalid number of arguments was provided, valid number: 1, 2, 3 or 4'
+        raise ArgumentError, 'Invalid number of arguments was provided, valid number: 1, 2, 3 or 4'
       end
     end
-    
+
     def to_json(*a)
       res_dict = response ? { body: response.body, headers: response.headers, status: response.status } : nil
-      {message: @msg, request: request, response: res_dict}.to_json(*a)
+      { message: @msg, request: request, response: res_dict }.to_json(*a)
     end
-    
+
     def to_s
-      begin
-        JSON.pretty_generate(self)
-      rescue Exception => ex
-        "#{self.class.name} failed in \n\t#{backtrace.join("\n\t")}"
-      end
+      JSON.pretty_generate(self)
+    rescue Exception => ex
+      "#{self.class.name} failed in \n\t#{backtrace.join("\n\t")}"
     end
   end
-
 end

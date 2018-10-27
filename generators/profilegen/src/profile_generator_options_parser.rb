@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -60,10 +59,11 @@ class ProfileGeneratorOptionsParser
   #
   def self.options(args)
     args << '-h' if args.empty?
-    options = self.parse(args)
-    mandatory_params = [:dir_metadata, :profile, :mode, :key, :sdk_path]
-    missing_params = mandatory_params.select{|param| options[param].nil?}
-    raise OptionParser::MissingArgument.new(missing_params.join(', ')) unless missing_params.empty?
+    options = parse(args)
+    mandatory_params = %i[dir_metadata profile mode key sdk_path]
+    missing_params = mandatory_params.select { |param| options[param].nil? }
+    raise OptionParser::MissingArgument, missing_params.join(', ') unless missing_params.empty?
+
     options
   end
 end

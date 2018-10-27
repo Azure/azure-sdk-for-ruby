@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -9,7 +8,7 @@ include Azure::Resources::Mgmt::V2017_05_10
 
 describe 'Deployment Operations' do
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.resource_client.deployment_operations
     @resource_group = @resource_helper.create_resource_group
     @deployment = @resource_helper.create_deployment(@resource_group.name)
@@ -26,7 +25,7 @@ describe 'Deployment Operations' do
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -34,12 +33,12 @@ describe 'Deployment Operations' do
   end
 
   it 'should get a list of deployment operation restricted with top parameter' do
-    result = @client.list_async(@resource_group.name, @deployment.name, top:1).value!
+    result = @client.list_async(@resource_group.name, @deployment.name, top: 1).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next_async(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

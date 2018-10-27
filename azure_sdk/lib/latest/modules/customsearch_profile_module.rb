@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -33,11 +32,13 @@ module Azure::Profiles::Latest
     class CustomSearchDataClass
       attr_reader :custom_instance, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(configurable, base_url = nil, options = nil)
+        @configurable = configurable
+        @base_url = base_url
+        @options = options
 
         @client_0 = Azure::CognitiveServices::CustomSearch::V1_0::CustomSearchClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -52,7 +53,7 @@ module Azure::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
@@ -63,57 +64,75 @@ module Azure::Profiles::Latest
         def response_base
           Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
         end
+
         def query_context
           Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
         end
+
         def query
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
         end
+
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
         end
+
         def web_meta_tag
           Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
         end
+
         def web_page
           Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
         end
+
         def web_web_answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
         end
+
         def search_response
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
         end
+
         def search_results_answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
         end
+
         def identifiable
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
         end
+
         def response
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
         end
+
         def error_response
           Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
         end
+
         def answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
         end
+
         def thing
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
         end
+
         def creative_work
           Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
         end
+
         def error_code
           Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
         end
+
         def error_sub_code
           Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
         end
+
         def safe_search
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
         end
+
         def text_format
           Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
         end

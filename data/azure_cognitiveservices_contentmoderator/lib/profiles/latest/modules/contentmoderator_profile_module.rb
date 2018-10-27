@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -85,20 +84,20 @@ module Azure::ContentModerator::Profiles::Latest
     attr_reader :image_moderation, :text_moderation, :list_management_image_lists, :list_management_term_lists, :list_management_image, :list_management_term, :reviews, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_default_options
-      else
-        @options = options
-      end
+      @options = if options.is_a?(Hash) && options.empty?
+                   setup_default_options
+                 else
+                   options
+                 end
 
       reset!(options)
 
       @configurable = self
-      @base_url = options[:base_url].nil? ? nil:options[:base_url]
-      @options = options[:options].nil? ? nil:options[:options]
+      @base_url = options[:base_url].nil? ? nil : options[:base_url]
+      @options = options[:options].nil? ? nil : options[:options]
 
       @client_0 = Azure::CognitiveServices::ContentModerator::V1_0::ContentModeratorClient.new(configurable.credentials, options)
-      if(@client_0.respond_to?(:subscription_id))
+      if @client_0.respond_to?(:subscription_id)
         @client_0.subscription_id = configurable.subscription_id
       end
       add_telemetry(@client_0)
@@ -119,199 +118,259 @@ module Azure::ContentModerator::Profiles::Latest
     end
 
     def method_missing(method, *args)
-      if @client_0.respond_to?method
+      if @client_0.respond_to? method
         @client_0.send(method, *args)
       else
         super
       end
     end
-
   end
 
   class ModelClasses
     def refresh_index
       Azure::CognitiveServices::ContentModerator::V1_0::Models::RefreshIndex
     end
+
     def image_additional_info_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageAdditionalInfoItem
     end
+
     def tag
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Tag
     end
+
     def image
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Image
     end
+
     def frames
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Frames
     end
+
     def image_ids
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageIds
     end
+
     def classification_category2
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory2
     end
+
     def terms_in_list
       Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsInList
     end
+
     def classification
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Classification
     end
+
     def terms_data
       Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsData
     end
+
     def email
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Email
     end
+
     def terms_paging
       Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsPaging
     end
+
     def ipa
       Azure::CognitiveServices::ContentModerator::V1_0::Models::IPA
     end
+
     def terms
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Terms
     end
+
     def address
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Address
     end
+
     def review
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Review
     end
+
     def detected_terms
       Azure::CognitiveServices::ContentModerator::V1_0::Models::DetectedTerms
     end
+
     def job_execution_report_details
       Azure::CognitiveServices::ContentModerator::V1_0::Models::JobExecutionReportDetails
     end
+
     def face
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
     end
+
     def job
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
     end
+
     def candidate
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Candidate
     end
+
     def job_list_result
       Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
     end
+
     def evaluate
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Evaluate
     end
+
     def job_id
       Azure::CognitiveServices::ContentModerator::V1_0::Models::JobId
     end
+
     def match_response
       Azure::CognitiveServices::ContentModerator::V1_0::Models::MatchResponse
     end
+
     def error
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Error
     end
+
     def image_list_metadata
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageListMetadata
     end
+
     def apierror
       Azure::CognitiveServices::ContentModerator::V1_0::Models::APIError
     end
+
     def term_list_metadata
       Azure::CognitiveServices::ContentModerator::V1_0::Models::TermListMetadata
     end
+
     def transcript_moderation_body_item_terms_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItemTermsItem
     end
+
     def refresh_index_advanced_info_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::RefreshIndexAdvancedInfoItem
     end
+
     def transcript_moderation_body_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItem
     end
+
     def frame
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Frame
     end
+
     def create_video_reviews_body_item_video_frames_item_reviewer_result_tags_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem
     end
+
     def classification_category3
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory3
     end
+
     def create_video_reviews_body_item_video_frames_item_metadata_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemMetadataItem
     end
+
     def ssn
       Azure::CognitiveServices::ContentModerator::V1_0::Models::SSN
     end
+
     def create_video_reviews_body_item_video_frames_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItem
     end
+
     def pii
       Azure::CognitiveServices::ContentModerator::V1_0::Models::PII
     end
+
     def create_video_reviews_body_item_metadata_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemMetadataItem
     end
+
     def found_faces
       Azure::CognitiveServices::ContentModerator::V1_0::Models::FoundFaces
     end
+
     def create_video_reviews_body_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItem
     end
+
     def match
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Match
     end
+
     def body_metadata
       Azure::CognitiveServices::ContentModerator::V1_0::Models::BodyMetadata
     end
+
     def image_list
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageList
     end
+
     def body
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Body
     end
+
     def key_value_pair
       Azure::CognitiveServices::ContentModerator::V1_0::Models::KeyValuePair
     end
+
     def image_url
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageUrl
     end
+
     def status
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Status
     end
+
     def video_frame_body_item_reviewer_result_tags_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemReviewerResultTagsItem
     end
+
     def screen
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Screen
     end
+
     def video_frame_body_item_metadata_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemMetadataItem
     end
+
     def detected_language
       Azure::CognitiveServices::ContentModerator::V1_0::Models::DetectedLanguage
     end
+
     def video_frame_body_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItem
     end
+
     def classification_category1
       Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory1
     end
+
     def create_review_body_item_metadata_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateReviewBodyItemMetadataItem
     end
+
     def ocr
       Azure::CognitiveServices::ContentModerator::V1_0::Models::OCR
     end
+
     def create_review_body_item
       Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateReviewBodyItem
     end
+
     def phone
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Phone
     end
+
     def content
       Azure::CognitiveServices::ContentModerator::V1_0::Models::Content
     end
+
     def term_list
       Azure::CognitiveServices::ContentModerator::V1_0::Models::TermList
     end
+
     def azure_region_base_url
       Azure::CognitiveServices::ContentModerator::V1_0::Models::AzureRegionBaseUrl
     end

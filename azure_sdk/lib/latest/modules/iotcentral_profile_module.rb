@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -29,11 +28,13 @@ module Azure::Profiles::Latest
       class IotCentralManagementClass
         attr_reader :apps, :operations, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::IotCentral::Mgmt::V2018_09_01::IotCentralClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -49,7 +50,7 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -60,39 +61,51 @@ module Azure::Profiles::Latest
           def app_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
           end
+
           def operation_display
             Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
           end
+
           def app_patch
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
           end
+
           def operation
             Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
           end
+
           def error_details
             Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
           end
+
           def operation_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
           end
+
           def resource
             Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
           end
+
           def operation_inputs
             Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
           end
+
           def app_sku_info
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
           end
+
           def app_name_availability_info
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameAvailabilityInfo
           end
+
           def app
             Azure::IotCentral::Mgmt::V2018_09_01::Models::App
           end
+
           def app_sku
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
           end
+
           def app_name_unavailability_reason
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppNameUnavailabilityReason
           end

@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -7,12 +6,11 @@ module MsRestAzure
   # Class which represents a state of Azure long running operation.
   #
   class PollingState
-
     # @return [Net::HTTPRequest] the HTTP request.
-  	attr_accessor :request
+    attr_accessor :request
 
     # @return the resource
-  	attr_accessor :resource
+    attr_accessor :resource
 
     # @return [Net::HTTPResponse] the HTTP response.
     attr_accessor :response
@@ -36,18 +34,18 @@ module MsRestAzure
       @resource = azure_response.body
 
       case @response.status
-        when 200
-          provisioning_state = get_provisioning_state
-          @status = provisioning_state.nil?? (AsyncOperationStatus::SUCCESS_STATUS):provisioning_state
-        when 201
-          provisioning_state = get_provisioning_state
-          @status = provisioning_state.nil?? (AsyncOperationStatus::IN_PROGRESS_STATUS):provisioning_state
-        when 202
-          @status = AsyncOperationStatus::IN_PROGRESS_STATUS
-        when 204
-          @status = AsyncOperationStatus::SUCCESS_STATUS
-        else
-          @status = AsyncOperationStatus::FAILED_STATUS
+      when 200
+        provisioning_state = get_provisioning_state
+        @status = provisioning_state.nil? ? AsyncOperationStatus::SUCCESS_STATUS : provisioning_state
+      when 201
+        provisioning_state = get_provisioning_state
+        @status = provisioning_state.nil? ? AsyncOperationStatus::IN_PROGRESS_STATUS : provisioning_state
+      when 202
+        @status = AsyncOperationStatus::IN_PROGRESS_STATUS
+      when 204
+        @status = AsyncOperationStatus::SUCCESS_STATUS
+      else
+        @status = AsyncOperationStatus::FAILED_STATUS
       end
     end
 
@@ -57,13 +55,11 @@ module MsRestAzure
     # @return [String] provisioning status of the resource
     def get_provisioning_state
       # On non flattened resource, we should find provisioning_state inside 'properties'
-      if (!@resource.nil? && @resource.respond_to?(:properties) && @resource.properties.respond_to?(:provisioning_state) && !@resource.properties.provisioning_state.nil?)
+      if !@resource.nil? && @resource.respond_to?(:properties) && @resource.properties.respond_to?(:provisioning_state) && !@resource.properties.provisioning_state.nil?
         @resource.properties.provisioning_state
         # On flattened resource, we should find provisioning_state at the top level
       elsif !@resource.nil? && @resource.respond_to?(:provisioning_state) && !@resource.provisioning_state.nil?
         @resource.provisioning_state
-      else
-        nil
       end
     end
 
@@ -78,7 +74,7 @@ module MsRestAzure
         return response.headers['Retry-After'].to_i
       end
 
-      return AsyncOperationStatus::DEFAULT_DELAY
+      AsyncOperationStatus::DEFAULT_DELAY
     end
 
     #
@@ -109,7 +105,7 @@ module MsRestAzure
     def get_operation_error
       AzureOperationError.new @request, @response, @error_data, "Long running operation failed with status #{@status}"
     end
-    
+
     def get_request(options = {})
       link = @azure_async_operation_header_link || @location_header_link
       options[:connection] = create_connection(options[:base_uri])
@@ -124,16 +120,13 @@ module MsRestAzure
     attr_accessor :connection
 
     def create_connection(base_url)
-      @connection ||= Faraday.new(:url => base_url, :ssl => MsRest.ssl_options) do |faraday|
-        [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]].each{ |args| faraday.use(*args) }
+      @connection ||= Faraday.new(url: base_url, ssl: MsRest.ssl_options) do |faraday|
+        [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]].each { |args| faraday.use(*args) }
         faraday.adapter Faraday.default_adapter
         faraday.headers = request.headers
         logging = ENV['AZURE_HTTP_LOGGING'] || request.log
-        if logging
-          faraday.response :logger, nil, { :bodies => logging == 'full' }
-        end
+        faraday.response :logger, nil, bodies: logging == 'full' if logging
       end
     end
   end
-
 end

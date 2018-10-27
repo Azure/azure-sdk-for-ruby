@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -38,20 +37,20 @@ module Azure::PowerBiEmbedded::Profiles::Latest
       attr_reader :workspace_collections, :workspaces, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::PowerBIEmbeddedManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -67,70 +66,87 @@ module Azure::PowerBiEmbedded::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def operation
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
       end
+
       def operation_list
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
       end
+
       def error
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
       end
+
       def workspace_collection_access_keys
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys
       end
+
       def workspace_collection
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection
       end
+
       def workspace_collection_access_key
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey
       end
+
       def workspace
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
       end
+
       def create_workspace_collection_request
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CreateWorkspaceCollectionRequest
       end
+
       def display
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Display
       end
+
       def update_workspace_collection_request
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
       end
+
       def azure_sku
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AzureSku
       end
+
       def check_name_request
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
       end
+
       def workspace_list
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
       end
+
       def check_name_response
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
       end
+
       def workspace_collection_list
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
       end
+
       def migrate_workspace_collection_request
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest
       end
+
       def error_detail
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::ErrorDetail
       end
+
       def access_key_name
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AccessKeyName
       end
+
       def check_name_reason
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
       end

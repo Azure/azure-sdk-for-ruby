@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -84,7 +83,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_spaces, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_central, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :entity_search, :face, :image_search, :news_search, :spell_check, :text_analytics, :video_search, :web_search
+    attr_reader :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_spaces, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_central, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :entity_search, :face, :image_search, :news_search, :spell_check, :text_analytics, :video_search, :web_search
 
     #
     # Initializes a new instance of the Client class.
@@ -105,16 +104,16 @@ module Azure::Profiles::Latest
     #   Also, base_url, active_directory_settings & options are optional.
     #
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_default_options
-      else
-        @options = options
-      end
+      @options = if options.is_a?(Hash) && options.empty?
+                   setup_default_options
+                 else
+                   options
+                 end
 
       reset!(options)
 
-      base_url = options[:base_url].nil? ? nil:options[:base_url]
-      sdk_options = options[:options].nil? ? nil:options[:options]
+      base_url = options[:base_url].nil? ? nil : options[:base_url]
+      sdk_options = options[:options].nil? ? nil : options[:options]
 
       @analysis_services = AnalysisServicesAdapter.new(self, base_url, sdk_options)
       @api_management = ApiManagementAdapter.new(self, base_url, sdk_options)
@@ -377,8 +376,7 @@ module Azure::Profiles::Latest
     end
 
     class GraphRbacAdapter < Azure::Profiles::Latest::GraphRbac::GraphRbacDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
@@ -689,81 +687,69 @@ module Azure::Profiles::Latest
     end
 
     class ComputerVisionAdapter < Azure::Profiles::Latest::ComputerVision::ComputerVisionDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class ContentModeratorAdapter < Azure::Profiles::Latest::ContentModerator::ContentModeratorDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class CustomSearchAdapter < Azure::Profiles::Latest::CustomSearch::CustomSearchDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class EntitySearchAdapter < Azure::Profiles::Latest::EntitySearch::EntitySearchDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class FaceAdapter < Azure::Profiles::Latest::Face::FaceDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class ImageSearchAdapter < Azure::Profiles::Latest::ImageSearch::ImageSearchDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class NewsSearchAdapter < Azure::Profiles::Latest::NewsSearch::NewsSearchDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class SpellCheckAdapter < Azure::Profiles::Latest::SpellCheck::SpellCheckDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class TextAnalyticsAdapter < Azure::Profiles::Latest::TextAnalytics::TextAnalyticsDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class VideoSearchAdapter < Azure::Profiles::Latest::VideoSearch::VideoSearchDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
 
     class WebSearchAdapter < Azure::Profiles::Latest::WebSearch::WebSearchDataClass
-
-      def initialize(context, base_url, options)
+      def initialize(context, _base_url, _options)
         super(context)
       end
     end
-
   end
 end

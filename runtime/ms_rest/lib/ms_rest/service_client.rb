@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -7,7 +6,6 @@ module MsRest
   # Class which represents a point of access to the REST API.
   #
   class ServiceClient
-
     # @return [MsRest::ServiceClientCredentials] the credentials object.
     attr_accessor :credentials
 
@@ -27,10 +25,10 @@ module MsRest
     # HTTP requests made by the service client.
     # @param options additional parameters for the HTTP request (not implemented yet).
     #
-    def initialize(credentials = nil, options = nil)
+    def initialize(credentials = nil, _options = nil)
       @credentials = credentials
       @request_headers = {}
-      @middlewares = {middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]]}
+      @middlewares = { middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]] }
       @user_agent_extended = []
       @user_agent_extended.push("ms_rest/#{MsRest::VERSION}")
     end
@@ -46,7 +44,7 @@ module MsRest
       options = @middlewares.merge(options)
       options[:credentials] = options[:credentials] || @credentials
       options[:user_agent_extended] = @user_agent_extended
-      request  = MsRest::HttpOperationRequest.new(base_url, path, method, options)
+      request = MsRest::HttpOperationRequest.new(base_url, path, method, options)
       promise = request.run_promise do |req|
         options[:credentials].sign_request(req) unless options[:credentials].nil?
       end
@@ -73,16 +71,17 @@ module MsRest
     end
 
     private
-      #
-      # Retrieves a new instance of the HttpOperationResponse class.
-      # @param [MsRest::HttpOperationRequest] request the HTTP request object.
-      # @param [Faraday::Response] response the HTTP response object.
-      # @param [String] body the HTTP response body.
-      # @return [MsRest::HttpOperationResponse] the operation response.
-      #
-      def create_response(request, http_response, body = nil)
-        HttpOperationResponse.new(request, http_response, body)
-      end
+
+    #
+    # Retrieves a new instance of the HttpOperationResponse class.
+    # @param [MsRest::HttpOperationRequest] request the HTTP request object.
+    # @param [Faraday::Response] response the HTTP response object.
+    # @param [String] body the HTTP response body.
+    # @return [MsRest::HttpOperationResponse] the operation response.
+    #
+    def create_response(request, http_response, body = nil)
+      HttpOperationResponse.new(request, http_response, body)
+    end
   end
 
   #
@@ -100,7 +99,7 @@ module MsRest
   #
   def self.use_ssl_cert(ssl_options = nil)
     if ssl_options.nil?
-      @@ssl_options = {:ca_file => File.expand_path(File.join(File.dirname(__FILE__), '../..', 'ca-cert.pem')) }
+      @@ssl_options = { ca_file: File.expand_path(File.join(File.dirname(__FILE__), '../..', 'ca-cert.pem')) }
     else
       @@ssl_options = ssl_options
     end

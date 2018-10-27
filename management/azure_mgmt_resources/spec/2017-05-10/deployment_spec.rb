@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -8,9 +7,8 @@ include MsRestAzure
 include Azure::Resources::Mgmt::V2017_05_10
 
 describe 'Template Deployments' do
-
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.resource_client.deployments
     @resource_group = @resource_helper.create_resource_group
   end
@@ -28,10 +26,10 @@ describe 'Template Deployments' do
   end
 
   it 'should raise error when attempting to create with invalid parameters' do
-    expect{@client.create_or_update(nil, 'bar', @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
-    expect{@client.create_or_update('foo', nil, @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
-    expect{@client.create_or_update('foo', 'bar', nil)}.to raise_error(ArgumentError)
-    expect{@client.create_or_update('~`123', 'bar', @resource_helper.build_deployment_params).value!}.to raise_error(ArgumentError)
+    expect { @client.create_or_update(nil, 'bar', @resource_helper.build_deployment_params) }.to raise_error(ArgumentError)
+    expect { @client.create_or_update('foo', nil, @resource_helper.build_deployment_params) }.to raise_error(ArgumentError)
+    expect { @client.create_or_update('foo', 'bar', nil) }.to raise_error(ArgumentError)
+    expect { @client.create_or_update('~`123', 'bar', @resource_helper.build_deployment_params).value! }.to raise_error(ArgumentError)
   end
 
   it 'should cancel running template deployment' do
@@ -43,8 +41,8 @@ describe 'Template Deployments' do
   end
 
   it 'should raise error when attempting cancel deployment with invalid parameters' do
-    expect{@client.cancel(nil, 'bar')}.to raise_error(ArgumentError)
-    expect{@client.cancel('foo', nil)}.to raise_error(ArgumentError)
+    expect { @client.cancel(nil, 'bar') }.to raise_error(ArgumentError)
+    expect { @client.cancel('foo', nil) }.to raise_error(ArgumentError)
   end
 
   it 'should get a deployment' do
@@ -56,9 +54,9 @@ describe 'Template Deployments' do
   end
 
   it 'should raise error when attempting to get deployment with using invalid parameters' do
-    expect{@client.get(nil, 'bar')}.to raise_error(ArgumentError)
-    expect{@client.get('foo', nil)}.to raise_error(ArgumentError)
-    expect{@client.get('~`123', 'bar').value!}.to raise_error(ArgumentError)
+    expect { @client.get(nil, 'bar') }.to raise_error(ArgumentError)
+    expect { @client.get('foo', nil) }.to raise_error(ArgumentError)
+    expect { @client.get('~`123', 'bar').value! }.to raise_error(ArgumentError)
   end
 
   it 'should validate a deployment' do
@@ -70,9 +68,9 @@ describe 'Template Deployments' do
   end
 
   it 'should raise error when attempting validate with invalid parameters' do
-    expect{@client.validate(nil, 'bar', @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
-    expect{@client.validate('foo', 'bar', nil)}.to raise_error(ArgumentError)
-    expect{@client.validate_async('~`123', 'bar', @resource_helper.build_deployment_params)}.to raise_error(ArgumentError)
+    expect { @client.validate(nil, 'bar', @resource_helper.build_deployment_params) }.to raise_error(ArgumentError)
+    expect { @client.validate('foo', 'bar', nil) }.to raise_error(ArgumentError)
+    expect { @client.validate_async('~`123', 'bar', @resource_helper.build_deployment_params) }.to raise_error(ArgumentError)
   end
 
   it 'should get a list of deployments' do
@@ -80,7 +78,7 @@ describe 'Template Deployments' do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -89,15 +87,14 @@ describe 'Template Deployments' do
 
   it 'should list filtered results restricted with top parameter' do
     filter = "provisioningState eq 'Running'"
-    result = @client.list_by_resource_group_async(@resource_group.name, filter:filter, top:1).value!
+    result = @client.list_by_resource_group_async(@resource_group.name, filter: filter, top: 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
     end
   end
-
 end

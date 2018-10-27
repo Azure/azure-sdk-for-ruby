@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -42,20 +41,20 @@ module Azure::Dns::Profiles::Latest
       attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::Dns::Mgmt::V2018_03_01_preview::DnsManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -71,82 +70,103 @@ module Azure::Dns::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def record_set_update_parameters
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
       end
+
       def arecord
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
       end
+
       def record_set_list_result
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
       end
+
       def mx_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
       end
+
       def sub_resource
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
       end
+
       def ptr_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
       end
+
       def ns_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
       end
+
       def srv_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
       end
+
       def cname_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
       end
+
       def soa_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
       end
+
       def resource
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
       end
+
       def record_set
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
       end
+
       def zone_update
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
       end
+
       def txt_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
       end
+
       def zone_list_result
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
       end
+
       def aaaa_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
       end
+
       def caa_record
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
       end
+
       def tracked_resource
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
       end
+
       def zone
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
       end
+
       def proxy_resource
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
       end
+
       def azure_entity_resource
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
       end
+
       def zone_type
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
       end
+
       def record_type
         Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
       end

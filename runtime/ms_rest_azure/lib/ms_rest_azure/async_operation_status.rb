@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -7,16 +6,16 @@ module MsRestAzure
   # Defines values for AsyncOperationStatus enum.
   #
   class AsyncOperationStatus
-    ACCEPTED = 'Accepted'
-    IN_PROGRESS_STATUS = 'InProgress'
-    RUNNING = 'Running'
-    SUCCESS_STATUS = 'Succeeded'
-    FAILED_STATUS = 'Failed'
-    CANCELED_STATUS = 'Canceled'
+    ACCEPTED = 'Accepted'.freeze
+    IN_PROGRESS_STATUS = 'InProgress'.freeze
+    RUNNING = 'Running'.freeze
+    SUCCESS_STATUS = 'Succeeded'.freeze
+    FAILED_STATUS = 'Failed'.freeze
+    CANCELED_STATUS = 'Canceled'.freeze
 
-    ALL_STATUSES = [ACCEPTED, FAILED_STATUS, CANCELED_STATUS, SUCCESS_STATUS, IN_PROGRESS_STATUS, RUNNING]
-    FAILED_STATUSES = [FAILED_STATUS, CANCELED_STATUS]
-    TERMINAL_STATUSES = [FAILED_STATUS, CANCELED_STATUS, SUCCESS_STATUS]
+    ALL_STATUSES = [ACCEPTED, FAILED_STATUS, CANCELED_STATUS, SUCCESS_STATUS, IN_PROGRESS_STATUS, RUNNING].freeze
+    FAILED_STATUSES = [FAILED_STATUS, CANCELED_STATUS].freeze
+    TERMINAL_STATUSES = [FAILED_STATUS, CANCELED_STATUS, SUCCESS_STATUS].freeze
 
     DEFAULT_DELAY = 30
 
@@ -53,7 +52,7 @@ module MsRestAzure
     #
     # @return [Boolean] True if given status is successful one, false otherwise.
     def self.is_successful_status(status)
-      return (status.casecmp(SUCCESS_STATUS) == 0)
+      (status.casecmp(SUCCESS_STATUS) == 0)
     end
 
     #
@@ -63,6 +62,7 @@ module MsRestAzure
     # @return [AsyncOperationStatus] deserialized object.
     def self.deserialize_object(object)
       return if object.nil?
+
       output_object = AsyncOperationStatus.new
 
       output_object.status = object['status']
@@ -74,5 +74,4 @@ module MsRestAzure
       output_object
     end
   end
-
 end

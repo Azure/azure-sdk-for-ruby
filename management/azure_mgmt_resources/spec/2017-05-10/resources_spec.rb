@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -9,7 +8,7 @@ include Azure::Resources::Mgmt::V2017_05_10
 
 describe 'Resources' do
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.resource_client.resources
     @resource_group = @resource_helper.create_resource_group
     @resource_type = 'sites'
@@ -27,13 +26,13 @@ describe 'Resources' do
     params = build_resource_params(@resource_name)
 
     result = @client.create_or_update_async(
-        @resource_group.name,
-        @resource_provider,
-        '',
-        @resource_type,
-        @resource_name,
-        @resource_api_version,
-        params
+      @resource_group.name,
+      @resource_provider,
+      '',
+      @resource_type,
+      @resource_name,
+      @resource_api_version,
+      params
     ).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -45,12 +44,12 @@ describe 'Resources' do
     resource = create_resource
 
     result = @client.get_async(
-        @resource_group.name,
-        @resource_provider,
-        '',
-        @resource_type,
-        resource.name,
-        @resource_api_version
+      @resource_group.name,
+      @resource_provider,
+      '',
+      @resource_type,
+      resource.name,
+      @resource_api_version
     ).value!
     expect(result.body).not_to be_nil
     expect(result.body.name).to eq(resource.name)
@@ -58,7 +57,7 @@ describe 'Resources' do
   end
 
   it 'should raise an error when attempting to get resource without any parameters' do
-    expect{@client.get(nil, nil, nil, nil, nil, nil)}.to raise_error(ArgumentError)
+    expect { @client.get(nil, nil, nil, nil, nil, nil) }.to raise_error(ArgumentError)
   end
 
   it 'should check existence of resource' do
@@ -66,12 +65,12 @@ describe 'Resources' do
     resource = create_resource
 
     result = @client.check_existence(
-        @resource_group.name,
-        @resource_provider,
-        '',
-        @resource_type,
-        resource.name,
-        @resource_api_version
+      @resource_group.name,
+      @resource_provider,
+      '',
+      @resource_type,
+      resource.name,
+      @resource_api_version
     ).value!
     expect(result.body).to be_truthy
   end
@@ -79,41 +78,50 @@ describe 'Resources' do
   it 'should raise an error when attempting invoke get, create_or_update, check_existence or delete without api version' do
     params = build_resource_params(@resource_name)
 
-    expect{@client.create_or_update(
+    expect do
+      @client.create_or_update(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
         @resource_name,
         nil,
-        params)}.to raise_error(ArgumentError)
+        params
+      )
+    end    .to raise_error(ArgumentError)
 
-    expect{@client.get(
+    expect do
+      @client.get(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
         @resource_name,
         nil
-    )}.to raise_error(ArgumentError)
+      )
+    end    .to raise_error(ArgumentError)
 
-    expect{@client.check_existence(
+    expect do
+      @client.check_existence(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
         @resource_name,
         nil
-    )}.to raise_error(ArgumentError)
+      )
+    end    .to raise_error(ArgumentError)
 
-    expect{@client.delete(
+    expect do
+      @client.delete(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
         @resource_name,
         nil
-    )}.to raise_error(ArgumentError)
+      )
+    end    .to raise_error(ArgumentError)
   end
 
   it 'should list resources' do
@@ -121,7 +129,7 @@ describe 'Resources' do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -133,7 +141,7 @@ describe 'Resources' do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_by_resource_group_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -142,11 +150,11 @@ describe 'Resources' do
 
   it 'should list list resources in resource group with tag_name and value filter and top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
-    result = @client.list_by_resource_group_async(@resource_group.name, filter:filter, top:1).value!
+    result = @client.list_by_resource_group_async(@resource_group.name, filter: filter, top: 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_by_resource_group_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -156,11 +164,11 @@ describe 'Resources' do
   it 'should filter resources and work with top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
 
-    result = @client.list_async(filter:filter, top:1).value!
+    result = @client.list_async(filter: filter, top: 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -169,7 +177,7 @@ describe 'Resources' do
 
   it 'should move resources' do
     target_resource_group_name = 'RubySDKTest_azure_mgmt_resources1'
-    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new
     params.location = 'westus'
 
     target_rg = @resource_helper.resource_client.resource_groups.create_or_update_async(target_resource_group_name, params).value!.body
@@ -190,37 +198,37 @@ describe 'Resources' do
     resource = create_resource
 
     result = @client.delete_async(
-        @resource_group.name,
-        @resource_provider,
-        '',
-        @resource_type,
-        resource.name,
-        @resource_api_version
+      @resource_group.name,
+      @resource_provider,
+      '',
+      @resource_type,
+      resource.name,
+      @resource_api_version
     ).value!
     expect(result.response.status).to eq(200)
   end
 
   def create_resource
     @client.create_or_update_async(
-        @resource_group.name,
-        @resource_provider,
-        '',
-        @resource_type,
-        @resource_name,
-        @resource_api_version,
-        build_resource_params(@resource_name)
+      @resource_group.name,
+      @resource_provider,
+      '',
+      @resource_type,
+      @resource_name,
+      @resource_api_version,
+      build_resource_params(@resource_name)
     ).value!.body
   end
 
   def build_resource_params(name)
-    params = Models::GenericResource.new()
+    params = Models::GenericResource.new
     params.location = 'WestUS'
     params.properties = {
-        'name' => name,
-        'siteMode' => 'Limited',
-        'computeMode' => 'Shared',
-        'sku' => 'Free',
-        'workerSize'=> 0
+      'name' => name,
+      'siteMode' => 'Limited',
+      'computeMode' => 'Shared',
+      'sku' => 'Free',
+      'workerSize' => 0
     }
 
     params
@@ -230,7 +238,8 @@ describe 'Resources' do
     count = 30
     while @resource_helper.resource_client.resource_groups.get_async(@resource_group.name).value!.body.properties.provisioning_state == 'MovingResources'
       sleep(1)
-      fail 'Waiting for resources to move took more than 30 requests. This seems broken' if count <= 0
+      raise 'Waiting for resources to move took more than 30 requests. This seems broken' if count <= 0
+
       count -= 1
     end
   end

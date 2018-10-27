@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -37,27 +36,27 @@ module Azure::Authorization::Profiles::Latest
       attr_reader :classic_administrators, :provider_operations_metadata_operations, :permissions, :role_assignments, :role_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::Authorization::Mgmt::V2015_06_01_preview::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
         @classic_administrators = @client_0.classic_administrators
 
         @client_1 = Azure::Authorization::Mgmt::V2018_01_01_preview::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_1.respond_to?(:subscription_id))
+        if @client_1.respond_to?(:subscription_id)
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
@@ -75,60 +74,73 @@ module Azure::Authorization::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_1.respond_to?method
+        if @client_1.respond_to? method
           @client_1.send(method, *args)
-        elsif @client_0.respond_to?method
+        elsif @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def classic_administrator_list_result
         Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
       end
+
       def classic_administrator
         Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
       end
+
       def role_definition_filter
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
       end
+
       def role_definition
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
       end
+
       def resource_type
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
       end
+
       def role_definition_list_result
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionListResult
       end
+
       def provider_operations_metadata_list_result
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult
       end
+
       def role_assignment_filter
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentFilter
       end
+
       def permission_get_result
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::PermissionGetResult
       end
+
       def role_assignment
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment
       end
+
       def provider_operations_metadata
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadata
       end
+
       def role_assignment_list_result
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult
       end
+
       def provider_operation
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperation
       end
+
       def role_assignment_create_parameters
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentCreateParameters
       end
+
       def permission
         Azure::Authorization::Mgmt::V2018_01_01_preview::Models::Permission
       end

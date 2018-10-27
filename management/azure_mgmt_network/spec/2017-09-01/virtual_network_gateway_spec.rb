@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -9,7 +8,6 @@ include Azure::Resources::Mgmt::V2017_05_10
 include Azure::Network::Mgmt::V2017_09_01
 
 describe VirtualNetworkGateways do
-
   before(:all) do
     skip('virtual network gateways aren\'t properly supported yet')
 
@@ -43,18 +41,15 @@ describe VirtualNetworkGateways do
     expect(result.response.status).to eq(200)
   end
 
-
   it 'should list all the virtual network gateways stored' do
     result = @client.list(@resource_group.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
     end
   end
-
-
 end

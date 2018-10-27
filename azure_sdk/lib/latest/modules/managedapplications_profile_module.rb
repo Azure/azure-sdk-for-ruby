@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -34,11 +33,13 @@ module Azure::Profiles::Latest
       class ManagedApplicationsManagementClass
         attr_reader :applications, :application_definitions, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::ManagedApplications::Mgmt::V2018_06_01::ApplicationClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -54,7 +55,7 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -65,54 +66,71 @@ module Azure::Profiles::Latest
           def sku
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
           end
+
           def plan
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Plan
           end
+
           def identity
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Identity
           end
+
           def plan_patchable
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
           end
+
           def error_response
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ErrorResponse
           end
+
           def application_provider_authorization
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationProviderAuthorization
           end
+
           def application_definition_list_result
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
           end
+
           def application_list_result
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
           end
+
           def application_artifact
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifact
           end
+
           def resource
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Resource
           end
+
           def generic_resource
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::GenericResource
           end
+
           def application
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
           end
+
           def application_patchable
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationPatchable
           end
+
           def application_definition
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinition
           end
+
           def provisioning_state
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ProvisioningState
           end
+
           def application_lock_level
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationLockLevel
           end
+
           def application_artifact_type
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifactType
           end
+
           def resource_identity_type
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ResourceIdentityType
           end

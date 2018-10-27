@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -13,8 +12,8 @@ module MsRest
     # @return [String] JSON serialized version of the object
     #
     def to_json(options = nil)
-      mapper = (options.nil? || !options.key?(:mapper))? self.class.mapper: options[:mapper]
-      object = (options.nil? || !options.key?(:object))? self: options[:object]
+      mapper = options.nil? || !options.key?(:mapper)  ? self.class.mapper : options[:mapper]
+      object = options.nil? || !options.key?(:object)  ? self : options[:object]
       serialize(mapper, object)
     end
 
@@ -33,7 +32,7 @@ module MsRest
     # @return [String]
     #
     def to_s
-      "#{super} #{to_json.to_s}"
+      "#{super} #{to_json}"
     end
   end
 end

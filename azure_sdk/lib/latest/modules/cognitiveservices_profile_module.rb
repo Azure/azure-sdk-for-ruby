@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -51,11 +50,13 @@ module Azure::Profiles::Latest
       class CognitiveServicesManagementClass
         attr_reader :accounts, :resource_skus, :operations, :check_sku_availability, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::CognitiveServices::Mgmt::V2017_04_18::CognitiveServicesManagementClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -73,7 +74,7 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -84,99 +85,131 @@ module Azure::Profiles::Latest
           def error_body
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
           end
+
           def sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
           end
+
           def error
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
           end
+
           def cognitive_services_account_update_parameters
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
           end
+
           def operation_display_info
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
           end
+
           def cognitive_services_account_list_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
           end
+
           def operation_entity
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
           end
+
           def regenerate_key_parameters
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
           end
+
           def operation_entity_list_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
           end
+
           def cognitive_services_account_enumerate_skus_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
           end
+
           def check_sku_availability_parameter
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
           end
+
           def usage
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
           end
+
           def check_sku_availability_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
           end
+
           def cognitive_services_account_create_parameters
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
           end
+
           def check_sku_availability_result_list
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
           end
+
           def cognitive_services_account_keys
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
           end
+
           def resource_sku_restriction_info
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
           end
+
           def metric_name
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
           end
+
           def resource_sku_restrictions
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
           end
+
           def cognitive_services_account
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
           end
+
           def resource_sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
           end
+
           def usages_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
           end
+
           def resource_skus_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
           end
+
           def cognitive_services_resource_and_sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
           end
+
           def sku_name
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
           end
+
           def sku_tier
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
           end
+
           def kind
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
           end
+
           def provisioning_state
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
           end
+
           def key_name
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
           end
+
           def unit_type
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UnitType
           end
+
           def quota_usage_status
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::QuotaUsageStatus
           end
+
           def resource_sku_restrictions_type
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
           end
+
           def resource_sku_restrictions_reason_code
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsReasonCode
           end

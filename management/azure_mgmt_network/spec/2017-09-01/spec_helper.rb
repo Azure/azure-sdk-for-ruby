@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -26,7 +25,7 @@ class ResourceHelper
     @credentials = TokenCredentials.new(token_provider)
 
     VCR.configure do |config|
-      config.cassette_library_dir = "spec/2017-09-01/vcr_cassettes"
+      config.cassette_library_dir = 'spec/2017-09-01/vcr_cassettes'
     end
   end
 
@@ -50,7 +49,7 @@ class ResourceHelper
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_network'
-    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new
     params.location = 'westus'
 
     resource_client.resource_groups.create_or_update(resource_group_name, params)
@@ -65,7 +64,7 @@ class ResourceHelper
     address_space.address_prefixes = ['10.0.0.0/16']
 
     dhcp_options = DhcpOptions.new
-    dhcp_options.dns_servers = %w(10.1.1.1 10.1.2.4)
+    dhcp_options.dns_servers = %w[10.1.1.1 10.1.2.4]
 
     sub2 = Subnet.new
     sub2.name = 'subnet1234'
@@ -81,7 +80,7 @@ class ResourceHelper
   end
 
   def create_virtual_network(resource_group_name)
-    virtualNetworkName = "test_vnet"
+    virtualNetworkName = 'test_vnet'
     params = build_virtual_network_params('westus')
     network_client.virtual_networks.create_or_update(resource_group_name, virtualNetworkName, params)
   end
@@ -108,10 +107,10 @@ class ResourceHelper
     params = LocalNetworkGateway.new
     params.location = location
     params.name = 'local_gateway2579'
-    params.gateway_ip_address = "192.168.3.7"
+    params.gateway_ip_address = '192.168.3.7'
     address_space = AddressSpace.new
     params.local_network_address_space = address_space
-    address_space.address_prefixes = %w(192.168.0.0/16)
+    address_space.address_prefixes = %w[192.168.0.0/16]
     params
   end
 
@@ -128,7 +127,7 @@ class ResourceHelper
     params
   end
 
-  def create_virtual_network_gateway(location, resource_group,name = nil)
+  def create_virtual_network_gateway(location, resource_group, name = nil)
     params = build_virtual_network_gateway_params(location, resource_group)
     params.name = name || params.name
     network_client.virtual_network_gateways.create_or_update(resource_group.name, params.name, params)

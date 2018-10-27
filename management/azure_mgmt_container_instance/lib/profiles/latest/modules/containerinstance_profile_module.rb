@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -61,20 +60,20 @@ module Azure::ContainerInstance::Profiles::Latest
       attr_reader :container_groups, :operations, :container_group_usage, :container_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerInstanceManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -92,133 +91,171 @@ module Azure::ContainerInstance::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def port
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Port
       end
+
       def ip_address
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::IpAddress
       end
+
       def environment_variable
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::EnvironmentVariable
       end
+
       def container_group_properties_instance_view
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupPropertiesInstanceView
       end
+
       def event
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
       end
+
       def log_analytics
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::LogAnalytics
       end
+
       def resource_requests
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequests
       end
+
       def container_group_diagnostics
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupDiagnostics
       end
+
       def resource_requirements
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequirements
       end
+
       def volume_mount
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::VolumeMount
       end
+
       def container_http_get
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerHttpGet
       end
+
       def operation_display
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationDisplay
       end
+
       def container
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Container
       end
+
       def operation
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Operation
       end
+
       def git_repo_volume
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::GitRepoVolume
       end
+
       def operation_list_result
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationListResult
       end
+
       def image_registry_credential
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ImageRegistryCredential
       end
+
       def usage_name
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::UsageName
       end
+
       def container_state
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerState
       end
+
       def usage
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Usage
       end
+
       def resource_limits
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceLimits
       end
+
       def usage_list_result
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::UsageListResult
       end
+
       def container_probe
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerProbe
       end
+
       def container_group_list_result
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupListResult
       end
+
       def volume
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Volume
       end
+
       def logs
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Logs
       end
+
       def container_properties_instance_view
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerPropertiesInstanceView
       end
+
       def container_exec_request_terminal_size
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequestTerminalSize
       end
+
       def azure_file_volume
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::AzureFileVolume
       end
+
       def container_exec_request
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequest
       end
+
       def container_exec
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExec
       end
+
       def container_exec_response
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecResponse
       end
+
       def container_port
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerPort
       end
+
       def resource
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Resource
       end
+
       def container_group
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroup
       end
+
       def container_network_protocol
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerNetworkProtocol
       end
+
       def container_group_restart_policy
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupRestartPolicy
       end
+
       def container_group_network_protocol
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupNetworkProtocol
       end
+
       def operating_system_types
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperatingSystemTypes
       end
+
       def container_instance_operations_origin
         Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerInstanceOperationsOrigin
       end

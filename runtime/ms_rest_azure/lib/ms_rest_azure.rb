@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -17,7 +16,7 @@ require 'ms_rest_azure/credentials/topic_credentials.rb'
 require 'ms_rest_azure/credentials/msi_token_provider.rb'
 require 'ms_rest_azure/polling_state.rb'
 require 'ms_rest_azure/serialization.rb'
-require 'ms_rest_azure/typed_error_info.rb' 
+require 'ms_rest_azure/typed_error_info.rb'
 require 'ms_rest_azure/version'
 require 'ms_rest_azure/common/configurable'
 require 'ms_rest_azure/common/default'

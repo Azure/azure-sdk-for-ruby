@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -6,7 +5,6 @@ require 'rspec'
 require 'ms_rest'
 
 module MsRest
-
   describe BasicAuthenticationCredentials do
     it 'should throw error if nil data is provided' do
       expect { BasicAuthenticationCredentials.new(nil, 'test') }.to raise_error(ArgumentError)
@@ -25,7 +23,7 @@ module MsRest
     end
 
     it 'should sign request with default scheme' do
-      http_request = double('http_request', :headers => {})
+      http_request = double('http_request', headers: {})
 
       credentials = BasicAuthenticationCredentials.new('test_username', 'test_password')
       credentials.sign_request(http_request)
@@ -34,7 +32,7 @@ module MsRest
     end
 
     it 'should sign request with given scheme' do
-      http_request = double('http_request', :headers => {})
+      http_request = double('http_request', headers: {})
 
       credentials = BasicAuthenticationCredentials.new('test_username', 'test_password', 'test_scheme')
       credentials.sign_request(http_request)
@@ -42,5 +40,4 @@ module MsRest
       expect(http_request.headers['authorization']).to eq('test_scheme dGVzdF91c2VybmFtZTp0ZXN0X3Bhc3N3b3Jk')
     end
   end
-
 end

@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -21,11 +20,13 @@ module Azure::Profiles::V2017_03_09
       class PolicyManagementClass
         attr_reader :policy_assignments, :policy_definitions, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -41,7 +42,7 @@ module Azure::Profiles::V2017_03_09
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -52,15 +53,19 @@ module Azure::Profiles::V2017_03_09
           def policy_assignment
             Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
           end
+
           def policy_definition
             Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
           end
+
           def policy_assignment_list_result
             Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
           end
+
           def policy_definition_list_result
             Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
           end
+
           def policy_type
             Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
           end

@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -7,12 +6,11 @@ module MsRestAzure
   # Class that provides access to authentication token.
   #
   class ApplicationTokenProvider < MsRest::TokenProvider
-
     private
 
-    TOKEN_ACQUIRE_URL = '{authentication_endpoint}{tenant_id}/oauth2/token'
-    REQUEST_BODY_PATTERN = 'resource={resource_uri}&client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials'
-    DEFAULT_SCHEME = 'Bearer'
+    TOKEN_ACQUIRE_URL = '{authentication_endpoint}{tenant_id}/oauth2/token'.freeze
+    REQUEST_BODY_PATTERN = 'resource={resource_uri}&client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials'.freeze
+    DEFAULT_SCHEME = 'Bearer'.freeze
 
     # @return [ActiveDirectoryServiceSettings] settings.
     attr_accessor :settings
@@ -47,10 +45,10 @@ module MsRestAzure
     # @param client_secret [String] client secret.
     # @param settings [ActiveDirectoryServiceSettings] active directory setting.
     def initialize(tenant_id, client_id, client_secret, settings = ActiveDirectoryServiceSettings.get_azure_settings)
-      fail ArgumentError, 'Tenant id cannot be nil' if tenant_id.nil?
-      fail ArgumentError, 'Client id cannot be nil' if client_id.nil?
-      fail ArgumentError, 'Client secret key cannot be nil' if client_secret.nil?
-      fail ArgumentError, 'Azure AD settings cannot be nil' if settings.nil?
+      raise ArgumentError, 'Tenant id cannot be nil' if tenant_id.nil?
+      raise ArgumentError, 'Client id cannot be nil' if client_id.nil?
+      raise ArgumentError, 'Client secret key cannot be nil' if client_secret.nil?
+      raise ArgumentError, 'Azure AD settings cannot be nil' if settings.nil?
 
       @tenant_id = tenant_id
       @client_id = client_id
@@ -91,7 +89,7 @@ module MsRestAzure
 
       url = URI.parse(token_acquire_url)
 
-      connection = Faraday.new(:url => url, :ssl => MsRest.ssl_options) do |builder|
+      connection = Faraday.new(url: url, ssl: MsRest.ssl_options) do |builder|
         builder.adapter Faraday.default_adapter
       end
 
@@ -105,8 +103,10 @@ module MsRestAzure
         request.body = request_body
       end
 
-      fail AzureOperationError,
-        'Couldn\'t login to Azure, please verify your tenant id, client id and client secret' unless response.status == 200
+      unless response.status == 200
+        raise AzureOperationError,
+              'Couldn\'t login to Azure, please verify your tenant id, client id and client secret'
+      end
 
       response_body = JSON.load(response.body)
       @token = response_body['access_token']
@@ -114,5 +114,4 @@ module MsRestAzure
       @token_type = response_body['token_type']
     end
   end
-
 end

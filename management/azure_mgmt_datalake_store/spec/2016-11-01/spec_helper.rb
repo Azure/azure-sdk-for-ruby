@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -25,7 +24,7 @@ class ResourceHelper
     @credentials = TokenCredentials.new(token_provider)
 
     VCR.configure do |config|
-      config.cassette_library_dir = "spec/2016-11-01/vcr_cassettes"
+      config.cassette_library_dir = 'spec/2016-11-01/vcr_cassettes'
     end
   end
 
@@ -49,7 +48,7 @@ class ResourceHelper
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_dl_store'
-    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new
     params.location = 'East US 2'
 
     resource_client.resource_groups.create_or_update(resource_group_name, params)

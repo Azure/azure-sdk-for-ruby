@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -22,11 +21,13 @@ module Azure::Profiles::V2018_03_01
       class PolicyManagementClass
         attr_reader :policy_definitions, :policy_assignments, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::Policy::Mgmt::V2016_12_01::PolicyClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -42,7 +43,7 @@ module Azure::Profiles::V2018_03_01
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -53,18 +54,23 @@ module Azure::Profiles::V2018_03_01
           def policy_assignment
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignment
           end
+
           def policy_definition
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition
           end
+
           def policy_assignment_list_result
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignmentListResult
           end
+
           def policy_definition_list_result
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinitionListResult
           end
+
           def policy_type
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyType
           end
+
           def policy_mode
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyMode
           end

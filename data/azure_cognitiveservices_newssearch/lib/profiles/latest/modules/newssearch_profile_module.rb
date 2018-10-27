@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -41,20 +40,20 @@ module Azure::NewsSearch::Profiles::Latest
     attr_reader :news_operations, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_default_options
-      else
-        @options = options
-      end
+      @options = if options.is_a?(Hash) && options.empty?
+                   setup_default_options
+                 else
+                   options
+                 end
 
       reset!(options)
 
       @configurable = self
-      @base_url = options[:base_url].nil? ? nil:options[:base_url]
-      @options = options[:options].nil? ? nil:options[:options]
+      @base_url = options[:base_url].nil? ? nil : options[:base_url]
+      @options = options[:options].nil? ? nil : options[:options]
 
       @client_0 = Azure::CognitiveServices::NewsSearch::V1_0::NewsSearchClient.new(configurable.credentials, base_url, options)
-      if(@client_0.respond_to?(:subscription_id))
+      if @client_0.respond_to?(:subscription_id)
         @client_0.subscription_id = configurable.subscription_id
       end
       add_telemetry(@client_0)
@@ -69,85 +68,107 @@ module Azure::NewsSearch::Profiles::Latest
     end
 
     def method_missing(method, *args)
-      if @client_0.respond_to?method
+      if @client_0.respond_to? method
         @client_0.send(method, *args)
       else
         super
       end
     end
-
   end
 
   class ModelClasses
     def response_base
       Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
     end
+
     def error
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
     end
+
     def query
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
     end
+
     def news_article
       Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
     end
+
     def search_results_answer
       Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
     end
+
     def news
       Azure::CognitiveServices::NewsSearch::V1_0::Models::News
     end
+
     def image_object
       Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
     end
+
     def news_topic
       Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
     end
+
     def article
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
     end
+
     def identifiable
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
     end
+
     def response
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
     end
+
     def answer
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
     end
+
     def thing
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
     end
+
     def trending_topics
       Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
     end
+
     def media_object
       Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
     end
+
     def video_object
       Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
     end
+
     def creative_work
       Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
     end
+
     def organization
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
     end
+
     def error_response
       Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
     end
+
     def error_code
       Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
     end
+
     def error_sub_code
       Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
     end
+
     def freshness
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
     end
+
     def safe_search
       Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
     end
+
     def text_format
       Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
     end

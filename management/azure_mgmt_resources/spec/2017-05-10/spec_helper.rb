@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -11,7 +10,7 @@ include MsRestAzure
 include Azure::Resources::Mgmt::V2017_05_10
 
 class ResourceHelper
-  GOOD_TEMPLATE_URI = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json'
+  GOOD_TEMPLATE_URI = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json'.freeze
   attr_accessor :resource_client
 
   def initialize
@@ -28,14 +27,13 @@ class ResourceHelper
     @resource_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
 
     VCR.configure do |config|
-      config.cassette_library_dir = "spec/2017-05-10/vcr_cassettes"
+      config.cassette_library_dir = 'spec/2017-05-10/vcr_cassettes'
     end
-
   end
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_resources'
-    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new
     params.location = 'westus'
 
     @resource_client.resource_groups.create_or_update_async(resource_group_name, params).value!.body
@@ -62,13 +60,11 @@ class ResourceHelper
         sleep(1)
       end
 
-      if tries > 10
-        break
-      end
+      break if tries > 10
     end
   end
 
-  def build_deployment_params()
+  def build_deployment_params
     params = Models::Deployment.new
     params.properties = Models::DeploymentProperties.new
     template_link = Models::TemplateLink.new
@@ -76,7 +72,7 @@ class ResourceHelper
     params.properties.template_link = template_link
     params.properties.mode = Models::DeploymentMode::Incremental
     params.properties.parameters = {
-        'databaseAccountName'=> { 'value' => 'mydocs-test'}
+      'databaseAccountName' => { 'value' => 'mydocs-test' }
     }
 
     params

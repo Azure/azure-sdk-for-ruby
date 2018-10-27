@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -9,7 +8,6 @@ include Azure::Resources::Mgmt::V2017_05_10
 include Azure::Network::Mgmt::V2017_09_01
 
 describe ApplicationGateways do
-
   before(:all) do
     skip('application gateways aren\'t properly supported yet')
 
@@ -26,7 +24,7 @@ describe ApplicationGateways do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_all_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -38,13 +36,12 @@ describe ApplicationGateways do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
     end
   end
-
 
   example 'application gateway api' do
     skip('no long running tasks should be performed') unless RUN_LONG_TASKS
@@ -150,8 +147,7 @@ describe ApplicationGateways do
     params
   end
 
- def get_child_app_gw_resource_id(subscriptionId, resourceGroupName, appGwname, childResourceType, childResourceName)
-      "/subscriptions/#{subscriptionId}/resourceGroups/#{resourceGroupName}/providers/Microsoft.Network/applicationGateways/#{appGwname}/#{childResourceType}/#{childResourceName}"
- end
-
+  def get_child_app_gw_resource_id(subscriptionId, resourceGroupName, appGwname, childResourceType, childResourceName)
+    "/subscriptions/#{subscriptionId}/resourceGroups/#{resourceGroupName}/providers/Microsoft.Network/applicationGateways/#{appGwname}/#{childResourceType}/#{childResourceName}"
+  end
 end

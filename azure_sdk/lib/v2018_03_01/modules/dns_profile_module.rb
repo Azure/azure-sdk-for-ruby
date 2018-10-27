@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -38,11 +37,13 @@ module Azure::Profiles::V2018_03_01
       class DnsManagementClass
         attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::Dns::Mgmt::V2016_04_01::DnsManagementClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -58,7 +59,7 @@ module Azure::Profiles::V2018_03_01
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -69,66 +70,87 @@ module Azure::Profiles::V2018_03_01
           def record_set_update_parameters
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
           end
+
           def record_set_list_result
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
           end
+
           def aaaa_record
             Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
           end
+
           def arecord
             Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
           end
+
           def mx_record
             Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
           end
+
           def ptr_record
             Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
           end
+
           def srv_record
             Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
           end
+
           def resource
             Azure::Dns::Mgmt::V2016_04_01::Models::Resource
           end
+
           def cname_record
             Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
           end
+
           def zone_delete_result
             Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
           end
+
           def record_set
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
           end
+
           def zone_list_result
             Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
           end
+
           def txt_record
             Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
           end
+
           def ns_record
             Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
           end
+
           def soa_record
             Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
           end
+
           def tracked_resource
             Azure::Dns::Mgmt::V2016_04_01::Models::TrackedResource
           end
+
           def zone
             Azure::Dns::Mgmt::V2016_04_01::Models::Zone
           end
+
           def proxy_resource
             Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
           end
+
           def azure_entity_resource
             Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
           end
+
           def operation_status
             Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
           end
+
           def http_status_code
             Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
           end
+
           def record_type
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
           end

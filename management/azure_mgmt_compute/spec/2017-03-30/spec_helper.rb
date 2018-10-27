@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -28,7 +27,7 @@ class ResourceHelper
     @credentials = MsRest::TokenCredentials.new(token_provider)
 
     VCR.configure do |config|
-      config.cassette_library_dir = "spec/2017-03-30/vcr_cassettes"
+      config.cassette_library_dir = 'spec/2017-03-30/vcr_cassettes'
     end
   end
 
@@ -70,7 +69,7 @@ class ResourceHelper
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_compute'
-    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new
     params.location = 'westus'
 
     resource_client.resource_groups.create_or_update_async(resource_group_name, params).value!.body
@@ -87,7 +86,7 @@ class ResourceHelper
   end
 
   def build_availability_set_parameters
-    params = AvailabilitySet.new()
+    params = AvailabilitySet.new
     params.location = 'westus'
 
     params
@@ -96,7 +95,6 @@ end
 
 class String
   def to_b?
-    !self.to_i.zero?
+    !to_i.zero?
   end
 end
-

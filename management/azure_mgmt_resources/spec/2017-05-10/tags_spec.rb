@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -12,7 +11,7 @@ describe 'Tags' do
   let(:tag_value) { 'testtagvalue' }
 
   before(:each) do
-    @resource_help = ResourceHelper.new()
+    @resource_help = ResourceHelper.new
     @client = @resource_help.resource_client.tags
     @tag = @client.create_or_update_async(tag_name).value!
   end
@@ -46,11 +45,11 @@ describe 'Tags' do
   end
 
   it 'should list tags' do
-    result = @client.list_async().value!
+    result = @client.list_async.value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -60,13 +59,13 @@ end
 
 describe 'Tag raises' do
   before(:each) do
-    @resource_help = ResourceHelper.new()
+    @resource_help = ResourceHelper.new
     @client = @resource_help.resource_client.tags
   end
 
   it 'an exception creating value for not existing tag' do
     tag_name = 'unknown_tag_name'
     tag_value = 'unknown_tag_value'
-    expect {@client.create_or_update_value(tag_name, tag_value).value!}.to raise_error(MsRestAzure::AzureOperationError)
+    expect { @client.create_or_update_value(tag_name, tag_value).value! }.to raise_error(MsRestAzure::AzureOperationError)
   end
 end

@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -19,7 +18,7 @@ module MsRest
     end
 
     it 'should use user supplied ssl options' do
-      MsRest.use_ssl_cert({:ca_file => 'cert_file', :cert_store => 'cert_store'})
+      MsRest.use_ssl_cert(ca_file: 'cert_file', cert_store: 'cert_store')
       expect(MsRest.ssl_options).to be_truthy
       expect(MsRest.ssl_options[:ca_file]).to eq('cert_file')
       expect(MsRest.ssl_options[:cert_store]).to eq('cert_store')

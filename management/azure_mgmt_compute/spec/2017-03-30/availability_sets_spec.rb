@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -35,8 +34,8 @@ describe ComputeManagementClient do
     resource = @resource_helper.create_availability_set(@client, @resource_group)
 
     result = @client.get_async(
-        @resource_group.name,
-        resource.name,
+      @resource_group.name,
+      resource.name
     ).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -54,8 +53,8 @@ describe ComputeManagementClient do
     resource = @resource_helper.create_availability_set(@client, @resource_group)
 
     result = @client.delete_async(
-        @resource_group.name,
-        resource.name
+      @resource_group.name,
+      resource.name
     ).value!
     expect(result.response.status).to eq(200)
   end

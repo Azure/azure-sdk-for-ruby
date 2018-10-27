@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -9,7 +8,7 @@ include Azure::Resources::Mgmt::V2017_05_10
 
 describe 'Resource Groups' do
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.resource_client.resource_groups
   end
 
@@ -45,7 +44,7 @@ describe 'Resource Groups' do
     path = "/subscriptions/#{subscription_id}/resourcegroups/#{name}?api-version=2016-09-01"
 
     options = {
-        body: request_content
+      body: request_content
     }
 
     result = resource_client.make_request(:put, path, options)
@@ -60,20 +59,20 @@ describe 'Resource Groups' do
 
   it 'should throw exception when create or update with nil parameters' do
     params = Models::ResourceGroup.new
-    expect{@client.create_or_update_async(nil, params)}.to raise_error(ArgumentError)
-    expect{@client.create_or_update_async('foo', nil)}.to raise_error(ArgumentError)
+    expect { @client.create_or_update_async(nil, params) }.to raise_error(ArgumentError)
+    expect { @client.create_or_update_async('foo', nil) }.to raise_error(ArgumentError)
   end
 
   it 'should raise exception when attempt to update without required parameters' do
     params = Models::ResourceGroup.new
-    expect{@client.update(nil, params)}.to raise_error(ArgumentError)
-    expect{@client.update('foo', nil)}.to raise_error(ArgumentError)
-    expect{@client.update('~`123', params).value!}.to raise_error(ArgumentError)
+    expect { @client.update(nil, params) }.to raise_error(ArgumentError)
+    expect { @client.update('foo', nil) }.to raise_error(ArgumentError)
+    expect { @client.update('~`123', params).value! }.to raise_error(ArgumentError)
   end
 
   it 'should raise errors when attempting get resource group' do
-    expect{@client.get_async(nil)}.to raise_error(ArgumentError)
-    expect{@client.get_async('~`123').value!}.to raise_error(ArgumentError)
+    expect { @client.get_async(nil) }.to raise_error(ArgumentError)
+    expect { @client.get_async('~`123').value! }.to raise_error(ArgumentError)
   end
 
   it 'should return false when resource group does not not exists' do
@@ -83,8 +82,8 @@ describe 'Resource Groups' do
   end
 
   it 'should raise errors when attempting delete resource group' do
-    expect{@client.delete(nil)}.to raise_error(ArgumentError)
-    expect{@client.delete('~`123').value!}.to raise_error(ArgumentError)
+    expect { @client.delete(nil) }.to raise_error(ArgumentError)
+    expect { @client.delete('~`123').value! }.to raise_error(ArgumentError)
   end
 
   it 'should return false when check existence for not existing resource group' do
@@ -95,7 +94,7 @@ end
 
 describe 'Resource Groups' do
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.resource_client.resource_groups
     @resource_group = @resource_helper.create_resource_group
   end
@@ -119,7 +118,7 @@ describe 'Resource Groups' do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_async(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -133,11 +132,11 @@ describe 'Resource Groups' do
 
   it 'should list resource groups with tag_name and value filter and top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
-    result = @client.list_async(filter:filter, top:1).value!
+    result = @client.list_async(filter: filter, top: 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next_async(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -146,11 +145,11 @@ describe 'Resource Groups' do
 
   it 'should resource groups with tag_name and value filter and top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
-    result = @client.list_async(filter:filter, top:1).value!
+    result = @client.list_async(filter: filter, top: 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next_async(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

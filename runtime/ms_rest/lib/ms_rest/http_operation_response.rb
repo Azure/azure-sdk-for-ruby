@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -7,7 +6,6 @@ module MsRest
   # Class which represents the data received and deserialized from server.
   #
   class HttpOperationResponse
-
     # @param [MsRest::HttpOperationRequest] the HTTP request data.
     attr_accessor :request
 
@@ -27,11 +25,10 @@ module MsRest
       @response = response
       @body = body
     end
-    
+
     def to_json(*a)
       res_dict = response ? { body: response.body, headers: response.headers, status: response.status } : nil
-      {response: res_dict, request: request}.to_json(*a)
+      { response: res_dict, request: request }.to_json(*a)
     end
-
   end
 end

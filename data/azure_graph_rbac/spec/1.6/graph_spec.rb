@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -11,7 +10,7 @@ describe 'GraphRbacClient' do
   end
 
   it 'should list all existing users using lazy paging' do
-    first_page = @graph_client.users.list_as_lazy(filter:"startswith(displayName,'Sample User')")
+    first_page = @graph_client.users.list_as_lazy(filter: "startswith(displayName,'Sample User')")
     expect(first_page).not_to be_nil
     expect(first_page.value).to be_a(Array)
     expect(first_page.value[0]).to be_a(Azure::GraphRbac::V1_6::Models::User)
@@ -24,7 +23,7 @@ describe 'GraphRbacClient' do
   end
 
   it 'should list all existing users synchronously' do
-    all_users = @graph_client.users.list(filter:"startswith(displayName,'Sample User')")
+    all_users = @graph_client.users.list(filter: "startswith(displayName,'Sample User')")
     expect(all_users).not_to be_nil
     expect(all_users).to be_a(Array)
     expect(all_users[0]).to be_a(Azure::GraphRbac::V1_6::Models::User)

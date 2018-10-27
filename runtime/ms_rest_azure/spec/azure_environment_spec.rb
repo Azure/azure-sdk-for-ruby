@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -9,32 +8,31 @@ module MsRestAzure
   describe 'Azure Environment' do
     before (:each) do
       @valid_min_options = {
-          :name => 'DogFood',
-          :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=254433',
-          :management_endpoint_url => 'https://management.core.windows.net',
-          :resource_manager_endpoint_url => 'https://management.azure.com/',
-          :active_directory_endpoint_url => 'https://login.microsoftonline.com/',
-          :active_directory_resource_id => 'https://management.core.windows.net/'
+        name: 'DogFood',
+        portal_url: 'http://go.microsoft.com/fwlink/?LinkId=254433',
+        management_endpoint_url: 'https://management.core.windows.net',
+        resource_manager_endpoint_url: 'https://management.azure.com/',
+        active_directory_endpoint_url: 'https://login.microsoftonline.com/',
+        active_directory_resource_id: 'https://management.core.windows.net/'
       }
 
       @insufficient_min_options = {
-          :name => 'DogFood',
-          :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=254433',
-          :management_endpoint_url => 'https://management.core.windows.net',
-          :resource_manager_endpoint_url => 'https://management.azure.com/',
-          :active_directory_resource_id => 'https://management.core.windows.net/'
+        name: 'DogFood',
+        portal_url: 'http://go.microsoft.com/fwlink/?LinkId=254433',
+        management_endpoint_url: 'https://management.core.windows.net',
+        resource_manager_endpoint_url: 'https://management.azure.com/',
+        active_directory_resource_id: 'https://management.core.windows.net/'
       }
 
       @invalid_min_options = {
-          :name => 'DogFood',
-          :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=254433',
-          :management_endpoint_url => 'https://management.core.windows.net',
-          :resource_manager_endpoint_url => 1,
-          :active_directory_endpoint_url => 'https://login.microsoftonline.com/',
-          :active_directory_resource_id => 'https://management.core.windows.net/'
+        name: 'DogFood',
+        portal_url: 'http://go.microsoft.com/fwlink/?LinkId=254433',
+        management_endpoint_url: 'https://management.core.windows.net',
+        resource_manager_endpoint_url: 1,
+        active_directory_endpoint_url: 'https://login.microsoftonline.com/',
+        active_directory_resource_id: 'https://management.core.windows.net/'
       }
     end
-
 
     it 'should initialize with required properties' do
       azure_environment = AzureEnvironments::AzureEnvironment.new(@valid_min_options)

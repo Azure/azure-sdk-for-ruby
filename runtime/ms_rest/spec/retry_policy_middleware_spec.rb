@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -6,12 +5,11 @@ require 'rspec'
 require 'ms_rest'
 
 module MsRest
-
   describe RetryPolicyMiddleware do
     def make_http_request(response_stubs)
       stubs = Faraday::Adapter::Test::Stubs.new do |stub|
         response_stubs.each do |response_stub|
-          stub.get('/url') { |env| response_stub }
+          stub.get('/url') { |_env| response_stub }
         end
       end
 
@@ -25,10 +23,10 @@ module MsRest
 
     it 'should retry request for specific HTTP codes' do
       stubs = Faraday::Adapter::Test::Stubs.new do |stub|
-        stub.get('/url') { |env| [500, {}, ''] }
-        stub.get('/url') { |env| [502, {}, ''] }
-        stub.get('/url') { |env| [408, {}, ''] }
-        stub.get('/url') { |env| [200, {}, ''] }
+        stub.get('/url') { |_env| [500, {}, ''] }
+        stub.get('/url') { |_env| [502, {}, ''] }
+        stub.get('/url') { |_env| [408, {}, ''] }
+        stub.get('/url') { |_env| [200, {}, ''] }
       end
 
       test = Faraday.new do |builder|
@@ -63,10 +61,10 @@ module MsRest
 
     it 'should not retry more than given number of times' do
       stubs = Faraday::Adapter::Test::Stubs.new do |stub|
-        stub.get('/url') { |env| [500] }
-        stub.get('/url') { |env| [500] }
-        stub.get('/url') { |env| [500] }
-        stub.get('/url') { |env| [200] }
+        stub.get('/url') { |_env| [500] }
+        stub.get('/url') { |_env| [500] }
+        stub.get('/url') { |_env| [500] }
+        stub.get('/url') { |_env| [200] }
       end
 
       test = Faraday.new do |builder|
@@ -78,5 +76,4 @@ module MsRest
       expect(response.status).to eq(500)
     end
   end
-
 end

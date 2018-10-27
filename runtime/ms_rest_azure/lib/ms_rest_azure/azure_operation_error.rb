@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -7,7 +6,6 @@ module MsRestAzure
   # Class which represents an Azure error.
   #
   class AzureOperationError < MsRest::HttpOperationError
-
     # @return [String] the error message.
     attr_accessor :error_message
 
@@ -33,7 +31,7 @@ module MsRestAzure
           @error_code = @body['error']['code']
           @msg = "#{@msg}: #{@error_code}: #{@error_message}"
         end
-      rescue
+      rescue StandardError
       end
     end
   end

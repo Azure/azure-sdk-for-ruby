@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -22,7 +21,7 @@ module Azure::Profiles::V2018_03_01
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :authorization, :locks, :policy, :compute, :key_vault, :network, :dns, :resources, :subscriptions, :storage, :web
+    attr_reader :authorization, :locks, :policy, :compute, :key_vault, :network, :dns, :resources, :subscriptions, :storage, :web
 
     #
     # Initializes a new instance of the Client class.
@@ -43,16 +42,16 @@ module Azure::Profiles::V2018_03_01
     #   Also, base_url, active_directory_settings & options are optional.
     #
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_default_options
-      else
-        @options = options
-      end
+      @options = if options.is_a?(Hash) && options.empty?
+                   setup_default_options
+                 else
+                   options
+                 end
 
       reset!(options)
 
-      base_url = options[:base_url].nil? ? nil:options[:base_url]
-      sdk_options = options[:options].nil? ? nil:options[:options]
+      base_url = options[:base_url].nil? ? nil : options[:base_url]
+      sdk_options = options[:options].nil? ? nil : options[:options]
 
       @authorization = AuthorizationAdapter.new(self, base_url, sdk_options)
       @locks = LocksAdapter.new(self, base_url, sdk_options)
@@ -155,6 +154,5 @@ module Azure::Profiles::V2018_03_01
         @mgmt = Azure::Profiles::V2018_03_01::Web::Mgmt::WebManagementClass.new(context, base_url, options)
       end
     end
-
   end
 end

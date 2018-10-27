@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -6,12 +5,10 @@ module MsRest
   #
   # Class which keeps functionality and data for performing HTTP basic authentication.
 
-  #
   class BasicAuthenticationCredentials < ServiceClientCredentials
-
     private
 
-    DEFAULT_SCHEME = 'Basic'
+    DEFAULT_SCHEME = 'Basic'.freeze
 
     # @return [String] the scheme for composing credentials.
     attr_accessor :scheme
@@ -30,9 +27,9 @@ module MsRest
     # @param password [String] the password for authentication.
     # @param scheme = DEFAULT_SCHEME [String] the scheme for composing credentials.
     def initialize(user_name, password, scheme = DEFAULT_SCHEME)
-      fail ArgumentError, 'user_name cannot be nil' if user_name.nil?
-      fail ArgumentError, 'password cannot be nil' if password.nil?
-      fail ArgumentError, 'scheme cannot be nil' if scheme.nil?
+      raise ArgumentError, 'user_name cannot be nil' if user_name.nil?
+      raise ArgumentError, 'password cannot be nil' if password.nil?
+      raise ArgumentError, 'scheme cannot be nil' if scheme.nil?
 
       @user_name = user_name
       @password = password
@@ -49,14 +46,13 @@ module MsRest
       encodeCredentials = Base64.strict_encode64("#{user_name}:#{password}")
       credentials = "#{scheme} #{encodeCredentials}"
 
-      if (request.respond_to?(:request_headers))
+      if request.respond_to?(:request_headers)
         request.request_headers[AUTHORIZATION] = credentials
       elsif request.respond_to?(:headers)
         request.headers[AUTHORIZATION] = credentials
       else
-        fail ArgumentError, 'Incorrect request object was provided'
+        raise ArgumentError, 'Incorrect request object was provided'
       end
     end
-
   end
 end

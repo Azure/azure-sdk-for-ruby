@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -28,8 +27,8 @@ describe 'DataLakeAnalyticsClient Account' do
     analytics_acc.name = @datalake_analytics_acc_name
     analytics_acc.location = 'East US 2'
     analytics_acc.tags = {
-        :testtag1 => :testtag1,
-        :testtag2 => :testtag2,
+      testtag1: :testtag1,
+      testtag2: :testtag2
     }
     analytics_acc.default_data_lake_store_account = @dl_store_acc.name
     dla_acc_info = Models::DataLakeStoreAccountInformation.new
@@ -45,12 +44,12 @@ describe 'DataLakeAnalyticsClient Account' do
     # Update
     analytics_acc_update_parameters = Models::UpdateDataLakeAnalyticsAccountParameters.new
     analytics_acc_update_parameters.tags = {
-        :testtag1 => :testtag1,
-        :testtag2 => :testtag2,
-        :testtag3 => :testtag3,
+      testtag1: :testtag1,
+      testtag2: :testtag2,
+      testtag3: :testtag3
     }
 
-    result = @client.update_async(@resource_group.name, @datalake_analytics_acc_name, parameters:analytics_acc_update_parameters).value!
+    result = @client.update_async(@resource_group.name, @datalake_analytics_acc_name, parameters: analytics_acc_update_parameters).value!
     expect(result.body).to be_an_instance_of(Models::DataLakeAnalyticsAccount)
     expect(result.body.name).to eq(@datalake_analytics_acc_name)
     expect(result.body.tags.count).to eq(3)

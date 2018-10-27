@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -10,7 +9,7 @@ include Azure::Network::Mgmt::V2017_09_01
 
 describe 'Local Network Gateways' do
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.network_client.local_network_gateways
     @location = 'westus'
     @resource_group = @resource_helper.create_resource_group
@@ -47,7 +46,7 @@ describe 'Local Network Gateways' do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

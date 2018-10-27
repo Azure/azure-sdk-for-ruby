@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 require 'json'
@@ -8,7 +7,6 @@ module MsRest
   # Class which represents an error happening during deserialization of server response.
   #
   class DeserializationError < RestError
-
     # @return [String] the inner exception message.
     attr_accessor :exception_message
 
@@ -30,14 +28,13 @@ module MsRest
       @exception_stacktrace = exception_stacktrace
       @result = result
     end
-    
+
     def to_json(*a)
-      {exception_message: exception_message, message: @msg,  stacktrace: exception_stacktrace, result: result}.to_json(*a)
+      { exception_message: exception_message, message: @msg, stacktrace: exception_stacktrace, result: result }.to_json(*a)
     end
-    
+
     def to_s
       JSON.pretty_generate(self)
     end
-
   end
 end

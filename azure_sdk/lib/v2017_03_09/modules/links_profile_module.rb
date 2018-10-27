@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -24,11 +23,13 @@ module Azure::Profiles::V2017_03_09
       class LinksManagementClass
         attr_reader :operations, :resource_links, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::Links::Mgmt::V2016_09_01::ManagementLinkClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -44,7 +45,7 @@ module Azure::Profiles::V2017_03_09
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -55,24 +56,31 @@ module Azure::Profiles::V2017_03_09
           def resource_link_result
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
           end
+
           def operation_display
             Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
           end
+
           def resource_link_properties
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
           end
+
           def operation
             Azure::Links::Mgmt::V2016_09_01::Models::Operation
           end
+
           def resource_link_filter
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
           end
+
           def operation_list_result
             Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
           end
+
           def resource_link
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
           end
+
           def filter
             Azure::Links::Mgmt::V2016_09_01::Models::Filter
           end

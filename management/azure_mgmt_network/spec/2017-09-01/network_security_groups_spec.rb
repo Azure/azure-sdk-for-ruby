@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -10,7 +9,7 @@ include Azure::Network::Mgmt::V2017_09_01
 
 describe 'Network Security Groups' do
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.network_client.network_security_groups
     @resource_group = @resource_helper.create_resource_group
     @location = 'westus'
@@ -44,12 +43,12 @@ describe 'Network Security Groups' do
   end
 
   it 'should list all network security groups in a subscription' do
-    #constants in security role protocol are 'Constant' when server returns them like 'CONSTANT '
+    # constants in security role protocol are 'Constant' when server returns them like 'CONSTANT '
     result = @client.list_all_async.value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_all_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -61,7 +60,7 @@ describe 'Network Security Groups' do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

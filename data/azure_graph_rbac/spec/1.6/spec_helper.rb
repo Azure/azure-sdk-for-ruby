@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -27,7 +26,7 @@ class ResourceHelper
     @credentials = MsRest::TokenCredentials.new(token_provider)
 
     VCR.configure do |config|
-      config.cassette_library_dir = "spec/1.6/vcr_cassettes"
+      config.cassette_library_dir = 'spec/1.6/vcr_cassettes'
     end
   end
 

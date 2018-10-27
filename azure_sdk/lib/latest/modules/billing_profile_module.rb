@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -31,11 +30,13 @@ module Azure::Profiles::Latest
       class BillingManagementClass
         attr_reader :enrollment_accounts, :billing_periods, :invoices, :operations, :configurable, :base_url, :options, :model_classes
 
-        def initialize(configurable, base_url=nil, options=nil)
-          @configurable, @base_url, @options = configurable, base_url, options
+        def initialize(configurable, base_url = nil, options = nil)
+          @configurable = configurable
+          @base_url = base_url
+          @options = options
 
           @client_0 = Azure::Billing::Mgmt::V2018_03_01_preview::BillingManagementClient.new(configurable.credentials, base_url, options)
-          if(@client_0.respond_to?(:subscription_id))
+          if @client_0.respond_to?(:subscription_id)
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
@@ -53,7 +54,7 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_0.respond_to? method
             @client_0.send(method, *args)
           else
             super
@@ -64,39 +65,51 @@ module Azure::Profiles::Latest
           def error_response
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorResponse
           end
+
           def error_details
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorDetails
           end
+
           def operation_list_result
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationListResult
           end
+
           def resource
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::Resource
           end
+
           def download_url
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
           end
+
           def invoices_list_result
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
           end
+
           def billing_periods_list_result
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
           end
+
           def operation_display
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationDisplay
           end
+
           def enrollment_account_list_result
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccountListResult
           end
+
           def operation
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::Operation
           end
+
           def enrollment_account
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccount
           end
+
           def billing_period
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriod
           end
+
           def invoice
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::Invoice
           end

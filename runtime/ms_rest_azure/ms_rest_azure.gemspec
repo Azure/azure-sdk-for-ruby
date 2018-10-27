@@ -2,7 +2,8 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ms_rest_azure/version'
 
@@ -12,8 +13,8 @@ Gem::Specification.new do |spec|
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azsdkteam@microsoft.com'
 
-  spec.summary       = %q{Azure Client Library for Ruby.}
-  spec.description   = %q{Azure Client Library for Ruby.}
+  spec.summary       = 'Azure Client Library for Ruby.'
+  spec.description   = 'Azure Client Library for Ruby.'
   spec.homepage      = 'https://aka.ms/ms_rest_azure'
   spec.license       = 'MIT'
   spec.metadata      = {
@@ -24,7 +25,7 @@ Gem::Specification.new do |spec|
     'source_code_uri' => "https://github.com/Azure/azure-sdk-for-ruby/tree/ms_rest_azure-v#{MsRestAzure::VERSION}"
   }
 
-  spec.files         = Dir["CHANGELOG.md", "README.md", "LICENSE.txt", "lib/**/*"]
+  spec.files         = Dir['CHANGELOG.md', 'README.md', 'LICENSE.txt', 'lib/**/*']
   spec.bindir        = 'bin'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']

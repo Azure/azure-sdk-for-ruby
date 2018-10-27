@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -16,7 +15,7 @@ describe 'Service Bus Management Client' do
   end
 
   it 'should create list and delete namespace' do
-    namespace_name = "smaple34566"
+    namespace_name = 'smaple34566'
     namespace_parameters = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespace.new
     namespace_parameters.location = 'westus'
 
@@ -25,7 +24,7 @@ describe 'Service Bus Management Client' do
     expect(namespace).not_to be_nil
     expect(namespace).to be_a(Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespace)
     expect(namespace.name).to eq(namespace_name)
-    expect(namespace.provisioning_state).to eq("Succeeded")
+    expect(namespace.provisioning_state).to eq('Succeeded')
 
     # List namespace
     namespaces = @service_bus_client.namespaces.list

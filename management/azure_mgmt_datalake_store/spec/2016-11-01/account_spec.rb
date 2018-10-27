@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -27,8 +26,8 @@ describe 'DataLakeStoreClient Account' do
     acc.name = @datalake_acc_name
     acc.location = 'East US 2'
     acc.tags = {
-        :testtag1 => :testtag1,
-        :testtag2 => :testtag2,
+      testtag1: :testtag1,
+      testtag2: :testtag2
     }
     result = @client.create(@resource_group.name, @datalake_acc_name, acc)
     expect(result).to be_an_instance_of(Models::DataLakeStoreAccount)
@@ -37,9 +36,9 @@ describe 'DataLakeStoreClient Account' do
 
     # Update
     acc.tags = {
-        :testtag1 => :testtag1,
-        :testtag2 => :testtag2,
-        :testtag3 => :testtag3,
+      testtag1: :testtag1,
+      testtag2: :testtag2,
+      testtag3: :testtag3
     }
     result = @client.update(@resource_group.name, @datalake_acc_name, acc)
     expect(result).to be_an_instance_of(Models::DataLakeStoreAccount)

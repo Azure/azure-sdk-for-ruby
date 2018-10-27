@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -11,7 +10,7 @@ include Azure::Network::Mgmt::V2017_09_01::Models
 
 describe 'Load balancers' do
   before(:each) do
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.network_client.load_balancers
     @location = 'westus'
     @resource_group = @resource_helper.create_resource_group
@@ -29,10 +28,10 @@ describe 'Load balancers' do
   end
 
   it 'should create load balancer with complex parameter structure' do
-    #create public ip address Dns Settings
+    # create public ip address Dns Settings
     dns_settings = PublicIPAddressDnsSettings.new
 
-    #create public ip address
+    # create public ip address
     lb_public_ip_name = 'test_public_ip'
     lb_domain_name_label = 'test-domain8564'
     public_ip = PublicIPAddress.new
@@ -43,10 +42,10 @@ describe 'Load balancers' do
     dns_settings.domain_name_label = lb_domain_name_label
     public_ip = @resource_helper.network_client.public_ipaddresses.create_or_update(@resource_group.name, lb_public_ip_name, public_ip)
 
-    #create virtual network
+    # create virtual network
     @resource_helper.create_virtual_network(@resource_group.name)
 
-    #create the load balancer
+    # create the load balancer
     lb_name = 'test_lb_name'
     frontend_ip_config_name = 'frontend_ip_config_name'
     backend_address_pool_name = 'backend_address_pool_name'
@@ -55,7 +54,7 @@ describe 'Load balancers' do
     inbound_nat_rule1_name = 'inbound_nat_rule8564'
     inbound_nat_rule2_name = 'inbound_nat_rule8675'
 
-    #populate load_balancer create_or_update parameter
+    # populate load_balancer create_or_update parameter
     load_balancer = LoadBalancer.new
     load_balancer.location = @location
 
@@ -72,8 +71,8 @@ describe 'Load balancers' do
     load_balancing_rule.name = load_balancing_rule_name
     frontend_ip_configuration_sub_resource = SubResource.new
     frontend_ip_configuration_sub_resource.id =
-        get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
-                                 lb_name, 'FrontendIPConfigurations', frontend_ip_config_name)
+      get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
+                               lb_name, 'FrontendIPConfigurations', frontend_ip_config_name)
     load_balancing_rule.frontend_ipconfiguration = frontend_ip_configuration_sub_resource
     load_balancing_rule.protocol = 'Tcp'
     load_balancing_rule.frontend_port = 80
@@ -82,13 +81,13 @@ describe 'Load balancers' do
     load_balancing_rule.idle_timeout_in_minutes = 15
     backend_address_pool_sub_resource = SubResource.new
     backend_address_pool_sub_resource.id =
-        get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
-                                 lb_name, 'backendAddressPools', backend_address_pool_name)
+      get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
+                               lb_name, 'backendAddressPools', backend_address_pool_name)
     load_balancing_rule.backend_address_pool = backend_address_pool_sub_resource
     probe_sub_resource = SubResource.new
     probe_sub_resource.id =
-        get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
-                                 lb_name, 'probes', probe_name)
+      get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
+                               lb_name, 'probes', probe_name)
     load_balancing_rule.probe = probe_sub_resource
 
     load_balancer.load_balancing_rules = [load_balancing_rule]
@@ -122,7 +121,7 @@ describe 'Load balancers' do
 
     load_balancer.inbound_nat_rules = [inbound_nat_rule1, inbound_nat_rule2]
 
-    #create load balancer
+    # create load balancer
     result = @client.create_or_update_async(@resource_group.name, lb_name, load_balancer).value!
     expect(result.response.status).to eq(201)
     expect(result.body).not_to be_nil
@@ -137,7 +136,7 @@ describe 'Load balancers' do
     params.frontend_ipconfigurations = [frontend_ip_configuration]
     ip_config_name = 'frontend_ip_config'
     frontend_ip_configuration.name = ip_config_name
-    frontend_ip_configuration.id = get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name, params.name,'frontendIPConfigurations', ip_config_name)
+    frontend_ip_configuration.id = get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name, params.name, 'frontendIPConfigurations', ip_config_name)
     frontend_ip_configuration.private_ipallocation_method = 'Dynamic'
     frontend_ip_configuration.subnet = subnet
     udp_rule = LoadBalancingRule.new
@@ -162,10 +161,10 @@ describe 'Load balancers' do
     inbound_tcp.frontend_ipconfiguration = frontend_ip_configuration
     inbound_udp.protocol = 'Udp'
     inbound_tcp.protocol = 'Tcp'
-    inbound_udp.frontend_port = 32900
-    inbound_tcp.frontend_port = 32900
-    inbound_udp.backend_port = 32900
-    inbound_tcp.backend_port = 32900
+    inbound_udp.frontend_port = 32_900
+    inbound_tcp.frontend_port = 32_900
+    inbound_udp.backend_port = 32_900
+    inbound_tcp.backend_port = 32_900
     @client.create_or_update(@resource_group.name, params.name, params)
     result = @client.list_all_async.value!
     expect(result.response.status).to eq(200)
@@ -190,7 +189,7 @@ describe 'Load balancers' do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_all_next(result.body.next_link)
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -202,7 +201,7 @@ describe 'Load balancers' do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

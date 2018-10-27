@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -63,11 +62,13 @@ module Azure::Profiles::Latest
     class FaceDataClass
       attr_reader :face, :person_group_person, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(configurable, base_url = nil, options = nil)
+        @configurable = configurable
+        @base_url = base_url
+        @options = options
 
         @client_0 = Azure::CognitiveServices::Face::V1_0::FaceClient.new(configurable.credentials, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -85,7 +86,7 @@ module Azure::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
@@ -96,138 +97,183 @@ module Azure::Profiles::Latest
         def find_similar_request
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
         end
+
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
         end
+
         def similar_face
           Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
         end
+
         def face_rectangle
           Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
+
         def group_request
           Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
         end
+
         def face_landmarks
           Azure::CognitiveServices::Face::V1_0::Models::FaceLandmarks
         end
+
         def group_result
           Azure::CognitiveServices::Face::V1_0::Models::GroupResult
         end
+
         def head_pose
           Azure::CognitiveServices::Face::V1_0::Models::HeadPose
         end
+
         def identify_request
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest
         end
+
         def hair_color
           Azure::CognitiveServices::Face::V1_0::Models::HairColor
         end
+
         def identify_candidate
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
         end
+
         def makeup
           Azure::CognitiveServices::Face::V1_0::Models::Makeup
         end
+
         def identify_result
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
         end
+
         def accessory
           Azure::CognitiveServices::Face::V1_0::Models::Accessory
         end
+
         def verify_face_to_person_request
           Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest
         end
+
         def exposure
           Azure::CognitiveServices::Face::V1_0::Models::Exposure
         end
+
         def verify_face_to_face_request
           Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
         end
+
         def face_attributes
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
         end
+
         def verify_result
           Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
         end
+
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
+
         def persisted_face
           Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
         end
+
         def facial_hair
           Azure::CognitiveServices::Face::V1_0::Models::FacialHair
         end
+
         def coordinate
           Azure::CognitiveServices::Face::V1_0::Models::Coordinate
         end
+
         def emotion
           Azure::CognitiveServices::Face::V1_0::Models::Emotion
         end
+
         def occlusion
           Azure::CognitiveServices::Face::V1_0::Models::Occlusion
         end
+
         def noise
           Azure::CognitiveServices::Face::V1_0::Models::Noise
         end
+
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
         end
+
         def hair
           Azure::CognitiveServices::Face::V1_0::Models::Hair
         end
+
         def name_and_user_data_contract
           Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
         end
+
         def detected_face
           Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
         end
+
         def update_person_face_request
           Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
         end
+
         def blur
           Azure::CognitiveServices::Face::V1_0::Models::Blur
         end
+
         def training_status
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
         end
+
         def face_list
           Azure::CognitiveServices::Face::V1_0::Models::FaceList
         end
+
         def person_group
           Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
         end
+
         def person
           Azure::CognitiveServices::Face::V1_0::Models::Person
         end
+
         def gender
           Azure::CognitiveServices::Face::V1_0::Models::Gender
         end
+
         def glasses_type
           Azure::CognitiveServices::Face::V1_0::Models::GlassesType
         end
+
         def hair_color_type
           Azure::CognitiveServices::Face::V1_0::Models::HairColorType
         end
+
         def accessory_type
           Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
         end
+
         def blur_level
           Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
         end
+
         def exposure_level
           Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
+
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
+
         def find_similar_match_mode
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
+
         def training_status_type
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
         end
+
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
         end

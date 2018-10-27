@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -69,7 +68,7 @@ module MsRest
         elsif !mapper_type.match(/^Sequence$/i).nil?
           payload = deserialize_sequence_type(mapper, response_body, object_name)
         else
-          payload = ""
+          payload = ''
         end
 
         payload = mapper[:default_value] if mapper[:is_constant]
@@ -84,35 +83,36 @@ module MsRest
       # @param response_body [Hash] Ruby Hash object to deserialize.
       #
       def deserialize_primary_type(mapper, response_body)
-        result = ""
+        result = ''
         case mapper[:type][:name]
-          when 'Number'
-            result = Integer(response_body) unless response_body.to_s.empty?
-          when 'Double'
-            result = Float(response_body) unless response_body.to_s.empty?
-          when 'ByteArray'
-            result = Base64.strict_decode64(response_body).unpack('C*') unless response_body.to_s.empty?
-          when 'String', 'Boolean', 'Object', 'Stream'
-            result = response_body
-          when 'Enum'
-            unless response_body.nil?
-              unless enum_is_valid(mapper, response_body)
-                warn "Enum does not contain #{response_body}, but was received from the server."
-              end
+        when 'Number'
+          result = Integer(response_body) unless response_body.to_s.empty?
+        when 'Double'
+          result = Float(response_body) unless response_body.to_s.empty?
+        when 'ByteArray'
+          result = Base64.strict_decode64(response_body).unpack('C*') unless response_body.to_s.empty?
+        when 'String', 'Boolean', 'Object', 'Stream'
+          result = response_body
+        when 'Enum'
+          unless response_body.nil?
+            unless enum_is_valid(mapper, response_body)
+              warn "Enum does not contain #{response_body}, but was received from the server."
             end
-            result = response_body
-          when 'Date'
-            unless response_body.to_s.empty?
-              result = Timeliness.parse(response_body, :strict => true)
-              fail DeserializationError.new('Error occured in deserializing the response_body', nil, nil, response_body) if result.nil?
-              result = ::Date.parse(result.to_s)
-            end
-          when 'DateTime', 'DateTimeRfc1123'
-            result = DateTime.parse(response_body) unless response_body.to_s.empty?
-          when 'UnixTime'
-            result = DateTime.strptime(response_body.to_s, '%s') unless response_body.to_s.empty?
-          else
-            result
+          end
+          result = response_body
+        when 'Date'
+          unless response_body.to_s.empty?
+            result = Timeliness.parse(response_body, strict: true)
+            raise DeserializationError.new('Error occured in deserializing the response_body', nil, nil, response_body) if result.nil?
+
+            result = ::Date.parse(result.to_s)
+          end
+        when 'DateTime', 'DateTimeRfc1123'
+          result = DateTime.parse(response_body) unless response_body.to_s.empty?
+        when 'UnixTime'
+          result = DateTime.strptime(response_body.to_s, '%s') unless response_body.to_s.empty?
+        else
+          result
         end
         result
       end
@@ -126,10 +126,10 @@ module MsRest
       #
       def deserialize_dictionary_type(mapper, response_body, object_name)
         if mapper[:type][:value].nil? || !mapper[:type][:value].is_a?(Hash)
-          fail DeserializationError.new("'value' metadata for a dictionary type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, response_body)
+          raise DeserializationError.new("'value' metadata for a dictionary type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, response_body)
         end
 
-        result = Hash.new
+        result = {}
         response_body.each do |key, val|
           result[key] = deserialize(mapper[:type][:value], val)
         end
@@ -145,14 +145,14 @@ module MsRest
       #
       def deserialize_composite_type(mapper, response_body, object_name)
         if mapper[:type][:class_name].nil?
-          fail DeserializationError.new("'class_name' metadata for a composite type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, response_body)
+          raise DeserializationError.new("'class_name' metadata for a composite type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, response_body)
         end
 
         if !mapper[:type][:polymorphic_discriminator].nil?
           # Handle polymorphic types
           parent_class = get_model(mapper[:type][:class_name])
-          discriminator = parent_class.class_eval("@@discriminatorMap")
-          model_name = response_body["#{mapper[:type][:polymorphic_discriminator]}"]
+          discriminator = parent_class.class_eval('@@discriminatorMap')
+          model_name = response_body[(mapper[:type][:polymorphic_discriminator]).to_s]
           # In case we do not find model from response body then use the class defined in mapper
           model_name = mapper[:type][:class_name] if model_name.nil? || model_name.empty?
           model_class = get_model(discriminator[model_name])
@@ -162,19 +162,19 @@ module MsRest
 
         result = model_class.new
 
-        model_mapper = model_class.mapper()
+        model_mapper = model_class.mapper
         model_props = model_mapper[:type][:model_properties]
 
         unless model_props.nil?
           model_props.each do |key, val|
             sub_response_body = nil
-            unless val[:serialized_name].to_s.include? '.'
-              sub_response_body = response_body[val[:serialized_name].to_s]
-            else
+            if val[:serialized_name].to_s.include? '.'
               # Flattened properties will be dicovered at deeper level in payload but must be deserialized to higher levels in model class
               sub_response_body = response_body
               levels = split_serialized_name(val[:serialized_name].to_s)
               levels.each { |level| sub_response_body = sub_response_body.nil? ? nil : sub_response_body[level.to_s] }
+            else
+              sub_response_body = response_body[val[:serialized_name].to_s]
             end
 
             result.instance_variable_set("@#{key}", deserialize(val, sub_response_body)) unless sub_response_body.nil?
@@ -192,7 +192,7 @@ module MsRest
       #
       def deserialize_sequence_type(mapper, response_body, object_name)
         if mapper[:type][:element].nil? || !mapper[:type][:element].is_a?(Hash)
-          fail DeserializationError.new("'element' metadata for a sequence type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, response_body)
+          raise DeserializationError.new("'element' metadata for a sequence type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, response_body)
         end
 
         return response_body if response_body.nil?
@@ -223,11 +223,9 @@ module MsRest
 
         validate_constraints(mapper, object, object_name)
 
-        if !mapper[:required] && object.nil?
-          return object
-        end
+        return object if !mapper[:required] && object.nil?
 
-        payload = Hash.new
+        payload = {}
         mapper_type = mapper[:type][:name]
         if !mapper_type.match(/^(Number|Double|ByteArray|Boolean|Date|DateTime|DateTimeRfc1123|UnixTime|Enum|String|Object|Stream)$/i).nil?
           payload = serialize_primary_type(mapper, object)
@@ -242,37 +240,37 @@ module MsRest
       end
 
       def validate_constraints(mapper, object, object_name)
-        if(mapper[:client_side_validation])
+        if mapper[:client_side_validation]
           # Throw if required & non-constant object is nil
           if mapper[:required] && object.nil? && !mapper[:is_constant]
-            fail ValidationError, "#{object_name} is required and cannot be nil"
+            raise ValidationError, "#{object_name} is required and cannot be nil"
           end
 
-          if(mapper[:constraints])
+          if mapper[:constraints]
             mapper[:constraints].each do |constraint_name, constraint_value|
               case constraint_name.to_s.downcase
-                when 'exclusivemaximum'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'ExclusiveMaximum': '#{constraint_value}'" if !object.nil? && object >= constraint_value
-                when 'exclusiveminimum'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'ExclusiveMinimum': '#{constraint_value}'" if !object.nil? && object <= constraint_value
-                when 'inclusivemaximum'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'InclusiveMaximum': '#{constraint_value}'" if !object.nil? && object > constraint_value
-                when 'inclusiveminimum'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'InclusiveMinimum': '#{constraint_value}'" if !object.nil? && object < constraint_value
-                when 'maxitems'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MaxItems': '#{constraint_value}'" if !object.nil? && object.length > constraint_value
-                when 'minitems'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MinItems': '#{constraint_value}'" if !object.nil? && object.length < constraint_value
-                when 'maxlength'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MaxLength': '#{constraint_value}'" if !object.nil? && object.length > constraint_value
-                when 'minlength'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MinLength': '#{constraint_value}'" if !object.nil? && object.length < constraint_value
-                when 'multipleof'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MultipleOf': '#{constraint_value}'" if !object.nil? && object % constraint_value != 0
-                when 'pattern'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'Pattern': '#{constraint_value}'" if !object.nil? && object.match(Regexp.new "^#{constraint_value}$").nil?
-                when 'uniqueitems'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'UniqueItems': '#{constraint_value}'" if !object.nil? && object.length != object.uniq.length
+              when 'exclusivemaximum'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'ExclusiveMaximum': '#{constraint_value}'" if !object.nil? && object >= constraint_value
+              when 'exclusiveminimum'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'ExclusiveMinimum': '#{constraint_value}'" if !object.nil? && object <= constraint_value
+              when 'inclusivemaximum'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'InclusiveMaximum': '#{constraint_value}'" if !object.nil? && object > constraint_value
+              when 'inclusiveminimum'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'InclusiveMinimum': '#{constraint_value}'" if !object.nil? && object < constraint_value
+              when 'maxitems'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MaxItems': '#{constraint_value}'" if !object.nil? && object.length > constraint_value
+              when 'minitems'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MinItems': '#{constraint_value}'" if !object.nil? && object.length < constraint_value
+              when 'maxlength'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MaxLength': '#{constraint_value}'" if !object.nil? && object.length > constraint_value
+              when 'minlength'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MinLength': '#{constraint_value}'" if !object.nil? && object.length < constraint_value
+              when 'multipleof'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MultipleOf': '#{constraint_value}'" if !object.nil? && object % constraint_value != 0
+              when 'pattern'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'Pattern': '#{constraint_value}'" if !object.nil? && object.match(Regexp.new("^#{constraint_value}$")).nil?
+              when 'uniqueitems'
+                raise ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'UniqueItems': '#{constraint_value}'" if !object.nil? && object.length != object.uniq.length
               end
             end
           end
@@ -289,23 +287,23 @@ module MsRest
         mapper_type = mapper[:type][:name]
         payload = nil
         case mapper_type
-          when 'Number', 'Double', 'String', 'Date', 'Boolean', 'Object', 'Stream'
-            payload = object != nil ? object : nil
-          when  'Enum'
-            unless object.nil?
-              unless enum_is_valid(mapper, object)
-                fail ValidationError, "Enum #{mapper[:type][:module]} does not contain #{object.to_s}, but trying to send it to the server."
-              end
+        when 'Number', 'Double', 'String', 'Date', 'Boolean', 'Object', 'Stream'
+          payload = !object.nil? ? object : nil
+        when 'Enum'
+          unless object.nil?
+            unless enum_is_valid(mapper, object)
+              raise ValidationError, "Enum #{mapper[:type][:module]} does not contain #{object}, but trying to send it to the server."
             end
-            payload = object != nil ? object : nil
-          when 'ByteArray'
-            payload = Base64.strict_encode64(object.pack('c*'))
-          when 'DateTime'
-            payload = object.new_offset(0).strftime('%FT%TZ')
-          when 'DateTimeRfc1123'
-            payload = object.new_offset(0).strftime('%a, %d %b %Y %H:%M:%S GMT')
-          when 'UnixTime'
-            payload = object.new_offset(0).strftime('%s') unless object.nil?
+          end
+          payload = !object.nil? ? object : nil
+        when 'ByteArray'
+          payload = Base64.strict_encode64(object.pack('c*'))
+        when 'DateTime'
+          payload = object.new_offset(0).strftime('%FT%TZ')
+        when 'DateTimeRfc1123'
+          payload = object.new_offset(0).strftime('%a, %d %b %Y %H:%M:%S GMT')
+        when 'UnixTime'
+          payload = object.new_offset(0).strftime('%s') unless object.nil?
         end
         payload
       end
@@ -319,18 +317,16 @@ module MsRest
       #
       def serialize_dictionary_type(mapper, object, object_name)
         unless object.is_a?(Hash)
-          fail DeserializationError.new("#{object_name} must be of type Hash", nil, nil, object)
+          raise DeserializationError.new("#{object_name} must be of type Hash", nil, nil, object)
         end
 
         unless mapper[:type][:value].nil? || mapper[:type][:value].is_a?(Hash)
-          fail DeserializationError.new("'value' metadata for a dictionary type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, object)
+          raise DeserializationError.new("'value' metadata for a dictionary type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, object)
         end
 
-        payload = Hash.new
+        payload = {}
         object.each do |key, value|
-          if !value.nil? && value.respond_to?(:validate)
-            value.validate
-          end
+          value.validate if !value.nil? && value.respond_to?(:validate)
 
           payload[key] = serialize(mapper[:type][:value], value)
         end
@@ -344,7 +340,7 @@ module MsRest
       # @param object [Object] Ruby object to serialize.
       # @param object_name [String] Name of the serialized object.
       #
-      def serialize_composite_type(mapper, object, object_name)
+      def serialize_composite_type(mapper, object, _object_name)
         if !mapper[:type][:polymorphic_discriminator].nil?
           # Handle polymorphic types
           model_name = object.class.to_s.split('::')[-1]
@@ -353,8 +349,8 @@ module MsRest
           model_class = get_model(mapper[:type][:class_name])
         end
 
-        payload = Hash.new
-        model_mapper = model_class.mapper()
+        payload = {}
+        model_mapper = model_class.mapper
         model_props = model_mapper[:type][:model_properties]
 
         unless model_props.nil?
@@ -376,18 +372,18 @@ module MsRest
 
             sub_payload = serialize(value, instance_variable)
 
-            unless value[:serialized_name].to_s.include? '.'
-              payload[value[:serialized_name].to_s] = sub_payload unless sub_payload.nil?
-            else
+            if value[:serialized_name].to_s.include? '.'
               # Flattened properties will be discovered at higher levels in model class but must be serialized to deeper level in payload
               levels = split_serialized_name(value[:serialized_name].to_s)
               last_level = levels.pop
               temp_payload = payload
               levels.each do |level|
-                temp_payload[level] = Hash.new unless temp_payload.key?(level)
+                temp_payload[level] = {} unless temp_payload.key?(level)
                 temp_payload = temp_payload[level]
               end
               temp_payload[last_level] = sub_payload unless sub_payload.nil?
+            else
+              payload[value[:serialized_name].to_s] = sub_payload unless sub_payload.nil?
             end
           end
         end
@@ -403,18 +399,16 @@ module MsRest
       #
       def serialize_sequence_type(mapper, object, object_name)
         unless object.is_a?(Array)
-          fail DeserializationError.new("#{object_name} must be of type of Array", nil, nil, object)
+          raise DeserializationError.new("#{object_name} must be of type of Array", nil, nil, object)
         end
 
         unless mapper[:type][:element].nil? || mapper[:type][:element].is_a?(Hash)
-          fail DeserializationError.new("'element' metadata for a sequence type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, object)
+          raise DeserializationError.new("'element' metadata for a sequence type must be defined in the mapper and it must be of type Hash in #{object_name}", nil, nil, object)
         end
 
-        payload = Array.new
+        payload = []
         object.each do |element|
-          if !element.nil? && element.respond_to?(:validate)
-            element.validate
-          end
+          element.validate if !element.nil? && element.respond_to?(:validate)
           payload.push(serialize(mapper[:type][:element], element))
         end
         payload
@@ -426,20 +420,18 @@ module MsRest
       # @param model_name [String] Name of the model to retrieve.
       #
       def get_model(model_name)
-        begin
-          consts = @context.class.to_s.split('::')
-          end_index = 0
-          if consts.any?{ |const| const == 'Models' }
-            # context is a model class
-            end_index = -2
-          else
-            # context is a service, so find the model class
-            end_index = -1
-          end
-          Object.const_get(consts[0...end_index].join('::') + "::Models::#{model_name}")
-        rescue
-          Object.const_get("MsRestAzure::#{model_name}")
-        end
+        consts = @context.class.to_s.split('::')
+        end_index = 0
+        end_index = if consts.any? { |const| const == 'Models' }
+                      # context is a model class
+                      -2
+                    else
+                      # context is a service, so find the model class
+                      -1
+                    end
+        Object.const_get(consts[0...end_index].join('::') + "::Models::#{model_name}")
+      rescue StandardError
+        Object.const_get("MsRestAzure::#{model_name}")
       end
 
       #
@@ -451,9 +443,9 @@ module MsRest
       def enum_is_valid(mapper, enum_value)
         if enum_value.is_a?(String) && !enum_value.empty?
           model = get_model(mapper[:type][:module])
-          model.constants.any? { |e| model.const_get(e).to_s.downcase == enum_value.downcase }
+          model.constants.any? { |e| model.const_get(e).to_s.casecmp(enum_value).zero? }
         else
-            false
+          false
         end
       end
 
@@ -462,18 +454,18 @@ module MsRest
       # @param serialized_name [String] Name to split
       #
       def split_serialized_name(serialized_name)
-        result = Array.new
+        result = []
         element = ''
 
         levels = serialized_name.to_s.split('.')
         levels.each do |level|
-          unless level.match(/.*\\$/).nil?
-            # Flattened properties will be discovered at different levels in model class and response body
-            element = "#{element}#{level.gsub!('\\','')}."
-          else
+          if level.match(/.*\\$/).nil?
             element = "#{element}#{level}"
             result.push(element) unless element.empty?
             element = ''
+          else
+            # Flattened properties will be discovered at different levels in model class and response body
+            element = "#{element}#{level.delete!('\\')}."
           end
         end
         result

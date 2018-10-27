@@ -1,8 +1,7 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'azure_sdk/version'
@@ -28,7 +27,7 @@ Gem::Specification.new do |spec|
     'wiki_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/wiki'
   }
 
-  spec.files         = Dir["LICENSE.txt", "lib/**/*"]
+  spec.files         = Dir['LICENSE.txt', 'lib/**/*']
   spec.bindir        = 'bin'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
@@ -36,10 +35,25 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.0.0'
 
   spec.add_development_dependency 'bundler', '~> 1.9'
+  spec.add_development_dependency 'dotenv', '~> 2'
   spec.add_development_dependency 'rake', '~> 10'
   spec.add_development_dependency 'rspec', '~> 3'
-  spec.add_development_dependency 'dotenv', '~> 2'
 
+  spec.add_runtime_dependency 'azure-storage', '~>0.14.0.preview'
+  spec.add_runtime_dependency 'azure_cognitiveservices_computervision', "~>#{gem_versions['data']['azure_cognitiveservices_computervision']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_contentmoderator', "~>#{gem_versions['data']['azure_cognitiveservices_contentmoderator']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_customsearch', "~>#{gem_versions['data']['azure_cognitiveservices_customsearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_entitysearch', "~>#{gem_versions['data']['azure_cognitiveservices_entitysearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_face', "~>#{gem_versions['data']['azure_cognitiveservices_face']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_imagesearch', "~>#{gem_versions['data']['azure_cognitiveservices_imagesearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_newssearch', "~>#{gem_versions['data']['azure_cognitiveservices_newssearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_spellcheck', "~>#{gem_versions['data']['azure_cognitiveservices_spellcheck']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_textanalytics', "~>#{gem_versions['data']['azure_cognitiveservices_textanalytics']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_videosearch', "~>#{gem_versions['data']['azure_cognitiveservices_videosearch']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_websearch', "~>#{gem_versions['data']['azure_cognitiveservices_websearch']}"
+  spec.add_runtime_dependency 'azure_event_grid', "~>#{gem_versions['data']['azure_event_grid']}"
+  spec.add_runtime_dependency 'azure_graph_rbac', "~>#{gem_versions['data']['azure_graph_rbac']}"
+  spec.add_runtime_dependency 'azure_key_vault', "~>#{gem_versions['data']['azure_key_vault']}"
   spec.add_runtime_dependency 'azure_mgmt_analysis_services', "~>#{gem_versions['management']['azure_mgmt_analysis_services']}"
   spec.add_runtime_dependency 'azure_mgmt_api_management', "~>#{gem_versions['management']['azure_mgmt_api_management']}"
   spec.add_runtime_dependency 'azure_mgmt_authorization', "~>#{gem_versions['management']['azure_mgmt_authorization']}"
@@ -101,19 +115,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{gem_versions['management']['azure_mgmt_subscriptions']}"
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{gem_versions['management']['azure_mgmt_traffic_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_web', "~>#{gem_versions['management']['azure_mgmt_web']}"
-  spec.add_runtime_dependency 'azure_graph_rbac', "~>#{gem_versions['data']['azure_graph_rbac']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_computervision', "~>#{gem_versions['data']['azure_cognitiveservices_computervision']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_contentmoderator', "~>#{gem_versions['data']['azure_cognitiveservices_contentmoderator']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_customsearch', "~>#{gem_versions['data']['azure_cognitiveservices_customsearch']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_entitysearch', "~>#{gem_versions['data']['azure_cognitiveservices_entitysearch']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_face', "~>#{gem_versions['data']['azure_cognitiveservices_face']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_imagesearch', "~>#{gem_versions['data']['azure_cognitiveservices_imagesearch']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_newssearch', "~>#{gem_versions['data']['azure_cognitiveservices_newssearch']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_spellcheck', "~>#{gem_versions['data']['azure_cognitiveservices_spellcheck']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_textanalytics', "~>#{gem_versions['data']['azure_cognitiveservices_textanalytics']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_videosearch', "~>#{gem_versions['data']['azure_cognitiveservices_videosearch']}"
-  spec.add_runtime_dependency 'azure_cognitiveservices_websearch', "~>#{gem_versions['data']['azure_cognitiveservices_websearch']}"
-  spec.add_runtime_dependency 'azure_event_grid', "~>#{gem_versions['data']['azure_event_grid']}"
-  spec.add_runtime_dependency 'azure_key_vault', "~>#{gem_versions['data']['azure_key_vault']}"
-  spec.add_runtime_dependency 'azure-storage', '~>0.14.0.preview'
 end

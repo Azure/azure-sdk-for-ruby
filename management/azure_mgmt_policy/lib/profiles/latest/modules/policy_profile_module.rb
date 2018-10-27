@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -31,20 +30,20 @@ module Azure::Policy::Profiles::Latest
       attr_reader :policy_assignments, :policy_definitions, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::Policy::Mgmt::V2018_03_01::PolicyClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -61,46 +60,55 @@ module Azure::Policy::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def policy_definition
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
       end
+
       def policy_definition_list_result
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
       end
+
       def policy_assignment
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
       end
+
       def policy_definition_reference
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
       end
+
       def error_response
         Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
       end
+
       def policy_set_definition
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
       end
+
       def policy_assignment_list_result
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
       end
+
       def policy_set_definition_list_result
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
       end
+
       def policy_sku
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
       end
+
       def policy_type
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
       end
+
       def policy_mode
         Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
       end

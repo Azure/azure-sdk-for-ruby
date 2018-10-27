@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -48,20 +47,20 @@ module Azure::Relay::Profiles::Latest
       attr_reader :operations, :namespaces, :hybrid_connections, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
-        if options.is_a?(Hash) && options.length == 0
-          @options = setup_default_options
-        else
-          @options = options
-        end
+        @options = if options.is_a?(Hash) && options.empty?
+                     setup_default_options
+                   else
+                     options
+                   end
 
         reset!(options)
 
         @configurable = self
-        @base_url = options[:base_url].nil? ? nil:options[:base_url]
-        @options = options[:options].nil? ? nil:options[:options]
+        @base_url = options[:base_url].nil? ? nil : options[:base_url]
+        @options = options[:options].nil? ? nil : options[:options]
 
         @client_0 = Azure::Relay::Mgmt::V2017_04_01::RelayManagementClient.new(configurable.credentials, base_url, options)
-        if(@client_0.respond_to?(:subscription_id))
+        if @client_0.respond_to?(:subscription_id)
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
@@ -79,94 +78,119 @@ module Azure::Relay::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_0.respond_to? method
           @client_0.send(method, *args)
         else
           super
         end
       end
-
     end
 
     class ModelClasses
       def relay_namespace_list_result
         Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
       end
+
       def operation_display
         Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
       end
+
       def resource
         Azure::Relay::Mgmt::V2017_04_01::Models::Resource
       end
+
       def check_name_availability
         Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
       end
+
       def hybrid_connection_list_result
         Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
       end
+
       def check_name_availability_result
         Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
       end
+
       def wcf_relays_list_result
         Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
       end
+
       def error_response
         Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
       end
+
       def operation_list_result
         Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
       end
+
       def authorization_rule_list_result
         Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
       end
+
       def sku
         Azure::Relay::Mgmt::V2017_04_01::Models::Sku
       end
+
       def access_keys
         Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
       end
+
       def operation
         Azure::Relay::Mgmt::V2017_04_01::Models::Operation
       end
+
       def regenerate_access_key_parameters
         Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
       end
+
       def tracked_resource
         Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
       end
+
       def resource_namespace_patch
         Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
       end
+
       def hybrid_connection
         Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
       end
+
       def wcf_relay
         Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
       end
+
       def relay_namespace
         Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
       end
+
       def relay_update_parameters
         Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
       end
+
       def authorization_rule
         Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
       end
+
       def relaytype
         Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
       end
+
       def sku_tier
         Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
       end
+
       def provisioning_state_enum
         Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
       end
+
       def access_rights
         Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
       end
+
       def key_type
         Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
       end
+
       def unavailable_reason
         Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
       end

@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -13,15 +12,17 @@ describe 'Azure Sdk' do
       @subscription_id = '22222222-2222-2222-2222-222222222222'
       @active_directory_settings = MsRestAzure::ActiveDirectoryServiceSettings.get_azure_china_settings
       @minimum_valid_options = {
-          :tenant_id => @tenant_id,
-          :client_id => @client_id,
-          :client_secret => @client_secret,
-          :subscription_id => @subscription_id,
-          :active_directory_settings => @active_directory_settings
+        tenant_id: @tenant_id,
+        client_id: @client_id,
+        client_secret: @client_secret,
+        subscription_id: @subscription_id,
+        active_directory_settings: @active_directory_settings
       }
       @credentials = MsRest::TokenCredentials.new(
         MsRestAzure::ApplicationTokenProvider.new(
-          @tenant_id, @client_id, @client_secret, @active_directory_settings))
+          @tenant_id, @client_id, @client_secret, @active_directory_settings
+        )
+      )
       @options = {
         credentials: @credentials,
         subscription_id: @subscription_id
@@ -38,14 +39,14 @@ describe 'Azure Sdk' do
       arm_client = Azure::Profiles::Latest::Client.new
       expect(arm_client).not_to be_nil
       expect(arm_client).to be_instance_of(Azure::Profiles::Latest::Client)
-      expect(arm_client.credentials).to  be_kind_of(MsRest::ServiceClientCredentials)
+      expect(arm_client.credentials).to be_kind_of(MsRest::ServiceClientCredentials)
       verify_management_clients(arm_client)
     end
 
     def verify_client_defaults(arm_client)
       expect(arm_client).not_to be_nil
       expect(arm_client).to be_instance_of(Azure::Profiles::Latest::Client)
-      expect(arm_client.credentials).to  be_kind_of(MsRest::ServiceClientCredentials)
+      expect(arm_client.credentials).to be_kind_of(MsRest::ServiceClientCredentials)
     end
 
     def verify_management_clients(arm_client)
@@ -68,7 +69,7 @@ describe 'Azure Sdk' do
       expect(arm_client.logic.mgmt).to be_instance_of(Azure::Profiles::Latest::Logic::Mgmt::LogicManagementClass)
       expect(arm_client.machine_learning.mgmt).to be_instance_of(Azure::Profiles::Latest::MachineLearning::Mgmt::MachineLearningManagementClass)
       expect(arm_client.media_services.mgmt).to be_instance_of(Azure::Profiles::Latest::MediaServices::Mgmt::MediaServicesManagementClass)
-      #expect(arm_client.mobile_engagement.mgmt).to be_instance_of(Azure::Profiles::Latest::MobileEngagement::Mgmt::MobileEngagementManagementClass)
+      # expect(arm_client.mobile_engagement.mgmt).to be_instance_of(Azure::Profiles::Latest::MobileEngagement::Mgmt::MobileEngagementManagementClass)
       expect(arm_client.network.mgmt).to be_instance_of(Azure::Profiles::Latest::Network::Mgmt::NetworkManagementClass)
       expect(arm_client.notification_hubs.mgmt).to be_instance_of(Azure::Profiles::Latest::NotificationHubs::Mgmt::NotificationHubsManagementClass)
       expect(arm_client.policy.mgmt).to be_instance_of(Azure::Profiles::Latest::Policy::Mgmt::PolicyManagementClass)
@@ -77,7 +78,7 @@ describe 'Azure Sdk' do
       expect(arm_client.resources.mgmt).to be_instance_of(Azure::Profiles::Latest::Resources::Mgmt::ResourcesManagementClass)
       expect(arm_client.scheduler.mgmt).to be_instance_of(Azure::Profiles::Latest::Scheduler::Mgmt::SchedulerManagementClass)
       expect(arm_client.search.mgmt).to be_instance_of(Azure::Profiles::Latest::Search::Mgmt::SearchManagementClass)
-      #expect(arm_client.server_management.mgmt).to be_instance_of(Azure::Profiles::Latest::ServerManagement::Mgmt::ServerManagementManagementClass)
+      # expect(arm_client.server_management.mgmt).to be_instance_of(Azure::Profiles::Latest::ServerManagement::Mgmt::ServerManagementManagementClass)
       expect(arm_client.service_bus.mgmt).to be_instance_of(Azure::Profiles::Latest::ServiceBus::Mgmt::ServiceBusManagementClass)
       expect(arm_client.sql.mgmt).to be_instance_of(Azure::Profiles::Latest::SQL::Mgmt::SQLManagementClass)
       expect(arm_client.storage.mgmt).to be_instance_of(Azure::Profiles::Latest::Storage::Mgmt::StorageManagementClass)
@@ -94,7 +95,7 @@ describe 'Azure Sdk' do
     end
 
     it 'should create a storage client' do
-      storage_client = Azure::Storage::Client.new(:storage_account_name => @storage_account_name, :storage_access_key => @storage_access_key)
+      storage_client = Azure::Storage::Client.new(storage_account_name: @storage_account_name, storage_access_key: @storage_access_key)
       expect(storage_client).not_to be_nil
       expect(storage_client.blob_client).not_to be_nil
       expect(storage_client.queue_client).not_to be_nil

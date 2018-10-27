@@ -36,7 +36,7 @@
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 5  | regen_rollup_profile            | Regenerates all profiles within the rollup gem. At the end, this task calls                      |
 # |    |                                 | regen_rollup_require_files as an enhancement. This task has clean_rollup_profiles as prereq. This|
-#.|.   |                                 | task requires correct definition of rollup profiles in profiles.json file.                       |
+# .|.   |                                 | task requires correct definition of rollup profiles in profiles.json file.                       |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 6  | regen_individual_profiles       | Regenerates all profiles with all the services. At the end, this task calls                      |
 # |    |                                 | regen_individual_require_files as an enhancement. This task calls clean_individual_profiles      |
@@ -128,17 +128,15 @@ end
 
 gem_versions = JSON.parse(File.read(File.expand_path("#{get_config_files_folder}/GEM_VERSIONS", __FILE__)).strip)
 gems_to_release = JSON.parse(File.read(File.expand_path("#{get_config_files_folder}/GEMS_TO_RELEASE", __FILE__)).strip)
-GEMS_TO_IGNORE = %w{azure_mgmt_graph, azure_mgmt_mobile_engagement, azure_mgmt_server_management}
-REGEN_EXCLUDES = ['azure_sdk']
+GEMS_TO_IGNORE = %w[azure_mgmt_graph azure_mgmt_mobile_engagement azure_mgmt_server_management].freeze
+REGEN_EXCLUDES = ['azure_sdk'].freeze
 
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
 namespace :arm do
   desc 'Delete ./pkg for each of the Azure Resource Manager projects'
   task :clean, [:gem_name] do |_, args|
     each_gem do |dir|
-      if !should_i_continue(args[:gem_name], dir)
-        next
-      end
+      next unless should_i_continue(args[:gem_name], dir)
 
       FileUtils.rm_rf('pkg')
     end
@@ -148,15 +146,13 @@ namespace :arm do
   task :clean_generated, [:gem_name] do |_, args|
     clean_generated('management', args[:gem_name])
     clean_generated('data', args[:gem_name])
-    Dir.chdir(File.expand_path('..', __FILE__))
+    Dir.chdir(File.expand_path(__dir__))
   end
 
   desc 'Build gems for each of the Azure Resource Manager projects'
   task :build, [:gem_name] => :clean do |_, args|
     each_gem do |dir|
-      if !should_i_continue(args[:gem_name], dir)
-        next
-      end
+      next unless should_i_continue(args[:gem_name], dir)
 
       execute_and_stream('rake build')
     end
@@ -166,13 +162,13 @@ namespace :arm do
   task :release, [:key] => :build do |_, args|
     gems_to_release.each do |key, gems|
       gems.each do |gem|
-        if(key == 'rollup')
+        if key == 'rollup'
           Dir.chdir("#{__dir__}/azure_sdk")
           version = gem_versions['rollup'][gem]
-        elsif(key == 'management')
+        elsif key == 'management'
           Dir.chdir("#{__dir__}/management/#{gem}")
           version = gem_versions['management'][gem]
-        elsif(key == 'data')
+        elsif key == 'data'
           Dir.chdir("#{__dir__}/data/#{gem}")
           version = gem_versions['data'][gem]
         end
@@ -190,9 +186,7 @@ namespace :arm do
   task :regen_sdk_versions, [:gem_name] => :clean_generated do |_, args|
     json = get_config_file
     each_gem do |dir| # dir corresponds to each azure_* folder
-      if !should_i_continue(args[:gem_name], dir)
-        next
-      end
+      next unless should_i_continue(args[:gem_name], dir)
 
       if REGEN_EXCLUDES.include?(dir.to_s)
         update_gem_version('lib/azure_sdk/version.rb', gem_versions['rollup'][dir])
@@ -200,31 +194,31 @@ namespace :arm do
       end
 
       mode = get_mode(dir)
-      
+
       puts "\nGenerating #{dir}\n"
-      ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}"
+      ar_base_command = ENV.fetch('AUTOREST_LOC', 'autorest').to_s
       ar_base_command = "#{ar_base_command} --use=#{ENV.fetch('AUTOREST_RUBY_LOC')}" unless ENV.fetch('AUTOREST_RUBY_LOC', nil).nil?
       puts "ar_base_command #{ar_base_command}"
       md = json[dir] # there should be an entry in the metadata for each of the api versions to generate
       package_name = dir
-      md.each do |api_version_pkg, api_version_value|
+      md.each do |_api_version_pkg, api_version_value|
         ar_arguments = ''
         output_folder = ''
         api_version_value.each do |argument_name, argument_value|
-          if argument_name.casecmp("output-folder") == 0
+          if argument_name.casecmp('output-folder') == 0
             output_folder = argument_value
           else
-            if argument_name.casecmp("package-name") == 0
+            if argument_name.casecmp('package-name') == 0
               package_name = argument_value
             else
-              if argument_name.casecmp("markdown") == 0
-                ar_arguments = ar_arguments + " #{argument_value}"
+              if argument_name.casecmp('markdown') == 0
+                ar_arguments += " #{argument_value}"
               else
-                if argument_name.casecmp("input-file") == 0
-                  input_files = argument_value.map {|file| "--input-file=#{file}"}
-                  ar_arguments = ar_arguments + input_files.join(" ")
+                if argument_name.casecmp('input-file') == 0
+                  input_files = argument_value.map { |file| "--input-file=#{file}" }
+                  ar_arguments += input_files.join(' ')
                 else
-                  ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
+                  ar_arguments += " --#{argument_name}=#{argument_value}"
                 end
               end
             end
@@ -242,9 +236,7 @@ namespace :arm do
     desc 'bundle update for each of the Azure Resource Manager projects'
     task :update, [:gem_name] do |_, args|
       each_gem do
-        if !should_i_continue(args[:gem_name], dir)
-          next
-        end
+        next unless should_i_continue(args[:gem_name], dir)
 
         execute_and_stream('bundle update')
       end
@@ -254,9 +246,7 @@ namespace :arm do
   desc 'run specs for each of the Azure Resource Manager projects'
   task :spec, [:gem_name] => :dotenv do |_, args|
     each_gem do |gem_dir|
-      if !should_i_continue(args[:gem_name], gem_dir)
-        next
-      end
+      next unless should_i_continue(args[:gem_name], gem_dir)
 
       puts "Executing spec on #{gem_dir}"
       execute_and_stream('bundle install')
@@ -266,32 +256,28 @@ namespace :arm do
 
   desc 'Clean Rollup Profiles'
   task :clean_rollup_profiles do
-    Dir.chdir(File.expand_path('../azure_sdk/lib', __FILE__))
-    subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+    Dir.chdir(File.expand_path('azure_sdk/lib', __dir__))
+    subdir_list = Dir['*'].reject { |o| File.directory?(o) }
     subdir_list.each do |subdir|
-      if subdir != 'azure_sdk'
-        folder_to_be_cleaned = File.expand_path("../azure_sdk/lib/#{subdir}", __FILE__)
-        puts "Cleaning folder - #{folder_to_be_cleaned}"
-        FileUtils.rm_rf(folder_to_be_cleaned)
-      end
+      next unless subdir != 'azure_sdk'
+
+      folder_to_be_cleaned = File.expand_path("../azure_sdk/lib/#{subdir}", __FILE__)
+      puts "Cleaning folder - #{folder_to_be_cleaned}"
+      FileUtils.rm_rf(folder_to_be_cleaned)
     end
   end
 
   desc 'Clean Individual Profiles'
   task :clean_individual_profiles, [:gem_name] do |_, args|
     each_gem_dir do |gem|
-      if !should_i_continue(args[:gem_name], gem)
-        next
-      end
+      next unless should_i_continue(args[:gem_name], gem)
 
-      if REGEN_EXCLUDES.include?gem
-        next
-      end
+      next if REGEN_EXCLUDES.include? gem
 
       mode = get_mode(gem)
       Dir.chdir("#{__dir__}/#{mode}/#{gem}/lib/profiles")
 
-      subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+      subdir_list = Dir['*'].reject { |o| File.directory?(o) }
       subdir_list.each do |subdir|
         folder_to_be_cleaned = "#{__dir__}/#{mode}/#{gem}/lib/profiles/#{subdir}"
         puts "Cleaning folder - #{folder_to_be_cleaned}"
@@ -301,12 +287,12 @@ namespace :arm do
   end
 
   desc 'Clean All profiles'
-  task :clean_all_profiles, [:gem_name] => [:clean_rollup_profiles, :clean_individual_profiles] do
+  task :clean_all_profiles, [:gem_name] => %i[clean_rollup_profiles clean_individual_profiles] do
     puts 'Cleaned all profiles'
   end
 
   desc 'Regen rollup profiles'
-  task :regen_rollup_profile => :clean_rollup_profiles do
+  task regen_rollup_profile: :clean_rollup_profiles do
     Dir.chdir(__dir__)
     # Sample Command
     # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=profiles.json --mode=rollup --key=azure_sdk
@@ -317,13 +303,10 @@ namespace :arm do
   desc 'Regen individual profiles'
   task :regen_individual_profiles, [:gem_name] => :clean_individual_profiles do |_, args|
     each_gem_dir do |gem|
-      if !should_i_continue(args[:gem_name], gem)
-        next
-      end
+      next unless should_i_continue(args[:gem_name], gem)
 
-      if REGEN_EXCLUDES.include?gem
-        next
-      end
+      next if REGEN_EXCLUDES.include? gem
+
       mode = get_mode(gem)
 
       # Sample Command
@@ -347,17 +330,17 @@ namespace :arm do
   end
 
   desc 'Generate all require files'
-  task :regen_all_require_files, [:gem_name] => [:regen_individual_require_files, :regen_rollup_require_files] do
+  task :regen_all_require_files, [:gem_name] => %i[regen_individual_require_files regen_rollup_require_files] do
     puts 'Generated all require files'
   end
 
   desc 'Regen all profiles'
-  task :regen_all_profiles, [:gem_name] => [:regen_rollup_profile, :regen_individual_profiles] do
+  task :regen_all_profiles, [:gem_name] => %i[regen_rollup_profile regen_individual_profiles] do
     puts 'Regenerated all profiles'
   end
 
   desc 'Regen all versions of sdk and profiles'
-  task :regen, [:gem_name] => [:regen_sdk_versions, :regen_all_profiles] do
+  task :regen, [:gem_name] => %i[regen_sdk_versions regen_all_profiles] do
     puts 'Regenerated all versions of sdk and profiles'
   end
 end
@@ -377,40 +360,34 @@ Rake::Task['arm:regen_sdk_versions'].enhance do |_, args|
   Rake::Task['arm:regen_individual_require_files'].reenable
 end
 
-task :default => :spec
+task default: :spec
 
 def should_i_continue(key, dir)
-  return (key.nil? || key == dir)
+  (key.nil? || key == dir)
 end
 
 def get_mode(dir)
   mode = ''
-  if (dir.include? '_mgmt_')
-    mode = 'management'
-  else
-    mode = 'data'
-  end
+  mode = if dir.include? '_mgmt_'
+           'management'
+         else
+           'data'
+         end
   mode
 end
 
 def clean_generated(parent_dir, key)
   Dir.chdir(File.expand_path("../#{parent_dir}", __FILE__))
-  gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
+  gem_folders = Dir['*'].reject { |o| File.directory?(o) }
   gem_folders.each do |gem|
-    if !should_i_continue(key, gem)
-      next
-    end
+    next unless should_i_continue(key, gem)
 
-    if GEMS_TO_IGNORE.include?gem
-      next
-    end
+    next if GEMS_TO_IGNORE.include? gem
 
     Dir.chdir(File.expand_path("../#{parent_dir}/#{gem}/lib", __FILE__))
-    subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+    subdir_list = Dir['*'].reject { |o| File.directory?(o) }
     subdir_list.each do |subdir|
-      if subdir.to_s == 'profiles'
-        next
-      end
+      next if subdir.to_s == 'profiles'
 
       folder_to_be_cleaned = File.expand_path("../#{parent_dir}/#{gem}/lib/#{subdir}", __FILE__)
       puts "Cleaning folder - #{folder_to_be_cleaned}"
@@ -435,9 +412,7 @@ def execute(cmd)
     end
 
     exit_status = wait_thr.value
-    unless exit_status.success?
-      abort "FAILED !!!"
-    end
+    abort 'FAILED !!!' unless exit_status.success?
   end
 end
 
@@ -447,22 +422,20 @@ def get_config_file
 end
 
 def each_child
-  each_child_mode_specific('management') {|dir| yield dir }
-  each_child_mode_specific('data') {|dir| yield dir }
+  each_child_mode_specific('management') { |dir| yield dir }
+  each_child_mode_specific('data') { |dir| yield dir }
 
-  Dir.chdir(File.expand_path('../azure_sdk', __FILE__))
+  Dir.chdir(File.expand_path('azure_sdk', __dir__))
   yield('azure_sdk')
 end
 
 def each_child_mode_specific(parent_dir, change_dir = true)
   Dir.chdir(File.expand_path("../#{parent_dir}", __FILE__))
-  sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
+  sub_dirs = Dir['*'].reject { |o| File.directory?(o) }
   sub_dirs.each do |dir|
-    if GEMS_TO_IGNORE.include?dir
-      next
-    end
+    next if GEMS_TO_IGNORE.include? dir
 
-    if (change_dir)
+    if change_dir
       Dir.chdir(dir) do
         yield(dir)
       end
@@ -480,8 +453,8 @@ def each_gem
 end
 
 def each_gem_dir
-  each_child_mode_specific('management', false) {|dir| yield dir }
-  each_child_mode_specific('data', false)  {|dir| yield dir }
+  each_child_mode_specific('management', false) { |dir| yield dir }
+  each_child_mode_specific('data', false) { |dir| yield dir }
 end
 
 def update_gem_version(version_file, new_version)

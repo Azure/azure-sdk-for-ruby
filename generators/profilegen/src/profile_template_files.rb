@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -8,14 +7,14 @@
 #
 module ProfileTemplateFiles
   module Rollup
-    MODULE_TEMPLATE = 'templates/rollup/module_template.template'
-    CLIENT_TEMPLATE = 'templates/rollup/client_template.template'
-    MODULE_DEFINITION_TEMPLATE = 'templates/rollup/module_definition_template.template'
-  end 
+    MODULE_TEMPLATE = 'templates/rollup/module_template.template'.freeze
+    CLIENT_TEMPLATE = 'templates/rollup/client_template.template'.freeze
+    MODULE_DEFINITION_TEMPLATE = 'templates/rollup/module_definition_template.template'.freeze
+  end
 
   module Individual
-    MODULE_TEMPLATE = 'templates/individual/module_template.template'
-    CLIENT_TEMPLATE = 'templates/individual/client_template.template'
-    MODULE_DEFINITION_TEMPLATE = 'templates/individual/module_definition_template.template'
+    MODULE_TEMPLATE = 'templates/individual/module_template.template'.freeze
+    CLIENT_TEMPLATE = 'templates/individual/client_template.template'.freeze
+    MODULE_DEFINITION_TEMPLATE = 'templates/individual/module_definition_template.template'.freeze
   end
 end

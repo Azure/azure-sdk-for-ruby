@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
@@ -8,11 +7,10 @@ include MsRestAzure
 include Azure::Resources::Mgmt::V2017_05_10
 
 describe 'Providers' do
-
   before(:each) do
     @registered_providers = []
     @unregistered_providers = []
-    @resource_helper = ResourceHelper.new()
+    @resource_helper = ResourceHelper.new
     @client = @resource_helper.resource_client.providers
   end
 
@@ -33,11 +31,11 @@ describe 'Providers' do
   end
 
   it 'should list providers' do
-    result = @client.list_async().value!
+    result = @client.list_async.value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next_async(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -45,11 +43,11 @@ describe 'Providers' do
   end
 
   it 'should list providers with top restriction parameter' do
-    result = @client.list_async(top:1).value!
+    result = @client.list_async(top: 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -57,7 +55,7 @@ describe 'Providers' do
   end
 
   it 'should register provider' do
-    providers = @client.list_async().value!.body.value
+    providers = @client.list_async.value!.body.value
     targetProvider = providers.detect do |item|
       item.registration_state == 'NotRegistered' || item.registration_state == 'Unregistered'
     end
@@ -71,12 +69,12 @@ describe 'Providers' do
   end
 
   it 'should raise an error when attempting register provider with nil parameter' do
-    expect{@client.register(nil)}.to raise_error(ArgumentError)
+    expect { @client.register(nil) }.to raise_error(ArgumentError)
   end
 
   it 'should unregister provider' do
-    providers = @client.list_async().value!.body.value
-    targetProvider = providers.detect {|item| item.registration_state == 'Registered' }
+    providers = @client.list_async.value!.body.value
+    targetProvider = providers.detect { |item| item.registration_state == 'Registered' }
     @unregistered_providers.push(targetProvider.namespace)
 
     result = @client.unregister_async(targetProvider.namespace).value!
@@ -87,11 +85,11 @@ describe 'Providers' do
   end
 
   it 'should raise an error when attempting unregister provider with nil parameter' do
-    expect{@client.unregister(nil)}.to raise_error(ArgumentError)
+    expect { @client.unregister(nil) }.to raise_error(ArgumentError)
   end
 
   it 'should get provider' do
-    providers = @client.list_async().value!.body.value
+    providers = @client.list_async.value!.body.value
 
     result = @client.get_async(providers[0].namespace).value!
 
@@ -100,7 +98,6 @@ describe 'Providers' do
   end
 
   it 'should raise error when attempting get provider with nil parameter' do
-    expect{@client.get(nil)}.to raise_error(ArgumentError)
+    expect { @client.get(nil) }.to raise_error(ArgumentError)
   end
-
 end
