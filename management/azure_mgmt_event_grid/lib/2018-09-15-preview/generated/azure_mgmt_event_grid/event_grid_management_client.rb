@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventGrid::Mgmt::V2017_06_15_preview
+module Azure::EventGrid::Mgmt::V2018_09_15_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -37,6 +37,12 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Domains] domains
+    attr_reader :domains
+
+    # @return [DomainTopics] domain_topics
+    attr_reader :domain_topics
+
     # @return [EventSubscriptions] event_subscriptions
     attr_reader :event_subscriptions
 
@@ -62,11 +68,13 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @domains = Domains.new(self)
+      @domain_topics = DomainTopics.new(self)
       @event_subscriptions = EventSubscriptions.new(self)
       @operations = Operations.new(self)
       @topics = Topics.new(self)
       @topic_types = TopicTypes.new(self)
-      @api_version = '2017-06-15-preview'
+      @api_version = '2018-09-15-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
