@@ -49,6 +49,13 @@ module Azure::GraphRbac::V1_6
       # @return [Boolean] Whether to allow implicit grant flow for OAuth2
       attr_accessor :oauth2allow_implicit_flow
 
+      # @return [Array<RequiredResourceAccess>] Specifies resources that this
+      # application requires access to and the set of OAuth permission scopes
+      # and application roles that it needs under each of those resources. This
+      # pre-configuration of required resource access drives the consent
+      # experience.
+      attr_accessor :required_resource_access
+
 
       #
       # Mapper for Application class as Ruby Hash.
@@ -188,6 +195,21 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'oauth2AllowImplicitFlow',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              required_resource_access: {
+                required: false,
+                serialized_name: 'requiredResourceAccess',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'RequiredResourceAccessElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'RequiredResourceAccess'
+                      }
+                  }
                 }
               }
             }
