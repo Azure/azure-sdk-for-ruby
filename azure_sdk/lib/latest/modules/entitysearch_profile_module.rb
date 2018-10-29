@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
@@ -30,8 +31,8 @@ module Azure::Profiles::Latest
       ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
       ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
       ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
-      ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+      ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
       FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
       LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
       Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
@@ -54,7 +55,6 @@ module Azure::Profiles::Latest
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
-      ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def contractual_rules_contractual_rule
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
+        end
         def entities_entity_presentation_info
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
         end
@@ -150,11 +153,11 @@ module Azure::Profiles::Latest
         def contractual_rules_media_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
         end
-        def contractual_rules_text_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
-        end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
+        def contractual_rules_text_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
         end
         def food_establishment
           Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
@@ -221,9 +224,6 @@ module Azure::Profiles::Latest
         end
         def safe_search
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
-        end
-        def contractual_rules_contractual_rule
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
         end
       end
     end

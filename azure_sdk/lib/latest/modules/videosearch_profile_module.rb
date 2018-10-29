@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     VideosOperations = Azure::CognitiveServices::VideoSearch::V1_0::VideosOperations
 
     module Models
+      Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
       TrendingVideosCategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosCategory
@@ -17,8 +18,8 @@ module Azure::Profiles::Latest
       TrendingVideosTile = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
       Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
       TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
-      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
       VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
       VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
@@ -40,7 +41,6 @@ module Azure::Profiles::Latest
       TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-      Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
     end
 
     class VideoSearchDataClass
@@ -73,6 +73,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def freshness
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
+        end
         def image_object
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
         end
@@ -97,11 +100,11 @@ module Azure::Profiles::Latest
         def trending_videos
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
         end
-        def video_details
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
-        end
         def response
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        end
+        def video_details
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
         end
         def video_query_scenario
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
@@ -165,9 +168,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-        end
-        def freshness
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
         end
       end
     end
