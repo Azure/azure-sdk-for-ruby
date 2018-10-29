@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
@@ -32,7 +33,6 @@ module Azure::Profiles::Latest
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-      Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
     end
 
     class NewsSearchDataClass
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def freshness
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
+        end
         def image_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
         end
@@ -133,9 +136,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-        end
-        def freshness
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
         end
       end
     end
