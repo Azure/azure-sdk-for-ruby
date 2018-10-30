@@ -26,7 +26,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Port',
           type: {
@@ -34,7 +33,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'Port',
             model_properties: {
               transport_protocol: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'transportProtocol',
                 type: {
@@ -42,7 +40,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               backend_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backendPort',
                 type: {

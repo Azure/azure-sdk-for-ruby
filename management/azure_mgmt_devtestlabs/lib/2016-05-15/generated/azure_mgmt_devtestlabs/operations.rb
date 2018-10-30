@@ -31,8 +31,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [OperationResult] operation results.
     #
-    def get(location_name, name, custom_headers:nil)
-      response = get_async(location_name, name, custom_headers:custom_headers).value!
+    def get(location_name, name, custom_headers = nil)
+      response = get_async(location_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(location_name, name, custom_headers:nil)
-      get_async(location_name, name, custom_headers:custom_headers).value!
+    def get_with_http_info(location_name, name, custom_headers = nil)
+      get_async(location_name, name, custom_headers).value!
     end
 
     #
@@ -60,7 +60,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(location_name, name, custom_headers:nil)
+    def get_async(location_name, name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'location_name is nil' if location_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -68,7 +68,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

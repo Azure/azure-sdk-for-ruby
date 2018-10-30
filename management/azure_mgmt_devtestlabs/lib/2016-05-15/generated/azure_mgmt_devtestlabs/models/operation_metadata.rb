@@ -26,7 +26,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationMetadata',
           type: {
@@ -34,7 +33,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'OperationMetadata',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {

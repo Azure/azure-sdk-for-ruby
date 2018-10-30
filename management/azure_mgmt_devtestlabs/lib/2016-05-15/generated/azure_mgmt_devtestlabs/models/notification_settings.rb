@@ -32,7 +32,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NotificationSettings',
           type: {
@@ -40,7 +39,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'NotificationSettings',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -48,7 +46,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               time_in_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInMinutes',
                 type: {
@@ -56,7 +53,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               webhook_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'webhookUrl',
                 type: {

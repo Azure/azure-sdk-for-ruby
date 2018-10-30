@@ -24,7 +24,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SubnetSharedPublicIpAddressConfigurationFragment',
           type: {
@@ -32,13 +31,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'SubnetSharedPublicIpAddressConfigurationFragment',
             model_properties: {
               allowed_ports: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedPorts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PortFragmentElementType',
                       type: {

@@ -36,8 +36,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Array<Lab>] operation results.
     #
-    def list_by_subscription(expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      first_page = list_by_subscription_as_lazy(expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers)
+    def list_by_subscription(expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(expand, filter, top, orderby, custom_headers)
       first_page.get_all_items
     end
 
@@ -56,8 +56,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      list_by_subscription_async(expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_by_subscription_with_http_info(expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      list_by_subscription_async(expand, filter, top, orderby, custom_headers).value!
     end
 
     #
@@ -75,13 +75,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
+    def list_by_subscription_async(expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -142,8 +141,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Array<Lab>] operation results.
     #
-    def list_by_resource_group(resource_group_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers)
+    def list_by_resource_group(resource_group_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, expand, filter, top, orderby, custom_headers)
       first_page.get_all_items
     end
 
@@ -163,8 +162,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, expand, filter, top, orderby, custom_headers).value!
     end
 
     #
@@ -183,14 +182,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -247,8 +245,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Lab] operation results.
     #
-    def get(resource_group_name, name, expand:nil, custom_headers:nil)
-      response = get_async(resource_group_name, name, expand:expand, custom_headers:custom_headers).value!
+    def get(resource_group_name, name, expand = nil, custom_headers = nil)
+      response = get_async(resource_group_name, name, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -264,8 +262,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, name, expand:nil, custom_headers:nil)
-      get_async(resource_group_name, name, expand:expand, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, name, expand = nil, custom_headers = nil)
+      get_async(resource_group_name, name, expand, custom_headers).value!
     end
 
     #
@@ -280,7 +278,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, name, expand:nil, custom_headers:nil)
+    def get_async(resource_group_name, name, expand = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -288,7 +286,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -345,8 +342,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Lab] operation results.
     #
-    def create_or_update(resource_group_name, name, lab, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, name, lab, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, name, lab, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, name, lab, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -360,9 +357,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, name, lab, custom_headers:nil)
+    def create_or_update_async(resource_group_name, name, lab, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, name, lab, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, name, lab, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -386,8 +383,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, name, custom_headers:nil)
-      response = delete_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, name, custom_headers = nil)
+      response = delete_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
@@ -400,9 +397,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, name, custom_headers:nil)
+    def delete_async(resource_group_name, name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -427,8 +424,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Lab] operation results.
     #
-    def update(resource_group_name, name, lab, custom_headers:nil)
-      response = update_async(resource_group_name, name, lab, custom_headers:custom_headers).value!
+    def update(resource_group_name, name, lab, custom_headers = nil)
+      response = update_async(resource_group_name, name, lab, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -443,8 +440,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, name, lab, custom_headers:nil)
-      update_async(resource_group_name, name, lab, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, name, lab, custom_headers = nil)
+      update_async(resource_group_name, name, lab, custom_headers).value!
     end
 
     #
@@ -458,7 +455,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, name, lab, custom_headers:nil)
+    def update_async(resource_group_name, name, lab, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -467,11 +464,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabFragment.mapper()
@@ -528,8 +526,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def claim_any_vm(resource_group_name, name, custom_headers:nil)
-      response = claim_any_vm_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def claim_any_vm(resource_group_name, name, custom_headers = nil)
+      response = claim_any_vm_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
@@ -542,9 +540,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def claim_any_vm_async(resource_group_name, name, custom_headers:nil)
+    def claim_any_vm_async(resource_group_name, name, custom_headers = nil)
       # Send request
-      promise = begin_claim_any_vm_async(resource_group_name, name, custom_headers:custom_headers)
+      promise = begin_claim_any_vm_async(resource_group_name, name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -570,8 +568,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def create_environment(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:nil)
-      response = create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:custom_headers).value!
+    def create_environment(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers = nil)
+      response = create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers).value!
       nil
     end
 
@@ -587,9 +585,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:nil)
+    def create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers = nil)
       # Send request
-      promise = begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:custom_headers)
+      promise = begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -614,8 +612,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def export_resource_usage(resource_group_name, name, export_resource_usage_parameters, custom_headers:nil)
-      response = export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers:custom_headers).value!
+    def export_resource_usage(resource_group_name, name, export_resource_usage_parameters, custom_headers = nil)
+      response = export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers).value!
       nil
     end
 
@@ -630,9 +628,9 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers:nil)
+    def export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers = nil)
       # Send request
-      promise = begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers:custom_headers)
+      promise = begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -658,8 +656,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [GenerateUploadUriResponse] operation results.
     #
-    def generate_upload_uri(resource_group_name, name, generate_upload_uri_parameter, custom_headers:nil)
-      response = generate_upload_uri_async(resource_group_name, name, generate_upload_uri_parameter, custom_headers:custom_headers).value!
+    def generate_upload_uri(resource_group_name, name, generate_upload_uri_parameter, custom_headers = nil)
+      response = generate_upload_uri_async(resource_group_name, name, generate_upload_uri_parameter, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -675,8 +673,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generate_upload_uri_with_http_info(resource_group_name, name, generate_upload_uri_parameter, custom_headers:nil)
-      generate_upload_uri_async(resource_group_name, name, generate_upload_uri_parameter, custom_headers:custom_headers).value!
+    def generate_upload_uri_with_http_info(resource_group_name, name, generate_upload_uri_parameter, custom_headers = nil)
+      generate_upload_uri_async(resource_group_name, name, generate_upload_uri_parameter, custom_headers).value!
     end
 
     #
@@ -691,7 +689,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generate_upload_uri_async(resource_group_name, name, generate_upload_uri_parameter, custom_headers:nil)
+    def generate_upload_uri_async(resource_group_name, name, generate_upload_uri_parameter, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -700,11 +698,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GenerateUploadUriParameter.mapper()
@@ -762,8 +761,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Array<LabVhd>] operation results.
     #
-    def list_vhds(resource_group_name, name, custom_headers:nil)
-      first_page = list_vhds_as_lazy(resource_group_name, name, custom_headers:custom_headers)
+    def list_vhds(resource_group_name, name, custom_headers = nil)
+      first_page = list_vhds_as_lazy(resource_group_name, name, custom_headers)
       first_page.get_all_items
     end
 
@@ -777,8 +776,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_vhds_with_http_info(resource_group_name, name, custom_headers:nil)
-      list_vhds_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def list_vhds_with_http_info(resource_group_name, name, custom_headers = nil)
+      list_vhds_async(resource_group_name, name, custom_headers).value!
     end
 
     #
@@ -791,7 +790,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_vhds_async(resource_group_name, name, custom_headers:nil)
+    def list_vhds_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -799,7 +798,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -856,8 +854,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Lab] operation results.
     #
-    def begin_create_or_update(resource_group_name, name, lab, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, name, lab, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, name, lab, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, name, lab, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -873,8 +871,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, name, lab, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, name, lab, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, name, lab, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, name, lab, custom_headers).value!
     end
 
     #
@@ -889,7 +887,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, name, lab, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, name, lab, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -898,11 +896,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Lab.mapper()
@@ -969,8 +968,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
@@ -984,8 +983,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, name, custom_headers:nil)
-      begin_delete_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, name, custom_headers = nil)
+      begin_delete_async(resource_group_name, name, custom_headers).value!
     end
 
     #
@@ -998,7 +997,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -1006,7 +1005,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1051,8 +1049,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # will be added to the HTTP request.
     #
     #
-    def begin_claim_any_vm(resource_group_name, name, custom_headers:nil)
-      response = begin_claim_any_vm_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def begin_claim_any_vm(resource_group_name, name, custom_headers = nil)
+      response = begin_claim_any_vm_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
@@ -1067,8 +1065,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_claim_any_vm_with_http_info(resource_group_name, name, custom_headers:nil)
-      begin_claim_any_vm_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def begin_claim_any_vm_with_http_info(resource_group_name, name, custom_headers = nil)
+      begin_claim_any_vm_async(resource_group_name, name, custom_headers).value!
     end
 
     #
@@ -1082,7 +1080,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_claim_any_vm_async(resource_group_name, name, custom_headers:nil)
+    def begin_claim_any_vm_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -1090,7 +1088,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1138,8 +1135,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # will be added to the HTTP request.
     #
     #
-    def begin_create_environment(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:nil)
-      response = begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:custom_headers).value!
+    def begin_create_environment(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers = nil)
+      response = begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers).value!
       nil
     end
 
@@ -1157,8 +1154,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_environment_with_http_info(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:nil)
-      begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:custom_headers).value!
+    def begin_create_environment_with_http_info(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers = nil)
+      begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers).value!
     end
 
     #
@@ -1175,7 +1172,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers:nil)
+    def begin_create_environment_async(resource_group_name, name, lab_virtual_machine_creation_parameter, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -1184,11 +1181,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineCreationParameter.mapper()
@@ -1238,8 +1236,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # will be added to the HTTP request.
     #
     #
-    def begin_export_resource_usage(resource_group_name, name, export_resource_usage_parameters, custom_headers:nil)
-      response = begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers:custom_headers).value!
+    def begin_export_resource_usage(resource_group_name, name, export_resource_usage_parameters, custom_headers = nil)
+      response = begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers).value!
       nil
     end
 
@@ -1256,8 +1254,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_export_resource_usage_with_http_info(resource_group_name, name, export_resource_usage_parameters, custom_headers:nil)
-      begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers:custom_headers).value!
+    def begin_export_resource_usage_with_http_info(resource_group_name, name, export_resource_usage_parameters, custom_headers = nil)
+      begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers).value!
     end
 
     #
@@ -1273,7 +1271,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers:nil)
+    def begin_export_resource_usage_async(resource_group_name, name, export_resource_usage_parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -1282,11 +1280,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ExportResourceUsageParameters.mapper()
@@ -1334,8 +1333,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [ResponseWithContinuationLab] operation results.
     #
-    def list_by_subscription_next(next_page_link, custom_headers:nil)
-      response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1349,8 +1348,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1363,12 +1362,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_next_async(next_page_link, custom_headers:nil)
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1422,8 +1420,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [ResponseWithContinuationLab] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers:nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1437,8 +1435,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1451,12 +1449,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1510,8 +1507,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [ResponseWithContinuationLabVhd] operation results.
     #
-    def list_vhds_next(next_page_link, custom_headers:nil)
-      response = list_vhds_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_vhds_next(next_page_link, custom_headers = nil)
+      response = list_vhds_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1525,8 +1522,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_vhds_next_with_http_info(next_page_link, custom_headers:nil)
-      list_vhds_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_vhds_next_with_http_info(next_page_link, custom_headers = nil)
+      list_vhds_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1539,12 +1536,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_vhds_next_async(next_page_link, custom_headers:nil)
+    def list_vhds_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1604,12 +1600,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [ResponseWithContinuationLab] which provide lazy access to pages of
     # the response.
     #
-    def list_by_subscription_as_lazy(expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      response = list_by_subscription_async(expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_by_subscription_as_lazy(expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      response = list_by_subscription_async(expand, filter, top, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1632,12 +1628,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [ResponseWithContinuationLab] which provide lazy access to pages of
     # the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, expand, filter, top, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1654,12 +1650,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [ResponseWithContinuationLabVhd] which provide lazy access to pages
     # of the response.
     #
-    def list_vhds_as_lazy(resource_group_name, name, custom_headers:nil)
-      response = list_vhds_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def list_vhds_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = list_vhds_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_vhds_next_async(next_page_link, custom_headers:custom_headers)
+          list_vhds_next_async(next_page_link, custom_headers)
         end
         page
       end

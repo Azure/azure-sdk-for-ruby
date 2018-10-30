@@ -25,7 +25,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ArtifactParameterProperties',
           type: {
@@ -33,7 +32,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ArtifactParameterProperties',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,7 +39,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

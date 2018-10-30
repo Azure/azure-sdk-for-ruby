@@ -40,7 +40,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CostThresholdProperties',
           type: {
@@ -48,7 +47,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'CostThresholdProperties',
             model_properties: {
               threshold_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'thresholdId',
                 type: {
@@ -56,7 +54,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               percentage_threshold: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'percentageThreshold',
                 type: {
@@ -65,7 +62,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               display_on_chart: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayOnChart',
                 type: {
@@ -73,7 +69,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               send_notification_when_exceeded: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sendNotificationWhenExceeded',
                 type: {
@@ -81,7 +76,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               notification_sent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationSent',
                 type: {
