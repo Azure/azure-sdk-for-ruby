@@ -13,15 +13,18 @@ module Azure::EventGrid::V2018_01_01
 
       include MsRestAzure
 
-      # @return [JobState] The previous state of the Job. Possible values
+      # @return [MediaJobState] The previous state of the Job. Possible values
       # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
       # 'Queued', 'Scheduled'
       attr_accessor :previous_state
 
-      # @return [JobState] The new state of the Job. Possible values include:
-      # 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing', 'Queued',
-      # 'Scheduled'
+      # @return [MediaJobState] The new state of the Job. Possible values
+      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
+      # 'Queued', 'Scheduled'
       attr_accessor :state
+
+      # @return [Hash{String => String}] Gets the Job correlation data.
+      attr_accessor :correlation_data
 
 
       #
@@ -42,7 +45,7 @@ module Azure::EventGrid::V2018_01_01
                 serialized_name: 'previousState',
                 type: {
                   name: 'Enum',
-                  module: 'JobState'
+                  module: 'MediaJobState'
                 }
               },
               state: {
@@ -51,7 +54,21 @@ module Azure::EventGrid::V2018_01_01
                 serialized_name: 'state',
                 type: {
                   name: 'Enum',
-                  module: 'JobState'
+                  module: 'MediaJobState'
+                }
+              },
+              correlation_data: {
+                required: false,
+                serialized_name: 'correlationData',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

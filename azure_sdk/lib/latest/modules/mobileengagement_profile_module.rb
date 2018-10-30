@@ -7,13 +7,13 @@ require 'azure_mgmt_mobile_engagement'
 module Azure::Profiles::Latest
   module MobileEngagement
     module Mgmt
+      AppCollections = Azure::MobileEngagement::Mgmt::V2014_12_01::AppCollections
       Apps = Azure::MobileEngagement::Mgmt::V2014_12_01::Apps
       SupportedPlatforms = Azure::MobileEngagement::Mgmt::V2014_12_01::SupportedPlatforms
       Campaigns = Azure::MobileEngagement::Mgmt::V2014_12_01::Campaigns
       Devices = Azure::MobileEngagement::Mgmt::V2014_12_01::Devices
       ExportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ExportTasks
       ImportTasks = Azure::MobileEngagement::Mgmt::V2014_12_01::ImportTasks
-      AppCollections = Azure::MobileEngagement::Mgmt::V2014_12_01::AppCollections
 
       module Models
         ProvisioningStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
@@ -26,6 +26,7 @@ module Azure::Profiles::Latest
         ExportTaskParameter = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskParameter
         AppListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppListResult
         DeviceTagsParameters = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceTagsParameters
+        AppCollectionListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppCollectionListResult
         DeviceTagsResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceTagsResult
         SupportedPlatformsListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::SupportedPlatformsListResult
         ExportOptions = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportOptions
@@ -103,12 +104,11 @@ module Azure::Profiles::Latest
         ExportState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
         ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
         JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
-        AppCollectionListResult = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppCollectionListResult
         CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
       end
 
       class MobileEngagementManagementClass
-        attr_reader :apps, :supported_platforms, :campaigns, :devices, :export_tasks, :import_tasks, :app_collections, :configurable, :base_url, :options, :model_classes
+        attr_reader :app_collections, :apps, :supported_platforms, :campaigns, :devices, :export_tasks, :import_tasks, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -118,13 +118,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @app_collections = @client_0.app_collections
           @apps = @client_0.apps
           @supported_platforms = @client_0.supported_platforms
           @campaigns = @client_0.campaigns
           @devices = @client_0.devices
           @export_tasks = @client_0.export_tasks
           @import_tasks = @client_0.import_tasks
-          @app_collections = @client_0.app_collections
 
           @model_classes = ModelClasses.new
         end
@@ -172,6 +172,9 @@ module Azure::Profiles::Latest
           end
           def device_tags_parameters
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceTagsParameters
+          end
+          def app_collection_list_result
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppCollectionListResult
           end
           def device_tags_result
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DeviceTagsResult
@@ -403,9 +406,6 @@ module Azure::Profiles::Latest
           end
           def job_states
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
-          end
-          def app_collection_list_result
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::AppCollectionListResult
           end
           def campaign_kinds
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
