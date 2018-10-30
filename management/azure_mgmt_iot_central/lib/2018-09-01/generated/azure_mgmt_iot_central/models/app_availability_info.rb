@@ -6,10 +6,10 @@
 module Azure::IotCentral::Mgmt::V2018_09_01
   module Models
     #
-    # The properties indicating whether a given IoT Central application name is
-    # available.
+    # The properties indicating whether a given IoT Central application name or
+    # subdomain is available.
     #
-    class AppNameAvailabilityInfo
+    class AppAvailabilityInfo
 
       include MsRestAzure
 
@@ -17,8 +17,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # is available.
       attr_accessor :name_available
 
-      # @return [AppNameUnavailabilityReason] The reason for unavailability.
-      # Possible values include: 'Invalid', 'AlreadyExists'
+      # @return [String] The reason for unavailability.
       attr_accessor :reason
 
       # @return [String] The detailed reason message.
@@ -26,17 +25,17 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
 
       #
-      # Mapper for AppNameAvailabilityInfo class as Ruby Hash.
+      # Mapper for AppAvailabilityInfo class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'AppNameAvailabilityInfo',
+          serialized_name: 'AppAvailabilityInfo',
           type: {
             name: 'Composite',
-            class_name: 'AppNameAvailabilityInfo',
+            class_name: 'AppAvailabilityInfo',
             model_properties: {
               name_available: {
                 client_side_validation: true,
@@ -53,13 +52,13 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 read_only: true,
                 serialized_name: 'reason',
                 type: {
-                  name: 'Enum',
-                  module: 'AppNameUnavailabilityReason'
+                  name: 'String'
                 }
               },
               message: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'message',
                 type: {
                   name: 'String'

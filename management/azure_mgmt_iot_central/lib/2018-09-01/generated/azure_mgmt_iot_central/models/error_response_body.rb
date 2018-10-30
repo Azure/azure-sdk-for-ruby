@@ -6,9 +6,9 @@
 module Azure::IotCentral::Mgmt::V2018_09_01
   module Models
     #
-    # Error details.
+    # Details of error response.
     #
-    class ErrorDetails
+    class ErrorResponseBody
 
       include MsRestAzure
 
@@ -27,23 +27,23 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
 
       #
-      # Mapper for ErrorDetails class as Ruby Hash.
+      # Mapper for ErrorResponseBody class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ErrorDetails',
+          serialized_name: 'ErrorResponseBody',
           type: {
             name: 'Composite',
-            class_name: 'ErrorDetails',
+            class_name: 'ErrorResponseBody',
             model_properties: {
               code: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'error.code',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
@@ -52,7 +52,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'error.message',
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }
@@ -61,7 +61,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'error.target',
+                serialized_name: 'target',
                 type: {
                   name: 'String'
                 }
@@ -69,7 +69,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
               details: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'error.details',
+                serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
