@@ -1,6 +1,6 @@
 {
     "management": [
-        "azure_mgmt_event_grid"
+        "azure_mgmt_iot_central"
     ],
     "rollup": [
         "azure_sdk"
