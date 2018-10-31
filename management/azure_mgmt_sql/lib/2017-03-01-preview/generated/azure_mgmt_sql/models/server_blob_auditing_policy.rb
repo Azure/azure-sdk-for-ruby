@@ -13,7 +13,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       include MsRestAzure
 
       # @return [BlobAuditingPolicyState] Specifies the state of the policy. If
-      # state is Enabled, storageEndpoint and storageAccountAccessKey are
+      # state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are
       # required. Possible values include: 'Enabled', 'Disabled'
       attr_accessor :state
 
@@ -23,11 +23,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       attr_accessor :storage_endpoint
 
       # @return [String] Specifies the identifier key of the auditing storage
-      # account. If state is Enabled, storageAccountAccessKey is required.
+      # account. If state is Enabled and storageEndpoint is specified,
+      # storageAccountAccessKey is required.
       attr_accessor :storage_account_access_key
 
       # @return [Integer] Specifies the number of days to keep in the audit
-      # logs.
+      # logs in the storage account.
       attr_accessor :retention_days
 
       # @return [Array<String>] Specifies the Actions-Groups and Actions to
@@ -110,6 +111,27 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [Boolean] Specifies whether storageAccountAccessKey value is
       # the storage's secondary key.
       attr_accessor :is_storage_secondary_key_in_use
+
+      # @return [Boolean] Specifies whether audit events are sent to Azure
+      # Monitor.
+      # In order to send the events to Azure Monitor, specify 'State' as
+      # 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
+      #
+      # When using REST API to configure auditing, Diagnostic Settings with
+      # 'SQLSecurityAuditEvents' diagnostic logs category on the database
+      # should be also created.
+      # Note that for server level audit you should use the 'master' database
+      # as <databaseName>.
+      # Diagnostic Settings URI format:
+      # PUT
+      # https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+      #
+      # For more information, see [Diagnostic Settings REST
+      # API](https://go.microsoft.com/fwlink/?linkid=2033207)
+      # or [Diagnostic Settings
+      # PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+      #
+      attr_accessor :is_azure_monitor_target_enabled
 
 
       #
@@ -201,6 +223,13 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
               is_storage_secondary_key_in_use: {
                 required: false,
                 serialized_name: 'properties.isStorageSecondaryKeyInUse',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              is_azure_monitor_target_enabled: {
+                required: false,
+                serialized_name: 'properties.isAzureMonitorTargetEnabled',
                 type: {
                   name: 'Boolean'
                 }

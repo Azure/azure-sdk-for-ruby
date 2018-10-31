@@ -16,7 +16,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # ISO 8601 format.
       attr_accessor :weekly_retention
 
-      # @return [String] The montly retention policy for an LTR backup in an
+      # @return [String] The monthly retention policy for an LTR backup in an
       # ISO 8601 format.
       attr_accessor :monthly_retention
 
