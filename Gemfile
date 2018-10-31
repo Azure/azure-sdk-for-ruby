@@ -12,6 +12,7 @@ group :development, :test do
   gem 'vcr'
 end
 
+gem 'octokit', '~> 4.0'
 gem 'azure_mgmt_analysis_services',         path: 'management/azure_mgmt_analysis_services'
 gem 'azure_mgmt_api_management',            path: 'management/azure_mgmt_api_management'
 gem 'azure_mgmt_authorization',             path: 'management/azure_mgmt_authorization'
