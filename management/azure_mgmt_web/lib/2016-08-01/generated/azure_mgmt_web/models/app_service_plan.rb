@@ -74,6 +74,21 @@ module Azure::Web::Mgmt::V2016_08_01
       # 'Canceled', 'InProgress', 'Deleting'
       attr_accessor :provisioning_state
 
+      # @return [String]
+      attr_accessor :mdm_id
+
+      # @return [Integer]
+      attr_accessor :current_number_of_workers
+
+      # @return [String]
+      attr_accessor :current_worker_size
+
+      # @return [Integer]
+      attr_accessor :number_of_workers
+
+      # @return [Integer]
+      attr_accessor :worker_size
+
       # @return [SkuDescription]
       attr_accessor :sku
 
@@ -271,6 +286,46 @@ module Azure::Web::Mgmt::V2016_08_01
                 type: {
                   name: 'Enum',
                   module: 'ProvisioningState'
+                }
+              },
+              mdm_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.mdmId',
+                type: {
+                  name: 'String'
+                }
+              },
+              current_number_of_workers: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.currentNumberOfWorkers',
+                type: {
+                  name: 'Number'
+                }
+              },
+              current_worker_size: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.currentWorkerSize',
+                type: {
+                  name: 'String'
+                }
+              },
+              number_of_workers: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.numberOfWorkers',
+                type: {
+                  name: 'Number'
+                }
+              },
+              worker_size: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.workerSize',
+                type: {
+                  name: 'Number'
                 }
               },
               sku: {
