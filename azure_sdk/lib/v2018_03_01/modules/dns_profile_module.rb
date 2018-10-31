@@ -18,7 +18,6 @@ module Azure::Profiles::V2018_03_01
         MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
         SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
         ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
         RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
@@ -33,6 +32,7 @@ module Azure::Profiles::V2018_03_01
         OperationStatus = Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
         HttpStatusCode = Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
         RecordType = Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
+        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
       end
 
       class DnsManagementClass
@@ -87,9 +87,6 @@ module Azure::Profiles::V2018_03_01
           def srv_record
             Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
           end
-          def resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
-          end
           def cname_record
             Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
           end
@@ -131,6 +128,9 @@ module Azure::Profiles::V2018_03_01
           end
           def record_type
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
+          end
+          def resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
           end
         end
       end

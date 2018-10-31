@@ -54,7 +54,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Disk',
           type: {
@@ -62,7 +61,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'Disk',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -71,7 +69,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,7 +77,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -89,7 +85,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -97,13 +92,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -113,7 +106,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskType',
                 type: {
@@ -121,7 +113,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_size_gi_b: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskSizeGiB',
                 type: {
@@ -129,7 +120,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               leased_by_lab_vm_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.leasedByLabVmId',
                 type: {
@@ -137,7 +127,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_blob_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskBlobName',
                 type: {
@@ -145,7 +134,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskUri',
                 type: {
@@ -153,7 +141,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdDate',
@@ -162,7 +149,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               host_caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostCaching',
                 type: {
@@ -170,7 +156,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               managed_disk_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.managedDiskId',
                 type: {
@@ -178,7 +163,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -186,7 +170,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

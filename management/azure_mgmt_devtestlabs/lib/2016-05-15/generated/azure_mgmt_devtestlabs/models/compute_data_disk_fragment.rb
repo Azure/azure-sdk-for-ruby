@@ -32,7 +32,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ComputeDataDiskFragment',
           type: {
@@ -40,7 +39,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ComputeDataDiskFragment',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +46,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskUri',
                 type: {
@@ -56,7 +53,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               managed_disk_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDiskId',
                 type: {
@@ -64,7 +60,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_size_gi_b: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGiB',
                 type: {

@@ -57,7 +57,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResponseWithContinuation[Policy]',
           type: {
@@ -65,13 +64,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ResponseWithContinuationPolicy',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PolicyElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

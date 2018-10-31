@@ -25,7 +25,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LinuxOsInfo',
           type: {
@@ -33,7 +32,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LinuxOsInfo',
             model_properties: {
               linux_os_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'linuxOsState',
                 type: {

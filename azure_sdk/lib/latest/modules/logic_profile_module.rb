@@ -23,19 +23,23 @@ module Azure::Profiles::Latest
       Maps = Azure::Logic::Mgmt::V2016_06_01::Maps
       Partners = Azure::Logic::Mgmt::V2016_06_01::Partners
       Agreements = Azure::Logic::Mgmt::V2016_06_01::Agreements
-      Certificates = Azure::Logic::Mgmt::V2016_06_01::Certificates
       Sessions = Azure::Logic::Mgmt::V2016_06_01::Sessions
+      Certificates = Azure::Logic::Mgmt::V2016_06_01::Certificates
 
       module Models
+        KeyVaultKeyReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
+        Sku = Azure::Logic::Mgmt::V2016_06_01::Models::Sku
+        ErrorResponse = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
+        KeyType = Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
+        OperationResult = Azure::Logic::Mgmt::V2016_06_01::Models::OperationResult
         X12SecuritySettings = Azure::Logic::Mgmt::V2016_06_01::Models::X12SecuritySettings
-        Resource = Azure::Logic::Mgmt::V2016_06_01::Models::Resource
         X12ProcessingSettings = Azure::Logic::Mgmt::V2016_06_01::Models::X12ProcessingSettings
         ResourceReference = Azure::Logic::Mgmt::V2016_06_01::Models::ResourceReference
         X12EnvelopeOverride = Azure::Logic::Mgmt::V2016_06_01::Models::X12EnvelopeOverride
         WorkflowParameter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowParameter
         X12ValidationOverride = Azure::Logic::Mgmt::V2016_06_01::Models::X12ValidationOverride
         WorkflowFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowFilter
-        X12MessageIdentifier = Azure::Logic::Mgmt::V2016_06_01::Models::X12MessageIdentifier
+        Resource = Azure::Logic::Mgmt::V2016_06_01::Models::Resource
         AS2ProtocolSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2ProtocolSettings
         AS2OneWayAgreement = Azure::Logic::Mgmt::V2016_06_01::Models::AS2OneWayAgreement
         RecurrenceScheduleOccurrence = Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceScheduleOccurrence
@@ -48,28 +52,25 @@ module Azure::Profiles::Latest
         X12EnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::X12EnvelopeSettings
         Correlation = Azure::Logic::Mgmt::V2016_06_01::Models::Correlation
         X12AcknowledgementSettings = Azure::Logic::Mgmt::V2016_06_01::Models::X12AcknowledgementSettings
-        ContentLink = Azure::Logic::Mgmt::V2016_06_01::Models::ContentLink
         X12MessageFilter = Azure::Logic::Mgmt::V2016_06_01::Models::X12MessageFilter
         WorkflowTriggerHistoryListResult = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerHistoryListResult
-        SubResource = Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
+        X12MessageIdentifier = Azure::Logic::Mgmt::V2016_06_01::Models::X12MessageIdentifier
         WorkflowRunTrigger = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunTrigger
-        Sku = Azure::Logic::Mgmt::V2016_06_01::Models::Sku
         ArtifactProperties = Azure::Logic::Mgmt::V2016_06_01::Models::ArtifactProperties
-        WorkflowRunFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunFilter
         AccessKeyRegenerateActionDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyRegenerateActionDefinition
         ErrorProperties = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorProperties
+        WorkflowRunFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunFilter
         WorkflowListResult = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult
-        RetryHistory = Azure::Logic::Mgmt::V2016_06_01::Models::RetryHistory
         RepetitionIndex = Azure::Logic::Mgmt::V2016_06_01::Models::RepetitionIndex
         WorkflowRunActionFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionFilter
         X12SchemaReference = Azure::Logic::Mgmt::V2016_06_01::Models::X12SchemaReference
         RegenerateActionParameter = Azure::Logic::Mgmt::V2016_06_01::Models::RegenerateActionParameter
         X12DelimiterOverrides = Azure::Logic::Mgmt::V2016_06_01::Models::X12DelimiterOverrides
-        IntegrationAccountSku = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
+        RetryHistory = Azure::Logic::Mgmt::V2016_06_01::Models::RetryHistory
         X12ProtocolSettings = Azure::Logic::Mgmt::V2016_06_01::Models::X12ProtocolSettings
         IntegrationAccountListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountListResult
+        IntegrationAccountSku = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
         X12OneWayAgreement = Azure::Logic::Mgmt::V2016_06_01::Models::X12OneWayAgreement
-        CallbackUrl = Azure::Logic::Mgmt::V2016_06_01::Models::CallbackUrl
         X12AgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::X12AgreementContent
         IntegrationAccountSchemaListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaListResult
         EdifactValidationSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationSettings
@@ -95,7 +96,6 @@ module Azure::Profiles::Latest
         EdifactDelimiterOverride = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDelimiterOverride
         WorkflowTriggerListResult = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerListResult
         EdifactProtocolSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProtocolSettings
-        ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
         EdifactOneWayAgreement = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactOneWayAgreement
         WorkflowTriggerHistoryFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerHistoryFilter
         EdifactAgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactAgreementContent
@@ -103,31 +103,32 @@ module Azure::Profiles::Latest
         AgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::AgreementContent
         AssemblyCollection = Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyCollection
         ErrorInfo = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorInfo
-        GenerateUpgradedDefinitionParameters = Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
+        ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
         IntegrationAccountAgreementListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementListResult
         GetCallbackUrlParameters = Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters
-        IntegrationAccountAgreementFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementFilter
+        GenerateUpgradedDefinitionParameters = Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
         IntegrationAccountSchemaFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaFilter
         KeyVaultKeyReferenceKeyVault = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReferenceKeyVault
-        IntegrationAccountMapFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
-        KeyVaultKeyReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
+        IntegrationAccountAgreementFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementFilter
         WorkflowRunActionRepetitionDefinitionCollection = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionRepetitionDefinitionCollection
         Expression = Azure::Logic::Mgmt::V2016_06_01::Models::Expression
+        IntegrationAccountMapFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
         AS2AcknowledgementConnectionSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2AcknowledgementConnectionSettings
         IntegrationAccountCertificateListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
-        AS2EnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
+        CallbackUrl = Azure::Logic::Mgmt::V2016_06_01::Models::CallbackUrl
         IntegrationAccountSessionFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
-        ExpressionTraces = Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
+        AS2EnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
         BatchConfigurationCollection = Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfigurationCollection
-        IntegrationAccountSessionListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
-        ErrorResponse = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
-        OperationDisplay = Azure::Logic::Mgmt::V2016_06_01::Models::OperationDisplay
+        ExpressionTraces = Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
         JsonSchema = Azure::Logic::Mgmt::V2016_06_01::Models::JsonSchema
-        Operation = Azure::Logic::Mgmt::V2016_06_01::Models::Operation
-        OperationResultProperties = Azure::Logic::Mgmt::V2016_06_01::Models::OperationResultProperties
-        OperationListResult = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult
+        IntegrationAccountSessionListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
         IntegrationAccountPartnerFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartnerFilter
+        OperationResultProperties = Azure::Logic::Mgmt::V2016_06_01::Models::OperationResultProperties
+        OperationDisplay = Azure::Logic::Mgmt::V2016_06_01::Models::OperationDisplay
         SetTriggerStateActionDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::SetTriggerStateActionDefinition
+        Operation = Azure::Logic::Mgmt::V2016_06_01::Models::Operation
+        ContentLink = Azure::Logic::Mgmt::V2016_06_01::Models::ContentLink
+        OperationListResult = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult
         WorkflowVersionListResult = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowVersionListResult
         ListKeyVaultKeysDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::ListKeyVaultKeysDefinition
         BatchReleaseCriteria = Azure::Logic::Mgmt::V2016_06_01::Models::BatchReleaseCriteria
@@ -157,51 +158,50 @@ module Azure::Profiles::Latest
         IntegrationAccountCertificate = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificate
         IntegrationAccountSession = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSession
         KeyVaultReference = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultReference
-        ExpressionRoot = Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionRoot
         AzureResourceErrorInfo = Azure::Logic::Mgmt::V2016_06_01::Models::AzureResourceErrorInfo
         WorkflowRunActionRepetitionDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionRepetitionDefinition
-        OperationResult = Azure::Logic::Mgmt::V2016_06_01::Models::OperationResult
         RunActionCorrelation = Azure::Logic::Mgmt::V2016_06_01::Models::RunActionCorrelation
-        AssemblyDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyDefinition
+        ExpressionRoot = Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionRoot
         ArtifactContentPropertiesDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::ArtifactContentPropertiesDefinition
         AssemblyProperties = Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyProperties
         BatchConfigurationProperties = Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfigurationProperties
-        BatchConfiguration = Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfiguration
+        AssemblyDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyDefinition
         WorkflowProvisioningState = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowProvisioningState
         WorkflowState = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowState
-        SkuName = Azure::Logic::Mgmt::V2016_06_01::Models::SkuName
         ParameterType = Azure::Logic::Mgmt::V2016_06_01::Models::ParameterType
-        WorkflowTriggerProvisioningState = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerProvisioningState
-        WorkflowStatus = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
+        BatchConfiguration = Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfiguration
+        SkuName = Azure::Logic::Mgmt::V2016_06_01::Models::SkuName
         RecurrenceFrequency = Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
         DaysOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
-        DayOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
-        KeyType = Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
-        IntegrationAccountSkuName = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSkuName
+        WorkflowTriggerProvisioningState = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerProvisioningState
+        WorkflowStatus = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
         SchemaType = Azure::Logic::Mgmt::V2016_06_01::Models::SchemaType
         MapType = Azure::Logic::Mgmt::V2016_06_01::Models::MapType
+        DayOfWeek = Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
+        IntegrationAccountSkuName = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSkuName
+        SubResource = Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
+        EncryptionAlgorithm = Azure::Logic::Mgmt::V2016_06_01::Models::EncryptionAlgorithm
         PartnerType = Azure::Logic::Mgmt::V2016_06_01::Models::PartnerType
         AgreementType = Azure::Logic::Mgmt::V2016_06_01::Models::AgreementType
         HashingAlgorithm = Azure::Logic::Mgmt::V2016_06_01::Models::HashingAlgorithm
-        EncryptionAlgorithm = Azure::Logic::Mgmt::V2016_06_01::Models::EncryptionAlgorithm
+        SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
         SigningAlgorithm = Azure::Logic::Mgmt::V2016_06_01::Models::SigningAlgorithm
         TrailingSeparatorPolicy = Azure::Logic::Mgmt::V2016_06_01::Models::TrailingSeparatorPolicy
         X12CharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::X12CharacterSet
-        SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
+        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
         X12DateFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
         X12TimeFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
         UsageIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
-        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+        EventLevel = Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
         EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
         EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
         TrackEventsOperationOptions = Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
-        EventLevel = Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
         TrackingRecordType = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
         AccessKeyType = Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
       end
 
       class LogicManagementClass
-        attr_reader :workflows, :workflow_versions, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :workflow_run_action_repetitions, :workflow_run_action_scoped_repetitions, :workflow_run_operations, :integration_accounts, :integration_account_assemblies, :integration_account_batch_configurations, :schemas, :maps, :partners, :agreements, :certificates, :sessions, :configurable, :base_url, :options, :model_classes
+        attr_reader :workflows, :workflow_versions, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :workflow_run_action_repetitions, :workflow_run_action_scoped_repetitions, :workflow_run_operations, :integration_accounts, :integration_account_assemblies, :integration_account_batch_configurations, :schemas, :maps, :partners, :agreements, :sessions, :certificates, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -227,8 +227,8 @@ module Azure::Profiles::Latest
           @maps = @client_0.maps
           @partners = @client_0.partners
           @agreements = @client_0.agreements
-          @certificates = @client_0.certificates
           @sessions = @client_0.sessions
+          @certificates = @client_0.certificates
 
           @model_classes = ModelClasses.new
         end
@@ -247,11 +247,23 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def key_vault_key_reference
+            Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
+          end
+          def sku
+            Azure::Logic::Mgmt::V2016_06_01::Models::Sku
+          end
+          def error_response
+            Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
+          end
+          def key_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
+          end
+          def operation_result
+            Azure::Logic::Mgmt::V2016_06_01::Models::OperationResult
+          end
           def x12_security_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::X12SecuritySettings
-          end
-          def resource
-            Azure::Logic::Mgmt::V2016_06_01::Models::Resource
           end
           def x12_processing_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::X12ProcessingSettings
@@ -271,8 +283,8 @@ module Azure::Profiles::Latest
           def workflow_filter
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowFilter
           end
-          def x12_message_identifier
-            Azure::Logic::Mgmt::V2016_06_01::Models::X12MessageIdentifier
+          def resource
+            Azure::Logic::Mgmt::V2016_06_01::Models::Resource
           end
           def as2_protocol_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::AS2ProtocolSettings
@@ -310,29 +322,20 @@ module Azure::Profiles::Latest
           def x12_acknowledgement_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::X12AcknowledgementSettings
           end
-          def content_link
-            Azure::Logic::Mgmt::V2016_06_01::Models::ContentLink
-          end
           def x12_message_filter
             Azure::Logic::Mgmt::V2016_06_01::Models::X12MessageFilter
           end
           def workflow_trigger_history_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerHistoryListResult
           end
-          def sub_resource
-            Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
+          def x12_message_identifier
+            Azure::Logic::Mgmt::V2016_06_01::Models::X12MessageIdentifier
           end
           def workflow_run_trigger
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunTrigger
           end
-          def sku
-            Azure::Logic::Mgmt::V2016_06_01::Models::Sku
-          end
           def artifact_properties
             Azure::Logic::Mgmt::V2016_06_01::Models::ArtifactProperties
-          end
-          def workflow_run_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunFilter
           end
           def access_key_regenerate_action_definition
             Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyRegenerateActionDefinition
@@ -340,11 +343,11 @@ module Azure::Profiles::Latest
           def error_properties
             Azure::Logic::Mgmt::V2016_06_01::Models::ErrorProperties
           end
+          def workflow_run_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunFilter
+          end
           def workflow_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult
-          end
-          def retry_history
-            Azure::Logic::Mgmt::V2016_06_01::Models::RetryHistory
           end
           def repetition_index
             Azure::Logic::Mgmt::V2016_06_01::Models::RepetitionIndex
@@ -361,8 +364,8 @@ module Azure::Profiles::Latest
           def x12_delimiter_overrides
             Azure::Logic::Mgmt::V2016_06_01::Models::X12DelimiterOverrides
           end
-          def integration_account_sku
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
+          def retry_history
+            Azure::Logic::Mgmt::V2016_06_01::Models::RetryHistory
           end
           def x12_protocol_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::X12ProtocolSettings
@@ -370,11 +373,11 @@ module Azure::Profiles::Latest
           def integration_account_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountListResult
           end
+          def integration_account_sku
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSku
+          end
           def x12_one_way_agreement
             Azure::Logic::Mgmt::V2016_06_01::Models::X12OneWayAgreement
-          end
-          def callback_url
-            Azure::Logic::Mgmt::V2016_06_01::Models::CallbackUrl
           end
           def x12_agreement_content
             Azure::Logic::Mgmt::V2016_06_01::Models::X12AgreementContent
@@ -451,9 +454,6 @@ module Azure::Profiles::Latest
           def edifact_protocol_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProtocolSettings
           end
-          def content_hash
-            Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
-          end
           def edifact_one_way_agreement
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactOneWayAgreement
           end
@@ -475,8 +475,8 @@ module Azure::Profiles::Latest
           def error_info
             Azure::Logic::Mgmt::V2016_06_01::Models::ErrorInfo
           end
-          def generate_upgraded_definition_parameters
-            Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
+          def content_hash
+            Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
           end
           def integration_account_agreement_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementListResult
@@ -484,8 +484,8 @@ module Azure::Profiles::Latest
           def get_callback_url_parameters
             Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters
           end
-          def integration_account_agreement_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementFilter
+          def generate_upgraded_definition_parameters
+            Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
           end
           def integration_account_schema_filter
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaFilter
@@ -493,11 +493,8 @@ module Azure::Profiles::Latest
           def key_vault_key_reference_key_vault
             Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReferenceKeyVault
           end
-          def integration_account_map_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
-          end
-          def key_vault_key_reference
-            Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReference
+          def integration_account_agreement_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementFilter
           end
           def workflow_run_action_repetition_definition_collection
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionRepetitionDefinitionCollection
@@ -505,50 +502,56 @@ module Azure::Profiles::Latest
           def expression
             Azure::Logic::Mgmt::V2016_06_01::Models::Expression
           end
+          def integration_account_map_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
+          end
           def as2_acknowledgement_connection_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::AS2AcknowledgementConnectionSettings
           end
           def integration_account_certificate_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
           end
-          def as2_envelope_settings
-            Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
+          def callback_url
+            Azure::Logic::Mgmt::V2016_06_01::Models::CallbackUrl
           end
           def integration_account_session_filter
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
           end
-          def expression_traces
-            Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
+          def as2_envelope_settings
+            Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
           end
           def batch_configuration_collection
             Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfigurationCollection
           end
-          def integration_account_session_list_result
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
-          end
-          def error_response
-            Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
-          end
-          def operation_display
-            Azure::Logic::Mgmt::V2016_06_01::Models::OperationDisplay
+          def expression_traces
+            Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
           end
           def json_schema
             Azure::Logic::Mgmt::V2016_06_01::Models::JsonSchema
           end
-          def operation
-            Azure::Logic::Mgmt::V2016_06_01::Models::Operation
-          end
-          def operation_result_properties
-            Azure::Logic::Mgmt::V2016_06_01::Models::OperationResultProperties
-          end
-          def operation_list_result
-            Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult
+          def integration_account_session_list_result
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
           end
           def integration_account_partner_filter
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartnerFilter
           end
+          def operation_result_properties
+            Azure::Logic::Mgmt::V2016_06_01::Models::OperationResultProperties
+          end
+          def operation_display
+            Azure::Logic::Mgmt::V2016_06_01::Models::OperationDisplay
+          end
           def set_trigger_state_action_definition
             Azure::Logic::Mgmt::V2016_06_01::Models::SetTriggerStateActionDefinition
+          end
+          def operation
+            Azure::Logic::Mgmt::V2016_06_01::Models::Operation
+          end
+          def content_link
+            Azure::Logic::Mgmt::V2016_06_01::Models::ContentLink
+          end
+          def operation_list_result
+            Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult
           end
           def workflow_version_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowVersionListResult
@@ -637,23 +640,17 @@ module Azure::Profiles::Latest
           def key_vault_reference
             Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultReference
           end
-          def expression_root
-            Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionRoot
-          end
           def azure_resource_error_info
             Azure::Logic::Mgmt::V2016_06_01::Models::AzureResourceErrorInfo
           end
           def workflow_run_action_repetition_definition
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionRepetitionDefinition
           end
-          def operation_result
-            Azure::Logic::Mgmt::V2016_06_01::Models::OperationResult
-          end
           def run_action_correlation
             Azure::Logic::Mgmt::V2016_06_01::Models::RunActionCorrelation
           end
-          def assembly_definition
-            Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyDefinition
+          def expression_root
+            Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionRoot
           end
           def artifact_content_properties_definition
             Azure::Logic::Mgmt::V2016_06_01::Models::ArtifactContentPropertiesDefinition
@@ -664,8 +661,8 @@ module Azure::Profiles::Latest
           def batch_configuration_properties
             Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfigurationProperties
           end
-          def batch_configuration
-            Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfiguration
+          def assembly_definition
+            Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyDefinition
           end
           def workflow_provisioning_state
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowProvisioningState
@@ -673,17 +670,14 @@ module Azure::Profiles::Latest
           def workflow_state
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowState
           end
-          def sku_name
-            Azure::Logic::Mgmt::V2016_06_01::Models::SkuName
-          end
           def parameter_type
             Azure::Logic::Mgmt::V2016_06_01::Models::ParameterType
           end
-          def workflow_trigger_provisioning_state
-            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerProvisioningState
+          def batch_configuration
+            Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfiguration
           end
-          def workflow_status
-            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
+          def sku_name
+            Azure::Logic::Mgmt::V2016_06_01::Models::SkuName
           end
           def recurrence_frequency
             Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceFrequency
@@ -691,20 +685,29 @@ module Azure::Profiles::Latest
           def days_of_week
             Azure::Logic::Mgmt::V2016_06_01::Models::DaysOfWeek
           end
-          def day_of_week
-            Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
+          def workflow_trigger_provisioning_state
+            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerProvisioningState
           end
-          def key_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
-          end
-          def integration_account_sku_name
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSkuName
+          def workflow_status
+            Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowStatus
           end
           def schema_type
             Azure::Logic::Mgmt::V2016_06_01::Models::SchemaType
           end
           def map_type
             Azure::Logic::Mgmt::V2016_06_01::Models::MapType
+          end
+          def day_of_week
+            Azure::Logic::Mgmt::V2016_06_01::Models::DayOfWeek
+          end
+          def integration_account_sku_name
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSkuName
+          end
+          def sub_resource
+            Azure::Logic::Mgmt::V2016_06_01::Models::SubResource
+          end
+          def encryption_algorithm
+            Azure::Logic::Mgmt::V2016_06_01::Models::EncryptionAlgorithm
           end
           def partner_type
             Azure::Logic::Mgmt::V2016_06_01::Models::PartnerType
@@ -715,8 +718,8 @@ module Azure::Profiles::Latest
           def hashing_algorithm
             Azure::Logic::Mgmt::V2016_06_01::Models::HashingAlgorithm
           end
-          def encryption_algorithm
-            Azure::Logic::Mgmt::V2016_06_01::Models::EncryptionAlgorithm
+          def segment_terminator_suffix
+            Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
           end
           def signing_algorithm
             Azure::Logic::Mgmt::V2016_06_01::Models::SigningAlgorithm
@@ -727,8 +730,8 @@ module Azure::Profiles::Latest
           def x12_character_set
             Azure::Logic::Mgmt::V2016_06_01::Models::X12CharacterSet
           end
-          def segment_terminator_suffix
-            Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
+          def message_filter_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
           end
           def x12_date_format
             Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
@@ -739,8 +742,8 @@ module Azure::Profiles::Latest
           def usage_indicator
             Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
           end
-          def message_filter_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+          def event_level
+            Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
           end
           def edifact_character_set
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
@@ -750,9 +753,6 @@ module Azure::Profiles::Latest
           end
           def track_events_operation_options
             Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
-          end
-          def event_level
-            Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
           end
           def tracking_record_type
             Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType

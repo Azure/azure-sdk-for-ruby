@@ -23,7 +23,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetachDataDiskProperties',
           type: {
@@ -31,7 +30,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'DetachDataDiskProperties',
             model_properties: {
               existing_lab_disk_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'existingLabDiskId',
                 type: {
