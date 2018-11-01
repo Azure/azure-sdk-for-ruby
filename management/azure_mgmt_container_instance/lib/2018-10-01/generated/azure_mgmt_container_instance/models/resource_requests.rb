@@ -18,6 +18,9 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       # @return [Float] The CPU request of this container instance.
       attr_accessor :cpu
 
+      # @return [GpuResource] The GPU request of this container instance.
+      attr_accessor :gpu
+
 
       #
       # Mapper for ResourceRequests class as Ruby Hash.
@@ -43,6 +46,14 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 serialized_name: 'cpu',
                 type: {
                   name: 'Double'
+                }
+              },
+              gpu: {
+                required: false,
+                serialized_name: 'gpu',
+                type: {
+                  name: 'Composite',
+                  class_name: 'GpuResource'
                 }
               }
             }

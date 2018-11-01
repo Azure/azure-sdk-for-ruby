@@ -59,6 +59,10 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       # for a container group.
       attr_accessor :network_profile
 
+      # @return [DnsConfiguration] The DNS config information for a container
+      # group.
+      attr_accessor :dns_config
+
 
       #
       # Mapper for ContainerGroup class as Ruby Hash.
@@ -223,6 +227,14 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 type: {
                   name: 'Composite',
                   class_name: 'ContainerGroupNetworkProfile'
+                }
+              },
+              dns_config: {
+                required: false,
+                serialized_name: 'properties.dnsConfig',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DnsConfiguration'
                 }
               }
             }
