@@ -86,7 +86,7 @@ module Azure::Web::Mgmt::V2016_09_01
       # @return [Integer]
       attr_accessor :number_of_workers
 
-      # @return [Integer]
+      # @return [String]
       attr_accessor :worker_size
 
       # @return [SkuDescription]
@@ -325,7 +325,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 read_only: true,
                 serialized_name: 'properties.workerSize',
                 type: {
-                  name: 'Number'
+                  name: 'String'
                 }
               },
               sku: {
