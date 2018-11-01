@@ -75,6 +75,9 @@ module Azure::Web::Mgmt::V2016_08_01
       attr_accessor :provisioning_state
 
       # @return [String]
+      attr_accessor :app_service_plan_kind
+
+      # @return [String]
       attr_accessor :mdm_id
 
       # @return [Integer]
@@ -286,6 +289,14 @@ module Azure::Web::Mgmt::V2016_08_01
                 type: {
                   name: 'Enum',
                   module: 'ProvisioningState'
+                }
+              },
+              app_service_plan_kind: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.kind',
+                type: {
+                  name: 'String'
                 }
               },
               mdm_id: {
