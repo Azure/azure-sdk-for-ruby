@@ -38,7 +38,9 @@ class MetaDataGenerator
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/.rspec", '.rspec', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}")
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/LICENSE.txt",'LICENSE.txt', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}")
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/Rakefile", 'Rakefile', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}")
-    check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec/spec_helper.rb", 'spec_helper.rb', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec")
+    if Dir["#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec"].empty?
+      check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec/spec_helper.rb", 'spec_helper.rb', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec")
+    end
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/lib/#{@gem_name}.rb",'require_file.rb', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/lib/#{@gem_name}.rb")
 
     @module_name = get_module_name

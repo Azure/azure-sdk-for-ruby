@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
+  spec.summary       = 'Official Ruby client library to consume <%= @module_name %>'
   spec.license       = 'MIT'
   spec.metadata      = {
     'bug_tracker_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/issues',
