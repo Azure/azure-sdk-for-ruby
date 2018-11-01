@@ -10,6 +10,8 @@ dir_metadata  = JSON.parse(File.read(options.dir_metadata))
 profiles_file = JSON.parse(File.read(options.profile))
 profiles = profiles_file[options.mode][options.key]
 
-profiles.each do |profile|
-  ProfileGenerator.new(profile, dir_metadata, options.sdk_path).generate
+if !profiles.nil?
+  profiles.each do |profile|
+    ProfileGenerator.new(profile, dir_metadata, options.sdk_path).generate
+  end
 end
