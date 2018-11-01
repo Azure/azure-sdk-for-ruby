@@ -74,22 +74,22 @@ module Azure::Web::Mgmt::V2015_04_01
       # 'Canceled', 'InProgress', 'Deleting'
       attr_accessor :provisioning_state
 
-      # @return [String]
+      # @return [String] Kind of resource.
       attr_accessor :app_service_plan_kind
 
-      # @return [String]
+      # @return [String] MDM ID of the App Service plan.
       attr_accessor :mdm_id
 
-      # @return [Integer]
+      # @return [Integer] Current worker count.
       attr_accessor :current_number_of_workers
 
-      # @return [String]
+      # @return [String] Current worker size.
       attr_accessor :current_worker_size
 
-      # @return [Integer]
+      # @return [Integer] Worker count.
       attr_accessor :number_of_workers
 
-      # @return [String]
+      # @return [String] Worker size.
       attr_accessor :worker_size
 
       # @return [SkuDescription]
