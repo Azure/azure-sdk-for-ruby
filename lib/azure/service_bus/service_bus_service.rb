@@ -616,26 +616,25 @@ module Azure
 
       def _modify_message(method, message)
         uri = if (message.respond_to? :location)
-                message.location
-              else
-                message
-              end
+          message.location
+        else
+          message
+        end
 
         call(method, uri)
-        nil
       end
 
       def _send_message(path, message)
         message = Azure::ServiceBus::BrokeredMessage.new(message.to_s) unless message.kind_of?(Azure::ServiceBus::BrokeredMessage)
 
-        serializer = BrokeredMessageSerializer.new(message)
+        serializer = Azure::ServiceBus::BrokeredMessageSerializer.new(message)
         broker_properties = serializer.to_json
         message_properties = serializer.get_property_headers
 
         content_type = message.content_type || 'text/plain'
 
         headers = {
-            'BrokerProperties' => broker_properties
+          'BrokerProperties' => broker_properties
         }
 
         message_properties.each do |k, v|
@@ -645,7 +644,6 @@ module Azure
         headers["Content-Type"] = content_type
 
         call(:post, messages_uri(path), message.body, headers)
-        nil
       end
 
       def _read_delete_message(path, timeout=DEFAULT_TIMEOUT)
@@ -660,7 +658,7 @@ module Azure
         uri = messages_head_uri(path, {"timeout" => timeout.to_s})
 
         response = call(method, uri)
-        (response.status_code == 204) ? nil : BrokeredMessageSerializer.get_from_http_response(response)
+        (response.status_code == 204) ? response : BrokeredMessageSerializer.get_from_http_response(response)
       end
 
       def _rule_from(*p)
@@ -767,7 +765,6 @@ module Azure
 
       def delete_resource_entry(resource, *p)
         call(:delete, self.send("#{resource.to_s}_uri", *p))
-        nil
       end
 
       def resource_entry(resource, *p)
