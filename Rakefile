@@ -346,6 +346,15 @@ namespace :arm do
     execute_and_stream(command)
   end
 
+  task :regen_folder_structure_if_required, [:gem_name] do |_, args|
+    plane = 'data'
+    if(args[:gem_name].include?'_mgmt_')
+      plane = 'management'
+    end
+    command = "bundle exec ruby #{__dir__}/generators/metadatagen/src/metadatagen.rb --plane=#{plane} --gem_name=#{args[:gem_name]} --sdk_path=#{__dir__}"
+    execute_and_stream(command)
+  end
+
   desc 'Generate all require files'
   task :regen_all_require_files, [:gem_name] => [:regen_individual_require_files, :regen_rollup_require_files] do
     puts 'Generated all require files'
