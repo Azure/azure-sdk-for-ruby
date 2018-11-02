@@ -232,6 +232,11 @@
                         "2016-11-01": ["*"]
                     }
                 },
+                "Microsoft.DataMigration": {
+                    "management": {
+                        "2018-07-15-preview": ["*"]
+                    }
+                },
                 "Microsoft.DevSpaces": {
                     "management": {
                         "2018-06-01-preview": ["*"]
@@ -857,6 +862,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_devtestlabs/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_data_migration": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.DataMigration": {
+                    "management": {
+                        "2018-07-15-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_data_migration/lib/profiles",
             "individual_gem_profile": true
         }
         ],

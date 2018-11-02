@@ -1,7 +1,7 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.18.9"
+        "azure_sdk": "0.18.10"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.17.0",
@@ -37,6 +37,7 @@
         "azure_mgmt_customer_insights": "0.17.1",
         "azure_mgmt_datalake_analytics": "0.17.1",
         "azure_mgmt_datalake_store": "0.17.1",
+        "azure_mgmt_data_migration": "0.17.0",
         "azure_mgmt_dev_spaces": "0.17.1",
         "azure_mgmt_devtestlabs": "0.17.1",
         "azure_mgmt_dns": "0.17.2",
