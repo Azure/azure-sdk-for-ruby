@@ -11,11 +11,11 @@ module Azure::Profiles::Latest
       Operations = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Operations
 
       module Models
+        ErrorResponse = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
         OperationDisplay = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
         Operation = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation
-        ErrorResponseError = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponseError
         OperationListResult = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationListResult
-        ErrorResponse = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+        ErrorResponseError = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponseError
         Resource = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Resource
         AgreementTerms = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::AgreementTerms
       end
@@ -51,20 +51,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_response
+            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+          end
           def operation_display
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
           end
           def operation
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation
           end
-          def error_response_error
-            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponseError
-          end
           def operation_list_result
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationListResult
           end
-          def error_response
-            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+          def error_response_error
+            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponseError
           end
           def resource
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Resource
