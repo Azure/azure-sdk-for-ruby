@@ -14,6 +14,7 @@ module Azure::Compute::Mgmt::V2018_01_01
       BlockBlob = "BlockBlob"
       PageBlob = "PageBlob"
       AzureFile = "AzureFile"
+      ManagedDisk = "ManagedDisk"
     end
   end
 end

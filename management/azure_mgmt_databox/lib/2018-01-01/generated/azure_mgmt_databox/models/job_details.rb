@@ -145,6 +145,8 @@ module Azure::Compute::Mgmt::V2018_01_01
                       serialized_name: 'DestinationAccountDetailsElementType',
                       type: {
                         name: 'Composite',
+                        polymorphic_discriminator: 'dataDestinationType',
+                        uber_parent: 'DestinationAccountDetails',
                         class_name: 'DestinationAccountDetails'
                       }
                   }

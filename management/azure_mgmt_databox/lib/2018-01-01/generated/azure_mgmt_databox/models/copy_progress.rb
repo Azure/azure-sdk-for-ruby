@@ -25,6 +25,12 @@ module Azure::Compute::Mgmt::V2018_01_01
       # @return [Integer] Total amount of data to be processed by the job.
       attr_accessor :total_bytes_to_process
 
+      # @return [Integer] Number of files processed by the job as of now.
+      attr_accessor :files_processed
+
+      # @return [Integer] Total number of files to be processed by the job.
+      attr_accessor :total_files_to_process
+
 
       #
       # Mapper for CopyProgress class as Ruby Hash.
@@ -66,6 +72,22 @@ module Azure::Compute::Mgmt::V2018_01_01
                 required: false,
                 read_only: true,
                 serialized_name: 'totalBytesToProcess',
+                type: {
+                  name: 'Number'
+                }
+              },
+              files_processed: {
+                required: false,
+                read_only: true,
+                serialized_name: 'filesProcessed',
+                type: {
+                  name: 'Number'
+                }
+              },
+              total_files_to_process: {
+                required: false,
+                read_only: true,
+                serialized_name: 'totalFilesToProcess',
                 type: {
                   name: 'Number'
                 }

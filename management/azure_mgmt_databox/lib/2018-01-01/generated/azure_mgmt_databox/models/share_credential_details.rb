@@ -16,7 +16,8 @@ module Azure::Compute::Mgmt::V2018_01_01
       attr_accessor :share_name
 
       # @return [ShareDestinationFormatType] Type of the share. Possible values
-      # include: 'UnknownType', 'HCS', 'BlockBlob', 'PageBlob', 'AzureFile'
+      # include: 'UnknownType', 'HCS', 'BlockBlob', 'PageBlob', 'AzureFile',
+      # 'ManagedDisk'
       attr_accessor :share_type
 
       # @return [String] User name for the share.

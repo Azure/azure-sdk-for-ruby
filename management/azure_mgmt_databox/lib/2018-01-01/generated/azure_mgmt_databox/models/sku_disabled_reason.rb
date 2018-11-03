@@ -14,6 +14,7 @@ module Azure::Compute::Mgmt::V2018_01_01
       Region = "Region"
       Feature = "Feature"
       OfferType = "OfferType"
+      NoSubscriptionInfo = "NoSubscriptionInfo"
     end
   end
 end

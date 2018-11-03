@@ -32,7 +32,8 @@ module Azure::Compute::Mgmt::V2018_01_01
       attr_accessor :api_versions
 
       # @return [SkuDisabledReason] Reason why the Sku is disabled. Possible
-      # values include: 'None', 'Country', 'Region', 'Feature', 'OfferType'
+      # values include: 'None', 'Country', 'Region', 'Feature', 'OfferType',
+      # 'NoSubscriptionInfo'
       attr_accessor :disabled_reason
 
       # @return [String] Message for why the Sku is disabled.

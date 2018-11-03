@@ -6,13 +6,24 @@
 module Azure::Compute::Mgmt::V2018_01_01
   module Models
     #
-    # Details for the destination account.
+    # Details of the destination of the data
     #
     class DestinationAccountDetails
 
       include MsRestAzure
 
-      # @return [String] Destination storage account id.
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["ManagedDisk"] = "DestinationManagedDiskDetails"
+      @@discriminatorMap["StorageAccount"] = "DestinationStorageAccountDetails"
+
+      def initialize
+        @dataDestinationType = "DestinationAccountDetails"
+      end
+
+      attr_accessor :dataDestinationType
+
+      # @return [String] Arm Id of the destination where the data has to be
+      # moved.
       attr_accessor :account_id
 
 
@@ -26,10 +37,12 @@ module Azure::Compute::Mgmt::V2018_01_01
           serialized_name: 'DestinationAccountDetails',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'dataDestinationType',
+            uber_parent: 'DestinationAccountDetails',
             class_name: 'DestinationAccountDetails',
             model_properties: {
               account_id: {
-                required: true,
+                required: false,
                 serialized_name: 'accountId',
                 type: {
                   name: 'String'
