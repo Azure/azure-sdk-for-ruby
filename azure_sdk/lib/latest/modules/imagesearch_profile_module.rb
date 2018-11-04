@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
     module Models
+      Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
       MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
       StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
@@ -35,11 +36,11 @@ module Azure::Profiles::Latest
       RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
       RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
       ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
-      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
-      Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+      Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
@@ -47,11 +48,11 @@ module Azure::Profiles::Latest
       ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
       ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
-      ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
-      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
-      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
+      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+      ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
+      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
       Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
@@ -66,7 +67,6 @@ module Azure::Profiles::Latest
       SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
-      Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
     end
 
     class ImageSearchDataClass
@@ -99,6 +99,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def intangible
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
+        end
         def media_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
         end
@@ -177,20 +180,20 @@ module Azure::Profiles::Latest
         def image_insights
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
         end
-        def trending_images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
-        end
         def error_response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
         end
-        def rating
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+        def trending_images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
         end
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
         end
         def currency
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+        end
+        def rating
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
         end
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
@@ -213,20 +216,20 @@ module Azure::Profiles::Latest
         def image_size
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
         end
-        def image_license
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
+        def error
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
         end
         def person
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
         end
-        def error
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        def image_crop_type
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+        end
+        def image_license
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
         end
         def image_insight_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-        end
-        def image_crop_type
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
         end
         def images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
@@ -269,9 +272,6 @@ module Azure::Profiles::Latest
         end
         def organization
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
-        end
-        def intangible
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
         end
       end
     end
