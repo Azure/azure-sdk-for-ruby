@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure
-  VERSION = '0.18.9'
+  VERSION = '0.18.10'
 end
