@@ -7,19 +7,15 @@ require 'azure_mgmt_stream_analytics'
 module Azure::Profiles::Latest
   module StreamAnalytics
     module Mgmt
+      Subscriptions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Subscriptions
       StreamingJobs = Azure::StreamAnalytics::Mgmt::V2016_03_01::StreamingJobs
       Inputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Inputs
       Outputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Outputs
       Transformations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Transformations
-      Operations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Operations
       Functions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Functions
-      Subscriptions = Azure::StreamAnalytics::Mgmt::V2016_03_01::Subscriptions
+      Operations = Azure::StreamAnalytics::Mgmt::V2016_03_01::Operations
 
       module Models
-        Sku = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Sku
-        ErrorResponse = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ErrorResponse
-        AzureMachineLearningWebServiceInputColumn = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputColumn
-        AzureMachineLearningWebServiceInputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputs
         ReferenceInputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ReferenceInputDataSource
         FunctionBinding = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionBinding
         FunctionOutput = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionOutput
@@ -51,13 +47,13 @@ module Azure::Profiles::Latest
         AzureMachineLearningWebServiceFunctionBinding = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceFunctionBinding
         ScalarFunctionProperties = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ScalarFunctionProperties
         AvroSerialization = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AvroSerialization
-        Serialization = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Serialization
         JsonSerialization = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::JsonSerialization
-        StorageAccount = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
-        AzureDataLakeStoreOutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureDataLakeStoreOutputDataSource
         CsvSerialization = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::CsvSerialization
-        EventHubDataSourceProperties = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::EventHubDataSourceProperties
+        AzureDataLakeStoreOutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureDataLakeStoreOutputDataSource
         PowerBIOutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::PowerBIOutputDataSource
+        EventHubDataSourceProperties = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::EventHubDataSourceProperties
+        Serialization = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Serialization
+        StorageAccount = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
         ServiceBusQueueOutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ServiceBusQueueOutputDataSource
         ServiceBusTopicOutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ServiceBusTopicOutputDataSource
         AzureSqlDatabaseOutputDataSource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureSqlDatabaseOutputDataSource
@@ -75,23 +71,27 @@ module Azure::Profiles::Latest
         SubscriptionQuota = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SubscriptionQuota
         JavaScriptFunctionRetrieveDefaultDefinitionParameters = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::JavaScriptFunctionRetrieveDefaultDefinitionParameters
         EventsOutOfOrderPolicy = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::EventsOutOfOrderPolicy
-        Diagnostics = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Diagnostics
+        OutputStartMode = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputStartMode
         CompatibilityLevel = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::CompatibilityLevel
         OutputErrorPolicy = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputErrorPolicy
-        OutputStartMode = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputStartMode
+        Diagnostics = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Diagnostics
         JsonOutputSerializationFormat = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::JsonOutputSerializationFormat
-        UdfType = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::UdfType
         Encoding = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Encoding
+        UdfType = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::UdfType
         Resource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
         OperationDisplay = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OperationDisplay
         Operation = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Operation
         OperationListResult = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OperationListResult
         SubResource = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SubResource
         SkuName = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SkuName
+        Sku = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Sku
+        ErrorResponse = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ErrorResponse
+        AzureMachineLearningWebServiceInputColumn = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputColumn
+        AzureMachineLearningWebServiceInputs = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputs
       end
 
       class StreamAnalyticsManagementClass
-        attr_reader :streaming_jobs, :inputs, :outputs, :transformations, :operations, :functions, :subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :subscriptions, :streaming_jobs, :inputs, :outputs, :transformations, :functions, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -101,13 +101,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @subscriptions = @client_0.subscriptions
           @streaming_jobs = @client_0.streaming_jobs
           @inputs = @client_0.inputs
           @outputs = @client_0.outputs
           @transformations = @client_0.transformations
-          @operations = @client_0.operations
           @functions = @client_0.functions
-          @subscriptions = @client_0.subscriptions
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -126,18 +126,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def sku
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Sku
-          end
-          def error_response
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ErrorResponse
-          end
-          def azure_machine_learning_web_service_input_column
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputColumn
-          end
-          def azure_machine_learning_web_service_inputs
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputs
-          end
           def reference_input_data_source
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ReferenceInputDataSource
           end
@@ -231,26 +219,26 @@ module Azure::Profiles::Latest
           def avro_serialization
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AvroSerialization
           end
-          def serialization
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Serialization
-          end
           def json_serialization
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::JsonSerialization
-          end
-          def storage_account
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
-          end
-          def azure_data_lake_store_output_data_source
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureDataLakeStoreOutputDataSource
           end
           def csv_serialization
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::CsvSerialization
           end
-          def event_hub_data_source_properties
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::EventHubDataSourceProperties
+          def azure_data_lake_store_output_data_source
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureDataLakeStoreOutputDataSource
           end
           def power_bioutput_data_source
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::PowerBIOutputDataSource
+          end
+          def event_hub_data_source_properties
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::EventHubDataSourceProperties
+          end
+          def serialization
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Serialization
+          end
+          def storage_account
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::StorageAccount
           end
           def service_bus_queue_output_data_source
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ServiceBusQueueOutputDataSource
@@ -303,8 +291,8 @@ module Azure::Profiles::Latest
           def events_out_of_order_policy
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::EventsOutOfOrderPolicy
           end
-          def diagnostics
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Diagnostics
+          def output_start_mode
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputStartMode
           end
           def compatibility_level
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::CompatibilityLevel
@@ -312,17 +300,17 @@ module Azure::Profiles::Latest
           def output_error_policy
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputErrorPolicy
           end
-          def output_start_mode
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::OutputStartMode
+          def diagnostics
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Diagnostics
           end
           def json_output_serialization_format
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::JsonOutputSerializationFormat
           end
-          def udf_type
-            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::UdfType
-          end
           def encoding
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Encoding
+          end
+          def udf_type
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::UdfType
           end
           def resource
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Resource
@@ -341,6 +329,18 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::SkuName
+          end
+          def sku
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Sku
+          end
+          def error_response
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ErrorResponse
+          end
+          def azure_machine_learning_web_service_input_column
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputColumn
+          end
+          def azure_machine_learning_web_service_inputs
+            Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::AzureMachineLearningWebServiceInputs
           end
         end
       end

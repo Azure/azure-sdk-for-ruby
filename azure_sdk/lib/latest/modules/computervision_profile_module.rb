@@ -8,17 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
-      ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
-      Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
-      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
-      TextOperationResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
-      OcrWord = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
-      CelebritiesModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebritiesModel
-      OcrLine = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLine
-      CategoryDetail = Azure::CognitiveServices::ComputerVision::V2_0::Models::CategoryDetail
-      OcrRegion = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
-      AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
       OcrResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
       ImageType = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
       ModelDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
@@ -46,6 +35,17 @@ module Azure::Profiles::Latest
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
       TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
       Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+      FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
+      ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
+      Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
+      ImageAnalysis = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
+      TextOperationResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
+      OcrWord = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
+      CelebritiesModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebritiesModel
+      OcrLine = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLine
+      CategoryDetail = Azure::CognitiveServices::ComputerVision::V2_0::Models::CategoryDetail
+      OcrRegion = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
+      AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
     end
 
     class ComputerVisionDataClass
@@ -77,39 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def face_description
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
-        end
-        def image_metadata
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
-        end
-        def line
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
-        end
-        def image_analysis
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
-        end
-        def text_operation_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
-        end
-        def ocr_word
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
-        end
-        def celebrities_model
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebritiesModel
-        end
-        def ocr_line
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLine
-        end
-        def category_detail
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::CategoryDetail
-        end
-        def ocr_region
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
-        end
-        def adult_info
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
-        end
         def ocr_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
         end
@@ -190,6 +157,39 @@ module Azure::Profiles::Latest
         end
         def details
           Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+        end
+        def face_description
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
+        end
+        def image_metadata
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
+        end
+        def line
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
+        end
+        def image_analysis
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis
+        end
+        def text_operation_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
+        end
+        def ocr_word
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrWord
+        end
+        def celebrities_model
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebritiesModel
+        end
+        def ocr_line
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLine
+        end
+        def category_detail
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::CategoryDetail
+        end
+        def ocr_region
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
+        end
+        def adult_info
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
         end
       end
     end

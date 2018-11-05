@@ -7,16 +7,15 @@ require 'azure_mgmt_service_fabric'
 module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2018_02_01::ClusterVersions
       Clusters = Azure::ServiceFabric::Mgmt::V2018_02_01::Clusters
       Operations = Azure::ServiceFabric::Mgmt::V2018_02_01::Operations
 
       module Models
-        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
         ServicePropertiesBase = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
         ServiceTypeHealthPolicyMapItem = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceTypeHealthPolicyMapItem
         ApplicationMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationMetricDescription
@@ -32,10 +31,10 @@ module Azure::Profiles::Latest
         VersionResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResourceList
         ServiceResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceList
         NamedPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
-        SingletonPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
         UniformInt64RangePartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
-        VersionResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResource
         ApplicationTypeResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
+        SingletonPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
+        VersionResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResource
         ApplicationResourceUpdate = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceUpdate
         ApplicationResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResource
         ServiceResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResource
@@ -46,11 +45,9 @@ module Azure::Profiles::Latest
         StatelessServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatelessServiceProperties
         StatefulServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceUpdateProperties
         StatefulServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
-        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
-        OperationResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationResult
-        Resource = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
+        ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
         ErrorModel = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModel
-        ProvisioningState = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState
+        Resource = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
         ServerCertificateCommonNames = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
         ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
         ApplicationDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
@@ -68,19 +65,22 @@ module Azure::Profiles::Latest
         ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
         Cluster = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Cluster
         AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
-        OperationListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
+        ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
         ClientCertificateThumbprint = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateThumbprint
         ClusterUpgradeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradeDeltaHealthPolicy
         ClusterVersionDetails = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterVersionDetails
         SettingsParameterDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsParameterDescription
-        ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
+        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
         SettingsSectionDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsSectionDescription
         EndpointRangeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::EndpointRangeDescription
         NodeTypeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
+        ProvisioningState = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState
+        OperationListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
+        OperationResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationResult
       end
 
       class ServiceFabricManagementClass
-        attr_reader :application, :version, :application_type, :service, :cluster_versions, :clusters, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :application_type, :service, :version, :application, :cluster_versions, :clusters, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -90,10 +90,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @application = @client_0.application
-          @version = @client_0.version
           @application_type = @client_0.application_type
           @service = @client_0.service
+          @version = @client_0.version
+          @application = @client_0.application
 
           @client_1 = Azure::ServiceFabric::Mgmt::V2018_02_01::ServiceFabricManagementClient.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
@@ -123,9 +123,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def proxy_resource
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
-          end
           def service_properties_base
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePropertiesBase
           end
@@ -171,17 +168,17 @@ module Azure::Profiles::Latest
           def named_partition_scheme_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
           end
-          def singleton_partition_scheme_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
-          end
           def uniform_int64_range_partition_scheme_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
           end
-          def version_resource
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResource
-          end
           def application_type_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
+          end
+          def singleton_partition_scheme_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
+          end
+          def version_resource
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResource
           end
           def application_resource_update
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceUpdate
@@ -213,20 +210,14 @@ module Azure::Profiles::Latest
           def stateful_service_properties
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
           end
-          def application_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
-          end
-          def operation_result
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationResult
-          end
-          def resource
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
+          def proxy_resource
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
           end
           def error_model
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModel
           end
-          def provisioning_state
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState
+          def resource
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
           end
           def server_certificate_common_names
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
@@ -279,8 +270,8 @@ module Azure::Profiles::Latest
           def azure_active_directory
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
           end
-          def operation_list_result
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
+          def client_certificate_common_name
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
           end
           def client_certificate_thumbprint
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateThumbprint
@@ -294,8 +285,8 @@ module Azure::Profiles::Latest
           def settings_parameter_description
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsParameterDescription
           end
-          def client_certificate_common_name
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
+          def application_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
           end
           def settings_section_description
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsSectionDescription
@@ -305,6 +296,15 @@ module Azure::Profiles::Latest
           end
           def node_type_description
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
+          end
+          def provisioning_state
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState
+          end
+          def operation_list_result
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
+          end
+          def operation_result
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationResult
           end
         end
       end

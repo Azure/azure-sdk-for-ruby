@@ -15,17 +15,17 @@ module Azure::Profiles::Latest
       LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult
       KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
-      SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+      SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
       MatchRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
-      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
       EntityRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
-      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
-      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
       EntitiesBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
-      MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
+      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
       EntitiesBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
+      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
+      MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
     end
 
     class TextAnalyticsDataClass
@@ -78,11 +78,14 @@ module Azure::Profiles::Latest
         def sentiment_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
         end
+        def error_response
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+        end
         def sentiment_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
         end
-        def error_response
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorResponse
+        def batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
         end
         def match_record
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
@@ -90,26 +93,23 @@ module Azure::Profiles::Latest
         def error_record
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
         end
-        def batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
-        end
         def entity_record
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
-        end
-        def input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
-        end
-        def internal_error
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
         end
         def entities_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
         end
-        def multi_language_batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
+        def input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
         end
         def entities_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
+        end
+        def internal_error
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
+        end
+        def multi_language_batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
         end
       end
     end
