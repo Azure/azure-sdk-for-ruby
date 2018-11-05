@@ -38,11 +38,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     # provider_operations_metadata_operations
     attr_reader :provider_operations_metadata_operations
 
-    # @return [Permissions] permissions
-    attr_reader :permissions
-
     # @return [RoleAssignments] role_assignments
     attr_reader :role_assignments
+
+    # @return [Permissions] permissions
+    attr_reader :permissions
 
     # @return [RoleDefinitions] role_definitions
     attr_reader :role_definitions
@@ -61,8 +61,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       @credentials = credentials
 
       @provider_operations_metadata_operations = ProviderOperationsMetadataOperations.new(self)
-      @permissions = Permissions.new(self)
       @role_assignments = RoleAssignments.new(self)
+      @permissions = Permissions.new(self)
       @role_definitions = RoleDefinitions.new(self)
       @api_version = '2018-01-01-preview'
       @accept_language = 'en-US'

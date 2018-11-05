@@ -8,21 +8,14 @@ module Azure::Profiles::Latest
   module CDN
     module Mgmt
       Endpoints = Azure::CDN::Mgmt::V2017_10_12::Endpoints
-      Operations = Azure::CDN::Mgmt::V2017_10_12::Operations
       Profiles = Azure::CDN::Mgmt::V2017_10_12::Profiles
       Origins = Azure::CDN::Mgmt::V2017_10_12::Origins
       CustomDomains = Azure::CDN::Mgmt::V2017_10_12::CustomDomains
       ResourceUsageOperations = Azure::CDN::Mgmt::V2017_10_12::ResourceUsageOperations
       EdgeNodes = Azure::CDN::Mgmt::V2017_10_12::EdgeNodes
+      Operations = Azure::CDN::Mgmt::V2017_10_12::Operations
 
       module Models
-        OriginUpdateParameters = Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
-        OriginListResult = Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
-        ProfileListResult = Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
-        PurgeParameters = Azure::CDN::Mgmt::V2017_10_12::Models::PurgeParameters
-        SsoUri = Azure::CDN::Mgmt::V2017_10_12::Models::SsoUri
-        LoadParameters = Azure::CDN::Mgmt::V2017_10_12::Models::LoadParameters
-        DeepCreatedOrigin = Azure::CDN::Mgmt::V2017_10_12::Models::DeepCreatedOrigin
         CidrIpAddress = Azure::CDN::Mgmt::V2017_10_12::Models::CidrIpAddress
         EndpointListResult = Azure::CDN::Mgmt::V2017_10_12::Models::EndpointListResult
         OperationsListResult = Azure::CDN::Mgmt::V2017_10_12::Models::OperationsListResult
@@ -69,16 +62,23 @@ module Azure::Profiles::Latest
         CustomHttpsProvisioningSubstate = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
         Operation = Azure::CDN::Mgmt::V2017_10_12::Models::Operation
         ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
-        Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
         TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
         ProxyResource = Azure::CDN::Mgmt::V2017_10_12::Models::ProxyResource
+        Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
         CustomDomain = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomain
         Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
         SkuName = Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
+        OriginUpdateParameters = Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
+        OriginListResult = Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
+        ProfileListResult = Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
+        PurgeParameters = Azure::CDN::Mgmt::V2017_10_12::Models::PurgeParameters
+        SsoUri = Azure::CDN::Mgmt::V2017_10_12::Models::SsoUri
+        LoadParameters = Azure::CDN::Mgmt::V2017_10_12::Models::LoadParameters
+        DeepCreatedOrigin = Azure::CDN::Mgmt::V2017_10_12::Models::DeepCreatedOrigin
       end
 
       class CDNManagementClass
-        attr_reader :endpoints, :operations, :profiles, :origins, :custom_domains, :resource_usage_operations, :edge_nodes, :configurable, :base_url, :options, :model_classes
+        attr_reader :endpoints, :profiles, :origins, :custom_domains, :resource_usage_operations, :edge_nodes, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -89,12 +89,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @endpoints = @client_0.endpoints
-          @operations = @client_0.operations
           @profiles = @client_0.profiles
           @origins = @client_0.origins
           @custom_domains = @client_0.custom_domains
           @resource_usage_operations = @client_0.resource_usage_operations
           @edge_nodes = @client_0.edge_nodes
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -113,27 +113,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def origin_update_parameters
-            Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
-          end
-          def origin_list_result
-            Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
-          end
-          def profile_list_result
-            Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
-          end
-          def purge_parameters
-            Azure::CDN::Mgmt::V2017_10_12::Models::PurgeParameters
-          end
-          def sso_uri
-            Azure::CDN::Mgmt::V2017_10_12::Models::SsoUri
-          end
-          def load_parameters
-            Azure::CDN::Mgmt::V2017_10_12::Models::LoadParameters
-          end
-          def deep_created_origin
-            Azure::CDN::Mgmt::V2017_10_12::Models::DeepCreatedOrigin
-          end
           def cidr_ip_address
             Azure::CDN::Mgmt::V2017_10_12::Models::CidrIpAddress
           end
@@ -272,14 +251,14 @@ module Azure::Profiles::Latest
           def resource_type
             Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
           end
-          def sku
-            Azure::CDN::Mgmt::V2017_10_12::Models::Sku
-          end
           def tracked_resource
             Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
           end
           def proxy_resource
             Azure::CDN::Mgmt::V2017_10_12::Models::ProxyResource
+          end
+          def sku
+            Azure::CDN::Mgmt::V2017_10_12::Models::Sku
           end
           def custom_domain
             Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomain
@@ -289,6 +268,27 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
+          end
+          def origin_update_parameters
+            Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
+          end
+          def origin_list_result
+            Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
+          end
+          def profile_list_result
+            Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
+          end
+          def purge_parameters
+            Azure::CDN::Mgmt::V2017_10_12::Models::PurgeParameters
+          end
+          def sso_uri
+            Azure::CDN::Mgmt::V2017_10_12::Models::SsoUri
+          end
+          def load_parameters
+            Azure::CDN::Mgmt::V2017_10_12::Models::LoadParameters
+          end
+          def deep_created_origin
+            Azure::CDN::Mgmt::V2017_10_12::Models::DeepCreatedOrigin
           end
         end
       end
