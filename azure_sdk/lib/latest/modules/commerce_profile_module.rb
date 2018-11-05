@@ -7,8 +7,8 @@ require 'azure_mgmt_commerce'
 module Azure::Profiles::Latest
   module Commerce
     module Mgmt
-      UsageAggregates = Azure::Commerce::Mgmt::V2015_06_01_preview::UsageAggregates
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
+      UsageAggregates = Azure::Commerce::Mgmt::V2015_06_01_preview::UsageAggregates
 
       module Models
         MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
@@ -26,7 +26,7 @@ module Azure::Profiles::Latest
       end
 
       class CommerceManagementClass
-        attr_reader :usage_aggregates, :rate_card, :configurable, :base_url, :options, :model_classes
+        attr_reader :rate_card, :usage_aggregates, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -36,8 +36,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @usage_aggregates = @client_0.usage_aggregates
           @rate_card = @client_0.rate_card
+          @usage_aggregates = @client_0.usage_aggregates
 
           @model_classes = ModelClasses.new
         end

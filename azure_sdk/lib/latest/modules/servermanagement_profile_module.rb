@@ -7,14 +7,12 @@ require 'azure_mgmt_server_management'
 module Azure::Profiles::Latest
   module ServerManagement
     module Mgmt
-      Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
       Gateway = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Gateway
       Node = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Node
       PowerShell = Azure::ServerManagement::Mgmt::V2016_07_01_preview::PowerShell
+      Session = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Session
 
       module Models
-        UpgradeMode = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
-        Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
         EncryptionJwkResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::EncryptionJwkResource
         GatewayStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayStatus
         GatewayResources = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResources
@@ -34,19 +32,21 @@ module Azure::Profiles::Latest
         GatewayResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayResource
         NodeResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::NodeResource
         SessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
+        Resource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
         PowerShellSessionResource = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
         PowerShellCommandStatus = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellCommandStatus
         RetentionPeriod = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::RetentionPeriod
         CredentialDataFormat = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::CredentialDataFormat
         PromptFieldType = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
-        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         GatewayExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
         PowerShellExpandOption = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
+        UpgradeMode = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
+        Version = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
         Error = Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error
       end
 
       class ServerManagementManagementClass
-        attr_reader :session, :gateway, :node, :power_shell, :configurable, :base_url, :options, :model_classes
+        attr_reader :gateway, :node, :power_shell, :session, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,10 +56,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @session = @client_0.session
           @gateway = @client_0.gateway
           @node = @client_0.node
           @power_shell = @client_0.power_shell
+          @session = @client_0.session
 
           @model_classes = ModelClasses.new
         end
@@ -78,12 +78,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def upgrade_mode
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
-          end
-          def resource
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
-          end
           def encryption_jwk_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::EncryptionJwkResource
           end
@@ -141,6 +135,9 @@ module Azure::Profiles::Latest
           def session_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::SessionResource
           end
+          def resource
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Resource
+          end
           def power_shell_session_resource
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellSessionResource
           end
@@ -156,14 +153,17 @@ module Azure::Profiles::Latest
           def prompt_field_type
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PromptFieldType
           end
-          def version
-            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
-          end
           def gateway_expand_option
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::GatewayExpandOption
           end
           def power_shell_expand_option
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::PowerShellExpandOption
+          end
+          def upgrade_mode
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::UpgradeMode
+          end
+          def version
+            Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Version
           end
           def error
             Azure::ServerManagement::Mgmt::V2016_07_01_preview::Models::Error

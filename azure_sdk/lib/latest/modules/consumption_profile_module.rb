@@ -7,16 +7,15 @@ require 'azure_mgmt_consumption'
 module Azure::Profiles::Latest
   module Consumption
     module Mgmt
-      Operations = Azure::Consumption::Mgmt::V2018_01_31::Operations
       UsageDetails = Azure::Consumption::Mgmt::V2018_01_31::UsageDetails
       Marketplaces = Azure::Consumption::Mgmt::V2018_01_31::Marketplaces
       ReservationsSummaries = Azure::Consumption::Mgmt::V2018_01_31::ReservationsSummaries
       ReservationsDetails = Azure::Consumption::Mgmt::V2018_01_31::ReservationsDetails
       Budgets = Azure::Consumption::Mgmt::V2018_01_31::Budgets
       PriceSheet = Azure::Consumption::Mgmt::V2018_01_31::PriceSheet
+      Operations = Azure::Consumption::Mgmt::V2018_01_31::Operations
 
       module Models
-        Resource = Azure::Consumption::Mgmt::V2018_01_31::Models::Resource
         MeterDetails = Azure::Consumption::Mgmt::V2018_01_31::Models::MeterDetails
         Filters = Azure::Consumption::Mgmt::V2018_01_31::Models::Filters
         UsageDetailsListResult = Azure::Consumption::Mgmt::V2018_01_31::Models::UsageDetailsListResult
@@ -32,7 +31,7 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::Consumption::Mgmt::V2018_01_31::Models::OperationDisplay
         ReservationSummaries = Azure::Consumption::Mgmt::V2018_01_31::Models::ReservationSummaries
         Marketplace = Azure::Consumption::Mgmt::V2018_01_31::Models::Marketplace
-        Budget = Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
+        Resource = Azure::Consumption::Mgmt::V2018_01_31::Models::Resource
         ErrorResponse = Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorResponse
         ProxyResource = Azure::Consumption::Mgmt::V2018_01_31::Models::ProxyResource
         PriceSheetResult = Azure::Consumption::Mgmt::V2018_01_31::Models::PriceSheetResult
@@ -41,13 +40,14 @@ module Azure::Profiles::Latest
         Operation = Azure::Consumption::Mgmt::V2018_01_31::Models::Operation
         CategoryType = Azure::Consumption::Mgmt::V2018_01_31::Models::CategoryType
         TimeGrainType = Azure::Consumption::Mgmt::V2018_01_31::Models::TimeGrainType
-        OperatorType = Azure::Consumption::Mgmt::V2018_01_31::Models::OperatorType
+        Budget = Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
         Datagrain = Azure::Consumption::Mgmt::V2018_01_31::Models::Datagrain
         ErrorDetails = Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorDetails
+        OperatorType = Azure::Consumption::Mgmt::V2018_01_31::Models::OperatorType
       end
 
       class ConsumptionManagementClass
-        attr_reader :operations, :usage_details, :marketplaces, :reservations_summaries, :reservations_details, :budgets, :price_sheet, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_details, :marketplaces, :reservations_summaries, :reservations_details, :budgets, :price_sheet, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -57,13 +57,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @usage_details = @client_0.usage_details
           @marketplaces = @client_0.marketplaces
           @reservations_summaries = @client_0.reservations_summaries
           @reservations_details = @client_0.reservations_details
           @budgets = @client_0.budgets
           @price_sheet = @client_0.price_sheet
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -82,9 +82,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def resource
-            Azure::Consumption::Mgmt::V2018_01_31::Models::Resource
-          end
           def meter_details
             Azure::Consumption::Mgmt::V2018_01_31::Models::MeterDetails
           end
@@ -130,8 +127,8 @@ module Azure::Profiles::Latest
           def marketplace
             Azure::Consumption::Mgmt::V2018_01_31::Models::Marketplace
           end
-          def budget
-            Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
+          def resource
+            Azure::Consumption::Mgmt::V2018_01_31::Models::Resource
           end
           def error_response
             Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorResponse
@@ -157,14 +154,17 @@ module Azure::Profiles::Latest
           def time_grain_type
             Azure::Consumption::Mgmt::V2018_01_31::Models::TimeGrainType
           end
-          def operator_type
-            Azure::Consumption::Mgmt::V2018_01_31::Models::OperatorType
+          def budget
+            Azure::Consumption::Mgmt::V2018_01_31::Models::Budget
           end
           def datagrain
             Azure::Consumption::Mgmt::V2018_01_31::Models::Datagrain
           end
           def error_details
             Azure::Consumption::Mgmt::V2018_01_31::Models::ErrorDetails
+          end
+          def operator_type
+            Azure::Consumption::Mgmt::V2018_01_31::Models::OperatorType
           end
         end
       end

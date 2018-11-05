@@ -12,14 +12,14 @@ module Azure::Profiles::Latest
 
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
-        Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
-        SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
-        LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
-        TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
         SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
+        Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
+        SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
+        LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
+        TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
       end
 
       class SubscriptionsManagementClass
@@ -56,18 +56,6 @@ module Azure::Profiles::Latest
           def location
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
           end
-          def subscription
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
-          end
-          def subscription_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
-          end
-          def location_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
-          end
-          def tenant_id_description
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-          end
           def tenant_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
           end
@@ -79,6 +67,18 @@ module Azure::Profiles::Latest
           end
           def spending_limit
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
+          end
+          def subscription
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
+          end
+          def subscription_list_result
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
+          end
+          def location_list_result
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
+          end
+          def tenant_id_description
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
           end
         end
       end

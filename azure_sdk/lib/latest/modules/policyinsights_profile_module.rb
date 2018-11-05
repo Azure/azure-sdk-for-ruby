@@ -12,7 +12,6 @@ module Azure::Profiles::Latest
       Operations = Azure::PolicyInsights::Mgmt::V2018_04_04::Operations
 
       module Models
-        OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
         PolicyDefinitionSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyDefinitionSummary
         PolicyAssignmentSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyAssignmentSummary
         PolicyEventsQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
@@ -20,6 +19,7 @@ module Azure::Profiles::Latest
         QueryFailure = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
         SummarizeResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
         PolicyStatesQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
+        OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
         PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
         PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
         OperationsListResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
@@ -62,9 +62,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def operation_display
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
-          end
           def policy_definition_summary
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyDefinitionSummary
           end
@@ -85,6 +82,9 @@ module Azure::Profiles::Latest
           end
           def policy_states_query_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
+          end
+          def operation_display
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
           end
           def policy_event
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent

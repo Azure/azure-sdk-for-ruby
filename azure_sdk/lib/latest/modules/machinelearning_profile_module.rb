@@ -10,6 +10,19 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
+        ParameterType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
+        AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
+        Resource = Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
+        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
+        ModeValueInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
+        ModuleAssetParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
+        WebServiceKeys = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
+        AssetItem = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
+        DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
+        WebServiceParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
+        MachineLearningWorkspace = Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
+        WebServiceProperties = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
+        ColumnSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnSpecification
         TableSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::TableSpecification
         ServiceInputOutputSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
         BlobLocation = Azure::MachineLearning::Mgmt::V2017_01_01::Models::BlobLocation
@@ -29,24 +42,11 @@ module Azure::Profiles::Latest
         WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
         DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
         ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
         AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
         OutputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
-        Resource = Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
-        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
-        AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
-        ParameterType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
-        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
-        ModeValueInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
-        ModuleAssetParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
-        WebServiceKeys = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
-        AssetItem = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
-        DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
-        WebServiceParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
-        MachineLearningWorkspace = Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
-        WebServiceProperties = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
-        ColumnSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnSpecification
       end
 
       class MachineLearningManagementClass
@@ -79,6 +79,45 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def parameter_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
+          end
+          def async_operation_status
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
+          end
+          def resource
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
+          end
+          def storage_account
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
+          end
+          def mode_value_info
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
+          end
+          def module_asset_parameter
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
+          end
+          def web_service_keys
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
+          end
+          def asset_item
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
+          end
+          def diagnostics_configuration
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
+          end
+          def web_service_parameter
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
+          end
+          def machine_learning_workspace
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
+          end
+          def web_service_properties
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
+          end
+          def column_specification
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnSpecification
+          end
           def table_specification
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::TableSpecification
           end
@@ -136,6 +175,9 @@ module Azure::Profiles::Latest
           def column_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
           end
+          def provisioning_state
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
+          end
           def column_format
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
           end
@@ -147,48 +189,6 @@ module Azure::Profiles::Latest
           end
           def output_port_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
-          end
-          def resource
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
-          end
-          def storage_account
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
-          end
-          def async_operation_status
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
-          end
-          def parameter_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
-          end
-          def provisioning_state
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
-          end
-          def mode_value_info
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
-          end
-          def module_asset_parameter
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
-          end
-          def web_service_keys
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
-          end
-          def asset_item
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
-          end
-          def diagnostics_configuration
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
-          end
-          def web_service_parameter
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
-          end
-          def machine_learning_workspace
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
-          end
-          def web_service_properties
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
-          end
-          def column_specification
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnSpecification
           end
         end
       end

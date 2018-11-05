@@ -7,58 +7,58 @@ require 'azure_mgmt_container_registry'
 module Azure::Profiles::Latest
   module ContainerRegistry
     module Mgmt
+      Webhooks = Azure::ContainerRegistry::Mgmt::V2017_10_01::Webhooks
       Operations = Azure::ContainerRegistry::Mgmt::V2017_10_01::Operations
       Registries = Azure::ContainerRegistry::Mgmt::V2017_10_01::Registries
       Replications = Azure::ContainerRegistry::Mgmt::V2017_10_01::Replications
-      Webhooks = Azure::ContainerRegistry::Mgmt::V2017_10_01::Webhooks
 
       module Models
-        WebhookAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
-        Webhook = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
-        WebhookStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
-        RegistryUsageUnit = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
         Request = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
         Sku = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Sku
-        Event = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
-        Resource = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Resource
-        SkuName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
-        SkuTier = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
-        ProvisioningState = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
         ReplicationUpdateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationUpdateParameters
         ReplicationListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationListResult
         RegistryNameStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryNameStatus
         OperationDisplayDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDisplayDefinition
-        OperationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDefinition
         WebhookCreateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookCreateParameters
         StorageAccountProperties = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::StorageAccountProperties
         RegistryUpdateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUpdateParameters
         RegistryPassword = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPassword
         EventInfo = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventInfo
+        OperationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDefinition
         RegenerateCredentialParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegenerateCredentialParameters
-        CallbackConfig = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::CallbackConfig
         WebhookUpdateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookUpdateParameters
         RegistryUsageListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageListResult
         WebhookListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookListResult
         RegistryNameCheckRequest = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryNameCheckRequest
         Target = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Target
-        RegistryListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
+        CallbackConfig = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::CallbackConfig
         Actor = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Actor
-        EventContent = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
+        RegistryListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
         RegistryUsage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsage
-        Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
+        EventContent = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
         EventRequestMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
         OperationListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationListResult
         EventResponseMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
         EventListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventListResult
         RegistryListCredentialsResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
         Replication = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
-        PasswordName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
+        SkuTier = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
         Registry = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
+        Resource = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Resource
+        ProvisioningState = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
+        Webhook = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
+        WebhookStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
+        Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
+        PasswordName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
+        RegistryUsageUnit = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
+        SkuName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
+        Event = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
+        WebhookAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
         Source = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
       end
 
       class ContainerRegistryManagementClass
-        attr_reader :operations, :registries, :replications, :webhooks, :configurable, :base_url, :options, :model_classes
+        attr_reader :webhooks, :operations, :registries, :replications, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -68,10 +68,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @webhooks = @client_0.webhooks
           @operations = @client_0.operations
           @registries = @client_0.registries
           @replications = @client_0.replications
-          @webhooks = @client_0.webhooks
 
           @model_classes = ModelClasses.new
         end
@@ -90,38 +90,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def webhook_action
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
-          end
-          def webhook
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
-          end
-          def webhook_status
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
-          end
-          def registry_usage_unit
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
-          end
           def request
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
           end
           def sku
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Sku
-          end
-          def event
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
-          end
-          def resource
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Resource
-          end
-          def sku_name
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
-          end
-          def sku_tier
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
-          end
-          def provisioning_state
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
           end
           def replication_update_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationUpdateParameters
@@ -134,9 +107,6 @@ module Azure::Profiles::Latest
           end
           def operation_display_definition
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDisplayDefinition
-          end
-          def operation_definition
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDefinition
           end
           def webhook_create_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookCreateParameters
@@ -153,11 +123,11 @@ module Azure::Profiles::Latest
           def event_info
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventInfo
           end
+          def operation_definition
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDefinition
+          end
           def regenerate_credential_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegenerateCredentialParameters
-          end
-          def callback_config
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::CallbackConfig
           end
           def webhook_update_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookUpdateParameters
@@ -174,20 +144,20 @@ module Azure::Profiles::Latest
           def target
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Target
           end
-          def registry_list_result
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
+          def callback_config
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::CallbackConfig
           end
           def actor
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Actor
           end
-          def event_content
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
+          def registry_list_result
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
           end
           def registry_usage
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsage
           end
-          def status
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
+          def event_content
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
           end
           def event_request_message
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
@@ -207,11 +177,41 @@ module Azure::Profiles::Latest
           def replication
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
           end
-          def password_name
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
+          def sku_tier
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
           end
           def registry
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
+          end
+          def resource
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Resource
+          end
+          def provisioning_state
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ProvisioningState
+          end
+          def webhook
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
+          end
+          def webhook_status
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
+          end
+          def status
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
+          end
+          def password_name
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
+          end
+          def registry_usage_unit
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
+          end
+          def sku_name
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
+          end
+          def event
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
+          end
+          def webhook_action
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
           end
           def source
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
