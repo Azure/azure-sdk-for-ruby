@@ -19,6 +19,7 @@ module Azure::Profiles::Latest
       Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
 
       module Models
+        PremiumMessagingRegions = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
         FilterType = Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
         ResourceNamespacePatch = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
         OperationDisplay = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationDisplay
@@ -68,7 +69,6 @@ module Azure::Profiles::Latest
         Rule = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Rule
         SqlRuleAction = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SqlRuleAction
         CheckNameAvailability = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
-        PremiumMessagingRegions = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
       end
 
       class ServiceBusManagementClass
@@ -110,6 +110,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def premium_messaging_regions
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
+          end
           def filter_type
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::FilterType
           end
@@ -256,9 +259,6 @@ module Azure::Profiles::Latest
           end
           def check_name_availability
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailability
-          end
-          def premium_messaging_regions
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegions
           end
         end
       end

@@ -10,10 +10,11 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
-        ParameterType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
         AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
+        ParameterType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
         Resource = Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
         StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
+        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         ModeValueInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
         ModuleAssetParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
         WebServiceKeys = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
@@ -42,7 +43,6 @@ module Azure::Profiles::Latest
         WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
         DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
         ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
-        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
         AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
@@ -79,17 +79,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def parameter_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
-          end
           def async_operation_status
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
+          end
+          def parameter_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
           end
           def resource
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
           end
           def storage_account
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
+          end
+          def provisioning_state
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
           end
           def mode_value_info
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
@@ -174,9 +177,6 @@ module Azure::Profiles::Latest
           end
           def column_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
-          end
-          def provisioning_state
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
           end
           def column_format
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat

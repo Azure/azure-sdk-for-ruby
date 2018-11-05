@@ -12,17 +12,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       include MsRestAzure
 
-      # @return [DateTime] The time the request started.
-      attr_accessor :start_time
-
-      # @return [DateTime] The time the request ended.
-      attr_accessor :end_time
-
-      # @return [Request] The request.
-      attr_accessor :request
-
-      # @return [Response] The response.
-      attr_accessor :response
+      # @return [RequestHistoryProperties] The request history properties.
+      attr_accessor :properties
 
 
       #
@@ -82,34 +73,12 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                   }
                 }
               },
-              start_time: {
+              properties: {
                 required: false,
-                serialized_name: 'startTime',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              end_time: {
-                required: false,
-                serialized_name: 'endTime',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              request: {
-                required: false,
-                serialized_name: 'request',
+                serialized_name: 'properties',
                 type: {
                   name: 'Composite',
-                  class_name: 'Request'
-                }
-              },
-              response: {
-                required: false,
-                serialized_name: 'response',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Response'
+                  class_name: 'RequestHistoryProperties'
                 }
               }
             }

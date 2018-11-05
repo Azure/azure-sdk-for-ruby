@@ -103,8 +103,8 @@ module Azure::Profiles::Latest
         ExportState = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportState
         ExportType = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportType
         JobStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
-        CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
         ProvisioningStates = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
+        CampaignKinds = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
       end
 
       class MobileEngagementManagementClass
@@ -404,11 +404,11 @@ module Azure::Profiles::Latest
           def job_states
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::JobStates
           end
-          def campaign_kinds
-            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
-          end
           def provisioning_states
             Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ProvisioningStates
+          end
+          def campaign_kinds
+            Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignKinds
           end
         end
       end

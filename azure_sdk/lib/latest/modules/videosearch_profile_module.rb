@@ -27,16 +27,16 @@ module Azure::Profiles::Latest
       VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
       Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+      PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
-      PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
-      Thing = Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
-      CreativeWork = Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
       SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
-      ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
+      CreativeWork = Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
-      TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
+      Thing = Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
+      ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
+      TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
       Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
@@ -127,35 +127,35 @@ module Azure::Profiles::Latest
         def error_response
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
         end
+        def pivot_suggestions
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
+        end
         def identifiable
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
         end
         def answer
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
         end
-        def pivot_suggestions
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
-        end
-        def thing
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
+        def search_results_answer
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
         end
         def creative_work
           Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
         end
-        def search_results_answer
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
+        def error_code
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
+        end
+        def thing
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
         end
         def error_sub_code
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
         end
-        def error_code
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
+        def safe_search
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
         end
         def text_format
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
-        end
-        def safe_search
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
         end
         def freshness
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
