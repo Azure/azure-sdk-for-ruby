@@ -15,8 +15,6 @@ module Azure::Profiles::Latest
       Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
 
       module Models
-        Tag = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
-        StorageAccount = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
         SearchSchemaValue = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue
         SearchGetSchemaResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchGetSchemaResponse
         SearchHighlight = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchHighlight
@@ -32,37 +30,39 @@ module Azure::Profiles::Latest
         SearchSort = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSort
         SearchError = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchError
         WorkspacePurgeBodyFilters = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBodyFilters
-        WorkspacePurgeBody = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBody
+        Tag = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
         WorkspacePurgeResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeResponse
-        WorkspacePurgeStatusResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
-        SearchMetadata = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
-        SearchSortEnum = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
+        StorageAccount = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
+        WorkspacePurgeBody = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBody
         StorageInsight = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
-        StorageInsightState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
+        SearchMetadata = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
         PurgeState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
-        SkuNameEnum = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
+        SearchSortEnum = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
+        StorageInsightState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
+        WorkspacePurgeStatusResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
         Sku = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
-        Resource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Resource
         MetricName = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::MetricName
         UsageMetric = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::UsageMetric
         WorkspaceListUsagesResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListUsagesResult
         LinkedServiceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedServiceListResult
         ManagementGroup = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ManagementGroup
         OperationDisplay = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::OperationDisplay
-        DataSourceFilter = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
-        OperationListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::OperationListResult
-        IntelligencePack = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
         WorkspaceListManagementGroupsResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
-        DataSourceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceListResult
-        LinkedService = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedService
-        DataSource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSource
-        WorkspaceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult
+        OperationListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::OperationListResult
         SharedKeys = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
+        IntelligencePack = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
+        DataSourceFilter = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
+        DataSourceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceListResult
+        WorkspaceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult
+        LinkedService = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedService
+        Resource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Resource
         ProxyResource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ProxyResource
-        Workspace = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace
         DataSourceKind = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
-        EntityStatus = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
+        DataSource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSource
+        Workspace = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace
         Operation = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Operation
+        EntityStatus = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
+        SkuNameEnum = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
       end
 
       class OperationalInsightsManagementClass
@@ -108,12 +108,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def tag
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
-          end
-          def storage_account
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
-          end
           def search_schema_value
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue
           end
@@ -159,38 +153,38 @@ module Azure::Profiles::Latest
           def workspace_purge_body_filters
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBodyFilters
           end
-          def workspace_purge_body
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBody
+          def tag
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
           end
           def workspace_purge_response
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeResponse
           end
-          def workspace_purge_status_response
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
+          def storage_account
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
           end
-          def search_metadata
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
-          end
-          def search_sort_enum
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
+          def workspace_purge_body
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBody
           end
           def storage_insight
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
           end
-          def storage_insight_state
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
+          def search_metadata
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
           end
           def purge_state
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
           end
-          def sku_name_enum
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
+          def search_sort_enum
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
+          end
+          def storage_insight_state
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
+          end
+          def workspace_purge_status_response
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
           end
           def sku
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
-          end
-          def resource
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Resource
           end
           def metric_name
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::MetricName
@@ -210,47 +204,53 @@ module Azure::Profiles::Latest
           def operation_display
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::OperationDisplay
           end
-          def data_source_filter
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
+          def workspace_list_management_groups_result
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
           end
           def operation_list_result
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::OperationListResult
           end
+          def shared_keys
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
+          end
           def intelligence_pack
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
           end
-          def workspace_list_management_groups_result
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
+          def data_source_filter
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
           end
           def data_source_list_result
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceListResult
           end
-          def linked_service
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedService
-          end
-          def data_source
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSource
-          end
           def workspace_list_result
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult
           end
-          def shared_keys
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
+          def linked_service
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedService
+          end
+          def resource
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Resource
           end
           def proxy_resource
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ProxyResource
           end
+          def data_source_kind
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
+          end
+          def data_source
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSource
+          end
           def workspace
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace
           end
-          def data_source_kind
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
+          def operation
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Operation
           end
           def entity_status
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
           end
-          def operation
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Operation
+          def sku_name_enum
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
           end
         end
       end

@@ -10,10 +10,10 @@ module Azure::Profiles::Latest
       ManagementLocks = Azure::Locks::Mgmt::V2016_09_01::ManagementLocks
 
       module Models
+        LockLevel = Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
         ManagementLockOwner = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
         ManagementLockListResult = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
         ManagementLockObject = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
-        LockLevel = Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
       end
 
       class LocksManagementClass
@@ -46,6 +46,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def lock_level
+            Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
+          end
           def management_lock_owner
             Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
           end
@@ -54,9 +57,6 @@ module Azure::Profiles::Latest
           end
           def management_lock_object
             Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
-          end
-          def lock_level
-            Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
           end
         end
       end

@@ -15,14 +15,14 @@ module Azure::Profiles::Latest
         PolicyMode = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyMode
         PolicyDefinition = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinitionListResult
-        ErrorResponse = Azure::Policy::Mgmt::V2017_06_01_preview::Models::ErrorResponse
-        PolicyDefinitionReference = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyDefinitionReference
-        PolicySetDefinition = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinition
         PolicySku = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySku
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinitionListResult
         PolicyAssignment = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyAssignment
         PolicyAssignmentListResult = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyAssignmentListResult
         PolicyType = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyType
+        ErrorResponse = Azure::Policy::Mgmt::V2017_06_01_preview::Models::ErrorResponse
+        PolicyDefinitionReference = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyDefinitionReference
+        PolicySetDefinition = Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinition
       end
 
       class PolicyManagementClass
@@ -74,15 +74,6 @@ module Azure::Profiles::Latest
           def policy_definition_list_result
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinitionListResult
           end
-          def error_response
-            Azure::Policy::Mgmt::V2017_06_01_preview::Models::ErrorResponse
-          end
-          def policy_definition_reference
-            Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyDefinitionReference
-          end
-          def policy_set_definition
-            Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinition
-          end
           def policy_sku
             Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySku
           end
@@ -97,6 +88,15 @@ module Azure::Profiles::Latest
           end
           def policy_type
             Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyType
+          end
+          def error_response
+            Azure::Policy::Mgmt::V2017_06_01_preview::Models::ErrorResponse
+          end
+          def policy_definition_reference
+            Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicyDefinitionReference
+          end
+          def policy_set_definition
+            Azure::Policy::Mgmt::V2017_06_01_preview::Models::PolicySetDefinition
           end
         end
       end

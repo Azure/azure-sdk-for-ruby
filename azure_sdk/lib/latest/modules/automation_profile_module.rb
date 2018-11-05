@@ -7,6 +7,20 @@ require 'azure_mgmt_automation'
 module Azure::Profiles::Latest
   module Automation
     module Mgmt
+      Operations = Azure::Automation::Mgmt::V2015_10_31::Operations
+      AutomationAccountOperations = Azure::Automation::Mgmt::V2015_10_31::AutomationAccountOperations
+      StatisticsOperations = Azure::Automation::Mgmt::V2015_10_31::StatisticsOperations
+      Keys = Azure::Automation::Mgmt::V2015_10_31::Keys
+      CertificateOperations = Azure::Automation::Mgmt::V2015_10_31::CertificateOperations
+      ConnectionOperations = Azure::Automation::Mgmt::V2015_10_31::ConnectionOperations
+      ConnectionTypeOperations = Azure::Automation::Mgmt::V2015_10_31::ConnectionTypeOperations
+      CredentialOperations = Azure::Automation::Mgmt::V2015_10_31::CredentialOperations
+      DscCompilationJobOperations = Azure::Automation::Mgmt::V2015_10_31::DscCompilationJobOperations
+      DscCompilationJobStream = Azure::Automation::Mgmt::V2015_10_31::DscCompilationJobStream
+      DscConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscConfigurationOperations
+      AgentRegistrationInformation = Azure::Automation::Mgmt::V2015_10_31::AgentRegistrationInformation
+      DscNodeOperations = Azure::Automation::Mgmt::V2015_10_31::DscNodeOperations
+      NodeReports = Azure::Automation::Mgmt::V2015_10_31::NodeReports
       DscNodeConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscNodeConfigurationOperations
       HybridRunbookWorkerGroupOperations = Azure::Automation::Mgmt::V2015_10_31::HybridRunbookWorkerGroupOperations
       JobOperations = Azure::Automation::Mgmt::V2015_10_31::JobOperations
@@ -25,45 +39,8 @@ module Azure::Profiles::Latest
       ScheduleOperations = Azure::Automation::Mgmt::V2015_10_31::ScheduleOperations
       VariableOperations = Azure::Automation::Mgmt::V2015_10_31::VariableOperations
       WebhookOperations = Azure::Automation::Mgmt::V2015_10_31::WebhookOperations
-      Operations = Azure::Automation::Mgmt::V2015_10_31::Operations
-      AutomationAccountOperations = Azure::Automation::Mgmt::V2015_10_31::AutomationAccountOperations
-      StatisticsOperations = Azure::Automation::Mgmt::V2015_10_31::StatisticsOperations
-      Keys = Azure::Automation::Mgmt::V2015_10_31::Keys
-      CertificateOperations = Azure::Automation::Mgmt::V2015_10_31::CertificateOperations
-      ConnectionOperations = Azure::Automation::Mgmt::V2015_10_31::ConnectionOperations
-      ConnectionTypeOperations = Azure::Automation::Mgmt::V2015_10_31::ConnectionTypeOperations
-      CredentialOperations = Azure::Automation::Mgmt::V2015_10_31::CredentialOperations
-      DscCompilationJobOperations = Azure::Automation::Mgmt::V2015_10_31::DscCompilationJobOperations
-      DscCompilationJobStream = Azure::Automation::Mgmt::V2015_10_31::DscCompilationJobStream
-      DscConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscConfigurationOperations
-      AgentRegistrationInformation = Azure::Automation::Mgmt::V2015_10_31::AgentRegistrationInformation
-      DscNodeOperations = Azure::Automation::Mgmt::V2015_10_31::DscNodeOperations
-      NodeReports = Azure::Automation::Mgmt::V2015_10_31::NodeReports
 
       module Models
-        RunAsCredentialAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::RunAsCredentialAssociationProperty
-        ActivityParameter = Azure::Automation::Mgmt::V2015_10_31::Models::ActivityParameter
-        HybridRunbookWorkerGroup = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroup
-        ActivityOutputType = Azure::Automation::Mgmt::V2015_10_31::Models::ActivityOutputType
-        HybridRunbookWorkerGroupsListResult = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupsListResult
-        ActivityListResult = Azure::Automation::Mgmt::V2015_10_31::Models::ActivityListResult
-        HybridRunbookWorkerGroupUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupUpdateParameters
-        AdvancedSchedule = Azure::Automation::Mgmt::V2015_10_31::Models::AdvancedSchedule
-        ScheduleAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleAssociationProperty
-        JobScheduleCreateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleCreateParameters
-        JobSchedule = Azure::Automation::Mgmt::V2015_10_31::Models::JobSchedule
-        RunbookDraft = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraft
-        JobScheduleListResult = Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleListResult
-        ContentSource = Azure::Automation::Mgmt::V2015_10_31::Models::ContentSource
-        LinkedWorkspace = Azure::Automation::Mgmt::V2015_10_31::Models::LinkedWorkspace
-        ModuleCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleCreateOrUpdateParameters
-        ModuleListResult = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleListResult
-        CertificateListResult = Azure::Automation::Mgmt::V2015_10_31::Models::CertificateListResult
-        ModuleUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleUpdateParameters
-        ConnectionUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionUpdateParameters
-        RunbookDraftUndoEditResult = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraftUndoEditResult
-        ConnectionTypeListResult = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeListResult
-        RunbookCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateParameters
         CredentialCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::CredentialCreateOrUpdateParameters
         RunbookCreateOrUpdateDraftProperties = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftProperties
         Activity = Azure::Automation::Mgmt::V2015_10_31::Models::Activity
@@ -108,31 +85,31 @@ module Azure::Profiles::Latest
         AutomationKeyName = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
         DscNode = Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
         DscNodeConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
-        Job = Azure::Automation::Mgmt::V2015_10_31::Models::Job
+        JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
         AutomationKeyPermissions = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
         JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
-        JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
+        RunbookProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
         RunbookTypeEnum = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
         RunbookState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookState
-        RunbookProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
-        Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
-        ContentSourceType = Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
         DscConfigurationProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
+        Connection = Azure::Automation::Mgmt::V2015_10_31::Models::Connection
+        ContentSourceType = Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
+        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
         DscConfigurationState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
         ModuleProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
-        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+        JobStreamType = Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
         ScheduleDay = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
         AgentRegistrationKeyName = Azure::Automation::Mgmt::V2015_10_31::Models::AgentRegistrationKeyName
         SubResource = Azure::Automation::Mgmt::V2015_10_31::Models::SubResource
         HttpStatusCode = Azure::Automation::Mgmt::V2015_10_31::Models::HttpStatusCode
         ScheduleFrequency = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
+        SkuNameEnum = Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
+        Job = Azure::Automation::Mgmt::V2015_10_31::Models::Job
+        Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
         Usage = Azure::Automation::Mgmt::V2015_10_31::Models::Usage
-        JobStreamType = Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
         UsageListResult = Azure::Automation::Mgmt::V2015_10_31::Models::UsageListResult
         Resource = Azure::Automation::Mgmt::V2015_10_31::Models::Resource
-        SkuNameEnum = Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
         Certificate = Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
-        Connection = Azure::Automation::Mgmt::V2015_10_31::Models::Connection
         AgentRegistration = Azure::Automation::Mgmt::V2015_10_31::Models::AgentRegistration
         AgentRegistrationRegenerateKeyParameter = Azure::Automation::Mgmt::V2015_10_31::Models::AgentRegistrationRegenerateKeyParameter
         KeyListResult = Azure::Automation::Mgmt::V2015_10_31::Models::KeyListResult
@@ -179,10 +156,33 @@ module Azure::Profiles::Latest
         ConnectionTypeCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeCreateOrUpdateParameters
         HybridRunbookWorker = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorker
         CredentialUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::CredentialUpdateParameters
+        RunAsCredentialAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::RunAsCredentialAssociationProperty
+        ActivityParameter = Azure::Automation::Mgmt::V2015_10_31::Models::ActivityParameter
+        HybridRunbookWorkerGroup = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroup
+        ActivityOutputType = Azure::Automation::Mgmt::V2015_10_31::Models::ActivityOutputType
+        HybridRunbookWorkerGroupsListResult = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupsListResult
+        ActivityListResult = Azure::Automation::Mgmt::V2015_10_31::Models::ActivityListResult
+        HybridRunbookWorkerGroupUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupUpdateParameters
+        AdvancedSchedule = Azure::Automation::Mgmt::V2015_10_31::Models::AdvancedSchedule
+        ScheduleAssociationProperty = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleAssociationProperty
+        JobScheduleCreateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleCreateParameters
+        JobSchedule = Azure::Automation::Mgmt::V2015_10_31::Models::JobSchedule
+        RunbookDraft = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraft
+        JobScheduleListResult = Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleListResult
+        ContentSource = Azure::Automation::Mgmt::V2015_10_31::Models::ContentSource
+        LinkedWorkspace = Azure::Automation::Mgmt::V2015_10_31::Models::LinkedWorkspace
+        ModuleCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleCreateOrUpdateParameters
+        ModuleListResult = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleListResult
+        CertificateListResult = Azure::Automation::Mgmt::V2015_10_31::Models::CertificateListResult
+        ModuleUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleUpdateParameters
+        ConnectionUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionUpdateParameters
+        RunbookDraftUndoEditResult = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraftUndoEditResult
+        ConnectionTypeListResult = Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeListResult
+        RunbookCreateOrUpdateParameters = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateParameters
       end
 
       class AutomationManagementClass
-        attr_reader :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :usages, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :schedule_operations, :variable_operations, :webhook_operations, :operations, :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_compilation_job_stream, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_compilation_job_stream, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :usages, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :schedule_operations, :variable_operations, :webhook_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -192,6 +192,20 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
+          @automation_account_operations = @client_0.automation_account_operations
+          @statistics_operations = @client_0.statistics_operations
+          @keys = @client_0.keys
+          @certificate_operations = @client_0.certificate_operations
+          @connection_operations = @client_0.connection_operations
+          @connection_type_operations = @client_0.connection_type_operations
+          @credential_operations = @client_0.credential_operations
+          @dsc_compilation_job_operations = @client_0.dsc_compilation_job_operations
+          @dsc_compilation_job_stream = @client_0.dsc_compilation_job_stream
+          @dsc_configuration_operations = @client_0.dsc_configuration_operations
+          @agent_registration_information = @client_0.agent_registration_information
+          @dsc_node_operations = @client_0.dsc_node_operations
+          @node_reports = @client_0.node_reports
           @dsc_node_configuration_operations = @client_0.dsc_node_configuration_operations
           @hybrid_runbook_worker_group_operations = @client_0.hybrid_runbook_worker_group_operations
           @job_operations = @client_0.job_operations
@@ -210,20 +224,6 @@ module Azure::Profiles::Latest
           @schedule_operations = @client_0.schedule_operations
           @variable_operations = @client_0.variable_operations
           @webhook_operations = @client_0.webhook_operations
-          @operations = @client_0.operations
-          @automation_account_operations = @client_0.automation_account_operations
-          @statistics_operations = @client_0.statistics_operations
-          @keys = @client_0.keys
-          @certificate_operations = @client_0.certificate_operations
-          @connection_operations = @client_0.connection_operations
-          @connection_type_operations = @client_0.connection_type_operations
-          @credential_operations = @client_0.credential_operations
-          @dsc_compilation_job_operations = @client_0.dsc_compilation_job_operations
-          @dsc_compilation_job_stream = @client_0.dsc_compilation_job_stream
-          @dsc_configuration_operations = @client_0.dsc_configuration_operations
-          @agent_registration_information = @client_0.agent_registration_information
-          @dsc_node_operations = @client_0.dsc_node_operations
-          @node_reports = @client_0.node_reports
 
           @model_classes = ModelClasses.new
         end
@@ -242,75 +242,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def run_as_credential_association_property
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunAsCredentialAssociationProperty
-          end
-          def activity_parameter
-            Azure::Automation::Mgmt::V2015_10_31::Models::ActivityParameter
-          end
-          def hybrid_runbook_worker_group
-            Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroup
-          end
-          def activity_output_type
-            Azure::Automation::Mgmt::V2015_10_31::Models::ActivityOutputType
-          end
-          def hybrid_runbook_worker_groups_list_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupsListResult
-          end
-          def activity_list_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::ActivityListResult
-          end
-          def hybrid_runbook_worker_group_update_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupUpdateParameters
-          end
-          def advanced_schedule
-            Azure::Automation::Mgmt::V2015_10_31::Models::AdvancedSchedule
-          end
-          def schedule_association_property
-            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleAssociationProperty
-          end
-          def job_schedule_create_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleCreateParameters
-          end
-          def job_schedule
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobSchedule
-          end
-          def runbook_draft
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraft
-          end
-          def job_schedule_list_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleListResult
-          end
-          def content_source
-            Azure::Automation::Mgmt::V2015_10_31::Models::ContentSource
-          end
-          def linked_workspace
-            Azure::Automation::Mgmt::V2015_10_31::Models::LinkedWorkspace
-          end
-          def module_create_or_update_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleCreateOrUpdateParameters
-          end
-          def module_list_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleListResult
-          end
-          def certificate_list_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::CertificateListResult
-          end
-          def module_update_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleUpdateParameters
-          end
-          def connection_update_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionUpdateParameters
-          end
-          def runbook_draft_undo_edit_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraftUndoEditResult
-          end
-          def connection_type_list_result
-            Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeListResult
-          end
-          def runbook_create_or_update_parameters
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateParameters
-          end
           def credential_create_or_update_parameters
             Azure::Automation::Mgmt::V2015_10_31::Models::CredentialCreateOrUpdateParameters
           end
@@ -443,8 +374,8 @@ module Azure::Profiles::Latest
           def dsc_node_configuration
             Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
           end
-          def job
-            Azure::Automation::Mgmt::V2015_10_31::Models::Job
+          def job_status
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
           end
           def automation_key_permissions
             Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
@@ -452,8 +383,8 @@ module Azure::Profiles::Latest
           def job_provisioning_state
             Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
           end
-          def job_status
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
+          def runbook_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
           end
           def runbook_type_enum
             Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
@@ -461,17 +392,17 @@ module Azure::Profiles::Latest
           def runbook_state
             Azure::Automation::Mgmt::V2015_10_31::Models::RunbookState
           end
-          def runbook_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
+          def dsc_configuration_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
           end
-          def sku
-            Azure::Automation::Mgmt::V2015_10_31::Models::Sku
+          def connection
+            Azure::Automation::Mgmt::V2015_10_31::Models::Connection
           end
           def content_source_type
             Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
           end
-          def dsc_configuration_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
+          def automation_account_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
           end
           def dsc_configuration_state
             Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
@@ -479,8 +410,8 @@ module Azure::Profiles::Latest
           def module_provisioning_state
             Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
           end
-          def automation_account_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+          def job_stream_type
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
           end
           def schedule_day
             Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
@@ -497,11 +428,17 @@ module Azure::Profiles::Latest
           def schedule_frequency
             Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
           end
+          def sku_name_enum
+            Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
+          end
+          def job
+            Azure::Automation::Mgmt::V2015_10_31::Models::Job
+          end
+          def sku
+            Azure::Automation::Mgmt::V2015_10_31::Models::Sku
+          end
           def usage
             Azure::Automation::Mgmt::V2015_10_31::Models::Usage
-          end
-          def job_stream_type
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
           end
           def usage_list_result
             Azure::Automation::Mgmt::V2015_10_31::Models::UsageListResult
@@ -509,14 +446,8 @@ module Azure::Profiles::Latest
           def resource
             Azure::Automation::Mgmt::V2015_10_31::Models::Resource
           end
-          def sku_name_enum
-            Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
-          end
           def certificate
             Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
-          end
-          def connection
-            Azure::Automation::Mgmt::V2015_10_31::Models::Connection
           end
           def agent_registration
             Azure::Automation::Mgmt::V2015_10_31::Models::AgentRegistration
@@ -655,6 +586,75 @@ module Azure::Profiles::Latest
           end
           def credential_update_parameters
             Azure::Automation::Mgmt::V2015_10_31::Models::CredentialUpdateParameters
+          end
+          def run_as_credential_association_property
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunAsCredentialAssociationProperty
+          end
+          def activity_parameter
+            Azure::Automation::Mgmt::V2015_10_31::Models::ActivityParameter
+          end
+          def hybrid_runbook_worker_group
+            Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroup
+          end
+          def activity_output_type
+            Azure::Automation::Mgmt::V2015_10_31::Models::ActivityOutputType
+          end
+          def hybrid_runbook_worker_groups_list_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupsListResult
+          end
+          def activity_list_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::ActivityListResult
+          end
+          def hybrid_runbook_worker_group_update_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::HybridRunbookWorkerGroupUpdateParameters
+          end
+          def advanced_schedule
+            Azure::Automation::Mgmt::V2015_10_31::Models::AdvancedSchedule
+          end
+          def schedule_association_property
+            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleAssociationProperty
+          end
+          def job_schedule_create_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleCreateParameters
+          end
+          def job_schedule
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobSchedule
+          end
+          def runbook_draft
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraft
+          end
+          def job_schedule_list_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobScheduleListResult
+          end
+          def content_source
+            Azure::Automation::Mgmt::V2015_10_31::Models::ContentSource
+          end
+          def linked_workspace
+            Azure::Automation::Mgmt::V2015_10_31::Models::LinkedWorkspace
+          end
+          def module_create_or_update_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleCreateOrUpdateParameters
+          end
+          def module_list_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleListResult
+          end
+          def certificate_list_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::CertificateListResult
+          end
+          def module_update_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleUpdateParameters
+          end
+          def connection_update_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionUpdateParameters
+          end
+          def runbook_draft_undo_edit_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookDraftUndoEditResult
+          end
+          def connection_type_list_result
+            Azure::Automation::Mgmt::V2015_10_31::Models::ConnectionTypeListResult
+          end
+          def runbook_create_or_update_parameters
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateParameters
           end
         end
       end

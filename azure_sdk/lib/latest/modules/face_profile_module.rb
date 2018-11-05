@@ -44,21 +44,21 @@ module Azure::Profiles::Latest
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
       Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
-      Person = Azure::CognitiveServices::Face::V1_0::Models::Person
+      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
+      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
+      Person = Azure::CognitiveServices::Face::V1_0::Models::Person
+      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
-      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
-      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
-      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       AzureRegions = Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
+      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
     end
 
     class FaceDataClass
@@ -190,11 +190,20 @@ module Azure::Profiles::Latest
         def blur
           Azure::CognitiveServices::Face::V1_0::Models::Blur
         end
-        def person
-          Azure::CognitiveServices::Face::V1_0::Models::Person
+        def person_group
+          Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
+        end
+        def face_list
+          Azure::CognitiveServices::Face::V1_0::Models::FaceList
         end
         def glasses_type
           Azure::CognitiveServices::Face::V1_0::Models::GlassesType
+        end
+        def person
+          Azure::CognitiveServices::Face::V1_0::Models::Person
+        end
+        def accessory_type
+          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
         end
         def hair_color_type
           Azure::CognitiveServices::Face::V1_0::Models::HairColorType
@@ -208,20 +217,11 @@ module Azure::Profiles::Latest
         def exposure_level
           Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
-        def accessory_type
-          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
-        end
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
-        def face_list
-          Azure::CognitiveServices::Face::V1_0::Models::FaceList
-        end
-        def person_group
-          Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
-        end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
+        def find_similar_match_mode
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def training_status_type
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
@@ -229,11 +229,11 @@ module Azure::Profiles::Latest
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
         end
-        def find_similar_match_mode
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
-        end
         def azure_regions
           Azure::CognitiveServices::Face::V1_0::Models::AzureRegions
+        end
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
         end
       end
     end
