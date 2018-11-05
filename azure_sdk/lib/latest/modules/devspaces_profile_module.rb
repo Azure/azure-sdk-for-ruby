@@ -11,23 +11,23 @@ module Azure::Profiles::Latest
       Operations = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Operations
 
       module Models
+        OrchestratorSpecificConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
+        ResourceProviderOperationDefinition = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
+        ResourceProviderOperationList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationList
+        ControllerConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetails
+        ControllerList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerList
         Controller = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
-        ProvisioningState = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
+        ErrorDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
+        Resource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
         SkuTier = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
+        KubernetesConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
+        ProvisioningState = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
         Sku = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Sku
         ErrorResponse = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
         TrackedResource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
         ControllerConnectionDetailsList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
         ControllerUpdateParameters = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
         ResourceProviderOperationDisplay = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
-        OrchestratorSpecificConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
-        ResourceProviderOperationDefinition = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
-        ResourceProviderOperationList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationList
-        ControllerConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetails
-        ControllerList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerList
-        ErrorDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
-        Resource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
-        KubernetesConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
       end
 
       class DevSpacesManagementClass
@@ -61,14 +61,38 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def orchestrator_specific_connection_details
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
+          end
+          def resource_provider_operation_definition
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
+          end
+          def resource_provider_operation_list
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationList
+          end
+          def controller_connection_details
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetails
+          end
+          def controller_list
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerList
+          end
           def controller
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
           end
-          def provisioning_state
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
+          def error_details
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
+          end
+          def resource
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
           end
           def sku_tier
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
+          end
+          def kubernetes_connection_details
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
+          end
+          def provisioning_state
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
           end
           def sku
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Sku
@@ -87,30 +111,6 @@ module Azure::Profiles::Latest
           end
           def resource_provider_operation_display
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
-          end
-          def orchestrator_specific_connection_details
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
-          end
-          def resource_provider_operation_definition
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
-          end
-          def resource_provider_operation_list
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationList
-          end
-          def controller_connection_details
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetails
-          end
-          def controller_list
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerList
-          end
-          def error_details
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
-          end
-          def resource
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
-          end
-          def kubernetes_connection_details
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
           end
         end
       end

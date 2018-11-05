@@ -7,6 +7,9 @@ require 'azure_mgmt_consumption'
 module Azure::Profiles::Latest
   module Consumption
     module Mgmt
+      PriceSheet = Azure::Consumption::Mgmt::V2018_06_30::PriceSheet
+      CostTags = Azure::Consumption::Mgmt::V2018_06_30::CostTags
+      Forecasts = Azure::Consumption::Mgmt::V2018_06_30::Forecasts
       Operations = Azure::Consumption::Mgmt::V2018_06_30::Operations
       Tags = Azure::Consumption::Mgmt::V2018_06_30::Tags
       UsageDetails = Azure::Consumption::Mgmt::V2018_06_30::UsageDetails
@@ -16,13 +19,8 @@ module Azure::Profiles::Latest
       ReservationsDetails = Azure::Consumption::Mgmt::V2018_06_30::ReservationsDetails
       ReservationRecommendations = Azure::Consumption::Mgmt::V2018_06_30::ReservationRecommendations
       Budgets = Azure::Consumption::Mgmt::V2018_06_30::Budgets
-      PriceSheet = Azure::Consumption::Mgmt::V2018_06_30::PriceSheet
-      CostTags = Azure::Consumption::Mgmt::V2018_06_30::CostTags
-      Forecasts = Azure::Consumption::Mgmt::V2018_06_30::Forecasts
 
       module Models
-        ErrorResponse = Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
-        ProxyResource = Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
         MeterDetails = Azure::Consumption::Mgmt::V2018_06_30::Models::MeterDetails
         CurrentSpend = Azure::Consumption::Mgmt::V2018_06_30::Models::CurrentSpend
         UsageDetailsListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::UsageDetailsListResult
@@ -50,27 +48,29 @@ module Azure::Profiles::Latest
         ReservationDetail = Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationDetail
         Budget = Azure::Consumption::Mgmt::V2018_06_30::Models::Budget
         CostTag = Azure::Consumption::Mgmt::V2018_06_30::Models::CostTag
-        Tag = Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
         PriceSheetResult = Azure::Consumption::Mgmt::V2018_06_30::Models::PriceSheetResult
+        Forecast = Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
         BillingFrequency = Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
-        TagsResult = Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
+        CategoryType = Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
         ErrorDetails = Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorDetails
         TimeGrainType = Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
-        CategoryType = Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
-        Forecast = Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
-        Resource = Azure::Consumption::Mgmt::V2018_06_30::Models::Resource
         Grain = Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
+        TagsResult = Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
+        Resource = Azure::Consumption::Mgmt::V2018_06_30::Models::Resource
+        Bound = Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
         ChargeType = Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
         OperatorType = Azure::Consumption::Mgmt::V2018_06_30::Models::OperatorType
         Datagrain = Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
-        Bound = Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
         OperationDisplay = Azure::Consumption::Mgmt::V2018_06_30::Models::OperationDisplay
         Operation = Azure::Consumption::Mgmt::V2018_06_30::Models::Operation
         OperationListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::OperationListResult
+        Tag = Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
+        ErrorResponse = Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
+        ProxyResource = Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
       end
 
       class ConsumptionManagementClass
-        attr_reader :operations, :tags, :usage_details, :marketplaces, :balances, :reservations_summaries, :reservations_details, :reservation_recommendations, :budgets, :price_sheet, :cost_tags, :forecasts, :configurable, :base_url, :options, :model_classes
+        attr_reader :price_sheet, :cost_tags, :forecasts, :operations, :tags, :usage_details, :marketplaces, :balances, :reservations_summaries, :reservations_details, :reservation_recommendations, :budgets, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -80,6 +80,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @price_sheet = @client_0.price_sheet
+          @cost_tags = @client_0.cost_tags
+          @forecasts = @client_0.forecasts
           @operations = @client_0.operations
           @tags = @client_0.tags
           @usage_details = @client_0.usage_details
@@ -89,9 +92,6 @@ module Azure::Profiles::Latest
           @reservations_details = @client_0.reservations_details
           @reservation_recommendations = @client_0.reservation_recommendations
           @budgets = @client_0.budgets
-          @price_sheet = @client_0.price_sheet
-          @cost_tags = @client_0.cost_tags
-          @forecasts = @client_0.forecasts
 
           @model_classes = ModelClasses.new
         end
@@ -110,12 +110,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def error_response
-            Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
-          end
-          def proxy_resource
-            Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
-          end
           def meter_details
             Azure::Consumption::Mgmt::V2018_06_30::Models::MeterDetails
           end
@@ -197,17 +191,17 @@ module Azure::Profiles::Latest
           def cost_tag
             Azure::Consumption::Mgmt::V2018_06_30::Models::CostTag
           end
-          def tag
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
-          end
           def price_sheet_result
             Azure::Consumption::Mgmt::V2018_06_30::Models::PriceSheetResult
+          end
+          def forecast
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
           end
           def billing_frequency
             Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
           end
-          def tags_result
-            Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
+          def category_type
+            Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
           end
           def error_details
             Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorDetails
@@ -215,17 +209,17 @@ module Azure::Profiles::Latest
           def time_grain_type
             Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
           end
-          def category_type
-            Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
+          def grain
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
           end
-          def forecast
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
+          def tags_result
+            Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
           end
           def resource
             Azure::Consumption::Mgmt::V2018_06_30::Models::Resource
           end
-          def grain
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
+          def bound
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
           end
           def charge_type
             Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
@@ -236,9 +230,6 @@ module Azure::Profiles::Latest
           def datagrain
             Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
           end
-          def bound
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
-          end
           def operation_display
             Azure::Consumption::Mgmt::V2018_06_30::Models::OperationDisplay
           end
@@ -247,6 +238,15 @@ module Azure::Profiles::Latest
           end
           def operation_list_result
             Azure::Consumption::Mgmt::V2018_06_30::Models::OperationListResult
+          end
+          def tag
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
+          end
+          def error_response
+            Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
+          end
+          def proxy_resource
+            Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
           end
         end
       end
