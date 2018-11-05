@@ -9,6 +9,19 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+      DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+      DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
+      ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+      DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+      ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
+      DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
+      EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
+      SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+      SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
       SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
       ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
       StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
@@ -28,19 +41,6 @@ module Azure::Profiles::Latest
       ContainerRegistryImagePushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
       ContainerRegistryImageDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
       JobState = Azure::EventGrid::V2018_01_01::Models::JobState
-      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
-      DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
-      DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
-      ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-      DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
-      ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
-      DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
-      EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
-      SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
-      SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
     end
 
     class EventGridDataClass
@@ -72,6 +72,45 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def device_twin_metadata
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+        end
+        def device_twin_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+        end
+        def storage_blob_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+        end
+        def device_twin_info_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+        end
+        def resource_write_success_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+        end
+        def device_twin_info_x509_thumbprint
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
+        end
+        def resource_write_cancel_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+        end
+        def device_twin_info
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+        end
+        def resource_delete_failure_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
+        end
+        def device_life_cycle_event_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
+        end
+        def event_grid_event
+          Azure::EventGrid::V2018_01_01::Models::EventGridEvent
+        end
+        def subscription_validation_event_data
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+        end
+        def subscription_validation_response
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
+        end
         def subscription_deleted_event_data
           Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
         end
@@ -129,45 +168,6 @@ module Azure::Profiles::Latest
         def job_state
           Azure::EventGrid::V2018_01_01::Models::JobState
         end
-        def device_twin_metadata
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-        end
-        def device_twin_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-        end
-        def storage_blob_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
-        end
-        def device_twin_info_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-        end
-        def resource_write_success_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
-        end
-        def device_twin_info_x509_thumbprint
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
-        end
-        def resource_write_cancel_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-        end
-        def device_twin_info
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
-        end
-        def resource_delete_failure_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
-        end
-        def device_life_cycle_event_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
-        end
-        def event_grid_event
-          Azure::EventGrid::V2018_01_01::Models::EventGridEvent
-        end
-        def subscription_validation_event_data
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
-        end
-        def subscription_validation_response
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-        end
       end
     end
     module Mgmt
@@ -177,8 +177,6 @@ module Azure::Profiles::Latest
       Operations = Azure::EventGrid::Mgmt::V2018_05_01_preview::Operations
 
       module Models
-        TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
-        Resource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
         EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFilter
         InputSchemaMapping = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchemaMapping
         DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::DeadLetterDestination
@@ -199,6 +197,7 @@ module Azure::Profiles::Latest
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageBlobDeadLetterDestination
         WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::WebHookEventSubscriptionDestination
         EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventHubEventSubscriptionDestination
+        Resource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
         StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageQueueEventSubscriptionDestination
         HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::HybridConnectionEventSubscriptionDestination
         EventSubscription = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscription
@@ -207,12 +206,13 @@ module Azure::Profiles::Latest
         Operation = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Operation
         TrackedResource = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TrackedResource
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationsListResult
-        EventType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
         TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
         EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
-        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
+        EventType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
         InputSchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
+        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
+        TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
         ResourceRegionType = Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::ResourceRegionType
       end
 
@@ -249,12 +249,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def topic_type_provisioning_state
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
-          end
-          def resource
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
-          end
           def event_subscription_filter
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionFilter
           end
@@ -315,6 +309,9 @@ module Azure::Profiles::Latest
           def event_hub_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventHubEventSubscriptionDestination
           end
+          def resource
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::Resource
+          end
           def storage_queue_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::StorageQueueEventSubscriptionDestination
           end
@@ -339,23 +336,26 @@ module Azure::Profiles::Latest
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::OperationsListResult
           end
-          def event_type
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
-          end
           def topic_type_info
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeInfo
           end
           def event_subscription_provisioning_state
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventSubscriptionProvisioningState
           end
-          def event_delivery_schema
-            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
+          def event_type
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventType
           end
           def topic_provisioning_state
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicProvisioningState
           end
           def input_schema
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::InputSchema
+          end
+          def event_delivery_schema
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::EventDeliverySchema
+          end
+          def topic_type_provisioning_state
+            Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::TopicTypeProvisioningState
           end
           def resource_region_type
             Azure::EventGrid::Mgmt::V2018_05_01_preview::Models::ResourceRegionType

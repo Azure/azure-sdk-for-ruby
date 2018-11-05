@@ -11,11 +11,11 @@ module Azure::Profiles::V2017_03_09
       PolicyDefinitions = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyDefinitions
 
       module Models
+        PolicyType = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
         PolicyAssignment = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
         PolicyDefinition = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
         PolicyAssignmentListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
-        PolicyType = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
       end
 
       class PolicyManagementClass
@@ -49,6 +49,9 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def policy_type
+            Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
+          end
           def policy_assignment
             Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
           end
@@ -60,9 +63,6 @@ module Azure::Profiles::V2017_03_09
           end
           def policy_definition_list_result
             Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
-          end
-          def policy_type
-            Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
           end
         end
       end

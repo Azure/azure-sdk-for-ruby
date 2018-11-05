@@ -12,18 +12,18 @@ module Azure::Profiles::Latest
       Operations = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Operations
 
       module Models
+        ErrorDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
         OperationDisplay = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
         OperationListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationListResult
         ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupListResult
         ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
-        ManagementGroup = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
         ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
-        ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
-        ErrorResponse = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
-        CreateGroupRequest = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
         ManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
+        ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
+        CreateGroupRequest = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
+        ManagementGroup = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
+        ErrorResponse = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
         Operation = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
-        ErrorDetails = Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
       end
 
       class ResourcesManagementManagementClass
@@ -58,6 +58,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_details
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
+          end
           def operation_display
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::OperationDisplay
           end
@@ -70,29 +73,26 @@ module Azure::Profiles::Latest
           def parent_group_info
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ParentGroupInfo
           end
-          def management_group
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
-          end
           def management_group_details
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupDetails
-          end
-          def management_group_info
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
-          end
-          def error_response
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
-          end
-          def create_group_request
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
           end
           def management_group_child_info
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupChildInfo
           end
+          def management_group_info
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroupInfo
+          end
+          def create_group_request
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::CreateGroupRequest
+          end
+          def management_group
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ManagementGroup
+          end
+          def error_response
+            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorResponse
+          end
           def operation
             Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::Operation
-          end
-          def error_details
-            Azure::ResourcesManagement::Mgmt::V2017_11_01_preview::Models::ErrorDetails
           end
         end
       end

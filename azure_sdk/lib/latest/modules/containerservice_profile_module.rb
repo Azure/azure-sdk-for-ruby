@@ -10,22 +10,22 @@ module Azure::Profiles::Latest
       ContainerServices = Azure::ContainerService::Mgmt::V2017_01_31::ContainerServices
 
       module Models
+        ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
+        ContainerServiceDiagnosticsProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
+        ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
+        ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
+        ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
+        ContainerServiceVMSizeTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
         ContainerService = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerService
         ContainerServiceSshPublicKey = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshPublicKey
         ContainerServiceSshConfiguration = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshConfiguration
+        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
         ContainerServiceServicePrincipalProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceServicePrincipalProfile
         ContainerServiceLinuxProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceLinuxProfile
         ContainerServiceMasterProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceMasterProfile
         ContainerServiceVMDiagnostics = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMDiagnostics
         ContainerServiceWindowsProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceWindowsProfile
-        ContainerServiceDiagnosticsProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
         ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorProfile
-        ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
-        ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
-        Resource = Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
-        ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
-        ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
-        ContainerServiceVMSizeTypes = Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
       end
 
       class ContainerServiceManagementClass
@@ -58,6 +58,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def container_service_agent_pool_profile
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
+          end
+          def container_service_diagnostics_profile
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
+          end
+          def container_service_custom_profile
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
+          end
+          def container_service_list_result
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
+          end
+          def container_service_orchestrator_types
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
+          end
+          def container_service_vmsize_types
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
+          end
           def container_service
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerService
           end
@@ -66,6 +84,9 @@ module Azure::Profiles::Latest
           end
           def container_service_ssh_configuration
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceSshConfiguration
+          end
+          def resource
+            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
           end
           def container_service_service_principal_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceServicePrincipalProfile
@@ -82,29 +103,8 @@ module Azure::Profiles::Latest
           def container_service_windows_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceWindowsProfile
           end
-          def container_service_diagnostics_profile
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceDiagnosticsProfile
-          end
           def container_service_orchestrator_profile
             Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorProfile
-          end
-          def container_service_agent_pool_profile
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceAgentPoolProfile
-          end
-          def container_service_custom_profile
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceCustomProfile
-          end
-          def resource
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::Resource
-          end
-          def container_service_list_result
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceListResult
-          end
-          def container_service_orchestrator_types
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceOrchestratorTypes
-          end
-          def container_service_vmsize_types
-            Azure::ContainerService::Mgmt::V2017_01_31::Models::ContainerServiceVMSizeTypes
           end
         end
       end

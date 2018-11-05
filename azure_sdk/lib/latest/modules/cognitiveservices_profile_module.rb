@@ -7,11 +7,20 @@ require 'azure_mgmt_cognitive_services'
 module Azure::Profiles::Latest
   module CognitiveServices
     module Mgmt
+      Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
       CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
       Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
-      Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
 
       module Models
+        CheckSkuAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
+        CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
+        CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
+        KeyName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
+        Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
+        SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
+        SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
+        ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
+        Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
         CognitiveServicesAccountEnumerateSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
         ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
         CognitiveServicesAccountCreateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
@@ -22,22 +31,13 @@ module Azure::Profiles::Latest
         CognitiveServicesResourceAndSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
         OperationEntityListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
         CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
+        Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
         CheckSkuAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
         RegenerateKeyParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
-        CheckSkuAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
-        CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
-        CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
-        Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
-        KeyName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
-        SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
-        SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-        Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
-        Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
-        ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
       end
 
       class CognitiveServicesManagementClass
-        attr_reader :check_sku_availability, :operations, :accounts, :configurable, :base_url, :options, :model_classes
+        attr_reader :accounts, :check_sku_availability, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -47,9 +47,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @accounts = @client_0.accounts
           @check_sku_availability = @client_0.check_sku_availability
           @operations = @client_0.operations
-          @accounts = @client_0.accounts
 
           @model_classes = ModelClasses.new
         end
@@ -68,6 +68,33 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_sku_availability_result
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
+          end
+          def cognitive_services_account_list_result
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
+          end
+          def check_sku_availability_result_list
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
+          end
+          def key_name
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
+          end
+          def kind
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
+          end
+          def sku_name
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
+          end
+          def sku_tier
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
+          end
+          def provisioning_state
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
+          end
+          def sku
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
+          end
           def cognitive_services_account_enumerate_skus_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
           end
@@ -98,41 +125,14 @@ module Azure::Profiles::Latest
           def cognitive_services_account_update_parameters
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
           end
+          def error
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
+          end
           def check_sku_availability_parameter
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
           end
           def regenerate_key_parameters
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
-          end
-          def check_sku_availability_result
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
-          end
-          def cognitive_services_account_list_result
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
-          end
-          def check_sku_availability_result_list
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
-          end
-          def sku
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
-          end
-          def key_name
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
-          end
-          def sku_name
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
-          end
-          def sku_tier
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-          end
-          def error
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
-          end
-          def kind
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
-          end
-          def provisioning_state
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
           end
         end
       end
