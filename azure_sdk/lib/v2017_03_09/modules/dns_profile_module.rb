@@ -19,10 +19,10 @@ module Azure::Profiles::V2017_03_09
         MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
         SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-        CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
-        RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
-        ZoneListResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
         ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
+        RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
+        CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+        ZoneListResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
         TxtRecord = Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
         NsRecord = Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
         SoaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
@@ -90,17 +90,17 @@ module Azure::Profiles::V2017_03_09
           def srv_record
             Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
           end
-          def cname_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+          def zone_delete_result
+            Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
           end
           def record_set
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
           end
+          def cname_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+          end
           def zone_list_result
             Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
-          end
-          def zone_delete_result
-            Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
           end
           def txt_record
             Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord

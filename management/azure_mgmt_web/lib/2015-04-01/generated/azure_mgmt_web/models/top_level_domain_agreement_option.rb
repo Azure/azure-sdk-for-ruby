@@ -29,7 +29,6 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TopLevelDomainAgreementOption',
           type: {
@@ -37,7 +36,6 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'TopLevelDomainAgreementOption',
             model_properties: {
               include_privacy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'includePrivacy',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               for_transfer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'forTransfer',
                 type: {

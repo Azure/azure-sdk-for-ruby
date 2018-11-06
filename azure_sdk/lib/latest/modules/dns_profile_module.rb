@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
+        CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
         ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
         Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
         SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
@@ -33,7 +34,6 @@ module Azure::Profiles::Latest
         AzureEntityResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
-        CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
       end
 
       class DnsManagementClass
@@ -67,6 +67,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def caa_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
+          end
           def zone_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
           end
@@ -132,9 +135,6 @@ module Azure::Profiles::Latest
           end
           def zone_update
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
-          end
-          def caa_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
           end
         end
       end
