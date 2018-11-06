@@ -190,12 +190,12 @@ namespace :arm do
   task :regen_sdk_versions, [:gem_name] => :clean_generated do |_, args|
     json = get_config_file
     each_gem do |dir| # dir corresponds to each azure_* folder
-      if !should_i_continue(args[:gem_name], dir)
+      if REGEN_EXCLUDES.include?(dir.to_s)
+        update_gem_version('lib/azure_sdk/version.rb', gem_versions['rollup'][dir])
         next
       end
 
-      if REGEN_EXCLUDES.include?(dir.to_s)
-        update_gem_version('lib/azure_sdk/version.rb', gem_versions['rollup'][dir])
+      if !should_i_continue(args[:gem_name], dir)
         next
       end
 
