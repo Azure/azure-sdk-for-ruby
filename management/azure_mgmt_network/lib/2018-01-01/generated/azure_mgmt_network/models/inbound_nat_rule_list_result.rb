@@ -58,7 +58,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatRuleListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'InboundNatRuleListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InboundNatRuleElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

@@ -24,7 +24,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FlowLogStatusParameters',
           type: {
@@ -32,7 +31,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'FlowLogStatusParameters',
             model_properties: {
               target_resource_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {

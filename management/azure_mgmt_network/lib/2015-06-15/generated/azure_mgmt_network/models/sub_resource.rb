@@ -22,7 +22,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SubResource',
           type: {
@@ -30,7 +29,6 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'SubResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

@@ -190,9 +190,9 @@ module Azure::Profiles::Latest
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
-      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
+      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
 
       module Models
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
@@ -209,10 +209,7 @@ module Azure::Profiles::Latest
         JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonFieldWithDefault
         RetryPolicy = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::RetryPolicy
         JsonField = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonField
-        Resource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
-        OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
         DomainsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainsListResult
-        Operation = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
         EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionDestination
         OperationInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationInfo
         DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
@@ -242,7 +239,6 @@ module Azure::Profiles::Latest
         HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::HybridConnectionEventSubscriptionDestination
         EventSubscription = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscription
         JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonInputSchemaMapping
-        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
         Topic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Topic
         EventType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventType
         TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeInfo
@@ -253,10 +249,14 @@ module Azure::Profiles::Latest
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
         ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
         TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
+        Resource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
+        Operation = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
+        OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
+        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
       end
 
       class EventGridManagementClass
-        attr_reader :domains, :domain_topics, :event_subscriptions, :operations, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
+        attr_reader :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -269,9 +269,9 @@ module Azure::Profiles::Latest
           @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
-          @operations = @client_0.operations
           @topics = @client_0.topics
           @topic_types = @client_0.topic_types
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -332,17 +332,8 @@ module Azure::Profiles::Latest
           def json_field
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonField
           end
-          def resource
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
-          end
-          def operations_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-          end
           def domains_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainsListResult
-          end
-          def operation
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
           end
           def event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionDestination
@@ -431,9 +422,6 @@ module Azure::Profiles::Latest
           def json_input_schema_mapping
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonInputSchemaMapping
           end
-          def tracked_resource
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
-          end
           def topic
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Topic
           end
@@ -463,6 +451,18 @@ module Azure::Profiles::Latest
           end
           def topic_type_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
+          end
+          def resource
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
+          end
+          def operation
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
+          end
+          def operations_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
+          end
+          def tracked_resource
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
           end
         end
       end

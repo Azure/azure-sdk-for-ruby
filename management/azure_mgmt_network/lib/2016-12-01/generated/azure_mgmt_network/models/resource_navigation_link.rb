@@ -37,7 +37,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceNavigationLink',
           type: {
@@ -45,7 +44,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ResourceNavigationLink',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               linked_resource_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.linkedResourceType',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.link',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -78,7 +73,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -86,7 +80,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
