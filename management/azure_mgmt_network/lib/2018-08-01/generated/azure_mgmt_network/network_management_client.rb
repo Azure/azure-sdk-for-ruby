@@ -113,6 +113,9 @@ module Azure::Network::Mgmt::V2018_08_01
     # load_balancer_load_balancing_rules
     attr_reader :load_balancer_load_balancing_rules
 
+    # @return [LoadBalancerOutboundRules] load_balancer_outbound_rules
+    attr_reader :load_balancer_outbound_rules
+
     # @return [LoadBalancerNetworkInterfaces] load_balancer_network_interfaces
     attr_reader :load_balancer_network_interfaces
 
@@ -273,6 +276,7 @@ module Azure::Network::Mgmt::V2018_08_01
       @load_balancer_frontend_ipconfigurations = LoadBalancerFrontendIPConfigurations.new(self)
       @inbound_nat_rules = InboundNatRules.new(self)
       @load_balancer_load_balancing_rules = LoadBalancerLoadBalancingRules.new(self)
+      @load_balancer_outbound_rules = LoadBalancerOutboundRules.new(self)
       @load_balancer_network_interfaces = LoadBalancerNetworkInterfaces.new(self)
       @load_balancer_probes = LoadBalancerProbes.new(self)
       @network_interfaces = NetworkInterfaces.new(self)
@@ -578,7 +582,7 @@ module Azure::Network::Mgmt::V2018_08_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.17.4"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

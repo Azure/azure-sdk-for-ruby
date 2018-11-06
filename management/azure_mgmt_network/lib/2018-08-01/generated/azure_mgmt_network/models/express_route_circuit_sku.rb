@@ -16,8 +16,8 @@ module Azure::Network::Mgmt::V2018_08_01
       attr_accessor :name
 
       # @return [ExpressRouteCircuitSkuTier] The tier of the SKU. Possible
-      # values are 'Standard' and 'Premium'. Possible values include:
-      # 'Standard', 'Premium'
+      # values are 'Standard', 'Premium' or 'Basic'. Possible values include:
+      # 'Standard', 'Premium', 'Basic'
       attr_accessor :tier
 
       # @return [ExpressRouteCircuitSkuFamily] The family of the SKU. Possible

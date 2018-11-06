@@ -8,7 +8,7 @@ module Azure::Network::Mgmt::V2018_08_01
     #
     # Parameters to compare with network configuration.
     #
-    class TrafficQuery
+    class NetworkConfigurationDiagnosticProfile
 
       include MsRestAzure
 
@@ -35,17 +35,17 @@ module Azure::Network::Mgmt::V2018_08_01
 
 
       #
-      # Mapper for TrafficQuery class as Ruby Hash.
+      # Mapper for NetworkConfigurationDiagnosticProfile class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TrafficQuery',
+          serialized_name: 'NetworkConfigurationDiagnosticProfile',
           type: {
             name: 'Composite',
-            class_name: 'TrafficQuery',
+            class_name: 'NetworkConfigurationDiagnosticProfile',
             model_properties: {
               direction: {
                 client_side_validation: true,

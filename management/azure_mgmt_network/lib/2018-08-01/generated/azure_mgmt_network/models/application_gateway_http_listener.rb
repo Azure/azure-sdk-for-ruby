@@ -39,6 +39,10 @@ module Azure::Network::Mgmt::V2018_08_01
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
+      # @return [Array<ApplicationGatewayCustomError>] Custom error
+      # configurations of the HTTP listener.
+      attr_accessor :custom_error_configurations
+
       # @return [String] Name of the HTTP listener that is unique within an
       # Application Gateway.
       attr_accessor :name
@@ -129,6 +133,23 @@ module Azure::Network::Mgmt::V2018_08_01
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              custom_error_configurations: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.customErrorConfigurations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ApplicationGatewayCustomErrorElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationGatewayCustomError'
+                      }
+                  }
                 }
               },
               name: {

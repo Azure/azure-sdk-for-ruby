@@ -6,13 +6,11 @@
 module Azure::Network::Mgmt::V2018_08_01
   module Models
     #
-    # Defines values for AzureFirewallNetworkRuleProtocol
+    # Defines values for ApplicationGatewayCustomErrorStatusCode
     #
-    module AzureFirewallNetworkRuleProtocol
-      TCP = "TCP"
-      UDP = "UDP"
-      Any = "Any"
-      ICMP = "ICMP"
+    module ApplicationGatewayCustomErrorStatusCode
+      HttpStatus403 = "HttpStatus403"
+      HttpStatus502 = "HttpStatus502"
     end
   end
 end

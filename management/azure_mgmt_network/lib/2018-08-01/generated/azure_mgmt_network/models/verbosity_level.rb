@@ -6,13 +6,12 @@
 module Azure::Network::Mgmt::V2018_08_01
   module Models
     #
-    # Defines values for AzureFirewallNetworkRuleProtocol
+    # Defines values for VerbosityLevel
     #
-    module AzureFirewallNetworkRuleProtocol
-      TCP = "TCP"
-      UDP = "UDP"
-      Any = "Any"
-      ICMP = "ICMP"
+    module VerbosityLevel
+      Normal = "Normal"
+      Minimum = "Minimum"
+      Full = "Full"
     end
   end
 end

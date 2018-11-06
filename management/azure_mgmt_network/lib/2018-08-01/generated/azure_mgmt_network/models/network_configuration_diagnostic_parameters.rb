@@ -17,8 +17,13 @@ module Azure::Network::Mgmt::V2018_08_01
       # VMSS/NetworkInterface and Application Gateway.
       attr_accessor :target_resource_id
 
-      # @return [Array<TrafficQuery>] List of traffic queries.
-      attr_accessor :queries
+      # @return [VerbosityLevel] Verbosity level. Accepted values are 'Normal',
+      # 'Minimum', 'Full'. Possible values include: 'Normal', 'Minimum', 'Full'
+      attr_accessor :verbosity_level
+
+      # @return [Array<NetworkConfigurationDiagnosticProfile>] List of network
+      # configuration diagnostic profiles.
+      attr_accessor :profiles
 
 
       #
@@ -42,19 +47,27 @@ module Azure::Network::Mgmt::V2018_08_01
                   name: 'String'
                 }
               },
-              queries: {
+              verbosity_level: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'verbosityLevel',
+                type: {
+                  name: 'String'
+                }
+              },
+              profiles: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'queries',
+                serialized_name: 'profiles',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'TrafficQueryElementType',
+                      serialized_name: 'NetworkConfigurationDiagnosticProfileElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'TrafficQuery'
+                        class_name: 'NetworkConfigurationDiagnosticProfile'
                       }
                   }
                 }

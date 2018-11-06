@@ -11,6 +11,7 @@ module Azure::Network::Mgmt::V2018_08_01
     module ExpressRouteCircuitSkuTier
       Standard = "Standard"
       Premium = "Premium"
+      Basic = "Basic"
     end
   end
 end

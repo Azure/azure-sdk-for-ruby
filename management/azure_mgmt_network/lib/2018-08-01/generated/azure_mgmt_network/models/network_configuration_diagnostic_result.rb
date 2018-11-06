@@ -13,8 +13,8 @@ module Azure::Network::Mgmt::V2018_08_01
 
       include MsRestAzure
 
-      # @return [TrafficQuery]
-      attr_accessor :traffic_query
+      # @return [NetworkConfigurationDiagnosticProfile]
+      attr_accessor :profile
 
       # @return [NetworkSecurityGroupResult]
       attr_accessor :network_security_group_result
@@ -33,13 +33,13 @@ module Azure::Network::Mgmt::V2018_08_01
             name: 'Composite',
             class_name: 'NetworkConfigurationDiagnosticResult',
             model_properties: {
-              traffic_query: {
+              profile: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'trafficQuery',
+                serialized_name: 'profile',
                 type: {
                   name: 'Composite',
-                  class_name: 'TrafficQuery'
+                  class_name: 'NetworkConfigurationDiagnosticProfile'
                 }
               },
               network_security_group_result: {

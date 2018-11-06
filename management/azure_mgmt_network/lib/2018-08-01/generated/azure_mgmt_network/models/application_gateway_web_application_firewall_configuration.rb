@@ -37,6 +37,16 @@ module Azure::Network::Mgmt::V2018_08_01
       # @return [Integer] Maxium request body size for WAF.
       attr_accessor :max_request_body_size
 
+      # @return [Integer] Maxium request body size in Kb for WAF.
+      attr_accessor :max_request_body_size_in_kb
+
+      # @return [Integer] Maxium file upload size in Mb for WAF.
+      attr_accessor :file_upload_limit_in_mb
+
+      # @return [Array<ApplicationGatewayFirewallExclusion>] The exclusion
+      # list.
+      attr_accessor :exclusions
+
 
       #
       # Mapper for ApplicationGatewayWebApplicationFirewallConfiguration class
@@ -119,6 +129,47 @@ module Azure::Network::Mgmt::V2018_08_01
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              max_request_body_size_in_kb: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'maxRequestBodySizeInKb',
+                constraints: {
+                  InclusiveMaximum: 128,
+                  InclusiveMinimum: 8
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              file_upload_limit_in_mb: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'fileUploadLimitInMb',
+                constraints: {
+                  InclusiveMaximum: 500,
+                  InclusiveMinimum: 0
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              exclusions: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'exclusions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ApplicationGatewayFirewallExclusionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationGatewayFirewallExclusion'
+                      }
+                  }
                 }
               }
             }
