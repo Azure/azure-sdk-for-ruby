@@ -41,7 +41,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobStep',
           type: {
@@ -49,7 +48,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobStep',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -58,7 +56,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -67,7 +64,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -76,7 +72,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               step_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.stepId',
                 type: {
@@ -84,7 +79,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               target_group: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.targetGroup',
                 type: {
@@ -92,7 +86,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               credential: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.credential',
                 type: {
@@ -100,7 +93,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               action: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.action',
                 type: {
@@ -109,7 +101,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               output: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.output',
                 type: {
@@ -118,7 +109,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               execution_options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.executionOptions',
                 type: {
