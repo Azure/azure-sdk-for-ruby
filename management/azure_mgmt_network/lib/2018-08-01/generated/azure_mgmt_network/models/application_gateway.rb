@@ -101,6 +101,10 @@ module Azure::Network::Mgmt::V2018_08_01
       # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
+      # @return [Array<ApplicationGatewayCustomError>] Custom error
+      # configurations of the application gateway resource.
+      attr_accessor :custom_error_configurations
+
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
@@ -469,6 +473,23 @@ module Azure::Network::Mgmt::V2018_08_01
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              custom_error_configurations: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.customErrorConfigurations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ApplicationGatewayCustomErrorElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationGatewayCustomError'
+                      }
+                  }
                 }
               },
               etag: {

@@ -1,3 +1,8 @@
+## 2018.11.06 - Azure Ruby SDK Release
+* Released new versions for azure_mgmt_network, azure_cognitiveservices_textanalytics, azure_mgmt_container_instance, 
+  azure_cognitiveservices_visualsearch, azure_cognitiveservices_websearch.
+* Released 0.19.0 version of azure_sdk to include changes to the above gems. 
+
 ## 2018.11.05 - Azure Ruby SDK Release
 * Released 0.17.0 of azure_mgmt_data_migration.
 * Released 0.18.10 of azure_sdk. Includes updates to azure_mgmt_data_migration.

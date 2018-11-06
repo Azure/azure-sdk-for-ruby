@@ -15,6 +15,10 @@ module Azure::Network::Mgmt::V2018_08_01
       # @return [String] Network security group ID.
       attr_accessor :network_security_group_id
 
+      # @return [String] Resource ID of nic or subnet to which network security
+      # group is applied.
+      attr_accessor :applied_to
+
       # @return [MatchedRule]
       attr_accessor :matched_rule
 
@@ -40,6 +44,14 @@ module Azure::Network::Mgmt::V2018_08_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'networkSecurityGroupId',
+                type: {
+                  name: 'String'
+                }
+              },
+              applied_to: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'appliedTo',
                 type: {
                   name: 'String'
                 }

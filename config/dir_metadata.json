@@ -547,5 +547,12 @@
       "namespace": "Azure::CognitiveServices::WebSearch",
       "module_require": "azure_cognitiveservices_websearch"
     }
+  },
+  "Microsoft.CognitiveServices.VisualSearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_visualsearch",
+      "namespace": "Azure::CognitiveServices::VisualSearch",
+      "module_require": "azure_cognitiveservices_visualsearch"
+    }
   }
 }

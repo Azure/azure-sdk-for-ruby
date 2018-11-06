@@ -45,6 +45,18 @@ module Azure::Network::Mgmt::V2018_08_01
       # ServiceProviderProperties.
       attr_accessor :service_provider_properties
 
+      # @return [SubResource] The reference to the ExpressRoutePort resource
+      # when the circuit is provisioned on an ExpressRoutePort resource.
+      attr_accessor :express_route_port
+
+      # @return [Float] The bandwidth of the circuit when the circuit is
+      # provisioned on an ExpressRoutePort resource.
+      attr_accessor :bandwidth_in_gbps
+
+      # @return [Integer] The identifier of the circuit traffic. Outer tag for
+      # QinQ encapsulation.
+      attr_accessor :stag
+
       # @return [String] Gets the provisioning state of the public IP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
@@ -213,6 +225,32 @@ module Azure::Network::Mgmt::V2018_08_01
                 type: {
                   name: 'Composite',
                   class_name: 'ExpressRouteCircuitServiceProviderProperties'
+                }
+              },
+              express_route_port: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.expressRoutePort',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              bandwidth_in_gbps: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.bandwidthInGbps',
+                type: {
+                  name: 'Double'
+                }
+              },
+              stag: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.stag',
+                type: {
+                  name: 'Number'
                 }
               },
               provisioning_state: {

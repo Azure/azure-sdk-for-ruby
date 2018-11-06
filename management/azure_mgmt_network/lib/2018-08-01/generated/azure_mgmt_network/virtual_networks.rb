@@ -429,8 +429,8 @@ module Azure::Network::Mgmt::V2018_08_01
     #
     # @return [IPAddressAvailabilityResult] operation results.
     #
-    def check_ipaddress_availability(resource_group_name, virtual_network_name, ip_address:nil, custom_headers:nil)
-      response = check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address:ip_address, custom_headers:custom_headers).value!
+    def check_ipaddress_availability(resource_group_name, virtual_network_name, ip_address, custom_headers:nil)
+      response = check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -445,8 +445,8 @@ module Azure::Network::Mgmt::V2018_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_ipaddress_availability_with_http_info(resource_group_name, virtual_network_name, ip_address:nil, custom_headers:nil)
-      check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address:ip_address, custom_headers:custom_headers).value!
+    def check_ipaddress_availability_with_http_info(resource_group_name, virtual_network_name, ip_address, custom_headers:nil)
+      check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address, custom_headers:custom_headers).value!
     end
 
     #
@@ -460,9 +460,10 @@ module Azure::Network::Mgmt::V2018_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address:nil, custom_headers:nil)
+    def check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      fail ArgumentError, 'ip_address is nil' if ip_address.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

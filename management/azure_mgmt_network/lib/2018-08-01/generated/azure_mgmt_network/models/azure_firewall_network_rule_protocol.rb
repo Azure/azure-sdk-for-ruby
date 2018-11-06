@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2018_08_01
       TCP = "TCP"
       UDP = "UDP"
       Any = "Any"
+      ICMP = "ICMP"
     end
   end
 end

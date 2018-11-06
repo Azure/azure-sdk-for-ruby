@@ -1,6 +1,10 @@
 {
     "management": [
-        "azure_mgmt_data_migration"
+        "azure_mgmt_network",
+        "azure_cognitiveservices_textanalytics",
+        "azure_mgmt_container_instance",
+        "azure_cognitiveservices_visualsearch",
+        "azure_cognitiveservices_websearch"
     ],
     "rollup": [
         "azure_sdk"
