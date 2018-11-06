@@ -525,7 +525,7 @@
                 },
                 "Microsoft.CognitiveServices.TextAnalytics": {
                     "data": {
-                        "v2.1_preview": ["*"]
+                        "v2.1-preview": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.VideoSearch": {
@@ -540,7 +540,7 @@
                 },
                 "Microsoft.CognitiveServices.VisualSearch": {
                     "data": {
-                        "1.0_preview": ["*"]
+                        "1.0": ["*"]
                     }
                 }
             },
@@ -1849,7 +1849,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.TextAnalytics" : {
                         "data": {
-                            "v2.1_preview": ["*"]
+                            "v2.1-preview": ["*"]
                         }
                     }
                 },
@@ -1891,7 +1891,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.VisualSearch": {
                         "data": {
-                            "1.0_preview": ["*"]
+                            "1.0": ["*"]
                         }
                     }
                 },

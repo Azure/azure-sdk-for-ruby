@@ -1511,7 +1511,7 @@
   "azure_cognitiveservices_visualsearch":{
     "azure_cognitiveservices_visualsearch_v1.0_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/cognitiveservices/data-plane/VisualSearch/readme.md",
-      "namespace": "Azure::CognitiveServices::VisualSearch::V1_0_preview",
+      "namespace": "Azure::CognitiveServices::VisualSearch::V1_0",
       "title": "VisualSearchClient",
       "tag": "release_1_0"
     }
