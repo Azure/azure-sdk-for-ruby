@@ -4,6 +4,8 @@
 
 require '2018-01-01-preview/generated/azure_mgmt_authorization'
 require '2015-06-01-preview/generated/azure_mgmt_authorization'
+require '2018-09-01-preview/generated/azure_mgmt_authorization'
+require '2018-07-01-preview/generated/azure_mgmt_authorization'
 require '2015-07-01-preview/generated/azure_mgmt_authorization'
 require '2015-07-01/generated/azure_mgmt_authorization'
 require '2017-10-01-preview/generated/azure_mgmt_authorization'
