@@ -252,33 +252,43 @@
     }
   },
   "azure_mgmt_container_instance": {
+    "azure_mgmt_container_instance_2018_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
+      "namespace": "Azure::ContainerInstance::Mgmt::V2018_10_01",
+      "tag": "package-2018-10"
+    },
+    "azure_mgmt_container_instance_2018_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
+      "namespace": "Azure::ContainerInstance::Mgmt::V2018_09_01",
+      "tag": "package-2018-09"
+    },
     "azure_mgmt_container_instance_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     },
     "azure_mgmt_container_instance_2018_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_04_01",
       "tag": "package-2018-04"
     },
     "azure_mgmt_container_instance_2018_02_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_02_01_preview",
       "tag": "package-2018-02-preview"
     },
     "azure_mgmt_container_instance_2017_12_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_12_01_preview",
       "tag": "package-2017-12-preview"
     },
     "azure_mgmt_container_instance_2017_10_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_10_01_preview",
       "tag": "package-2017-10-preview"
     },
     "azure_mgmt_container_instance_2017_08_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_08_01_preview",
       "tag": "package-2017-08-preview"
     }
@@ -1470,10 +1480,16 @@
   },
   "azure_cognitiveservices_textanalytics":{
     "azure_cognitiveservices_textanalytics_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/TextAnalytics/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/cognitiveservices/data-plane/TextAnalytics/readme.md",
       "namespace": "Azure::CognitiveServices::TextAnalytics::V2_0",
       "title": "TextAnalyticsClient",
       "tag": "release_2_0"
+    },
+    "azure_cognitiveservices_textanalytics_v2.1_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/cognitiveservices/data-plane/TextAnalytics/readme.md",
+      "namespace": "Azure::CognitiveServices::TextAnalytics::V2_1_preview",
+      "title": "TextAnalyticsClient",
+      "tag": "release_2_1"
     }
   },
   "azure_cognitiveservices_videosearch":{
@@ -1486,9 +1502,17 @@
   },
   "azure_cognitiveservices_websearch":{
     "azure_cognitiveservices_websearch_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/WebSearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/cognitiveservices/data-plane/WebSearch/readme.md",
       "namespace": "Azure::CognitiveServices::WebSearch::V1_0",
       "title": "WebSearchClient",
+      "tag": "release_1_0"
+    }
+  },
+  "azure_cognitiveservices_visualsearch":{
+    "azure_cognitiveservices_visualsearch_v1.0_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/cognitiveservices/data-plane/VisualSearch/readme.md",
+      "namespace": "Azure::CognitiveServices::VisualSearch::V1_0_preview",
+      "title": "VisualSearchClient",
       "tag": "release_1_0"
     }
   },

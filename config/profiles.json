@@ -202,7 +202,7 @@
                 },
                 "Microsoft.ContainerInstance": {
                     "management": {
-                        "2018-06-01": ["*"]
+                        "2018-10-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerRegistry": {
@@ -525,7 +525,7 @@
                 },
                 "Microsoft.CognitiveServices.TextAnalytics": {
                     "data": {
-                        "v2.0": ["*"]
+                        "v2.1_preview": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.VideoSearch": {
@@ -536,6 +536,11 @@
                 "Microsoft.CognitiveServices.WebSearch": {
                     "data": {
                         "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.VisualSearch": {
+                    "data": {
+                        "1.0_preview": ["*"]
                     }
                 }
             },
@@ -757,7 +762,7 @@
             "resourceTypes": {
                 "Microsoft.ContainerInstance" : {
                     "management": {
-                        "2018-06-01": ["*"]
+                        "2018-10-01": ["*"]
                     }
                 }
             },
@@ -1844,7 +1849,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.TextAnalytics" : {
                         "data": {
-                            "v2.0": ["*"]
+                            "v2.1_preview": ["*"]
                         }
                     }
                 },
@@ -1877,6 +1882,20 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_websearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_visualsearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.VisualSearch": {
+                        "data": {
+                            "1.0_preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_visualsearch/lib/profiles",
                 "individual_gem_profile": true
             }
         ],
