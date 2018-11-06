@@ -118,6 +118,13 @@
       "module_require": "azure_mgmt_datalake_store"
     }
   },
+  "Microsoft.DataMigration":{
+    "management": {
+      "path": "management/azure_mgmt_data_migration",
+      "namespace": "Azure::DataMigration::Mgmt",
+      "module_require": "azure_mgmt_data_migration"
+    }
+  },
   "Microsoft.DevSpaces": {
     "management": {
       "path": "management/azure_mgmt_dev_spaces",

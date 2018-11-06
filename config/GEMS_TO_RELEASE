@@ -1,6 +1,6 @@
 {
     "management": [
-        "azure_mgmt_iot_central"
+        "azure_mgmt_data_migration"
     ],
     "rollup": [
         "azure_sdk"

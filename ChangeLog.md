@@ -1,3 +1,7 @@
+## 2018.11.05 - Azure Ruby SDK Release
+* Released 0.17.0 of azure_mgmt_data_migration.
+* Released 0.18.10 of azure_sdk. Includes updates to azure_mgmt_data_migration.
+
 ## 2018.10.30 - Azure Ruby SDK Release
 * Released 0.17.2 of azure_mgmt_iot_central. Includes updates to 2018-09-01 version.
 * Released 0.18.9 of azure_sdk. Includes updates to 2018-09-01 version of azure_mgmt_iot_central.
