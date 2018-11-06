@@ -41,7 +41,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Metric',
           type: {
@@ -49,7 +48,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'Metric',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -58,7 +56,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -67,7 +64,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               time_grain: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timeGrain',
@@ -76,7 +72,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -85,7 +80,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -95,14 +89,12 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               metric_values: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'metricValues',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricValueElementType',
                       type: {

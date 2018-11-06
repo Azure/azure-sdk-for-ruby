@@ -51,8 +51,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Array<JobExecution>] operation results.
     #
-    def list_by_job_execution(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min:nil, create_time_max:nil, end_time_min:nil, end_time_max:nil, is_active:nil, skip:nil, top:nil, custom_headers:nil)
-      first_page = list_by_job_execution_as_lazy(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min:create_time_min, create_time_max:create_time_max, end_time_min:end_time_min, end_time_max:end_time_max, is_active:is_active, skip:skip, top:top, custom_headers:custom_headers)
+    def list_by_job_execution(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min = nil, create_time_max = nil, end_time_min = nil, end_time_max = nil, is_active = nil, skip = nil, top = nil, custom_headers = nil)
+      first_page = list_by_job_execution_as_lazy(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min, create_time_max, end_time_min, end_time_max, is_active, skip, top, custom_headers)
       first_page.get_all_items
     end
 
@@ -83,8 +83,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_job_execution_with_http_info(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min:nil, create_time_max:nil, end_time_min:nil, end_time_max:nil, is_active:nil, skip:nil, top:nil, custom_headers:nil)
-      list_by_job_execution_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min:create_time_min, create_time_max:create_time_max, end_time_min:end_time_min, end_time_max:end_time_max, is_active:is_active, skip:skip, top:top, custom_headers:custom_headers).value!
+    def list_by_job_execution_with_http_info(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min = nil, create_time_max = nil, end_time_min = nil, end_time_max = nil, is_active = nil, skip = nil, top = nil, custom_headers = nil)
+      list_by_job_execution_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min, create_time_max, end_time_min, end_time_max, is_active, skip, top, custom_headers).value!
     end
 
     #
@@ -114,7 +114,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_job_execution_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min:nil, create_time_max:nil, end_time_min:nil, end_time_max:nil, is_active:nil, skip:nil, top:nil, custom_headers:nil)
+    def list_by_job_execution_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min = nil, create_time_max = nil, end_time_min = nil, end_time_max = nil, is_active = nil, skip = nil, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'job_agent_name is nil' if job_agent_name.nil?
@@ -125,7 +125,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -186,8 +185,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [JobExecution] operation results.
     #
-    def get(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers:nil)
-      response = get_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers = nil)
+      response = get_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -207,8 +206,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers:nil)
-      get_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers = nil)
+      get_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers).value!
     end
 
     #
@@ -227,7 +226,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers:nil)
+    def get_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, step_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'job_agent_name is nil' if job_agent_name.nil?
@@ -239,7 +238,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -294,8 +292,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [JobExecutionListResult] operation results.
     #
-    def list_by_job_execution_next(next_page_link, custom_headers:nil)
-      response = list_by_job_execution_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_job_execution_next(next_page_link, custom_headers = nil)
+      response = list_by_job_execution_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -309,8 +307,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_job_execution_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_job_execution_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_job_execution_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_job_execution_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -323,12 +321,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_job_execution_next_async(next_page_link, custom_headers:nil)
+    def list_by_job_execution_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -400,12 +397,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [JobExecutionListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_job_execution_as_lazy(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min:nil, create_time_max:nil, end_time_min:nil, end_time_max:nil, is_active:nil, skip:nil, top:nil, custom_headers:nil)
-      response = list_by_job_execution_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min:create_time_min, create_time_max:create_time_max, end_time_min:end_time_min, end_time_max:end_time_max, is_active:is_active, skip:skip, top:top, custom_headers:custom_headers).value!
+    def list_by_job_execution_as_lazy(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min = nil, create_time_max = nil, end_time_min = nil, end_time_max = nil, is_active = nil, skip = nil, top = nil, custom_headers = nil)
+      response = list_by_job_execution_async(resource_group_name, server_name, job_agent_name, job_name, job_execution_id, create_time_min, create_time_max, end_time_min, end_time_max, is_active, skip, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_job_execution_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_job_execution_next_async(next_page_link, custom_headers)
         end
         page
       end

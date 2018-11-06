@@ -31,7 +31,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobStepAction',
           type: {
@@ -39,7 +38,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobStepAction',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'TSql',
@@ -48,7 +46,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 default_value: 'Inline',
@@ -57,7 +54,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {

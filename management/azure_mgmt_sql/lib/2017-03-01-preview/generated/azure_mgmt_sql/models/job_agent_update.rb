@@ -22,7 +22,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobAgentUpdate',
           type: {
@@ -30,13 +29,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobAgentUpdate',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
