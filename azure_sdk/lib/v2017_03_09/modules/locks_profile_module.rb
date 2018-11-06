@@ -10,9 +10,9 @@ module Azure::Profiles::V2017_03_09
       ManagementLocks = Azure::Locks::Mgmt::V2015_01_01::ManagementLocks
 
       module Models
-        ManagementLockListResult = Azure::Locks::Mgmt::V2015_01_01::Models::ManagementLockListResult
         ManagementLockObject = Azure::Locks::Mgmt::V2015_01_01::Models::ManagementLockObject
         LockLevel = Azure::Locks::Mgmt::V2015_01_01::Models::LockLevel
+        ManagementLockListResult = Azure::Locks::Mgmt::V2015_01_01::Models::ManagementLockListResult
       end
 
       class LocksManagementClass
@@ -45,14 +45,14 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
-          def management_lock_list_result
-            Azure::Locks::Mgmt::V2015_01_01::Models::ManagementLockListResult
-          end
           def management_lock_object
             Azure::Locks::Mgmt::V2015_01_01::Models::ManagementLockObject
           end
           def lock_level
             Azure::Locks::Mgmt::V2015_01_01::Models::LockLevel
+          end
+          def management_lock_list_result
+            Azure::Locks::Mgmt::V2015_01_01::Models::ManagementLockListResult
           end
         end
       end
