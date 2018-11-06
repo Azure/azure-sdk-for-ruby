@@ -14,6 +14,7 @@ module Azure::Profiles::Latest
     Users = Azure::GraphRbac::V1_6::Users
 
     module Models
+      CheckGroupMembershipParameters = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
       KeyCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
       CheckGroupMembershipResult = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
       PasswordCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
@@ -55,7 +56,6 @@ module Azure::Profiles::Latest
       ApplicationListResult = Azure::GraphRbac::V1_6::Models::ApplicationListResult
       GroupGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsResult
       KeyCredentialListResult = Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
-      CheckGroupMembershipParameters = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
     end
 
     class GraphRbacDataClass
@@ -93,6 +93,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def check_group_membership_parameters
+          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
+        end
         def key_credentials_update_parameters
           Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
         end
@@ -215,9 +218,6 @@ module Azure::Profiles::Latest
         end
         def key_credential_list_result
           Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
-        end
-        def check_group_membership_parameters
-          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
         end
       end
     end

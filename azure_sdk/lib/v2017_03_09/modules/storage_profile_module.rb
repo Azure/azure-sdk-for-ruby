@@ -17,6 +17,7 @@ module Azure::Profiles::V2017_03_09
         ProvisioningState = Azure::Storage::Mgmt::V2016_01_01::Models::ProvisioningState
         CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
         SkuName = Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
+        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
         StorageAccountCheckNameAvailabilityParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
         StorageAccountKey = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountKey
         StorageAccountListResult = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListResult
@@ -26,19 +27,18 @@ module Azure::Profiles::V2017_03_09
         StorageAccountRegenerateKeyParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
         Endpoints = Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
         CustomDomain = Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
-        EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
         UsageListResult = Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
         Sku = Azure::Storage::Mgmt::V2016_01_01::Models::Sku
         UsageName = Azure::Storage::Mgmt::V2016_01_01::Models::UsageName
         SkuTier = Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
         StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
-        Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
-        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
+        EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
+        AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
         Usage = Azure::Storage::Mgmt::V2016_01_01::Models::Usage
         AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
-        AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
-        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
         KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+        Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
+        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
       end
 
       class StorageManagementClass
@@ -90,6 +90,9 @@ module Azure::Profiles::V2017_03_09
           def sku_name
             Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
           end
+          def reason
+            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
+          end
           def storage_account_check_name_availability_parameters
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
           end
@@ -117,9 +120,6 @@ module Azure::Profiles::V2017_03_09
           def custom_domain
             Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
           end
-          def encryption_services
-            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
-          end
           def usage_list_result
             Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
           end
@@ -135,11 +135,11 @@ module Azure::Profiles::V2017_03_09
           def storage_account
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
           end
-          def kind
-            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
+          def encryption_services
+            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
           end
-          def reason
-            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
+          def access_tier
+            Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
           end
           def usage
             Azure::Storage::Mgmt::V2016_01_01::Models::Usage
@@ -147,14 +147,14 @@ module Azure::Profiles::V2017_03_09
           def account_status
             Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
           end
-          def access_tier
-            Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
+          def key_permission
+            Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+          end
+          def kind
+            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
           end
           def usage_unit
             Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
-          end
-          def key_permission
-            Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
           end
         end
       end

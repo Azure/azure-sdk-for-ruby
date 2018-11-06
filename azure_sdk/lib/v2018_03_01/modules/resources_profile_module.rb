@@ -7,12 +7,12 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::V2018_03_01
   module Resources
     module Mgmt
+      Deployments = Azure::Resources::Mgmt::V2018_02_01::Deployments
       Providers = Azure::Resources::Mgmt::V2018_02_01::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2018_02_01::ResourceGroups
       Tags = Azure::Resources::Mgmt::V2018_02_01::Tags
       DeploymentOperations = Azure::Resources::Mgmt::V2018_02_01::DeploymentOperations
       Resources = Azure::Resources::Mgmt::V2018_02_01::Resources
-      Deployments = Azure::Resources::Mgmt::V2018_02_01::Deployments
 
       module Models
         GenericResourceFilter = Azure::Resources::Mgmt::V2018_02_01::Models::GenericResourceFilter
@@ -31,14 +31,14 @@ module Azure::Profiles::V2018_03_01
         ResourcesMoveInfo = Azure::Resources::Mgmt::V2018_02_01::Models::ResourcesMoveInfo
         DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentPropertiesExtended
         ExportTemplateRequest = Azure::Resources::Mgmt::V2018_02_01::Models::ExportTemplateRequest
-        Dependency = Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
         DeploymentExtended = Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentExtended
+        TagCount = Azure::Resources::Mgmt::V2018_02_01::Models::TagCount
         ProviderListResult = Azure::Resources::Mgmt::V2018_02_01::Models::ProviderListResult
         TagValue = Azure::Resources::Mgmt::V2018_02_01::Models::TagValue
         ResourceGroupFilter = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceGroupFilter
+        Dependency = Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
         TagDetails = Azure::Resources::Mgmt::V2018_02_01::Models::TagDetails
-        DeploymentProperties = Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentProperties
-        TagCount = Azure::Resources::Mgmt::V2018_02_01::Models::TagCount
+        TagsListResult = Azure::Resources::Mgmt::V2018_02_01::Models::TagsListResult
         AliasPathType = Azure::Resources::Mgmt::V2018_02_01::Models::AliasPathType
         TargetResource = Azure::Resources::Mgmt::V2018_02_01::Models::TargetResource
         BasicDependency = Azure::Resources::Mgmt::V2018_02_01::Models::BasicDependency
@@ -58,8 +58,8 @@ module Azure::Profiles::V2018_03_01
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceGroupExportResult
         GenericResource = Azure::Resources::Mgmt::V2018_02_01::Models::GenericResource
         DeploymentMode = Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentMode
+        DeploymentProperties = Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentProperties
         OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_02_01::Models::OnErrorDeploymentType
-        TagsListResult = Azure::Resources::Mgmt::V2018_02_01::Models::TagsListResult
         SubResource = Azure::Resources::Mgmt::V2018_02_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceListResult
         Plan = Azure::Resources::Mgmt::V2018_02_01::Models::Plan
@@ -68,7 +68,7 @@ module Azure::Profiles::V2018_03_01
       end
 
       class ResourcesManagementClass
-        attr_reader :providers, :resource_groups, :tags, :deployment_operations, :resources, :deployments, :configurable, :base_url, :options, :model_classes
+        attr_reader :deployments, :providers, :resource_groups, :tags, :deployment_operations, :resources, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -78,12 +78,12 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
           @tags = @client_0.tags
           @deployment_operations = @client_0.deployment_operations
           @resources = @client_0.resources
-          @deployments = @client_0.deployments
 
           @model_classes = ModelClasses.new
         end
@@ -150,11 +150,11 @@ module Azure::Profiles::V2018_03_01
           def export_template_request
             Azure::Resources::Mgmt::V2018_02_01::Models::ExportTemplateRequest
           end
-          def dependency
-            Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
-          end
           def deployment_extended
             Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentExtended
+          end
+          def tag_count
+            Azure::Resources::Mgmt::V2018_02_01::Models::TagCount
           end
           def provider_list_result
             Azure::Resources::Mgmt::V2018_02_01::Models::ProviderListResult
@@ -165,14 +165,14 @@ module Azure::Profiles::V2018_03_01
           def resource_group_filter
             Azure::Resources::Mgmt::V2018_02_01::Models::ResourceGroupFilter
           end
+          def dependency
+            Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
+          end
           def tag_details
             Azure::Resources::Mgmt::V2018_02_01::Models::TagDetails
           end
-          def deployment_properties
-            Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentProperties
-          end
-          def tag_count
-            Azure::Resources::Mgmt::V2018_02_01::Models::TagCount
+          def tags_list_result
+            Azure::Resources::Mgmt::V2018_02_01::Models::TagsListResult
           end
           def alias_path_type
             Azure::Resources::Mgmt::V2018_02_01::Models::AliasPathType
@@ -231,11 +231,11 @@ module Azure::Profiles::V2018_03_01
           def deployment_mode
             Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentMode
           end
+          def deployment_properties
+            Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentProperties
+          end
           def on_error_deployment_type
             Azure::Resources::Mgmt::V2018_02_01::Models::OnErrorDeploymentType
-          end
-          def tags_list_result
-            Azure::Resources::Mgmt::V2018_02_01::Models::TagsListResult
           end
           def sub_resource
             Azure::Resources::Mgmt::V2018_02_01::Models::SubResource

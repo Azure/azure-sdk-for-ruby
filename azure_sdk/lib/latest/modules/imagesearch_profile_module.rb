@@ -12,13 +12,13 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
+      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       SearchResultsAnswer = Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::ImageSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
@@ -108,6 +108,9 @@ module Azure::Profiles::Latest
         def web_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
         end
+        def response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+        end
         def search_results_answer
           Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
         end
@@ -125,9 +128,6 @@ module Azure::Profiles::Latest
         end
         def error_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-        end
-        def response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
         end
         def error_sub_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode

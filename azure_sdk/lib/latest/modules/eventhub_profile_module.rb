@@ -7,12 +7,13 @@ require 'azure_mgmt_event_hub'
 module Azure::Profiles::Latest
   module EventHub
     module Mgmt
+      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
       Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
       Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
-      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
 
       module Models
+        IpFilterRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
         ClusterSku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
         EHNamespaceListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
         TrackedResource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
@@ -32,11 +33,10 @@ module Azure::Profiles::Latest
         ErrorResponse = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
         ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
         ClusterListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
-        IpFilterRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
       end
 
       class EventHubManagementClass
-        attr_reader :clusters, :namespaces, :configuration, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :namespaces, :configuration, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -46,10 +46,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @clusters = @client_0.clusters
           @namespaces = @client_0.namespaces
           @configuration = @client_0.configuration
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -68,6 +68,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def ip_filter_rule_list_result
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
+          end
           def cluster_sku
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
           end
@@ -124,9 +127,6 @@ module Azure::Profiles::Latest
           end
           def cluster_list_result
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
-          end
-          def ip_filter_rule_list_result
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
           end
         end
       end

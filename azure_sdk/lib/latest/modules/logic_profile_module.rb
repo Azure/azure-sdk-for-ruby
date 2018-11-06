@@ -27,6 +27,7 @@ module Azure::Profiles::Latest
       Sessions = Azure::Logic::Mgmt::V2016_06_01::Sessions
 
       module Models
+        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
         TrackingRecordType = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
         EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
         EventLevel = Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
@@ -197,7 +198,6 @@ module Azure::Profiles::Latest
         EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
         X12TimeFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
         TrackEventsOperationOptions = Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
-        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
       end
 
       class LogicManagementClass
@@ -247,6 +247,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def message_filter_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+          end
           def tracking_record_type
             Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
           end
@@ -756,9 +759,6 @@ module Azure::Profiles::Latest
           end
           def track_events_operation_options
             Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
-          end
-          def message_filter_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
           end
         end
       end

@@ -8,11 +8,11 @@ module Azure::Profiles::Latest
   module DataLakeStore
     module Mgmt
       Accounts = Azure::DataLakeStore::Mgmt::V2016_11_01::Accounts
+      Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
       FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
       Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
       VirtualNetworkRules = Azure::DataLakeStore::Mgmt::V2016_11_01::VirtualNetworkRules
       TrustedIdProviders = Azure::DataLakeStore::Mgmt::V2016_11_01::TrustedIdProviders
-      Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
 
       module Models
         CheckNameAvailabilityParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
@@ -65,7 +65,7 @@ module Azure::Profiles::Latest
       end
 
       class DataLakeStoreManagementClass
-        attr_reader :accounts, :firewall_rules, :locations, :virtual_network_rules, :trusted_id_providers, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :accounts, :operations, :firewall_rules, :locations, :virtual_network_rules, :trusted_id_providers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -76,11 +76,11 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @accounts = @client_0.accounts
+          @operations = @client_0.operations
           @firewall_rules = @client_0.firewall_rules
           @locations = @client_0.locations
           @virtual_network_rules = @client_0.virtual_network_rules
           @trusted_id_providers = @client_0.trusted_id_providers
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end

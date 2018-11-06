@@ -187,14 +187,15 @@ module Azure::Profiles::Latest
       end
     end
     module Mgmt
+      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
-      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
 
       module Models
+        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
         InputSchemaMapping = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchemaMapping
         TopicsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicsListResult
@@ -252,11 +253,10 @@ module Azure::Profiles::Latest
         TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
         Operation = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
       end
 
       class EventGridManagementClass
-        attr_reader :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @topic_types = @client_0.topic_types
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -290,6 +290,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def tracked_resource
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
+          end
           def topic_shared_access_keys
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
           end
@@ -460,9 +463,6 @@ module Azure::Profiles::Latest
           end
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-          end
-          def tracked_resource
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
           end
         end
       end

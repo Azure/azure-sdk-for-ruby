@@ -7,19 +7,19 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::V2017_03_09
   module Resources
     module Mgmt
+      Deployments = Azure::Resources::Mgmt::V2016_02_01::Deployments
       Providers = Azure::Resources::Mgmt::V2016_02_01::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2016_02_01::ResourceGroups
       Tags = Azure::Resources::Mgmt::V2016_02_01::Tags
       DeploymentOperations = Azure::Resources::Mgmt::V2016_02_01::DeploymentOperations
       Resources = Azure::Resources::Mgmt::V2016_02_01::Resources
-      Deployments = Azure::Resources::Mgmt::V2016_02_01::Deployments
 
       module Models
         GenericResourceFilter = Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
+        Dependency = Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
         Identity = Azure::Resources::Mgmt::V2016_02_01::Models::Identity
         TemplateLink = Azure::Resources::Mgmt::V2016_02_01::Models::TemplateLink
         ParametersLink = Azure::Resources::Mgmt::V2016_02_01::Models::ParametersLink
-        Dependency = Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
         Deployment = Azure::Resources::Mgmt::V2016_02_01::Models::Deployment
         ResourceGroupProperties = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupProperties
         ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceManagementErrorWithDetails
@@ -64,7 +64,7 @@ module Azure::Profiles::V2017_03_09
       end
 
       class ResourcesManagementClass
-        attr_reader :providers, :resource_groups, :tags, :deployment_operations, :resources, :deployments, :configurable, :base_url, :options, :model_classes
+        attr_reader :deployments, :providers, :resource_groups, :tags, :deployment_operations, :resources, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -74,12 +74,12 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
           @tags = @client_0.tags
           @deployment_operations = @client_0.deployment_operations
           @resources = @client_0.resources
-          @deployments = @client_0.deployments
 
           @model_classes = ModelClasses.new
         end
@@ -101,6 +101,9 @@ module Azure::Profiles::V2017_03_09
           def generic_resource_filter
             Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
           end
+          def dependency
+            Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
+          end
           def identity
             Azure::Resources::Mgmt::V2016_02_01::Models::Identity
           end
@@ -109,9 +112,6 @@ module Azure::Profiles::V2017_03_09
           end
           def parameters_link
             Azure::Resources::Mgmt::V2016_02_01::Models::ParametersLink
-          end
-          def dependency
-            Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
           end
           def deployment
             Azure::Resources::Mgmt::V2016_02_01::Models::Deployment

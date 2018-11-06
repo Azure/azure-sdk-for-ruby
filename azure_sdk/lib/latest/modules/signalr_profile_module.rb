@@ -8,10 +8,11 @@ module Azure::Profiles::Latest
   module Signalr
     module Mgmt
       Operations = Azure::Signalr::Mgmt::V2018_03_01_preview::Operations
-      SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
       Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
+      SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
 
       module Models
+        TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
         Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
         OperationDisplay = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
         Operation = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
@@ -36,11 +37,10 @@ module Azure::Profiles::Latest
         SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
         SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
         SignalRResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
-        TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
       end
 
       class SignalrManagementClass
-        attr_reader :operations, :signal_r, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :usages, :signal_r, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -51,8 +51,8 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @signal_r = @client_0.signal_r
           @usages = @client_0.usages
+          @signal_r = @client_0.signal_r
 
           @model_classes = ModelClasses.new
         end
@@ -71,6 +71,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def tracked_resource
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
+          end
           def resource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
           end
@@ -142,9 +145,6 @@ module Azure::Profiles::Latest
           end
           def signal_rresource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
-          end
-          def tracked_resource
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
           end
         end
       end

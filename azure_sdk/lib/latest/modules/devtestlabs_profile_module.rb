@@ -16,9 +16,10 @@ module Azure::Profiles::Latest
       ArtifactSources = Azure::DevTestLabs::Mgmt::V2016_05_15::ArtifactSources
       ArmTemplates = Azure::DevTestLabs::Mgmt::V2016_05_15::ArmTemplates
       Artifacts = Azure::DevTestLabs::Mgmt::V2016_05_15::Artifacts
-      GalleryImages = Azure::DevTestLabs::Mgmt::V2016_05_15::GalleryImages
+      Costs = Azure::DevTestLabs::Mgmt::V2016_05_15::Costs
       CustomImages = Azure::DevTestLabs::Mgmt::V2016_05_15::CustomImages
       Formulas = Azure::DevTestLabs::Mgmt::V2016_05_15::Formulas
+      GalleryImages = Azure::DevTestLabs::Mgmt::V2016_05_15::GalleryImages
       NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
       PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
       Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
@@ -27,11 +28,11 @@ module Azure::Profiles::Latest
       Environments = Azure::DevTestLabs::Mgmt::V2016_05_15::Environments
       Secrets = Azure::DevTestLabs::Mgmt::V2016_05_15::Secrets
       VirtualMachineSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachineSchedules
-      Costs = Azure::DevTestLabs::Mgmt::V2016_05_15::Costs
       Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
       VirtualNetworks = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualNetworks
 
       module Models
+        LabVirtualMachineCreationParameter = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineCreationParameter
         ArtifactDeploymentStatusPropertiesFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactDeploymentStatusPropertiesFragment
         FormulaPropertiesFromVm = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::FormulaPropertiesFromVm
         ArtifactInstallPropertiesFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactInstallPropertiesFragment
@@ -161,8 +162,8 @@ module Azure::Profiles::Latest
         CostType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostType
         PolicyEvaluatorType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType
         UsagePermissionType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
-        PolicyStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyStatus
         Event = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Event
+        PolicyStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyStatus
         UserIdentity = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
         Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
         Schedule = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Schedule
@@ -187,11 +188,10 @@ module Azure::Profiles::Latest
         ArmTemplateInfo = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateInfo
         NetworkInterfaceProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NetworkInterfaceProperties
         ResponseWithContinuationUser = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationUser
-        LabVirtualMachineCreationParameter = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineCreationParameter
       end
 
       class DevTestLabsManagementClass
-        attr_reader :virtual_machines, :disks, :operations, :provider_operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :gallery_images, :custom_images, :formulas, :notification_channels, :policy_sets, :schedules, :service_runners, :users, :environments, :secrets, :virtual_machine_schedules, :costs, :policies, :virtual_networks, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_machines, :disks, :operations, :provider_operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :schedules, :service_runners, :users, :environments, :secrets, :virtual_machine_schedules, :policies, :virtual_networks, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -210,9 +210,10 @@ module Azure::Profiles::Latest
           @artifact_sources = @client_0.artifact_sources
           @arm_templates = @client_0.arm_templates
           @artifacts = @client_0.artifacts
-          @gallery_images = @client_0.gallery_images
+          @costs = @client_0.costs
           @custom_images = @client_0.custom_images
           @formulas = @client_0.formulas
+          @gallery_images = @client_0.gallery_images
           @notification_channels = @client_0.notification_channels
           @policy_sets = @client_0.policy_sets
           @schedules = @client_0.schedules
@@ -221,7 +222,6 @@ module Azure::Profiles::Latest
           @environments = @client_0.environments
           @secrets = @client_0.secrets
           @virtual_machine_schedules = @client_0.virtual_machine_schedules
-          @costs = @client_0.costs
           @policies = @client_0.policies
           @virtual_networks = @client_0.virtual_networks
 
@@ -242,6 +242,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def lab_virtual_machine_creation_parameter
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineCreationParameter
+          end
           def artifact_deployment_status_properties_fragment
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactDeploymentStatusPropertiesFragment
           end
@@ -629,11 +632,11 @@ module Azure::Profiles::Latest
           def usage_permission_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
           end
-          def policy_status
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyStatus
-          end
           def event
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Event
+          end
+          def policy_status
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyStatus
           end
           def user_identity
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
@@ -706,9 +709,6 @@ module Azure::Profiles::Latest
           end
           def response_with_continuation_user
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationUser
-          end
-          def lab_virtual_machine_creation_parameter
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineCreationParameter
           end
         end
       end

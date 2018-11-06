@@ -10,12 +10,12 @@ module Azure::Profiles::Latest
       Features = Azure::Features::Mgmt::V2015_12_01::Features
 
       module Models
+        OperationDisplay = Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
         FeatureOperationsListResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
         Operation = Azure::Features::Mgmt::V2015_12_01::Models::Operation
         FeatureResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
         OperationListResult = Azure::Features::Mgmt::V2015_12_01::Models::OperationListResult
         FeatureProperties = Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
-        OperationDisplay = Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
       end
 
       class FeaturesManagementClass
@@ -48,6 +48,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def operation_display
+            Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
+          end
           def feature_operations_list_result
             Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
           end
@@ -62,9 +65,6 @@ module Azure::Profiles::Latest
           end
           def feature_properties
             Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
-          end
-          def operation_display
-            Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
           end
         end
       end

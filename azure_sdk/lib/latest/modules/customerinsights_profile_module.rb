@@ -13,16 +13,16 @@ module Azure::Profiles::Latest
       Interactions = Azure::CustomerInsights::Mgmt::V2017_04_26::Interactions
       Relationships = Azure::CustomerInsights::Mgmt::V2017_04_26::Relationships
       RelationshipLinks = Azure::CustomerInsights::Mgmt::V2017_04_26::RelationshipLinks
+      Operations = Azure::CustomerInsights::Mgmt::V2017_04_26::Operations
       Profiles = Azure::CustomerInsights::Mgmt::V2017_04_26::Profiles
       Connectors = Azure::CustomerInsights::Mgmt::V2017_04_26::Connectors
-      ConnectorMappings = Azure::CustomerInsights::Mgmt::V2017_04_26::ConnectorMappings
       AuthorizationPolicies = Azure::CustomerInsights::Mgmt::V2017_04_26::AuthorizationPolicies
       Kpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Kpi
-      WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
-      Operations = Azure::CustomerInsights::Mgmt::V2017_04_26::Operations
-      Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
+      ConnectorMappings = Azure::CustomerInsights::Mgmt::V2017_04_26::ConnectorMappings
       Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
+      WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
       Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
+      Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
       Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
 
       module Models
@@ -115,8 +115,8 @@ module Azure::Profiles::Latest
         PermissionTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
         ConnectorTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
         ConnectorStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
-        ErrorManagementTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
         Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
+        ErrorManagementTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
         FrequencyTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
         CompletionOperationTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CompletionOperationTypes
         ConnectorMappingStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStates
@@ -133,7 +133,7 @@ module Azure::Profiles::Latest
       end
 
       class CustomerInsightsManagementClass
-        attr_reader :role_assignments, :images, :hubs, :interactions, :relationships, :relationship_links, :profiles, :connectors, :connector_mappings, :authorization_policies, :kpi, :widget_types, :operations, :roles, :views, :predictions, :links, :configurable, :base_url, :options, :model_classes
+        attr_reader :role_assignments, :images, :hubs, :interactions, :relationships, :relationship_links, :operations, :profiles, :connectors, :authorization_policies, :kpi, :connector_mappings, :views, :widget_types, :predictions, :roles, :links, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -149,16 +149,16 @@ module Azure::Profiles::Latest
           @interactions = @client_0.interactions
           @relationships = @client_0.relationships
           @relationship_links = @client_0.relationship_links
+          @operations = @client_0.operations
           @profiles = @client_0.profiles
           @connectors = @client_0.connectors
-          @connector_mappings = @client_0.connector_mappings
           @authorization_policies = @client_0.authorization_policies
           @kpi = @client_0.kpi
-          @widget_types = @client_0.widget_types
-          @operations = @client_0.operations
-          @roles = @client_0.roles
+          @connector_mappings = @client_0.connector_mappings
           @views = @client_0.views
+          @widget_types = @client_0.widget_types
           @predictions = @client_0.predictions
+          @roles = @client_0.roles
           @links = @client_0.links
 
           @model_classes = ModelClasses.new
@@ -445,11 +445,11 @@ module Azure::Profiles::Latest
           def connector_states
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
           end
-          def error_management_types
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
-          end
           def status
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
+          end
+          def error_management_types
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
           end
           def frequency_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes

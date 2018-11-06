@@ -12,15 +12,15 @@ module Azure::Profiles::Latest
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
-      ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+      ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
+      Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
-      Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
       Thing = Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
@@ -74,11 +74,11 @@ module Azure::Profiles::Latest
         def news_topic
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
         end
-        def response_base
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-        end
         def article
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+        end
+        def response_base
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
         end
         def query
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
@@ -89,6 +89,9 @@ module Azure::Profiles::Latest
         def trending_topics
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
         end
+        def response
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+        end
         def search_results_answer
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
         end
@@ -97,9 +100,6 @@ module Azure::Profiles::Latest
         end
         def answer
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
-        end
-        def response
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
         end
         def thing
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing

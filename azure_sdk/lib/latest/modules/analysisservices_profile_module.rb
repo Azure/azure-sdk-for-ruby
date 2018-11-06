@@ -7,10 +7,11 @@ require 'azure_mgmt_analysis_services'
 module Azure::Profiles::Latest
   module AnalysisServices
     module Mgmt
-      Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
       Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
+      Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
 
       module Models
+        IPv4FirewallRule = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallRule
         SkuEnumerationForExistingResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
         AnalysisServicesServer = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
@@ -37,11 +38,10 @@ module Azure::Profiles::Latest
         ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
         SkuEnumerationForNewResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
         SkuDetailsForExistingResource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuDetailsForExistingResource
-        IPv4FirewallRule = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallRule
       end
 
       class AnalysisServicesManagementClass
-        attr_reader :servers, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :servers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -51,8 +51,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @servers = @client_0.servers
           @operations = @client_0.operations
+          @servers = @client_0.servers
 
           @model_classes = ModelClasses.new
         end
@@ -71,6 +71,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def ipv4_firewall_rule
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallRule
+          end
           def sku_enumeration_for_existing_resource_result
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
           end
@@ -148,9 +151,6 @@ module Azure::Profiles::Latest
           end
           def sku_details_for_existing_resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuDetailsForExistingResource
-          end
-          def ipv4_firewall_rule
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallRule
           end
         end
       end

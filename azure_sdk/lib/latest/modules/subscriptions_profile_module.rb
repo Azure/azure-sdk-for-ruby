@@ -7,8 +7,8 @@ require 'azure_mgmt_subscriptions'
 module Azure::Profiles::Latest
   module Subscriptions
     module Mgmt
-      Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
       Operations = Azure::Subscriptions::Mgmt::V2016_06_01::Operations
+      Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
       Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
 
       module Models
@@ -27,7 +27,7 @@ module Azure::Profiles::Latest
       end
 
       class SubscriptionsManagementClass
-        attr_reader :tenants, :operations, :subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :tenants, :subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,8 +37,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @tenants = @client_0.tenants
           @operations = @client_0.operations
+          @tenants = @client_0.tenants
           @subscriptions = @client_0.subscriptions
 
           @model_classes = ModelClasses.new

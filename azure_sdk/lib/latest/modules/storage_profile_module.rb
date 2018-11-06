@@ -7,15 +7,16 @@ require 'azure_mgmt_storage'
 module Azure::Profiles::Latest
   module Storage
     module Mgmt
+      Operations = Azure::Storage::Mgmt::V2018_07_01::Operations
       StorageAccounts = Azure::Storage::Mgmt::V2018_07_01::StorageAccounts
       Skus = Azure::Storage::Mgmt::V2018_07_01::Skus
       BlobContainers = Azure::Storage::Mgmt::V2018_07_01::BlobContainers
       Usages = Azure::Storage::Mgmt::V2018_07_01::Usages
-      Operations = Azure::Storage::Mgmt::V2018_07_01::Operations
 
       module Models
         ManagementPoliciesRulesSetParameter = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ManagementPoliciesRulesSetParameter
         StorageAccountManagementPolicies = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountManagementPolicies
+        TrackedResource = Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
         IPRule = Azure::Storage::Mgmt::V2018_07_01::Models::IPRule
         NetworkRuleSet = Azure::Storage::Mgmt::V2018_07_01::Models::NetworkRuleSet
         AzureEntityResource = Azure::Storage::Mgmt::V2018_07_01::Models::AzureEntityResource
@@ -38,12 +39,12 @@ module Azure::Profiles::Latest
         SkuTier = Azure::Storage::Mgmt::V2018_07_01::Models::SkuTier
         Kind = Azure::Storage::Mgmt::V2018_07_01::Models::Kind
         VirtualNetworkRule = Azure::Storage::Mgmt::V2018_07_01::Models::VirtualNetworkRule
-        Reason = Azure::Storage::Mgmt::V2018_07_01::Models::Reason
+        AccessTier = Azure::Storage::Mgmt::V2018_07_01::Models::AccessTier
         KeyPermission = Azure::Storage::Mgmt::V2018_07_01::Models::KeyPermission
         AccountStatus = Azure::Storage::Mgmt::V2018_07_01::Models::AccountStatus
         EncryptionServices = Azure::Storage::Mgmt::V2018_07_01::Models::EncryptionServices
         UsageUnit = Azure::Storage::Mgmt::V2018_07_01::Models::UsageUnit
-        AccessTier = Azure::Storage::Mgmt::V2018_07_01::Models::AccessTier
+        Reason = Azure::Storage::Mgmt::V2018_07_01::Models::Reason
         StorageAccountCreateParameters = Azure::Storage::Mgmt::V2018_07_01::Models::StorageAccountCreateParameters
         Permissions = Azure::Storage::Mgmt::V2018_07_01::Models::Permissions
         StorageAccountUpdateParameters = Azure::Storage::Mgmt::V2018_07_01::Models::StorageAccountUpdateParameters
@@ -90,11 +91,10 @@ module Azure::Profiles::Latest
         Services = Azure::Storage::Mgmt::V2018_07_01::Models::Services
         LeaseDuration = Azure::Storage::Mgmt::V2018_07_01::Models::LeaseDuration
         ImmutabilityPolicyUpdateType = Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyUpdateType
-        TrackedResource = Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
       end
 
       class StorageManagementClass
-        attr_reader :storage_accounts, :skus, :blob_containers, :usages, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :storage_accounts, :skus, :blob_containers, :usages, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -110,11 +110,11 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
+          @operations = @client_1.operations
           @storage_accounts = @client_1.storage_accounts
           @skus = @client_1.skus
           @blob_containers = @client_1.blob_containers
           @usages = @client_1.usages
-          @operations = @client_1.operations
 
           @model_classes = ModelClasses.new
         end
@@ -140,6 +140,9 @@ module Azure::Profiles::Latest
           end
           def storage_account_management_policies
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountManagementPolicies
+          end
+          def tracked_resource
+            Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
           end
           def iprule
             Azure::Storage::Mgmt::V2018_07_01::Models::IPRule
@@ -207,8 +210,8 @@ module Azure::Profiles::Latest
           def virtual_network_rule
             Azure::Storage::Mgmt::V2018_07_01::Models::VirtualNetworkRule
           end
-          def reason
-            Azure::Storage::Mgmt::V2018_07_01::Models::Reason
+          def access_tier
+            Azure::Storage::Mgmt::V2018_07_01::Models::AccessTier
           end
           def key_permission
             Azure::Storage::Mgmt::V2018_07_01::Models::KeyPermission
@@ -222,8 +225,8 @@ module Azure::Profiles::Latest
           def usage_unit
             Azure::Storage::Mgmt::V2018_07_01::Models::UsageUnit
           end
-          def access_tier
-            Azure::Storage::Mgmt::V2018_07_01::Models::AccessTier
+          def reason
+            Azure::Storage::Mgmt::V2018_07_01::Models::Reason
           end
           def storage_account_create_parameters
             Azure::Storage::Mgmt::V2018_07_01::Models::StorageAccountCreateParameters
@@ -362,9 +365,6 @@ module Azure::Profiles::Latest
           end
           def immutability_policy_update_type
             Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyUpdateType
-          end
-          def tracked_resource
-            Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
           end
         end
       end

@@ -7,20 +7,20 @@ require 'azure_mgmt_msi'
 module Azure::Profiles::Latest
   module ManagedServiceIdentity
     module Mgmt
-      UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::UserAssignedIdentities
       Operations = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Operations
+      UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::UserAssignedIdentities
 
       module Models
+        OperationDisplay = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
         Operation = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
         UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
         UserAssignedIdentitiesListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
         OperationListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationListResult
         Identity = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
-        OperationDisplay = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
       end
 
       class ManagedServiceIdentityManagementClass
-        attr_reader :user_assigned_identities, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :user_assigned_identities, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -30,8 +30,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @user_assigned_identities = @client_0.user_assigned_identities
           @operations = @client_0.operations
+          @user_assigned_identities = @client_0.user_assigned_identities
 
           @model_classes = ModelClasses.new
         end
@@ -50,6 +50,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def operation_display
+            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
+          end
           def operation
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
           end
@@ -64,9 +67,6 @@ module Azure::Profiles::Latest
           end
           def identity
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
-          end
-          def operation_display
-            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
           end
         end
       end

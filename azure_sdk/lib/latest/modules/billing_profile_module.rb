@@ -7,12 +7,13 @@ require 'azure_mgmt_billing'
 module Azure::Profiles::Latest
   module Billing
     module Mgmt
+      Operations = Azure::Billing::Mgmt::V2018_03_01_preview::Operations
       EnrollmentAccounts = Azure::Billing::Mgmt::V2018_03_01_preview::EnrollmentAccounts
       BillingPeriods = Azure::Billing::Mgmt::V2018_03_01_preview::BillingPeriods
       Invoices = Azure::Billing::Mgmt::V2018_03_01_preview::Invoices
-      Operations = Azure::Billing::Mgmt::V2018_03_01_preview::Operations
 
       module Models
+        InvoicesListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
         BillingPeriodsListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
         EnrollmentAccountListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccountListResult
         EnrollmentAccount = Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccount
@@ -25,11 +26,10 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationListResult
         ErrorResponse = Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorResponse
         DownloadUrl = Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
-        InvoicesListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
       end
 
       class BillingManagementClass
-        attr_reader :enrollment_accounts, :billing_periods, :invoices, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :enrollment_accounts, :billing_periods, :invoices, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -39,10 +39,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @enrollment_accounts = @client_0.enrollment_accounts
           @billing_periods = @client_0.billing_periods
           @invoices = @client_0.invoices
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -61,6 +61,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def invoices_list_result
+            Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
+          end
           def billing_periods_list_result
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
           end
@@ -96,9 +99,6 @@ module Azure::Profiles::Latest
           end
           def download_url
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
-          end
-          def invoices_list_result
-            Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
           end
         end
       end
