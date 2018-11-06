@@ -49,32 +49,44 @@
     }
   },
   "azure_mgmt_authorization": {
+    "azure_mgmt_authorization_2018_09_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
+      "namespace": "Azure::Authorization::Mgmt::V2018_09_01_preview",
+      "title": "AuthorizationManagementClient",
+      "tag": "package-2018-09-01-preview-only"
+    },
+    "azure_mgmt_authorization_2018_07_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
+      "namespace": "Azure::Authorization::Mgmt::V2018_07_01_preview",
+      "title": "AuthorizationManagementClient",
+      "tag": "package-2018-07-01-preview-only"
+    },
     "azure_mgmt_autorization_2018_01_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/authorization/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
       "namespace": "Azure::Authorization::Mgmt::V2018_01_01_preview",
       "title": "AuthorizationManagementClient",
       "tag": "package-2018-01-01-preview-only"
     },
     "azure_mgmt_autorization_2017_10_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/authorization/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
       "namespace": "Azure::Authorization::Mgmt::V2017_10_01_preview",
       "title": "AuthorizationManagementClient",
       "tag": "package-2017-10-01-preview-only"
     },
     "azure_mgmt_autorization_2015_07_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/authorization/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
       "namespace": "Azure::Authorization::Mgmt::V2015_07_01",
       "title": "AuthorizationManagementClient",
       "tag": "package-2015-07"
     },
     "azure_mgmt_autorization_2015_07_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/authorization/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
       "namespace": "Azure::Authorization::Mgmt::V2015_07_01_preview",
       "title": "AuthorizationManagementClient",
       "tag": "package-2015-07-01-preview"
     },
     "azure_mgmt_autorization_2015_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/authorization/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
       "namespace": "Azure::Authorization::Mgmt::V2015_06_01_preview",
       "title": "AuthorizationManagementClient",
       "tag": "package-2015-06-01-preview"

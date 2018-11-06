@@ -1,3 +1,7 @@
+## 2018.11.06(2) - Azure Ruby SDK Release
+* Released 0.18.2 version of azure_mgmt_authorization. 
+* Released 0.19.1 version of azure_sdk to include changes to the azure_mgmt_authorization gem.
+
 ## 2018.11.06 - Azure Ruby SDK Release
 * Released new versions for azure_mgmt_network, azure_cognitiveservices_textanalytics, azure_mgmt_container_instance, 
   azure_cognitiveservices_visualsearch, azure_cognitiveservices_websearch.

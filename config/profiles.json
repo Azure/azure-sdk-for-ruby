@@ -154,7 +154,9 @@
                 "Microsoft.Authorization": {
                     "management": {
                         "2015-06-01-preview": ["*"],
-                        "2018-01-01-preview": ["*"]
+                        "2018-01-01-preview": ["*"],
+                        "2018-07-01-preview": ["*"],
+                        "2018-09-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Automation": {
@@ -609,7 +611,9 @@
                 "Microsoft.Authorization" : {
                     "management": {
                         "2015-06-01-preview": ["*"],
-                        "2018-01-01-preview": ["*"]
+                        "2018-01-01-preview": ["*"],
+                        "2018-07-01-preview": ["*"],
+                        "2018-09-01-preview": ["*"]
                     }
                 }
             },
