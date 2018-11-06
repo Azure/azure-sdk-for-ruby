@@ -3,15 +3,19 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2018_01_01_preview
+module Azure::Authorization::Mgmt::V2018_07_01_preview
   #
-  # RoleAssignments
+  # Role based access control provides you a way to apply granular level policy
+  # administration down to individual resources or resource groups. These
+  # operations enable you to get deny assignments. A deny assignment describes
+  # the set of actions on resources that are denied for Azure Active Directory
+  # users.
   #
-  class RoleAssignments
+  class DenyAssignments
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the RoleAssignments class.
+    # Creates and initializes a new instance of the DenyAssignments class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,23 +26,31 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     attr_reader :client
 
     #
-    # Gets role assignments for a resource.
+    # Gets deny assignments for a resource.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
     # @param resource_type [String] The resource type of the resource.
-    # @param resource_name [String] The name of the resource to get role
+    # @param resource_name [String] The name of the resource to get deny
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<RoleAssignment>] operation results.
+    # @return [Array<DenyAssignment>] operation results.
     #
     def list_for_resource(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:nil, custom_headers:nil)
       first_page = list_for_resource_as_lazy(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:filter, custom_headers:custom_headers)
@@ -46,19 +58,27 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource.
+    # Gets deny assignments for a resource.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
     # @param resource_type [String] The resource type of the resource.
-    # @param resource_name [String] The name of the resource to get role
+    # @param resource_name [String] The name of the resource to get deny
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -69,32 +89,40 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource.
+    # Gets deny assignments for a resource.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
     # @param resource_type [String] The resource type of the resource.
-    # @param resource_name [String] The name of the resource to get role
+    # @param resource_name [String] The name of the resource to get deny
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_for_resource_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:nil, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
       fail ArgumentError, 'parent_resource_path is nil' if parent_resource_path.nil?
       fail ArgumentError, 'resource_type is nil' if resource_type.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -103,15 +131,15 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/roleAssignments'
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/denyAssignments'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'resourceProviderNamespace' => resource_provider_namespace,'resourceName' => resource_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceProviderNamespace' => resource_provider_namespace,'resourceName' => resource_name},
           skip_encoding_path_params: {'parentResourcePath' => parent_resource_path,'resourceType' => resource_type},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -131,7 +159,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -145,17 +173,25 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource group.
+    # Gets deny assignments for a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<RoleAssignment>] operation results.
+    # @return [Array<DenyAssignment>] operation results.
     #
     def list_for_resource_group(resource_group_name, filter:nil, custom_headers:nil)
       first_page = list_for_resource_group_as_lazy(resource_group_name, filter:filter, custom_headers:custom_headers)
@@ -163,13 +199,21 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource group.
+    # Gets deny assignments for a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -180,22 +224,30 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource group.
+    # Gets deny assignments for a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_for_resource_group_async(resource_group_name, filter:nil, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -204,14 +256,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/denyAssignments'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -231,7 +283,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -245,605 +297,24 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Deletes a role assignment.
-    #
-    # @param scope [String] The scope of the role assignment to delete.
-    # @param role_assignment_name [String] The name of the role assignment to
-    # delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RoleAssignment] operation results.
-    #
-    def delete(scope, role_assignment_name, custom_headers:nil)
-      response = delete_async(scope, role_assignment_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Deletes a role assignment.
-    #
-    # @param scope [String] The scope of the role assignment to delete.
-    # @param role_assignment_name [String] The name of the role assignment to
-    # delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(scope, role_assignment_name, custom_headers:nil)
-      delete_async(scope, role_assignment_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Deletes a role assignment.
-    #
-    # @param scope [String] The scope of the role assignment to delete.
-    # @param role_assignment_name [String] The name of the role assignment to
-    # delete.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_async(scope, role_assignment_name, custom_headers:nil)
-      fail ArgumentError, 'scope is nil' if scope.nil?
-      fail ArgumentError, 'role_assignment_name is nil' if role_assignment_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'roleAssignmentName' => role_assignment_name},
-          skip_encoding_path_params: {'scope' => scope},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates a role assignment.
-    #
-    # @param scope [String] The scope of the role assignment to create. The scope
-    # can be any REST resource instance. For example, use
-    # '/subscriptions/{subscription-id}/' for a subscription,
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a
-    # resource group, and
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
-    # for a resource.
-    # @param role_assignment_name [String] The name of the role assignment to
-    # create. It can be any valid GUID.
-    # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
-    # assignment.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RoleAssignment] operation results.
-    #
-    def create(scope, role_assignment_name, parameters, custom_headers:nil)
-      response = create_async(scope, role_assignment_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates a role assignment.
-    #
-    # @param scope [String] The scope of the role assignment to create. The scope
-    # can be any REST resource instance. For example, use
-    # '/subscriptions/{subscription-id}/' for a subscription,
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a
-    # resource group, and
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
-    # for a resource.
-    # @param role_assignment_name [String] The name of the role assignment to
-    # create. It can be any valid GUID.
-    # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
-    # assignment.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_with_http_info(scope, role_assignment_name, parameters, custom_headers:nil)
-      create_async(scope, role_assignment_name, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Creates a role assignment.
-    #
-    # @param scope [String] The scope of the role assignment to create. The scope
-    # can be any REST resource instance. For example, use
-    # '/subscriptions/{subscription-id}/' for a subscription,
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a
-    # resource group, and
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
-    # for a resource.
-    # @param role_assignment_name [String] The name of the role assignment to
-    # create. It can be any valid GUID.
-    # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
-    # assignment.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def create_async(scope, role_assignment_name, parameters, custom_headers:nil)
-      fail ArgumentError, 'scope is nil' if scope.nil?
-      fail ArgumentError, 'role_assignment_name is nil' if role_assignment_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'roleAssignmentName' => role_assignment_name},
-          skip_encoding_path_params: {'scope' => scope},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Get the specified role assignment.
-    #
-    # @param scope [String] The scope of the role assignment.
-    # @param role_assignment_name [String] The name of the role assignment to get.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RoleAssignment] operation results.
-    #
-    def get(scope, role_assignment_name, custom_headers:nil)
-      response = get_async(scope, role_assignment_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Get the specified role assignment.
-    #
-    # @param scope [String] The scope of the role assignment.
-    # @param role_assignment_name [String] The name of the role assignment to get.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_with_http_info(scope, role_assignment_name, custom_headers:nil)
-      get_async(scope, role_assignment_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Get the specified role assignment.
-    #
-    # @param scope [String] The scope of the role assignment.
-    # @param role_assignment_name [String] The name of the role assignment to get.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_async(scope, role_assignment_name, custom_headers:nil)
-      fail ArgumentError, 'scope is nil' if scope.nil?
-      fail ArgumentError, 'role_assignment_name is nil' if role_assignment_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'roleAssignmentName' => role_assignment_name},
-          skip_encoding_path_params: {'scope' => scope},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Deletes a role assignment.
-    #
-    # @param role_id [String] The ID of the role assignment to delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RoleAssignment] operation results.
-    #
-    def delete_by_id(role_id, custom_headers:nil)
-      response = delete_by_id_async(role_id, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Deletes a role assignment.
-    #
-    # @param role_id [String] The ID of the role assignment to delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_by_id_with_http_info(role_id, custom_headers:nil)
-      delete_by_id_async(role_id, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Deletes a role assignment.
-    #
-    # @param role_id [String] The ID of the role assignment to delete.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_by_id_async(role_id, custom_headers:nil)
-      fail ArgumentError, 'role_id is nil' if role_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{roleId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'roleId' => role_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates a role assignment by ID.
-    #
-    # @param role_id [String] The ID of the role assignment to create.
-    # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
-    # assignment.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RoleAssignment] operation results.
-    #
-    def create_by_id(role_id, parameters, custom_headers:nil)
-      response = create_by_id_async(role_id, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates a role assignment by ID.
-    #
-    # @param role_id [String] The ID of the role assignment to create.
-    # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
-    # assignment.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_by_id_with_http_info(role_id, parameters, custom_headers:nil)
-      create_by_id_async(role_id, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Creates a role assignment by ID.
-    #
-    # @param role_id [String] The ID of the role assignment to create.
-    # @param parameters [RoleAssignmentCreateParameters] Parameters for the role
-    # assignment.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def create_by_id_async(role_id, parameters, custom_headers:nil)
-      fail ArgumentError, 'role_id is nil' if role_id.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '{roleId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'roleId' => role_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets a role assignment by ID.
-    #
-    # @param role_id [String] The ID of the role assignment to get.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RoleAssignment] operation results.
-    #
-    def get_by_id(role_id, custom_headers:nil)
-      response = get_by_id_async(role_id, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets a role assignment by ID.
-    #
-    # @param role_id [String] The ID of the role assignment to get.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_by_id_with_http_info(role_id, custom_headers:nil)
-      get_by_id_async(role_id, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets a role assignment by ID.
-    #
-    # @param role_id [String] The ID of the role assignment to get.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_by_id_async(role_id, custom_headers:nil)
-      fail ArgumentError, 'role_id is nil' if role_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{roleId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'roleId' => role_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets all role assignments for the subscription.
+    # Gets all deny assignments for the subscription.
     #
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<RoleAssignment>] operation results.
+    # @return [Array<DenyAssignment>] operation results.
     #
     def list(filter:nil, custom_headers:nil)
       first_page = list_as_lazy(filter:filter, custom_headers:custom_headers)
@@ -851,12 +322,20 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets all role assignments for the subscription.
+    # Gets all deny assignments for the subscription.
     #
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -867,20 +346,28 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets all role assignments for the subscription.
+    # Gets all deny assignments for the subscription.
     #
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(filter:nil, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -889,14 +376,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Authorization/denyAssignments'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -916,7 +403,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -930,17 +417,219 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a scope.
+    # Get the specified deny assignment.
     #
-    # @param scope [String] The scope of the role assignments.
-    # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # @param scope [String] The scope of the deny assignment.
+    # @param deny_assignment_id [String] The ID of the deny assignment to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<RoleAssignment>] operation results.
+    # @return [DenyAssignment] operation results.
+    #
+    def get(scope, deny_assignment_id, custom_headers:nil)
+      response = get_async(scope, deny_assignment_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the specified deny assignment.
+    #
+    # @param scope [String] The scope of the deny assignment.
+    # @param deny_assignment_id [String] The ID of the deny assignment to get.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(scope, deny_assignment_id, custom_headers:nil)
+      get_async(scope, deny_assignment_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Get the specified deny assignment.
+    #
+    # @param scope [String] The scope of the deny assignment.
+    # @param deny_assignment_id [String] The ID of the deny assignment to get.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(scope, deny_assignment_id, custom_headers:nil)
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, 'deny_assignment_id is nil' if deny_assignment_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{scope}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'denyAssignmentId' => deny_assignment_id},
+          skip_encoding_path_params: {'scope' => scope},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignment.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a deny assignment by ID.
+    #
+    # @param deny_assignment_id [String] The fully qualified deny assignment ID.
+    # For example, use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}
+    # for subscription level deny assignments, or
+    # /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for
+    # tenant level deny assignments.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DenyAssignment] operation results.
+    #
+    def get_by_id(deny_assignment_id, custom_headers:nil)
+      response = get_by_id_async(deny_assignment_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a deny assignment by ID.
+    #
+    # @param deny_assignment_id [String] The fully qualified deny assignment ID.
+    # For example, use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}
+    # for subscription level deny assignments, or
+    # /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for
+    # tenant level deny assignments.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_by_id_with_http_info(deny_assignment_id, custom_headers:nil)
+      get_by_id_async(deny_assignment_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets a deny assignment by ID.
+    #
+    # @param deny_assignment_id [String] The fully qualified deny assignment ID.
+    # For example, use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}
+    # for subscription level deny assignments, or
+    # /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for
+    # tenant level deny assignments.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_by_id_async(deny_assignment_id, custom_headers:nil)
+      fail ArgumentError, 'deny_assignment_id is nil' if deny_assignment_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{denyAssignmentId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'denyAssignmentId' => deny_assignment_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignment.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets deny assignments for a scope.
+    #
+    # @param scope [String] The scope of the deny assignments.
+    # @param filter [String] The filter to apply on the operation. Use
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<DenyAssignment>] operation results.
     #
     def list_for_scope(scope, filter:nil, custom_headers:nil)
       first_page = list_for_scope_as_lazy(scope, filter:filter, custom_headers:custom_headers)
@@ -948,13 +637,21 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a scope.
+    # Gets deny assignments for a scope.
     #
-    # @param scope [String] The scope of the role assignments.
+    # @param scope [String] The scope of the deny assignments.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -965,13 +662,21 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a scope.
+    # Gets deny assignments for a scope.
     #
-    # @param scope [String] The scope of the role assignments.
+    # @param scope [String] The scope of the deny assignments.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -988,14 +693,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments'
+      path_template = '{scope}/providers/Microsoft.Authorization/denyAssignments'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           skip_encoding_path_params: {'scope' => scope},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1015,7 +720,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1029,14 +734,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource.
+    # Gets deny assignments for a resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] operation results.
+    # @return [DenyAssignmentListResult] operation results.
     #
     def list_for_resource_next(next_page_link, custom_headers:nil)
       response = list_for_resource_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -1044,7 +749,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource.
+    # Gets deny assignments for a resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1058,7 +763,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource.
+    # Gets deny assignments for a resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1103,7 +808,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1117,14 +822,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource group.
+    # Gets deny assignments for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] operation results.
+    # @return [DenyAssignmentListResult] operation results.
     #
     def list_for_resource_group_next(next_page_link, custom_headers:nil)
       response = list_for_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -1132,7 +837,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource group.
+    # Gets deny assignments for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1146,7 +851,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource group.
+    # Gets deny assignments for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1191,7 +896,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1205,14 +910,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets all role assignments for the subscription.
+    # Gets all deny assignments for the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] operation results.
+    # @return [DenyAssignmentListResult] operation results.
     #
     def list_next(next_page_link, custom_headers:nil)
       response = list_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -1220,7 +925,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets all role assignments for the subscription.
+    # Gets all deny assignments for the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1234,7 +939,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets all role assignments for the subscription.
+    # Gets all deny assignments for the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1279,7 +984,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1293,14 +998,14 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a scope.
+    # Gets deny assignments for a scope.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] operation results.
+    # @return [DenyAssignmentListResult] operation results.
     #
     def list_for_scope_next(next_page_link, custom_headers:nil)
       response = list_for_scope_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -1308,7 +1013,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a scope.
+    # Gets deny assignments for a scope.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1322,7 +1027,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a scope.
+    # Gets deny assignments for a scope.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1367,7 +1072,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1381,23 +1086,31 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource.
+    # Gets deny assignments for a resource.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
     # @param resource_type [String] The resource type of the resource.
-    # @param resource_name [String] The name of the resource to get role
+    # @param resource_name [String] The name of the resource to get deny
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] which provide lazy access to pages of the
+    # @return [DenyAssignmentListResult] which provide lazy access to pages of the
     # response.
     #
     def list_for_resource_as_lazy(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, filter:nil, custom_headers:nil)
@@ -1412,17 +1125,25 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a resource group.
+    # Gets deny assignments for a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] which provide lazy access to pages of the
+    # @return [DenyAssignmentListResult] which provide lazy access to pages of the
     # response.
     #
     def list_for_resource_group_as_lazy(resource_group_name, filter:nil, custom_headers:nil)
@@ -1437,16 +1158,24 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets all role assignments for the subscription.
+    # Gets all deny assignments for the subscription.
     #
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] which provide lazy access to pages of the
+    # @return [DenyAssignmentListResult] which provide lazy access to pages of the
     # response.
     #
     def list_as_lazy(filter:nil, custom_headers:nil)
@@ -1461,17 +1190,25 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Gets role assignments for a scope.
+    # Gets deny assignments for a scope.
     #
-    # @param scope [String] The scope of the role assignments.
+    # @param scope [String] The scope of the deny assignments.
     # @param filter [String] The filter to apply on the operation. Use
-    # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or below
-    # the scope for the specified principal.
+    # $filter=atScope() to return all deny assignments at or above the scope. Use
+    # $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+    # specified scope. Use $filter=principalId eq '{id}' to return all deny
+    # assignments at, above and below the scope for the specified principal. Use
+    # $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+    # above and below the scope for the specified principal. This filter is
+    # different from the principalId filter as it returns not only those deny
+    # assignments that contain the specified principal is the Principals list but
+    # also those deny assignments that contain the specified principal is the
+    # ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+    # used, only the deny assignment name and description properties are returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RoleAssignmentListResult] which provide lazy access to pages of the
+    # @return [DenyAssignmentListResult] which provide lazy access to pages of the
     # response.
     #
     def list_for_scope_as_lazy(scope, filter:nil, custom_headers:nil)

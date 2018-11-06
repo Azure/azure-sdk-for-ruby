@@ -3,9 +3,12 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Authorization::Mgmt::V2018_01_01_preview
+module Azure::Authorization::Mgmt::V2018_09_01_preview
   #
-  # RoleAssignments
+  # Role based access control provides you a way to apply granular level policy
+  # administration down to individual resources or resource groups. These
+  # operations enable you to manage role assignments. A role assignment grants
+  # access to Azure Active Directory users.
   #
   class RoleAssignments
     include MsRestAzure
@@ -131,7 +134,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -231,7 +234,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -326,7 +329,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -420,7 +423,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentCreateParameters.mapper()
+      request_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -453,7 +456,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -545,7 +548,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -632,7 +635,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -701,7 +704,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentCreateParameters.mapper()
+      request_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -733,7 +736,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -820,7 +823,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignment.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -916,7 +919,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1015,7 +1018,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1103,7 +1106,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1191,7 +1194,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1279,7 +1282,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1367,7 +1370,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleAssignmentListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
