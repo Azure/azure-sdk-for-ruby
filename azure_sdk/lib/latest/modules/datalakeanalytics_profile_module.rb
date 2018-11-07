@@ -7,15 +7,16 @@ require 'azure_mgmt_datalake_analytics'
 module Azure::Profiles::Latest
   module DataLakeAnalytics
     module Mgmt
+      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
       FirewallRules = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::FirewallRules
       Locations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Locations
       Operations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Operations
       Accounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Accounts
       StorageAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::StorageAccounts
       DataLakeStoreAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::DataLakeStoreAccounts
-      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
 
       module Models
+        CheckNameAvailabilityParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
         SubscriptionState = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubscriptionState
         CapabilityInformation = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CapabilityInformation
         NameAvailabilityInformation = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::NameAvailabilityInformation
@@ -63,11 +64,10 @@ module Azure::Profiles::Latest
         TierType = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::TierType
         DataLakeAnalyticsAccountStatus = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountStatus
         OperationOrigin = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationOrigin
-        CheckNameAvailabilityParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
       end
 
       class DataLakeAnalyticsManagementClass
-        attr_reader :firewall_rules, :locations, :operations, :accounts, :storage_accounts, :data_lake_store_accounts, :compute_policies, :configurable, :base_url, :options, :model_classes
+        attr_reader :compute_policies, :firewall_rules, :locations, :operations, :accounts, :storage_accounts, :data_lake_store_accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -77,13 +77,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @compute_policies = @client_0.compute_policies
           @firewall_rules = @client_0.firewall_rules
           @locations = @client_0.locations
           @operations = @client_0.operations
           @accounts = @client_0.accounts
           @storage_accounts = @client_0.storage_accounts
           @data_lake_store_accounts = @client_0.data_lake_store_accounts
-          @compute_policies = @client_0.compute_policies
 
           @model_classes = ModelClasses.new
         end
@@ -102,6 +102,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_name_availability_parameters
+            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
+          end
           def subscription_state
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::SubscriptionState
           end
@@ -242,9 +245,6 @@ module Azure::Profiles::Latest
           end
           def operation_origin
             Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::OperationOrigin
-          end
-          def check_name_availability_parameters
-            Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
           end
         end
       end
