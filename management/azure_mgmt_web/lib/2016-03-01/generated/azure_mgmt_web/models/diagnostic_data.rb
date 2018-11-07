@@ -26,7 +26,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticData',
           type: {
@@ -34,7 +33,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DiagnosticData',
             model_properties: {
               table: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'table',
                 type: {
@@ -43,7 +41,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               rendering_properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'renderingProperties',
                 type: {

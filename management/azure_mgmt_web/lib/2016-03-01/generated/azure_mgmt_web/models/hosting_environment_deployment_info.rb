@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HostingEnvironmentDeploymentInfo',
           type: {
@@ -33,7 +32,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'HostingEnvironmentDeploymentInfo',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {

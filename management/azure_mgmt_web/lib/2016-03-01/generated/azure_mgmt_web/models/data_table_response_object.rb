@@ -29,7 +29,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataTableResponseObject',
           type: {
@@ -37,7 +36,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DataTableResponseObject',
             model_properties: {
               table_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tableName',
                 type: {
@@ -45,13 +43,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               columns: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'columns',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataTableResponseColumnElementType',
                       type: {
@@ -62,19 +58,16 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               rows: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rows',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
