@@ -9,15 +9,15 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
-      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       SearchResultsAnswer = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
+      Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::EntitySearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
-      Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
       CreativeWork = Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
@@ -34,12 +34,12 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
-      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
       EntertainmentBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+      MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
       ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
       ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
       ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
@@ -52,7 +52,7 @@ module Azure::Profiles::Latest
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
-      MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
+      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
     end
@@ -87,14 +87,14 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def entities
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
+        end
         def response_base
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
         end
         def query_context
           Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
-        end
-        def entities
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
         end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
@@ -105,14 +105,14 @@ module Azure::Profiles::Latest
         def search_results_answer
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
         end
+        def identifiable
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
+        end
         def answer
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Answer
         end
         def thing
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
-        end
-        def identifiable
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
         end
         def creative_work
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
@@ -162,8 +162,8 @@ module Azure::Profiles::Latest
         def local_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
         end
-        def tourist_attraction
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def airport
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
@@ -177,8 +177,8 @@ module Azure::Profiles::Latest
         def entertainment_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
         end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+        def movie_theater
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
         end
         def contractual_rules_license_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
@@ -216,8 +216,8 @@ module Azure::Profiles::Latest
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
         end
-        def movie_theater
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
+        def tourist_attraction
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
         end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType

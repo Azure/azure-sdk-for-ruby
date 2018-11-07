@@ -10,9 +10,9 @@ module Azure::Profiles::Latest
 
     module Models
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
+      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
-      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       SearchResultsAnswer = Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::ImageSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
@@ -25,8 +25,8 @@ module Azure::Profiles::Latest
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
       MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
-      StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
       Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+      StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
       Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       RelatedSearchesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
       InsightsTag = Azure::CognitiveServices::ImageSearch::V1_0::Models::InsightsTag
@@ -102,14 +102,14 @@ module Azure::Profiles::Latest
         def response_base
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
         end
+        def response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+        end
         def query
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
         end
         def web_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
-        end
-        def response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
         end
         def search_results_answer
           Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
@@ -147,11 +147,11 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
         end
-        def structured_value
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
-        end
         def error
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        end
+        def structured_value
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
         end
         def images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
