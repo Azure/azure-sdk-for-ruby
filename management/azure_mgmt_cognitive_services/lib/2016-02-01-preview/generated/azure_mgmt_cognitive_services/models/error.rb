@@ -23,7 +23,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Error',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
             class_name: 'Error',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

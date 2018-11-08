@@ -25,7 +25,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesResourceAndSku',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesResourceAndSku',
             model_properties: {
               resource_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

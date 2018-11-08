@@ -44,7 +44,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Usage',
           type: {
@@ -52,7 +51,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'Usage',
             model_properties: {
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -60,7 +58,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -70,7 +67,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               quota_period: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'quotaPeriod',
@@ -79,7 +75,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
@@ -88,7 +83,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currentValue',
@@ -97,7 +91,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               next_reset_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextResetTime',
@@ -106,7 +99,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

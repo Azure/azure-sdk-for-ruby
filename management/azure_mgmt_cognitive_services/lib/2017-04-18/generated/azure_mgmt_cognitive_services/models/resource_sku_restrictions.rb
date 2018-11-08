@@ -36,7 +36,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuRestrictions',
           type: {
@@ -44,7 +43,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'ResourceSkuRestrictions',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -54,14 +52,12 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               values: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -71,7 +67,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               restriction_info: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'restrictionInfo',
@@ -81,7 +76,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               reason_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reasonCode',
