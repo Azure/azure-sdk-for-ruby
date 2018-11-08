@@ -35,7 +35,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiEntityBaseContract',
           type: {
@@ -43,7 +42,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'ApiEntityBaseContract',
             model_properties: {
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -51,7 +49,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               authentication_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authenticationSettings',
                 type: {
@@ -60,7 +57,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               subscription_key_parameter_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionKeyParameterNames',
                 type: {
@@ -69,7 +65,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
