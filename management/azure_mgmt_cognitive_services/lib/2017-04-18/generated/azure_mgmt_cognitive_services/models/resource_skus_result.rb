@@ -58,7 +58,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkusResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'ResourceSkusResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceSkuElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

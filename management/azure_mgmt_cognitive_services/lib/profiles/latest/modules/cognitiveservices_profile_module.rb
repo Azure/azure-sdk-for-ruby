@@ -14,7 +14,6 @@ module Azure::CognitiveServices::Profiles::Latest
     module Models
       ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
       Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
-      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
       OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
       CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
@@ -45,6 +44,7 @@ module Azure::CognitiveServices::Profiles::Latest
       QuotaUsageStatus = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::QuotaUsageStatus
       ResourceSkuRestrictionsType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
       ResourceSkuRestrictionsReasonCode = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsReasonCode
+      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
     end
 
     #
@@ -100,9 +100,6 @@ module Azure::CognitiveServices::Profiles::Latest
       end
       def sku
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
-      end
-      def error
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       end
       def cognitive_services_account_update_parameters
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
@@ -193,6 +190,9 @@ module Azure::CognitiveServices::Profiles::Latest
       end
       def resource_sku_restrictions_reason_code
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsReasonCode
+      end
+      def error
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       end
     end
   end

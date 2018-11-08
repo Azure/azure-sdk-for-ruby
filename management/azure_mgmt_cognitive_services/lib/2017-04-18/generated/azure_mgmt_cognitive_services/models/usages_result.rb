@@ -23,7 +23,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UsagesResult',
           type: {
@@ -31,14 +30,12 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'UsagesResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UsageElementType',
                       type: {
