@@ -28,7 +28,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerHttpGet',
           type: {
@@ -36,7 +35,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ContainerHttpGet',
             model_properties: {
               path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -44,7 +42,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'port',
                 type: {
@@ -52,7 +49,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               scheme: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scheme',
                 type: {

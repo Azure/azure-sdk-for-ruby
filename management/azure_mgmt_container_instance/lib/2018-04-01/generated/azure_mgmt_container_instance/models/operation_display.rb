@@ -31,7 +31,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -39,7 +38,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -48,7 +46,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
                 }
               },
               resource: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -57,7 +54,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',
@@ -66,7 +62,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',

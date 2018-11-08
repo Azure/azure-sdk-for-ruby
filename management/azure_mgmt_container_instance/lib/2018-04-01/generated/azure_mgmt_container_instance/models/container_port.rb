@@ -26,7 +26,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerPort',
           type: {
@@ -34,7 +33,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
             class_name: 'ContainerPort',
             model_properties: {
               protocol: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -42,7 +40,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
                 }
               },
               port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'port',
                 type: {

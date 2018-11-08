@@ -22,7 +22,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Logs',
           type: {
@@ -30,7 +29,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'Logs',
             model_properties: {
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'content',
                 type: {
