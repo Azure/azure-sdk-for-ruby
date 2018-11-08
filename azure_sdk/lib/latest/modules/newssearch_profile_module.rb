@@ -12,12 +12,12 @@ module Azure::Profiles::Latest
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
-      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-      Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
-      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
+      Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
+      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
@@ -74,23 +74,23 @@ module Azure::Profiles::Latest
         def news_topic
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
         end
-        def article
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
-        end
         def response_base
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-        end
-        def query
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
-        end
-        def video_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
         end
         def trending_topics
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
         end
+        def query
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
+        end
+        def article
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+        end
         def response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+        end
+        def video_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
         end
         def search_results_answer
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
