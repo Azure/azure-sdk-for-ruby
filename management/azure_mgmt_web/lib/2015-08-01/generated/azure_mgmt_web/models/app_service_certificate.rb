@@ -34,7 +34,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppServiceCertificate',
           type: {
@@ -42,7 +41,6 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'AppServiceCertificate',
             model_properties: {
               key_vault_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultId',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               key_vault_secret_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultSecretName',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
