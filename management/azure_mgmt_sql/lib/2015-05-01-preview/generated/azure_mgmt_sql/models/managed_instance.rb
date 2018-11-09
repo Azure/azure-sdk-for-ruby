@@ -192,7 +192,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
               },
               collation: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.collation',
                 type: {
                   name: 'String'
