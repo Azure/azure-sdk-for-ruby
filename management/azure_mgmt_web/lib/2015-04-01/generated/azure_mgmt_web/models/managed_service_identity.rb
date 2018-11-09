@@ -29,7 +29,6 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagedServiceIdentity',
           type: {
@@ -37,7 +36,6 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'ManagedServiceIdentity',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -54,7 +51,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
