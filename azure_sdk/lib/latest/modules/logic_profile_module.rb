@@ -74,7 +74,7 @@ module Azure::Profiles::Latest
         CallbackUrl = Azure::Logic::Mgmt::V2016_06_01::Models::CallbackUrl
         X12AgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::X12AgreementContent
         IntegrationAccountSchemaListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaListResult
-        ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
+        EdifactValidationSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationSettings
         IntegrationAccountMapPropertiesParametersSchema = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapPropertiesParametersSchema
         EdifactFramingSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactFramingSettings
         IntegrationAccountMapListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapListResult
@@ -102,24 +102,24 @@ module Azure::Profiles::Latest
         WorkflowTriggerHistoryFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerHistoryFilter
         WorkflowRunListResult = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunListResult
         AgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::AgreementContent
+        ContentHash = Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
         AssemblyCollection = Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyCollection
         ErrorInfo = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorInfo
-        GenerateUpgradedDefinitionParameters = Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
         EdifactAgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactAgreementContent
         IntegrationAccountAgreementListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementListResult
-        GetCallbackUrlParameters = Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters
+        GenerateUpgradedDefinitionParameters = Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
         IntegrationAccountAgreementFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementFilter
-        IntegrationAccountSchemaFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaFilter
+        GetCallbackUrlParameters = Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters
         KeyVaultKeyReferenceKeyVault = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReferenceKeyVault
-        IntegrationAccountMapFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
+        IntegrationAccountSchemaFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaFilter
         WorkflowRunActionRepetitionDefinitionCollection = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionRepetitionDefinitionCollection
-        Expression = Azure::Logic::Mgmt::V2016_06_01::Models::Expression
+        IntegrationAccountMapFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
         AS2AcknowledgementConnectionSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2AcknowledgementConnectionSettings
-        IntegrationAccountCertificateListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
+        Expression = Azure::Logic::Mgmt::V2016_06_01::Models::Expression
         AS2EnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
-        IntegrationAccountSessionFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
+        IntegrationAccountCertificateListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
         ExpressionTraces = Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
-        EdifactValidationSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationSettings
+        IntegrationAccountSessionFilter = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
         IntegrationAccountSessionListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
         BatchConfigurationCollection = Azure::Logic::Mgmt::V2016_06_01::Models::BatchConfigurationCollection
         OperationResultProperties = Azure::Logic::Mgmt::V2016_06_01::Models::OperationResultProperties
@@ -388,8 +388,8 @@ module Azure::Profiles::Latest
           def integration_account_schema_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaListResult
           end
-          def content_hash
-            Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
+          def edifact_validation_settings
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationSettings
           end
           def integration_account_map_properties_parameters_schema
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapPropertiesParametersSchema
@@ -472,14 +472,14 @@ module Azure::Profiles::Latest
           def agreement_content
             Azure::Logic::Mgmt::V2016_06_01::Models::AgreementContent
           end
+          def content_hash
+            Azure::Logic::Mgmt::V2016_06_01::Models::ContentHash
+          end
           def assembly_collection
             Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyCollection
           end
           def error_info
             Azure::Logic::Mgmt::V2016_06_01::Models::ErrorInfo
-          end
-          def generate_upgraded_definition_parameters
-            Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
           end
           def edifact_agreement_content
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactAgreementContent
@@ -487,44 +487,44 @@ module Azure::Profiles::Latest
           def integration_account_agreement_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementListResult
           end
-          def get_callback_url_parameters
-            Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters
+          def generate_upgraded_definition_parameters
+            Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters
           end
           def integration_account_agreement_filter
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountAgreementFilter
           end
-          def integration_account_schema_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaFilter
+          def get_callback_url_parameters
+            Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters
           end
           def key_vault_key_reference_key_vault
             Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyReferenceKeyVault
           end
-          def integration_account_map_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
+          def integration_account_schema_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSchemaFilter
           end
           def workflow_run_action_repetition_definition_collection
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionRepetitionDefinitionCollection
           end
-          def expression
-            Azure::Logic::Mgmt::V2016_06_01::Models::Expression
+          def integration_account_map_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountMapFilter
           end
           def as2_acknowledgement_connection_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::AS2AcknowledgementConnectionSettings
           end
-          def integration_account_certificate_list_result
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
+          def expression
+            Azure::Logic::Mgmt::V2016_06_01::Models::Expression
           end
           def as2_envelope_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
           end
-          def integration_account_session_filter
-            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
+          def integration_account_certificate_list_result
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
           end
           def expression_traces
             Azure::Logic::Mgmt::V2016_06_01::Models::ExpressionTraces
           end
-          def edifact_validation_settings
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactValidationSettings
+          def integration_account_session_filter
+            Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionFilter
           end
           def integration_account_session_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult

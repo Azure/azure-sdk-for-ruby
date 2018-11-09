@@ -27,7 +27,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackendResponse',
           type: {
@@ -35,7 +34,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'BackendResponse',
             model_properties: {
               host: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'host',
                 constraints: {
@@ -47,7 +45,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               skip_certificate_chain_validation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skipCertificateChainValidation',
                 default_value: false,
@@ -56,7 +53,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',

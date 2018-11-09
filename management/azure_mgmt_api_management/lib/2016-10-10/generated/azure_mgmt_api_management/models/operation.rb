@@ -25,7 +25,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -33,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
