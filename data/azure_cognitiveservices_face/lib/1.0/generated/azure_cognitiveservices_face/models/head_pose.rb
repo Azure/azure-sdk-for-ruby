@@ -28,7 +28,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HeadPose',
           type: {
@@ -36,7 +35,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'HeadPose',
             model_properties: {
               roll: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'roll',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               yaw: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'yaw',
                 type: {
@@ -52,7 +49,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               pitch: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pitch',
                 type: {

@@ -27,7 +27,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Makeup',
           type: {
@@ -35,7 +34,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Makeup',
             model_properties: {
               eye_makeup: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeMakeup',
                 type: {
@@ -43,7 +41,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               lip_makeup: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lipMakeup',
                 type: {
