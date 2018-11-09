@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceNameAvailabilityRequest',
           type: {
@@ -39,7 +38,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ResourceNameAvailabilityRequest',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               is_fqdn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isFqdn',
                 type: {

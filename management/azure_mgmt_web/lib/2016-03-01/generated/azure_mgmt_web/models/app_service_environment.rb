@@ -156,7 +156,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppServiceEnvironment',
           type: {
@@ -164,7 +163,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'AppServiceEnvironment',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -172,7 +170,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -180,7 +177,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -190,7 +186,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -200,7 +195,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vnet_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vnetName',
                 type: {
@@ -208,7 +202,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vnet_resource_group_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vnetResourceGroupName',
                 type: {
@@ -216,7 +209,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vnet_subnet_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vnetSubnetName',
                 type: {
@@ -224,7 +216,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               virtual_network: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'virtualNetwork',
                 type: {
@@ -233,7 +224,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               internal_load_balancing_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalLoadBalancingMode',
                 type: {
@@ -242,7 +232,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               multi_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'multiSize',
                 type: {
@@ -250,7 +239,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               multi_role_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'multiRoleCount',
                 type: {
@@ -258,13 +246,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               worker_pools: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'workerPools',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WorkerPoolElementType',
                       type: {
@@ -275,7 +261,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               ipssl_address_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipsslAddressCount',
                 type: {
@@ -283,7 +268,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               database_edition: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'databaseEdition',
@@ -292,7 +276,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               database_service_objective: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'databaseServiceObjective',
@@ -301,7 +284,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               upgrade_domains: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'upgradeDomains',
@@ -310,7 +292,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subscriptionId',
@@ -319,7 +300,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               dns_suffix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsSuffix',
                 type: {
@@ -327,7 +307,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               last_action: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastAction',
@@ -336,7 +315,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               last_action_result: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastActionResult',
@@ -345,7 +323,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               allowed_multi_sizes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'allowedMultiSizes',
@@ -354,7 +331,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               allowed_worker_sizes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'allowedWorkerSizes',
@@ -363,7 +339,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               maximum_number_of_machines: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maximumNumberOfMachines',
@@ -372,14 +347,12 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vip_mappings: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'vipMappings',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualIPMappingElementType',
                       type: {
@@ -390,14 +363,12 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               environment_capacities: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'environmentCapacities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StampCapacityElementType',
                       type: {
@@ -408,13 +379,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               network_access_control_list: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkAccessControlList',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkAccessControlEntryElementType',
                       type: {
@@ -425,7 +394,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               environment_is_healthy: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'environmentIsHealthy',
@@ -434,7 +402,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               environment_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'environmentStatus',
@@ -443,7 +410,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               resource_group: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceGroup',
@@ -452,7 +418,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               front_end_scale_factor: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'frontEndScaleFactor',
                 type: {
@@ -460,7 +425,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               default_front_end_scale_factor: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'defaultFrontEndScaleFactor',
@@ -469,7 +433,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               api_management_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiManagementAccountId',
                 type: {
@@ -477,7 +440,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               suspended: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'suspended',
                 type: {
@@ -485,7 +447,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               dynamic_cache_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dynamicCacheEnabled',
                 type: {
@@ -493,13 +454,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               cluster_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clusterSettings',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NameValuePairElementType',
                       type: {
@@ -510,13 +469,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               user_whitelisted_ip_ranges: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userWhitelistedIpRanges',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
