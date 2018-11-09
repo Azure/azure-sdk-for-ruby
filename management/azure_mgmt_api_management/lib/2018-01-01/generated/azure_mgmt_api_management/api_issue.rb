@@ -495,18 +495,17 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # Management service instance.
     # @param issue_id [String] Issue identifier. Must be unique in the current API
     # Management service instance.
-    # @param parameters [IssueContract] Update parameters.
+    # @param parameters [IssueUpdateContract] Update parameters.
     # @param if_match [String] ETag of the Issue Entity. ETag should match the
     # current entity state from the header response of the GET request or it should
     # be * for unconditional update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [IssueContract] operation results.
     #
     def update(resource_group_name, service_name, api_id, issue_id, parameters, if_match = nil, custom_headers = nil)
       response = update_async(resource_group_name, service_name, api_id, issue_id, parameters, if_match, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -518,7 +517,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # Management service instance.
     # @param issue_id [String] Issue identifier. Must be unique in the current API
     # Management service instance.
-    # @param parameters [IssueContract] Update parameters.
+    # @param parameters [IssueUpdateContract] Update parameters.
     # @param if_match [String] ETag of the Issue Entity. ETag should match the
     # current entity state from the header response of the GET request or it should
     # be * for unconditional update.
@@ -540,7 +539,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # Management service instance.
     # @param issue_id [String] Issue identifier. Must be unique in the current API
     # Management service instance.
-    # @param parameters [IssueContract] Update parameters.
+    # @param parameters [IssueUpdateContract] Update parameters.
     # @param if_match [String] ETag of the Issue Entity. ETag should match the
     # current entity state from the header response of the GET request or it should
     # be * for unconditional update.
@@ -569,7 +568,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Models::IssueContract.mapper()
+      request_mapper = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Models::IssueUpdateContract.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -591,32 +590,12 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201 || status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Models::IssueContract.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Models::IssueContract.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end
