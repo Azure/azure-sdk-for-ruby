@@ -49,7 +49,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TenantConfigurationSyncStateContract',
           type: {
@@ -57,7 +56,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'TenantConfigurationSyncStateContract',
             model_properties: {
               branch: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'branch',
                 type: {
@@ -65,7 +63,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               commit_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'commitId',
                 type: {
@@ -73,7 +70,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               is_export: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isExport',
                 type: {
@@ -81,7 +77,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               is_synced: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isSynced',
                 type: {
@@ -89,7 +84,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               is_git_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isGitEnabled',
                 type: {
@@ -97,7 +91,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               sync_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'syncDate',
                 type: {
@@ -105,7 +98,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               configuration_change_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'configurationChangeDate',
                 type: {
