@@ -32,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AccessInformationContract',
           type: {
@@ -40,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'AccessInformationContract',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -48,7 +46,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -56,7 +53,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 type: {
@@ -64,7 +60,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {

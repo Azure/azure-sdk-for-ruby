@@ -96,7 +96,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceBaseParameters',
           type: {
@@ -104,13 +103,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ApiManagementServiceBaseParameters',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -120,7 +117,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               publisher_email: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.publisherEmail',
                 constraints: {
@@ -131,7 +127,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               publisher_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.publisherName',
                 type: {
@@ -139,7 +134,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -148,7 +142,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               target_provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.targetProvisioningState',
@@ -157,7 +150,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               created_at_utc: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAtUtc',
@@ -166,7 +158,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               runtime_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.runtimeUrl',
@@ -175,7 +166,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               portal_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.portalUrl',
@@ -184,7 +174,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               management_api_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.managementApiUrl',
@@ -193,7 +182,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               scm_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.scmUrl',
@@ -202,7 +190,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               addresser_email: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.addresserEmail',
                 type: {
@@ -210,13 +197,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               hostname_configurations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostnameConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HostnameConfigurationElementType',
                       type: {
@@ -227,14 +212,12 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               static_ips: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.staticIPs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -244,7 +227,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               vpnconfiguration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vpnconfiguration',
                 type: {
@@ -253,13 +235,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               additional_locations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.additionalLocations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AdditionalRegionElementType',
                       type: {
@@ -270,13 +250,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               custom_properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customProperties',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -286,7 +264,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               vpn_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vpnType',
                 default_value: 'None',
@@ -296,7 +273,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

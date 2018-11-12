@@ -25,7 +25,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -33,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
