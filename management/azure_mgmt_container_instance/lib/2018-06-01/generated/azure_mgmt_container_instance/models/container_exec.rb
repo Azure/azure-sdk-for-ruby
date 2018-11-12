@@ -22,7 +22,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerExec',
           type: {
@@ -30,13 +29,11 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ContainerExec',
             model_properties: {
               command: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'command',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

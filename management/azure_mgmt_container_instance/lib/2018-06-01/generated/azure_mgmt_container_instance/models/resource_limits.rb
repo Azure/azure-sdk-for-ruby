@@ -25,7 +25,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceLimits',
           type: {
@@ -33,7 +32,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ResourceLimits',
             model_properties: {
               memory_in_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'memoryInGB',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               cpu: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cpu',
                 type: {

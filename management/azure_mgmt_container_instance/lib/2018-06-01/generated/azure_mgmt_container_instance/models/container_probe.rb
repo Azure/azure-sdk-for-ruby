@@ -40,7 +40,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerProbe',
           type: {
@@ -48,7 +47,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ContainerProbe',
             model_properties: {
               exec: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exec',
                 type: {
@@ -57,7 +55,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               http_get: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'httpGet',
                 type: {
@@ -66,7 +63,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               initial_delay_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'initialDelaySeconds',
                 type: {
@@ -74,7 +70,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               period_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'periodSeconds',
                 type: {
@@ -82,7 +77,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               failure_threshold: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'failureThreshold',
                 type: {
@@ -90,7 +84,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               success_threshold: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'successThreshold',
                 type: {
@@ -98,7 +91,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               timeout_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeoutSeconds',
                 type: {
