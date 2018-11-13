@@ -28,7 +28,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountCheckNameAvailabilityParameters',
           type: {
@@ -36,7 +35,6 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'StorageAccountCheckNameAvailabilityParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

@@ -89,7 +89,6 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccount',
           type: {
@@ -97,7 +96,6 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'StorageAccount',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -106,7 +104,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -115,7 +112,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -124,7 +120,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -132,13 +127,11 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -148,7 +141,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'sku',
@@ -158,7 +150,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -168,7 +159,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -178,7 +168,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               primary_endpoints: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.primaryEndpoints',
@@ -188,7 +177,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               primary_location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.primaryLocation',
@@ -197,7 +185,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               status_of_primary: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.statusOfPrimary',
@@ -207,7 +194,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               last_geo_failover_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastGeoFailoverTime',
@@ -216,7 +202,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               secondary_location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.secondaryLocation',
@@ -225,7 +210,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               status_of_secondary: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.statusOfSecondary',
@@ -235,7 +219,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationTime',
@@ -244,7 +227,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               custom_domain: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.customDomain',
@@ -254,7 +236,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               secondary_endpoints: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.secondaryEndpoints',
@@ -264,7 +245,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               encryption: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.encryption',
@@ -274,7 +254,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               access_tier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.accessTier',
@@ -284,7 +263,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               enable_https_traffic_only: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.supportsHttpsTrafficOnly',
                 default_value: false,
