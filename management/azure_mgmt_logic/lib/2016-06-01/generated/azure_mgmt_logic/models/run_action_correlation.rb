@@ -22,7 +22,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RunActionCorrelation',
           type: {
@@ -30,7 +29,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'RunActionCorrelation',
             model_properties: {
               client_tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientTrackingId',
                 type: {
@@ -38,13 +36,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               client_keywords: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientKeywords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -54,7 +50,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               action_tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionTrackingId',
                 type: {

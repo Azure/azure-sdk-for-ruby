@@ -67,7 +67,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowRunActionRepetitionDefinition',
           type: {
@@ -75,7 +74,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowRunActionRepetitionDefinition',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -84,7 +82,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -93,7 +90,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -102,7 +98,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -110,13 +105,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -126,7 +119,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -134,7 +126,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endTime',
                 type: {
@@ -142,7 +133,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               correlation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.correlation',
                 type: {
@@ -151,7 +141,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -160,7 +149,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.code',
                 type: {
@@ -168,7 +156,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.error',
                 type: {
@@ -176,7 +163,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.trackingId',
@@ -185,7 +171,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               inputs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.inputs',
@@ -194,7 +179,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               inputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.inputsLink',
@@ -204,7 +188,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.outputs',
@@ -213,7 +196,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               outputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.outputsLink',
@@ -223,7 +205,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               tracked_properties: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.trackedProperties',
@@ -232,13 +213,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               retry_history: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retryHistory',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RetryHistoryElementType',
                       type: {
@@ -249,7 +228,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               iteration_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.iterationCount',
                 type: {
@@ -257,13 +235,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               repetition_indexes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.repetitionIndexes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RepetitionIndexElementType',
                       type: {

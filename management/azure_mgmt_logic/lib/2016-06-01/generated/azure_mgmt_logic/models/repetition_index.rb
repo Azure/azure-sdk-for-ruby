@@ -25,7 +25,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RepetitionIndex',
           type: {
@@ -33,7 +32,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'RepetitionIndex',
             model_properties: {
               scope_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scopeName',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               item_index: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'itemIndex',
                 type: {
