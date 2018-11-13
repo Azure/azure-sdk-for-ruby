@@ -42,7 +42,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserCreateParameters',
           type: {
@@ -50,7 +49,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'UserCreateParameters',
             model_properties: {
               email: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'email',
                 constraints: {
@@ -62,7 +60,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'password',
                 type: {
@@ -70,7 +67,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               first_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'firstName',
                 constraints: {
@@ -82,7 +78,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               last_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lastName',
                 constraints: {
@@ -94,7 +89,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 default_value: 'Active',
@@ -104,7 +98,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               note: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'note',
                 type: {
