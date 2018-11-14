@@ -96,6 +96,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @return [ApiManagementOperations] api_management_operations
     attr_reader :api_management_operations
 
+    # @return [ApiManagementServiceSkus] api_management_service_skus
+    attr_reader :api_management_service_skus
+
     # @return [ApiManagementService] api_management_service
     attr_reader :api_management_service
 
@@ -246,6 +249,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       @backend = Backend.new(self)
       @certificate = Certificate.new(self)
       @api_management_operations = ApiManagementOperations.new(self)
+      @api_management_service_skus = ApiManagementServiceSkus.new(self)
       @api_management_service = ApiManagementService.new(self)
       @diagnostic = Diagnostic.new(self)
       @diagnostic_logger = DiagnosticLogger.new(self)
