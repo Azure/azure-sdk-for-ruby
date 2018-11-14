@@ -12,6 +12,7 @@ module Azure::Profiles::Latest
     Face = Azure::CognitiveServices::Face::V1_0::Face
 
     module Models
+      Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
       TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
       FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
       PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
@@ -23,11 +24,11 @@ module Azure::Profiles::Latest
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
-      NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
+      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
+      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
@@ -53,11 +54,10 @@ module Azure::Profiles::Latest
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
-      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
+      NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
       DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
       UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
-      Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
     end
 
     class FaceDataClass
@@ -93,6 +93,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def blur
+          Azure::CognitiveServices::Face::V1_0::Models::Blur
+        end
         def training_status
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
         end
@@ -126,8 +129,8 @@ module Azure::Profiles::Latest
         def blur_level
           Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
         end
-        def name_and_user_data_contract
-          Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
+        def find_similar_match_mode
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def training_status_type
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
@@ -135,11 +138,11 @@ module Azure::Profiles::Latest
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
         end
+        def noise
+          Azure::CognitiveServices::Face::V1_0::Models::Noise
+        end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-        end
-        def find_similar_match_mode
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
@@ -216,20 +219,17 @@ module Azure::Profiles::Latest
         def occlusion
           Azure::CognitiveServices::Face::V1_0::Models::Occlusion
         end
-        def noise
-          Azure::CognitiveServices::Face::V1_0::Models::Noise
-        end
         def hair
           Azure::CognitiveServices::Face::V1_0::Models::Hair
+        end
+        def name_and_user_data_contract
+          Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
         end
         def detected_face
           Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
         end
         def update_person_face_request
           Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
-        end
-        def blur
-          Azure::CognitiveServices::Face::V1_0::Models::Blur
         end
       end
     end

@@ -17,10 +17,10 @@ module Azure::Profiles::Latest
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
       ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-      TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
+      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
-      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+      TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
@@ -89,8 +89,8 @@ module Azure::Profiles::Latest
         def response_base
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
         end
-        def trending_topics
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
+        def article
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
         end
         def query
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
@@ -98,8 +98,8 @@ module Azure::Profiles::Latest
         def video_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
         end
-        def article
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+        def trending_topics
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
         end
         def search_results_answer
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer

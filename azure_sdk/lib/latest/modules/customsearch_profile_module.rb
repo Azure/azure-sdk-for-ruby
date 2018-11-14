@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::CustomSearch::V1_0::CustomInstance
 
     module Models
+      ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
       Query = Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
       WebMetaTag = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
@@ -27,7 +28,6 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
       Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
-      ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
     end
 
     class CustomSearchDataClass
@@ -60,6 +60,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def response_base
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
+        end
         def query_context
           Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
         end
@@ -113,9 +116,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
-        end
-        def response_base
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
         end
       end
     end
