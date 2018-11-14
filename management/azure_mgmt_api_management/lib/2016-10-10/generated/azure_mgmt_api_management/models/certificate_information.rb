@@ -30,7 +30,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateInformation',
           type: {
@@ -38,7 +37,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'CertificateInformation',
             model_properties: {
               expiry: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'expiry',
                 type: {
@@ -46,7 +44,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               thumbprint: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'thumbprint',
                 type: {
@@ -54,7 +51,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               subject: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'subject',
                 type: {

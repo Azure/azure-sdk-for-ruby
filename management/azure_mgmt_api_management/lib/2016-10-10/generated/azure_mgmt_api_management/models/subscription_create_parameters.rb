@@ -51,7 +51,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionCreateParameters',
           type: {
@@ -59,7 +58,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'SubscriptionCreateParameters',
             model_properties: {
               user_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'userId',
                 type: {
@@ -67,7 +65,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               product_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'productId',
                 type: {
@@ -75,7 +72,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -87,7 +83,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 constraints: {
@@ -99,7 +94,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 constraints: {
@@ -111,7 +105,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
