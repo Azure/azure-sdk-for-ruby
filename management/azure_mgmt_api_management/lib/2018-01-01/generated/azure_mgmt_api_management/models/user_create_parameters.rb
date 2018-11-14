@@ -74,7 +74,6 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
               },
               identities: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.identities',
                 type: {
                   name: 'Sequence',
