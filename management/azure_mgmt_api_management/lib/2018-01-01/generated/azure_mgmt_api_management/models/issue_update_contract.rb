@@ -6,9 +6,9 @@
 module Azure::ApiManagement::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Issue Contract details.
+    # Issue update Parameters.
     #
-    class IssueContract < Resource
+    class IssueUpdateContract
 
       include MsRestAzure
 
@@ -34,41 +34,17 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
 
 
       #
-      # Mapper for IssueContract class as Ruby Hash.
+      # Mapper for IssueUpdateContract class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'IssueContract',
+          serialized_name: 'IssueUpdateContract',
           type: {
             name: 'Composite',
-            class_name: 'IssueContract',
+            class_name: 'IssueUpdateContract',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               created_date: {
                 required: false,
                 serialized_name: 'properties.createdDate',
@@ -91,21 +67,21 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
                 }
               },
               title: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.title',
                 type: {
                   name: 'String'
                 }
               },
               description: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.description',
                 type: {
                   name: 'String'
                 }
               },
               user_id: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.userId',
                 type: {
                   name: 'String'

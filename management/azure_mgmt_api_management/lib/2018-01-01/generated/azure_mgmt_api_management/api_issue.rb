@@ -487,6 +487,123 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
+    # Updates an existing issue for an API.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param service_name [String] The name of the API Management service.
+    # @param api_id [String] API identifier. Must be unique in the current API
+    # Management service instance.
+    # @param issue_id [String] Issue identifier. Must be unique in the current API
+    # Management service instance.
+    # @param parameters [IssueUpdateContract] Update parameters.
+    # @param if_match [String] ETag of the Issue Entity. ETag should match the
+    # current entity state from the header response of the GET request or it should
+    # be * for unconditional update.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def update(resource_group_name, service_name, api_id, issue_id, parameters, if_match = nil, custom_headers = nil)
+      response = update_async(resource_group_name, service_name, api_id, issue_id, parameters, if_match, custom_headers).value!
+      nil
+    end
+
+    #
+    # Updates an existing issue for an API.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param service_name [String] The name of the API Management service.
+    # @param api_id [String] API identifier. Must be unique in the current API
+    # Management service instance.
+    # @param issue_id [String] Issue identifier. Must be unique in the current API
+    # Management service instance.
+    # @param parameters [IssueUpdateContract] Update parameters.
+    # @param if_match [String] ETag of the Issue Entity. ETag should match the
+    # current entity state from the header response of the GET request or it should
+    # be * for unconditional update.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, service_name, api_id, issue_id, parameters, if_match = nil, custom_headers = nil)
+      update_async(resource_group_name, service_name, api_id, issue_id, parameters, if_match, custom_headers).value!
+    end
+
+    #
+    # Updates an existing issue for an API.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param service_name [String] The name of the API Management service.
+    # @param api_id [String] API identifier. Must be unique in the current API
+    # Management service instance.
+    # @param issue_id [String] Issue identifier. Must be unique in the current API
+    # Management service instance.
+    # @param parameters [IssueUpdateContract] Update parameters.
+    # @param if_match [String] ETag of the Issue Entity. ETag should match the
+    # current entity state from the header response of the GET request or it should
+    # be * for unconditional update.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(resource_group_name, service_name, api_id, issue_id, parameters, if_match = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'service_name is nil' if service_name.nil?
+      fail ArgumentError, 'api_id is nil' if api_id.nil?
+      fail ArgumentError, 'issue_id is nil' if issue_id.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ApiManagement::Mgmt::V2018_01_01_preview::Models::IssueUpdateContract.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'apiId' => api_id,'issueId' => issue_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Deletes the specified Issue from an API.
     #
     # @param resource_group_name [String] The name of the resource group.
