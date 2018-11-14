@@ -29,7 +29,6 @@ module Azure::Storage::Profiles::V2017_03_09
       CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
       Resource = Azure::Storage::Mgmt::V2016_01_01::Models::Resource
       StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
-      Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
       SkuName = Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
       SkuTier = Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
       AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
@@ -38,6 +37,7 @@ module Azure::Storage::Profiles::V2017_03_09
       AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
       KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
       UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+      Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
     end
 
     #
@@ -143,9 +143,6 @@ module Azure::Storage::Profiles::V2017_03_09
       def storage_account
         Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
       end
-      def reason
-        Azure::Storage::Mgmt::V2016_01_01::Models::Reason
-      end
       def sku_name
         Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
       end
@@ -169,6 +166,9 @@ module Azure::Storage::Profiles::V2017_03_09
       end
       def usage_unit
         Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+      end
+      def reason
+        Azure::Storage::Mgmt::V2016_01_01::Models::Reason
       end
     end
   end
