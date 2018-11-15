@@ -26,7 +26,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrackingEventErrorInfo',
           type: {
@@ -34,7 +33,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'TrackingEventErrorInfo',
             model_properties: {
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {

@@ -23,16 +23,15 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @return [String] The API version.
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [Workflows] workflows
@@ -55,6 +54,14 @@ module Azure::Logic::Mgmt::V2016_06_01
 
     # @return [WorkflowRunActionRepetitions] workflow_run_action_repetitions
     attr_reader :workflow_run_action_repetitions
+
+    # @return [WorkflowRunActionRepetitionsRequestHistories]
+    # workflow_run_action_repetitions_request_histories
+    attr_reader :workflow_run_action_repetitions_request_histories
+
+    # @return [WorkflowRunActionRequestHistories]
+    # workflow_run_action_request_histories
+    attr_reader :workflow_run_action_request_histories
 
     # @return [WorkflowRunActionScopedRepetitions]
     # workflow_run_action_scoped_repetitions
@@ -111,6 +118,8 @@ module Azure::Logic::Mgmt::V2016_06_01
       @workflow_runs = WorkflowRuns.new(self)
       @workflow_run_actions = WorkflowRunActions.new(self)
       @workflow_run_action_repetitions = WorkflowRunActionRepetitions.new(self)
+      @workflow_run_action_repetitions_request_histories = WorkflowRunActionRepetitionsRequestHistories.new(self)
+      @workflow_run_action_request_histories = WorkflowRunActionRequestHistories.new(self)
       @workflow_run_action_scoped_repetitions = WorkflowRunActionScopedRepetitions.new(self)
       @workflow_run_operations = WorkflowRunOperations.new(self)
       @integration_accounts = IntegrationAccounts.new(self)
@@ -175,9 +184,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -195,8 +201,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Array<Operation>] operation results.
     #
-    def list_operations(custom_headers:nil)
-      first_page = list_operations_as_lazy(custom_headers:custom_headers)
+    def list_operations(custom_headers = nil)
+      first_page = list_operations_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -208,8 +214,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_operations_with_http_info(custom_headers:nil)
-      list_operations_async(custom_headers:custom_headers).value!
+    def list_operations_with_http_info(custom_headers = nil)
+      list_operations_async(custom_headers).value!
     end
 
     #
@@ -220,12 +226,11 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_operations_async(custom_headers:nil)
+    def list_operations_async(custom_headers = nil)
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -279,8 +284,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [OperationListResult] operation results.
     #
-    def list_operations_next(next_page_link, custom_headers:nil)
-      response = list_operations_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_operations_next(next_page_link, custom_headers = nil)
+      response = list_operations_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -294,8 +299,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_operations_next_with_http_info(next_page_link, custom_headers:nil)
-      list_operations_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_operations_next_with_http_info(next_page_link, custom_headers = nil)
+      list_operations_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -308,12 +313,11 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_operations_next_async(next_page_link, custom_headers:nil)
+    def list_operations_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -365,8 +369,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [OperationListResult] operation results.
     #
-    def list_operations_as_lazy(custom_headers:nil)
-      first_page = list_operations_as_lazy_as_lazy(custom_headers:custom_headers)
+    def list_operations_as_lazy(custom_headers = nil)
+      first_page = list_operations_as_lazy_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -378,8 +382,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_operations_as_lazy_with_http_info(custom_headers:nil)
-      list_operations_as_lazy_async(custom_headers:custom_headers).value!
+    def list_operations_as_lazy_with_http_info(custom_headers = nil)
+      list_operations_as_lazy_async(custom_headers).value!
     end
 
     #
@@ -390,11 +394,10 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_operations_as_lazy_async(custom_headers:nil)
+    def list_operations_as_lazy_async(custom_headers = nil)
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
       path_template = 'providers/Microsoft.Logic/operations'
 
       request_url = @base_url || self.base_url
@@ -440,7 +443,9 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_logic'
-        sdk_information = "#{sdk_information}/0.17.1"
+        if defined? Azure::Logic::Mgmt::V2016_06_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Logic::Mgmt::V2016_06_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

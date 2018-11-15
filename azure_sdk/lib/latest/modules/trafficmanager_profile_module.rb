@@ -8,12 +8,15 @@ module Azure::Profiles::Latest
   module TrafficManager
     module Mgmt
       Endpoints = Azure::TrafficManager::Mgmt::V2018_04_01::Endpoints
+      Profiles = Azure::TrafficManager::Mgmt::V2018_04_01::Profiles
       GeographicHierarchies = Azure::TrafficManager::Mgmt::V2018_04_01::GeographicHierarchies
       HeatMap = Azure::TrafficManager::Mgmt::V2018_04_01::HeatMap
       TrafficManagerUserMetricsKeys = Azure::TrafficManager::Mgmt::V2018_04_01::TrafficManagerUserMetricsKeys
-      Profiles = Azure::TrafficManager::Mgmt::V2018_04_01::Profiles
 
       module Models
+        Resource = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Resource
+        Profile = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
+        Endpoint = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
         MonitorConfigCustomHeadersItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigCustomHeadersItem
         MonitorConfigExpectedStatusCodeRangesItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigExpectedStatusCodeRangesItem
         EndpointPropertiesSubnetsItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointPropertiesSubnetsItem
@@ -30,15 +33,12 @@ module Azure::Profiles::Latest
         HeatMapModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
         UserMetricsModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
         TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
-        Resource = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Resource
-        Endpoint = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
-        EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus
         EndpointStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
-        MonitorProtocol = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorProtocol
-        Profile = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
-        TrafficRoutingMethod = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficRoutingMethod
-        ProfileStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileStatus
+        EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus
         ProfileMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
+        MonitorProtocol = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorProtocol
+        ProfileStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileStatus
+        TrafficRoutingMethod = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficRoutingMethod
         TrafficViewEnrollmentStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficViewEnrollmentStatus
         ProfileListResult = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileListResult
         TrackedResource = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrackedResource
@@ -46,7 +46,7 @@ module Azure::Profiles::Latest
       end
 
       class TrafficManagerManagementClass
-        attr_reader :endpoints, :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :profiles, :configurable, :base_url, :options, :model_classes
+        attr_reader :endpoints, :profiles, :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -57,10 +57,10 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @endpoints = @client_0.endpoints
+          @profiles = @client_0.profiles
           @geographic_hierarchies = @client_0.geographic_hierarchies
           @heat_map = @client_0.heat_map
           @traffic_manager_user_metrics_keys = @client_0.traffic_manager_user_metrics_keys
-          @profiles = @client_0.profiles
 
           @model_classes = ModelClasses.new
         end
@@ -79,6 +79,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Resource
+          end
+          def profile
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
+          end
+          def endpoint
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
+          end
           def monitor_config_custom_headers_item
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigCustomHeadersItem
           end
@@ -127,32 +136,23 @@ module Azure::Profiles::Latest
           def traffic_manager_geographic_hierarchy
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
           end
-          def resource
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Resource
-          end
-          def endpoint
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
+          def endpoint_status
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
           end
           def endpoint_monitor_status
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus
           end
-          def endpoint_status
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
+          def profile_monitor_status
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
           end
           def monitor_protocol
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorProtocol
           end
-          def profile
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
-          end
-          def traffic_routing_method
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficRoutingMethod
-          end
           def profile_status
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileStatus
           end
-          def profile_monitor_status
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
+          def traffic_routing_method
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficRoutingMethod
           end
           def traffic_view_enrollment_status
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficViewEnrollmentStatus

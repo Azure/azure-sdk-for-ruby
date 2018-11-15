@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'B2BPartnerContent',
           type: {
@@ -31,13 +30,11 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'B2BPartnerContent',
             model_properties: {
               business_identities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'businessIdentities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BusinessIdentityElementType',
                       type: {

@@ -25,7 +25,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BatchConfigurationProperties',
           type: {
@@ -33,7 +32,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'BatchConfigurationProperties',
             model_properties: {
               created_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'createdTime',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'changedTime',
                 type: {
@@ -49,7 +46,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
@@ -57,7 +53,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               batch_group_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'batchGroupName',
                 type: {
@@ -65,7 +60,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               release_criteria: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'releaseCriteria',
                 type: {
