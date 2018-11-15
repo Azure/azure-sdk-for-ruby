@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      ImageDescriptionDetails = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
       TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
       Gender = Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
       ComputerVisionErrorCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
@@ -46,6 +45,7 @@ module Azure::Profiles::Latest
       ComputerVisionError = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
       LandmarksModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
       ImageUrl = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
+      ImageDescriptionDetails = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
     end
 
     class ComputerVisionDataClass
@@ -77,9 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def image_description_details
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
-        end
         def text_operation_status_codes
           Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
         end
@@ -190,6 +187,9 @@ module Azure::Profiles::Latest
         end
         def image_url
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
+        end
+        def image_description_details
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
         end
       end
     end

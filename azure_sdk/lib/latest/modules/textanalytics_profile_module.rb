@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
-      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
       MatchRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
       EntityRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
@@ -26,6 +25,7 @@ module Azure::Profiles::Latest
       KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResultItem
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
     end
 
     class TextAnalyticsDataClass
@@ -57,9 +57,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
-        end
         def match_record
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::MatchRecord
         end
@@ -110,6 +107,9 @@ module Azure::Profiles::Latest
         end
         def sentiment_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult
+        end
+        def batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput
         end
       end
     end
