@@ -75,7 +75,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingEndpoint',
           type: {
@@ -83,7 +82,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StreamingEndpoint',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -92,7 +90,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -101,7 +98,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -110,13 +106,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -126,7 +120,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -134,7 +127,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -142,7 +134,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               scale_units: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.scaleUnits',
                 type: {
@@ -150,7 +141,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               availability_set_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availabilitySetName',
                 type: {
@@ -158,7 +148,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               access_control: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accessControl',
                 type: {
@@ -167,7 +156,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               max_cache_age: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxCacheAge',
                 type: {
@@ -175,13 +163,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               custom_host_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customHostNames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -191,7 +177,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               host_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hostName',
@@ -200,7 +185,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               cdn_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cdnEnabled',
                 type: {
@@ -208,7 +192,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               cdn_provider: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cdnProvider',
                 type: {
@@ -216,7 +199,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               cdn_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cdnProfile',
                 type: {
@@ -224,7 +206,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -233,7 +214,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               resource_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',
@@ -243,7 +223,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               cross_site_access_policies: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.crossSiteAccessPolicies',
                 type: {
@@ -252,7 +231,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               free_trial_end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.freeTrialEndTime',
@@ -261,7 +239,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -270,7 +247,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',

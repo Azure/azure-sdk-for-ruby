@@ -45,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Asset',
           type: {
@@ -53,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'Asset',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -62,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -71,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -80,7 +76,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               asset_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.assetId',
@@ -89,7 +84,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -98,7 +92,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -107,7 +100,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               alternate_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.alternateId',
                 type: {
@@ -115,7 +107,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -123,7 +114,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               container: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.container',
                 type: {
@@ -131,7 +121,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               storage_account_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountName',
                 type: {
@@ -139,7 +128,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               storage_encryption_format: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.storageEncryptionFormat',

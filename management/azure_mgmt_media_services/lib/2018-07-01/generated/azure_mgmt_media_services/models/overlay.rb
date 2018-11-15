@@ -17,10 +17,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       @@discriminatorMap["#Microsoft.Media.VideoOverlay"] = "VideoOverlay"
 
       def initialize
-        @odatatype = "Overlay"
+        @@odatatype = "Overlay"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The label of the job input which is to be used as an
       # overlay. The Input must specify exactly one file. You can specify an
@@ -66,7 +66,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Overlay',
           type: {
@@ -76,7 +75,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Overlay',
             model_properties: {
               input_label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputLabel',
                 type: {
@@ -84,7 +82,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'start',
                 type: {
@@ -92,7 +89,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               end_property: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'end',
                 type: {
@@ -100,7 +96,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               fade_in_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fadeInDuration',
                 type: {
@@ -108,7 +103,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               fade_out_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fadeOutDuration',
                 type: {
@@ -116,7 +110,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               audio_gain_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audioGainLevel',
                 type: {

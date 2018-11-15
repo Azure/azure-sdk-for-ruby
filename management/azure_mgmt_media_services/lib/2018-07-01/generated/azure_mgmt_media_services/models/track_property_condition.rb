@@ -30,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrackPropertyCondition',
           type: {
@@ -38,25 +37,20 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'TrackPropertyCondition',
             model_properties: {
               property: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'property',
                 type: {
-                  name: 'Enum',
-                  module: 'TrackPropertyType'
+                  name: 'String'
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'operation',
                 type: {
-                  name: 'Enum',
-                  module: 'TrackPropertyCompareOperation'
+                  name: 'String'
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

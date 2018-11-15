@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JobOutputAsset"
+        @@odatatype = "#Microsoft.Media.JobOutputAsset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The name of the output Asset.
       attr_accessor :asset_name
@@ -29,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JobOutputAsset',
           type: {
@@ -37,7 +36,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'JobOutputAsset',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',
@@ -47,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -57,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               progress: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'progress',
@@ -65,8 +61,7 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                   name: 'Number'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -74,7 +69,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               asset_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'assetName',
                 type: {

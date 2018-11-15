@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.Image"
+        @@odatatype = "#Microsoft.Media.Image"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The position in the input video from where to start
       # generating thumbnails. The value can be in absolute timestamp (ISO
@@ -48,7 +48,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.Image',
           type: {
@@ -56,15 +55,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Image',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -72,7 +69,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               key_frame_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyFrameInterval',
                 type: {
@@ -80,16 +76,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               stretch_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'stretchMode',
                 type: {
-                  name: 'Enum',
-                  module: 'StretchMode'
+                  name: 'String'
                 }
               },
               start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'start',
                 type: {
@@ -97,7 +90,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               step: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'step',
                 type: {
@@ -105,7 +97,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'range',
                 type: {

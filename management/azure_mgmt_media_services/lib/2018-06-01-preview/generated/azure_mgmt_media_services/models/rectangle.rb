@@ -40,7 +40,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Rectangle',
           type: {
@@ -48,7 +47,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'Rectangle',
             model_properties: {
               left: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'left',
                 type: {
@@ -56,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'top',
                 type: {
@@ -64,7 +61,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               width: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'width',
                 type: {
@@ -72,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'height',
                 type: {
