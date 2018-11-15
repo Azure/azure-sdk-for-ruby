@@ -9,9 +9,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # Defines values for ResourceSkuCapacityScaleType
     #
     module ResourceSkuCapacityScaleType
-      Automatic = "Automatic"
-      Manual = "Manual"
-      None = "None"
+      Automatic = "automatic"
+      Manual = "manual"
+      None = "none"
     end
   end
 end

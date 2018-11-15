@@ -22,7 +22,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       attr_accessor :default
 
       # @return [ResourceSkuCapacityScaleType] The scale type applicable to the
-      # sku. Possible values include: 'Automatic', 'Manual', 'None'
+      # sku. Possible values include: 'automatic', 'manual', 'none'
       attr_accessor :scale_type
 
 
