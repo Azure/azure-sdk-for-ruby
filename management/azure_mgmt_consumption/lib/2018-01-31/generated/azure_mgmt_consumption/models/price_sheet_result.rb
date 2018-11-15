@@ -25,7 +25,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PriceSheetResult',
           type: {
@@ -33,7 +32,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
             class_name: 'PriceSheetResult',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,7 +40,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,7 +48,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,14 +56,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -77,14 +71,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               pricesheets: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.pricesheets',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PriceSheetPropertiesElementType',
                       type: {
@@ -95,7 +87,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nextLink',

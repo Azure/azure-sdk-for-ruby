@@ -30,7 +30,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Filters',
           type: {
@@ -38,7 +37,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
             class_name: 'Filters',
             model_properties: {
               resource_groups: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroups',
                 constraints: {
@@ -48,7 +46,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -58,7 +55,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               resources: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resources',
                 constraints: {
@@ -68,7 +64,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -78,7 +73,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               meters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'meters',
                 constraints: {
@@ -88,7 +82,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

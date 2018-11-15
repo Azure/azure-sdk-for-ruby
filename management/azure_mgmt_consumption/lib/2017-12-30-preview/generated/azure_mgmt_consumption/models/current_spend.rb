@@ -25,7 +25,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CurrentSpend',
           type: {
@@ -33,7 +32,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
             class_name: 'CurrentSpend',
             model_properties: {
               amount: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'amount',
@@ -42,7 +40,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',

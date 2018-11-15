@@ -58,7 +58,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InvoicesListResult',
           type: {
@@ -66,14 +65,12 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
             class_name: 'InvoicesListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InvoiceElementType',
                       type: {
@@ -84,7 +81,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',
