@@ -10,9 +10,9 @@ module Azure::Profiles::Latest
 
     module Models
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
+      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
-      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       SearchResultsAnswer = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
@@ -22,6 +22,7 @@ module Azure::Profiles::Latest
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
@@ -34,7 +35,7 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
@@ -52,7 +53,6 @@ module Azure::Profiles::Latest
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
-      TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
     end
@@ -90,14 +90,14 @@ module Azure::Profiles::Latest
         def entities
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
         end
+        def response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
         def response_base
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
         end
         def query_context
           Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
-        end
-        def response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
         end
         def search_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
@@ -125,6 +125,9 @@ module Azure::Profiles::Latest
         end
         def safe_search
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
+        end
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def contractual_rules_contractual_rule
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
@@ -162,8 +165,8 @@ module Azure::Profiles::Latest
         def local_business
           Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
         end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+        def tourist_attraction
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
         end
         def airport
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
@@ -215,9 +218,6 @@ module Azure::Profiles::Latest
         end
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
-        end
-        def tourist_attraction
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
         end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType

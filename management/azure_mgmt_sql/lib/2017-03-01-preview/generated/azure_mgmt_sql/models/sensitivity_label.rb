@@ -25,7 +25,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SensitivityLabel',
           type: {
@@ -33,7 +32,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'SensitivityLabel',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,7 +40,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,7 +48,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,7 +56,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               label_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labelName',
                 type: {
@@ -68,7 +63,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               information_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.informationType',
                 type: {
