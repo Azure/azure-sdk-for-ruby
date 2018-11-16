@@ -27,7 +27,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             model_properties: {
               id: {
                 required: false,
-                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
