@@ -74,7 +74,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyPlayReadyPlayRight',
           type: {
@@ -82,7 +81,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'ContentKeyPolicyPlayReadyPlayRight',
             model_properties: {
               first_play_expiration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'firstPlayExpiration',
                 type: {
@@ -90,7 +88,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               scms_restriction: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scmsRestriction',
                 type: {
@@ -98,7 +95,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               agc_and_color_stripe_restriction: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'agcAndColorStripeRestriction',
                 type: {
@@ -106,7 +102,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               explicit_analog_television_output_restriction: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'explicitAnalogTelevisionOutputRestriction',
                 type: {
@@ -115,7 +110,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               digital_video_only_content_restriction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'digitalVideoOnlyContentRestriction',
                 type: {
@@ -123,7 +117,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               image_constraint_for_analog_component_video_restriction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'imageConstraintForAnalogComponentVideoRestriction',
                 type: {
@@ -131,7 +124,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               image_constraint_for_analog_computer_monitor_restriction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'imageConstraintForAnalogComputerMonitorRestriction',
                 type: {
@@ -139,7 +131,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               allow_passing_video_content_to_unknown_output: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'allowPassingVideoContentToUnknownOutput',
                 type: {
@@ -148,7 +139,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               uncompressed_digital_video_opl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'uncompressedDigitalVideoOpl',
                 type: {
@@ -156,7 +146,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               compressed_digital_video_opl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'compressedDigitalVideoOpl',
                 type: {
@@ -164,7 +153,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               analog_video_opl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'analogVideoOpl',
                 type: {
@@ -172,7 +160,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               compressed_digital_audio_opl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'compressedDigitalAudioOpl',
                 type: {
@@ -180,7 +167,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               uncompressed_digital_audio_opl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'uncompressedDigitalAudioOpl',
                 type: {

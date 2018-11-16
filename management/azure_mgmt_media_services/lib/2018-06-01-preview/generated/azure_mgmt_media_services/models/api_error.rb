@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiError',
           type: {
@@ -30,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'ApiError',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

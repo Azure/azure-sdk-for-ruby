@@ -46,7 +46,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveEventPreview',
           type: {
@@ -54,13 +53,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'LiveEventPreview',
             model_properties: {
               endpoints: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoints',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LiveEventEndpointElementType',
                       type: {
@@ -71,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               access_control: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessControl',
                 type: {
@@ -80,7 +76,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               preview_locator: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'previewLocator',
                 type: {
@@ -88,7 +83,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               streaming_policy_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'streamingPolicyName',
                 type: {
@@ -96,7 +90,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               alternative_media_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'alternativeMediaId',
                 type: {

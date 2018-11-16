@@ -31,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -39,7 +38,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -56,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               origin: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -64,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

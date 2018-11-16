@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ListContainerSasInput',
           type: {
@@ -35,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'ListContainerSasInput',
             model_properties: {
               permissions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'permissions',
                 type: {
@@ -44,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               expiry_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expiryTime',
                 type: {

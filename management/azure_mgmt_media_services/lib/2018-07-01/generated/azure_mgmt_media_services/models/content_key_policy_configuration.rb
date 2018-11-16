@@ -21,10 +21,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       @@discriminatorMap["#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration"] = "ContentKeyPolicyFairPlayConfiguration"
 
       def initialize
-        @odatatype = "ContentKeyPolicyConfiguration"
+        @@odatatype = "ContentKeyPolicyConfiguration"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -33,7 +33,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyConfiguration',
           type: {

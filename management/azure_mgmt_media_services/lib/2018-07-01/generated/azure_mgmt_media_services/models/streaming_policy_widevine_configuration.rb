@@ -24,7 +24,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPolicyWidevineConfiguration',
           type: {
@@ -32,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StreamingPolicyWidevineConfiguration',
             model_properties: {
               custom_license_acquisition_url_template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customLicenseAcquisitionUrlTemplate',
                 type: {
