@@ -65,8 +65,8 @@ module Azure::Profiles::V2018_03_01
       BackupKeyResult = Azure::KeyVault::V2016_10_01::Models::BackupKeyResult
       SecretItem = Azure::KeyVault::V2016_10_01::Models::SecretItem
       BackupSecretResult = Azure::KeyVault::V2016_10_01::Models::BackupSecretResult
-      SecretProperties = Azure::KeyVault::V2016_10_01::Models::SecretProperties
       Error = Azure::KeyVault::V2016_10_01::Models::Error
+      SecretProperties = Azure::KeyVault::V2016_10_01::Models::SecretProperties
       PendingCertificateSigningRequestResult = Azure::KeyVault::V2016_10_01::Models::PendingCertificateSigningRequestResult
       CertificateBundle = Azure::KeyVault::V2016_10_01::Models::CertificateBundle
       StorageAccountAttributes = Azure::KeyVault::V2016_10_01::Models::StorageAccountAttributes
@@ -295,11 +295,11 @@ module Azure::Profiles::V2018_03_01
         def backup_secret_result
           Azure::KeyVault::V2016_10_01::Models::BackupSecretResult
         end
-        def secret_properties
-          Azure::KeyVault::V2016_10_01::Models::SecretProperties
-        end
         def error
           Azure::KeyVault::V2016_10_01::Models::Error
+        end
+        def secret_properties
+          Azure::KeyVault::V2016_10_01::Models::SecretProperties
         end
         def pending_certificate_signing_request_result
           Azure::KeyVault::V2016_10_01::Models::PendingCertificateSigningRequestResult
@@ -391,8 +391,8 @@ module Azure::Profiles::V2018_03_01
       end
     end
     module Mgmt
-      Vaults = Azure::KeyVault::Mgmt::V2016_10_01::Vaults
       Operations = Azure::KeyVault::Mgmt::V2016_10_01::Operations
+      Vaults = Azure::KeyVault::Mgmt::V2016_10_01::Vaults
 
       module Models
         Permissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::Permissions
@@ -412,24 +412,24 @@ module Azure::Profiles::V2018_03_01
         VaultPatchProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchProperties
         CheckNameAvailabilityResult = Azure::KeyVault::Mgmt::V2016_10_01::Models::CheckNameAvailabilityResult
         VaultPatchParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters
-        LogSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::LogSpecification
+        AccessPolicyEntry = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
         DeletedVaultProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties
         ServiceSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
-        AccessPolicyEntry = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
+        LogSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::LogSpecification
         SkuName = Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
         Vault = Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault
         SecretPermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::SecretPermissions
         KeyPermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::KeyPermissions
         StoragePermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::StoragePermissions
         CertificatePermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::CertificatePermissions
-        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
-        CreateMode = Azure::KeyVault::Mgmt::V2016_10_01::Models::CreateMode
-        Sku = Azure::KeyVault::Mgmt::V2016_10_01::Models::Sku
         Reason = Azure::KeyVault::Mgmt::V2016_10_01::Models::Reason
+        CreateMode = Azure::KeyVault::Mgmt::V2016_10_01::Models::CreateMode
+        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
+        Sku = Azure::KeyVault::Mgmt::V2016_10_01::Models::Sku
       end
 
       class KeyVaultManagementClass
-        attr_reader :vaults, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :vaults, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -439,8 +439,8 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @vaults = @client_0.vaults
           @operations = @client_0.operations
+          @vaults = @client_0.vaults
 
           @model_classes = ModelClasses.new
         end
@@ -510,8 +510,8 @@ module Azure::Profiles::V2018_03_01
           def vault_patch_parameters
             Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters
           end
-          def log_specification
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::LogSpecification
+          def access_policy_entry
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
           end
           def deleted_vault_properties
             Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties
@@ -519,8 +519,8 @@ module Azure::Profiles::V2018_03_01
           def service_specification
             Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
           end
-          def access_policy_entry
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
+          def log_specification
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::LogSpecification
           end
           def sku_name
             Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
@@ -540,17 +540,17 @@ module Azure::Profiles::V2018_03_01
           def certificate_permissions
             Azure::KeyVault::Mgmt::V2016_10_01::Models::CertificatePermissions
           end
-          def access_policy_update_kind
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
+          def reason
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::Reason
           end
           def create_mode
             Azure::KeyVault::Mgmt::V2016_10_01::Models::CreateMode
           end
+          def access_policy_update_kind
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyUpdateKind
+          end
           def sku
             Azure::KeyVault::Mgmt::V2016_10_01::Models::Sku
-          end
-          def reason
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::Reason
           end
         end
       end
