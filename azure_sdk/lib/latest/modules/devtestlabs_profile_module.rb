@@ -9,29 +9,30 @@ module Azure::Profiles::Latest
     module Mgmt
       VirtualMachines = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachines
       Disks = Azure::DevTestLabs::Mgmt::V2016_05_15::Disks
-      Operations = Azure::DevTestLabs::Mgmt::V2016_05_15::Operations
+      ProviderOperations = Azure::DevTestLabs::Mgmt::V2016_05_15::ProviderOperations
       Labs = Azure::DevTestLabs::Mgmt::V2016_05_15::Labs
       GlobalSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::GlobalSchedules
+      Operations = Azure::DevTestLabs::Mgmt::V2016_05_15::Operations
       ArtifactSources = Azure::DevTestLabs::Mgmt::V2016_05_15::ArtifactSources
       ArmTemplates = Azure::DevTestLabs::Mgmt::V2016_05_15::ArmTemplates
       Artifacts = Azure::DevTestLabs::Mgmt::V2016_05_15::Artifacts
       Costs = Azure::DevTestLabs::Mgmt::V2016_05_15::Costs
       CustomImages = Azure::DevTestLabs::Mgmt::V2016_05_15::CustomImages
       Formulas = Azure::DevTestLabs::Mgmt::V2016_05_15::Formulas
-      GalleryImages = Azure::DevTestLabs::Mgmt::V2016_05_15::GalleryImages
-      ProviderOperations = Azure::DevTestLabs::Mgmt::V2016_05_15::ProviderOperations
-      PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
       NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
-      ServiceRunners = Azure::DevTestLabs::Mgmt::V2016_05_15::ServiceRunners
-      Environments = Azure::DevTestLabs::Mgmt::V2016_05_15::Environments
+      PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
+      GalleryImages = Azure::DevTestLabs::Mgmt::V2016_05_15::GalleryImages
+      Users = Azure::DevTestLabs::Mgmt::V2016_05_15::Users
+      Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
       Secrets = Azure::DevTestLabs::Mgmt::V2016_05_15::Secrets
       VirtualMachineSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachineSchedules
-      Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
-      Users = Azure::DevTestLabs::Mgmt::V2016_05_15::Users
+      Environments = Azure::DevTestLabs::Mgmt::V2016_05_15::Environments
+      ServiceRunners = Azure::DevTestLabs::Mgmt::V2016_05_15::ServiceRunners
       VirtualNetworks = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualNetworks
       Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
 
       module Models
+        GenerateArmTemplateRequest = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GenerateArmTemplateRequest
         ComputeVmInstanceViewStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeVmInstanceViewStatus
         GenerateUploadUriParameter = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GenerateUploadUriParameter
         ComputeVmProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeVmProperties
@@ -152,8 +153,8 @@ module Azure::Profiles::Latest
         PolicyEvaluatorType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType
         PolicyStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyStatus
         HttpStatusCode = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HttpStatusCode
-        UserIdentity = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
         Event = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Event
+        UserIdentity = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
         Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
         Schedule = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Schedule
         Port = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Port
@@ -187,11 +188,10 @@ module Azure::Profiles::Latest
         GalleryImageReferenceFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GalleryImageReferenceFragment
         ParameterInfo = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ParameterInfo
         ComputeDataDisk = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeDataDisk
-        GenerateArmTemplateRequest = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GenerateArmTemplateRequest
       end
 
       class DevTestLabsManagementClass
-        attr_reader :virtual_machines, :disks, :operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :provider_operations, :policy_sets, :notification_channels, :service_runners, :environments, :secrets, :virtual_machine_schedules, :schedules, :users, :virtual_networks, :policies, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_machines, :disks, :provider_operations, :labs, :global_schedules, :operations, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :notification_channels, :policy_sets, :gallery_images, :users, :schedules, :secrets, :virtual_machine_schedules, :environments, :service_runners, :virtual_networks, :policies, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -203,25 +203,25 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @virtual_machines = @client_0.virtual_machines
           @disks = @client_0.disks
-          @operations = @client_0.operations
+          @provider_operations = @client_0.provider_operations
           @labs = @client_0.labs
           @global_schedules = @client_0.global_schedules
+          @operations = @client_0.operations
           @artifact_sources = @client_0.artifact_sources
           @arm_templates = @client_0.arm_templates
           @artifacts = @client_0.artifacts
           @costs = @client_0.costs
           @custom_images = @client_0.custom_images
           @formulas = @client_0.formulas
-          @gallery_images = @client_0.gallery_images
-          @provider_operations = @client_0.provider_operations
-          @policy_sets = @client_0.policy_sets
           @notification_channels = @client_0.notification_channels
-          @service_runners = @client_0.service_runners
-          @environments = @client_0.environments
+          @policy_sets = @client_0.policy_sets
+          @gallery_images = @client_0.gallery_images
+          @users = @client_0.users
+          @schedules = @client_0.schedules
           @secrets = @client_0.secrets
           @virtual_machine_schedules = @client_0.virtual_machine_schedules
-          @schedules = @client_0.schedules
-          @users = @client_0.users
+          @environments = @client_0.environments
+          @service_runners = @client_0.service_runners
           @virtual_networks = @client_0.virtual_networks
           @policies = @client_0.policies
 
@@ -242,6 +242,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def generate_arm_template_request
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GenerateArmTemplateRequest
+          end
           def compute_vm_instance_view_status
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeVmInstanceViewStatus
           end
@@ -602,11 +605,11 @@ module Azure::Profiles::Latest
           def http_status_code
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HttpStatusCode
           end
-          def user_identity
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
-          end
           def event
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Event
+          end
+          def user_identity
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
           end
           def policy
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
@@ -706,9 +709,6 @@ module Azure::Profiles::Latest
           end
           def compute_data_disk
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeDataDisk
-          end
-          def generate_arm_template_request
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GenerateArmTemplateRequest
           end
         end
       end
