@@ -1,7 +1,7 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.1"
+        "azure_sdk": "0.19.2"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.17.0",
@@ -78,7 +78,7 @@
         "azure_mgmt_signalr": "0.17.2",
         "azure_mgmt_sql": "0.17.1",
         "azure_mgmt_stor_simple8000_series": "0.17.1",
-        "azure_mgmt_storage": "0.17.3",
+        "azure_mgmt_storage": "0.17.4",
         "azure_mgmt_stream_analytics": "0.17.1",
         "azure_mgmt_subscriptions": "0.17.1",
         "azure_mgmt_traffic_manager": "0.17.1",

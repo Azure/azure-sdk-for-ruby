@@ -1,3 +1,7 @@
+## 2018.11.19 - Azure Ruby SDK Release
+* Released 0.17.4 of azure_mgmt_storage. Includes updates to 2018-07-01 version.
+* Released 0.19.2 of azure_sdk. Includes updates to 2018-07-01 version of azure_mgmt_storage.
+
 ## 2018.11.06(2) - Azure Ruby SDK Release
 * Released 0.18.2 version of azure_mgmt_authorization. 
 * Released 0.19.1 version of azure_sdk to include changes to the azure_mgmt_authorization gem.

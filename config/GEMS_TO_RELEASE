@@ -1,6 +1,6 @@
 {
     "management": [
-        "azure_mgmt_authorization"
+        "azure_mgmt_storage"
     ],
     "rollup": [
         "azure_sdk"
