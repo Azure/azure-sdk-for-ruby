@@ -35,8 +35,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [ListContainerItems] operation results.
     #
-    def list(resource_group_name, account_name, custom_headers:nil)
-      response = list_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list(resource_group_name, account_name, custom_headers = nil)
+      response = list_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -54,8 +54,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      list_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      list_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -72,7 +72,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, account_name, custom_headers:nil)
+    def list_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -87,7 +87,6 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -155,8 +154,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [BlobContainer] operation results.
     #
-    def create(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      response = create_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def create(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      response = create_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -183,8 +182,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      create_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      create_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
     end
 
     #
@@ -210,7 +209,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
+    def create_async(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -229,11 +228,12 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_03_01_preview::Models::BlobContainer.mapper()
@@ -303,8 +303,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [BlobContainer] operation results.
     #
-    def update(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      response = update_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def update(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -330,8 +330,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      update_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      update_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
     end
 
     #
@@ -356,7 +356,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
+    def update_async(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -375,11 +375,12 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_03_01_preview::Models::BlobContainer.mapper()
@@ -445,8 +446,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [BlobContainer] operation results.
     #
-    def get(resource_group_name, account_name, container_name, custom_headers:nil)
-      response = get_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, account_name, container_name, custom_headers = nil)
+      response = get_async(resource_group_name, account_name, container_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -468,8 +469,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, container_name, custom_headers:nil)
-      get_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, container_name, custom_headers = nil)
+      get_async(resource_group_name, account_name, container_name, custom_headers).value!
     end
 
     #
@@ -490,7 +491,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, container_name, custom_headers:nil)
+    def get_async(resource_group_name, account_name, container_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -508,7 +509,6 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -570,8 +570,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, container_name, custom_headers:nil)
-      response = delete_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, account_name, container_name, custom_headers = nil)
+      response = delete_async(resource_group_name, account_name, container_name, custom_headers).value!
       nil
     end
 
@@ -593,8 +593,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, container_name, custom_headers:nil)
-      delete_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, container_name, custom_headers = nil)
+      delete_async(resource_group_name, account_name, container_name, custom_headers).value!
     end
 
     #
@@ -615,7 +615,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, container_name, custom_headers:nil)
+    def delete_async(resource_group_name, account_name, container_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -633,7 +633,6 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -690,8 +689,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [LegalHold] operation results.
     #
-    def set_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      response = set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def set_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      response = set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -717,8 +716,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def set_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def set_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
     end
 
     #
@@ -743,7 +742,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
+    def set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -762,11 +761,12 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold.mapper()
@@ -836,8 +836,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [LegalHold] operation results.
     #
-    def clear_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      response = clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def clear_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      response = clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -863,8 +863,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def clear_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def clear_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
     end
 
     #
@@ -889,7 +889,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
+    def clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -908,11 +908,12 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_03_01_preview::Models::LegalHold.mapper()
@@ -985,8 +986,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def create_or_update_immutability_policy(resource_group_name, account_name, container_name, parameters:nil, if_match:nil, custom_headers:nil)
-      response = create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters:parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def create_or_update_immutability_policy(resource_group_name, account_name, container_name, parameters = nil, if_match = nil, custom_headers = nil)
+      response = create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1015,8 +1016,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_immutability_policy_with_http_info(resource_group_name, account_name, container_name, parameters:nil, if_match:nil, custom_headers:nil)
-      create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters:parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def create_or_update_immutability_policy_with_http_info(resource_group_name, account_name, container_name, parameters = nil, if_match = nil, custom_headers = nil)
+      create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters, if_match, custom_headers).value!
     end
 
     #
@@ -1044,7 +1045,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters:nil, if_match:nil, custom_headers:nil)
+    def create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters = nil, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1063,12 +1064,13 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicy.mapper()
@@ -1139,8 +1141,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def get_immutability_policy(resource_group_name, account_name, container_name, if_match:nil, custom_headers:nil)
-      response = get_immutability_policy_async(resource_group_name, account_name, container_name, if_match:if_match, custom_headers:custom_headers).value!
+    def get_immutability_policy(resource_group_name, account_name, container_name, if_match = nil, custom_headers = nil)
+      response = get_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1167,8 +1169,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match:nil, custom_headers:nil)
-      get_immutability_policy_async(resource_group_name, account_name, container_name, if_match:if_match, custom_headers:custom_headers).value!
+    def get_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match = nil, custom_headers = nil)
+      get_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
     end
 
     #
@@ -1194,7 +1196,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_immutability_policy_async(resource_group_name, account_name, container_name, if_match:nil, custom_headers:nil)
+    def get_immutability_policy_async(resource_group_name, account_name, container_name, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1213,7 +1215,6 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1285,8 +1286,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def delete_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      response = delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def delete_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      response = delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1316,8 +1317,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def delete_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
     end
 
     #
@@ -1346,7 +1347,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
+    def delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1366,7 +1367,6 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1436,8 +1436,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def lock_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      response = lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def lock_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      response = lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1465,8 +1465,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def lock_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def lock_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
     end
 
     #
@@ -1493,7 +1493,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
+    def lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1512,7 +1512,6 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1584,8 +1583,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def extend_immutability_policy(resource_group_name, account_name, container_name, if_match, parameters:nil, custom_headers:nil)
-      response = extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters:parameters, custom_headers:custom_headers).value!
+    def extend_immutability_policy(resource_group_name, account_name, container_name, if_match, parameters = nil, custom_headers = nil)
+      response = extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1615,8 +1614,8 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def extend_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, parameters:nil, custom_headers:nil)
-      extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters:parameters, custom_headers:custom_headers).value!
+    def extend_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, parameters = nil, custom_headers = nil)
+      extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters, custom_headers).value!
     end
 
     #
@@ -1645,7 +1644,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters:nil, custom_headers:nil)
+    def extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -1664,12 +1663,13 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ImmutabilityPolicy.mapper()
