@@ -15,8 +15,14 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [String] The label name.
       attr_accessor :label_name
 
+      # @return [String] The label ID.
+      attr_accessor :label_id
+
       # @return [String] The information type.
       attr_accessor :information_type
+
+      # @return [String] The information type ID.
+      attr_accessor :information_type_id
 
 
       #
@@ -62,9 +68,23 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                   name: 'String'
                 }
               },
+              label_id: {
+                required: false,
+                serialized_name: 'properties.labelId',
+                type: {
+                  name: 'String'
+                }
+              },
               information_type: {
                 required: false,
                 serialized_name: 'properties.informationType',
+                type: {
+                  name: 'String'
+                }
+              },
+              information_type_id: {
+                required: false,
+                serialized_name: 'properties.informationTypeId',
                 type: {
                   name: 'String'
                 }
