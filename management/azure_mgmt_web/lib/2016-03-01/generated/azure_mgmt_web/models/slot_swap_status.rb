@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # The status of the last successfull slot swap operation.
+    # The status of the last successful slot swap operation.
     #
     class SlotSwapStatus
 

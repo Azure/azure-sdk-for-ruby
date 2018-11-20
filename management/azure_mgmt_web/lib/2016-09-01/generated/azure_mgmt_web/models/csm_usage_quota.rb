@@ -12,7 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
-      # @return [String] Units of measurement for the quota resourse.
+      # @return [String] Units of measurement for the quota resource.
       attr_accessor :unit
 
       # @return [DateTime] Next reset time for the resource counter.
