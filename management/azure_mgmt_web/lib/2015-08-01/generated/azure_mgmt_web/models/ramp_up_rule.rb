@@ -22,16 +22,16 @@ module Azure::Web::Mgmt::V2015_08_01
       # <code>ActionHostName</code>.
       attr_accessor :reroute_percentage
 
-      # @return [Float] In auto ramp up scenario this is the step to to
-      # add/remove from <code>ReroutePercentage</code> until it reaches
+      # @return [Float] In auto ramp up scenario this is the step to add/remove
+      # from <code>ReroutePercentage</code> until it reaches
       # <code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>.
-      # Site metrics are checked every N minutes specificed in
+      # Site metrics are checked every N minutes specified in
       # <code>ChangeIntervalInMinutes</code>.
       # Custom decision algorithm can be provided in TiPCallback site extension
       # which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       attr_accessor :change_step
 
-      # @return [Integer] Specifies interval in mimuntes to reevaluate
+      # @return [Integer] Specifies interval in minutes to reevaluate
       # ReroutePercentage.
       attr_accessor :change_interval_in_minutes
 
