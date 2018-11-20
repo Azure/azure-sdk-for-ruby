@@ -28,7 +28,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventHubConsumerGroupInfo',
           type: {
@@ -36,13 +35,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'EventHubConsumerGroupInfo',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -52,7 +49,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,7 +56,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

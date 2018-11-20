@@ -68,35 +68,35 @@ module Azure::Profiles::V2017_03_09
         ExpressRouteCircuitAuthorization = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitAuthorization
         ApplicationGatewayBackendHttpSettings = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayBackendHttpSettings
         ApplicationGatewayBackendAddressPool = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayBackendAddressPool
-        ExpressRouteServiceProvider = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProvider
+        FrontendIPConfiguration = Azure::Network::Mgmt::V2015_06_15::Models::FrontendIPConfiguration
         LoadBalancingRule = Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancingRule
         Probe = Azure::Network::Mgmt::V2015_06_15::Models::Probe
         InboundNatPool = Azure::Network::Mgmt::V2015_06_15::Models::InboundNatPool
         ExpressRouteCircuit = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuit
-        ApplicationGatewayPathRule = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayPathRule
+        ExpressRouteServiceProvider = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProvider
         ExpressRouteCircuitPeering = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeering
         OutboundNatRule = Azure::Network::Mgmt::V2015_06_15::Models::OutboundNatRule
         IPConfiguration = Azure::Network::Mgmt::V2015_06_15::Models::IPConfiguration
         IPAllocationMethod = Azure::Network::Mgmt::V2015_06_15::Models::IPAllocationMethod
         NetworkInterfaceIPConfiguration = Azure::Network::Mgmt::V2015_06_15::Models::NetworkInterfaceIPConfiguration
         VirtualNetwork = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetwork
-        VirtualNetworkGatewayIPConfiguration = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayIPConfiguration
+        ApplicationGatewayPathRule = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayPathRule
         VpnClientRootCertificate = Azure::Network::Mgmt::V2015_06_15::Models::VpnClientRootCertificate
         VpnClientRevokedCertificate = Azure::Network::Mgmt::V2015_06_15::Models::VpnClientRevokedCertificate
-        LoadBalancer = Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancer
+        VirtualNetworkGatewayIPConfiguration = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayIPConfiguration
         VirtualNetworkGateway = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGateway
         LocalNetworkGateway = Azure::Network::Mgmt::V2015_06_15::Models::LocalNetworkGateway
         VirtualNetworkGatewayConnection = Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayConnection
         ApplicationGatewayHttpListener = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayHttpListener
-        ApplicationGatewayProtocol = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
+        LoadBalancer = Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancer
         ApplicationGatewayProbe = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProbe
         ApplicationGatewaySkuName = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewaySkuName
         ApplicationGatewayTier = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayTier
         SecurityRuleAccess = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleAccess
         SecurityRuleDirection = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleDirection
         TransportProtocol = Azure::Network::Mgmt::V2015_06_15::Models::TransportProtocol
-        FrontendIPConfiguration = Azure::Network::Mgmt::V2015_06_15::Models::FrontendIPConfiguration
         ApplicationGatewayRequestRoutingRuleType = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayRequestRoutingRuleType
+        ApplicationGatewayProtocol = Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
         RouteNextHopType = Azure::Network::Mgmt::V2015_06_15::Models::RouteNextHopType
         SecurityRuleProtocol = Azure::Network::Mgmt::V2015_06_15::Models::SecurityRuleProtocol
         AuthorizationUseStatus = Azure::Network::Mgmt::V2015_06_15::Models::AuthorizationUseStatus
@@ -317,8 +317,8 @@ module Azure::Profiles::V2017_03_09
           def application_gateway_backend_address_pool
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayBackendAddressPool
           end
-          def express_route_service_provider
-            Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProvider
+          def frontend_ipconfiguration
+            Azure::Network::Mgmt::V2015_06_15::Models::FrontendIPConfiguration
           end
           def load_balancing_rule
             Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancingRule
@@ -332,8 +332,8 @@ module Azure::Profiles::V2017_03_09
           def express_route_circuit
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuit
           end
-          def application_gateway_path_rule
-            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayPathRule
+          def express_route_service_provider
+            Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProvider
           end
           def express_route_circuit_peering
             Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeering
@@ -353,8 +353,8 @@ module Azure::Profiles::V2017_03_09
           def virtual_network
             Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetwork
           end
-          def virtual_network_gateway_ipconfiguration
-            Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayIPConfiguration
+          def application_gateway_path_rule
+            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayPathRule
           end
           def vpn_client_root_certificate
             Azure::Network::Mgmt::V2015_06_15::Models::VpnClientRootCertificate
@@ -362,8 +362,8 @@ module Azure::Profiles::V2017_03_09
           def vpn_client_revoked_certificate
             Azure::Network::Mgmt::V2015_06_15::Models::VpnClientRevokedCertificate
           end
-          def load_balancer
-            Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancer
+          def virtual_network_gateway_ipconfiguration
+            Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGatewayIPConfiguration
           end
           def virtual_network_gateway
             Azure::Network::Mgmt::V2015_06_15::Models::VirtualNetworkGateway
@@ -377,8 +377,8 @@ module Azure::Profiles::V2017_03_09
           def application_gateway_http_listener
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayHttpListener
           end
-          def application_gateway_protocol
-            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
+          def load_balancer
+            Azure::Network::Mgmt::V2015_06_15::Models::LoadBalancer
           end
           def application_gateway_probe
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProbe
@@ -398,11 +398,11 @@ module Azure::Profiles::V2017_03_09
           def transport_protocol
             Azure::Network::Mgmt::V2015_06_15::Models::TransportProtocol
           end
-          def frontend_ipconfiguration
-            Azure::Network::Mgmt::V2015_06_15::Models::FrontendIPConfiguration
-          end
           def application_gateway_request_routing_rule_type
             Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayRequestRoutingRuleType
+          end
+          def application_gateway_protocol
+            Azure::Network::Mgmt::V2015_06_15::Models::ApplicationGatewayProtocol
           end
           def route_next_hop_type
             Azure::Network::Mgmt::V2015_06_15::Models::RouteNextHopType
