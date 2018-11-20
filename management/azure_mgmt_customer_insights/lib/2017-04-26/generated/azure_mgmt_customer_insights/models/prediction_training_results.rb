@@ -34,7 +34,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PredictionTrainingResults',
           type: {
@@ -42,7 +41,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PredictionTrainingResults',
             model_properties: {
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -51,7 +49,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               score_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'scoreName',
@@ -60,7 +57,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               prediction_distribution: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'predictionDistribution',
@@ -70,14 +66,12 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               canonical_profiles: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'canonicalProfiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CanonicalProfileDefinitionElementType',
                       type: {
@@ -88,7 +82,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               primary_profile_instance_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primaryProfileInstanceCount',

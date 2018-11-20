@@ -28,7 +28,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KpiGroupByMetadata',
           type: {
@@ -36,13 +35,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'KpiGroupByMetadata',
             model_properties: {
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -52,7 +49,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               field_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fieldName',
                 type: {
@@ -60,7 +56,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               field_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fieldType',
                 type: {

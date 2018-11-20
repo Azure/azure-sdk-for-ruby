@@ -46,7 +46,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetadataDefinitionBase',
           type: {
@@ -54,19 +53,16 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'MetadataDefinitionBase',
             model_properties: {
               attributes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'attributes',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -78,13 +74,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -94,13 +88,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -110,19 +102,16 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               localized_attributes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedAttributes',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HashElementType',
                       type: {
                         name: 'Dictionary',
                         value: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -134,7 +123,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               small_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'smallImage',
                 type: {
@@ -142,7 +130,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               medium_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mediumImage',
                 type: {
@@ -150,7 +137,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               large_image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'largeImage',
                 type: {

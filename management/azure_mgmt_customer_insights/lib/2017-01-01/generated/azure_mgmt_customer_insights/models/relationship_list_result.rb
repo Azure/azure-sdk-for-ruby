@@ -58,7 +58,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RelationshipListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'RelationshipListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RelationshipResourceFormatElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
