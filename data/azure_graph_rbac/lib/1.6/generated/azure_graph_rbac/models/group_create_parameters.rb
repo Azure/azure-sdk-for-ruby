@@ -39,7 +39,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupCreateParameters',
           type: {
@@ -47,12 +46,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'GroupCreateParameters',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -62,7 +59,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'displayName',
                 type: {
@@ -70,7 +66,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               mail_enabled: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'mailEnabled',
@@ -80,7 +75,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               mail_nickname: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'mailNickname',
                 type: {
@@ -88,7 +82,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               security_enabled: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'securityEnabled',

@@ -33,7 +33,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GetObjectsParameters',
           type: {
@@ -41,12 +40,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'GetObjectsParameters',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -56,13 +53,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               object_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -72,13 +67,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'types',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -88,8 +81,7 @@ module Azure::GraphRbac::V1_6
                 }
               },
               include_directory_object_references: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'includeDirectoryObjectReferences',
                 type: {
                   name: 'Boolean'

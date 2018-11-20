@@ -31,8 +31,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Application] operation results.
     #
-    def create(parameters, custom_headers:nil)
-      response = create_async(parameters, custom_headers:custom_headers).value!
+    def create(parameters, custom_headers = nil)
+      response = create_async(parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(parameters, custom_headers:nil)
-      create_async(parameters, custom_headers:custom_headers).value!
+    def create_with_http_info(parameters, custom_headers = nil)
+      create_async(parameters, custom_headers).value!
     end
 
     #
@@ -60,18 +60,19 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(parameters, custom_headers:nil)
+    def create_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters.mapper()
@@ -128,8 +129,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Array<Application>] operation results.
     #
-    def list(filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(filter:filter, custom_headers:custom_headers)
+    def list(filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -142,8 +143,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter:nil, custom_headers:nil)
-      list_async(filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(filter = nil, custom_headers = nil)
+      list_async(filter, custom_headers).value!
     end
 
     #
@@ -155,13 +156,12 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter:nil, custom_headers:nil)
+    def list_async(filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -214,8 +214,8 @@ module Azure::GraphRbac::V1_6
     # will be added to the HTTP request.
     #
     #
-    def delete(application_object_id, custom_headers:nil)
-      response = delete_async(application_object_id, custom_headers:custom_headers).value!
+    def delete(application_object_id, custom_headers = nil)
+      response = delete_async(application_object_id, custom_headers).value!
       nil
     end
 
@@ -228,8 +228,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(application_object_id, custom_headers:nil)
-      delete_async(application_object_id, custom_headers:custom_headers).value!
+    def delete_with_http_info(application_object_id, custom_headers = nil)
+      delete_async(application_object_id, custom_headers).value!
     end
 
     #
@@ -241,14 +241,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(application_object_id, custom_headers:nil)
+    def delete_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -292,8 +291,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Application] operation results.
     #
-    def get(application_object_id, custom_headers:nil)
-      response = get_async(application_object_id, custom_headers:custom_headers).value!
+    def get(application_object_id, custom_headers = nil)
+      response = get_async(application_object_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -306,8 +305,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(application_object_id, custom_headers:nil)
-      get_async(application_object_id, custom_headers:custom_headers).value!
+    def get_with_http_info(application_object_id, custom_headers = nil)
+      get_async(application_object_id, custom_headers).value!
     end
 
     #
@@ -319,14 +318,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(application_object_id, custom_headers:nil)
+    def get_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -381,8 +379,8 @@ module Azure::GraphRbac::V1_6
     # will be added to the HTTP request.
     #
     #
-    def patch(application_object_id, parameters, custom_headers:nil)
-      response = patch_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def patch(application_object_id, parameters, custom_headers = nil)
+      response = patch_async(application_object_id, parameters, custom_headers).value!
       nil
     end
 
@@ -397,8 +395,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def patch_with_http_info(application_object_id, parameters, custom_headers:nil)
-      patch_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def patch_with_http_info(application_object_id, parameters, custom_headers = nil)
+      patch_async(application_object_id, parameters, custom_headers).value!
     end
 
     #
@@ -412,7 +410,7 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def patch_async(application_object_id, parameters, custom_headers:nil)
+    def patch_async(application_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -420,11 +418,12 @@ module Azure::GraphRbac::V1_6
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters.mapper()
@@ -473,11 +472,11 @@ module Azure::GraphRbac::V1_6
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DirectoryObjectListResult] operation results.
+    # @return [Array<DirectoryObject>] operation results.
     #
-    def list_owners(application_object_id, custom_headers:nil)
-      response = list_owners_async(application_object_id, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+    def list_owners(application_object_id, custom_headers = nil)
+      first_page = list_owners_as_lazy(application_object_id, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -493,8 +492,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_owners_with_http_info(application_object_id, custom_headers:nil)
-      list_owners_async(application_object_id, custom_headers:custom_headers).value!
+    def list_owners_with_http_info(application_object_id, custom_headers = nil)
+      list_owners_async(application_object_id, custom_headers).value!
     end
 
     #
@@ -510,14 +509,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_owners_async(application_object_id, custom_headers:nil)
+    def list_owners_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -567,15 +565,14 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def add_owner(application_object_id, parameters, custom_headers:nil)
-      response = add_owner_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def add_owner(application_object_id, parameters, custom_headers = nil)
+      response = add_owner_async(application_object_id, parameters, custom_headers).value!
       nil
     end
 
@@ -584,16 +581,15 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_owner_with_http_info(application_object_id, parameters, custom_headers:nil)
-      add_owner_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def add_owner_with_http_info(application_object_id, parameters, custom_headers = nil)
+      add_owner_async(application_object_id, parameters, custom_headers).value!
     end
 
     #
@@ -601,15 +597,14 @@ module Azure::GraphRbac::V1_6
     #
     # @param application_object_id [String] The object ID of the application to
     # which to add the owner.
-    # @param parameters [ApplicationAddOwnerParameters] The URL of the owner
-    # object, such as
+    # @param parameters [AddOwnerParameters] The URL of the owner object, such as
     # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_owner_async(application_object_id, parameters, custom_headers:nil)
+    def add_owner_async(application_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -617,14 +612,15 @@ module Azure::GraphRbac::V1_6
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Serialize Request
-      request_mapper = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters.mapper()
+      request_mapper = Azure::GraphRbac::V1_6::Models::AddOwnerParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -660,6 +656,89 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Remove a member from owners.
+    #
+    # @param application_object_id [String] The object ID of the application from
+    # which to remove the owner.
+    # @param owner_object_id [String] Owner object id
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def remove_owner(application_object_id, owner_object_id, custom_headers = nil)
+      response = remove_owner_async(application_object_id, owner_object_id, custom_headers).value!
+      nil
+    end
+
+    #
+    # Remove a member from owners.
+    #
+    # @param application_object_id [String] The object ID of the application from
+    # which to remove the owner.
+    # @param owner_object_id [String] Owner object id
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def remove_owner_with_http_info(application_object_id, owner_object_id, custom_headers = nil)
+      remove_owner_async(application_object_id, owner_object_id, custom_headers).value!
+    end
+
+    #
+    # Remove a member from owners.
+    #
+    # @param application_object_id [String] The object ID of the application from
+    # which to remove the owner.
+    # @param owner_object_id [String] Owner object id
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def remove_owner_async(application_object_id, owner_object_id, custom_headers = nil)
+      fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
+      fail ArgumentError, 'owner_object_id is nil' if owner_object_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{tenantID}/applications/{applicationObjectId}/$links/owners/{ownerObjectId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'applicationObjectId' => application_object_id,'ownerObjectId' => owner_object_id,'tenantID' => @client.tenant_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Get the keyCredentials associated with an application.
     #
     # @param application_object_id [String] Application object ID.
@@ -668,8 +747,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [KeyCredentialListResult] operation results.
     #
-    def list_key_credentials(application_object_id, custom_headers:nil)
-      response = list_key_credentials_async(application_object_id, custom_headers:custom_headers).value!
+    def list_key_credentials(application_object_id, custom_headers = nil)
+      response = list_key_credentials_async(application_object_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -682,8 +761,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_key_credentials_with_http_info(application_object_id, custom_headers:nil)
-      list_key_credentials_async(application_object_id, custom_headers:custom_headers).value!
+    def list_key_credentials_with_http_info(application_object_id, custom_headers = nil)
+      list_key_credentials_async(application_object_id, custom_headers).value!
     end
 
     #
@@ -695,14 +774,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_key_credentials_async(application_object_id, custom_headers:nil)
+    def list_key_credentials_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -757,8 +835,8 @@ module Azure::GraphRbac::V1_6
     # will be added to the HTTP request.
     #
     #
-    def update_key_credentials(application_object_id, parameters, custom_headers:nil)
-      response = update_key_credentials_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def update_key_credentials(application_object_id, parameters, custom_headers = nil)
+      response = update_key_credentials_async(application_object_id, parameters, custom_headers).value!
       nil
     end
 
@@ -773,8 +851,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_key_credentials_with_http_info(application_object_id, parameters, custom_headers:nil)
-      update_key_credentials_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def update_key_credentials_with_http_info(application_object_id, parameters, custom_headers = nil)
+      update_key_credentials_async(application_object_id, parameters, custom_headers).value!
     end
 
     #
@@ -788,7 +866,7 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_key_credentials_async(application_object_id, parameters, custom_headers:nil)
+    def update_key_credentials_async(application_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -796,11 +874,12 @@ module Azure::GraphRbac::V1_6
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters.mapper()
@@ -847,8 +926,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [PasswordCredentialListResult] operation results.
     #
-    def list_password_credentials(application_object_id, custom_headers:nil)
-      response = list_password_credentials_async(application_object_id, custom_headers:custom_headers).value!
+    def list_password_credentials(application_object_id, custom_headers = nil)
+      response = list_password_credentials_async(application_object_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -861,8 +940,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_password_credentials_with_http_info(application_object_id, custom_headers:nil)
-      list_password_credentials_async(application_object_id, custom_headers:custom_headers).value!
+    def list_password_credentials_with_http_info(application_object_id, custom_headers = nil)
+      list_password_credentials_async(application_object_id, custom_headers).value!
     end
 
     #
@@ -874,14 +953,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_password_credentials_async(application_object_id, custom_headers:nil)
+    def list_password_credentials_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -936,8 +1014,8 @@ module Azure::GraphRbac::V1_6
     # will be added to the HTTP request.
     #
     #
-    def update_password_credentials(application_object_id, parameters, custom_headers:nil)
-      response = update_password_credentials_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def update_password_credentials(application_object_id, parameters, custom_headers = nil)
+      response = update_password_credentials_async(application_object_id, parameters, custom_headers).value!
       nil
     end
 
@@ -952,8 +1030,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_password_credentials_with_http_info(application_object_id, parameters, custom_headers:nil)
-      update_password_credentials_async(application_object_id, parameters, custom_headers:custom_headers).value!
+    def update_password_credentials_with_http_info(application_object_id, parameters, custom_headers = nil)
+      update_password_credentials_async(application_object_id, parameters, custom_headers).value!
     end
 
     #
@@ -967,7 +1045,7 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_password_credentials_async(application_object_id, parameters, custom_headers:nil)
+    def update_password_credentials_async(application_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -975,11 +1053,12 @@ module Azure::GraphRbac::V1_6
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters.mapper()
@@ -1026,8 +1105,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Array<Application>] operation results.
     #
-    def list_next(next_link, custom_headers:nil)
-      response = list_next_async(next_link, custom_headers:custom_headers).value!
+    def list_next(next_link, custom_headers = nil)
+      response = list_next_async(next_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1040,8 +1119,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_link, custom_headers:nil)
-      list_next_async(next_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_link, custom_headers = nil)
+      list_next_async(next_link, custom_headers).value!
     end
 
     #
@@ -1053,14 +1132,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_link, custom_headers:nil)
+    def list_next_async(next_link, custom_headers = nil)
       fail ArgumentError, 'next_link is nil' if next_link.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1107,6 +1185,102 @@ module Azure::GraphRbac::V1_6
     end
 
     #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DirectoryObjectListResult] operation results.
+    #
+    def list_owners_next(next_page_link, custom_headers = nil)
+      response = list_owners_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_owners_next_with_http_info(next_page_link, custom_headers = nil)
+      list_owners_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_owners_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Lists applications by filter parameters.
     #
     # @param filter [String] The filters to apply to the operation.
@@ -1116,12 +1290,37 @@ module Azure::GraphRbac::V1_6
     # @return [ApplicationListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(filter:nil, custom_headers:nil)
-      response = list_async(filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(filter = nil, custom_headers = nil)
+      response = list_async(filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_link|
-          list_next_async(next_link, custom_headers:custom_headers)
+          list_next_async(next_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Directory objects that are owners of the application.
+    #
+    # The owners are a set of non-admin users who are allowed to modify this
+    # object.
+    #
+    # @param application_object_id [String] The object ID of the application for
+    # which to get owners.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DirectoryObjectListResult] which provide lazy access to pages of the
+    # response.
+    #
+    def list_owners_as_lazy(application_object_id, custom_headers = nil)
+      response = list_owners_async(application_object_id, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_owners_next_async(next_page_link, custom_headers)
         end
         page
       end

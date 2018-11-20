@@ -29,7 +29,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PasswordProfile',
           type: {
@@ -37,12 +36,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'PasswordProfile',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -52,7 +49,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'password',
                 type: {
@@ -60,7 +56,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               force_change_password_next_login: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'forceChangePasswordNextLogin',
                 type: {

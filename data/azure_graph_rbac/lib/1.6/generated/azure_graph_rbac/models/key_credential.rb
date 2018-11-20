@@ -45,7 +45,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KeyCredential',
           type: {
@@ -53,12 +52,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'KeyCredential',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -68,7 +65,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               start_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startDate',
                 type: {
@@ -76,7 +72,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               end_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endDate',
                 type: {
@@ -84,7 +79,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -92,7 +86,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               key_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyId',
                 type: {
@@ -100,7 +93,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               usage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'usage',
                 type: {
@@ -108,7 +100,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -116,7 +107,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               custom_key_identifier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customKeyIdentifier',
                 type: {
