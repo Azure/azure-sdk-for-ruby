@@ -23,7 +23,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       attr_accessor :internal_dns_name_label
 
       # @return [String] Gets or sets full IDNS name in the form,
-      # DnsName.VnetId.ZoneId.TopleveSuffix. This is set when the NIC is
+      # DnsName.VnetId.ZoneId.TopLevelSuffix. This is set when the NIC is
       # associated to a VM
       attr_accessor :internal_fqdn
 

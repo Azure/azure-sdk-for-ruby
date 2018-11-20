@@ -65,7 +65,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get NetworkSecurityRule operation retreives information about the
+    # The Get NetworkSecurityRule operation retrieves information about the
     # specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -83,7 +83,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get NetworkSecurityRule operation retreives information about the
+    # The Get NetworkSecurityRule operation retrieves information about the
     # specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -100,7 +100,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get NetworkSecurityRule operation retreives information about the
+    # The Get NetworkSecurityRule operation retrieves information about the
     # specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -217,8 +217,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List network security rule opertion retrieves all the security rules in a
-    # network security group.
+    # The List network security rule operation retrieves all the security rules in
+    # a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -234,8 +234,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List network security rule opertion retrieves all the security rules in a
-    # network security group.
+    # The List network security rule operation retrieves all the security rules in
+    # a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -250,8 +250,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List network security rule opertion retrieves all the security rules in a
-    # network security group.
+    # The List network security rule operation retrieves all the security rules in
+    # a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -531,8 +531,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List network security rule opertion retrieves all the security rules in a
-    # network security group.
+    # The List network security rule operation retrieves all the security rules in
+    # a network security group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -547,8 +547,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List network security rule opertion retrieves all the security rules in a
-    # network security group.
+    # The List network security rule operation retrieves all the security rules in
+    # a network security group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -562,8 +562,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List network security rule opertion retrieves all the security rules in a
-    # network security group.
+    # The List network security rule operation retrieves all the security rules in
+    # a network security group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -621,8 +621,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List network security rule opertion retrieves all the security rules in a
-    # network security group.
+    # The List network security rule operation retrieves all the security rules in
+    # a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security

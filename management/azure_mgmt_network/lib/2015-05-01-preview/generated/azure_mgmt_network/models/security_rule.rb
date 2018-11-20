@@ -56,7 +56,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       # @return [SecurityRuleDirection] Gets or sets the direction of the
       # rule.InBound or Outbound. The direction specifies if rule will be
-      # evaluated on incoming or outcoming traffic. Possible values include:
+      # evaluated on incoming or outgoing traffic. Possible values include:
       # 'Inbound', 'Outbound'
       attr_accessor :direction
 

@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # @return [String] Gets or sets the Internal DNS name
       attr_accessor :internal_dns_name_label
 
-      # @return [String] Gets or sets the internal fqdn.
+      # @return [String] Gets or sets the internal FQDN.
       attr_accessor :internal_fqdn
 
       # @return [String] Gets or sets internal domain name suffix of the NIC.

@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     attr_reader :client
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -371,7 +371,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -385,7 +385,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -399,7 +399,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.

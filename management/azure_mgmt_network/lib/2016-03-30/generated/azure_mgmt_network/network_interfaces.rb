@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2016_03_30
     attr_reader :client
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -60,7 +60,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -77,7 +77,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -93,7 +93,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -401,7 +401,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -421,7 +421,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -440,7 +440,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -509,7 +509,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -523,7 +523,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -536,7 +536,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -595,7 +595,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -610,7 +610,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -624,7 +624,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -685,7 +685,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -699,7 +699,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -713,7 +713,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -1062,7 +1062,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1078,7 +1078,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1093,7 +1093,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1152,7 +1152,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1168,7 +1168,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1183,7 +1183,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1291,7 +1291,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1312,7 +1312,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.

@@ -170,7 +170,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -211,7 +211,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -226,7 +226,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -240,7 +240,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -302,7 +302,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
     #
     # The Reset VirtualNetworkGateway operation resets the primary of the virtual
-    # network gatewayin the specified resource group through Network resource
+    # network gateway in the specified resource group through Network resource
     # provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -477,7 +477,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -493,7 +493,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -509,7 +509,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -564,7 +564,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
     #
     # The Reset VirtualNetworkGateway operation resets the primary of the virtual
-    # network gatewayin the specified resource group through Network resource
+    # network gateway in the specified resource group through Network resource
     # provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -584,7 +584,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
     #
     # The Reset VirtualNetworkGateway operation resets the primary of the virtual
-    # network gatewayin the specified resource group through Network resource
+    # network gateway in the specified resource group through Network resource
     # provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -603,7 +603,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
     #
     # The Reset VirtualNetworkGateway operation resets the primary of the virtual
-    # network gatewayin the specified resource group through Network resource
+    # network gateway in the specified resource group through Network resource
     # provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -679,7 +679,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -695,7 +695,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -710,7 +710,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -769,7 +769,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.

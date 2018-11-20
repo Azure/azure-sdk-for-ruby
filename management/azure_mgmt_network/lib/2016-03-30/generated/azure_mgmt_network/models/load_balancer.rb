@@ -17,7 +17,7 @@ module Azure::Network::Mgmt::V2016_03_30
       attr_accessor :frontend_ipconfigurations
 
       # @return [Array<BackendAddressPool>] Gets or sets Pools of backend IP
-      # addresseses
+      # addresses
       attr_accessor :backend_address_pools
 
       # @return [Array<LoadBalancingRule>] Gets or sets loadbalancing rules
@@ -35,7 +35,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # @return [Array<OutboundNatRule>] Gets or sets outbound NAT rules
       attr_accessor :outbound_nat_rules
 
-      # @return [String] Gets or sets resource guid property of the Load
+      # @return [String] Gets or sets resource GUID property of the Load
       # balancer resource
       attr_accessor :resource_guid
 

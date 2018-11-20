@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2016_03_30
     attr_reader :client
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -36,7 +36,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -49,7 +49,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -108,7 +108,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -124,7 +124,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -139,7 +139,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -198,7 +198,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

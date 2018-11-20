@@ -170,7 +170,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specifed local network
+    # The Delete LocalNetworkGateway operation deletes the specified local network
     # Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -211,7 +211,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -226,7 +226,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -240,7 +240,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -427,7 +427,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specifed local network
+    # The Delete LocalNetworkGateway operation deletes the specified local network
     # Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -443,7 +443,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specifed local network
+    # The Delete LocalNetworkGateway operation deletes the specified local network
     # Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -459,7 +459,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specifed local network
+    # The Delete LocalNetworkGateway operation deletes the specified local network
     # Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -513,7 +513,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -529,7 +529,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -544,7 +544,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -603,7 +603,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.

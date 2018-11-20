@@ -29,7 +29,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       # @return [Integer] The Routing weight.
       attr_accessor :routing_weight
 
-      # @return [String] The Ipsec share key.
+      # @return [String] The IPsec share key.
       attr_accessor :shared_key
 
       # @return [VirtualNetworkGatewayConnectionStatus] Virtual network Gateway
