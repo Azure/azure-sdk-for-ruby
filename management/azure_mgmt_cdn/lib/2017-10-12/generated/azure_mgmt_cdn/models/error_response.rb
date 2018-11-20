@@ -6,7 +6,7 @@
 module Azure::CDN::Mgmt::V2017_10_12
   module Models
     #
-    # Error reponse indicates CDN service is not able to process the incoming
+    # Error response indicates CDN service is not able to process the incoming
     # request. The reason is provided in the error message.
     #
     class ErrorResponse
@@ -26,7 +26,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -34,7 +33,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -43,7 +41,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

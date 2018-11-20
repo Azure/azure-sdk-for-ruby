@@ -30,7 +30,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ValidateProbeOutput',
           type: {
@@ -38,7 +37,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'ValidateProbeOutput',
             model_properties: {
               is_valid: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isValid',
@@ -47,7 +45,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               error_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'errorCode',
@@ -56,7 +53,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

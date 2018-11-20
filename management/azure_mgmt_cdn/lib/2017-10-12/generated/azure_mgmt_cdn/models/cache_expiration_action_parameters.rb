@@ -26,8 +26,8 @@ module Azure::CDN::Mgmt::V2017_10_12
       # Default value: 'All' .
       attr_accessor :cache_type
 
-      # @return [String] The duration for which the the content needs to be
-      # cached. Allowed format is [d.]hh:mm:ss
+      # @return [String] The duration for which the content needs to be cached.
+      # Allowed format is [d.]hh:mm:ss
       attr_accessor :cache_duration
 
 
@@ -37,7 +37,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CacheExpirationActionParameters',
           type: {
@@ -45,7 +44,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'CacheExpirationActionParameters',
             model_properties: {
               odatatype: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: '@odata\\.type',
@@ -55,7 +53,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               cache_behavior: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'cacheBehavior',
                 type: {
@@ -63,7 +60,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               cache_type: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'cacheType',
@@ -73,7 +69,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               cache_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cacheDuration',
                 type: {
