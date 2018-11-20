@@ -7,14 +7,15 @@ require 'azure_mgmt_datalake_store'
 module Azure::Profiles::Latest
   module DataLakeStore
     module Mgmt
+      Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
       FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
       Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
       VirtualNetworkRules = Azure::DataLakeStore::Mgmt::V2016_11_01::VirtualNetworkRules
-      TrustedIdProviders = Azure::DataLakeStore::Mgmt::V2016_11_01::TrustedIdProviders
       Accounts = Azure::DataLakeStore::Mgmt::V2016_11_01::Accounts
-      Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
+      TrustedIdProviders = Azure::DataLakeStore::Mgmt::V2016_11_01::TrustedIdProviders
 
       module Models
+        CheckNameAvailabilityParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
         SubscriptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
         EncryptionIdentity = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionIdentity
         CreateVirtualNetworkRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateVirtualNetworkRuleWithAccountParameters
@@ -48,8 +49,8 @@ module Azure::Profiles::Latest
         NameAvailabilityInformation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::NameAvailabilityInformation
         UpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
         Resource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
-        CreateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
         OperationDisplay = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
+        CreateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
         Operation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Operation
         CreateOrUpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
         OperationListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationListResult
@@ -61,11 +62,10 @@ module Azure::Profiles::Latest
         FirewallAllowAzureIpsState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallAllowAzureIpsState
         TierType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TierType
         OperationOrigin = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationOrigin
-        CheckNameAvailabilityParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
       end
 
       class DataLakeStoreManagementClass
-        attr_reader :firewall_rules, :locations, :virtual_network_rules, :trusted_id_providers, :accounts, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :firewall_rules, :locations, :virtual_network_rules, :accounts, :trusted_id_providers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -75,12 +75,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @firewall_rules = @client_0.firewall_rules
           @locations = @client_0.locations
           @virtual_network_rules = @client_0.virtual_network_rules
-          @trusted_id_providers = @client_0.trusted_id_providers
           @accounts = @client_0.accounts
-          @operations = @client_0.operations
+          @trusted_id_providers = @client_0.trusted_id_providers
 
           @model_classes = ModelClasses.new
         end
@@ -99,6 +99,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_name_availability_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
+          end
           def subscription_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
           end
@@ -198,11 +201,11 @@ module Azure::Profiles::Latest
           def resource
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
           end
-          def create_firewall_rule_with_account_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
-          end
           def operation_display
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
+          end
+          def create_firewall_rule_with_account_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
           end
           def operation
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Operation
@@ -236,9 +239,6 @@ module Azure::Profiles::Latest
           end
           def operation_origin
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationOrigin
-          end
-          def check_name_availability_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
           end
         end
       end

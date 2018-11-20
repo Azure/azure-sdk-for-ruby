@@ -37,7 +37,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationMetricSpecificationDefinition',
           type: {
@@ -45,7 +44,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'OperationMetricSpecificationDefinition',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -53,7 +51,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -61,7 +58,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               display_description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayDescription',
                 type: {
@@ -69,7 +65,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -77,7 +72,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregationType',
                 type: {
@@ -85,7 +79,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               internal_metric_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalMetricName',
                 type: {

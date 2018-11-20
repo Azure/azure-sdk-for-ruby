@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Profiles::Latest
     Webhooks = Azure::ContainerRegistry::Mgmt::V2017_10_01::Webhooks
 
     module Models
+      QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
       TrustPolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy
       ImportSource = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSource
       RegistryPolicies = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPolicies
@@ -43,12 +44,11 @@ module Azure::ContainerRegistry::Profiles::Latest
       RegistryUsage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsage
       Actor = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Actor
       OperationServiceSpecificationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
-      Source = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
       RegistryListCredentialsResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
       EventContent = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
       Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
       EventRequestMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
-      QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      ImportSourceCredentials = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
       EventResponseMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
       Registry = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
       Replication = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
@@ -64,6 +64,7 @@ module Azure::ContainerRegistry::Profiles::Latest
       TrustPolicyType = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicyType
       WebhookStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
       WebhookAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
+      Source = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
     end
 
     #
@@ -114,6 +115,9 @@ module Azure::ContainerRegistry::Profiles::Latest
     end
 
     class ModelClasses
+      def quarantine_policy
+        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      end
       def trust_policy
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicy
       end
@@ -207,9 +211,6 @@ module Azure::ContainerRegistry::Profiles::Latest
       def operation_service_specification_definition
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
       end
-      def source
-        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
-      end
       def registry_list_credentials_result
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
       end
@@ -222,8 +223,8 @@ module Azure::ContainerRegistry::Profiles::Latest
       def event_request_message
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
       end
-      def quarantine_policy
-        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
+      def import_source_credentials
+        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
       end
       def event_response_message
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
@@ -269,6 +270,9 @@ module Azure::ContainerRegistry::Profiles::Latest
       end
       def webhook_action
         Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
+      end
+      def source
+        Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
       end
     end
   end

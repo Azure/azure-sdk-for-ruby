@@ -9,6 +9,8 @@ module Azure::Profiles::Latest
   module KeyVault
 
     module Models
+      StorageRestoreParameters = Azure::KeyVault::V7_0::Models::StorageRestoreParameters
+      BackupStorageResult = Azure::KeyVault::V7_0::Models::BackupStorageResult
       CertificateRestoreParameters = Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
       DeletedStorageListResult = Azure::KeyVault::V7_0::Models::DeletedStorageListResult
       DeletedStorageBundle = Azure::KeyVault::V7_0::Models::DeletedStorageBundle
@@ -105,8 +107,6 @@ module Azure::Profiles::Latest
       JsonWebKeySignatureAlgorithm = Azure::KeyVault::V7_0::Models::JsonWebKeySignatureAlgorithm
       BackupCertificateResult = Azure::KeyVault::V7_0::Models::BackupCertificateResult
       DeletedSasDefinitionListResult = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionListResult
-      StorageRestoreParameters = Azure::KeyVault::V7_0::Models::StorageRestoreParameters
-      BackupStorageResult = Azure::KeyVault::V7_0::Models::BackupStorageResult
     end
 
     class KeyVaultDataClass
@@ -138,6 +138,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def storage_restore_parameters
+          Azure::KeyVault::V7_0::Models::StorageRestoreParameters
+        end
+        def backup_storage_result
+          Azure::KeyVault::V7_0::Models::BackupStorageResult
+        end
         def certificate_restore_parameters
           Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
         end
@@ -426,17 +432,11 @@ module Azure::Profiles::Latest
         def deleted_sas_definition_list_result
           Azure::KeyVault::V7_0::Models::DeletedSasDefinitionListResult
         end
-        def storage_restore_parameters
-          Azure::KeyVault::V7_0::Models::StorageRestoreParameters
-        end
-        def backup_storage_result
-          Azure::KeyVault::V7_0::Models::BackupStorageResult
-        end
       end
     end
     module Mgmt
-      Vaults = Azure::KeyVault::Mgmt::V2018_02_14::Vaults
       Operations = Azure::KeyVault::Mgmt::V2018_02_14::Operations
+      Vaults = Azure::KeyVault::Mgmt::V2018_02_14::Vaults
 
       module Models
         Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
@@ -465,12 +465,12 @@ module Azure::Profiles::Latest
         SecretPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
         Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
         StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
-        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
-        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
-        CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
         CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
-        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
+        CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
+        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
         Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
         IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
         NetworkRuleSet = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
         NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
@@ -478,7 +478,7 @@ module Azure::Profiles::Latest
       end
 
       class KeyVaultManagementClass
-        attr_reader :vaults, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :vaults, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -488,8 +488,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @vaults = @client_0.vaults
           @operations = @client_0.operations
+          @vaults = @client_0.vaults
 
           @model_classes = ModelClasses.new
         end
@@ -586,23 +586,23 @@ module Azure::Profiles::Latest
           def storage_permissions
             Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
           end
+          def certificate_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
+          end
           def virtual_network_rule
             Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
-          end
-          def access_policy_update_kind
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
           end
           def create_mode
             Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
           end
-          def certificate_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
-          end
-          def sku
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+          def access_policy_update_kind
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
           end
           def reason
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+          end
+          def sku
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
           end
           def iprule
             Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule

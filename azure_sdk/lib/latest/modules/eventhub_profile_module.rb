@@ -7,10 +7,10 @@ require 'azure_mgmt_event_hub'
 module Azure::Profiles::Latest
   module EventHub
     module Mgmt
+      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
       Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
       Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
-      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
 
       module Models
         SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
@@ -22,8 +22,8 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
         ErrorResponse = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
         Operation = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
-        ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
         OperationListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
+        ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
         ClusterListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
         IpFilterRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
         ClusterSku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
@@ -31,12 +31,12 @@ module Azure::Profiles::Latest
         Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
         EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
         TrackedResource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
-        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
         IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
+        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
       end
 
       class EventHubManagementClass
-        attr_reader :clusters, :namespaces, :configuration, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :namespaces, :configuration, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -46,10 +46,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @clusters = @client_0.clusters
           @namespaces = @client_0.namespaces
           @configuration = @client_0.configuration
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -95,11 +95,11 @@ module Azure::Profiles::Latest
           def operation
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
           end
-          def cluster_quota_configuration_properties
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
-          end
           def operation_list_result
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
+          end
+          def cluster_quota_configuration_properties
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
           end
           def cluster_list_result
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
@@ -122,11 +122,11 @@ module Azure::Profiles::Latest
           def tracked_resource
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
           end
-          def ipaction
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
-          end
           def ip_filter_rule
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
+          end
+          def ipaction
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
           end
         end
       end

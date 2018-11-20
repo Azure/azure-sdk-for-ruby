@@ -7,12 +7,14 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
+      Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
+      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
-      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
-      Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
 
       module Models
+        TestAllRoutesInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
+        OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
         MatchedRoute = Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
         SharedAccessSignatureAuthorizationRuleListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
         TestAllRoutesResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesResult
@@ -43,8 +45,8 @@ module Azure::Profiles::Latest
         IotHubScaleType = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
         IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameUnavailabilityReason
         TestResultStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::TestResultStatus
-        RouteErrorSeverity = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
         Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+        RouteErrorSeverity = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
         IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
         ErrorDetails = Azure::IotHub::Mgmt::V2018_04_01::Models::ErrorDetails
         JobStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
@@ -88,12 +90,10 @@ module Azure::Profiles::Latest
         RoutingEndpoints = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
         RoutingMessage = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
         StorageEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
-        TestAllRoutesInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
-        OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
       end
 
       class IotHubManagementClass
-        attr_reader :iot_hub_resource, :resource_provider_common, :certificates, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :certificates, :iot_hub_resource, :resource_provider_common, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -103,10 +103,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
+          @certificates = @client_0.certificates
           @iot_hub_resource = @client_0.iot_hub_resource
           @resource_provider_common = @client_0.resource_provider_common
-          @certificates = @client_0.certificates
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -125,6 +125,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def test_all_routes_input
+            Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
+          end
+          def operations_monitoring_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
+          end
           def matched_route
             Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
           end
@@ -215,11 +221,11 @@ module Azure::Profiles::Latest
           def test_result_status
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestResultStatus
           end
-          def route_error_severity
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
-          end
           def name
             Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+          end
+          def route_error_severity
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
           end
           def ip_filter_rule
             Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
@@ -349,12 +355,6 @@ module Azure::Profiles::Latest
           end
           def storage_endpoint_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
-          end
-          def test_all_routes_input
-            Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
-          end
-          def operations_monitoring_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
           end
         end
       end

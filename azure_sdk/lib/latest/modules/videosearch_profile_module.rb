@@ -20,8 +20,8 @@ module Azure::Profiles::Latest
       VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
       VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
-      VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
       Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+      VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
       ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
       QueryContext = Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
       VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
@@ -39,8 +39,8 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
       Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
-      MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
+      MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
     end
 
     class VideoSearchDataClass
@@ -106,11 +106,11 @@ module Azure::Profiles::Latest
         def video_resolution
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
         end
-        def video_insight_module
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
-        end
         def response
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        end
+        def video_insight_module
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
         end
         def response_base
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
@@ -163,11 +163,11 @@ module Azure::Profiles::Latest
         def image_object
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
         end
-        def media_object
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
+        end
+        def media_object
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
         end
       end
     end
