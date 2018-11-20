@@ -9,14 +9,13 @@ module Azure::Profiles::Latest
     module Mgmt
       Location = Azure::Batch::Mgmt::V2017_09_01::Location
       Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
-      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
       BatchAccountOperations = Azure::Batch::Mgmt::V2017_09_01::BatchAccountOperations
       ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationPackageOperations
       ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
       PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
+      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
 
       module Models
-        CheckNameAvailabilityParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
         TaskSchedulingPolicy = Azure::Batch::Mgmt::V2017_09_01::Models::TaskSchedulingPolicy
         CloudServiceConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::CloudServiceConfiguration
         LinuxUserConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::LinuxUserConfiguration
@@ -36,39 +35,39 @@ module Azure::Profiles::Latest
         ApplicationCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
         PoolEndpointConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::PoolEndpointConfiguration
         ResizeError = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
-        NetworkConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::NetworkConfiguration
-        ResizeOperationStatus = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeOperationStatus
         CertificateBaseProperties = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties
+        ResizeOperationStatus = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeOperationStatus
+        ListApplicationsResult = Azure::Batch::Mgmt::V2017_09_01::Models::ListApplicationsResult
         ListPoolsResult = Azure::Batch::Mgmt::V2017_09_01::Models::ListPoolsResult
         ApplicationUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationUpdateParameters
         ListCertificatesResult = Azure::Batch::Mgmt::V2017_09_01::Models::ListCertificatesResult
         BatchAccountListResult = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountListResult
         BatchAccount = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccount
+        AutoStorageProperties = Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageProperties
         WindowsConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
         DataDisk = Azure::Batch::Mgmt::V2017_09_01::Models::DataDisk
-        Pool = Azure::Batch::Mgmt::V2017_09_01::Models::Pool
-        AutoStorageProperties = Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageProperties
-        ProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
-        PackageState = Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
-        PoolAllocationMode = Azure::Batch::Mgmt::V2017_09_01::Models::PoolAllocationMode
-        AccountKeyType = Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
-        Certificate = Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
         CertificateCreateOrUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
+        AccountKeyType = Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
+        Pool = Azure::Batch::Mgmt::V2017_09_01::Models::Pool
+        PoolAllocationMode = Azure::Batch::Mgmt::V2017_09_01::Models::PoolAllocationMode
         CertificateProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
+        PackageState = Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
+        Certificate = Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
+        CachingType = Azure::Batch::Mgmt::V2017_09_01::Models::CachingType
         PoolProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState
-        AllocationState = Azure::Batch::Mgmt::V2017_09_01::Models::AllocationState
+        ProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
         CertificateFormat = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateFormat
         StorageAccountType = Azure::Batch::Mgmt::V2017_09_01::Models::StorageAccountType
         ComputeNodeDeallocationOption = Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeDeallocationOption
-        InterNodeCommunicationState = Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
-        CachingType = Azure::Batch::Mgmt::V2017_09_01::Models::CachingType
+        AllocationState = Azure::Batch::Mgmt::V2017_09_01::Models::AllocationState
+        InboundEndpointProtocol = Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
         NetworkSecurityGroupRuleAccess = Azure::Batch::Mgmt::V2017_09_01::Models::NetworkSecurityGroupRuleAccess
         ComputeNodeFillType = Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeFillType
-        ElevationLevel = Azure::Batch::Mgmt::V2017_09_01::Models::ElevationLevel
-        InboundEndpointProtocol = Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
+        InterNodeCommunicationState = Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
+        AutoUserScope = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserScope
         CertificateStoreLocation = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateStoreLocation
         CertificateVisibility = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateVisibility
-        AutoUserScope = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserScope
+        ElevationLevel = Azure::Batch::Mgmt::V2017_09_01::Models::ElevationLevel
         NameAvailabilityReason = Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
         Resource = Azure::Batch::Mgmt::V2017_09_01::Models::Resource
         OperationDisplay = Azure::Batch::Mgmt::V2017_09_01::Models::OperationDisplay
@@ -81,24 +80,25 @@ module Azure::Profiles::Latest
         AutoStorageBaseProperties = Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageBaseProperties
         AutoScaleSettings = Azure::Batch::Mgmt::V2017_09_01::Models::AutoScaleSettings
         BatchAccountCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountCreateParameters
-        OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
         ScaleSettings = Azure::Batch::Mgmt::V2017_09_01::Models::ScaleSettings
+        OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
         KeyVaultReference = Azure::Batch::Mgmt::V2017_09_01::Models::KeyVaultReference
         BatchAccountUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountUpdateParameters
         BatchAccountRegenerateKeyParameters = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountRegenerateKeyParameters
         ActivateApplicationPackageParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ActivateApplicationPackageParameters
-        ProxyResource = Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
-        ApplicationPackage = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackage
         AutoScaleRunError = Azure::Batch::Mgmt::V2017_09_01::Models::AutoScaleRunError
-        ListApplicationsResult = Azure::Batch::Mgmt::V2017_09_01::Models::ListApplicationsResult
+        ApplicationPackage = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackage
+        ProxyResource = Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
+        NetworkSecurityGroupRule = Azure::Batch::Mgmt::V2017_09_01::Models::NetworkSecurityGroupRule
         AutoScaleRun = Azure::Batch::Mgmt::V2017_09_01::Models::AutoScaleRun
         BatchLocationQuota = Azure::Batch::Mgmt::V2017_09_01::Models::BatchLocationQuota
-        NetworkSecurityGroupRule = Azure::Batch::Mgmt::V2017_09_01::Models::NetworkSecurityGroupRule
         DeleteCertificateError = Azure::Batch::Mgmt::V2017_09_01::Models::DeleteCertificateError
+        NetworkConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::NetworkConfiguration
+        CheckNameAvailabilityParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
       end
 
       class BatchManagementClass
-        attr_reader :location, :operations, :certificate_operations, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :location, :operations, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :certificate_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -110,11 +110,11 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @location = @client_0.location
           @operations = @client_0.operations
-          @certificate_operations = @client_0.certificate_operations
           @batch_account_operations = @client_0.batch_account_operations
           @application_package_operations = @client_0.application_package_operations
           @application_operations = @client_0.application_operations
           @pool_operations = @client_0.pool_operations
+          @certificate_operations = @client_0.certificate_operations
 
           @model_classes = ModelClasses.new
         end
@@ -133,9 +133,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def check_name_availability_parameters
-            Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
-          end
           def task_scheduling_policy
             Azure::Batch::Mgmt::V2017_09_01::Models::TaskSchedulingPolicy
           end
@@ -193,14 +190,14 @@ module Azure::Profiles::Latest
           def resize_error
             Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
           end
-          def network_configuration
-            Azure::Batch::Mgmt::V2017_09_01::Models::NetworkConfiguration
+          def certificate_base_properties
+            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties
           end
           def resize_operation_status
             Azure::Batch::Mgmt::V2017_09_01::Models::ResizeOperationStatus
           end
-          def certificate_base_properties
-            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties
+          def list_applications_result
+            Azure::Batch::Mgmt::V2017_09_01::Models::ListApplicationsResult
           end
           def list_pools_result
             Azure::Batch::Mgmt::V2017_09_01::Models::ListPoolsResult
@@ -217,44 +214,44 @@ module Azure::Profiles::Latest
           def batch_account
             Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccount
           end
+          def auto_storage_properties
+            Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageProperties
+          end
           def windows_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
           end
           def data_disk
             Azure::Batch::Mgmt::V2017_09_01::Models::DataDisk
           end
-          def pool
-            Azure::Batch::Mgmt::V2017_09_01::Models::Pool
-          end
-          def auto_storage_properties
-            Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageProperties
-          end
-          def provisioning_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
-          end
-          def package_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
-          end
-          def pool_allocation_mode
-            Azure::Batch::Mgmt::V2017_09_01::Models::PoolAllocationMode
+          def certificate_create_or_update_parameters
+            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
           end
           def account_key_type
             Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
           end
-          def certificate
-            Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
+          def pool
+            Azure::Batch::Mgmt::V2017_09_01::Models::Pool
           end
-          def certificate_create_or_update_parameters
-            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
+          def pool_allocation_mode
+            Azure::Batch::Mgmt::V2017_09_01::Models::PoolAllocationMode
           end
           def certificate_provisioning_state
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
           end
+          def package_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
+          end
+          def certificate
+            Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
+          end
+          def caching_type
+            Azure::Batch::Mgmt::V2017_09_01::Models::CachingType
+          end
           def pool_provisioning_state
             Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState
           end
-          def allocation_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::AllocationState
+          def provisioning_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
           end
           def certificate_format
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateFormat
@@ -265,11 +262,11 @@ module Azure::Profiles::Latest
           def compute_node_deallocation_option
             Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeDeallocationOption
           end
-          def inter_node_communication_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
+          def allocation_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::AllocationState
           end
-          def caching_type
-            Azure::Batch::Mgmt::V2017_09_01::Models::CachingType
+          def inbound_endpoint_protocol
+            Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
           end
           def network_security_group_rule_access
             Azure::Batch::Mgmt::V2017_09_01::Models::NetworkSecurityGroupRuleAccess
@@ -277,11 +274,11 @@ module Azure::Profiles::Latest
           def compute_node_fill_type
             Azure::Batch::Mgmt::V2017_09_01::Models::ComputeNodeFillType
           end
-          def elevation_level
-            Azure::Batch::Mgmt::V2017_09_01::Models::ElevationLevel
+          def inter_node_communication_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::InterNodeCommunicationState
           end
-          def inbound_endpoint_protocol
-            Azure::Batch::Mgmt::V2017_09_01::Models::InboundEndpointProtocol
+          def auto_user_scope
+            Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserScope
           end
           def certificate_store_location
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateStoreLocation
@@ -289,8 +286,8 @@ module Azure::Profiles::Latest
           def certificate_visibility
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateVisibility
           end
-          def auto_user_scope
-            Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserScope
+          def elevation_level
+            Azure::Batch::Mgmt::V2017_09_01::Models::ElevationLevel
           end
           def name_availability_reason
             Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
@@ -328,11 +325,11 @@ module Azure::Profiles::Latest
           def batch_account_create_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountCreateParameters
           end
-          def osdisk
-            Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
-          end
           def scale_settings
             Azure::Batch::Mgmt::V2017_09_01::Models::ScaleSettings
+          end
+          def osdisk
+            Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
           end
           def key_vault_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::KeyVaultReference
@@ -346,17 +343,17 @@ module Azure::Profiles::Latest
           def activate_application_package_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::ActivateApplicationPackageParameters
           end
-          def proxy_resource
-            Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
+          def auto_scale_run_error
+            Azure::Batch::Mgmt::V2017_09_01::Models::AutoScaleRunError
           end
           def application_package
             Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackage
           end
-          def auto_scale_run_error
-            Azure::Batch::Mgmt::V2017_09_01::Models::AutoScaleRunError
+          def proxy_resource
+            Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
           end
-          def list_applications_result
-            Azure::Batch::Mgmt::V2017_09_01::Models::ListApplicationsResult
+          def network_security_group_rule
+            Azure::Batch::Mgmt::V2017_09_01::Models::NetworkSecurityGroupRule
           end
           def auto_scale_run
             Azure::Batch::Mgmt::V2017_09_01::Models::AutoScaleRun
@@ -364,11 +361,14 @@ module Azure::Profiles::Latest
           def batch_location_quota
             Azure::Batch::Mgmt::V2017_09_01::Models::BatchLocationQuota
           end
-          def network_security_group_rule
-            Azure::Batch::Mgmt::V2017_09_01::Models::NetworkSecurityGroupRule
-          end
           def delete_certificate_error
             Azure::Batch::Mgmt::V2017_09_01::Models::DeleteCertificateError
+          end
+          def network_configuration
+            Azure::Batch::Mgmt::V2017_09_01::Models::NetworkConfiguration
+          end
+          def check_name_availability_parameters
+            Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityParameters
           end
         end
       end

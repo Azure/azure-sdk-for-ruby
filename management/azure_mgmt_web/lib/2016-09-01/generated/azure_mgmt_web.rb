@@ -53,7 +53,7 @@ module Azure::Web::Mgmt::V2016_09_01
     autoload :ErrorEntity,                                        '2016-09-01/generated/azure_mgmt_web/models/error_entity.rb'
     autoload :ResourceMetricProperty,                             '2016-09-01/generated/azure_mgmt_web/models/resource_metric_property.rb'
     autoload :SnapshotRecoveryTarget,                             '2016-09-01/generated/azure_mgmt_web/models/snapshot_recovery_target.rb'
-    autoload :MetricAvailabilily,                                 '2016-09-01/generated/azure_mgmt_web/models/metric_availabilily.rb'
+    autoload :MetricAvailability,                                 '2016-09-01/generated/azure_mgmt_web/models/metric_availability.rb'
     autoload :ResourceMetricAvailability,                         '2016-09-01/generated/azure_mgmt_web/models/resource_metric_availability.rb'
     autoload :ResourceMetric,                                     '2016-09-01/generated/azure_mgmt_web/models/resource_metric.rb'
     autoload :CsmUsageQuotaCollection,                            '2016-09-01/generated/azure_mgmt_web/models/csm_usage_quota_collection.rb'

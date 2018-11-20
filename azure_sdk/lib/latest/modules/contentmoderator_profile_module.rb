@@ -15,7 +15,6 @@ module Azure::Profiles::Latest
     Reviews = Azure::CognitiveServices::ContentModerator::V1_0::Reviews
 
     module Models
-      JobListResult = Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
       Face = Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
       Error = Azure::CognitiveServices::ContentModerator::V1_0::Models::Error
       RefreshIndex = Azure::CognitiveServices::ContentModerator::V1_0::Models::RefreshIndex
@@ -77,6 +76,7 @@ module Azure::Profiles::Latest
       TermList = Azure::CognitiveServices::ContentModerator::V1_0::Models::TermList
       AzureRegionBaseUrl = Azure::CognitiveServices::ContentModerator::V1_0::Models::AzureRegionBaseUrl
       Phone = Azure::CognitiveServices::ContentModerator::V1_0::Models::Phone
+      JobListResult = Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
     end
 
     class ContentModeratorDataClass
@@ -115,9 +115,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def job_list_result
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
-        end
         def face
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
         end
@@ -300,6 +297,9 @@ module Azure::Profiles::Latest
         end
         def phone
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Phone
+        end
+        def job_list_result
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
         end
       end
     end

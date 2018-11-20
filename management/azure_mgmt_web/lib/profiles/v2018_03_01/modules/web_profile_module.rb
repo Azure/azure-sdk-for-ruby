@@ -25,7 +25,6 @@ module Azure::Web::Profiles::V2018_03_01
       CsmOperationDisplay = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDisplay
       Dimension = Azure::Web::Mgmt::V2016_03_01::Models::Dimension
       ValidateResponse = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
-      MetricAvailability = Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
       MetricSpecification = Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
       ServiceSpecification = Azure::Web::Mgmt::V2016_03_01::Models::ServiceSpecification
       SourceControlCollection = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection
@@ -207,7 +206,6 @@ module Azure::Web::Profiles::V2018_03_01
       ResourceCollection = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection
       WorkerPoolCollection = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
       HybridConnectionCollection = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
-      MetricAvailabilily = Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
       SkuInfo = Azure::Web::Mgmt::V2016_09_01::Models::SkuInfo
       UsageCollection = Azure::Web::Mgmt::V2016_09_01::Models::UsageCollection
       StampCapacityCollection = Azure::Web::Mgmt::V2016_09_01::Models::StampCapacityCollection
@@ -220,6 +218,7 @@ module Azure::Web::Profiles::V2018_03_01
       HybridConnectionLimits = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionLimits
       Identifier = Azure::Web::Mgmt::V2016_09_01::Models::Identifier
       HostingEnvironmentProfile = Azure::Web::Mgmt::V2016_09_01::Models::HostingEnvironmentProfile
+      MetricAvailability = Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailability
       SnapshotRecoveryTarget = Azure::Web::Mgmt::V2016_09_01::Models::SnapshotRecoveryTarget
       ResourceMetricAvailability = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricAvailability
       LocalizableString = Azure::Web::Mgmt::V2016_09_01::Models::LocalizableString
@@ -395,9 +394,6 @@ module Azure::Web::Profiles::V2018_03_01
       end
       def validate_response
         Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
-      end
-      def metric_availability
-        Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
       end
       def metric_specification
         Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
@@ -942,9 +938,6 @@ module Azure::Web::Profiles::V2018_03_01
       def hybrid_connection_collection
         Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
       end
-      def metric_availabilily
-        Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
-      end
       def sku_info
         Azure::Web::Mgmt::V2016_09_01::Models::SkuInfo
       end
@@ -980,6 +973,9 @@ module Azure::Web::Profiles::V2018_03_01
       end
       def hosting_environment_profile
         Azure::Web::Mgmt::V2016_09_01::Models::HostingEnvironmentProfile
+      end
+      def metric_availability
+        Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailability
       end
       def snapshot_recovery_target
         Azure::Web::Mgmt::V2016_09_01::Models::SnapshotRecoveryTarget

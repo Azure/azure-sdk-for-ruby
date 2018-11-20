@@ -9,7 +9,6 @@ module Azure::Profiles::Latest
   module KeyVault
 
     module Models
-      BackupStorageResult = Azure::KeyVault::V7_0::Models::BackupStorageResult
       CertificateRestoreParameters = Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
       DeletedStorageListResult = Azure::KeyVault::V7_0::Models::DeletedStorageListResult
       DeletedStorageBundle = Azure::KeyVault::V7_0::Models::DeletedStorageBundle
@@ -107,6 +106,7 @@ module Azure::Profiles::Latest
       BackupCertificateResult = Azure::KeyVault::V7_0::Models::BackupCertificateResult
       DeletedSasDefinitionListResult = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionListResult
       StorageRestoreParameters = Azure::KeyVault::V7_0::Models::StorageRestoreParameters
+      BackupStorageResult = Azure::KeyVault::V7_0::Models::BackupStorageResult
     end
 
     class KeyVaultDataClass
@@ -138,9 +138,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def backup_storage_result
-          Azure::KeyVault::V7_0::Models::BackupStorageResult
-        end
         def certificate_restore_parameters
           Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
         end
@@ -432,6 +429,9 @@ module Azure::Profiles::Latest
         def storage_restore_parameters
           Azure::KeyVault::V7_0::Models::StorageRestoreParameters
         end
+        def backup_storage_result
+          Azure::KeyVault::V7_0::Models::BackupStorageResult
+        end
       end
     end
     module Mgmt
@@ -464,13 +464,13 @@ module Azure::Profiles::Latest
         KeyPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
         SecretPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
         Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
-        StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
         VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
-        Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
-        CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
         CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
-        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+        StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+        CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
         AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+        Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
         IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
         NetworkRuleSet = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
         NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
@@ -583,26 +583,26 @@ module Azure::Profiles::Latest
           def operation
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
           end
-          def storage_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
-          end
           def virtual_network_rule
             Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
-          end
-          def reason
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
-          end
-          def create_mode
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
           end
           def certificate_permissions
             Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
           end
-          def sku
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+          def storage_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+          end
+          def create_mode
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
           end
           def access_policy_update_kind
             Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+          end
+          def reason
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+          end
+          def sku
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
           end
           def iprule
             Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule

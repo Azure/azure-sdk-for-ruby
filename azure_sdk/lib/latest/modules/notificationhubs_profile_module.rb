@@ -17,7 +17,6 @@ module Azure::Profiles::Latest
         Operation = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Operation
         AccessRights = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
         OperationListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::OperationListResult
-        SubResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SubResource
         ResourceListKeys = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ResourceListKeys
         PolicykeyResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PolicykeyResource
         ApnsCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ApnsCredential
@@ -33,6 +32,7 @@ module Azure::Profiles::Latest
         AdmCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
         NamespaceListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
         BaiduCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
+        SubResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SubResource
         CheckAvailabilityResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
         NamespaceCreateOrUpdateParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceCreateOrUpdateParameters
         NamespaceResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceResource
@@ -95,9 +95,6 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::OperationListResult
           end
-          def sub_resource
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SubResource
-          end
           def resource_list_keys
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ResourceListKeys
           end
@@ -142,6 +139,9 @@ module Azure::Profiles::Latest
           end
           def baidu_credential
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
+          end
+          def sub_resource
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SubResource
           end
           def check_availability_result
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult

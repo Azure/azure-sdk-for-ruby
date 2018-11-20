@@ -10,6 +10,7 @@ module Azure::Profiles::Latest
 
     module Models
       StructuredValue = Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
+      ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
       Images = Azure::CognitiveServices::WebSearch::V1_0::Models::Images
       Videos = Azure::CognitiveServices::WebSearch::V1_0::Models::Videos
       AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
@@ -42,7 +43,6 @@ module Azure::Profiles::Latest
       RelatedSearchesRelatedSearchAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::RelatedSearchesRelatedSearchAnswer
       WebMetaTag = Azure::CognitiveServices::WebSearch::V1_0::Models::WebMetaTag
       TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
-      ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
       ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
       Freshness = Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
@@ -84,6 +84,9 @@ module Azure::Profiles::Latest
       class ModelClasses
         def structured_value
           Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
+        end
+        def error_sub_code
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
         end
         def images
           Azure::CognitiveServices::WebSearch::V1_0::Models::Images
@@ -180,9 +183,6 @@ module Azure::Profiles::Latest
         end
         def text_format
           Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
-        end
-        def error_sub_code
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
         end
         def error_response
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse

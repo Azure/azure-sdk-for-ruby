@@ -21,7 +21,7 @@ module Azure::Web::Mgmt::V2016_09_01
       # @return [String] Primary aggregation type.
       attr_accessor :primary_aggregation_type
 
-      # @return [Array<MetricAvailabilily>] List of time grains supported for
+      # @return [Array<MetricAvailability>] List of time grains supported for
       # the metric together with retention period.
       attr_accessor :metric_availabilities
 
@@ -104,10 +104,10 @@ module Azure::Web::Mgmt::V2016_09_01
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'MetricAvailabililyElementType',
+                      serialized_name: 'MetricAvailabilityElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'MetricAvailabilily'
+                        class_name: 'MetricAvailability'
                       }
                   }
                 }

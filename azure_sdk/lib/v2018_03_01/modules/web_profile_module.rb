@@ -78,7 +78,6 @@ module Azure::Profiles::V2018_03_01
         DefaultErrorResponse = Azure::Web::Mgmt::V2016_03_01::Models::DefaultErrorResponse
         CsmOperationDisplay = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDisplay
         ValidateResponse = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
-        MetricAvailability = Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
         SourceControlCollection = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection
         CsmOperationDescriptionProperties = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationDescriptionProperties
         ResourceNameAvailabilityRequest = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest
@@ -256,7 +255,6 @@ module Azure::Profiles::V2018_03_01
         ResourceCollection = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection
         WorkerPoolCollection = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
         HybridConnectionCollection = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
-        MetricAvailabilily = Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
         SkuInfo = Azure::Web::Mgmt::V2016_09_01::Models::SkuInfo
         UsageCollection = Azure::Web::Mgmt::V2016_09_01::Models::UsageCollection
         StampCapacityCollection = Azure::Web::Mgmt::V2016_09_01::Models::StampCapacityCollection
@@ -268,6 +266,7 @@ module Azure::Profiles::V2018_03_01
         HybridConnectionLimits = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionLimits
         ManagedServiceIdentity = Azure::Web::Mgmt::V2016_09_01::Models::ManagedServiceIdentity
         HostingEnvironmentProfile = Azure::Web::Mgmt::V2016_09_01::Models::HostingEnvironmentProfile
+        MetricAvailability = Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailability
         SnapshotRecoveryTarget = Azure::Web::Mgmt::V2016_09_01::Models::SnapshotRecoveryTarget
         ResourceMetricAvailability = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricAvailability
         LocalizableString = Azure::Web::Mgmt::V2016_09_01::Models::LocalizableString
@@ -537,9 +536,6 @@ module Azure::Profiles::V2018_03_01
           end
           def validate_response
             Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse
-          end
-          def metric_availability
-            Azure::Web::Mgmt::V2016_03_01::Models::MetricAvailability
           end
           def source_control_collection
             Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection
@@ -1072,9 +1068,6 @@ module Azure::Profiles::V2018_03_01
           def hybrid_connection_collection
             Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
           end
-          def metric_availabilily
-            Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
-          end
           def sku_info
             Azure::Web::Mgmt::V2016_09_01::Models::SkuInfo
           end
@@ -1107,6 +1100,9 @@ module Azure::Profiles::V2018_03_01
           end
           def hosting_environment_profile
             Azure::Web::Mgmt::V2016_09_01::Models::HostingEnvironmentProfile
+          end
+          def metric_availability
+            Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailability
           end
           def snapshot_recovery_target
             Azure::Web::Mgmt::V2016_09_01::Models::SnapshotRecoveryTarget

@@ -6,41 +6,41 @@
 module Azure::Web::Mgmt::V2016_09_01
   module Models
     #
-    # Diagnostics for an App Service Environment.
+    # Metric availability and retention.
     #
-    class HostingEnvironmentDiagnostics
+    class MetricAvailability
 
       include MsRestAzure
 
-      # @return [String] Name/identifier of the diagnostics.
-      attr_accessor :name
+      # @return [String] Time grain.
+      attr_accessor :time_grain
 
-      # @return [String] Diagnostics output.
-      attr_accessor :diagnostics_output
+      # @return [String] Retention period for the current time grain.
+      attr_accessor :retention
 
 
       #
-      # Mapper for HostingEnvironmentDiagnostics class as Ruby Hash.
+      # Mapper for MetricAvailability class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'HostingEnvironmentDiagnostics',
+          serialized_name: 'MetricAvailability',
           type: {
             name: 'Composite',
-            class_name: 'HostingEnvironmentDiagnostics',
+            class_name: 'MetricAvailability',
             model_properties: {
-              name: {
+              time_grain: {
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'timeGrain',
                 type: {
                   name: 'String'
                 }
               },
-              diagnostics_output: {
+              retention: {
                 required: false,
-                serialized_name: 'diagnosticsOutput',
+                serialized_name: 'retention',
                 type: {
                   name: 'String'
                 }
