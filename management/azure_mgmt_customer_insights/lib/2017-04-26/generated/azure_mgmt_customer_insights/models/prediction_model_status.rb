@@ -46,7 +46,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       # @return [Integer] The training accuracy.
       attr_accessor :training_accuracy
 
-      # @return [Integer] The singnals used.
+      # @return [Integer] The signals used.
       attr_accessor :signals_used
 
       # @return [String] Version of the model.
