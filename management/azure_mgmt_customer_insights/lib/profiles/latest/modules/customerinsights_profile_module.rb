@@ -18,11 +18,11 @@ module Azure::CustomerInsights::Profiles::Latest
     Kpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Kpi
     WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
     Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
-    Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
     Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
     RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
     Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
     Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
+    Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
 
     module Models
       KpiListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiListResult
@@ -111,7 +111,6 @@ module Azure::CustomerInsights::Profiles::Latest
       PredictionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat
       EntityTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypes
       DataSourceType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourceType
-      Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
       ProvisioningStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
       PermissionTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
       ConnectorTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
@@ -129,13 +128,14 @@ module Azure::CustomerInsights::Profiles::Latest
       RoleTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleTypes
       CanonicalPropertyValueType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalPropertyValueType
       PredictionModelLifeCycle = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelLifeCycle
+      Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
     end
 
     #
     # CustomerInsightsManagementClass
     #
     class CustomerInsightsManagementClass
-      attr_reader :operations, :hubs, :profiles, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :roles, :role_assignments, :images, :predictions, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :hubs, :profiles, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :roles, :role_assignments, :images, :predictions, :links, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -167,11 +167,11 @@ module Azure::CustomerInsights::Profiles::Latest
         @kpi = @client_0.kpi
         @widget_types = @client_0.widget_types
         @views = @client_0.views
-        @links = @client_0.links
         @roles = @client_0.roles
         @role_assignments = @client_0.role_assignments
         @images = @client_0.images
         @predictions = @client_0.predictions
+        @links = @client_0.links
 
         @model_classes = ModelClasses.new
       end
@@ -450,9 +450,6 @@ module Azure::CustomerInsights::Profiles::Latest
       def data_source_type
         Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourceType
       end
-      def status
-        Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
-      end
       def provisioning_states
         Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
       end
@@ -503,6 +500,9 @@ module Azure::CustomerInsights::Profiles::Latest
       end
       def prediction_model_life_cycle
         Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelLifeCycle
+      end
+      def status
+        Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
       end
     end
   end

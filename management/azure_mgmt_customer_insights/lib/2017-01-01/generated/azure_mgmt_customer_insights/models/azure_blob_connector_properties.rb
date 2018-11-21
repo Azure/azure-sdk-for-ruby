@@ -22,7 +22,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AzureBlobConnectorProperties',
           type: {
@@ -30,7 +29,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'AzureBlobConnectorProperties',
             model_properties: {
               connection_key_vault_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'connectionKeyVaultUrl',
                 type: {

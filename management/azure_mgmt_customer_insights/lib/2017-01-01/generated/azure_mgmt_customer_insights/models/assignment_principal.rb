@@ -28,7 +28,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AssignmentPrincipal',
           type: {
@@ -36,7 +35,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'AssignmentPrincipal',
             model_properties: {
               principal_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'principalId',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               principal_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'principalType',
                 type: {
@@ -52,13 +49,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               principal_metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'principalMetadata',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

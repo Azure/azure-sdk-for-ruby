@@ -25,7 +25,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KpiExtract',
           type: {
@@ -33,7 +32,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'KpiExtract',
             model_properties: {
               extract_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'extractName',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               expression: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'expression',
                 type: {

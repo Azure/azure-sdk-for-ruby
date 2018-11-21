@@ -28,7 +28,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GetImageUploadUrlInput',
           type: {
@@ -36,7 +35,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'GetImageUploadUrlInput',
             model_properties: {
               entity_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'entityType',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               entity_type_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'entityTypeName',
                 type: {
@@ -52,7 +49,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               relative_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativePath',
                 type: {
