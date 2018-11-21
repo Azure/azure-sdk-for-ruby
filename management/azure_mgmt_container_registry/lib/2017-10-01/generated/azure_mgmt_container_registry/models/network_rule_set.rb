@@ -14,7 +14,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       # @return [DefaultAction] The default action of allow or deny when no
       # other rules match. Possible values include: 'Allow', 'Deny'. Default
-      # value: '0' .
+      # value: 'Allow' .
       attr_accessor :default_action
 
       # @return [Array<VirtualNetworkRule>] The virtual network rules
@@ -36,7 +36,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
               default_action: {
                 required: false,
                 serialized_name: 'defaultAction',
-                default_value: '0',
+                default_value: 'Allow',
                 type: {
                   name: 'String'
                 }
