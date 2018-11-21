@@ -7,10 +7,11 @@ require 'azure_mgmt_powerbi_embedded'
 module Azure::Profiles::Latest
   module PowerBiEmbedded
     module Mgmt
-      WorkspaceCollections = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::WorkspaceCollections
       Workspaces = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Workspaces
+      WorkspaceCollections = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::WorkspaceCollections
 
       module Models
+        OperationList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
         WorkspaceCollectionAccessKeys = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys
         WorkspaceCollection = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection
         WorkspaceCollectionAccessKey = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey
@@ -29,11 +30,10 @@ module Azure::Profiles::Latest
         CheckNameReason = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
         Operation = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
         Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
-        OperationList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
       end
 
       class PowerBiEmbeddedManagementClass
-        attr_reader :workspace_collections, :workspaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :workspaces, :workspace_collections, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -43,8 +43,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @workspace_collections = @client_0.workspace_collections
           @workspaces = @client_0.workspaces
+          @workspace_collections = @client_0.workspace_collections
 
           @model_classes = ModelClasses.new
         end
@@ -63,6 +63,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def operation_list
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
+          end
           def workspace_collection_access_keys
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys
           end
@@ -116,9 +119,6 @@ module Azure::Profiles::Latest
           end
           def error
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
-          end
-          def operation_list
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
           end
         end
       end
