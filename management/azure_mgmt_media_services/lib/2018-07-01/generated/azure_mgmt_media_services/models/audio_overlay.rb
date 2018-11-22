@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.AudioOverlay"
+        @@odatatype = "#Microsoft.Media.AudioOverlay"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -26,7 +26,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.AudioOverlay',
           type: {
@@ -34,7 +33,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'AudioOverlay',
             model_properties: {
               input_label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputLabel',
                 type: {
@@ -42,7 +40,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'start',
                 type: {
@@ -50,7 +47,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               end_property: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'end',
                 type: {
@@ -58,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               fade_in_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fadeInDuration',
                 type: {
@@ -66,7 +61,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               fade_out_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fadeOutDuration',
                 type: {
@@ -74,15 +68,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               audio_gain_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audioGainLevel',
                 type: {
                   name: 'Double'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {

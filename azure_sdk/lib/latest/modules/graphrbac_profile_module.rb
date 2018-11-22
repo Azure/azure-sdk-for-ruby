@@ -14,6 +14,7 @@ module Azure::Profiles::Latest
     Users = Azure::GraphRbac::V1_6::Users
 
     module Models
+      DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
       UserBase = Azure::GraphRbac::V1_6::Models::UserBase
       AADObject = Azure::GraphRbac::V1_6::Models::AADObject
       RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
@@ -55,7 +56,6 @@ module Azure::Profiles::Latest
       PasswordCredential = Azure::GraphRbac::V1_6::Models::PasswordCredential
       ServicePrincipalListResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalListResult
       PasswordProfile = Azure::GraphRbac::V1_6::Models::PasswordProfile
-      DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
     end
 
     class GraphRbacDataClass
@@ -93,6 +93,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def directory_object_list_result
+          Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
+        end
         def user_base
           Azure::GraphRbac::V1_6::Models::UserBase
         end
@@ -215,9 +218,6 @@ module Azure::Profiles::Latest
         end
         def password_profile
           Azure::GraphRbac::V1_6::Models::PasswordProfile
-        end
-        def directory_object_list_result
-          Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
         end
       end
     end

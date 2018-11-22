@@ -35,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EnvelopeEncryption',
           type: {
@@ -43,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'EnvelopeEncryption',
             model_properties: {
               enabled_protocols: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabledProtocols',
                 type: {
@@ -52,13 +50,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               clear_tracks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clearTracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackSelectionElementType',
                       type: {
@@ -69,7 +65,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               content_keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentKeys',
                 type: {
@@ -78,7 +73,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               custom_key_acquisition_url_template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customKeyAcquisitionUrlTemplate',
                 type: {

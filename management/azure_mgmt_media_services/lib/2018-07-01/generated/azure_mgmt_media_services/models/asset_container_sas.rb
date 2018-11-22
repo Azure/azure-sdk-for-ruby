@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AssetContainerSas',
           type: {
@@ -30,13 +29,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'AssetContainerSas',
             model_properties: {
               asset_container_sas_urls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'assetContainerSasUrls',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

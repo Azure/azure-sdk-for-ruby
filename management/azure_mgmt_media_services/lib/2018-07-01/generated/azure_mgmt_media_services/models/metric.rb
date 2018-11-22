@@ -39,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Metric',
           type: {
@@ -47,7 +46,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Metric',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayName',
@@ -65,7 +62,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               display_description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayDescription',
@@ -74,7 +70,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -84,7 +79,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'aggregationType',
@@ -94,14 +88,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               dimensions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dimensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricDimensionElementType',
                       type: {

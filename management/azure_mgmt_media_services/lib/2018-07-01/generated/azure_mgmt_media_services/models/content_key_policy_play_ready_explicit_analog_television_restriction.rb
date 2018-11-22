@@ -29,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestriction',
           type: {
@@ -37,7 +36,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestriction',
             model_properties: {
               best_effort: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'bestEffort',
                 type: {
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               configuration_data: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'configurationData',
                 type: {

@@ -28,7 +28,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveEventEncoding',
           type: {
@@ -36,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'LiveEventEncoding',
             model_properties: {
               encoding_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encodingType',
                 type: {
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               preset_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'presetName',
                 type: {

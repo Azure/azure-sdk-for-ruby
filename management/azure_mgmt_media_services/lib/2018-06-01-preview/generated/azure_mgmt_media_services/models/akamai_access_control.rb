@@ -23,7 +23,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AkamaiAccessControl',
           type: {
@@ -31,13 +30,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'AkamaiAccessControl',
             model_properties: {
               akamai_signature_header_authentication_key_list: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'akamaiSignatureHeaderAuthenticationKeyList',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AkamaiSignatureHeaderAuthenticationKeyElementType',
                       type: {

@@ -18,10 +18,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       @@discriminatorMap["#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier"] = "ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier"
 
       def initialize
-        @odatatype = "ContentKeyPolicyPlayReadyContentKeyLocation"
+        @@odatatype = "ContentKeyPolicyPlayReadyContentKeyLocation"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -31,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyPlayReadyContentKeyLocation',
           type: {
