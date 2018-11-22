@@ -38,7 +38,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PresentationTimeRange',
           type: {
@@ -46,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'PresentationTimeRange',
             model_properties: {
               start_timestamp: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'startTimestamp',
                 type: {
@@ -54,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               end_timestamp: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'endTimestamp',
                 type: {
@@ -62,7 +59,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               presentation_window_duration: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'presentationWindowDuration',
                 type: {
@@ -70,7 +66,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               live_backoff_duration: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'liveBackoffDuration',
                 type: {
@@ -78,7 +73,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               timescale: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'timescale',
                 type: {
@@ -86,7 +80,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               force_end_timestamp: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'forceEndTimestamp',
                 type: {

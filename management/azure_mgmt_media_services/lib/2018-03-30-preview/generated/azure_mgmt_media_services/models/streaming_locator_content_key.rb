@@ -23,7 +23,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       # @return ID of Content Key
       attr_accessor :id
 
-      # @return [String] Value of  of Content Key
+      # @return [String] Value of Content Key
       attr_accessor :value
 
       # @return [String] ContentKeyPolicy used by Content Key
@@ -39,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingLocatorContentKey',
           type: {
@@ -47,7 +46,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'StreamingLocatorContentKey',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -55,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -64,7 +61,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -72,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -80,7 +75,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               policy_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyName',
                 type: {
@@ -88,13 +82,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               tracks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackSelectionElementType',
                       type: {

@@ -32,7 +32,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ODataError',
           type: {
@@ -40,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'ODataError',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -48,7 +46,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -56,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -64,13 +60,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ODataErrorElementType',
                       type: {

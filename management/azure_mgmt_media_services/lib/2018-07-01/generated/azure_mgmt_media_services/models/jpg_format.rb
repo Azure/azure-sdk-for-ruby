@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JpgFormat"
+        @@odatatype = "#Microsoft.Media.JpgFormat"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -26,7 +26,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JpgFormat',
           type: {
@@ -34,15 +33,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'JpgFormat',
             model_properties: {
               filename_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filenamePattern',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {

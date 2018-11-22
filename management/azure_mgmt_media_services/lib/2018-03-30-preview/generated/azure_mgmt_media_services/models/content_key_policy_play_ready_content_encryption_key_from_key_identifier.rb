@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier"
+        @@odatatype = "#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return The content key ID.
       attr_accessor :key_id
@@ -32,15 +32,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier',
           type: {
             name: 'Composite',
             class_name: 'ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -48,7 +46,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               key_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyId',
                 type: {

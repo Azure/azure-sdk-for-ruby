@@ -25,7 +25,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -33,7 +32,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -41,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {

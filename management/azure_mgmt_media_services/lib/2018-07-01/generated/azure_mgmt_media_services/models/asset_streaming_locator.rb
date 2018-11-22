@@ -45,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AssetStreamingLocator',
           type: {
@@ -53,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'AssetStreamingLocator',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               asset_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'assetName',
@@ -71,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'created',
@@ -80,7 +76,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -89,7 +84,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -98,7 +92,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               streaming_locator_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'streamingLocatorId',
@@ -107,7 +100,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               streaming_policy_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'streamingPolicyName',
@@ -116,7 +108,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               default_content_key_policy_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'defaultContentKeyPolicyName',

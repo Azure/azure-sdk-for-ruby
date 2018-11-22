@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JobInputAsset"
+        @@odatatype = "#Microsoft.Media.JobInputAsset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The name of the input Asset.
       attr_accessor :asset_name
@@ -29,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JobInputAsset',
           type: {
@@ -37,15 +36,13 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'JobInputAsset',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -53,13 +50,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'files',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -69,7 +64,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               asset_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'assetName',
                 type: {

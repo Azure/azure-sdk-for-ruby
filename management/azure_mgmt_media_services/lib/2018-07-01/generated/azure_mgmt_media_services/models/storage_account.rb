@@ -30,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccount',
           type: {
@@ -38,7 +37,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StorageAccount',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -46,7 +44,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {

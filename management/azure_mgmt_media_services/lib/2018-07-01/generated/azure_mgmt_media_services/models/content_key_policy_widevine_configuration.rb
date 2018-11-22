@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.ContentKeyPolicyWidevineConfiguration"
+        @@odatatype = "#Microsoft.Media.ContentKeyPolicyWidevineConfiguration"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The Widevine template.
       attr_accessor :widevine_template
@@ -29,15 +29,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.ContentKeyPolicyWidevineConfiguration',
           type: {
             name: 'Composite',
             class_name: 'ContentKeyPolicyWidevineConfiguration',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               widevine_template: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'widevineTemplate',
                 type: {

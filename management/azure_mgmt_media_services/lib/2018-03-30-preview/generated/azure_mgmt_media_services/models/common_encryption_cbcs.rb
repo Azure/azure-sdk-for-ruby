@@ -35,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CommonEncryptionCbcs',
           type: {
@@ -43,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'CommonEncryptionCbcs',
             model_properties: {
               enabled_protocols: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabledProtocols',
                 type: {
@@ -52,13 +50,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               clear_tracks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clearTracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackSelectionElementType',
                       type: {
@@ -69,7 +65,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               content_keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentKeys',
                 type: {
@@ -78,7 +73,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               drm: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'drm',
                 type: {

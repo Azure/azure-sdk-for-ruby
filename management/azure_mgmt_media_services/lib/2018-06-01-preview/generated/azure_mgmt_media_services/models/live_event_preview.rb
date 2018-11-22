@@ -41,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveEventPreview',
           type: {
@@ -49,13 +48,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'LiveEventPreview',
             model_properties: {
               endpoints: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoints',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LiveEventEndpointElementType',
                       type: {
@@ -66,7 +63,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               access_control: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessControl',
                 type: {
@@ -75,7 +71,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               preview_locator: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'previewLocator',
                 type: {
@@ -83,7 +78,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               streaming_policy_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'streamingPolicyName',
                 type: {
@@ -91,7 +85,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               alternative_media_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'alternativeMediaId',
                 type: {

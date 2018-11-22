@@ -16,10 +16,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       @@discriminatorMap["#Microsoft.Media.JobOutputAsset"] = "JobOutputAsset"
 
       def initialize
-        @odatatype = "JobOutput"
+        @@odatatype = "JobOutput"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [JobError] If the JobOutput is in the Error state, it contains
       # the details of the error.
@@ -58,7 +58,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobOutput',
           type: {
@@ -68,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'JobOutput',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',
@@ -78,7 +76,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -88,7 +85,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               progress: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'progress',
@@ -97,7 +93,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {

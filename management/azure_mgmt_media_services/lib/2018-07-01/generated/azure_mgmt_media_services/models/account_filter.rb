@@ -28,7 +28,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AccountFilter',
           type: {
@@ -36,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'AccountFilter',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,7 +51,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,7 +59,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               presentation_time_range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.presentationTimeRange',
                 type: {
@@ -72,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               first_quality: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firstQuality',
                 type: {
@@ -81,13 +75,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               tracks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FilterTrackSelectionElementType',
                       type: {
