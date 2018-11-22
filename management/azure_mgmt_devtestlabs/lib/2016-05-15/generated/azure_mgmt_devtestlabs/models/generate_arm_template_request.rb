@@ -33,7 +33,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GenerateArmTemplateRequest',
           type: {
@@ -41,7 +40,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'GenerateArmTemplateRequest',
             model_properties: {
               virtual_machine_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineName',
                 type: {
@@ -49,13 +47,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParameterInfoElementType',
                       type: {
@@ -66,7 +62,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -74,7 +69,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               file_upload_options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileUploadOptions',
                 type: {
