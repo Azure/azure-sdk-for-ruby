@@ -26,7 +26,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MessagingRegions_properties',
           type: {
@@ -34,7 +33,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'MessagingRegionsProperties',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -43,7 +41,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               full_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'fullName',

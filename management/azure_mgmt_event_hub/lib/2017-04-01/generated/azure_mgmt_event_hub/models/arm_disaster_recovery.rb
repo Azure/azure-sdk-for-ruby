@@ -19,7 +19,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       attr_accessor :provisioning_state
 
       # @return [String] ARM Id of the Primary/Secondary eventhub namespace
-      # name, which is part of GEO DR pairning
+      # name, which is part of GEO DR pairing
       attr_accessor :partner_namespace
 
       # @return [String] Alternate name specified when alias and namespace
@@ -41,7 +41,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ArmDisasterRecovery',
           type: {
@@ -49,7 +48,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'ArmDisasterRecovery',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -58,7 +56,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -67,7 +64,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -76,7 +72,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -86,7 +81,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               partner_namespace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partnerNamespace',
                 type: {
@@ -94,7 +88,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               alternate_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.alternateName',
                 type: {
@@ -102,7 +95,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               role: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.role',
@@ -112,7 +104,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               pending_replication_operations_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.pendingReplicationOperationsCount',

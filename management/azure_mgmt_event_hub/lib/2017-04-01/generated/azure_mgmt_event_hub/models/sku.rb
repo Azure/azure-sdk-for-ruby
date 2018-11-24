@@ -20,7 +20,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # values include: 'Basic', 'Standard'
       attr_accessor :tier
 
-      # @return [Integer] The Event Hubs throughput units, vaule should be 0 to
+      # @return [Integer] The Event Hubs throughput units, value should be 0 to
       # 20 throughput units.
       attr_accessor :capacity
 
@@ -31,7 +31,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -39,7 +38,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'Sku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -55,7 +52,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               capacity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 constraints: {
