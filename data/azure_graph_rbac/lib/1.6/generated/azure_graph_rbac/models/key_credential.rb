@@ -35,7 +35,7 @@ module Azure::GraphRbac::V1_6
       # 'Symmetric'.
       attr_accessor :type
 
-      # @return [Array<Integer>] Custom Key Identifier
+      # @return [String] Custom Key Identifier
       attr_accessor :custom_key_identifier
 
 
@@ -110,7 +110,7 @@ module Azure::GraphRbac::V1_6
                 required: false,
                 serialized_name: 'customKeyIdentifier',
                 type: {
-                  name: 'ByteArray'
+                  name: 'String'
                 }
               }
             }
