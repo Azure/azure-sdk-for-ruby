@@ -56,6 +56,13 @@ module Azure::GraphRbac::V1_6
       # experience.
       attr_accessor :required_resource_access
 
+      # @return [Array<KeyCredential>] A collection of KeyCredential objects.
+      attr_accessor :key_credentials
+
+      # @return [Array<PasswordCredential>] A collection of PasswordCredential
+      # objects
+      attr_accessor :password_credentials
+
 
       #
       # Mapper for Application class as Ruby Hash.
@@ -208,6 +215,36 @@ module Azure::GraphRbac::V1_6
                       type: {
                         name: 'Composite',
                         class_name: 'RequiredResourceAccess'
+                      }
+                  }
+                }
+              },
+              key_credentials: {
+                required: false,
+                serialized_name: 'keyCredentials',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'KeyCredentialElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'KeyCredential'
+                      }
+                  }
+                }
+              },
+              password_credentials: {
+                required: false,
+                serialized_name: 'passwordCredentials',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'PasswordCredentialElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PasswordCredential'
                       }
                   }
                 }
