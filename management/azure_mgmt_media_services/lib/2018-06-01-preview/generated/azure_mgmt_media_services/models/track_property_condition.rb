@@ -30,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrackPropertyCondition',
           type: {
@@ -38,7 +37,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'TrackPropertyCondition',
             model_properties: {
               property: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'property',
                 type: {
@@ -47,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'operation',
                 type: {
@@ -56,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

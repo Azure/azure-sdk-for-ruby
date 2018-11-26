@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IPAccessControl',
           type: {
@@ -30,13 +29,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'IPAccessControl',
             model_properties: {
               allow: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'allow',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IPRangeElementType',
                       type: {

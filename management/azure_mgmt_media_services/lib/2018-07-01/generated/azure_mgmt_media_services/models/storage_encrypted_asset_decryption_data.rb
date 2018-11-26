@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageEncryptedAssetDecryptionData',
           type: {
@@ -35,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StorageEncryptedAssetDecryptionData',
             model_properties: {
               key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
                 type: {
@@ -43,13 +41,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               asset_file_encryption_metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'assetFileEncryptionMetadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AssetFileEncryptionMetadataElementType',
                       type: {

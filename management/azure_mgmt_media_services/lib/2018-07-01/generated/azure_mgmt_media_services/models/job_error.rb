@@ -44,7 +44,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobError',
           type: {
@@ -52,7 +51,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'JobError',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -62,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -71,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'category',
@@ -81,7 +77,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               retry_property: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'retry',
@@ -91,14 +86,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobErrorDetailElementType',
                       type: {

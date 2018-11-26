@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JobInputAsset"
+        @@odatatype = "#Microsoft.Media.JobInputAsset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The name of the input Asset.
       attr_accessor :asset_name
@@ -29,15 +29,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JobInputAsset',
           type: {
             name: 'Composite',
             class_name: 'JobInputAsset',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -45,13 +43,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'files',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -61,7 +57,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -69,7 +64,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               asset_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'assetName',
                 type: {

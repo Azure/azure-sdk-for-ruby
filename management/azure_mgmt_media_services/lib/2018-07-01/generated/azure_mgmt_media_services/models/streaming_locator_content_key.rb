@@ -40,7 +40,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingLocatorContentKey',
           type: {
@@ -48,7 +47,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StreamingLocatorContentKey',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -56,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,7 +63,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               label_reference_in_streaming_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'labelReferenceInStreamingPolicy',
                 type: {
@@ -74,7 +70,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -82,7 +77,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               policy_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'policyName',
@@ -91,14 +85,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               tracks: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackSelectionElementType',
                       type: {
