@@ -1,6 +1,10 @@
 {
     "management": [
-        "azure_mgmt_authorization"
+        "azure_mgmt_sqlvirtualmachine",
+        "azure_mgmt_kusto",
+        "azure_mgmt_storage",
+        "azure_mgmt_container_instance",
+        "azure_mgmt_network"
     ],
     "rollup": [
         "azure_sdk"

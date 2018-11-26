@@ -1,7 +1,7 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.1"
+        "azure_sdk": "0.19.2"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.17.0",
@@ -32,7 +32,7 @@
         "azure_mgmt_commerce": "0.17.0",
         "azure_mgmt_compute": "0.18.3",
         "azure_mgmt_consumption": "0.17.1",
-        "azure_mgmt_container_instance": "0.17.2",
+        "azure_mgmt_container_instance": "0.17.3",
         "azure_mgmt_container_registry": "0.17.1",
         "azure_mgmt_container_service": "0.18.1",
         "azure_mgmt_customer_insights": "0.17.1",
@@ -48,6 +48,7 @@
         "azure_mgmt_iot_central": "0.17.2",
         "azure_mgmt_iot_hub": "0.17.1",
         "azure_mgmt_key_vault": "0.17.2",
+        "azure_mgmt_kusto": "0.17.0",
         "azure_mgmt_links": "0.17.1",
         "azure_mgmt_locks": "0.17.1",
         "azure_mgmt_logic": "0.17.1",
@@ -57,7 +58,7 @@
         "azure_mgmt_media_services": "0.17.2",
         "azure_mgmt_monitor": "0.17.1",
         "azure_mgmt_msi": "0.17.0",
-        "azure_mgmt_network": "0.18.0",
+        "azure_mgmt_network": "0.18.1",
         "azure_mgmt_notification_hubs": "0.17.1",
         "azure_mgmt_operational_insights": "0.17.1",
         "azure_mgmt_policy": "0.17.1",
@@ -77,8 +78,9 @@
         "azure_mgmt_service_fabric": "0.17.1",
         "azure_mgmt_signalr": "0.17.2",
         "azure_mgmt_sql": "0.17.1",
+        "azure_mgmt_sqlvirtualmachine: "0.17.0",
         "azure_mgmt_stor_simple8000_series": "0.17.1",
-        "azure_mgmt_storage": "0.17.3",
+        "azure_mgmt_storage": "0.17.4",
         "azure_mgmt_stream_analytics": "0.17.1",
         "azure_mgmt_subscriptions": "0.17.1",
         "azure_mgmt_traffic_manager": "0.17.1",

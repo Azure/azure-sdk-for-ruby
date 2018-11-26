@@ -295,6 +295,11 @@
                         "7.0": ["*"]
                     }
                 },
+                "Microsoft.Kusto": {
+                    "management": {
+                        "2018-09-07-preview": ["*"]
+                    }
+                },
                 "Microsoft.Links": {
                     "management": {
                         "2016-09-01": ["*"]
@@ -349,7 +354,8 @@
                 },
                 "Microsoft.Network": {
                     "management": {
-                        "2018-08-01": ["*"]
+                        "2018-10-01": ["*"],
+                        "2017-03-30": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -452,6 +458,11 @@
                         "2015-05-01-preview": ["*"],
                         "2017-03-01-preview": ["*"],
                         "2017-10-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.Sqlvirtualmachine": {
+                    "management": {
+                        "2017-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.StorSimple8000Series": {
@@ -1046,6 +1057,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_kusto": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Kusto": {
+                    "management": {
+                        "2018-09-07-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_kusto/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_links": [
         {
             "name": "V2017_03_09",
@@ -1243,7 +1268,8 @@
             "resourceTypes": {
                 "Microsoft.Network" : {
                     "management": {
-                        "2018-08-01": ["*"]
+                        "2018-10-01": ["*"],
+                        "2017-03-30": ["*"]
                     }
                 }
             },
@@ -1569,6 +1595,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_sql/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_sqlvirtualmachine": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Sqlvirtualmachine": {
+                    "management": {
+                        "2017-03-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_sqlvirtualmachine/lib/profiles",
             "individual_gem_profile": true
         }
         ],

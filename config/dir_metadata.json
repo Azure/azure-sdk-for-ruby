@@ -212,6 +212,13 @@
       "module_require": "azure_key_vault"
     }
   },
+  "Microsoft.Kusto": {
+    "management": {
+      "path": "management/azure_mgmt_kusto",
+      "namespace": "Azure::Kusto",
+      "module_require": "azure_mgmt_kusto"
+    }
+  },
   "Microsoft.Links": {
     "management": {
       "path": "management/azure_mgmt_links",
@@ -427,6 +434,13 @@
       "path": "management/azure_mgmt_sql",
       "namespace": "Azure::SQL::Mgmt",
       "module_require": "azure_mgmt_sql"
+    }
+  },
+  "Microsoft.Sqlvirtualmachine": {
+    "management": {
+      "path": "management/azure_mgmt_sqlvirtualmachine",
+      "namespace": "Azure::Sqlvirtualmachine::Mgmt",
+      "module_require": "azure_mgmt_sqlvirtualmachine"
     }
   },
   "Microsoft.StorSimple8000Series": {
