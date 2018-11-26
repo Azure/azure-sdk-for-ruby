@@ -17,7 +17,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # value: 'Allow' .
       attr_accessor :default_action
 
-      # @return [Array<VirtualNetworkRule>] The virtual network rules
+      # @return [Array<VirtualNetworkRule>] The virtual network rules.
       attr_accessor :virtual_network_rules
 
 
