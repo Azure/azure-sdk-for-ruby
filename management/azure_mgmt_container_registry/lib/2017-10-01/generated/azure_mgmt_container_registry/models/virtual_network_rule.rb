@@ -13,7 +13,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       include MsRestAzure
 
       # @return [String] Resource ID of a subnet, for example:
-      # /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
       attr_accessor :id
 
 
