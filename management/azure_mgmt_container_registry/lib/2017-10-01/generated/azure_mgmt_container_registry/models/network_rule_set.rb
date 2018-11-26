@@ -34,7 +34,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'NetworkRuleSet',
             model_properties: {
               default_action: {
-                required: false,
+                required: true,
                 serialized_name: 'defaultAction',
                 default_value: 'Allow',
                 type: {
