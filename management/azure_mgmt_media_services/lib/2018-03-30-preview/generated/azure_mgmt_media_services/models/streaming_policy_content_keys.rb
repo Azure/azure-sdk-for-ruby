@@ -16,7 +16,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       attr_accessor :default_key
 
       # @return [Array<StreamingPolicyContentKey>] Representing tracks needs
-      # sepearete content key
+      # separate content key
       attr_accessor :key_to_track_mappings
 
 
