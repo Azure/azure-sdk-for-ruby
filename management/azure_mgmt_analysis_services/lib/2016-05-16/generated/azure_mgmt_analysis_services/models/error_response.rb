@@ -25,7 +25,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -33,7 +32,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -41,7 +39,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

@@ -33,8 +33,8 @@ module Azure::AnalysisServices::Profiles::Latest
       SkuEnumerationForExistingResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
       AnalysisServicesServer = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer
       SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
-      State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
       ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
+      State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
       ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
       Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
     end
@@ -154,11 +154,11 @@ module Azure::AnalysisServices::Profiles::Latest
       def sku_tier
         Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
       end
-      def state
-        Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
-      end
       def provisioning_state
         Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
+      end
+      def state
+        Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
       end
       def connection_mode
         Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
