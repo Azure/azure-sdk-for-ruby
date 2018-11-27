@@ -34,8 +34,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [LabCost] operation results.
     #
-    def get(resource_group_name, lab_name, name, expand:nil, custom_headers:nil)
-      response = get_async(resource_group_name, lab_name, name, expand:expand, custom_headers:custom_headers).value!
+    def get(resource_group_name, lab_name, name, expand = nil, custom_headers = nil)
+      response = get_async(resource_group_name, lab_name, name, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,8 +52,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, lab_name, name, expand:nil, custom_headers:nil)
-      get_async(resource_group_name, lab_name, name, expand:expand, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, lab_name, name, expand = nil, custom_headers = nil)
+      get_async(resource_group_name, lab_name, name, expand, custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, lab_name, name, expand:nil, custom_headers:nil)
+    def get_async(resource_group_name, lab_name, name, expand = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'lab_name is nil' if lab_name.nil?
@@ -78,7 +78,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -135,8 +134,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [LabCost] operation results.
     #
-    def create_or_update(resource_group_name, lab_name, name, lab_cost, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, lab_name, name, lab_cost, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, lab_name, name, lab_cost, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, lab_name, name, lab_cost, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -152,8 +151,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, lab_name, name, lab_cost, custom_headers:nil)
-      create_or_update_async(resource_group_name, lab_name, name, lab_cost, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, lab_name, name, lab_cost, custom_headers = nil)
+      create_or_update_async(resource_group_name, lab_name, name, lab_cost, custom_headers).value!
     end
 
     #
@@ -168,7 +167,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, lab_name, name, lab_cost, custom_headers:nil)
+    def create_or_update_async(resource_group_name, lab_name, name, lab_cost, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'lab_name is nil' if lab_name.nil?
@@ -178,11 +177,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabCost.mapper()

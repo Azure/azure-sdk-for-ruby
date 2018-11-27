@@ -45,7 +45,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CustomImage',
           type: {
@@ -53,7 +52,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'CustomImage',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -62,7 +60,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -71,7 +68,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -80,7 +76,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -88,13 +83,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -104,7 +97,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               vm: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vm',
                 type: {
@@ -113,7 +105,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               vhd: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vhd',
                 type: {
@@ -122,7 +113,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -130,7 +120,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               author: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.author',
                 type: {
@@ -138,7 +127,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               creation_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationDate',
@@ -147,7 +135,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               managed_image_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.managedImageId',
                 type: {
@@ -155,7 +142,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -163,7 +149,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

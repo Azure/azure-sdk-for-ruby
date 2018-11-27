@@ -38,8 +38,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Array<GalleryImage>] operation results.
     #
-    def list(resource_group_name, lab_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, lab_name, expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers)
+    def list(resource_group_name, lab_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, lab_name, expand, filter, top, orderby, custom_headers)
       first_page.get_all_items
     end
 
@@ -60,8 +60,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, lab_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      list_async(resource_group_name, lab_name, expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, lab_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      list_async(resource_group_name, lab_name, expand, filter, top, orderby, custom_headers).value!
     end
 
     #
@@ -81,7 +81,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, lab_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
+    def list_async(resource_group_name, lab_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'lab_name is nil' if lab_name.nil?
@@ -89,7 +89,6 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -144,8 +143,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [ResponseWithContinuationGalleryImage] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -159,8 +158,8 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -173,12 +172,11 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -240,12 +238,12 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     # @return [ResponseWithContinuationGalleryImage] which provide lazy access to
     # pages of the response.
     #
-    def list_as_lazy(resource_group_name, lab_name, expand:nil, filter:nil, top:nil, orderby:nil, custom_headers:nil)
-      response = list_async(resource_group_name, lab_name, expand:expand, filter:filter, top:top, orderby:orderby, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, lab_name, expand = nil, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      response = list_async(resource_group_name, lab_name, expand, filter, top, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
