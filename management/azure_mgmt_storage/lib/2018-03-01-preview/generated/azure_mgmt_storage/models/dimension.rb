@@ -6,7 +6,7 @@
 module Azure::Storage::Mgmt::V2018_03_01_preview
   module Models
     #
-    # Dimension of blobs, possiblly be blob type or access tier.
+    # Dimension of blobs, possibly be blob type or access tier.
     #
     class Dimension
 

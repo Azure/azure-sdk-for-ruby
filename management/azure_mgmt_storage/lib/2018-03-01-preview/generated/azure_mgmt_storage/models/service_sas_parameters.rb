@@ -6,7 +6,7 @@
 module Azure::Storage::Mgmt::V2018_03_01_preview
   module Models
     #
-    # The parameters to list service SAS credentials of a speicific resource.
+    # The parameters to list service SAS credentials of a specific resource.
     #
     class ServiceSasParameters
 

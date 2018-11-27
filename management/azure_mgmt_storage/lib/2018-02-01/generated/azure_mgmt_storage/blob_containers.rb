@@ -1578,7 +1578,7 @@ module Azure::Storage::Mgmt::V2018_02_01
     # the immutability policy already exists. If omitted, this operation will
     # always be applied.
     # @param parameters [ImmutabilityPolicy] The ImmutabilityPolicy Properties that
-    # will be extented for a blob container.
+    # will be extended for a blob container.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1609,7 +1609,7 @@ module Azure::Storage::Mgmt::V2018_02_01
     # the immutability policy already exists. If omitted, this operation will
     # always be applied.
     # @param parameters [ImmutabilityPolicy] The ImmutabilityPolicy Properties that
-    # will be extented for a blob container.
+    # will be extended for a blob container.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1639,7 +1639,7 @@ module Azure::Storage::Mgmt::V2018_02_01
     # the immutability policy already exists. If omitted, this operation will
     # always be applied.
     # @param parameters [ImmutabilityPolicy] The ImmutabilityPolicy Properties that
-    # will be extented for a blob container.
+    # will be extended for a blob container.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

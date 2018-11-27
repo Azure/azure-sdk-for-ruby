@@ -215,7 +215,7 @@
   "Microsoft.Kusto": {
     "management": {
       "path": "management/azure_mgmt_kusto",
-      "namespace": "Azure::Kusto",
+      "namespace": "Azure::Kusto::Mgmt",
       "module_require": "azure_mgmt_kusto"
     }
   },

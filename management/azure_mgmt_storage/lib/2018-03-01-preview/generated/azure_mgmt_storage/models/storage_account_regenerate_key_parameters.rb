@@ -13,7 +13,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
       include MsRestAzure
 
       # @return [String] The name of storage keys that want to be regenerated,
-      # possible vaules are key1, key2.
+      # possible values are key1, key2.
       attr_accessor :key_name
 
 

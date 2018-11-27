@@ -1309,7 +1309,7 @@
     "azure_mgmt_sqlvirtualmachine_2017_03_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/24ab24bdc72cb5f0e7c6b9bdb3e54462983c79c3/specification/sqlvirtualmachine/resource-manager/readme.md",
       "namespace": "Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview",
-      "tag": "2017-03-01-preview"
+      "tag": "package-2017-03-01-preview"
     }
   },
   "azure_mgmt_stor_simple8000_series": {

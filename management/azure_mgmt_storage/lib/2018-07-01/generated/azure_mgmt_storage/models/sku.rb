@@ -12,14 +12,14 @@ module Azure::Storage::Mgmt::V2018_07_01
 
       include MsRestAzure
 
-      # @return [SkuName] Gets or sets the sku name. Required for account
-      # creation; optional for update. Note that in older versions, sku name
+      # @return [SkuName] Gets or sets the SKU name. Required for account
+      # creation; optional for update. Note that in older versions, SKU name
       # was called accountType. Possible values include: 'Standard_LRS',
       # 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
       # 'Premium_ZRS'
       attr_accessor :name
 
-      # @return [SkuTier] Gets the sku tier. This is based on the SKU name.
+      # @return [SkuTier] Gets the SKU tier. This is based on the SKU name.
       # Possible values include: 'Standard', 'Premium'
       attr_accessor :tier
 
@@ -38,7 +38,7 @@ module Azure::Storage::Mgmt::V2018_07_01
       attr_accessor :locations
 
       # @return [Array<SKUCapability>] The capability information in the
-      # specified sku, including file encryption, network acls, change
+      # specified SKU, including file encryption, network ACLs, change
       # notification, etc.
       attr_accessor :capabilities
 

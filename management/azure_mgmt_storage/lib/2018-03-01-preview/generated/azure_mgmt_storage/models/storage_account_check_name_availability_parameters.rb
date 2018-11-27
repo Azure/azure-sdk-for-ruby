@@ -6,7 +6,8 @@
 module Azure::Storage::Mgmt::V2018_03_01_preview
   module Models
     #
-    # The parameters used to check the availabity of the storage account name.
+    # The parameters used to check the availability of the storage account
+    # name.
     #
     class StorageAccountCheckNameAvailabilityParameters
 

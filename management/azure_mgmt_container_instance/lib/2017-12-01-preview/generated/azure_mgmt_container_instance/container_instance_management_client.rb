@@ -138,7 +138,7 @@ module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_instance'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = "#{sdk_information}/0.17.3"
         add_user_agent_information(sdk_information)
     end
   end
