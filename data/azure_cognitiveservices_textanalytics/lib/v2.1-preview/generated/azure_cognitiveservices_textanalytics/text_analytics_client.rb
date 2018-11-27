@@ -467,7 +467,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [EntitiesBatchResultV2dot1] operation results.
+    # @return [EntitiesBatchResult] operation results.
     #
     def entities(input, custom_headers = nil)
       response = entities_async(input, custom_headers).value!
@@ -577,7 +577,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::EntitiesBatchResultV2dot1.mapper()
+            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::EntitiesBatchResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
