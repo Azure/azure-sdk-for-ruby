@@ -133,6 +133,7 @@ module Azure::Network::Mgmt::V2017_03_30
               virtual_machine: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.virtualMachine',
                 type: {
                   name: 'Composite',

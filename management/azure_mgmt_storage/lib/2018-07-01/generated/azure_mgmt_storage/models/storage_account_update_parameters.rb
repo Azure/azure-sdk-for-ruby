@@ -15,7 +15,7 @@ module Azure::Storage::Mgmt::V2018_07_01
 
       # @return [Sku] Gets or sets the SKU name. Note that the SKU name cannot
       # be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor can
-      # accounts of those sku names be updated to any other value.
+      # accounts of those SKU names be updated to any other value.
       attr_accessor :sku
 
       # @return [Hash{String => String}] Gets or sets a list of key value pairs

@@ -12,7 +12,7 @@ module Azure::Storage::Mgmt::V2018_03_01_preview
 
       include MsRestAzure
 
-      # @return [String] List service SAS credentials of speicific resource.
+      # @return [String] List service SAS credentials of specific resource.
       attr_accessor :service_sas_token
 
 

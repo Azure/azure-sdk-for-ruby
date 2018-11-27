@@ -96,6 +96,13 @@ module Azure::Storage::Mgmt::V2018_07_01
       # true.
       attr_accessor :is_hns_enabled
 
+      # @return [GeoReplicationStats] Geo Replication Stats
+      attr_accessor :geo_replication_stats
+
+      # @return [Boolean] If the failover is in progress, the value will be
+      # true, otherwise, it will be null.
+      attr_accessor :failover_in_progress
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -336,6 +343,25 @@ module Azure::Storage::Mgmt::V2018_07_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isHnsEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              geo_replication_stats: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.geoReplicationStats',
+                type: {
+                  name: 'Composite',
+                  class_name: 'GeoReplicationStats'
+                }
+              },
+              failover_in_progress: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.failoverInProgress',
                 type: {
                   name: 'Boolean'
                 }

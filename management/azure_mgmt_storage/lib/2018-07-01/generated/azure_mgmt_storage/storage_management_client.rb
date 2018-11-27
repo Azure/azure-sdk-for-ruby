@@ -47,6 +47,9 @@ module Azure::Storage::Mgmt::V2018_07_01
     # @return [Usages] usages
     attr_reader :usages
 
+    # @return [BlobServices] blob_services
+    attr_reader :blob_services
+
     # @return [BlobContainers] blob_containers
     attr_reader :blob_containers
 
@@ -67,6 +70,7 @@ module Azure::Storage::Mgmt::V2018_07_01
       @skus = Skus.new(self)
       @storage_accounts = StorageAccounts.new(self)
       @usages = Usages.new(self)
+      @blob_services = BlobServices.new(self)
       @blob_containers = BlobContainers.new(self)
       @api_version = '2018-07-01'
       @accept_language = 'en-US'
@@ -140,7 +144,7 @@ module Azure::Storage::Mgmt::V2018_07_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_storage'
-        sdk_information = "#{sdk_information}/0.17.3"
+        sdk_information = "#{sdk_information}/0.17.4"
         add_user_agent_information(sdk_information)
     end
   end

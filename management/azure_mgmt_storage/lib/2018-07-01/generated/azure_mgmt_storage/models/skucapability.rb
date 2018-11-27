@@ -6,15 +6,15 @@
 module Azure::Storage::Mgmt::V2018_07_01
   module Models
     #
-    # The capability information in the specified sku, including file
-    # encryption, network acls, change notification, etc.
+    # The capability information in the specified SKU, including file
+    # encryption, network ACLs, change notification, etc.
     #
     class SKUCapability
 
       include MsRestAzure
 
       # @return [String] The name of capability, The capability information in
-      # the specified sku, including file encryption, network acls, change
+      # the specified SKU, including file encryption, network ACLs, change
       # notification, etc.
       attr_accessor :name
 

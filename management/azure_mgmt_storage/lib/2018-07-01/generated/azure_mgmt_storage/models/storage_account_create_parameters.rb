@@ -12,7 +12,7 @@ module Azure::Storage::Mgmt::V2018_07_01
 
       include MsRestAzure
 
-      # @return [Sku] Required. Gets or sets the sku name.
+      # @return [Sku] Required. Gets or sets the SKU name.
       attr_accessor :sku
 
       # @return [Kind] Required. Indicates the type of storage account.
