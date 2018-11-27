@@ -1,3 +1,12 @@
+## 2018.11.27 - Azure Ruby SDK Release
+* Released the following SDKs
+   - azure_mgmt_sqlvirtualmachine - v0.17.0
+   - azure_mgmt_kusto - v0.17.0
+   - azure_mgmt_storage - v0.17.4
+   - azure_mgmt_container_instance - v0.17.3
+   - azure_mgmt_network - v0.18.1
+   - azure_sdk - v0.19.2
+
 ## 2018.11.06(2) - Azure Ruby SDK Release
 * Released 0.18.2 version of azure_mgmt_authorization. 
 * Released 0.19.1 version of azure_sdk to include changes to the azure_mgmt_authorization gem.
