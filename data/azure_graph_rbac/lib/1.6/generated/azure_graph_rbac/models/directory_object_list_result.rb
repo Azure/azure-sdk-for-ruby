@@ -12,9 +12,44 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<DirectoryObject>] A collection of DirectoryObject.
       attr_accessor :value
 
+      # @return [String] The URL to get the next set of results.
+      attr_accessor :odatanext_link
+
+      # return [Proc] with next page method call.
+      attr_accessor :next_method
+
+      #
+      # Gets the rest of the items for the request, enabling auto-pagination.
+      #
+      # @return [Array<DirectoryObject>] operation results.
+      #
+      def get_all_items
+        items = @value
+        page = self
+        while page.odatanext_link != nil do
+          page = page.get_next_page
+          items.concat(page.value)
+        end
+        items
+      end
+
+      #
+      # Gets the next page of results.
+      #
+      # @return [DirectoryObjectListResult] with next page content.
+      #
+      def get_next_page
+        response = @next_method.call(@odatanext_link).value! unless @next_method.nil?
+        unless response.nil?
+          @odatanext_link = response.body.odatanext_link
+          @value = response.body.value
+          self
+        end
+      end
 
       #
       # Mapper for DirectoryObjectListResult class as Ruby Hash.
@@ -22,7 +57,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DirectoryObjectListResult',
           type: {
@@ -30,13 +64,11 @@ module Azure::GraphRbac::V1_6
             class_name: 'DirectoryObjectListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DirectoryObjectElementType',
                       type: {
@@ -46,6 +78,13 @@ module Azure::GraphRbac::V1_6
                         class_name: 'DirectoryObject'
                       }
                   }
+                }
+              },
+              odatanext_link: {
+                required: false,
+                serialized_name: 'odata\\.nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

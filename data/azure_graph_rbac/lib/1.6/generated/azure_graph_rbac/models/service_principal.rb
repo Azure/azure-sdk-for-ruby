@@ -25,6 +25,11 @@ module Azure::GraphRbac::V1_6
       # @return [String] The application ID.
       attr_accessor :app_id
 
+      # @return [Array<AppRole>] The collection of application roles that an
+      # application may declare. These roles can be assigned to users, groups
+      # or service principals.
+      attr_accessor :app_roles
+
       # @return [Array<String>] A collection of service principal names.
       attr_accessor :service_principal_names
 
@@ -35,7 +40,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServicePrincipal',
           type: {
@@ -43,12 +47,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'ServicePrincipal',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -58,7 +60,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectId',
@@ -67,7 +68,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               deletion_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletionTimestamp',
@@ -76,7 +76,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -84,7 +83,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -92,21 +90,33 @@ module Azure::GraphRbac::V1_6
                 }
               },
               app_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appId',
                 type: {
                   name: 'String'
                 }
               },
+              app_roles: {
+                required: false,
+                serialized_name: 'appRoles',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AppRoleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AppRole'
+                      }
+                  }
+                }
+              },
               service_principal_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'servicePrincipalNames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

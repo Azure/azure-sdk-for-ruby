@@ -22,7 +22,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KeyCredentialListResult',
           type: {
@@ -30,13 +29,11 @@ module Azure::GraphRbac::V1_6
             class_name: 'KeyCredentialListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyCredentialElementType',
                       type: {
