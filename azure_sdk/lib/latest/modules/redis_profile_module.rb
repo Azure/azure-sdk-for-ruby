@@ -7,13 +7,14 @@ require 'azure_mgmt_redis'
 module Azure::Profiles::Latest
   module Redis
     module Mgmt
-      FirewallRules = Azure::Redis::Mgmt::V2018_03_01::FirewallRules
       Operations = Azure::Redis::Mgmt::V2018_03_01::Operations
+      FirewallRules = Azure::Redis::Mgmt::V2018_03_01::FirewallRules
+      LinkedServer = Azure::Redis::Mgmt::V2018_03_01::LinkedServer
       Redis = Azure::Redis::Mgmt::V2018_03_01::Redis
       PatchSchedules = Azure::Redis::Mgmt::V2018_03_01::PatchSchedules
-      LinkedServer = Azure::Redis::Mgmt::V2018_03_01::LinkedServer
 
       module Models
+        CheckNameAvailabilityParameters = Azure::Redis::Mgmt::V2018_03_01::Models::CheckNameAvailabilityParameters
         Resource = Azure::Redis::Mgmt::V2018_03_01::Models::Resource
         ProvisioningState = Azure::Redis::Mgmt::V2018_03_01::Models::ProvisioningState
         OperationDisplay = Azure::Redis::Mgmt::V2018_03_01::Models::OperationDisplay
@@ -51,11 +52,10 @@ module Azure::Profiles::Latest
         TrackedResource = Azure::Redis::Mgmt::V2018_03_01::Models::TrackedResource
         ProxyResource = Azure::Redis::Mgmt::V2018_03_01::Models::ProxyResource
         ReplicationRole = Azure::Redis::Mgmt::V2018_03_01::Models::ReplicationRole
-        CheckNameAvailabilityParameters = Azure::Redis::Mgmt::V2018_03_01::Models::CheckNameAvailabilityParameters
       end
 
       class RedisManagementClass
-        attr_reader :firewall_rules, :operations, :redis, :patch_schedules, :linked_server, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :firewall_rules, :linked_server, :redis, :patch_schedules, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -65,11 +65,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @firewall_rules = @client_0.firewall_rules
           @operations = @client_0.operations
+          @firewall_rules = @client_0.firewall_rules
+          @linked_server = @client_0.linked_server
           @redis = @client_0.redis
           @patch_schedules = @client_0.patch_schedules
-          @linked_server = @client_0.linked_server
 
           @model_classes = ModelClasses.new
         end
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_name_availability_parameters
+            Azure::Redis::Mgmt::V2018_03_01::Models::CheckNameAvailabilityParameters
+          end
           def resource
             Azure::Redis::Mgmt::V2018_03_01::Models::Resource
           end
@@ -198,9 +201,6 @@ module Azure::Profiles::Latest
           end
           def replication_role
             Azure::Redis::Mgmt::V2018_03_01::Models::ReplicationRole
-          end
-          def check_name_availability_parameters
-            Azure::Redis::Mgmt::V2018_03_01::Models::CheckNameAvailabilityParameters
           end
         end
       end

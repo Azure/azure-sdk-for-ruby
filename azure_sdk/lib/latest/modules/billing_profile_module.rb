@@ -7,10 +7,10 @@ require 'azure_mgmt_billing'
 module Azure::Profiles::Latest
   module Billing
     module Mgmt
+      Operations = Azure::Billing::Mgmt::V2018_03_01_preview::Operations
       EnrollmentAccounts = Azure::Billing::Mgmt::V2018_03_01_preview::EnrollmentAccounts
       BillingPeriods = Azure::Billing::Mgmt::V2018_03_01_preview::BillingPeriods
       Invoices = Azure::Billing::Mgmt::V2018_03_01_preview::Invoices
-      Operations = Azure::Billing::Mgmt::V2018_03_01_preview::Operations
 
       module Models
         ErrorDetails = Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorDetails
@@ -29,7 +29,7 @@ module Azure::Profiles::Latest
       end
 
       class BillingManagementClass
-        attr_reader :enrollment_accounts, :billing_periods, :invoices, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :enrollment_accounts, :billing_periods, :invoices, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -39,10 +39,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @enrollment_accounts = @client_0.enrollment_accounts
           @billing_periods = @client_0.billing_periods
           @invoices = @client_0.invoices
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
