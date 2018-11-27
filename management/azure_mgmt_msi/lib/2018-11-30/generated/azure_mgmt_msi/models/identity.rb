@@ -37,8 +37,8 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
 
       # @return [String]  The ManagedServiceIdentity DataPlane URL that can be
       # queried to obtain the identity credentials. If identity is user
-      # assigned, the clientSecretUrl is null, otherwise the clientSecretUrl is
-      # not null
+      # assigned, then the clientSecretUrl will not be present in the response,
+      # otherwise it will be present.
       attr_accessor :client_secret_url
 
       # @return [UserAssignedIdentities] The type of resource i.e.

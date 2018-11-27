@@ -59,7 +59,7 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
     #
     def list_by_subscription_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      @client.api_version = '2018-11-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -152,7 +152,7 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      @client.api_version = '2018-11-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -252,7 +252,7 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
-      @client.api_version = '2018-11-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -369,7 +369,7 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
-      @client.api_version = '2018-11-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -473,7 +473,7 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
-      @client.api_version = '2018-11-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -566,7 +566,7 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
-      @client.api_version = '2018-11-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}

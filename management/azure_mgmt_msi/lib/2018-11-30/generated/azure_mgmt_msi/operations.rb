@@ -55,7 +55,7 @@ module Azure::ManagedServiceIdentity::Mgmt::V2018-11-30
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers = nil)
-      @client.api_version = '2018-11-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
