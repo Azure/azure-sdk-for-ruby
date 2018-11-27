@@ -25,6 +25,7 @@ module Azure::Profiles::V2018_03_01
       VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineRunCommands
 
       module Models
+        NetworkProfile = Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
         KeyVaultAndSecretReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndSecretReference
         DiagnosticsProfile = Azure::Compute::Mgmt::V2017_03_30::Models::DiagnosticsProfile
         SourceVault = Azure::Compute::Mgmt::V2017_03_30::Models::SourceVault
@@ -193,7 +194,6 @@ module Azure::Profiles::V2018_03_01
         VirtualMachineScaleSetPublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetPublicIPAddressConfiguration
         OSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::OSProfile
         VirtualMachineScaleSetUpdatePublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
-        NetworkProfile = Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
       end
 
       class ComputeManagementClass
@@ -241,6 +241,9 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def network_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
+          end
           def key_vault_and_secret_reference
             Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndSecretReference
           end
@@ -744,9 +747,6 @@ module Azure::Profiles::V2018_03_01
           end
           def virtual_machine_scale_set_update_public_ipaddress_configuration
             Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
-          end
-          def network_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
           end
         end
       end
