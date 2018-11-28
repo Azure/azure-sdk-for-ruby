@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_09_01
   module Models
     #
-    # ARM resource for a app service enviroment.
+    # ARM resource for a app service environment.
     #
     class AppServiceEnvironmentPatchResource < ProxyOnlyResource
 
