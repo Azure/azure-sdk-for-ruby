@@ -409,7 +409,7 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to to use for the certificate order.
+    # Distinguished name to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -425,7 +425,7 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to to use for the certificate order.
+    # Distinguished name to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -548,8 +548,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name
-    # [AppServiceCertificateOrderPatchResource] Distinguished name to to use for
-    # the certificate order.
+    # [AppServiceCertificateOrderPatchResource] Distinguished name to use for the
+    # certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -569,8 +569,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name
-    # [AppServiceCertificateOrderPatchResource] Distinguished name to to use for
-    # the certificate order.
+    # [AppServiceCertificateOrderPatchResource] Distinguished name to use for the
+    # certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -589,8 +589,8 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name
-    # [AppServiceCertificateOrderPatchResource] Distinguished name to to use for
-    # the certificate order.
+    # [AppServiceCertificateOrderPatchResource] Distinguished name to use for the
+    # certificate order.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1987,7 +1987,7 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to to use for the certificate order.
+    # Distinguished name to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2007,7 +2007,7 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to to use for the certificate order.
+    # Distinguished name to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2026,7 +2026,7 @@ module Azure::Web::Mgmt::V2015_08_01
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to to use for the certificate order.
+    # Distinguished name to use for the certificate order.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
