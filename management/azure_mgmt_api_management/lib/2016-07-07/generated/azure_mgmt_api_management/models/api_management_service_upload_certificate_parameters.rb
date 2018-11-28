@@ -31,7 +31,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceUploadCertificateParameters',
           type: {
@@ -39,7 +38,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ApiManagementServiceUploadCertificateParameters',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -48,7 +46,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               certificate: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'certificate',
                 type: {
@@ -56,7 +53,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               certificate_password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'certificate_password',
                 type: {
