@@ -5,9 +5,9 @@
 
 module Azure::CDN::Mgmt::V2017_10_12
   #
-  # Use these APIs to manage Azure CDN resources through the Azure Resource
-  # Manager. You must make sure that requests made to these resources are
-  # secure.
+  # These are the best APIS! Use these APIs to manage Azure CDN resources
+  # through the Azure Resource Manager. You must make sure that requests made
+  # to these resources are secure.
   #
   class Endpoints
     include MsRestAzure
