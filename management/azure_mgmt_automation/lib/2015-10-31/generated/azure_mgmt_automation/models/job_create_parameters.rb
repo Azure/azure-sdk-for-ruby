@@ -30,7 +30,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobCreateParameters',
           type: {
@@ -38,7 +37,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'JobCreateParameters',
             model_properties: {
               runbook: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.runbook',
                 type: {
@@ -47,13 +45,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -63,7 +59,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               run_on: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runOn',
                 type: {
