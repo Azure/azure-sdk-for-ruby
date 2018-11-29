@@ -75,7 +75,7 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       # Management service, like disabling TLS 1.0.
       attr_accessor :custom_properties
 
-      # @return [VirtualNetworkType] The type of VPN in which API Managemet
+      # @return [VirtualNetworkType] The type of VPN in which API Management
       # service needs to be configured in. None (Default Value) means the API
       # Management service is not part of any Virtual Network, External means
       # the API Management deployment is set up inside a Virtual Network having

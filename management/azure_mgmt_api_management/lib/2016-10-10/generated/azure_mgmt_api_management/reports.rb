@@ -37,7 +37,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
     # zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -64,7 +64,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
     # zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -90,7 +90,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
     # zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -252,7 +252,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
     # zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

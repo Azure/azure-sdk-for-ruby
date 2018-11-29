@@ -22,7 +22,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     attr_reader :client
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of the API
+    # Lists all loggers associated with the specified Diagnostic of the API
     # Management service instance.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -47,7 +47,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of the API
+    # Lists all loggers associated with the specified Diagnostic of the API
     # Management service instance.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -71,7 +71,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of the API
+    # Lists all loggers associated with the specified Diagnostic of the API
     # Management service instance.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -243,7 +243,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Attaches a logger to a dignostic.
+    # Attaches a logger to a diagnostic.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -262,7 +262,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Attaches a logger to a dignostic.
+    # Attaches a logger to a diagnostic.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -280,7 +280,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Attaches a logger to a dignostic.
+    # Attaches a logger to a diagnostic.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -452,7 +452,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of the API
+    # Lists all loggers associated with the specified Diagnostic of the API
     # Management service instance.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -468,7 +468,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of the API
+    # Lists all loggers associated with the specified Diagnostic of the API
     # Management service instance.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -483,7 +483,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of the API
+    # Lists all loggers associated with the specified Diagnostic of the API
     # Management service instance.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -542,7 +542,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of the API
+    # Lists all loggers associated with the specified Diagnostic of the API
     # Management service instance.
     #
     # @param resource_group_name [String] The name of the resource group.

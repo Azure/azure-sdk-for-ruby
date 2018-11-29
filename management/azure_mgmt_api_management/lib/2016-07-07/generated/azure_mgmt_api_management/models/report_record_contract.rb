@@ -22,7 +22,7 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       attr_accessor :timestamp
 
-      # @return [Integer] Length of agregation period.
+      # @return [Integer] Length of aggregation period.
       attr_accessor :interval
 
       # @return [String] Country to which this record data is related.
@@ -54,7 +54,7 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       # /subscriptions/{subscriptionId}
       attr_accessor :subscription_id
 
-      # @return [Integer] Number of succesful calls.
+      # @return [Integer] Number of successful calls.
       attr_accessor :call_count_success
 
       # @return [Integer] Number of calls blocked due to invalid credentials.
