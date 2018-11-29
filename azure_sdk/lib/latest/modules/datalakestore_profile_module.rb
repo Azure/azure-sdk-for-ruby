@@ -45,16 +45,16 @@ module Azure::Profiles::Latest
         TrustedIdProviderState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
         DataLakeStoreAccountStatus = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
         DataLakeStoreAccountState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
+        Resource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
         CapabilityInformation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CapabilityInformation
         NameAvailabilityInformation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::NameAvailabilityInformation
         UpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
-        Resource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
-        CreateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
         OperationDisplay = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
         Operation = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Operation
-        CreateOrUpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
         OperationListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationListResult
         SubResource = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
+        CreateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
+        CreateOrUpdateFirewallRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
         UpdateFirewallRuleWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleWithAccountParameters
         FirewallRuleListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallRuleListResult
         FirewallRule = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::FirewallRule
@@ -189,6 +189,9 @@ module Azure::Profiles::Latest
           def data_lake_store_account_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
           end
+          def resource
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
+          end
           def capability_information
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CapabilityInformation
           end
@@ -198,26 +201,23 @@ module Azure::Profiles::Latest
           def update_firewall_rule_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleParameters
           end
-          def resource
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Resource
-          end
-          def create_firewall_rule_with_account_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
-          end
           def operation_display
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationDisplay
           end
           def operation
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::Operation
           end
-          def create_or_update_firewall_rule_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
-          end
           def operation_list_result
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::OperationListResult
           end
           def sub_resource
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubResource
+          end
+          def create_firewall_rule_with_account_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateFirewallRuleWithAccountParameters
+          end
+          def create_or_update_firewall_rule_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateFirewallRuleParameters
           end
           def update_firewall_rule_with_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateFirewallRuleWithAccountParameters
