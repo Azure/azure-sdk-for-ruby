@@ -7,8 +7,8 @@ require 'azure_mgmt_commerce'
 module Azure::Profiles::Latest
   module Commerce
     module Mgmt
-      UsageAggregates = Azure::Commerce::Mgmt::V2015_06_01_preview::UsageAggregates
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
+      UsageAggregates = Azure::Commerce::Mgmt::V2015_06_01_preview::UsageAggregates
 
       module Models
         MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
@@ -18,15 +18,15 @@ module Azure::Profiles::Latest
         UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
         OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
         RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
-        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
         MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
         RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
+        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
       end
 
       class CommerceManagementClass
-        attr_reader :usage_aggregates, :rate_card, :configurable, :base_url, :options, :model_classes
+        attr_reader :rate_card, :usage_aggregates, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -36,8 +36,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @usage_aggregates = @client_0.usage_aggregates
           @rate_card = @client_0.rate_card
+          @usage_aggregates = @client_0.usage_aggregates
 
           @model_classes = ModelClasses.new
         end
@@ -77,9 +77,6 @@ module Azure::Profiles::Latest
           def rate_card_query_parameters
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
           end
-          def error_response
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
-          end
           def monetary_credit
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
           end
@@ -88,6 +85,9 @@ module Azure::Profiles::Latest
           end
           def recurring_charge
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
+          end
+          def error_response
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
           end
           def aggregation_granularity
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
