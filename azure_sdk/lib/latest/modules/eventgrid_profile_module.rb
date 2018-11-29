@@ -244,12 +244,12 @@ module Azure::Profiles::Latest
         TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeInfo
         DomainProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainProvisioningState
         InputSchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
+        Resource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
         EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
         EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
         ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
         TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
-        Resource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
         Operation = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
         TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
@@ -437,6 +437,9 @@ module Azure::Profiles::Latest
           def input_schema
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
           end
+          def resource
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
+          end
           def event_subscription_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
           end
@@ -451,9 +454,6 @@ module Azure::Profiles::Latest
           end
           def topic_type_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
-          end
-          def resource
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
           end
           def operation
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation

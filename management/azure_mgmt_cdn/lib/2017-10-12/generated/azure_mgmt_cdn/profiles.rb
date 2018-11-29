@@ -31,8 +31,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [Array<Profile>] operation results.
     #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
+    def array(custom_headers = nil)
+      first_page = array_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -44,8 +44,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def array_with_http_info(custom_headers = nil)
+      array_async(custom_headers).value!
     end
 
     #
@@ -56,7 +56,7 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def array_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -1107,8 +1107,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [ProfileListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def array_next(next_page_link, custom_headers = nil)
+      response = array_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1122,8 +1122,8 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def array_next_with_http_info(next_page_link, custom_headers = nil)
+      array_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1136,7 +1136,7 @@ module Azure::CDN::Mgmt::V2017_10_12
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def array_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -1367,12 +1367,12 @@ module Azure::CDN::Mgmt::V2017_10_12
     # @return [ProfileListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def array_as_lazy(custom_headers = nil)
+      response = array_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          array_next_async(next_page_link, custom_headers)
         end
         page
       end

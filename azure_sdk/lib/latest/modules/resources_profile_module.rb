@@ -68,8 +68,8 @@ module Azure::Profiles::Latest
         ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
         ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
       end
 
       class ResourcesManagementClass
@@ -264,11 +264,11 @@ module Azure::Profiles::Latest
           def resource_identity_type
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-          end
           def sku
             Azure::Resources::Mgmt::V2018_05_01::Models::Sku
+          end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
           end
         end
       end
