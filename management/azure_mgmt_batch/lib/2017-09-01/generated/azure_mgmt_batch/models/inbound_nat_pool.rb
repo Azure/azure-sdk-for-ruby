@@ -67,7 +67,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatPool',
           type: {
@@ -75,7 +74,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'InboundNatPool',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -83,7 +81,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocol',
                 type: {
@@ -92,7 +89,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               backend_port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'backendPort',
                 type: {
@@ -100,7 +96,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               frontend_port_range_start: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'frontendPortRangeStart',
                 type: {
@@ -108,7 +103,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               frontend_port_range_end: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'frontendPortRangeEnd',
                 type: {
@@ -116,13 +110,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               network_security_group_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkSecurityGroupRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkSecurityGroupRuleElementType',
                       type: {
