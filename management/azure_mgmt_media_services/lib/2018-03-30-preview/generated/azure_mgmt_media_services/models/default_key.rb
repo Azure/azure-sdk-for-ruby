@@ -14,7 +14,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       include MsRestAzure
 
       # @return [String] Label can be used to specify Content Key when creating
-      # Stremaing Locator
+      # Streaming Locator
       attr_accessor :label
 
       # @return [String] Policy used by Default Key

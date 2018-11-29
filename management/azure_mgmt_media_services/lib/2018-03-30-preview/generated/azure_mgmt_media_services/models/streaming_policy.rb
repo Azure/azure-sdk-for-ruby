@@ -27,7 +27,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       # @return [CommonEncryptionCbcs] Configuration of CommonEncryptionCbcs
       attr_accessor :common_encryption_cbcs
 
-      # @return [NoEncryption] Configuations of NoEncryption
+      # @return [NoEncryption] Configuration of NoEncryption
       attr_accessor :no_encryption
 
 

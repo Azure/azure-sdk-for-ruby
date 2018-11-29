@@ -24,7 +24,7 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       # tracks
       attr_accessor :content_keys
 
-      # @return [String] KeyAcquistionUrlTemplate is used to point to user
+      # @return [String] KeyAcquisitionUrlTemplate is used to point to user
       # specified service to delivery content keys
       attr_accessor :custom_key_acquisition_url_template
 
