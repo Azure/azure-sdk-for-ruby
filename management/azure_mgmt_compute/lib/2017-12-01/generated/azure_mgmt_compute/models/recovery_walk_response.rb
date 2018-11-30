@@ -26,7 +26,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryWalkResponse',
           type: {
@@ -34,7 +33,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'RecoveryWalkResponse',
             model_properties: {
               walk_performed: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'walkPerformed',
@@ -43,7 +41,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               next_platform_update_domain: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextPlatformUpdateDomain',
