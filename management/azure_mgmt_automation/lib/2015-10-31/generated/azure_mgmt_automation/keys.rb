@@ -31,8 +31,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [KeyListResult] operation results.
     #
-    def list_by_automation_account(resource_group_name, automation_account_name, custom_headers:nil)
-      response = list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers:custom_headers).value!
+    def list_by_automation_account(resource_group_name, automation_account_name, custom_headers = nil)
+      response = list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_automation_account_with_http_info(resource_group_name, automation_account_name, custom_headers:nil)
-      list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers:custom_headers).value!
+    def list_by_automation_account_with_http_info(resource_group_name, automation_account_name, custom_headers = nil)
+      list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers).value!
     end
 
     #
@@ -60,18 +60,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers:nil)
+    def list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

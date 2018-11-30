@@ -29,7 +29,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdvancedScheduleMonthlyOccurrence',
           type: {
@@ -37,7 +36,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AdvancedScheduleMonthlyOccurrence',
             model_properties: {
               occurrence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'occurrence',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               day: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'day',
                 type: {
