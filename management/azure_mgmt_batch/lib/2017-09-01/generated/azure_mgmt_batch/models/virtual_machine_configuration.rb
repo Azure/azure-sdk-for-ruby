@@ -62,7 +62,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineConfiguration',
           type: {
@@ -70,7 +69,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'VirtualMachineConfiguration',
             model_properties: {
               image_reference: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'imageReference',
                 type: {
@@ -79,7 +77,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               os_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDisk',
                 type: {
@@ -88,7 +85,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               node_agent_sku_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'nodeAgentSkuId',
                 type: {
@@ -96,7 +92,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               windows_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'windowsConfiguration',
                 type: {
@@ -105,13 +100,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               data_disks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataDiskElementType',
                       type: {
@@ -122,7 +115,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               license_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'licenseType',
                 type: {
