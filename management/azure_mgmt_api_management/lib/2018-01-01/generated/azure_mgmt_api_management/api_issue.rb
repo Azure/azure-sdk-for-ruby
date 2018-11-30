@@ -22,7 +22,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     attr_reader :client
 
     #
-    # Lists all issues assosiated with the specified API.
+    # Lists all issues associated with the specified API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -48,7 +48,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all issues assosiated with the specified API.
+    # Lists all issues associated with the specified API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -73,7 +73,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all issues assosiated with the specified API.
+    # Lists all issues associated with the specified API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -709,7 +709,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all issues assosiated with the specified API.
+    # Lists all issues associated with the specified API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -724,7 +724,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all issues assosiated with the specified API.
+    # Lists all issues associated with the specified API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -738,7 +738,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all issues assosiated with the specified API.
+    # Lists all issues associated with the specified API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -796,7 +796,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists all issues assosiated with the specified API.
+    # Lists all issues associated with the specified API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.

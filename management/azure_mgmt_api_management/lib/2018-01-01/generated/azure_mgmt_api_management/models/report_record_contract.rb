@@ -22,7 +22,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       #
       attr_accessor :timestamp
 
-      # @return [String] Length of agregation period.  Interval must be
+      # @return [String] Length of aggregation period.  Interval must be
       # multiple of 15 minutes and may not be zero. The value should be in ISO
       # 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).
       attr_accessor :interval
@@ -56,13 +56,13 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       # /subscriptions/{subscriptionId}
       attr_accessor :subscription_id
 
-      # @return [Integer] Number of succesful calls. This includes calls
+      # @return [Integer] Number of successful calls. This includes calls
       # returning HttpStatusCode <= 301 and HttpStatusCode.NotModified and
       # HttpStatusCode.TemporaryRedirect
       attr_accessor :call_count_success
 
       # @return [Integer] Number of calls blocked due to invalid credentials.
-      # This includes calls returning HttpStatusCode.Unauthorize and
+      # This includes calls returning HttpStatusCode.Unauthorized and
       # HttpStatusCode.Forbidden and HttpStatusCode.TooManyRequests
       attr_accessor :call_count_blocked
 

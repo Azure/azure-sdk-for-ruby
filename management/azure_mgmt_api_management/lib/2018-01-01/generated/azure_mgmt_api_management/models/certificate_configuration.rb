@@ -20,7 +20,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       attr_accessor :certificate_password
 
       # @return [Enum] The
-      # System.Security.Cryptography.x509certificates.Storename certificate
+      # System.Security.Cryptography.x509certificates.StoreName certificate
       # store location. Only Root and CertificateAuthority are valid locations.
       # Possible values include: 'CertificateAuthority', 'Root'
       attr_accessor :store_name

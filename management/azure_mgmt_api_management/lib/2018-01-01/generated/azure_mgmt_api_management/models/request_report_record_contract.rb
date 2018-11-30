@@ -51,7 +51,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       # @return [String] Specifies if response cache was involved in generating
       # the response. If the value is none, the cache was not used. If the
       # value is hit, cached response was returned. If the value is miss, the
-      # cache was used but lookup resulted in a miss and request was fullfilled
+      # cache was used but lookup resulted in a miss and request was fulfilled
       # by the backend.
       attr_accessor :cache
 

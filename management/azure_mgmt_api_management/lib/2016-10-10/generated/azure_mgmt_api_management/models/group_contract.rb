@@ -14,7 +14,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
 
       # @return [String] Uniquely identifies the group within the current API
       # Management service instance. The value is a valid relative URL in the
-      # format of /groups/{groupid} where {groupid} is a group identifier.
+      # format of /groups/{groupId} where {groupId} is a group identifier.
       attr_accessor :id
 
       # @return [String] Group name.
