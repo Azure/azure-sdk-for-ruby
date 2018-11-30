@@ -7,7 +7,7 @@ module Azure::CDN::Mgmt::V2017_04_02
   module Models
     #
     # Friendly domain name mapping to the endpoint hostname that the customer
-    # provides for branding purposes, e.g. www.consoto.com.
+    # provides for branding purposes, e.g. www.contoso.com.
     #
     class CustomDomain < ProxyResource
 

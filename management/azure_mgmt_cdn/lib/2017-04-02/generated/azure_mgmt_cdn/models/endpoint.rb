@@ -74,7 +74,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       attr_accessor :geo_filters
 
       # @return [String] The host name of the endpoint structured as
-      # {endpointName}.{DNSZone}, e.g. consoto.azureedge.net
+      # {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
       attr_accessor :host_name
 
       # @return [Array<DeepCreatedOrigin>] The source of the content being

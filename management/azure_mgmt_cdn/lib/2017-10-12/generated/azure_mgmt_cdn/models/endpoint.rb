@@ -78,7 +78,7 @@ module Azure::CDN::Mgmt::V2017_10_12
       attr_accessor :delivery_policy
 
       # @return [String] The host name of the endpoint structured as
-      # {endpointName}.{DNSZone}, e.g. consoto.azureedge.net
+      # {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
       attr_accessor :host_name
 
       # @return [Array<DeepCreatedOrigin>] The source of the content being
