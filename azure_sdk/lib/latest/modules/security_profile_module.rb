@@ -7,13 +7,16 @@ require 'azure_mgmt_security'
 module Azure::Profiles::Latest
   module Security
     module Mgmt
-      AutoProvisioningSettings = Azure::Security::Mgmt::V2017_08_01_preview::AutoProvisioningSettings
-      Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
       Pricings = Azure::Security::Mgmt::V2017_08_01_preview::Pricings
       SecurityContacts = Azure::Security::Mgmt::V2017_08_01_preview::SecurityContacts
       WorkspaceSettings = Azure::Security::Mgmt::V2017_08_01_preview::WorkspaceSettings
+      AutoProvisioningSettings = Azure::Security::Mgmt::V2017_08_01_preview::AutoProvisioningSettings
+      Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
 
       module Models
+        Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
+        AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
+        AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
         PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
         AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
         Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
@@ -27,13 +30,10 @@ module Azure::Profiles::Latest
         Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
         WorkspaceSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
         AutoProvisioningSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
-        Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
-        AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
-        AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
       end
 
       class SecurityManagementClass
-        attr_reader :auto_provisioning_settings, :compliances, :pricings, :security_contacts, :workspace_settings, :configurable, :base_url, :options, :model_classes
+        attr_reader :pricings, :security_contacts, :workspace_settings, :auto_provisioning_settings, :compliances, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -43,11 +43,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @auto_provisioning_settings = @client_0.auto_provisioning_settings
-          @compliances = @client_0.compliances
           @pricings = @client_0.pricings
           @security_contacts = @client_0.security_contacts
           @workspace_settings = @client_0.workspace_settings
+          @auto_provisioning_settings = @client_0.auto_provisioning_settings
+          @compliances = @client_0.compliances
 
           @model_classes = ModelClasses.new
         end
@@ -66,6 +66,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def compliance
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
+          end
+          def alert_notifications
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
+          end
+          def alerts_to_admins
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
+          end
           def pricing_tier
             Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
           end
@@ -104,15 +113,6 @@ module Azure::Profiles::Latest
           end
           def auto_provisioning_setting
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
-          end
-          def compliance
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
-          end
-          def alert_notifications
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
-          end
-          def alerts_to_admins
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
           end
         end
       end
