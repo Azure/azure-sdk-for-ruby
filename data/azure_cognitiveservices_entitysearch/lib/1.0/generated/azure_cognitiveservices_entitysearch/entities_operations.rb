@@ -186,8 +186,8 @@ module Azure::CognitiveServices::EntitySearch::V1_0
     #
     # @return [SearchResponse] operation results.
     #
-    def search(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:'en-us', response_filter:nil, response_format:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
-      response = search_async(query, accept_language:accept_language, pragma:pragma, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, market:market, response_filter:response_filter, response_format:response_format, safe_search:safe_search, set_lang:set_lang, custom_headers:custom_headers).value!
+    def search(query, accept_language = nil, pragma = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = 'en-us', response_filter = nil, response_format = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
+      response = search_async(query, accept_language, pragma, user_agent, client_id, client_ip, location, country_code, market, response_filter, response_format, safe_search, set_lang, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -350,8 +350,8 @@ module Azure::CognitiveServices::EntitySearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def search_with_http_info(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:'en-us', response_filter:nil, response_format:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
-      search_async(query, accept_language:accept_language, pragma:pragma, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, market:market, response_filter:response_filter, response_format:response_format, safe_search:safe_search, set_lang:set_lang, custom_headers:custom_headers).value!
+    def search_with_http_info(query, accept_language = nil, pragma = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = 'en-us', response_filter = nil, response_format = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
+      search_async(query, accept_language, pragma, user_agent, client_id, client_ip, location, country_code, market, response_filter, response_format, safe_search, set_lang, custom_headers).value!
     end
 
     #
@@ -513,13 +513,13 @@ module Azure::CognitiveServices::EntitySearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def search_async(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:'en-us', response_filter:nil, response_format:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+    def search_async(query, accept_language = nil, pragma = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, market = 'en-us', response_filter = nil, response_format = nil, safe_search = nil, set_lang = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -533,6 +533,7 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       path_template = 'entities'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

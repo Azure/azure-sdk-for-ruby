@@ -37,7 +37,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContractualRules/LinkAttribution',
           type: {
@@ -45,7 +44,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'ContractualRulesLinkAttribution',
             model_properties: {
               target_property_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'targetPropertyName',
@@ -54,7 +52,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -62,7 +59,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               must_be_close_to_content: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'mustBeCloseToContent',
@@ -71,7 +67,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'text',
                 type: {
@@ -79,7 +74,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {
@@ -87,7 +81,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               optional_for_list_display: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'optionalForListDisplay',

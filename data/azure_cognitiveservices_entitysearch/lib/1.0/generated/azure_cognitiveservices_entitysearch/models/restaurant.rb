@@ -39,7 +39,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Restaurant',
           type: {
@@ -47,7 +46,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'Restaurant',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -55,7 +53,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -64,14 +61,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               contractual_rules: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'contractualRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContractualRulesContractualRuleElementType',
                       type: {
@@ -84,7 +79,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -93,7 +87,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -102,7 +95,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
@@ -111,7 +103,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'image',
@@ -121,7 +112,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -130,7 +120,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               entity_presentation_info: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'entityPresentationInfo',
@@ -140,7 +129,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               bing_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bingId',
@@ -149,7 +137,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               address: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'address',
@@ -159,7 +146,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               telephone: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'telephone',
@@ -168,7 +154,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               price_range: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'priceRange',
@@ -177,14 +162,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               panoramas: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'panoramas',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ImageObjectElementType',
                       type: {
@@ -195,7 +178,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               is_permanently_closed: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isPermanentlyClosed',
@@ -204,7 +186,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               tag_line: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tagLine',
@@ -213,7 +194,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               accepts_reservations: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'acceptsReservations',
@@ -222,7 +202,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               reservation_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reservationUrl',
@@ -231,14 +210,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               serves_cuisine: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'servesCuisine',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -248,7 +225,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               menu_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'menuUrl',

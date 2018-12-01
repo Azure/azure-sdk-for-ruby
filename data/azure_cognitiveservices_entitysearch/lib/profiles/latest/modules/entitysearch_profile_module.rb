@@ -8,11 +8,11 @@ module Azure::EntitySearch::Profiles::Latest
   EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
   module Models
+    Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
     ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
     QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
     ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
     EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
-    Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
     ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
     Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
     Thing = Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
@@ -101,6 +101,9 @@ module Azure::EntitySearch::Profiles::Latest
   end
 
   class ModelClasses
+    def error
+      Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+    end
     def response_base
       Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
     end
@@ -112,9 +115,6 @@ module Azure::EntitySearch::Profiles::Latest
     end
     def entities_entity_presentation_info
       Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
-    end
-    def error
-      Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
     end
     def image_object
       Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject

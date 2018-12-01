@@ -36,7 +36,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContractualRules/ContractualRule',
           type: {
@@ -46,7 +45,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'ContractualRulesContractualRule',
             model_properties: {
               target_property_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'targetPropertyName',
