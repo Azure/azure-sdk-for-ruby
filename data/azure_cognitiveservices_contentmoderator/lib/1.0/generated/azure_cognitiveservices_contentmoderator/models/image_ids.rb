@@ -31,7 +31,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageIds',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'ImageIds',
             model_properties: {
               content_source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ContentSource',
                 type: {
@@ -47,13 +45,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               content_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ContentIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NumberElementType',
                       type: {
@@ -63,7 +59,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -72,7 +67,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {

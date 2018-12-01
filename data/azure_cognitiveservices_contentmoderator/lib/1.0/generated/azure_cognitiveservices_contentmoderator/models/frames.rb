@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Frames',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Frames',
             model_properties: {
               review_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ReviewId',
                 type: {
@@ -41,13 +39,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               video_frames: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'VideoFrames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FrameElementType',
                       type: {

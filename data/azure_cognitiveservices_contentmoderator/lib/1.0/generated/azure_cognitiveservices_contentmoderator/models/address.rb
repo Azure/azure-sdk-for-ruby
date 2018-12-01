@@ -26,7 +26,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Address',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Address',
             model_properties: {
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Text',
                 type: {
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               index: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Index',
                 type: {

@@ -33,7 +33,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetectedTerms',
           type: {
@@ -41,7 +40,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'DetectedTerms',
             model_properties: {
               index: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Index',
                 type: {
@@ -49,7 +47,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               original_index: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'OriginalIndex',
                 type: {
@@ -57,7 +54,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               list_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ListId',
                 type: {
@@ -65,7 +61,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               term: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Term',
                 type: {

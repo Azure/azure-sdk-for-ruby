@@ -26,7 +26,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'transcriptModerationBodyItem_TermsItem',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'TranscriptModerationBodyItemTermsItem',
             model_properties: {
               index: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Index',
                 type: {
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               term: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Term',
                 type: {

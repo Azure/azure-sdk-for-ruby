@@ -32,7 +32,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Email',
           type: {
@@ -40,7 +39,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Email',
             model_properties: {
               detected: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Detected',
                 type: {
@@ -48,7 +46,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               sub_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'SubType',
                 type: {
@@ -56,7 +53,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Text',
                 type: {
@@ -64,7 +60,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               index: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Index',
                 type: {

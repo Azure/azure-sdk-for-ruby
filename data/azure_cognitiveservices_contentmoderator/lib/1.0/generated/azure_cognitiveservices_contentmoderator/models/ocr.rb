@@ -40,7 +40,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OCR',
           type: {
@@ -48,7 +47,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'OCR',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -57,13 +55,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyValuePairElementType',
                       type: {
@@ -74,7 +70,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {
@@ -82,7 +77,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               cache_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CacheId',
                 type: {
@@ -90,7 +84,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Language',
                 type: {
@@ -98,7 +91,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Text',
                 type: {
@@ -106,13 +98,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               candidates: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Candidates',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CandidateElementType',
                       type: {

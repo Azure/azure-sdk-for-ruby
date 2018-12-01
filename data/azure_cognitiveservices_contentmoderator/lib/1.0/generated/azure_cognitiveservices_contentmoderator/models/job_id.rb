@@ -23,7 +23,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobId',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'JobId',
             model_properties: {
               job_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'JobId',
                 type: {

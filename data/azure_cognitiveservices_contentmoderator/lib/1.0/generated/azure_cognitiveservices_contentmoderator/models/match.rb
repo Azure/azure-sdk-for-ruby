@@ -34,7 +34,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Match',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Match',
             model_properties: {
               score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Score',
                 type: {
@@ -50,7 +48,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               match_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'MatchId',
                 type: {
@@ -58,7 +55,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Source',
                 type: {
@@ -66,13 +62,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Tags',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NumberElementType',
                       type: {
@@ -82,7 +76,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Label',
                 type: {

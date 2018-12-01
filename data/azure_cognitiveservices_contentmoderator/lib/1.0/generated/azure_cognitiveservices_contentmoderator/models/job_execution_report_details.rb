@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobExecutionReportDetails',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'JobExecutionReportDetails',
             model_properties: {
               ts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Ts',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               msg: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Msg',
                 type: {

@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Candidate',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Candidate',
             model_properties: {
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Text',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               confidence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Confidence',
                 type: {

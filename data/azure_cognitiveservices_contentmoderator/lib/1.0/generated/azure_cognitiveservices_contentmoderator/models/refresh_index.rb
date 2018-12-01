@@ -18,7 +18,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [Boolean] Update success status.
       attr_accessor :is_update_success
 
-      # @return [Array<RefreshIndexAdvancedInfoItem>] Advanced info list.
+      # @return [Array<Hash{String => String}>] Advanced info list.
       attr_accessor :advanced_info
 
       # @return [Status] Refresh index status.
@@ -34,7 +34,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RefreshIndex',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'RefreshIndex',
             model_properties: {
               content_source_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ContentSourceId',
                 type: {
@@ -50,7 +48,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               is_update_success: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'IsUpdateSuccess',
                 type: {
@@ -58,24 +55,27 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               advanced_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'AdvancedInfo',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
-                      serialized_name: 'RefreshIndexAdvancedInfoItemElementType',
+                      serialized_name: 'HashElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'RefreshIndexAdvancedInfoItem'
+                        name: 'Dictionary',
+                        value: {
+                            required: false,
+                            serialized_name: 'StringElementType',
+                            type: {
+                              name: 'String'
+                            }
+                        }
                       }
                   }
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Status',
                 type: {
@@ -84,7 +84,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'TrackingId',
                 type: {
