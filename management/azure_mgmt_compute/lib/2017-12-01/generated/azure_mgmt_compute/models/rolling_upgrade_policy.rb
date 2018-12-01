@@ -48,7 +48,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RollingUpgradePolicy',
           type: {
@@ -56,7 +55,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'RollingUpgradePolicy',
             model_properties: {
               max_batch_instance_percent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxBatchInstancePercent',
                 constraints: {
@@ -68,7 +66,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               max_unhealthy_instance_percent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxUnhealthyInstancePercent',
                 constraints: {
@@ -80,7 +77,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               max_unhealthy_upgraded_instance_percent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxUnhealthyUpgradedInstancePercent',
                 constraints: {
@@ -92,7 +88,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               pause_time_between_batches: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pauseTimeBetweenBatches',
                 type: {

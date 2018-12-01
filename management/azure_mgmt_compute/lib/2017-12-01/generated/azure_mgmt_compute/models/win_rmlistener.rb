@@ -34,7 +34,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WinRMListener',
           type: {
@@ -42,7 +41,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'WinRMListener',
             model_properties: {
               protocol: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               certificate_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateUrl',
                 type: {
