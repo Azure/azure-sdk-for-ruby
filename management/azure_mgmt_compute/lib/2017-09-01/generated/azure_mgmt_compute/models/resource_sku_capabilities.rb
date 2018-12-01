@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2017_09_01
   module Models
     #
-    # Describes The SKU capabilites object.
+    # Describes The SKU capabilities object.
     #
     class ResourceSkuCapabilities
 

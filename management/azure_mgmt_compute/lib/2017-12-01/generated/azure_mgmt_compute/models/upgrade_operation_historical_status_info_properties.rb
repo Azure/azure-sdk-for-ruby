@@ -16,7 +16,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       # status of the upgrade operation.
       attr_accessor :running_status
 
-      # @return [RollingUpgradeProgressInfo] Counts of the VM's in each state.
+      # @return [RollingUpgradeProgressInfo] Counts of the VMs in each state.
       attr_accessor :progress
 
       # @return [ApiError] Error Details for this upgrade if there are any.
