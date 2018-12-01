@@ -47,7 +47,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Error',
           type: {
@@ -55,7 +54,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'Error',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 default_value: 'None',
@@ -64,7 +62,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               sub_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subCode',
@@ -73,7 +70,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {
@@ -81,7 +77,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               more_details: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'moreDetails',
@@ -90,7 +85,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               parameter: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'parameter',
@@ -99,7 +93,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',

@@ -22,7 +22,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecognizedEntitiesModule',
           type: {
@@ -30,14 +29,12 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'RecognizedEntitiesModule',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecognizedEntityGroupElementType',
                       type: {

@@ -34,7 +34,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Rating',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'Rating',
             model_properties: {
               text: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'text',
@@ -51,7 +49,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -59,7 +56,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               rating_value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ratingValue',
                 type: {
@@ -67,7 +63,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               best_rating: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bestRating',

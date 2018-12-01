@@ -97,7 +97,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageInsights',
           type: {
@@ -105,7 +104,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'ImageInsights',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -113,7 +111,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -122,7 +119,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               read_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'readLink',
@@ -131,7 +127,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -140,7 +135,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               image_insights_token: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'imageInsightsToken',
@@ -149,7 +143,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               best_representative_query: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bestRepresentativeQuery',
@@ -159,7 +152,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               image_caption: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'imageCaption',
@@ -169,7 +161,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               related_collections: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'relatedCollections',
@@ -179,7 +170,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               pages_including: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'pagesIncluding',
@@ -189,7 +179,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               shopping_sources: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'shoppingSources',
@@ -199,7 +188,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               related_searches: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'relatedSearches',
@@ -209,7 +197,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               recipes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'recipes',
@@ -219,7 +206,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               visually_similar_images: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'visuallySimilarImages',
@@ -229,7 +215,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               visually_similar_products: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'visuallySimilarProducts',
@@ -239,7 +224,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               recognized_entity_groups: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'recognizedEntityGroups',
@@ -249,7 +233,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               image_tags: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'imageTags',

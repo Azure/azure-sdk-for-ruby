@@ -30,7 +30,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrendingImages/Category',
           type: {
@@ -38,7 +37,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'TrendingImagesCategory',
             model_properties: {
               title: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'title',
                 type: {
@@ -46,13 +44,11 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               tiles: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'tiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrendingImagesTileElementType',
                       type: {

@@ -32,7 +32,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Properties/Item',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'PropertiesItem',
             model_properties: {
               text: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'text',

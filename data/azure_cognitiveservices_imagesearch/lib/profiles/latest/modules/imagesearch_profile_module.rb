@@ -8,6 +8,7 @@ module Azure::ImageSearch::Profiles::Latest
   ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
   module Models
+    Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
     RelatedSearchesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
     InsightsTag = Azure::CognitiveServices::ImageSearch::V1_0::Models::InsightsTag
     RecognizedEntitiesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
@@ -22,7 +23,6 @@ module Azure::ImageSearch::Profiles::Latest
     ImagesImageMetadata = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesImageMetadata
     ImageInsightsImageCaption = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightsImageCaption
     ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
-    Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
     TrendingImagesTile = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesTile
     ImagesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
     Thing = Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
@@ -113,6 +113,9 @@ module Azure::ImageSearch::Profiles::Latest
   end
 
   class ModelClasses
+    def error
+      Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+    end
     def related_searches_module
       Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
     end
@@ -154,9 +157,6 @@ module Azure::ImageSearch::Profiles::Latest
     end
     def response_base
       Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
-    end
-    def error
-      Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
     end
     def trending_images_tile
       Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesTile

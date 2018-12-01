@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PivotSuggestions',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'PivotSuggestions',
             model_properties: {
               pivot: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'pivot',
                 type: {
@@ -41,13 +39,11 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               suggestions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'suggestions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryElementType',
                       type: {
