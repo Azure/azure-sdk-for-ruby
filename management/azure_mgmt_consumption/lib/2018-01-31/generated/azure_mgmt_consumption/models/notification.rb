@@ -43,7 +43,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Notification',
           type: {
@@ -51,7 +50,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
             class_name: 'Notification',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               operator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'operator',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               threshold: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'threshold',
                 type: {
@@ -75,7 +71,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               contact_emails: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'contactEmails',
                 constraints: {
@@ -85,7 +80,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -95,13 +89,11 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               contact_roles: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contactRoles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -111,7 +103,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               contact_groups: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contactGroups',
                 constraints: {
@@ -121,7 +112,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

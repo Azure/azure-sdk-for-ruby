@@ -18,6 +18,7 @@ module Azure::Profiles::V2017_03_09
       VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSetVMs
 
       module Models
+        NetworkProfile = Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
         DiagnosticsProfile = Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile
         VirtualMachineAgentInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineAgentInstanceView
         BootDiagnosticsInstanceView = Azure::Compute::Mgmt::V2016_03_30::Models::BootDiagnosticsInstanceView
@@ -118,7 +119,6 @@ module Azure::Profiles::V2017_03_09
         SshConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::SshConfiguration
         VaultCertificate = Azure::Compute::Mgmt::V2016_03_30::Models::VaultCertificate
         OSProfile = Azure::Compute::Mgmt::V2016_03_30::Models::OSProfile
-        NetworkProfile = Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
       end
 
       class ComputeManagementClass
@@ -159,6 +159,9 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def network_profile
+            Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
+          end
           def diagnostics_profile
             Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile
           end
@@ -458,9 +461,6 @@ module Azure::Profiles::V2017_03_09
           end
           def osprofile
             Azure::Compute::Mgmt::V2016_03_30::Models::OSProfile
-          end
-          def network_profile
-            Azure::Compute::Mgmt::V2016_03_30::Models::NetworkProfile
           end
         end
       end

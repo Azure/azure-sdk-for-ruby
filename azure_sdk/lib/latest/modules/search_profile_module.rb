@@ -7,12 +7,13 @@ require 'azure_mgmt_search'
 module Azure::Profiles::Latest
   module Search
     module Mgmt
+      Operations = Azure::Search::Mgmt::V2015_08_19::Operations
       Services = Azure::Search::Mgmt::V2015_08_19::Services
       AdminKeys = Azure::Search::Mgmt::V2015_08_19::AdminKeys
       QueryKeys = Azure::Search::Mgmt::V2015_08_19::QueryKeys
-      Operations = Azure::Search::Mgmt::V2015_08_19::Operations
 
       module Models
+        CheckNameAvailabilityInput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
         CheckNameAvailabilityOutput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityOutput
         SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
         Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
@@ -30,11 +31,10 @@ module Azure::Profiles::Latest
         AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
         SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
         Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
-        CheckNameAvailabilityInput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
       end
 
       class SearchManagementClass
-        attr_reader :services, :admin_keys, :query_keys, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :services, :admin_keys, :query_keys, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -44,10 +44,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @services = @client_0.services
           @admin_keys = @client_0.admin_keys
           @query_keys = @client_0.query_keys
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -66,6 +66,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_name_availability_input
+            Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
+          end
           def check_name_availability_output
             Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityOutput
           end
@@ -116,9 +119,6 @@ module Azure::Profiles::Latest
           end
           def identity
             Azure::Search::Mgmt::V2015_08_19::Models::Identity
-          end
-          def check_name_availability_input
-            Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
           end
         end
       end
