@@ -131,6 +131,195 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       super(request_url, method, path, options)
     end
 
+    #
+    # Get the list of cached images.
+    #
+    # Get the list of cached images on specific OS type for a subscription in a
+    # region.
+    #
+    # @param location [String] The identifier for the physical azure location.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CachedImagesListResult] operation results.
+    #
+    def get_cached_images(location, custom_headers = nil)
+      response = get_cached_images_async(location, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the list of cached images.
+    #
+    # Get the list of cached images on specific OS type for a subscription in a
+    # region.
+    #
+    # @param location [String] The identifier for the physical azure location.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_cached_images_with_http_info(location, custom_headers = nil)
+      get_cached_images_async(location, custom_headers).value!
+    end
+
+    #
+    # Get the list of cached images.
+    #
+    # Get the list of cached images on specific OS type for a subscription in a
+    # region.
+    #
+    # @param location [String] The identifier for the physical azure location.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_cached_images_async(location, custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/cachedImages'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id,'location' => location},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::CachedImagesListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get the list of capabilities of the location.
+    #
+    # Get the list of CPU/memory/GPU capabilities of a region.
+    #
+    # @param location [String] The identifier for the physical azure location.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CapabilitiesListResult] operation results.
+    #
+    def get_capabilities(location, custom_headers = nil)
+      response = get_capabilities_async(location, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the list of capabilities of the location.
+    #
+    # Get the list of CPU/memory/GPU capabilities of a region.
+    #
+    # @param location [String] The identifier for the physical azure location.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_capabilities_with_http_info(location, custom_headers = nil)
+      get_capabilities_async(location, custom_headers).value!
+    end
+
+    #
+    # Get the list of capabilities of the location.
+    #
+    # Get the list of CPU/memory/GPU capabilities of a region.
+    #
+    # @param location [String] The identifier for the physical azure location.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_capabilities_async(location, custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/capabilities'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id,'location' => location},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::CapabilitiesListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
 
     private
     #
