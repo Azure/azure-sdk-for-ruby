@@ -31,7 +31,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateFirewallRuleWithAccountParameters',
           type: {
@@ -39,7 +38,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'CreateFirewallRuleWithAccountParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               start_ip_address: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.startIpAddress',
                 type: {
@@ -55,7 +52,6 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               end_ip_address: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.endIpAddress',
                 type: {

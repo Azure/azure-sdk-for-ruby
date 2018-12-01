@@ -75,7 +75,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateDataLakeStoreAccountParameters',
           type: {
@@ -83,7 +82,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'CreateDataLakeStoreAccountParameters',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -91,13 +89,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -107,7 +103,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               identity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {
@@ -116,7 +111,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               default_group: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultGroup',
                 type: {
@@ -124,7 +118,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               encryption_config: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionConfig',
                 type: {
@@ -133,7 +126,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               encryption_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionState',
                 type: {
@@ -142,13 +134,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               firewall_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateFirewallRuleWithAccountParametersElementType',
                       type: {
@@ -159,13 +149,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               virtual_network_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualNetworkRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateVirtualNetworkRuleWithAccountParametersElementType',
                       type: {
@@ -176,7 +164,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               firewall_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallState',
                 type: {
@@ -185,7 +172,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               firewall_allow_azure_ips: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallAllowAzureIps',
                 type: {
@@ -194,13 +180,11 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               trusted_id_providers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.trustedIdProviders',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateTrustedIdProviderWithAccountParametersElementType',
                       type: {
@@ -211,7 +195,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               trusted_id_provider_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.trustedIdProviderState',
                 type: {
@@ -220,7 +203,6 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               new_tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.newTier',
                 type: {

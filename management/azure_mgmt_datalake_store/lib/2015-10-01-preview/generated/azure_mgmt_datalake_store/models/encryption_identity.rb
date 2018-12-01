@@ -31,7 +31,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionIdentity',
           type: {
@@ -39,7 +38,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
             class_name: 'EncryptionIdentity',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -48,7 +46,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
@@ -57,7 +54,6 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
