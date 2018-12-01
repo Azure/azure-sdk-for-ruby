@@ -143,8 +143,8 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [CachedImagesListResult] operation results.
     #
-    def get_cached_images(location, custom_headers = nil)
-      response = get_cached_images_async(location, custom_headers).value!
+    def list_cached_images(location, custom_headers = nil)
+      response = list_cached_images_async(location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -160,8 +160,8 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_cached_images_with_http_info(location, custom_headers = nil)
-      get_cached_images_async(location, custom_headers).value!
+    def list_cached_images_with_http_info(location, custom_headers = nil)
+      list_cached_images_async(location, custom_headers).value!
     end
 
     #
@@ -176,7 +176,7 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_cached_images_async(location, custom_headers = nil)
+    def list_cached_images_async(location, custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -238,8 +238,8 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [CapabilitiesListResult] operation results.
     #
-    def get_capabilities(location, custom_headers = nil)
-      response = get_capabilities_async(location, custom_headers).value!
+    def list_capabilities(location, custom_headers = nil)
+      response = list_capabilities_async(location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -254,8 +254,8 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_capabilities_with_http_info(location, custom_headers = nil)
-      get_capabilities_async(location, custom_headers).value!
+    def list_capabilities_with_http_info(location, custom_headers = nil)
+      list_capabilities_async(location, custom_headers).value!
     end
 
     #
@@ -269,7 +269,7 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_capabilities_async(location, custom_headers = nil)
+    def list_capabilities_async(location, custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?

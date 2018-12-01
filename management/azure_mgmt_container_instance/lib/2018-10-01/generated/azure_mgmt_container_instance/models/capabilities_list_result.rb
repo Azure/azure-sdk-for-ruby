@@ -12,10 +12,10 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [Array<Capabilities>] The list of cached images.
+      # @return [Array<Capabilities>] The list of capabilities.
       attr_accessor :value
 
-      # @return [String] The URI to fetch the next page of cached images.
+      # @return [String] The URI to fetch the next page of capabilities.
       attr_accessor :next_link
 
 
