@@ -27,7 +27,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryPolicies',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'RegistryPolicies',
             model_properties: {
               quarantine_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'quarantinePolicy',
                 type: {
@@ -44,7 +42,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               trust_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'trustPolicy',
                 type: {

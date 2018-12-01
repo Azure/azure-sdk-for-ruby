@@ -38,7 +38,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportImageParameters',
           type: {
@@ -46,7 +45,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'ImportImageParameters',
             model_properties: {
               source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {
@@ -55,13 +53,11 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               target_tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetTags',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -71,13 +67,11 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               untagged_target_repositories: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'untaggedTargetRepositories',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,7 +81,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 default_value: 'NoForce',
