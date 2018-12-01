@@ -45,7 +45,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerRegistryEventData',
           type: {
@@ -53,7 +52,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'ContainerRegistryEventData',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -61,7 +59,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timestamp',
                 type: {
@@ -69,7 +66,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               action: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 type: {
@@ -77,7 +73,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -86,7 +81,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               request: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'request',
                 type: {
@@ -95,7 +89,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               actor: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actor',
                 type: {
@@ -104,7 +97,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 type: {
