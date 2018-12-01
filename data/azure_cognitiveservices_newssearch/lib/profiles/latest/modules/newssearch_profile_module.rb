@@ -9,7 +9,6 @@ module Azure::NewsSearch::Profiles::Latest
 
   module Models
     ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-    Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
     Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
     NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
     SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
@@ -32,6 +31,7 @@ module Azure::NewsSearch::Profiles::Latest
     Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
     SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
     TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
+    Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
   end
 
   #
@@ -81,9 +81,6 @@ module Azure::NewsSearch::Profiles::Latest
   class ModelClasses
     def response_base
       Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
-    end
-    def error
-      Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
     end
     def query
       Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
@@ -150,6 +147,9 @@ module Azure::NewsSearch::Profiles::Latest
     end
     def text_format
       Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
+    end
+    def error
+      Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
     end
   end
 end
