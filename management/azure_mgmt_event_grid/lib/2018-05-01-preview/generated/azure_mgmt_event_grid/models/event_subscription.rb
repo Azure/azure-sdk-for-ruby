@@ -54,7 +54,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscription',
           type: {
@@ -62,7 +61,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'EventSubscription',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -71,7 +69,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,7 +77,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -89,7 +85,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               topic: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.topic',
@@ -98,7 +93,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -107,7 +101,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.destination',
                 type: {
@@ -118,7 +111,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               filter: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filter',
                 type: {
@@ -127,13 +119,11 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               labels: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labels',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -143,7 +133,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               event_delivery_schema: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventDeliverySchema',
                 default_value: 'InputEventSchema',
@@ -152,7 +141,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               retry_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retryPolicy',
                 type: {
@@ -161,7 +149,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               dead_letter_destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deadLetterDestination',
                 type: {

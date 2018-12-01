@@ -8,7 +8,7 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
     #
     # This is used to express the source of an input schema mapping for a
     # single target field in the Event Grid Event schema. This is currently
-    # used in the mappings for the 'subject','eventtype' and 'dataversion'
+    # used in the mappings for the 'subject','eventType' and 'dataVersion'
     # properties. This represents a field in the input event schema along with
     # a default value to be used, and at least one of these two properties
     # should be provided.
@@ -33,7 +33,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JsonFieldWithDefault',
           type: {
@@ -41,7 +40,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'JsonFieldWithDefault',
             model_properties: {
               source_field: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceField',
                 type: {
@@ -49,7 +47,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               default_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultValue',
                 type: {

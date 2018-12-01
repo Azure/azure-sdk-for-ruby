@@ -29,7 +29,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StringContains',
           type: {
@@ -37,7 +36,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
             class_name: 'StringContainsAdvancedFilter',
             model_properties: {
               key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
                 type: {
@@ -45,7 +43,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               operatorType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'operatorType',
                 type: {
@@ -53,13 +50,11 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               values: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

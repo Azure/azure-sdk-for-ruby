@@ -14,6 +14,12 @@ module Azure::EventGrid::Profiles::Latest
     TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
 
     module Models
+      InputSchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
+      EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
+      EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
+      TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
+      ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
+      TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
       TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
       InputSchemaMapping = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchemaMapping
       TopicsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicsListResult
@@ -66,12 +72,6 @@ module Azure::EventGrid::Profiles::Latest
       EventType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventType
       TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeInfo
       DomainProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainProvisioningState
-      InputSchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
-      EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
-      EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
-      TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
-      ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
-      TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
     end
 
     #
@@ -124,6 +124,24 @@ module Azure::EventGrid::Profiles::Latest
     end
 
     class ModelClasses
+      def input_schema
+        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
+      end
+      def event_subscription_provisioning_state
+        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
+      end
+      def event_delivery_schema
+        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
+      end
+      def topic_provisioning_state
+        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
+      end
+      def resource_region_type
+        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
+      end
+      def topic_type_provisioning_state
+        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
+      end
       def topic_shared_access_keys
         Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
       end
@@ -279,24 +297,6 @@ module Azure::EventGrid::Profiles::Latest
       end
       def domain_provisioning_state
         Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainProvisioningState
-      end
-      def input_schema
-        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
-      end
-      def event_subscription_provisioning_state
-        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
-      end
-      def event_delivery_schema
-        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
-      end
-      def topic_provisioning_state
-        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
-      end
-      def resource_region_type
-        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
-      end
-      def topic_type_provisioning_state
-        Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
       end
     end
   end
