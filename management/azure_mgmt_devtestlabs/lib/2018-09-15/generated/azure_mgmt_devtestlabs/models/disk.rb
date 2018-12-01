@@ -16,7 +16,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
       # Premium). Possible values include: 'Standard', 'Premium'
       attr_accessor :disk_type
 
-      # @return [Integer] The size of the disk in GibiBytes.
+      # @return [Integer] The size of the disk in Gibibytes.
       attr_accessor :disk_size_gi_b
 
       # @return [String] The resource ID of the VM to which this disk is

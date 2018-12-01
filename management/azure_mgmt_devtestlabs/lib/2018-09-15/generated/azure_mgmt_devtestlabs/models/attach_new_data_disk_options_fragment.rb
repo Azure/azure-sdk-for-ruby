@@ -12,7 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
 
       include MsRestAzure
 
-      # @return [Integer] Size of the disk to be attached in GibiBytes.
+      # @return [Integer] Size of the disk to be attached in Gibibytes.
       attr_accessor :disk_size_gi_b
 
       # @return [String] The name of the disk to be attached.
