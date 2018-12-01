@@ -6,7 +6,7 @@
 module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
-    # The parameters used to check the availabity of the vault name.
+    # The parameters used to check the availability of the vault name.
     #
     class VaultCheckNameAvailabilityParameters
 
@@ -26,7 +26,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultCheckNameAvailabilityParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'VaultCheckNameAvailabilityParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

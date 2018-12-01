@@ -31,7 +31,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Permissions',
           type: {
@@ -39,13 +38,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'Permissions',
             model_properties: {
               keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keys',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyPermissionsElementType',
                       type: {
@@ -55,13 +52,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               secrets: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secrets',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SecretPermissionsElementType',
                       type: {
@@ -71,13 +66,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               certificates: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificates',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CertificatePermissionsElementType',
                       type: {
@@ -87,13 +80,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               storage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storage',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StoragePermissionsElementType',
                       type: {

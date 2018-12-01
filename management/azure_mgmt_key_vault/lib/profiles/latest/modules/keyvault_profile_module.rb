@@ -10,30 +10,30 @@ module Azure::KeyVault::Profiles::Latest
     Operations = Azure::KeyVault::Mgmt::V2018_02_14::Operations
 
     module Models
-      VaultAccessPolicyParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyParameters
-      Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
       DeletedVault = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVault
-      IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
       VaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultListResult
-      NetworkRuleSet = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
+      Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
       DeletedVaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
-      VaultPatchProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchProperties
-      Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
-      DeletedVaultProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultProperties
-      ResourceListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
-      VaultPatchParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchParameters
-      VaultCheckNameAvailabilityParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCheckNameAvailabilityParameters
-      AccessPolicyEntry = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyEntry
-      CheckNameAvailabilityResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::CheckNameAvailabilityResult
       VaultProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultProperties
-      OperationDisplay = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
-      VaultCreateOrUpdateParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCreateOrUpdateParameters
-      LogSpecification = Azure::KeyVault::Mgmt::V2018_02_14::Models::LogSpecification
+      Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
+      IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
+      ResourceListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
       VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
-      ServiceSpecification = Azure::KeyVault::Mgmt::V2018_02_14::Models::ServiceSpecification
+      VaultCheckNameAvailabilityParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCheckNameAvailabilityParameters
+      NetworkRuleSet = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
+      VaultAccessPolicyParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyParameters
+      CheckNameAvailabilityResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::CheckNameAvailabilityResult
       Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
-      Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
+      OperationDisplay = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
+      VaultPatchProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchProperties
+      LogSpecification = Azure::KeyVault::Mgmt::V2018_02_14::Models::LogSpecification
+      VaultPatchParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchParameters
+      ServiceSpecification = Azure::KeyVault::Mgmt::V2018_02_14::Models::ServiceSpecification
+      AccessPolicyEntry = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyEntry
+      DeletedVaultProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultProperties
       VaultAccessPolicyProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyProperties
+      Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
+      VaultCreateOrUpdateParameters = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCreateOrUpdateParameters
       OperationListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
       Vault = Azure::KeyVault::Mgmt::V2018_02_14::Models::Vault
       SkuName = Azure::KeyVault::Mgmt::V2018_02_14::Models::SkuName
@@ -42,10 +42,10 @@ module Azure::KeyVault::Profiles::Latest
       CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
       StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
       CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
+      AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+      Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
       NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
       NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-      Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
-      AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
     end
 
     #
@@ -94,77 +94,77 @@ module Azure::KeyVault::Profiles::Latest
     end
 
     class ModelClasses
-      def vault_access_policy_parameters
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyParameters
-      end
-      def permissions
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
-      end
       def deleted_vault
         Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVault
-      end
-      def iprule
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
       end
       def vault_list_result
         Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultListResult
       end
-      def network_rule_set
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
+      def permissions
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
       end
       def deleted_vault_list_result
         Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
       end
-      def vault_patch_properties
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchProperties
+      def vault_properties
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultProperties
       end
       def resource
         Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
       end
-      def deleted_vault_properties
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultProperties
+      def iprule
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
       end
       def resource_list_result
         Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
       end
-      def vault_patch_parameters
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchParameters
+      def virtual_network_rule
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
       end
       def vault_check_name_availability_parameters
         Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCheckNameAvailabilityParameters
       end
-      def access_policy_entry
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyEntry
+      def network_rule_set
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
+      end
+      def vault_access_policy_parameters
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyParameters
       end
       def check_name_availability_result
         Azure::KeyVault::Mgmt::V2018_02_14::Models::CheckNameAvailabilityResult
       end
-      def vault_properties
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultProperties
+      def sku
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
       end
       def operation_display
         Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
       end
-      def vault_create_or_update_parameters
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCreateOrUpdateParameters
+      def vault_patch_properties
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchProperties
       end
       def log_specification
         Azure::KeyVault::Mgmt::V2018_02_14::Models::LogSpecification
       end
-      def virtual_network_rule
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
+      def vault_patch_parameters
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultPatchParameters
       end
       def service_specification
         Azure::KeyVault::Mgmt::V2018_02_14::Models::ServiceSpecification
       end
-      def sku
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+      def access_policy_entry
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyEntry
+      end
+      def deleted_vault_properties
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultProperties
+      end
+      def vault_access_policy_properties
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyProperties
       end
       def operation
         Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
       end
-      def vault_access_policy_properties
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultAccessPolicyProperties
+      def vault_create_or_update_parameters
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultCreateOrUpdateParameters
       end
       def operation_list_result
         Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
@@ -190,17 +190,17 @@ module Azure::KeyVault::Profiles::Latest
       def create_mode
         Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
       end
+      def access_policy_update_kind
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+      end
+      def reason
+        Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+      end
       def network_rule_bypass_options
         Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
       end
       def network_rule_action
         Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-      end
-      def reason
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
-      end
-      def access_policy_update_kind
-        Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
       end
     end
   end
