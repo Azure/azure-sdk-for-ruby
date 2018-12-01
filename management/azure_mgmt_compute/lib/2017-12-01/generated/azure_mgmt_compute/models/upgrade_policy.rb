@@ -41,7 +41,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradePolicy',
           type: {
@@ -49,7 +48,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'UpgradePolicy',
             model_properties: {
               mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {
@@ -58,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               rolling_upgrade_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rollingUpgradePolicy',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               automatic_osupgrade: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'automaticOSUpgrade',
                 type: {
@@ -75,7 +71,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               auto_osupgrade_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'autoOSUpgradePolicy',
                 type: {

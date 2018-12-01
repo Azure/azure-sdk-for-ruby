@@ -30,7 +30,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RollbackStatusInfo',
           type: {
@@ -38,7 +37,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'RollbackStatusInfo',
             model_properties: {
               successfully_rolledback_instance_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'successfullyRolledbackInstanceCount',
@@ -47,7 +45,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               failed_rolledback_instance_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'failedRolledbackInstanceCount',
@@ -56,7 +53,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               rollback_error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'rollbackError',

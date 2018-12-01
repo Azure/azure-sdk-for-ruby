@@ -26,7 +26,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultKeyReference',
           type: {
@@ -34,7 +33,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'KeyVaultKeyReference',
             model_properties: {
               key_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyUrl',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               source_vault: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceVault',
                 type: {
