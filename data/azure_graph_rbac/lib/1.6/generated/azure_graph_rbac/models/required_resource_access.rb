@@ -11,7 +11,7 @@ module Azure::GraphRbac::V1_6
     # OAuth 2.0 permission scopes may be requested by client applications
     # (through the requiredResourceAccess collection) when calling a resource
     # application. The requiredResourceAccess property of the Application
-    # entity is a collection of ReqiredResourceAccess.
+    # entity is a collection of RequiredResourceAccess.
     #
     class RequiredResourceAccess
 
