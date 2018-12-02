@@ -29,7 +29,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutoScaleSettings',
           type: {
@@ -37,7 +36,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'AutoScaleSettings',
             model_properties: {
               formula: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'formula',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               evaluation_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'evaluationInterval',
                 type: {

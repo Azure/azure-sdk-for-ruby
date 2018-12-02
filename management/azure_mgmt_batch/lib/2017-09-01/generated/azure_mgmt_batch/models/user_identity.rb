@@ -31,7 +31,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserIdentity',
           type: {
@@ -39,7 +38,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'UserIdentity',
             model_properties: {
               user_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userName',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               auto_user: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'autoUser',
                 type: {

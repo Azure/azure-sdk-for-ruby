@@ -27,7 +27,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OSDisk',
           type: {
@@ -35,7 +34,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'OSDisk',
             model_properties: {
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {

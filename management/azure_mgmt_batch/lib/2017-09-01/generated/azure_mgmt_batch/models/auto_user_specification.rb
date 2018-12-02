@@ -35,7 +35,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutoUserSpecification',
           type: {
@@ -43,7 +42,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'AutoUserSpecification',
             model_properties: {
               scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scope',
                 type: {
@@ -52,7 +50,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               elevation_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'elevationLevel',
                 type: {
