@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Information regarding availbility of a resource name.
+    # Information regarding availability of a resource name.
     #
     class ResourceNameAvailability
 

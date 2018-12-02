@@ -28,7 +28,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # unit; otherwise, <code>false</code>.
       attr_accessor :has_conflict_on_scale_unit
 
-      # @return [Boolean] <code>true</code> if htere is a conflict across
+      # @return [Boolean] <code>true</code> if there is a conflict across
       # subscriptions; otherwise, <code>false</code>.
       attr_accessor :has_conflict_across_subscription
 

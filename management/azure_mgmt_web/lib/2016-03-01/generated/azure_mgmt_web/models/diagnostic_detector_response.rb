@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Class representing Reponse from Diagnostic Detectors
+    # Class representing Response from Diagnostic Detectors
     #
     class DiagnosticDetectorResponse < ProxyOnlyResource
 

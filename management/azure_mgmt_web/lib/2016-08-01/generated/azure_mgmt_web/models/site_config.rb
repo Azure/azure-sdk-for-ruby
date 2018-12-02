@@ -118,7 +118,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # 'WeightedTotalTraffic', 'RequestHash'
       attr_accessor :load_balancing
 
-      # @return [Experiments] This is work around for polymophic types.
+      # @return [Experiments] This is work around for polymorphic types.
       attr_accessor :experiments
 
       # @return [SiteLimits] Site limits.

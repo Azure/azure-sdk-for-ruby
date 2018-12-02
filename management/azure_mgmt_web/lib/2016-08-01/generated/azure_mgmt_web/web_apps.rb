@@ -13045,9 +13045,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -13063,9 +13063,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -13080,9 +13080,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -26835,9 +26835,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -26855,9 +26855,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -26874,9 +26874,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -37792,9 +37792,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -37809,9 +37809,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -37825,9 +37825,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -39787,9 +39787,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -39804,9 +39804,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -39820,9 +39820,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -41569,9 +41569,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -42169,9 +42169,9 @@ module Azure::Web::Mgmt::V2016_08_01
     end
 
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
-    # Get list of siteextensions for a web site, or a deployment slot.
+    # Get list of site extensions for a web site, or a deployment slot.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.

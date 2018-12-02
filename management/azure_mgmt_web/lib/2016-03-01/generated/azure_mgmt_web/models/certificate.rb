@@ -36,7 +36,7 @@ module Azure::Web::Mgmt::V2016_03_01
       # @return [DateTime] Certificate issue Date.
       attr_accessor :issue_date
 
-      # @return [DateTime] Certificate expriration date.
+      # @return [DateTime] Certificate expiration date.
       attr_accessor :expiration_date
 
       # @return [String] Certificate password.
