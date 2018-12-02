@@ -46,8 +46,8 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
     #
     # @return [BaselineResponse] operation results.
     #
-    def get(resource_uri, metric_name, timespan:nil, interval:nil, aggregation:nil, sensitivities:nil, result_type:nil, custom_headers:nil)
-      response = get_async(resource_uri, metric_name, timespan:timespan, interval:interval, aggregation:aggregation, sensitivities:sensitivities, result_type:result_type, custom_headers:custom_headers).value!
+    def get(resource_uri, metric_name, timespan = nil, interval = nil, aggregation = nil, sensitivities = nil, result_type = nil, custom_headers = nil)
+      response = get_async(resource_uri, metric_name, timespan, interval, aggregation, sensitivities, result_type, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -76,8 +76,8 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_uri, metric_name, timespan:nil, interval:nil, aggregation:nil, sensitivities:nil, result_type:nil, custom_headers:nil)
-      get_async(resource_uri, metric_name, timespan:timespan, interval:interval, aggregation:aggregation, sensitivities:sensitivities, result_type:result_type, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_uri, metric_name, timespan = nil, interval = nil, aggregation = nil, sensitivities = nil, result_type = nil, custom_headers = nil)
+      get_async(resource_uri, metric_name, timespan, interval, aggregation, sensitivities, result_type, custom_headers).value!
     end
 
     #
@@ -105,14 +105,13 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_uri, metric_name, timespan:nil, interval:nil, aggregation:nil, sensitivities:nil, result_type:nil, custom_headers:nil)
+    def get_async(resource_uri, metric_name, timespan = nil, interval = nil, aggregation = nil, sensitivities = nil, result_type = nil, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       fail ArgumentError, 'metric_name is nil' if metric_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -173,8 +172,8 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
     #
     # @return [CalculateBaselineResponse] operation results.
     #
-    def calculate_baseline(resource_uri, time_series_information, custom_headers:nil)
-      response = calculate_baseline_async(resource_uri, time_series_information, custom_headers:custom_headers).value!
+    def calculate_baseline(resource_uri, time_series_information, custom_headers = nil)
+      response = calculate_baseline_async(resource_uri, time_series_information, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -193,8 +192,8 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def calculate_baseline_with_http_info(resource_uri, time_series_information, custom_headers:nil)
-      calculate_baseline_async(resource_uri, time_series_information, custom_headers:custom_headers).value!
+    def calculate_baseline_with_http_info(resource_uri, time_series_information, custom_headers = nil)
+      calculate_baseline_async(resource_uri, time_series_information, custom_headers).value!
     end
 
     #
@@ -212,18 +211,19 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def calculate_baseline_async(resource_uri, time_series_information, custom_headers:nil)
+    def calculate_baseline_async(resource_uri, time_series_information, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'time_series_information is nil' if time_series_information.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Monitor::Mgmt::V2017_11_01_preview::Models::TimeSeriesInformation.mapper()

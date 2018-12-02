@@ -32,8 +32,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Incident] operation results.
     #
-    def get(resource_group_name, rule_name, incident_name, custom_headers:nil)
-      response = get_async(resource_group_name, rule_name, incident_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, rule_name, incident_name, custom_headers = nil)
+      response = get_async(resource_group_name, rule_name, incident_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -48,8 +48,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, rule_name, incident_name, custom_headers:nil)
-      get_async(resource_group_name, rule_name, incident_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, rule_name, incident_name, custom_headers = nil)
+      get_async(resource_group_name, rule_name, incident_name, custom_headers).value!
     end
 
     #
@@ -63,7 +63,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, rule_name, incident_name, custom_headers:nil)
+    def get_async(resource_group_name, rule_name, incident_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
       fail ArgumentError, 'incident_name is nil' if incident_name.nil?
@@ -72,7 +72,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -127,8 +126,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [IncidentListResult] operation results.
     #
-    def list_by_alert_rule(resource_group_name, rule_name, custom_headers:nil)
-      response = list_by_alert_rule_async(resource_group_name, rule_name, custom_headers:custom_headers).value!
+    def list_by_alert_rule(resource_group_name, rule_name, custom_headers = nil)
+      response = list_by_alert_rule_async(resource_group_name, rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -142,8 +141,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_alert_rule_with_http_info(resource_group_name, rule_name, custom_headers:nil)
-      list_by_alert_rule_async(resource_group_name, rule_name, custom_headers:custom_headers).value!
+    def list_by_alert_rule_with_http_info(resource_group_name, rule_name, custom_headers = nil)
+      list_by_alert_rule_async(resource_group_name, rule_name, custom_headers).value!
     end
 
     #
@@ -156,7 +155,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_alert_rule_async(resource_group_name, rule_name, custom_headers:nil)
+    def list_by_alert_rule_async(resource_group_name, rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -164,7 +163,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

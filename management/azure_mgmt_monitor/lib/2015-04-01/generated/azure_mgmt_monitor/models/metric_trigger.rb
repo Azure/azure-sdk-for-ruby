@@ -39,7 +39,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       # @return [TimeAggregationType] time aggregation type. How the data that
       # is collected should be combined over time. The default value is
       # Average. Possible values include: 'Average', 'Minimum', 'Maximum',
-      # 'Total', 'Count'
+      # 'Total', 'Count', 'Last'
       attr_accessor :time_aggregation
 
       # @return [ComparisonOperationType] the operator that is used to compare
@@ -59,7 +59,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricTrigger',
           type: {
@@ -67,7 +66,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'MetricTrigger',
             model_properties: {
               metric_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'metricName',
                 type: {
@@ -75,7 +73,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               metric_resource_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'metricResourceUri',
                 type: {
@@ -83,7 +80,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               time_grain: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeGrain',
                 type: {
@@ -91,7 +87,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               statistic: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'statistic',
                 type: {
@@ -100,7 +95,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               time_window: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeWindow',
                 type: {
@@ -108,7 +102,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               time_aggregation: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeAggregation',
                 type: {
@@ -117,7 +110,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               operator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'operator',
                 type: {
@@ -126,7 +118,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               threshold: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'threshold',
                 type: {

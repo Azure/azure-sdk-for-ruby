@@ -40,7 +40,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricValue',
           type: {
@@ -48,7 +47,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'MetricValue',
             model_properties: {
               time_stamp: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeStamp',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               average: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'average',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               minimum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minimum',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               maximum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maximum',
                 type: {
@@ -80,7 +75,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               total: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'total',
                 type: {
@@ -88,7 +82,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {

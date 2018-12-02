@@ -35,7 +35,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition',
           type: {
@@ -43,7 +42,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'LocationThresholdRuleCondition',
             model_properties: {
               data_source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataSource',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               odatatype: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               window_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'windowSize',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               failed_location_count: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'failedLocationCount',
                 constraints: {

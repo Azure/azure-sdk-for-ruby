@@ -17,7 +17,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       attr_accessor :cost
 
       # @return [String] The timespan for which the data was retrieved. Its
-      # value consists of two datatimes concatenated, separated by '/'.  This
+      # value consists of two datetimes concatenated, separated by '/'.  This
       # may be adjusted in the future and returned back from what was
       # originally requested.
       attr_accessor :timespan
@@ -38,7 +38,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Response',
           type: {
@@ -46,7 +45,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'Response',
             model_properties: {
               cost: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cost',
                 constraints: {
@@ -57,7 +55,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               timespan: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'timespan',
                 type: {
@@ -65,7 +62,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {
@@ -73,13 +69,11 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricElementType',
                       type: {
