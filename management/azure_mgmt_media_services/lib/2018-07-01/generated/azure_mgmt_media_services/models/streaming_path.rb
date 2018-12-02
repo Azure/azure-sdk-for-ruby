@@ -42,16 +42,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'streamingProtocol',
                 type: {
-                  name: 'Enum',
-                  module: 'StreamingPolicyStreamingProtocol'
+                  name: 'String'
                 }
               },
               encryption_scheme: {
                 required: true,
                 serialized_name: 'encryptionScheme',
                 type: {
-                  name: 'Enum',
-                  module: 'EncryptionScheme'
+                  name: 'String'
                 }
               },
               paths: {

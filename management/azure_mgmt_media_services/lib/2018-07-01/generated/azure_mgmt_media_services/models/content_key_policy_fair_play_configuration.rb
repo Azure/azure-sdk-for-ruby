@@ -85,8 +85,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'rentalAndLeaseKeyType',
                 type: {
-                  name: 'Enum',
-                  module: 'ContentKeyPolicyFairPlayRentalAndLeaseKeyType'
+                  name: 'String'
                 }
               },
               rental_duration: {

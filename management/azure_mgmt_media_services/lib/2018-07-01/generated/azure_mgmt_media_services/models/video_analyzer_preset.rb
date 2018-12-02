@@ -58,8 +58,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'insightsToExtract',
                 type: {
-                  name: 'Enum',
-                  module: 'InsightsType'
+                  name: 'String'
                 }
               }
             }

@@ -40,16 +40,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'property',
                 type: {
-                  name: 'Enum',
-                  module: 'TrackPropertyType'
+                  name: 'String'
                 }
               },
               operation: {
                 required: true,
                 serialized_name: 'operation',
                 type: {
-                  name: 'Enum',
-                  module: 'TrackPropertyCompareOperation'
+                  name: 'String'
                 }
               },
               value: {

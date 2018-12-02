@@ -28,7 +28,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [Integer] The time scale of time stamps.
       attr_accessor :timescale
 
-      # @return [Boolean] The indicator of forcing exsiting of end time stamp.
+      # @return [Boolean] The indicator of forcing existing of end time stamp.
       attr_accessor :force_end_timestamp
 
 
@@ -45,42 +45,42 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'PresentationTimeRange',
             model_properties: {
               start_timestamp: {
-                required: true,
+                required: false,
                 serialized_name: 'startTimestamp',
                 type: {
                   name: 'Number'
                 }
               },
               end_timestamp: {
-                required: true,
+                required: false,
                 serialized_name: 'endTimestamp',
                 type: {
                   name: 'Number'
                 }
               },
               presentation_window_duration: {
-                required: true,
+                required: false,
                 serialized_name: 'presentationWindowDuration',
                 type: {
                   name: 'Number'
                 }
               },
               live_backoff_duration: {
-                required: true,
+                required: false,
                 serialized_name: 'liveBackoffDuration',
                 type: {
                   name: 'Number'
                 }
               },
               timescale: {
-                required: true,
+                required: false,
                 serialized_name: 'timescale',
                 type: {
                   name: 'Number'
                 }
               },
               force_end_timestamp: {
-                required: true,
+                required: false,
                 serialized_name: 'forceEndTimestamp',
                 type: {
                   name: 'Boolean'

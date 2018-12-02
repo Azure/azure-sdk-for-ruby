@@ -6,7 +6,7 @@
 module Azure::MediaServices::Mgmt::V2018_03_30_preview
   module Models
     #
-    # Class to specify drm configurations of CommonEncryptionCbcs scheme in
+    # Class to specify DRM configurations of CommonEncryptionCbcs scheme in
     # Streaming Policy
     #
     class CbcsDrmConfiguration

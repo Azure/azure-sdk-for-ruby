@@ -31,19 +31,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the key by which the result collection
+    # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Job>] operation results.
     #
-    def list(resource_group_name, account_name, transform_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, account_name, transform_name, filter, top, skip, custom_headers)
+    def list(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, account_name, transform_name, filter, orderby, custom_headers)
       first_page.get_all_items
     end
 
@@ -57,19 +53,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the key by which the result collection
+    # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, account_name, transform_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
-      list_async(resource_group_name, account_name, transform_name, filter, top, skip, custom_headers).value!
+    def list_with_http_info(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
+      list_async(resource_group_name, account_name, transform_name, filter, orderby, custom_headers).value!
     end
 
     #
@@ -82,18 +74,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the key by which the result collection
+    # should be ordered.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, account_name, transform_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
+    def list_async(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -113,7 +101,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'transformName' => transform_name},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter,'$top' => top,'$skip' => skip},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter,'$orderby' => orderby},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -475,7 +463,9 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # Update Job
     #
-    # Updates a Job.
+    # Update is only supported for description and priority. Updating Priority will
+    # take effect when the Job state is Queued or Scheduled and depending on the
+    # timing the priority update may be ignored.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # Azure subscription.
@@ -496,7 +486,9 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # Update Job
     #
-    # Updates a Job.
+    # Update is only supported for description and priority. Updating Priority will
+    # take effect when the Job state is Queued or Scheduled and depending on the
+    # timing the priority update may be ignored.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # Azure subscription.
@@ -516,7 +508,9 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # Update Job
     #
-    # Updates a Job.
+    # Update is only supported for description and priority. Updating Priority will
+    # take effect when the Job state is Queued or Scheduled and depending on the
+    # timing the priority update may be ignored.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # Azure subscription.
@@ -793,19 +787,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the key by which the result collection
+    # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [JobCollection] which provide lazy access to pages of the response.
     #
-    def list_as_lazy(resource_group_name, account_name, transform_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
-      response = list_async(resource_group_name, account_name, transform_name, filter, top, skip, custom_headers).value!
+    def list_as_lazy(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
+      response = list_async(resource_group_name, account_name, transform_name, filter, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

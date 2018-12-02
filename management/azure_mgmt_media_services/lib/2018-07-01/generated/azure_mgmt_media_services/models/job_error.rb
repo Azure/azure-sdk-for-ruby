@@ -55,8 +55,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'code',
                 type: {
-                  name: 'Enum',
-                  module: 'JobErrorCode'
+                  name: 'String'
                 }
               },
               message: {
@@ -72,8 +71,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'category',
                 type: {
-                  name: 'Enum',
-                  module: 'JobErrorCategory'
+                  name: 'String'
                 }
               },
               retry_property: {
@@ -81,8 +79,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'retry',
                 type: {
-                  name: 'Enum',
-                  module: 'JobRetry'
+                  name: 'String'
                 }
               },
               details: {

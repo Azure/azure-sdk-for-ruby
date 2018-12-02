@@ -58,8 +58,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'type',
                 type: {
-                  name: 'Enum',
-                  module: 'StreamingLocatorContentKeyType'
+                  name: 'String'
                 }
               },
               label_reference_in_streaming_policy: {

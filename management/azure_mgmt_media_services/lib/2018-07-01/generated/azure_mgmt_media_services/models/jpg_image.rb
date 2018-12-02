@@ -62,8 +62,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'stretchMode',
                 type: {
-                  name: 'Enum',
-                  module: 'StretchMode'
+                  name: 'String'
                 }
               },
               start: {

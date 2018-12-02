@@ -6,7 +6,7 @@
 module Azure::MediaServices::Mgmt::V2018_06_01_preview
   module Models
     #
-    # The parameters to the list SAS requet.
+    # The parameters to the list SAS request.
     #
     class ListContainerSasInput
 

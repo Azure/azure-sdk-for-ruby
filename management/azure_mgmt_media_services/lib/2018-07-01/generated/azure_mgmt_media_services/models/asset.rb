@@ -132,8 +132,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'properties.storageEncryptionFormat',
                 type: {
-                  name: 'Enum',
-                  module: 'AssetStorageEncryptionFormat'
+                  name: 'String'
                 }
               }
             }

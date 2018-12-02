@@ -134,8 +134,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'allowPassingVideoContentToUnknownOutput',
                 type: {
-                  name: 'Enum',
-                  module: 'ContentKeyPolicyPlayReadyUnknownOutputPassingOption'
+                  name: 'String'
                 }
               },
               uncompressed_digital_video_opl: {

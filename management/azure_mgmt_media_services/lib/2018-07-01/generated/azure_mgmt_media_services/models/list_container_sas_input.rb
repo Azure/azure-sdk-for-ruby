@@ -37,8 +37,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'permissions',
                 type: {
-                  name: 'Enum',
-                  module: 'AssetContainerPermission'
+                  name: 'String'
                 }
               },
               expiry_time: {

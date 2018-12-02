@@ -72,8 +72,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'stretchMode',
                 type: {
-                  name: 'Enum',
-                  module: 'StretchMode'
+                  name: 'String'
                 }
               },
               scene_change_detection: {
@@ -87,8 +86,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'complexity',
                 type: {
-                  name: 'Enum',
-                  module: 'H264Complexity'
+                  name: 'String'
                 }
               },
               layers: {

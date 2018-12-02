@@ -38,16 +38,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'parity',
                 type: {
-                  name: 'Enum',
-                  module: 'DeinterlaceParity'
+                  name: 'String'
                 }
               },
               mode: {
                 required: false,
                 serialized_name: 'mode',
                 type: {
-                  name: 'Enum',
-                  module: 'DeinterlaceMode'
+                  name: 'String'
                 }
               }
             }

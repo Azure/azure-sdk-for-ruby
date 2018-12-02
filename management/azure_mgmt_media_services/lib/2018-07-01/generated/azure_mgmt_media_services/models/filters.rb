@@ -54,8 +54,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'rotation',
                 type: {
-                  name: 'Enum',
-                  module: 'Rotation'
+                  name: 'String'
                 }
               },
               crop: {

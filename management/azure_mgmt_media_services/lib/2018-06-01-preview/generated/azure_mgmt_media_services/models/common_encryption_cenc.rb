@@ -24,7 +24,7 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       # tracks
       attr_accessor :content_keys
 
-      # @return [CencDrmConfiguration] Configuration of DRMs for
+      # @return [CencDrmConfiguration] Configuration of DRM for
       # CommonEncryptionCenc encryption scheme
       attr_accessor :drm
 

@@ -24,7 +24,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       # tracks
       attr_accessor :content_keys
 
-      # @return [CbcsDrmConfiguration] Configuration of DRMs for current
+      # @return [CbcsDrmConfiguration] Configuration of DRM for current
       # encryption scheme
       attr_accessor :drm
 

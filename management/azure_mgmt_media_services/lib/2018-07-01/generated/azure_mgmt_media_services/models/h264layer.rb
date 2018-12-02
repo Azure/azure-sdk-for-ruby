@@ -133,8 +133,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'profile',
                 type: {
-                  name: 'Enum',
-                  module: 'H264VideoProfile'
+                  name: 'String'
                 }
               },
               level: {
@@ -162,8 +161,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'entropyMode',
                 type: {
-                  name: 'Enum',
-                  module: 'EntropyMode'
+                  name: 'String'
                 }
               }
             }

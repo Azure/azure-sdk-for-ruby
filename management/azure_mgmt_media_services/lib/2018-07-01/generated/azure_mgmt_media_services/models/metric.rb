@@ -74,8 +74,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'unit',
                 type: {
-                  name: 'Enum',
-                  module: 'MetricUnit'
+                  name: 'String'
                 }
               },
               aggregation_type: {
@@ -83,8 +82,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'aggregationType',
                 type: {
-                  name: 'Enum',
-                  module: 'MetricAggregationType'
+                  name: 'String'
                 }
               },
               dimensions: {
