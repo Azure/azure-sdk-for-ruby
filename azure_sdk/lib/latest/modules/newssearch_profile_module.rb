@@ -9,6 +9,8 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
+      Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
@@ -17,7 +19,6 @@ module Azure::Profiles::Latest
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
-      Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
       Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
@@ -30,9 +31,8 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
-      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
-      MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
     end
 
     class NewsSearchDataClass
@@ -65,6 +65,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def media_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
+        end
+        def response
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+        end
         def news_article
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
         end
@@ -88,9 +94,6 @@ module Azure::Profiles::Latest
         end
         def trending_topics
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
-        end
-        def response
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
         end
         def search_results_answer
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
@@ -128,14 +131,11 @@ module Azure::Profiles::Latest
         def image_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
         end
-        def organization
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
-        end
-        def media_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
-        end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        end
+        def organization
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
         end
       end
     end
