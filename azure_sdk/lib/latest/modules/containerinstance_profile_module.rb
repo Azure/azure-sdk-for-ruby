@@ -8,15 +8,16 @@ module Azure::Profiles::Latest
   module ContainerInstance
     module Mgmt
       Operations = Azure::ContainerInstance::Mgmt::V2018_06_01::Operations
+      ContainerGroupUsage = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroupUsage
       ContainerOperations = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerOperations
       ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroups
-      ContainerGroupUsage = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroupUsage
 
       module Models
         Port = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Port
         IpAddress = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::IpAddress
         EnvironmentVariable = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::EnvironmentVariable
         ContainerGroupPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupPropertiesInstanceView
+        Event = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
         ResourceRequests = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequests
         ContainerGroupDiagnostics = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupDiagnostics
         ResourceRequirements = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequirements
@@ -25,13 +26,12 @@ module Azure::Profiles::Latest
         Container = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Container
         GitRepoVolume = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::GitRepoVolume
         ImageRegistryCredential = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ImageRegistryCredential
-        ContainerState = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerState
         OperationDisplay = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationDisplay
-        Event = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
-        Operation = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Operation
         ResourceLimits = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceLimits
-        OperationListResult = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationListResult
+        Operation = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Operation
         ContainerGroupListResult = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupListResult
+        OperationListResult = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationListResult
+        ContainerState = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerState
         Volume = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Volume
         ContainerProbe = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerProbe
         ContainerPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerPropertiesInstanceView
@@ -56,7 +56,7 @@ module Azure::Profiles::Latest
       end
 
       class ContainerInstanceManagementClass
-        attr_reader :operations, :container_operations, :container_groups, :container_group_usage, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :container_group_usage, :container_operations, :container_groups, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -67,9 +67,9 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
+          @container_group_usage = @client_0.container_group_usage
           @container_operations = @client_0.container_operations
           @container_groups = @client_0.container_groups
-          @container_group_usage = @client_0.container_group_usage
 
           @model_classes = ModelClasses.new
         end
@@ -100,6 +100,9 @@ module Azure::Profiles::Latest
           def container_group_properties_instance_view
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupPropertiesInstanceView
           end
+          def event
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
+          end
           def resource_requests
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequests
           end
@@ -124,26 +127,23 @@ module Azure::Profiles::Latest
           def image_registry_credential
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ImageRegistryCredential
           end
-          def container_state
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerState
-          end
           def operation_display
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationDisplay
-          end
-          def event
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
-          end
-          def operation
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Operation
           end
           def resource_limits
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceLimits
           end
-          def operation_list_result
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationListResult
+          def operation
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Operation
           end
           def container_group_list_result
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupListResult
+          end
+          def operation_list_result
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::OperationListResult
+          end
+          def container_state
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerState
           end
           def volume
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Volume

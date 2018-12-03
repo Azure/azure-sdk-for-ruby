@@ -23,7 +23,6 @@ module Azure::Dns::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AzureEntityResource',
           type: {
@@ -31,7 +30,6 @@ module Azure::Dns::Mgmt::V2017_09_01
             class_name: 'AzureEntityResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,7 +38,6 @@ module Azure::Dns::Mgmt::V2017_09_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,7 +46,6 @@ module Azure::Dns::Mgmt::V2017_09_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -58,7 +54,6 @@ module Azure::Dns::Mgmt::V2017_09_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
