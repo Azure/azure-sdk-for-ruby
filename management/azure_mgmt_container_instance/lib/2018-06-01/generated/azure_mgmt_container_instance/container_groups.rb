@@ -597,7 +597,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -638,7 +638,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Stops all containers in a container group.
     #
-    # Stops all containers in a contaienr group. Compute resources will be
+    # Stops all containers in a container group. Compute resources will be
     # deallocated and billing will stop.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -655,7 +655,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Stops all containers in a container group.
     #
-    # Stops all containers in a contaienr group. Compute resources will be
+    # Stops all containers in a container group. Compute resources will be
     # deallocated and billing will stop.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -672,7 +672,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Stops all containers in a container group.
     #
-    # Stops all containers in a contaienr group. Compute resources will be
+    # Stops all containers in a container group. Compute resources will be
     # deallocated and billing will stop.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -850,7 +850,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -867,7 +867,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -884,7 +884,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
