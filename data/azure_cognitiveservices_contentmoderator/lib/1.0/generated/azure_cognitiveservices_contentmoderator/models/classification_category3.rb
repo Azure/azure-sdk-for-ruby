@@ -24,7 +24,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Classification_Category3',
           type: {
@@ -32,7 +31,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'ClassificationCategory3',
             model_properties: {
               score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Score',
                 type: {

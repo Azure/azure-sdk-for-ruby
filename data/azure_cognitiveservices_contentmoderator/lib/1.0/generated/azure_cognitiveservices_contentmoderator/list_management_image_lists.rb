@@ -17,14 +17,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
   # If the content passed to the text API or the image API exceeds the size
   # limits, the API will return an error code that informs about the issue.
   #
-  # This API is currently available in:
-  #
-  # * West US - westus.api.cognitive.microsoft.com
-  # * East US 2 - eastus2.api.cognitive.microsoft.com
-  # * West Central US - westcentralus.api.cognitive.microsoft.com
-  # * West Europe - westeurope.api.cognitive.microsoft.com
-  # * Southeast Asia - southeastasia.api.cognitive.microsoft.com .
-  #
   class ListManagementImageLists
     include MsRestAzure
 
@@ -48,8 +40,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [ImageList] operation results.
     #
-    def get_details(list_id, custom_headers:nil)
-      response = get_details_async(list_id, custom_headers:custom_headers).value!
+    def get_details(list_id, custom_headers = nil)
+      response = get_details_async(list_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -62,8 +54,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_details_with_http_info(list_id, custom_headers:nil)
-      get_details_async(list_id, custom_headers:custom_headers).value!
+    def get_details_with_http_info(list_id, custom_headers = nil)
+      get_details_async(list_id, custom_headers).value!
     end
 
     #
@@ -75,13 +67,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_details_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+    def get_details_async(list_id, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -89,7 +80,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -135,8 +126,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [String] operation results.
     #
-    def delete(list_id, custom_headers:nil)
-      response = delete_async(list_id, custom_headers:custom_headers).value!
+    def delete(list_id, custom_headers = nil)
+      response = delete_async(list_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -149,8 +140,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(list_id, custom_headers:nil)
-      delete_async(list_id, custom_headers:custom_headers).value!
+    def delete_with_http_info(list_id, custom_headers = nil)
+      delete_async(list_id, custom_headers).value!
     end
 
     #
@@ -162,13 +153,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+    def delete_async(list_id, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -176,7 +166,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -201,7 +191,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
@@ -231,8 +220,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [ImageList] operation results.
     #
-    def update(list_id, content_type, body, custom_headers:nil)
-      response = update_async(list_id, content_type, body, custom_headers:custom_headers).value!
+    def update(list_id, content_type, body, custom_headers = nil)
+      response = update_async(list_id, content_type, body, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -247,8 +236,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(list_id, content_type, body, custom_headers:nil)
-      update_async(list_id, content_type, body, custom_headers:custom_headers).value!
+    def update_with_http_info(list_id, content_type, body, custom_headers = nil)
+      update_async(list_id, content_type, body, custom_headers).value!
     end
 
     #
@@ -262,20 +251,22 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(list_id, content_type, body, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+    def update_async(list_id, content_type, body, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'body is nil' if body.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      fail RuntimeError, 'Header Content-Type is forbidden to change'
       request_headers['Content-Type'] = content_type unless content_type.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::ContentModerator::V1_0::Models::Body.mapper()
@@ -285,7 +276,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -333,8 +324,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [ImageList] operation results.
     #
-    def create(content_type, body, custom_headers:nil)
-      response = create_async(content_type, body, custom_headers:custom_headers).value!
+    def create(content_type, body, custom_headers = nil)
+      response = create_async(content_type, body, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -348,8 +339,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(content_type, body, custom_headers:nil)
-      create_async(content_type, body, custom_headers:custom_headers).value!
+    def create_with_http_info(content_type, body, custom_headers = nil)
+      create_async(content_type, body, custom_headers).value!
     end
 
     #
@@ -362,19 +353,21 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(content_type, body, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+    def create_async(content_type, body, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'body is nil' if body.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      fail RuntimeError, 'Header Content-Type is forbidden to change'
       request_headers['Content-Type'] = content_type unless content_type.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::ContentModerator::V1_0::Models::Body.mapper()
@@ -384,7 +377,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -429,8 +422,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Array] operation results.
     #
-    def get_all_image_lists(custom_headers:nil)
-      response = get_all_image_lists_async(custom_headers:custom_headers).value!
+    def get_all_image_lists(custom_headers = nil)
+      response = get_all_image_lists_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -442,8 +435,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_all_image_lists_with_http_info(custom_headers:nil)
-      get_all_image_lists_async(custom_headers:custom_headers).value!
+    def get_all_image_lists_with_http_info(custom_headers = nil)
+      get_all_image_lists_async(custom_headers).value!
     end
 
     #
@@ -454,12 +447,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_all_image_lists_async(custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+    def get_all_image_lists_async(custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -467,7 +459,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -491,13 +483,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
-              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
-                    client_side_validation: true,
                     required: false,
                     serialized_name: 'ImageListElementType',
                     type: {
@@ -528,8 +518,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [RefreshIndex] operation results.
     #
-    def refresh_index_method(list_id, custom_headers:nil)
-      response = refresh_index_method_async(list_id, custom_headers:custom_headers).value!
+    def refresh_index_method(list_id, custom_headers = nil)
+      response = refresh_index_method_async(list_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -542,8 +532,8 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def refresh_index_method_with_http_info(list_id, custom_headers:nil)
-      refresh_index_method_async(list_id, custom_headers:custom_headers).value!
+    def refresh_index_method_with_http_info(list_id, custom_headers = nil)
+      refresh_index_method_async(list_id, custom_headers).value!
     end
 
     #
@@ -555,13 +545,12 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def refresh_index_method_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+    def refresh_index_method_async(list_id, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -569,7 +558,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/RefreshIndex'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

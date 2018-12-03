@@ -23,7 +23,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Content',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Content',
             model_properties: {
               content_value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ContentValue',
                 type: {

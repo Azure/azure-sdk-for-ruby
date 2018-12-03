@@ -21,7 +21,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [String] Description for term list.
       attr_accessor :description
 
-      # @return [TermListMetadata] Term list metadata.
+      # @return [Hash{String => String}] Term list metadata.
       attr_accessor :metadata
 
 
@@ -31,7 +31,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TermList',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'TermList',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Id',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Name',
                 type: {
@@ -55,7 +52,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Description',
                 type: {
@@ -63,12 +59,17 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Metadata',
                 type: {
-                  name: 'Composite',
-                  class_name: 'TermListMetadata'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

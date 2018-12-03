@@ -37,7 +37,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Classification',
           type: {
@@ -45,7 +44,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Classification',
             model_properties: {
               category1: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Category1',
                 type: {
@@ -54,7 +52,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               category2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Category2',
                 type: {
@@ -63,7 +60,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               category3: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Category3',
                 type: {
@@ -72,7 +68,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               review_recommended: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ReviewRecommended',
                 type: {

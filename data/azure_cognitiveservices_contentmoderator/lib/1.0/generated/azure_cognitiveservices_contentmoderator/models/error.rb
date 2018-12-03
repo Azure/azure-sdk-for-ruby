@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Error',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'Error',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Code',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Message',
                 type: {

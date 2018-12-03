@@ -36,7 +36,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'createReviewBodyItem',
           type: {
@@ -44,7 +43,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
             class_name: 'CreateReviewBodyItem',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Type',
                 type: {
@@ -52,7 +50,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Content',
                 type: {
@@ -60,7 +57,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               content_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ContentId',
                 type: {
@@ -68,7 +64,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               callback_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'CallbackEndpoint',
                 type: {
@@ -76,13 +71,11 @@ module Azure::CognitiveServices::ContentModerator::V1_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CreateReviewBodyItemMetadataItemElementType',
                       type: {
