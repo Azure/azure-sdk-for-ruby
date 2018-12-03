@@ -22,8 +22,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
       # @return [Date] The end of the date range covered by the invoice.
       attr_accessor :invoice_period_end_date
 
-      # @return [Array<String>] Array of billing perdiod ids that the invoice
-      # is attributed to.
+      # @return [Array<String>] Array of billing period ids that the invoice is
+      # attributed to.
       attr_accessor :billing_period_ids
 
 
