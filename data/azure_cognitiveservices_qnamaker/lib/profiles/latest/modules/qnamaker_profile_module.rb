@@ -64,7 +64,7 @@ module Azure::Qnamaker::Profiles::Latest
       @base_url = options[:base_url].nil? ? nil:options[:base_url]
       @options = options[:options].nil? ? nil:options[:options]
 
-      @client_0 = Azure::CognitiveServices::Qnamaker::V4_0::QnamakerClient.new(configurable.credentials, base_url, options)
+      @client_0 = Azure::CognitiveServices::Qnamaker::V4_0::QnamakerClient.new(configurable.credentials, options)
       if(@client_0.respond_to?(:subscription_id))
         @client_0.subscription_id = configurable.subscription_id
       end
