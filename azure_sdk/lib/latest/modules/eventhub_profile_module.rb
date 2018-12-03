@@ -7,10 +7,10 @@ require 'azure_mgmt_event_hub'
 module Azure::Profiles::Latest
   module EventHub
     module Mgmt
+      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
       Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
       Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
-      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
 
       module Models
         SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
@@ -36,7 +36,7 @@ module Azure::Profiles::Latest
       end
 
       class EventHubManagementClass
-        attr_reader :clusters, :namespaces, :configuration, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :namespaces, :configuration, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -46,10 +46,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @clusters = @client_0.clusters
           @namespaces = @client_0.namespaces
           @configuration = @client_0.configuration
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end

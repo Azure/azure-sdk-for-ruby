@@ -6,8 +6,8 @@
 module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
   module Models
     #
-    # Error reponse indicates Microsoft.MarketplaceOrdering service is not able
-    # to process the incoming request. The reason is provided in the error
+    # Error response indicates Microsoft.MarketplaceOrdering service is not
+    # able to process the incoming request. The reason is provided in the error
     # message.
     #
     class ErrorResponse
@@ -24,7 +24,6 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -32,7 +31,6 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
             class_name: 'ErrorResponse',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
