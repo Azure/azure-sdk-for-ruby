@@ -34,7 +34,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultCertificateResponse',
           type: {
@@ -42,7 +41,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'VaultCertificateResponse',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,7 +49,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,7 +57,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -69,7 +65,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
