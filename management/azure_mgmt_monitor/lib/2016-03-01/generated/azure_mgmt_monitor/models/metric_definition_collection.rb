@@ -23,7 +23,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricDefinitionCollection',
           type: {
@@ -31,13 +30,11 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'MetricDefinitionCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricDefinitionElementType',
                       type: {

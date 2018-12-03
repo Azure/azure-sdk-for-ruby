@@ -31,8 +31,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [DiagnosticSettingsResource] operation results.
     #
-    def get(resource_uri, name, custom_headers:nil)
-      response = get_async(resource_uri, name, custom_headers:custom_headers).value!
+    def get(resource_uri, name, custom_headers = nil)
+      response = get_async(resource_uri, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_uri, name, custom_headers:nil)
-      get_async(resource_uri, name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_uri, name, custom_headers = nil)
+      get_async(resource_uri, name, custom_headers).value!
     end
 
     #
@@ -60,14 +60,13 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_uri, name, custom_headers:nil)
+    def get_async(resource_uri, name, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'name is nil' if name.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -125,8 +124,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [DiagnosticSettingsResource] operation results.
     #
-    def create_or_update(resource_uri, parameters, name, custom_headers:nil)
-      response = create_or_update_async(resource_uri, parameters, name, custom_headers:custom_headers).value!
+    def create_or_update(resource_uri, parameters, name, custom_headers = nil)
+      response = create_or_update_async(resource_uri, parameters, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -142,8 +141,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_uri, parameters, name, custom_headers:nil)
-      create_or_update_async(resource_uri, parameters, name, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_uri, parameters, name, custom_headers = nil)
+      create_or_update_async(resource_uri, parameters, name, custom_headers).value!
     end
 
     #
@@ -158,7 +157,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_uri, parameters, name, custom_headers:nil)
+    def create_or_update_async(resource_uri, parameters, name, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -166,11 +165,12 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource.mapper()
@@ -228,8 +228,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_uri, name, custom_headers:nil)
-      response = delete_async(resource_uri, name, custom_headers:custom_headers).value!
+    def delete(resource_uri, name, custom_headers = nil)
+      response = delete_async(resource_uri, name, custom_headers).value!
       nil
     end
 
@@ -243,8 +243,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_uri, name, custom_headers:nil)
-      delete_async(resource_uri, name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_uri, name, custom_headers = nil)
+      delete_async(resource_uri, name, custom_headers).value!
     end
 
     #
@@ -257,14 +257,13 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_uri, name, custom_headers:nil)
+    def delete_async(resource_uri, name, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'name is nil' if name.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -309,8 +308,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [DiagnosticSettingsResourceCollection] operation results.
     #
-    def list(resource_uri, custom_headers:nil)
-      response = list_async(resource_uri, custom_headers:custom_headers).value!
+    def list(resource_uri, custom_headers = nil)
+      response = list_async(resource_uri, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -323,8 +322,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_uri, custom_headers:nil)
-      list_async(resource_uri, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_uri, custom_headers = nil)
+      list_async(resource_uri, custom_headers).value!
     end
 
     #
@@ -336,13 +335,12 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_uri, custom_headers:nil)
+    def list_async(resource_uri, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
