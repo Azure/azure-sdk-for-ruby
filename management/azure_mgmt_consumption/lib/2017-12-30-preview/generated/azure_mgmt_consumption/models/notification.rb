@@ -39,7 +39,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Notification',
           type: {
@@ -47,7 +46,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
             class_name: 'Notification',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -55,7 +53,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               operator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'operator',
                 type: {
@@ -63,7 +60,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               threshold: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'threshold',
                 type: {
@@ -71,7 +67,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               contact_emails: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'contactEmails',
                 constraints: {
@@ -81,7 +76,6 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,13 +85,11 @@ module Azure::Consumption::Mgmt::V2017_12_30_preview
                 }
               },
               contact_roles: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contactRoles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
