@@ -85,6 +85,7 @@ gem 'azure_cognitiveservices_entitysearch',     path: 'data/azure_cognitiveservi
 gem 'azure_cognitiveservices_face',             path: 'data/azure_cognitiveservices_face'
 gem 'azure_cognitiveservices_imagesearch',      path: 'data/azure_cognitiveservices_imagesearch'
 gem 'azure_cognitiveservices_newssearch',       path: 'data/azure_cognitiveservices_newssearch'
+gem 'azure_cognitiveservices_qnamaker',         path: 'data/azure_cognitiveservices_qnamaker'
 gem 'azure_cognitiveservices_spellcheck',       path: 'data/azure_cognitiveservices_spellcheck'
 gem 'azure_cognitiveservices_textanalytics',    path: 'data/azure_cognitiveservices_textanalytics'
 gem 'azure_cognitiveservices_videosearch',      path: 'data/azure_cognitiveservices_videosearch'
