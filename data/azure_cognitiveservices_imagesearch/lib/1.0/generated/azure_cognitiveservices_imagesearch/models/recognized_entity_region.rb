@@ -43,7 +43,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecognizedEntityRegion',
           type: {
@@ -51,7 +50,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'RecognizedEntityRegion',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -59,7 +57,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,7 +65,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               read_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'readLink',
@@ -77,7 +73,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -86,7 +81,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               region: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'region',
@@ -96,14 +90,12 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               matching_entities: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'matchingEntities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecognizedEntityElementType',
                       type: {

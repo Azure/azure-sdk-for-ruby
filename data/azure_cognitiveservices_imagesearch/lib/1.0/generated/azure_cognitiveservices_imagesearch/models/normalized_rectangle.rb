@@ -41,7 +41,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NormalizedRectangle',
           type: {
@@ -49,7 +48,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'NormalizedRectangle',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -57,7 +55,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -66,7 +63,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               read_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'readLink',
@@ -75,7 +71,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -84,7 +79,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -93,7 +87,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
@@ -102,7 +95,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'image',
@@ -112,7 +104,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -121,7 +112,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               alternate_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'alternateName',
@@ -130,7 +120,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               bing_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bingId',
@@ -139,7 +128,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               left: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'left',
                 type: {
@@ -147,7 +135,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               top: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'top',
                 type: {
@@ -155,7 +142,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               right: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'right',
                 type: {
@@ -163,7 +149,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               bottom: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'bottom',
                 type: {

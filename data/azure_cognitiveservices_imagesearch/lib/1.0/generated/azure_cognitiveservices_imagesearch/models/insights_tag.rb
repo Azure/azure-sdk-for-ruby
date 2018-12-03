@@ -23,7 +23,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InsightsTag',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'InsightsTag',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',

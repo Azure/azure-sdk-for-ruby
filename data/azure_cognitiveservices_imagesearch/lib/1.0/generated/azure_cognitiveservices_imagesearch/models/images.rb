@@ -51,7 +51,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Images',
           type: {
@@ -59,7 +58,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'Images',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -67,7 +65,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -76,7 +73,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               read_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'readLink',
@@ -85,7 +81,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -94,7 +89,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               total_estimated_matches: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'totalEstimatedMatches',
@@ -103,7 +97,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               next_offset: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextOffset',
@@ -112,13 +105,11 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ImageObjectElementType',
                       type: {
@@ -129,14 +120,12 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               query_expansions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queryExpansions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryElementType',
                       type: {
@@ -147,14 +136,12 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               pivot_suggestions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'pivotSuggestions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PivotSuggestionsElementType',
                       type: {
@@ -165,14 +152,12 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               similar_terms: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'similarTerms',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryElementType',
                       type: {

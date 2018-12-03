@@ -33,7 +33,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageInsights/ImageCaption',
           type: {
@@ -41,7 +40,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'ImageInsightsImageCaption',
             model_properties: {
               caption: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'caption',
                 type: {
@@ -49,7 +47,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               data_source_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dataSourceUrl',
                 type: {
@@ -57,13 +54,11 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               related_searches: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'relatedSearches',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryElementType',
                       type: {

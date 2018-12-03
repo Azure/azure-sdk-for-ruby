@@ -36,7 +36,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Images/ImageMetadata',
           type: {
@@ -44,7 +43,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'ImagesImageMetadata',
             model_properties: {
               shopping_sources_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'shoppingSourcesCount',
@@ -53,7 +51,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               recipe_sources_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'recipeSourcesCount',
@@ -62,7 +59,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               aggregate_offer: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'aggregateOffer',

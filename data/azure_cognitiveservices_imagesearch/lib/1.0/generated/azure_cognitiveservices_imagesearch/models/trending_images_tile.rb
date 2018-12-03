@@ -29,7 +29,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrendingImages/Tile',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
             class_name: 'TrendingImagesTile',
             model_properties: {
               query: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'query',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::ImageSearch::V1_0
                 }
               },
               image: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'image',
                 type: {
