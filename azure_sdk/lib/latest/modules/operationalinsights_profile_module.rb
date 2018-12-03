@@ -9,36 +9,36 @@ module Azure::Profiles::Latest
     module Mgmt
       StorageInsights = Azure::OperationalInsights::Mgmt::V2015_03_20::StorageInsights
       SavedSearches = Azure::OperationalInsights::Mgmt::V2015_03_20::SavedSearches
+      Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
+      Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
       LinkedServices = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::LinkedServices
       DataSources = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::DataSources
-      Workspaces = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Workspaces
-      Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
 
       module Models
         Tag = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
-        SearchSchemaValue = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue
         SearchGetSchemaResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchGetSchemaResponse
         SearchHighlight = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchHighlight
-        LinkTarget = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::LinkTarget
         SearchParameters = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchParameters
-        CoreSummary = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::CoreSummary
-        SearchMetadataSchema = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadataSchema
-        StorageInsightStatus = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightStatus
-        SavedSearch = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
-        SearchResultsResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse
-        StorageInsightListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightListResult
         SearchSort = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSort
-        SearchError = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchError
-        StorageAccount = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
-        WorkspacePurgeBodyFilters = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBodyFilters
-        WorkspacePurgeBody = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBody
-        WorkspacePurgeResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeResponse
+        StorageInsightStatus = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightStatus
         SearchMetadata = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
+        SavedSearch = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
+        SearchError = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchError
+        StorageInsightListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightListResult
+        SearchSchemaValue = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue
+        LinkTarget = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::LinkTarget
+        SearchMetadataSchema = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadataSchema
+        WorkspacePurgeBodyFilters = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBodyFilters
+        SearchResultsResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse
+        StorageAccount = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
+        WorkspacePurgeBody = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBody
+        CoreSummary = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::CoreSummary
+        WorkspacePurgeResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeResponse
+        WorkspacePurgeStatusResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
         SavedSearchesListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
         StorageInsight = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
-        WorkspacePurgeStatusResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
-        StorageInsightState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
         SearchSortEnum = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
+        StorageInsightState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
         PurgeState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
         DataSource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSource
         SkuNameEnum = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SkuNameEnum
@@ -53,11 +53,11 @@ module Azure::Profiles::Latest
         DataSourceFilter = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
         WorkspaceListManagementGroupsResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
         IntelligencePack = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
-        SharedKeys = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
         DataSourceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceListResult
         WorkspaceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult
         LinkedService = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedService
         Workspace = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace
+        SharedKeys = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
         DataSourceKind = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
         EntityStatus = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
         Sku = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
@@ -66,7 +66,7 @@ module Azure::Profiles::Latest
       end
 
       class OperationalInsightsManagementClass
-        attr_reader :storage_insights, :saved_searches, :linked_services, :data_sources, :workspaces, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :storage_insights, :saved_searches, :operations, :workspaces, :linked_services, :data_sources, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -84,10 +84,10 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
+          @operations = @client_1.operations
+          @workspaces = @client_1.workspaces
           @linked_services = @client_1.linked_services
           @data_sources = @client_1.data_sources
-          @workspaces = @client_1.workspaces
-          @operations = @client_1.operations
 
           @model_classes = ModelClasses.new
         end
@@ -111,59 +111,62 @@ module Azure::Profiles::Latest
           def tag
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
           end
-          def search_schema_value
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue
-          end
           def search_get_schema_response
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchGetSchemaResponse
           end
           def search_highlight
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchHighlight
           end
-          def link_target
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::LinkTarget
-          end
           def search_parameters
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchParameters
-          end
-          def core_summary
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::CoreSummary
-          end
-          def search_metadata_schema
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadataSchema
-          end
-          def storage_insight_status
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightStatus
-          end
-          def saved_search
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
-          end
-          def search_results_response
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse
-          end
-          def storage_insight_list_result
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightListResult
           end
           def search_sort
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSort
           end
+          def storage_insight_status
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightStatus
+          end
+          def search_metadata
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
+          end
+          def saved_search
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
+          end
           def search_error
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchError
           end
-          def storage_account
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
+          def storage_insight_list_result
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightListResult
+          end
+          def search_schema_value
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue
+          end
+          def link_target
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::LinkTarget
+          end
+          def search_metadata_schema
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadataSchema
           end
           def workspace_purge_body_filters
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBodyFilters
           end
+          def search_results_response
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse
+          end
+          def storage_account
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
+          end
           def workspace_purge_body
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeBody
+          end
+          def core_summary
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::CoreSummary
           end
           def workspace_purge_response
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeResponse
           end
-          def search_metadata
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
+          def workspace_purge_status_response
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
           end
           def saved_searches_list_result
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
@@ -171,14 +174,11 @@ module Azure::Profiles::Latest
           def storage_insight
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
           end
-          def workspace_purge_status_response
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
+          def search_sort_enum
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
           end
           def storage_insight_state
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
-          end
-          def search_sort_enum
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
           end
           def purge_state
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
@@ -222,9 +222,6 @@ module Azure::Profiles::Latest
           def intelligence_pack
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
           end
-          def shared_keys
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
-          end
           def data_source_list_result
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceListResult
           end
@@ -236,6 +233,9 @@ module Azure::Profiles::Latest
           end
           def workspace
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace
+          end
+          def shared_keys
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
           end
           def data_source_kind
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
