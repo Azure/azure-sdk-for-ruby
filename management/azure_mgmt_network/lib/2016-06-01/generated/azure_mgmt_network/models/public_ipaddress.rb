@@ -30,7 +30,8 @@ module Azure::Network::Mgmt::V2016_06_01
       # @return [String]
       attr_accessor :ip_address
 
-      # @return [Integer] Gets or sets the Idletimeout of the public IP address
+      # @return [Integer] Gets or sets the idle timeout of the public IP
+      # address
       attr_accessor :idle_timeout_in_minutes
 
       # @return [String] Gets or sets resource guid property of the PublicIP

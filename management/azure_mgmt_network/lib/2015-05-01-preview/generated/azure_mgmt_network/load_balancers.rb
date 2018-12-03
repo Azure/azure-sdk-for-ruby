@@ -200,7 +200,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the load balancers in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -214,7 +214,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the load balancers in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -227,7 +227,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the load balancers in a
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -286,8 +286,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the load balancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -301,8 +301,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the load balancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -315,8 +315,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the load balancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -573,7 +573,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the load balancers in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -589,7 +589,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the load balancers in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -604,7 +604,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the load balancers in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -663,8 +663,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the load balancers in a
+    # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -679,8 +679,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the load balancers in a
+    # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -694,8 +694,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the load balancers in a
+    # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -753,7 +753,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the load balancers in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -774,8 +774,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List loadBalancer operation retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the load balancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

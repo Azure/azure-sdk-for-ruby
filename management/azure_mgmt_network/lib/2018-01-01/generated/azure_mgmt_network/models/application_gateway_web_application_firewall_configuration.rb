@@ -34,7 +34,7 @@ module Azure::Network::Mgmt::V2018_01_01
       # @return [Boolean] Whether allow WAF to check request Body.
       attr_accessor :request_body_check
 
-      # @return [Integer] Maxium request body size for WAF.
+      # @return [Integer] Maximum request body size for WAF.
       attr_accessor :max_request_body_size
 
 

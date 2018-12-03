@@ -28,13 +28,13 @@ module Azure::Network::Mgmt::V2017_09_01
       attr_accessor :destination_port_range
 
       # @return [Array<String>] The source port ranges. Expected values include
-      # a single integer between 0 and 65535, a range using '-' as seperator
-      # (e.g. 100-400), or an asterix (*)
+      # a single integer between 0 and 65535, a range using '-' as separator
+      # (e.g. 100-400), or an asterisk (*)
       attr_accessor :source_port_ranges
 
       # @return [Array<String>] The destination port ranges. Expected values
       # include a single integer between 0 and 65535, a range using '-' as
-      # seperator (e.g. 100-400), or an asterix (*)
+      # separator (e.g. 100-400), or an asterisk (*)
       attr_accessor :destination_port_ranges
 
       # @return [String] The source address prefix.
@@ -44,13 +44,13 @@ module Azure::Network::Mgmt::V2017_09_01
       attr_accessor :destination_address_prefix
 
       # @return [Array<String>] The source address prefixes. Expected values
-      # include CIDR IP ranges, Default Tags (VirtualNetwork, AureLoadBalancer,
-      # Internet), System Tags, and the asterix (*).
+      # include CIDR IP ranges, Default Tags (VirtualNetwork,
+      # AzureLoadBalancer, Internet), System Tags, and the asterisk (*).
       attr_accessor :source_address_prefixes
 
       # @return [Array<String>] The destination address prefixes. Expected
       # values include CIDR IP ranges, Default Tags (VirtualNetwork,
-      # AureLoadBalancer, Internet), System Tags, and the asterix (*).
+      # AzureLoadBalancer, Internet), System Tags, and the asterisk (*).
       attr_accessor :destination_address_prefixes
 
       # @return [Array<String>] The expanded source address prefix.

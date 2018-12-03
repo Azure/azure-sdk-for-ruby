@@ -20,7 +20,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # addresses
       attr_accessor :backend_address_pools
 
-      # @return [Array<LoadBalancingRule>] Gets or sets loadbalancing rules
+      # @return [Array<LoadBalancingRule>] Gets or sets load balancing rules
       attr_accessor :load_balancing_rules
 
       # @return [Array<Probe>] Gets or sets list of Load balancer probes
