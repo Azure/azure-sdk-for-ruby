@@ -26,7 +26,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspaceCollectionAccessKeys',
           type: {
@@ -34,7 +33,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'WorkspaceCollectionAccessKeys',
             model_properties: {
               key1: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key1',
                 type: {
@@ -42,7 +40,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               key2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key2',
                 type: {

@@ -12,7 +12,6 @@ module Azure::PowerBiEmbedded::Profiles::Latest
     module Models
       Operation = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
       OperationList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
-      Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
       WorkspaceCollectionAccessKeys = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys
       WorkspaceCollection = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection
       WorkspaceCollectionAccessKey = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey
@@ -29,6 +28,7 @@ module Azure::PowerBiEmbedded::Profiles::Latest
       ErrorDetail = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::ErrorDetail
       AccessKeyName = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AccessKeyName
       CheckNameReason = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
+      Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
     end
 
     #
@@ -83,9 +83,6 @@ module Azure::PowerBiEmbedded::Profiles::Latest
       def operation_list
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
       end
-      def error
-        Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
-      end
       def workspace_collection_access_keys
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys
       end
@@ -133,6 +130,9 @@ module Azure::PowerBiEmbedded::Profiles::Latest
       end
       def check_name_reason
         Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameReason
+      end
+      def error
+        Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
       end
     end
   end

@@ -34,8 +34,8 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     # @return [WorkspaceList] operation results.
     #
-    def list(resource_group_name, workspace_collection_name, custom_headers:nil)
-      response = list_async(resource_group_name, workspace_collection_name, custom_headers:custom_headers).value!
+    def list(resource_group_name, workspace_collection_name, custom_headers = nil)
+      response = list_async(resource_group_name, workspace_collection_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -51,8 +51,8 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, workspace_collection_name, custom_headers:nil)
-      list_async(resource_group_name, workspace_collection_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, workspace_collection_name, custom_headers = nil)
+      list_async(resource_group_name, workspace_collection_name, custom_headers).value!
     end
 
     #
@@ -67,7 +67,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, workspace_collection_name, custom_headers:nil)
+    def list_async(resource_group_name, workspace_collection_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workspace_collection_name is nil' if workspace_collection_name.nil?
@@ -75,7 +75,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
